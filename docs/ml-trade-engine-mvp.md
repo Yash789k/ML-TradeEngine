@@ -1,19 +1,26 @@
 # ML Trade Engine — MVP Blueprint
 
-A production-grade, Python-native algorithmic trading system using ML ensembles, multi-strategy signals, rigorous backtesting, and a live paper trading pipeline. No Pine Script. No TradingView lock-in.
+A production-grade, Python-native algorithmic trading system using ML ensembles, multi-strategy signals, rigorous backtesting, a full risk management layer, and a systematic quantitative research programme targeting academic publication. No Pine Script. No TradingView lock-in.
 
-**7 Build Phases · 8 Quant Strategies · 3 ML Models (Ensemble) · 30+ Engineered Features · 1000× Monte Carlo Paths · 10–12 Week Timeline**
+**5 Phases Complete · 4 Research Phases In Progress · 3 ML Models (Ensemble) · 30+ Engineered Features · 1000× Monte Carlo Paths · 20–30 Ticker Universe**
 
 ---
 
 ## System Architecture
 
-Seven sequential layers — each layer's output feeds the next. Build and validate one layer before moving on.
-
 ```
-[01 Data] → [02 Features] → [03 ML Model] → [04 Backtest] → [05 Risk] → [06 Execution] → [07 Dashboard]
- Parquet      pandas-ta       XGB+LGBM        VectorBT        Kelly+ATR    Alpaca paper     Streamlit
- store        + HMM           + LSTM          + PyBroker      + VaR        API              + Plotly
+[01 Data] → [02 Features] → [03 ML Model] → [04 Backtest] → [05 Risk]
+ Parquet      pandas-ta       XGB+LGBM        Vectorized      Kelly+ATR
+ store        + HMM           + LSTM          Simulator       + VaR/CVaR
+
+         ↓ Research Branch (Phase 06 — in progress)
+
+[06A Strategy Zoo] → [06B Ranking] → [06C Env Analysis] → [06D Paper]
+ 8 classic strats     Unified          HMM regime × cost    "Regime-Gated
+ on 20–30 tickers     scorecard        sensitivity           Alpha Trends"
+
+[06E Live Execution]  ← runs in parallel with 06A–06D
+ Alpaca paper trading
 ```
 
 ---
@@ -95,9 +102,80 @@ Seven sequential layers — each layer's output feeds the next. Build and valida
 
 ---
 
-### Phase 06 — Live Signal Engine `[1 week]` · Production
+### Phase 06A — Strategy Zoo `[2–3 weeks]` · Research
 
-> Run the trained model daily; push signals to paper trading via Alpaca.
+> Implement and benchmark 8 classic quant strategies on an expanded 20–30 ticker universe.
+
+Each strategy is self-contained: own signal generation, position sizing, and full OOS backtest. The expanded universe (S&P500 large-caps, sector ETFs, crypto) is required for statistical credibility in publication.
+
+| Strategy | Signal Logic | Regime Hypothesis |
+|----------|-------------|-------------------|
+| Momentum (12-1) | 12-month return minus most recent month; long top quintile | Trend-following regime |
+| Mean Reversion | Bollinger Band squeeze + RSI extremes | High-vol ranging regime |
+| EMA Crossover | Fast/slow EMA crossover + ADX filter | Trending / low-noise regime |
+| Turtle Trading | Donchian channel breakout, ATR-sized units | Breakout regime |
+| Pairs / Stat Arb | Cointegrated pair z-score entry/exit | Low-correlation regime |
+| Carry Proxy | Yield spread as equity carry signal | Rate environment dependent |
+| Volatility Breakout | ATR expansion + volume surge | Volatility compression → expansion |
+| Alpha Trends | To be defined from literature + original research | TBD |
+
+**Libraries:** `statsmodels` `scipy` `numpy` `pandas`
+
+---
+
+### Phase 06B — Strategy Ranking System `[1 week]` · Research
+
+> Score all strategies on a unified multi-metric scorecard; compare against Phase 03–05 ML ensemble.
+
+- CAGR, Sharpe, Sortino, Max Drawdown, Calmar
+- Alpha (vs SPY via Jensen's alpha), Beta, t-statistic on mean daily return
+- Information Ratio (active return / tracking error)
+- Regime breakdown — all metrics decomposed per HMM state (bull / bear / ranging)
+- Output: ranked table + visualisations for the paper
+
+**Libraries:** `statsmodels` `scipy` `pandas`
+
+---
+
+### Phase 06C — Environment Characterisation `[1–2 weeks]` · Research
+
+> Understand the algorithmic trading environment the engine operates in.
+
+- **Regime analysis** — per-strategy Sharpe and CAGR by HMM state
+- **Transaction cost sensitivity** — edge survival across commission/slippage levels and AUM scales
+- **Signal stability** — rolling 90-day Sharpe and Alpha windows; detect strategy decay
+- **Factor attribution** — Fama-French 3-factor decomposition; isolate true alpha
+- **Cross-strategy correlation** — identify diversifying pairs for portfolio construction
+
+**Libraries:** `statsmodels` `pandas-datareader` `scipy` `numpy`
+
+---
+
+### Phase 06D — Research Paper `[2–3 weeks]` · Publication
+
+> Synthesise 06A–06C into a publishable academic paper.
+
+**Title:** *Regime-Gated Alpha Trends: A Unified Framework for Strategy Selection Under Non-Stationary Market States*
+
+**Core thesis:** The HMM regime classifier (Phase 02) acts as a meta-strategy gating layer — dynamically allocating to the strategy with the best historical edge in the current regime, sized by Kelly Criterion. This outperforms any single strategy and the passive benchmark on a risk-adjusted basis.
+
+**Outline:**
+1. Introduction — motivation, research question, contributions
+2. Related work — HMM in finance, regime-switching models, strategy selection literature
+3. Data and methodology — universe construction, feature pipeline, HMM calibration, strategy implementations
+4. Strategy Zoo results — individual scorecards, regime decomposition
+5. Regime-Gated Meta-Strategy — allocation mechanism, Kelly sizing, backtested performance
+6. Environment characterisation — cost sensitivity, signal decay, factor attribution
+7. Discussion — practical limitations, overfitting risks, generalisability
+8. Conclusion — key findings, future directions
+
+**Target:** Academic journal (Quantitative Finance, Journal of Portfolio Management, or similar)
+
+---
+
+### Phase 06E — Live Signal Engine `[1 week]` · Production *(parallel)*
+
+> Run the trained model daily; push signals to paper trading via Alpaca. Runs in parallel with 06A–06D to generate live validation data for the paper.
 
 - Cron job (GitHub Actions or Cloud Scheduler) fires daily at market close
 - Fetch last N bars → run feature pipeline → model inference → signal output
@@ -111,11 +189,12 @@ Seven sequential layers — each layer's output feeds the next. Build and valida
 
 ### Phase 07 — Dashboard `[1 week]` · Deliverable
 
-> Interactive Streamlit app showing model health, equity curve, and live signals.
+> Interactive Streamlit app showing model health, equity curve, live signals, and strategy ranking.
 
 - Equity curve chart (Plotly): strategy vs benchmark overlaid
 - Rolling Sharpe + max drawdown rolling window chart
 - Live signal table: asset, direction, confidence score, position size, stop level
+- Strategy ranking table from Phase 06B
 - Model feature importance bar chart (SHAP values)
 - Trade log with P&L per trade, win/loss streak
 - Deploy to Streamlit Community Cloud or GCP Cloud Run (containerized)
@@ -126,18 +205,18 @@ Seven sequential layers — each layer's output feeds the next. Build and valida
 
 ## Quantitative Strategies
 
-All strategies feed into the ensemble — the model learns which signals are regime-appropriate.
+All 8 strategies are benchmarked independently in Phase 06A. The HMM regime classifier then acts as a meta-gating layer in Phase 06D, allocating to the highest-edge strategy per state.
 
-| Strategy | Signal Logic | Timeframe | ML Layer |
+| Strategy | Signal Logic | Timeframe | Regime Hypothesis |
 |---|---|:---:|---|
-| Trend Following | EMA crossover + ADX filter | Daily | XGBoost classifier |
-| Mean Reversion | Bollinger Band squeeze + RSI extremes | Hourly | LightGBM |
-| Momentum | Cross-sectional 12-1 month momentum, sector rotation | Weekly | Rank-based scoring |
-| Regime-Aware | HMM market state gates all other signals | Daily | hmmlearn + ensemble |
-| Volatility Breakout | ATR expansion + volume surge entry | Daily | XGBoost + threshold |
-| Macro Factor | Yield curve, VIX term structure, dollar index as features | Weekly | LightGBM |
-| Statistical Arb (pairs) | Cointegrated pair z-score entry/exit (crypto) | Hourly | OLS residuals + rule |
-| LSTM Sequence | 60-bar temporal pattern recognition on OHLCV+vol | Daily | PyTorch LSTM |
+| Momentum (12-1) | 12-month return minus recent month; rank top quintile | Monthly | Trend-following regime |
+| Mean Reversion | Bollinger Band squeeze + RSI extremes | Daily | High-vol ranging regime |
+| EMA Crossover | Fast/slow EMA + ADX filter | Daily | Trending / low-noise regime |
+| Turtle Trading | Donchian channel breakout, ATR units | Daily | Breakout regime |
+| Pairs / Stat Arb | Cointegrated pair z-score entry/exit | Daily | Low-correlation regime |
+| Carry Proxy | Yield spread as equity carry signal | Weekly | Rate environment |
+| Volatility Breakout | ATR expansion + volume surge | Daily | Vol compression → expansion |
+| Alpha Trends | TBD from literature + original research | TBD | TBD |
 
 ---
 
@@ -184,29 +263,41 @@ All strategies feed into the ensemble — the model learns which signals are reg
 
 ## Performance Targets (Out-of-Sample)
 
-Minimum thresholds before considering live paper deployment.
+Minimum thresholds before live paper deployment.
 
-| Metric | Target |
-|---|:---:|
-| Sharpe Ratio | > 1.0 |
-| Max Drawdown | < 20% |
-| Win Rate | > 55% |
-| Annual Return (CAGR) | > 15% |
-| Calmar Ratio | > 0.5 |
+| Metric | Target | Current Status |
+|---|:---:|---|
+| Sharpe Ratio | > 1.0 | ⏳ Phase 06 portfolio required |
+| Max Drawdown | < 20% | ⚠️ AAPL ✅, others wider |
+| Win Rate | > 55% | ✅ 61–64% on AAPL, MSFT, GOOGL, QQQ |
+| CAGR | > 15% | ⏳ 7–10% single-asset |
+| Calmar Ratio | > 0.5 | ✅ AAPL: 1.11 |
+| t-stat on returns | > 2.0 | ⏳ Phase 06B |
 
 ---
 
-## 10-Week MVP Roadmap
+## Roadmap
 
-| Week | Milestone | Key Deliverable | Gate to Proceed |
+### Completed
+
+| Phase | Milestone | Key Deliverable |
+|:---:|---|---|
+| 01 | Data Layer | Parquet store, 5 tickers, 5 years, FRED macro |
+| 02 | Feature Engineering | 30+ features, HMM regime, SHAP selection |
+| 03 | ML Models | XGB + LGBM + LSTM ensemble, walk-forward CV, MLflow |
+| 04 | Backtesting | Vectorized OOS sim, 1000× Monte Carlo, threshold sweep |
+| 05 | Risk Management | Kelly filter, ATR hard stop, circuit breaker, VaR/CVaR |
+
+### In Progress
+
+| Phase | Milestone | Key Deliverable | Gate to Proceed |
 |:---:|---|---|---|
-| 1–2 | Data Layer complete | Parquet store for 5 assets, 5 years | Zero NaN rows, split-adjusted |
-| 3 | Feature Engineering complete | 30+ feature matrix per asset | No lookahead bias in any feature |
-| 4–5 | ML Models trained | XGB + LGBM + LSTM with MLflow runs | Val accuracy > random baseline |
-| 6–7 | Backtest validated | VectorBT + PyBroker equity curves | Sharpe > 1.0 out-of-sample |
-| 8 | Risk engine integrated | Kelly sizing + circuit breakers live | Max drawdown < 20% in sim |
-| 9 | Live signal engine running | Alpaca paper orders daily | Orders execute, logs clean |
-| 10 | Dashboard deployed | Streamlit app on Cloud Run | Public URL, all charts functional |
+| 06A | Strategy Zoo | 8 strategies × 20–30 tickers, full OOS scorecards | Each strategy has clean, reproducible backtest |
+| 06B | Ranking System | Unified scorecard table: Sharpe, Alpha, IR, t-stat, regime breakdown | All strategies statistically comparable |
+| 06C | Env Characterisation | Cost sensitivity, signal decay, factor attribution | Factor α isolated from market β |
+| 06D | Research Paper | Draft: Regime-Gated Alpha Trends | Results reproducible; novelty confirmed |
+| 06E | Live Execution | Alpaca paper orders daily *(parallel)* | Orders execute cleanly; logs clean |
+| 07 | Dashboard | Streamlit app showing equity, signals, rankings | Public URL, all charts functional |
 
 ---
 
@@ -217,6 +308,7 @@ Minimum thresholds before considering live paper deployment.
 - NLP sentiment from earnings call transcripts (FinBERT)
 - Order book imbalance features from Level 2 data
 - Reinforcement learning agent (Stable-Baselines3) for dynamic allocation
+- Alpha Trends — original strategy derived from Phase 06 research findings
 
 ### Infrastructure Upgrades
 - Migrate to NautilusTrader for institutional-grade event-driven execution
@@ -226,4 +318,27 @@ Minimum thresholds before considering live paper deployment.
 
 ---
 
-*ML Trade Engine MVP — built on pandas-ta + XGBoost/LightGBM/PyTorch + VectorBT/PyBroker + Streamlit. No TradingView. No Pine Script. Full Python control.*
+## Full Technology Stack
+
+| Layer | Libraries / Tools | Purpose |
+|---|---|---|
+| Data Ingestion | yfinance, ccxt, pandas-datareader | OHLCV equity + crypto + macro |
+| Feature Store | pandas-ta, scipy, hmmlearn | TA indicators, stats, HMM regime |
+| ML Framework | XGBoost, LightGBM, PyTorch, scikit-learn | Tree ensembles + deep learning |
+| Hyperparameter Tuning | Optuna | Bayesian search |
+| Experiment Tracking | MLflow | Params, metrics, model artifacts |
+| Backtesting | Custom NumPy/Pandas simulator | Vectorized OOS simulation |
+| Performance Analytics | QuantStats, numpy | Sharpe, Sortino, Max DD, CAGR |
+| Risk Engine | scipy, numpy | VaR, CVaR, Kelly sizing |
+| Research / Stats | statsmodels | Factor attribution, t-stats, OLS |
+| Live Execution | alpaca-trade-api | Paper trading API, bracket orders |
+| Scheduling | GitHub Actions / GCP Cloud Scheduler | Daily cron, signal generation |
+| Storage | Parquet + SQLite / Supabase | Feature store + trade log |
+| Dashboard | Streamlit + Plotly | Equity curve, signals, rankings |
+| Deployment | Docker + GCP Cloud Run | Containerized, scalable |
+| Interpretability | SHAP | Feature attribution |
+| Testing | pytest | Data, feature, signal validation |
+
+---
+
+*ML Trade Engine — built on pandas-ta + XGBoost/LightGBM/PyTorch + custom simulator + Streamlit. No TradingView. No Pine Script. Full Python control. Research target: academic publication.*

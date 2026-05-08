@@ -1,0 +1,67 @@
+{
+  "ticker": "QQQ",
+  "n_folds": 5,
+  "oos_metrics": {
+    "accuracy": 0.3829145728643216,
+    "f1_macro": 0.37156482100296784,
+    "f1_down": 0.3902439024390244,
+    "f1_flat": 0.2903225806451613,
+    "f1_up": 0.4341279799247177
+  },
+  "best_params_xgb": {
+    "n_estimators": 484,
+    "max_depth": 5,
+    "learning_rate": 0.006315734705865418,
+    "subsample": 0.9661451709558937,
+    "colsample_bytree": 0.7169030705443644,
+    "min_child_weight": 19,
+    "gamma": 3.6518344760350487,
+    "reg_alpha": 0.002861549446231718,
+    "reg_lambda": 5.358757267475057
+  },
+  "best_params_lgbm": {
+    "n_estimators": 207,
+    "max_depth": 4,
+    "learning_rate": 0.004540328166798674,
+    "num_leaves": 104,
+    "subsample": 0.9164422290107429,
+    "colsample_bytree": 0.525761918628474,
+    "min_child_samples": 46,
+    "reg_alpha": 0.0509231974685153,
+    "reg_lambda": 3.355913135349327e-07
+  },
+  "feature_cols": [
+    "hmm_regime",
+    "close_ema200_ratio",
+    "spy_corr_63",
+    "atr_14",
+    "bb_width",
+    "realized_vol_21",
+    "bb_pct",
+    "adx_14",
+    "skew_60",
+    "rs_vs_spy_21",
+    "macd_hist",
+    "gap_return",
+    "bb_lower",
+    "return_5d",
+    "rsi_14",
+    "macro_rate_10y",
+    "btc_return_21d",
+    "spy_corr_21",
+    "hl_range_pct",
+    "btc_return_5d",
+    "log_return",
+    "rs_vs_spy_63",
+    "kurtosis_60",
+    "macd_signal",
+    "realized_vol_5"
+  ],
+  "model_paths": {
+    "xgb": "/Users/a/Downloads/ml-trade-engine/data/models/QQQ/xgb_final.json",
+    "lgbm": "/Users/a/Downloads/ml-trade-engine/data/models/QQQ/lgbm_final.txt",
+    "lstm": "/Users/a/Downloads/ml-trade-engine/data/models/QQQ/lstm_final.pt",
+    "feature_cols": "/Users/a/Downloads/ml-trade-engine/data/models/QQQ/feature_cols.json"
+  },
+  "elapsed_s": 171.13632774353027
+}

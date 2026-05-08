@@ -1,0 +1,62 @@
+{
+  "ticker": "AAPL",
+  "risk_metrics": {
+    "total_return": 0.3737,
+    "cagr": 0.0837,
+    "sharpe_ratio": 0.32,
+    "sortino_ratio": 0.236,
+    "max_drawdown": -0.1407,
+    "calmar_ratio": 0.595,
+    "volatility": 0.1222,
+    "n_days": 995,
+    "win_rate": 0.575,
+    "n_trades": 40,
+    "avg_win": 356.0067,
+    "avg_loss": -261.8239,
+    "expectancy": 93.4287
+  },
+  "var_report": {
+    "var_95_pct": 0.0063,
+    "cvar_99_pct": 0.0369,
+    "var_95_dollar": 63.34,
+    "cvar_99_dollar": 368.83,
+    "worst_day_pct": -0.0486,
+    "best_day_pct": 0.06,
+    "negative_days_pct": 0.1347
+  },
+  "phase04_metrics": {
+    "total_return": 0.442,
+    "cagr": 0.0971,
+    "sharpe_ratio": 0.374,
+    "sortino_ratio": 0.325,
+    "max_drawdown": -0.0875,
+    "calmar_ratio": 1.111,
+    "volatility": 0.1446,
+    "n_days": 995,
+    "win_rate": 0.6389,
+    "n_trades": 36,
+    "avg_win": 369.2945,
+    "avg_loss": -164.2324,
+    "expectancy": 176.632
+  },
+  "improvement": {
+    "sharpe_ratio": -0.054,
+    "cagr": -0.0134,
+    "max_drawdown": -0.0532,
+    "calmar_ratio": -0.516
+  },
+  "params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "position_frac": 0.95,
+    "kelly_multiplier": 0.5,
+    "min_kelly": 0.0,
+    "atr_multiplier": 2.0,
+    "trailing_stop": false,
+    "cb_threshold": 0.85,
+    "cb_cooldown_bars": 63,
+    "win_loss_ratio": 2.2486092878140975,
+    "n_kelly_filtered": 700
+  }
+}

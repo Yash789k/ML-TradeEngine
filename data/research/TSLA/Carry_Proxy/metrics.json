@@ -1,0 +1,15 @@
+{
+  "total_return": 2.6753,
+  "cagr": 0.134,
+  "sharpe_ratio": 0.392,
+  "sortino_ratio": 0.371,
+  "max_drawdown": -0.632,
+  "calmar_ratio": 0.212,
+  "volatility": 0.4124,
+  "n_days": 2608,
+  "win_rate": 0.3,
+  "n_trades": 30,
+  "avg_win": 7493.924,
+  "avg_loss": -1614.0505,
+  "expectancy": 1118.3418
+}

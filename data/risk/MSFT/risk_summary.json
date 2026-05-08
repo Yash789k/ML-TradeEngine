@@ -1,0 +1,62 @@
+{
+  "ticker": "MSFT",
+  "risk_metrics": {
+    "total_return": 0.1719,
+    "cagr": 0.041,
+    "sharpe_ratio": 0.03,
+    "sortino_ratio": 0.026,
+    "max_drawdown": -0.1652,
+    "calmar_ratio": 0.248,
+    "volatility": 0.1651,
+    "n_days": 995,
+    "win_rate": 0.4324,
+    "n_trades": 37,
+    "avg_win": 410.4607,
+    "avg_loss": -230.8737,
+    "expectancy": 46.4601
+  },
+  "var_report": {
+    "var_95_pct": 0.0141,
+    "cvar_99_pct": 0.0454,
+    "var_95_dollar": 140.75,
+    "cvar_99_dollar": 454.39,
+    "worst_day_pct": -0.0737,
+    "best_day_pct": 0.0962,
+    "negative_days_pct": 0.1839
+  },
+  "phase04_metrics": {
+    "total_return": 0.2104,
+    "cagr": 0.0496,
+    "sharpe_ratio": 0.084,
+    "sortino_ratio": 0.08,
+    "max_drawdown": -0.1773,
+    "calmar_ratio": 0.279,
+    "volatility": 0.1738,
+    "n_days": 995,
+    "win_rate": 0.5278,
+    "n_trades": 36,
+    "avg_win": 358.7484,
+    "avg_loss": -197.3953,
+    "expectancy": 96.125
+  },
+  "improvement": {
+    "sharpe_ratio": -0.054,
+    "cagr": -0.0086,
+    "max_drawdown": 0.0121,
+    "calmar_ratio": -0.031
+  },
+  "params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "position_frac": 0.95,
+    "kelly_multiplier": 0.5,
+    "min_kelly": 0.0,
+    "atr_multiplier": 2.0,
+    "trailing_stop": false,
+    "cb_threshold": 0.85,
+    "cb_cooldown_bars": 63,
+    "win_loss_ratio": 1.8174110528467498,
+    "n_kelly_filtered": 589
+  }
+}

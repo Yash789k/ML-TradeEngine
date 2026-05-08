@@ -1,0 +1,43 @@
+{
+  "ticker": "MSFT",
+  "strategy_metrics": {
+    "total_return": 0.2104,
+    "cagr": 0.0496,
+    "sharpe_ratio": 0.084,
+    "sortino_ratio": 0.08,
+    "max_drawdown": -0.1773,
+    "calmar_ratio": 0.279,
+    "volatility": 0.1738,
+    "n_days": 995,
+    "win_rate": 0.5278,
+    "n_trades": 36,
+    "avg_win": 358.7484,
+    "avg_loss": -197.3953,
+    "expectancy": 96.125
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -0.833,
+    "sharpe_median": 0.072,
+    "sharpe_p95": 0.916,
+    "cagr_p5": -0.0978,
+    "cagr_median": 0.0483,
+    "cagr_p95": 0.2175,
+    "max_dd_p5": -0.3992,
+    "max_dd_median": -0.2141,
+    "max_dd_p95": -0.1225,
+    "prob_ruin": 0.002
+  },
+  "best_sweep": {
+    "threshold": 0.35,
+    "commission": 0.0005,
+    "sharpe": 0.129
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}

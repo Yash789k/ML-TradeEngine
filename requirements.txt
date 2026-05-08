@@ -1,0 +1,29 @@
+# Phase 01 — Data Layer
+requests
+pandas
+ccxt
+pandas-datareader
+pyarrow
+pytest
+
+# Phase 02 — Feature Engineering
+pandas-ta
+hmmlearn
+scipy
+numpy
+xgboost
+shap
+
+# Phase 03 — ML Modeling
+lightgbm
+torch
+optuna
+mlflow
+scikit-learn
+joblib
+
+# Phase 04 — Backtesting
+quantstats
+
+# Phase 06 — Strategy Research
+statsmodels

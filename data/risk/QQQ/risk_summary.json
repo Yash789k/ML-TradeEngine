@@ -1,0 +1,62 @@
+{
+  "ticker": "QQQ",
+  "risk_metrics": {
+    "total_return": 0.0908,
+    "cagr": 0.0223,
+    "sharpe_ratio": -0.223,
+    "sortino_ratio": -0.14,
+    "max_drawdown": -0.1897,
+    "calmar_ratio": 0.117,
+    "volatility": 0.0982,
+    "n_days": 995,
+    "win_rate": 0.6275,
+    "n_trades": 51,
+    "avg_win": 163.5356,
+    "avg_loss": -227.6314,
+    "expectancy": 17.8067
+  },
+  "var_report": {
+    "var_95_pct": 0.0061,
+    "cvar_99_pct": 0.0335,
+    "var_95_dollar": 61.44,
+    "cvar_99_dollar": 334.93,
+    "worst_day_pct": -0.0603,
+    "best_day_pct": 0.0433,
+    "negative_days_pct": 0.1317
+  },
+  "phase04_metrics": {
+    "total_return": 0.302,
+    "cagr": 0.0691,
+    "sharpe_ratio": 0.202,
+    "sortino_ratio": 0.185,
+    "max_drawdown": -0.1406,
+    "calmar_ratio": 0.491,
+    "volatility": 0.1317,
+    "n_days": 995,
+    "win_rate": 0.6102,
+    "n_trades": 59,
+    "avg_win": 297.4915,
+    "avg_loss": -231.8303,
+    "expectancy": 91.1457
+  },
+  "improvement": {
+    "sharpe_ratio": -0.425,
+    "cagr": -0.0468,
+    "max_drawdown": -0.0491,
+    "calmar_ratio": -0.374
+  },
+  "params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "position_frac": 0.95,
+    "kelly_multiplier": 0.5,
+    "min_kelly": 0.0,
+    "atr_multiplier": 2.0,
+    "trailing_stop": false,
+    "cb_threshold": 0.85,
+    "cb_cooldown_bars": 63,
+    "win_loss_ratio": 1.283229586469068,
+    "n_kelly_filtered": 795
+  }
+}

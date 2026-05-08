@@ -1,0 +1,43 @@
+{
+  "ticker": "SPY",
+  "strategy_metrics": {
+    "total_return": -0.0518,
+    "cagr": -0.0134,
+    "sharpe_ratio": -0.645,
+    "sortino_ratio": -0.315,
+    "max_drawdown": -0.1242,
+    "calmar_ratio": -0.108,
+    "volatility": 0.0903,
+    "n_days": 995,
+    "win_rate": 0.625,
+    "n_trades": 24,
+    "avg_win": 187.9433,
+    "avg_loss": -246.7505,
+    "expectancy": 24.9331
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -1.721,
+    "sharpe_median": -0.711,
+    "sharpe_p95": 0.073,
+    "cagr_p5": -0.0867,
+    "cagr_median": -0.0124,
+    "cagr_p95": 0.0527,
+    "max_dd_p5": -0.2843,
+    "max_dd_median": -0.1421,
+    "max_dd_p95": -0.0592,
+    "prob_ruin": 0.0
+  },
+  "best_sweep": {
+    "threshold": 0.35,
+    "commission": 0.0005,
+    "sharpe": -0.591
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}
