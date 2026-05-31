@@ -1,0 +1,43 @@
+{
+  "ticker": "XLF",
+  "strategy_metrics": {
+    "total_return": 0.576,
+    "cagr": 0.0565,
+    "sharpe_ratio": 0.128,
+    "sortino_ratio": 0.125,
+    "max_drawdown": -0.5107,
+    "calmar_ratio": 0.111,
+    "volatility": 0.1914,
+    "n_days": 2085,
+    "win_rate": 0.5697,
+    "n_trades": 165,
+    "avg_win": 236.0099,
+    "avg_loss": -194.1472,
+    "expectancy": 50.912
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -0.734,
+    "sharpe_median": 0.113,
+    "sharpe_p95": 1.109,
+    "cagr_p5": -0.1107,
+    "cagr_median": 0.054,
+    "cagr_p95": 0.2451,
+    "max_dd_p5": -0.4405,
+    "max_dd_median": -0.2355,
+    "max_dd_p95": -0.1205,
+    "prob_ruin": 0.005
+  },
+  "best_sweep": {
+    "threshold": 0.35,
+    "commission": 0.0005,
+    "sharpe": 0.284
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}

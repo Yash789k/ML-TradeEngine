@@ -1,15 +1,15 @@
 {
-  "total_return": 0.2397,
-  "cagr": 0.021,
-  "sharpe_ratio": -0.343,
-  "sortino_ratio": -0.335,
+  "total_return": 0.2172,
+  "cagr": 0.0387,
+  "sharpe_ratio": -0.112,
+  "sortino_ratio": -0.113,
   "max_drawdown": -0.1482,
-  "calmar_ratio": 0.142,
-  "volatility": 0.0738,
-  "n_days": 2608,
-  "win_rate": 0.4915,
-  "n_trades": 60,
-  "avg_win": 270.9846,
-  "avg_loss": -197.2419,
-  "expectancy": 32.9033
+  "calmar_ratio": 0.261,
+  "volatility": 0.0727,
+  "n_days": 1304,
+  "win_rate": 0.6,
+  "n_trades": 26,
+  "avg_win": 259.2141,
+  "avg_loss": -230.7853,
+  "expectancy": 63.2143
 }

@@ -1,0 +1,43 @@
+{
+  "ticker": "DIA",
+  "strategy_metrics": {
+    "total_return": 0.0354,
+    "cagr": 0.0042,
+    "sharpe_ratio": -0.224,
+    "sortino_ratio": -0.182,
+    "max_drawdown": -0.3371,
+    "calmar_ratio": 0.013,
+    "volatility": 0.1492,
+    "n_days": 2085,
+    "win_rate": 0.5913,
+    "n_trades": 115,
+    "avg_win": 148.3255,
+    "avg_loss": -139.4858,
+    "expectancy": 30.6983
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -1.039,
+    "sharpe_median": -0.22,
+    "sharpe_p95": 0.658,
+    "cagr_p5": -0.1186,
+    "cagr_median": 0.0073,
+    "cagr_p95": 0.1335,
+    "max_dd_p5": -0.4025,
+    "max_dd_median": -0.2063,
+    "max_dd_p95": -0.0967,
+    "prob_ruin": 0.001
+  },
+  "best_sweep": {
+    "threshold": 0.35,
+    "commission": 0.0005,
+    "sharpe": -0.005
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}

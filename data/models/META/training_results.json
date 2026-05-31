@@ -1,0 +1,67 @@
+{
+  "ticker": "META",
+  "n_folds": 5,
+  "oos_metrics": {
+    "accuracy": 0.4244604316546763,
+    "f1_macro": 0.33222428489950756,
+    "f1_down": 0.42375601926163725,
+    "f1_flat": 0.0967741935483871,
+    "f1_up": 0.47614264188849825
+  },
+  "best_params_xgb": {
+    "n_estimators": 462,
+    "max_depth": 7,
+    "learning_rate": 0.0018064757171018155,
+    "subsample": 0.920990272946755,
+    "colsample_bytree": 0.9800118127135833,
+    "min_child_weight": 8,
+    "gamma": 3.3655164528232318,
+    "reg_alpha": 5.269252413305317e-07,
+    "reg_lambda": 0.0010679622747047776
+  },
+  "best_params_lgbm": {
+    "n_estimators": 279,
+    "max_depth": 9,
+    "learning_rate": 0.17806010495591645,
+    "num_leaves": 79,
+    "subsample": 0.8711473691185112,
+    "colsample_bytree": 0.673072282210051,
+    "min_child_samples": 6,
+    "reg_alpha": 1.90992525981347e-08,
+    "reg_lambda": 1.1527953848236111e-07
+  },
+  "feature_cols": [
+    "hmm_regime",
+    "macro_yield_spread_10_2",
+    "spy_corr_21",
+    "macro_VIX",
+    "macd_hist",
+    "rs_vs_spy_63",
+    "skew_60",
+    "macro_CPI",
+    "rs_vs_spy_21",
+    "spy_corr_63",
+    "bb_pct",
+    "realized_vol_21",
+    "hurst_100",
+    "bb_mid",
+    "bb_width",
+    "close_ema200_ratio",
+    "return_21d",
+    "realized_vol_5",
+    "macd_signal",
+    "return_5d",
+    "gap_return",
+    "adx_14",
+    "macd_line",
+    "log_return",
+    "kurtosis_60"
+  ],
+  "model_paths": {
+    "xgb": "/Users/a/Downloads/ml-trade-engine/data/models/META/xgb_final.json",
+    "lgbm": "/Users/a/Downloads/ml-trade-engine/data/models/META/lgbm_final.txt",
+    "lstm": "/Users/a/Downloads/ml-trade-engine/data/models/META/lstm_final.pt",
+    "feature_cols": "/Users/a/Downloads/ml-trade-engine/data/models/META/feature_cols.json"
+  },
+  "elapsed_s": 608.5747542381287
+}

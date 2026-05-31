@@ -1,0 +1,43 @@
+{
+  "ticker": "XLP",
+  "strategy_metrics": {
+    "total_return": 0.0136,
+    "cagr": 0.0016,
+    "sharpe_ratio": -0.346,
+    "sortino_ratio": -0.336,
+    "max_drawdown": -0.2381,
+    "calmar_ratio": 0.007,
+    "volatility": 0.1166,
+    "n_days": 2085,
+    "win_rate": 0.6165,
+    "n_trades": 134,
+    "avg_win": 129.6967,
+    "avg_loss": -109.9778,
+    "expectancy": 37.7914
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -1.17,
+    "sharpe_median": -0.347,
+    "sharpe_p95": 0.417,
+    "cagr_p5": -0.0918,
+    "cagr_median": 0.0049,
+    "cagr_p95": 0.0914,
+    "max_dd_p5": -0.3247,
+    "max_dd_median": -0.1662,
+    "max_dd_p95": -0.0818,
+    "prob_ruin": 0.0
+  },
+  "best_sweep": {
+    "threshold": 0.35,
+    "commission": 0.0005,
+    "sharpe": -0.097
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}

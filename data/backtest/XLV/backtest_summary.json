@@ -1,0 +1,43 @@
+{
+  "ticker": "XLV",
+  "strategy_metrics": {
+    "total_return": 0.0486,
+    "cagr": 0.0058,
+    "sharpe_ratio": -0.263,
+    "sortino_ratio": -0.244,
+    "max_drawdown": -0.2601,
+    "calmar_ratio": 0.022,
+    "volatility": 0.1309,
+    "n_days": 2085,
+    "win_rate": 0.5221,
+    "n_trades": 114,
+    "avg_win": 183.8583,
+    "avg_loss": -166.452,
+    "expectancy": 16.4533
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -1.145,
+    "sharpe_median": -0.241,
+    "sharpe_p95": 0.659,
+    "cagr_p5": -0.101,
+    "cagr_median": 0.0087,
+    "cagr_p95": 0.129,
+    "max_dd_p5": -0.3637,
+    "max_dd_median": -0.1909,
+    "max_dd_p95": -0.0916,
+    "prob_ruin": 0.001
+  },
+  "best_sweep": {
+    "threshold": 0.45,
+    "commission": 0.0005,
+    "sharpe": -0.137
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}

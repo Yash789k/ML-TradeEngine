@@ -1,0 +1,62 @@
+{
+  "ticker": "XLV",
+  "risk_metrics": {
+    "total_return": -0.1609,
+    "cagr": -0.021,
+    "sharpe_ratio": -1.027,
+    "sortino_ratio": -0.396,
+    "max_drawdown": -0.2111,
+    "calmar_ratio": -0.099,
+    "volatility": 0.066,
+    "n_days": 2085,
+    "win_rate": 0.3939,
+    "n_trades": 33,
+    "avg_win": 174.3684,
+    "avg_loss": -193.8006,
+    "expectancy": -48.7644
+  },
+  "var_report": {
+    "var_95_pct": 0.0014,
+    "cvar_99_pct": 0.0266,
+    "var_95_dollar": 14.25,
+    "cvar_99_dollar": 265.72,
+    "worst_day_pct": -0.0722,
+    "best_day_pct": 0.0548,
+    "negative_days_pct": 0.0556
+  },
+  "phase04_metrics": {
+    "total_return": 0.0486,
+    "cagr": 0.0058,
+    "sharpe_ratio": -0.263,
+    "sortino_ratio": -0.244,
+    "max_drawdown": -0.2601,
+    "calmar_ratio": 0.022,
+    "volatility": 0.1309,
+    "n_days": 2085,
+    "win_rate": 0.5221,
+    "n_trades": 114,
+    "avg_win": 183.8583,
+    "avg_loss": -166.452,
+    "expectancy": 16.4533
+  },
+  "improvement": {
+    "sharpe_ratio": -0.764,
+    "cagr": -0.0268,
+    "max_drawdown": 0.049,
+    "calmar_ratio": -0.121
+  },
+  "params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "position_frac": 0.95,
+    "kelly_multiplier": 0.5,
+    "min_kelly": 0.0,
+    "atr_multiplier": 2.0,
+    "trailing_stop": false,
+    "cb_threshold": 0.85,
+    "cb_cooldown_bars": 63,
+    "win_loss_ratio": 1.1045724893663038,
+    "n_kelly_filtered": 1336
+  }
+}

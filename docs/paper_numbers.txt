@@ -1,0 +1,326 @@
+
+══════════════════════════════════════════════════════════════════════
+  0. DATA INVENTORY
+══════════════════════════════════════════════════════════════════════
+  Trained models : 22  ['AAPL', 'AMZN', 'BAC', 'DIA', 'GLD', 'GOOGL', 'GS', 'IWM', 'JPM', 'META', 'MSFT', 'NVDA', 'QQQ', 'SPY', 'TLT', 'TSLA', 'XLE', 'XLF', 'XLI', 'XLK', 'XLP', 'XLV']
+  Backtested     : 22  ['AAPL', 'AMZN', 'BAC', 'DIA', 'GLD', 'GOOGL', 'GS', 'IWM', 'JPM', 'META', 'MSFT', 'NVDA', 'QQQ', 'SPY', 'TLT', 'TSLA', 'XLE', 'XLF', 'XLI', 'XLK', 'XLP', 'XLV']
+  Risk engine    : 22  ['AAPL', 'AMZN', 'BAC', 'DIA', 'GLD', 'GOOGL', 'GS', 'IWM', 'JPM', 'META', 'MSFT', 'NVDA', 'QQQ', 'SPY', 'TLT', 'TSLA', 'XLE', 'XLF', 'XLI', 'XLK', 'XLP', 'XLV']
+  Scorecard rows : 176  (8 unique strategies)
+  06C Regime breakdown    : ✓
+  06C Cost sensitivity    : ✓
+  06C Signal decay        : ✓
+  06C Factor attribution  : ✓
+
+══════════════════════════════════════════════════════════════════════
+  ML ENSEMBLE OOS METRICS (Section 3.5)
+══════════════════════════════════════════════════════════════════════
+
+  Ticker        Acc   F1_macro   F1_down   F1_flat     F1_up  n_folds
+  ------------------------------------------------------------
+  AAPL        0.407      0.306     0.483     0.047     0.389        5
+  AMZN        0.404      0.303     0.483     0.065     0.362        5
+  BAC         0.413      0.348     0.436     0.148     0.459        5
+  DIA         0.395      0.340     0.405     0.140     0.474        5
+  GLD         0.384      0.312     0.412     0.068     0.458        5
+  GOOGL       0.420      0.306     0.494     0.051     0.373        5
+  GS          0.447      0.328     0.417     0.050     0.517        5
+  IWM         0.425      0.348     0.461     0.118     0.464        5
+  JPM         0.447      0.327     0.337     0.077     0.567        5
+  META        0.424      0.332     0.424     0.097     0.476        5
+  MSFT        0.422      0.324     0.448     0.057     0.467        5
+  NVDA        0.450      0.338     0.393     0.079     0.542        5
+  QQQ         0.418      0.338     0.452     0.108     0.454        5
+  SPY         0.357      0.334     0.441     0.294     0.266        5
+  TLT         0.365      0.323     0.388     0.144     0.437        5
+  TSLA        0.469      0.317     0.561     0.012     0.378        5
+  XLE         0.419      0.338     0.458     0.097     0.458        5
+  XLF         0.437      0.370     0.398     0.164     0.548        5
+  XLI         0.419      0.356     0.341     0.189     0.537        5
+  XLK         0.428      0.359     0.445     0.158     0.474        5
+  XLP         0.388      0.346     0.338     0.206     0.494        5
+  XLV         0.399      0.361     0.368     0.219     0.496        5
+
+══════════════════════════════════════════════════════════════════════
+  1. ABSTRACT — [FILL] values
+══════════════════════════════════════════════════════════════════════
+
+  Portfolio-level (mean across 22 backtested tickers):
+    Sharpe ratio     : -0.07  (range -0.95 – 0.73)
+    CAGR             : 2.9%  (range -8.8% – 16.2%)
+    Max Drawdown     : 38.5%  (range 15.4% – 78.6%)
+
+  t-statistics on mean daily returns:
+    AAPL      t = 0.69  ✗ insig
+    AMZN      t = 0.13  ✗ insig
+    BAC       t = -0.34  ✗ insig
+    DIA       t = 0.30  ✗ insig
+    GLD       t = 1.57  ✗ insig
+    GOOGL     t = 2.08  ✓ sig
+    GS        t = 0.60  ✗ insig
+    IWM       t = -0.12  ✗ insig
+    JPM       t = 1.20  ✗ insig
+    META      t = -0.44  ✗ insig
+    MSFT      t = 0.76  ✗ insig
+    NVDA      t = 1.61  ✗ insig
+    QQQ       t = 0.55  ✗ insig
+    SPY       t = -0.05  ✗ insig
+    TLT       t = -1.21  ✗ insig
+    TSLA      t = 1.32  ✗ insig
+    XLE       t = -0.09  ✗ insig
+    XLF       t = 1.10  ✗ insig
+    XLI       t = 0.63  ✗ insig
+    XLK       t = 1.88  ✗ insig
+    XLP       t = 0.21  ✗ insig
+    XLV       t = 0.31  ✗ insig
+
+  Cost sensitivity data shape: (96, 4)
+  Columns: ['bps', 'sharpe', 'cagr', 'n_trades']
+
+══════════════════════════════════════════════════════════════════════
+  3. METHODOLOGY [FILL] values
+══════════════════════════════════════════════════════════════════════
+
+── Label parameters (from first trained ticker) ──────────────────────────────────────────────
+    horizon     = [not saved] bars
+    threshold   = ±[not saved] (UP/DOWN label)
+    n_folds     = 5
+
+── OOS period (from backtest equity curves) ──────────────────────────────────────────────
+    AAPL      2022-07-04 → 2026-04-24  (995 trading days)
+
+══════════════════════════════════════════════════════════════════════
+  4. STRATEGY ZOO RESULTS [FILL] values
+══════════════════════════════════════════════════════════════════════
+
+── Per-strategy aggregate (mean across all tickers) ──────────────────────────────────────────────
+                 sharpe_ratio      cagr  max_drawdown  calmar_ratio  win_rate
+strategy                                                                     
+Momentum_12_1        0.240000  0.102509     -0.280800      0.402227  0.595555
+Alpha_Trends         0.136818  0.068168     -0.219477      0.329727  0.445337
+Turtle_Breakout      0.012773  0.064750     -0.227359      0.277182  0.447500
+Mean_Reversion      -0.020500  0.050482     -0.104123      0.662773  0.852641
+EMA_Crossover       -0.178955  0.044955     -0.249864      0.178591  0.437068
+Carry_Proxy         -0.244773  0.026964     -0.242418      0.155909  0.432355
+Pairs_StatArb       -0.439182  0.012086     -0.232336      0.097455  0.514705
+Vol_Breakout        -0.964364  0.022973     -0.126218      0.160136  0.528355
+
+── Best strategy per metric (paper table values) ──────────────────────────────────────────────
+    Highest Sharpe        : Momentum_12_1 × NVDA  =  1.14
+    Highest CAGR          : Momentum_12_1 × NVDA  =  51.5%
+    Shallowest MaxDD      : Alpha_Trends × TLT  =  0.0%
+    Highest Calmar        : Mean_Reversion × GOOGL  =  2.07
+    Highest Win Rate      : Momentum_12_1 × JPM  =  100.0%
+
+── Alpha Trends strategy performance ──────────────────────────────────────────────
+    ticker      strategy  sharpe_ratio    cagr  max_drawdown  win_rate
+3     NVDA  Alpha_Trends         0.902  0.3090       -0.3208    0.3846
+14     QQQ  Alpha_Trends         0.631  0.1268       -0.1522    0.7778
+17    TSLA  Alpha_Trends         0.633  0.1527       -0.3323    0.5556
+18     GLD  Alpha_Trends         0.569  0.1133       -0.1710    0.5625
+19      GS  Alpha_Trends         0.556  0.1493       -0.2154    0.3636
+25     SPY  Alpha_Trends         0.444  0.0921       -0.1055    0.7000
+26    MSFT  Alpha_Trends         0.454  0.1092       -0.1612    0.5000
+32    AMZN  Alpha_Trends         0.364  0.1064       -0.1949    0.5625
+46    META  Alpha_Trends         0.300  0.0971       -0.4708    0.3846
+48   GOOGL  Alpha_Trends         0.263  0.0838       -0.2547    0.3846
+60     JPM  Alpha_Trends         0.174  0.0659       -0.2192    0.4615
+61    AAPL  Alpha_Trends         0.186  0.0684       -0.2835    0.3846
+91     IWM  Alpha_Trends        -0.042  0.0330       -0.2440    0.3846
+93     DIA  Alpha_Trends        -0.109  0.0350       -0.1035    0.4375
+100    TLT  Alpha_Trends         0.000  0.0000        0.0000       NaN
+101    BAC  Alpha_Trends         0.000  0.0000        0.0000       NaN
+102    XLK  Alpha_Trends         0.000  0.0000        0.0000       NaN
+104    XLF  Alpha_Trends        -0.086  0.0300       -0.1960    0.4286
+111    XLE  Alpha_Trends        -0.122  0.0073       -0.5386    0.1667
+119    XLI  Alpha_Trends        -0.211  0.0128       -0.2156    0.3810
+136    XLP  Alpha_Trends        -0.506 -0.0054       -0.2298    0.3684
+164    XLV  Alpha_Trends        -1.390 -0.0870       -0.4195    0.2727
+
+── t-statistics from ranker (if available) ──────────────────────────────────────────────
+
+  t_stat:
+   ticker         strategy  t_stat
+0    NVDA    Momentum_12_1  2.8889
+5    TSLA     Vol_Breakout  2.5715
+1    NVDA    EMA_Crossover  2.5646
+3    NVDA     Alpha_Trends  2.4336
+2    NVDA  Turtle_Breakout  2.4049
+12  GOOGL   Mean_Reversion  2.3978
+7     QQQ    Momentum_12_1  2.3790
+16    SPY    Momentum_12_1  2.3706
+9   GOOGL      Carry_Proxy  2.3527
+14    QQQ     Alpha_Trends  2.3283
+
+  alpha:
+   ticker         strategy   alpha
+0    NVDA    Momentum_12_1  0.3357
+1    NVDA    EMA_Crossover  0.2903
+4    TSLA  Turtle_Breakout  0.2547
+3    NVDA     Alpha_Trends  0.2440
+2    NVDA  Turtle_Breakout  0.2439
+5    TSLA     Vol_Breakout  0.1814
+6   GOOGL    Momentum_12_1  0.1456
+11   NVDA     Vol_Breakout  0.1444
+17   TSLA     Alpha_Trends  0.1382
+10    GLD    Momentum_12_1  0.1370
+
+  beta:
+    ticker         strategy    beta
+0     NVDA    Momentum_12_1  1.0913
+133   TSLA    Momentum_12_1  1.0893
+47    NVDA    Pairs_StatArb  0.7790
+123   AAPL    Momentum_12_1  0.7044
+15     XLK    Momentum_12_1  0.7039
+13    META    Momentum_12_1  0.6858
+23      GS    Momentum_12_1  0.6471
+1     NVDA    EMA_Crossover  0.6313
+2     NVDA  Turtle_Breakout  0.6193
+7      QQQ    Momentum_12_1  0.6135
+
+══════════════════════════════════════════════════════════════════════
+  5. META-STRATEGY [FILL] values
+══════════════════════════════════════════════════════════════════════
+
+── Regime breakdown (Phase 06C.1) ──────────────────────────────────────────────
+  Shape: (504, 4)
+  Columns: ['n_days', 'pct_days', 'ann_return', 'sharpe']
+
+  Per-strategy mean Sharpe by regime:
+                                n_days  pct_days  ann_return  sharpe
+ticker strategy        regime                                       
+AAPL   Momentum_12_1   bear        137     0.107     -0.5129  -1.203
+                       ranging     573     0.447      0.0607   0.359
+                       bull        573     0.447      0.0438   0.285
+       Mean_Reversion  bear        137     0.107      0.3056   1.128
+                       ranging     573     0.447      0.0574   1.053
+                       bull        573     0.447     -0.0055  -0.151
+       EMA_Crossover   bear        137     0.107     -0.1020  -1.102
+                       ranging     573     0.447     -0.0028  -0.017
+                       bull        573     0.447      0.1969   1.200
+       Turtle_Breakout bear        137     0.107     -0.1967  -1.360
+
+── Best strategy per regime state ──────────────────────────────────────────────
+
+── ML Ensemble vs individual strategies (backtest tickers) ──────────────────────────────────────────────
+
+  Ticker     Sharpe      CAGR    MaxDD   t-stat     Alpha    Beta
+  -----------------------------------------------------------------
+  AAPL         0.05      4.5%   -30.6%     0.69      6.0%    1.04
+  AMZN        -0.20     -1.1%   -42.8%     0.13      1.1%    0.56
+  BAC         -0.33     -5.2%   -58.8%    -0.34     10.6%    0.23
+  DIA         -0.22      0.4%   -33.7%     0.30      4.3%    0.71
+  GLD          0.03      4.8%   -15.4%     1.57      8.4%    0.28
+  GOOGL        0.73     16.2%   -21.6%     2.08     16.4%    0.72
+  GS           0.01      2.2%   -43.6%     0.60      5.1%    0.53
+  IWM         -0.35     -2.0%   -37.9%    -0.12      5.3%    0.58
+  JPM          0.22      7.5%   -41.1%     1.20      9.3%    0.38
+  META        -0.32     -8.8%   -78.6%    -0.44      2.2%    0.60
+  MSFT         0.10      5.3%   -24.9%     0.76      6.8%    0.58
+  NVDA         0.42     14.4%   -61.6%     1.61     30.2%    1.30
+  QQQ         -0.07      2.9%   -18.4%     0.55      4.1%    0.94
+  SPY         -0.56     -0.7%   -18.6%    -0.05      0.0%    1.00
+  TLT         -0.95     -4.2%   -40.9%    -1.21     -1.3%    0.09
+  TSLA         0.30      9.9%   -52.9%     1.32      8.3%    0.08
+  XLE         -0.25     -3.2%   -63.6%    -0.09      1.2%    0.04
+  XLF          0.13      5.7%   -51.1%     1.10      6.2%    0.27
+  XLI         -0.06      2.4%   -36.2%     0.63      8.5%    0.77
+  XLK          0.39     11.1%   -24.6%     1.88      9.5%    0.97
+  XLP         -0.35      0.2%   -23.8%     0.21      0.2%    0.33
+  XLV         -0.26      0.6%   -26.0%     0.31      1.6%    0.21
+
+══════════════════════════════════════════════════════════════════════
+  6. ENVIRONMENT CHARACTERISATION [FILL] values
+══════════════════════════════════════════════════════════════════════
+
+── 6.1 Cost Sensitivity ──────────────────────────────────────────────
+  Shape: (96, 7)  Columns: ['ticker', 'strategy', 'commission', 'bps', 'sharpe', 'cagr', 'n_trades']
+
+── 6.2 Signal Decay ──────────────────────────────────────────────
+  Shape: (173, 9)  Columns: ['ticker', 'strategy', 'slope', 'mean_sharpe', 'end_sharpe', 'start_sharpe', 'end_vs_start', 'pct_positive', 'is_decaying']
+
+  Signal decay summary (first 20 rows):
+   ticker         strategy   slope  mean_sharpe  end_sharpe  start_sharpe  end_vs_start  pct_positive  is_decaying
+0    AAPL    Momentum_12_1  0.2890       -0.004       1.676        -1.673         3.350         0.465        False
+1    AAPL   Mean_Reversion -0.0037        0.808      -0.260        -1.673         1.413         0.790         True
+2    AAPL    EMA_Crossover  0.0228        0.109      -1.650         1.526        -3.177         0.483        False
+3    AAPL  Turtle_Breakout -0.4186        0.300       1.389         2.259        -0.870         0.541        False
+4    AAPL    Pairs_StatArb  0.7059       -0.050      -1.673        -1.673         0.000         0.512        False
+5    AAPL      Carry_Proxy  0.7437        0.199       1.676        -1.673         3.350         0.528        False
+6    AAPL     Vol_Breakout  0.0958        0.027       3.048         0.555         2.494         0.544        False
+7    AAPL     Alpha_Trends  0.0902        0.234       0.523        -1.120         1.643         0.520        False
+8    AMZN    Momentum_12_1 -0.1562        0.693       0.904        -1.673         2.577         0.732        False
+9    AMZN   Mean_Reversion -0.2724        0.895      -0.042        -1.673         1.632         0.729         True
+10   AMZN    EMA_Crossover  0.0844       -0.445       1.764        -0.817         2.581         0.360        False
+11   AMZN  Turtle_Breakout  0.1906       -0.004       1.089        -0.840         1.929         0.527        False
+12   AMZN    Pairs_StatArb  0.4466        0.616       0.883        -1.673         2.556         0.709        False
+13   AMZN      Carry_Proxy  0.5120       -0.266      -0.666        -1.673         1.007         0.533        False
+14   AMZN     Vol_Breakout  0.1373        0.284       1.600        -1.694         3.293         0.534        False
+15   AMZN     Alpha_Trends  0.3856        0.495       0.844        -0.970         1.815         0.646        False
+16    BAC    Momentum_12_1  1.0882        0.159      -0.793        -1.673         0.881         0.561        False
+17    BAC   Mean_Reversion  0.2500        1.239      -1.673         3.034        -4.708         0.840        False
+18    BAC    EMA_Crossover  0.2341       -0.741      -3.263        -3.383         0.120         0.396        False
+19    BAC  Turtle_Breakout  0.0933        0.188      -1.177        -0.441        -0.737         0.575        False
+
+── 6.3 Fama-French Factor Attribution ──────────────────────────────────────────────
+  Shape: (176, 9)  Columns: ['ticker', 'strategy', 'alpha_ann', 'alpha_tstat', 'beta_mkt', 'beta_smb', 'beta_hml', 'r2', 'n_obs']
+
+  Factor attribution table:
+    ticker         strategy  beta_mkt
+175    XLV     Alpha_Trends    0.2524
+174    XLV     Vol_Breakout    0.0187
+173    XLV      Carry_Proxy    0.0961
+172    XLV    Pairs_StatArb    0.0582
+171    XLV  Turtle_Breakout    0.1204
+170    XLV    EMA_Crossover    0.1259
+169    XLV   Mean_Reversion    0.0986
+168    XLV    Momentum_12_1    0.3045
+163    XLP  Turtle_Breakout    0.1206
+160    XLP    Momentum_12_1    0.2881
+161    XLP   Mean_Reversion    0.0453
+162    XLP    EMA_Crossover    0.1364
+166    XLP     Vol_Breakout    0.0156
+164    XLP    Pairs_StatArb    0.0800
+165    XLP      Carry_Proxy    0.1434
+167    XLP     Alpha_Trends    0.2556
+156    XLK    Pairs_StatArb    0.2858
+152    XLK    Momentum_12_1    0.6520
+153    XLK   Mean_Reversion    0.1537
+155    XLK  Turtle_Breakout    0.2624
+
+══════════════════════════════════════════════════════════════════════
+  APPENDIX C — HMM Regime Statistics
+══════════════════════════════════════════════════════════════════════
+
+══════════════════════════════════════════════════════════════════════
+  PERFORMANCE TARGETS (MVP gate check)
+══════════════════════════════════════════════════════════════════════
+
+  Ticker     Sharpe    MaxDD   WinRate     CAGR   Calmar   t-stat  Gates
+  ---------------------------------------------------------------------------
+  AAPL         0.05    30.6%     57.4%     4.5%     0.15     0.69  WinRate✓
+  AMZN        -0.20    42.8%     52.2%    -1.1%    -0.03     0.13  
+  BAC         -0.33    58.8%     54.4%    -5.2%    -0.09    -0.34  
+  DIA         -0.22    33.7%     59.1%     0.4%     0.01     0.30  WinRate✓
+  GLD          0.03    15.4%     58.1%     4.8%     0.31     1.57  MaxDD✓ WinRate✓
+  GOOGL        0.73    21.6%     59.2%    16.2%     0.75     2.08  WinRate✓ CAGR✓ Calmar✓ t✓
+  GS           0.01    43.6%     49.5%     2.2%     0.05     0.60  
+  IWM         -0.35    37.9%     56.7%    -2.0%    -0.05    -0.12  WinRate✓
+  JPM          0.22    41.1%     53.1%     7.5%     0.18     1.20  
+  META        -0.32    78.6%     57.4%    -8.8%    -0.11    -0.44  WinRate✓
+  MSFT         0.10    24.9%     55.6%     5.3%     0.21     0.76  WinRate✓
+  NVDA         0.42    61.6%     61.8%    14.4%     0.23     1.61  WinRate✓
+  QQQ         -0.07    18.4%     63.0%     2.9%     0.16     0.55  MaxDD✓ WinRate✓
+  SPY         -0.56    18.6%     52.3%    -0.7%    -0.04    -0.05  MaxDD✓
+  TLT         -0.95    40.9%     48.9%    -4.2%    -0.10    -1.21  
+  TSLA         0.30    52.9%     63.3%     9.9%     0.19     1.32  WinRate✓
+  XLE         -0.25    63.6%     57.1%    -3.2%    -0.05    -0.09  WinRate✓
+  XLF          0.13    51.1%     57.0%     5.7%     0.11     1.10  WinRate✓
+  XLI         -0.06    36.2%     52.0%     2.4%     0.07     0.63  
+  XLK          0.39    24.6%     56.1%    11.1%     0.45     1.88  WinRate✓
+  XLP         -0.35    23.8%     61.7%     0.2%     0.01     0.21  WinRate✓
+  XLV         -0.26    26.0%     52.2%     0.6%     0.02     0.31  
+
+══════════════════════════════════════════════════════════════════════
+  EXTRACTION COMPLETE
+  Copy values above into docs/PHASE_06D_PAPER_DRAFT.md
+══════════════════════════════════════════════════════════════════════

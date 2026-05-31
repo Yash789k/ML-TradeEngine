@@ -1,0 +1,43 @@
+{
+  "ticker": "BAC",
+  "strategy_metrics": {
+    "total_return": -0.3588,
+    "cagr": -0.0523,
+    "sharpe_ratio": -0.333,
+    "sortino_ratio": -0.31,
+    "max_drawdown": -0.5881,
+    "calmar_ratio": -0.089,
+    "volatility": 0.2293,
+    "n_days": 2085,
+    "win_rate": 0.5437,
+    "n_trades": 160,
+    "avg_win": 145.7519,
+    "avg_loss": -183.845,
+    "expectancy": -4.6267
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -1.219,
+    "sharpe_median": -0.317,
+    "sharpe_p95": 0.506,
+    "cagr_p5": -0.225,
+    "cagr_median": -0.0434,
+    "cagr_p95": 0.141,
+    "max_dd_p5": -0.5999,
+    "max_dd_median": -0.3625,
+    "max_dd_p95": -0.1886,
+    "prob_ruin": 0.075
+  },
+  "best_sweep": {
+    "threshold": 0.35,
+    "commission": 0.0005,
+    "sharpe": -0.231
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}

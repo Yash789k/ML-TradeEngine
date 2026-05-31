@@ -1,0 +1,43 @@
+{
+  "ticker": "XLK",
+  "strategy_metrics": {
+    "total_return": 1.3821,
+    "cagr": 0.1106,
+    "sharpe_ratio": 0.393,
+    "sortino_ratio": 0.35,
+    "max_drawdown": -0.2455,
+    "calmar_ratio": 0.451,
+    "volatility": 0.1871,
+    "n_days": 2085,
+    "win_rate": 0.5615,
+    "n_trades": 130,
+    "avg_win": 450.9527,
+    "avg_loss": -295.5907,
+    "expectancy": 123.6221
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -0.361,
+    "sharpe_median": 0.427,
+    "sharpe_p95": 1.22,
+    "cagr_p5": -0.0347,
+    "cagr_median": 0.1161,
+    "cagr_p95": 0.2757,
+    "max_dd_p5": -0.3343,
+    "max_dd_median": -0.186,
+    "max_dd_p95": -0.1013,
+    "prob_ruin": 0.0
+  },
+  "best_sweep": {
+    "threshold": 0.4,
+    "commission": 0.0005,
+    "sharpe": 0.469
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}

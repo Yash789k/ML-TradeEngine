@@ -197,7 +197,7 @@ Each strategy is self-contained: own signal generation, position sizing, and ful
 - Strategy ranking table from Phase 06B
 - Model feature importance bar chart (SHAP values)
 - Trade log with P&L per trade, win/loss streak
-- Deploy to Streamlit Community Cloud or GCP Cloud Run (containerized)
+- Deploy to Streamlit Community Cloud or GCP Cloud Run (containerized)   
 
 **Libraries:** `streamlit` `plotly` `pandas` `docker` `gcp`
 

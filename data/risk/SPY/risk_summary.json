@@ -1,49 +1,49 @@
 {
   "ticker": "SPY",
   "risk_metrics": {
-    "total_return": 0.1008,
-    "cagr": 0.0246,
-    "sharpe_ratio": -0.684,
-    "sortino_ratio": -0.199,
-    "max_drawdown": -0.024,
-    "calmar_ratio": 1.025,
-    "volatility": 0.0349,
+    "total_return": 0.0812,
+    "cagr": 0.02,
+    "sharpe_ratio": -0.398,
+    "sortino_ratio": -0.161,
+    "max_drawdown": -0.0566,
+    "calmar_ratio": 0.353,
+    "volatility": 0.0674,
     "n_days": 995,
-    "win_rate": 0.75,
-    "n_trades": 4,
-    "avg_win": 411.3492,
-    "avg_loss": -226.3293,
-    "expectancy": 251.9296
+    "win_rate": 0.619,
+    "n_trades": 21,
+    "avg_win": 135.4237,
+    "avg_loss": -118.5064,
+    "expectancy": 38.6884
   },
   "var_report": {
     "var_95_pct": -0.0,
-    "cvar_99_pct": 0.0075,
+    "cvar_99_pct": 0.0167,
     "var_95_dollar": -0.0,
-    "cvar_99_dollar": 74.69,
-    "worst_day_pct": -0.0217,
-    "best_day_pct": 0.0295,
-    "negative_days_pct": 0.0111
+    "cvar_99_dollar": 166.77,
+    "worst_day_pct": -0.0482,
+    "best_day_pct": 0.0998,
+    "negative_days_pct": 0.0372
   },
   "phase04_metrics": {
-    "total_return": -0.0518,
-    "cagr": -0.0134,
-    "sharpe_ratio": -0.645,
-    "sortino_ratio": -0.315,
-    "max_drawdown": -0.1242,
-    "calmar_ratio": -0.108,
-    "volatility": 0.0903,
+    "total_return": -0.026,
+    "cagr": -0.0066,
+    "sharpe_ratio": -0.556,
+    "sortino_ratio": -0.374,
+    "max_drawdown": -0.1862,
+    "calmar_ratio": -0.036,
+    "volatility": 0.0923,
     "n_days": 995,
-    "win_rate": 0.625,
-    "n_trades": 24,
-    "avg_win": 187.9433,
-    "avg_loss": -246.7505,
-    "expectancy": 24.9331
+    "win_rate": 0.5227,
+    "n_trades": 44,
+    "avg_win": 147.6835,
+    "avg_loss": -138.3654,
+    "expectancy": 11.1601
   },
   "improvement": {
-    "sharpe_ratio": -0.039,
-    "cagr": 0.038,
-    "max_drawdown": 0.1002,
-    "calmar_ratio": 1.133
+    "sharpe_ratio": 0.158,
+    "cagr": 0.0266,
+    "max_drawdown": 0.1296,
+    "calmar_ratio": 0.389
   },
   "params": {
     "initial_capital": 10000.0,
@@ -56,7 +56,7 @@
     "trailing_stop": false,
     "cb_threshold": 0.85,
     "cb_cooldown_bars": 63,
-    "win_loss_ratio": 0.7616734312595111,
-    "n_kelly_filtered": 978
+    "win_loss_ratio": 1.0673441481757724,
+    "n_kelly_filtered": 958
   }
 }

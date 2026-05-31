@@ -1,0 +1,62 @@
+{
+  "ticker": "BAC",
+  "risk_metrics": {
+    "total_return": -0.1316,
+    "cagr": -0.0169,
+    "sharpe_ratio": -0.768,
+    "sortino_ratio": -0.275,
+    "max_drawdown": -0.2359,
+    "calmar_ratio": -0.072,
+    "volatility": 0.0814,
+    "n_days": 2085,
+    "win_rate": 0.4571,
+    "n_trades": 35,
+    "avg_win": 292.284,
+    "avg_loss": -315.4101,
+    "expectancy": -37.6071
+  },
+  "var_report": {
+    "var_95_pct": -0.0,
+    "cvar_99_pct": 0.0318,
+    "var_95_dollar": -0.0,
+    "cvar_99_dollar": 317.89,
+    "worst_day_pct": -0.0966,
+    "best_day_pct": 0.0577,
+    "negative_days_pct": 0.0494
+  },
+  "phase04_metrics": {
+    "total_return": -0.3588,
+    "cagr": -0.0523,
+    "sharpe_ratio": -0.333,
+    "sortino_ratio": -0.31,
+    "max_drawdown": -0.5881,
+    "calmar_ratio": -0.089,
+    "volatility": 0.2293,
+    "n_days": 2085,
+    "win_rate": 0.5437,
+    "n_trades": 160,
+    "avg_win": 145.7519,
+    "avg_loss": -183.845,
+    "expectancy": -4.6267
+  },
+  "improvement": {
+    "sharpe_ratio": -0.435,
+    "cagr": 0.0354,
+    "max_drawdown": 0.3522,
+    "calmar_ratio": 0.017
+  },
+  "params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "position_frac": 0.95,
+    "kelly_multiplier": 0.5,
+    "min_kelly": 0.0,
+    "atr_multiplier": 2.0,
+    "trailing_stop": false,
+    "cb_threshold": 0.85,
+    "cb_cooldown_bars": 63,
+    "win_loss_ratio": 0.7927977372242923,
+    "n_kelly_filtered": 1712
+  }
+}

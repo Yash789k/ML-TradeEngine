@@ -27,3 +27,10 @@ quantstats
 
 # Phase 06 — Strategy Research
 statsmodels
+
+# Phase 06E — Live Signal Engine
+alpaca-trade-api
+
+# Phase 07 — Dashboard
+streamlit
+plotly

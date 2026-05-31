@@ -1,0 +1,67 @@
+{
+  "ticker": "TSLA",
+  "n_folds": 5,
+  "oos_metrics": {
+    "accuracy": 0.4685851318944844,
+    "f1_macro": 0.3166847241971141,
+    "f1_down": 0.5606625258799172,
+    "f1_flat": 0.011627906976744186,
+    "f1_up": 0.37776373973468097
+  },
+  "best_params_xgb": {
+    "n_estimators": 376,
+    "max_depth": 3,
+    "learning_rate": 0.0014830435825441833,
+    "subsample": 0.980403208953438,
+    "colsample_bytree": 0.7585261072373688,
+    "min_child_weight": 11,
+    "gamma": 0.29478127583419067,
+    "reg_alpha": 0.16328791861871855,
+    "reg_lambda": 0.0037368383999857543
+  },
+  "best_params_lgbm": {
+    "n_estimators": 365,
+    "max_depth": 3,
+    "learning_rate": 0.001700061811129263,
+    "num_leaves": 71,
+    "subsample": 0.9856247202686728,
+    "colsample_bytree": 0.7104235179496049,
+    "min_child_samples": 8,
+    "reg_alpha": 0.09499175757717844,
+    "reg_lambda": 7.01944702652984e-07
+  },
+  "feature_cols": [
+    "bb_upper",
+    "hurst_100",
+    "kurtosis_60",
+    "bb_width",
+    "rs_vs_spy_63",
+    "realized_vol_5",
+    "spy_corr_63",
+    "close_ema200_ratio",
+    "macro_rate_10y",
+    "return_5d",
+    "spy_corr_21",
+    "bb_lower",
+    "zscore_60",
+    "log_return",
+    "return_21d",
+    "hl_range_pct",
+    "close_ema50_ratio",
+    "skew_60",
+    "rsi_14",
+    "realized_vol_21",
+    "adx_14",
+    "macro_yield_spread_10_2",
+    "macd_signal",
+    "macro_rate_2y",
+    "macro_VIX"
+  ],
+  "model_paths": {
+    "xgb": "/Users/a/Downloads/ml-trade-engine/data/models/TSLA/xgb_final.json",
+    "lgbm": "/Users/a/Downloads/ml-trade-engine/data/models/TSLA/lgbm_final.txt",
+    "lstm": "/Users/a/Downloads/ml-trade-engine/data/models/TSLA/lstm_final.pt",
+    "feature_cols": "/Users/a/Downloads/ml-trade-engine/data/models/TSLA/feature_cols.json"
+  },
+  "elapsed_s": 675.1148989200592
+}

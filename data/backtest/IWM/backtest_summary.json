@@ -1,0 +1,43 @@
+{
+  "ticker": "IWM",
+  "strategy_metrics": {
+    "total_return": -0.1511,
+    "cagr": -0.0196,
+    "sharpe_ratio": -0.349,
+    "sortino_ratio": -0.303,
+    "max_drawdown": -0.3786,
+    "calmar_ratio": -0.052,
+    "volatility": 0.1597,
+    "n_days": 2085,
+    "win_rate": 0.5667,
+    "n_trades": 150,
+    "avg_win": 141.8142,
+    "avg_loss": -161.3606,
+    "expectancy": 10.4385
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -1.211,
+    "sharpe_median": -0.332,
+    "sharpe_p95": 0.547,
+    "cagr_p5": -0.148,
+    "cagr_median": -0.0138,
+    "cagr_p95": 0.1311,
+    "max_dd_p5": -0.4519,
+    "max_dd_median": -0.2526,
+    "max_dd_p95": -0.1305,
+    "prob_ruin": 0.009
+  },
+  "best_sweep": {
+    "threshold": 0.35,
+    "commission": 0.0005,
+    "sharpe": -0.215
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}

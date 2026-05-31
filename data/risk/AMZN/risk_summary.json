@@ -1,0 +1,62 @@
+{
+  "ticker": "AMZN",
+  "risk_metrics": {
+    "total_return": -0.1108,
+    "cagr": -0.0141,
+    "sharpe_ratio": -0.666,
+    "sortino_ratio": -0.23,
+    "max_drawdown": -0.2487,
+    "calmar_ratio": -0.057,
+    "volatility": 0.0887,
+    "n_days": 2085,
+    "win_rate": 0.4815,
+    "n_trades": 27,
+    "avg_win": 275.4789,
+    "avg_loss": -334.9697,
+    "expectancy": -41.05
+  },
+  "var_report": {
+    "var_95_pct": -0.0,
+    "cvar_99_pct": 0.0329,
+    "var_95_dollar": -0.0,
+    "cvar_99_dollar": 329.26,
+    "worst_day_pct": -0.0764,
+    "best_day_pct": 0.0897,
+    "negative_days_pct": 0.0388
+  },
+  "phase04_metrics": {
+    "total_return": -0.088,
+    "cagr": -0.0111,
+    "sharpe_ratio": -0.198,
+    "sortino_ratio": -0.156,
+    "max_drawdown": -0.4277,
+    "calmar_ratio": -0.026,
+    "volatility": 0.2011,
+    "n_days": 2085,
+    "win_rate": 0.5225,
+    "n_trades": 111,
+    "avg_win": 246.323,
+    "avg_loss": -289.3117,
+    "expectancy": -9.4305
+  },
+  "improvement": {
+    "sharpe_ratio": -0.468,
+    "cagr": -0.003,
+    "max_drawdown": 0.179,
+    "calmar_ratio": -0.031
+  },
+  "params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "position_frac": 0.95,
+    "kelly_multiplier": 0.5,
+    "min_kelly": 0.0,
+    "atr_multiplier": 2.0,
+    "trailing_stop": false,
+    "cb_threshold": 0.85,
+    "cb_cooldown_bars": 63,
+    "win_loss_ratio": 0.8514104337985641,
+    "n_kelly_filtered": 1890
+  }
+}

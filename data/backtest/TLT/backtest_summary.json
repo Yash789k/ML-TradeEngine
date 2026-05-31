@@ -1,0 +1,43 @@
+{
+  "ticker": "TLT",
+  "strategy_metrics": {
+    "total_return": -0.2978,
+    "cagr": -0.0418,
+    "sharpe_ratio": -0.955,
+    "sortino_ratio": -1.083,
+    "max_drawdown": -0.4091,
+    "calmar_ratio": -0.102,
+    "volatility": 0.0915,
+    "n_days": 2085,
+    "win_rate": 0.4889,
+    "n_trades": 181,
+    "avg_win": 107.8878,
+    "avg_loss": -97.2143,
+    "expectancy": 3.0578
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -1.909,
+    "sharpe_median": -0.953,
+    "sharpe_p95": -0.014,
+    "cagr_p5": -0.1169,
+    "cagr_median": -0.0402,
+    "cagr_p95": 0.0446,
+    "max_dd_p5": -0.3453,
+    "max_dd_median": -0.2007,
+    "max_dd_p95": -0.099,
+    "prob_ruin": 0.0
+  },
+  "best_sweep": {
+    "threshold": 0.45,
+    "commission": 0.0005,
+    "sharpe": -0.471
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "ticker": "NVDA",
+  "strategy_metrics": {
+    "total_return": 2.055,
+    "cagr": 0.1445,
+    "sharpe_ratio": 0.42,
+    "sortino_ratio": 0.46,
+    "max_drawdown": -0.6158,
+    "calmar_ratio": 0.235,
+    "volatility": 0.3493,
+    "n_days": 2085,
+    "win_rate": 0.618,
+    "n_trades": 178,
+    "avg_win": 705.9922,
+    "avg_loss": -781.0953,
+    "expectancy": 137.8914
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -0.48,
+    "sharpe_median": 0.424,
+    "sharpe_p95": 1.435,
+    "cagr_p5": -0.1537,
+    "cagr_median": 0.1464,
+    "cagr_p95": 0.6065,
+    "max_dd_p5": -0.6241,
+    "max_dd_median": -0.3897,
+    "max_dd_p95": -0.222,
+    "prob_ruin": 0.034
+  },
+  "best_sweep": {
+    "threshold": 0.4,
+    "commission": 0.0005,
+    "sharpe": 0.522
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}

@@ -1,38 +1,38 @@
 {
   "ticker": "AAPL",
   "strategy_metrics": {
-    "total_return": 0.442,
-    "cagr": 0.0971,
-    "sharpe_ratio": 0.374,
-    "sortino_ratio": 0.325,
-    "max_drawdown": -0.0875,
-    "calmar_ratio": 1.111,
-    "volatility": 0.1446,
+    "total_return": 0.1897,
+    "cagr": 0.045,
+    "sharpe_ratio": 0.052,
+    "sortino_ratio": 0.046,
+    "max_drawdown": -0.3065,
+    "calmar_ratio": 0.147,
+    "volatility": 0.165,
     "n_days": 995,
-    "win_rate": 0.6389,
-    "n_trades": 36,
-    "avg_win": 369.2945,
-    "avg_loss": -164.2324,
-    "expectancy": 176.632
+    "win_rate": 0.5738,
+    "n_trades": 61,
+    "avg_win": 264.2237,
+    "avg_loss": -247.1552,
+    "expectancy": 46.2589
   },
   "monte_carlo": {
     "n_paths": 1000,
     "n_years": 3.0,
-    "sharpe_p5": -0.469,
-    "sharpe_median": 0.372,
-    "sharpe_p95": 1.064,
-    "cagr_p5": -0.0198,
-    "cagr_median": 0.0951,
-    "cagr_p95": 0.2252,
-    "max_dd_p5": -0.239,
-    "max_dd_median": -0.1324,
-    "max_dd_p95": -0.075,
-    "prob_ruin": 0.0
+    "sharpe_p5": -0.896,
+    "sharpe_median": 0.059,
+    "sharpe_p95": 0.931,
+    "cagr_p5": -0.1065,
+    "cagr_median": 0.0458,
+    "cagr_p95": 0.196,
+    "max_dd_p5": -0.4305,
+    "max_dd_median": -0.2263,
+    "max_dd_p95": -0.103,
+    "prob_ruin": 0.005
   },
   "best_sweep": {
     "threshold": 0.35,
     "commission": 0.0005,
-    "sharpe": 0.449
+    "sharpe": 0.189
   },
   "sim_params": {
     "initial_capital": 10000.0,

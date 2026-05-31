@@ -1,0 +1,43 @@
+{
+  "ticker": "XLE",
+  "strategy_metrics": {
+    "total_return": -0.2364,
+    "cagr": -0.0321,
+    "sharpe_ratio": -0.248,
+    "sortino_ratio": -0.205,
+    "max_drawdown": -0.6361,
+    "calmar_ratio": -0.05,
+    "volatility": 0.225,
+    "n_days": 2085,
+    "win_rate": 0.5714,
+    "n_trades": 119,
+    "avg_win": 175.1579,
+    "avg_loss": -217.4134,
+    "expectancy": 6.9131
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -1.169,
+    "sharpe_median": -0.222,
+    "sharpe_p95": 0.702,
+    "cagr_p5": -0.221,
+    "cagr_median": -0.0222,
+    "cagr_p95": 0.1968,
+    "max_dd_p5": -0.6175,
+    "max_dd_median": -0.339,
+    "max_dd_p95": -0.1502,
+    "prob_ruin": 0.063
+  },
+  "best_sweep": {
+    "threshold": 0.45,
+    "commission": 0.0005,
+    "sharpe": -0.067
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}

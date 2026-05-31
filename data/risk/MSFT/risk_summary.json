@@ -1,49 +1,49 @@
 {
   "ticker": "MSFT",
   "risk_metrics": {
-    "total_return": 0.1719,
-    "cagr": 0.041,
-    "sharpe_ratio": 0.03,
-    "sortino_ratio": 0.026,
-    "max_drawdown": -0.1652,
-    "calmar_ratio": 0.248,
-    "volatility": 0.1651,
+    "total_return": 0.0409,
+    "cagr": 0.0102,
+    "sharpe_ratio": -0.23,
+    "sortino_ratio": -0.166,
+    "max_drawdown": -0.1641,
+    "calmar_ratio": 0.062,
+    "volatility": 0.1307,
     "n_days": 995,
-    "win_rate": 0.4324,
-    "n_trades": 37,
-    "avg_win": 410.4607,
-    "avg_loss": -230.8737,
-    "expectancy": 46.4601
+    "win_rate": 0.4167,
+    "n_trades": 24,
+    "avg_win": 394.9553,
+    "avg_loss": -252.8629,
+    "expectancy": 17.0614
   },
   "var_report": {
-    "var_95_pct": 0.0141,
-    "cvar_99_pct": 0.0454,
-    "var_95_dollar": 140.75,
-    "cvar_99_dollar": 454.39,
-    "worst_day_pct": -0.0737,
-    "best_day_pct": 0.0962,
-    "negative_days_pct": 0.1839
+    "var_95_pct": 0.0098,
+    "cvar_99_pct": 0.036,
+    "var_95_dollar": 98.02,
+    "cvar_99_dollar": 359.78,
+    "worst_day_pct": -0.0747,
+    "best_day_pct": 0.0781,
+    "negative_days_pct": 0.1216
   },
   "phase04_metrics": {
-    "total_return": 0.2104,
-    "cagr": 0.0496,
-    "sharpe_ratio": 0.084,
-    "sortino_ratio": 0.08,
-    "max_drawdown": -0.1773,
-    "calmar_ratio": 0.279,
-    "volatility": 0.1738,
+    "total_return": 0.2253,
+    "cagr": 0.0528,
+    "sharpe_ratio": 0.102,
+    "sortino_ratio": 0.103,
+    "max_drawdown": -0.2492,
+    "calmar_ratio": 0.212,
+    "volatility": 0.1748,
     "n_days": 995,
-    "win_rate": 0.5278,
-    "n_trades": 36,
-    "avg_win": 358.7484,
-    "avg_loss": -197.3953,
-    "expectancy": 96.125
+    "win_rate": 0.5556,
+    "n_trades": 54,
+    "avg_win": 310.877,
+    "avg_loss": -292.5695,
+    "expectancy": 42.6785
   },
   "improvement": {
-    "sharpe_ratio": -0.054,
-    "cagr": -0.0086,
-    "max_drawdown": 0.0121,
-    "calmar_ratio": -0.031
+    "sharpe_ratio": -0.332,
+    "cagr": -0.0426,
+    "max_drawdown": 0.0851,
+    "calmar_ratio": -0.15
   },
   "params": {
     "initial_capital": 10000.0,
@@ -56,7 +56,7 @@
     "trailing_stop": false,
     "cb_threshold": 0.85,
     "cb_cooldown_bars": 63,
-    "win_loss_ratio": 1.8174110528467498,
-    "n_kelly_filtered": 589
+    "win_loss_ratio": 1.062574875371493,
+    "n_kelly_filtered": 657
   }
 }

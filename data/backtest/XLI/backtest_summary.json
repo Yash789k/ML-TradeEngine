@@ -1,0 +1,43 @@
+{
+  "ticker": "XLI",
+  "strategy_metrics": {
+    "total_return": 0.2123,
+    "cagr": 0.0235,
+    "sharpe_ratio": -0.056,
+    "sortino_ratio": -0.055,
+    "max_drawdown": -0.362,
+    "calmar_ratio": 0.065,
+    "volatility": 0.1763,
+    "n_days": 2085,
+    "win_rate": 0.5197,
+    "n_trades": 152,
+    "avg_win": 203.7759,
+    "avg_loss": -145.3384,
+    "expectancy": 36.1091
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -0.923,
+    "sharpe_median": -0.028,
+    "sharpe_p95": 0.883,
+    "cagr_p5": -0.1178,
+    "cagr_median": 0.0289,
+    "cagr_p95": 0.1928,
+    "max_dd_p5": -0.4436,
+    "max_dd_median": -0.2482,
+    "max_dd_p95": -0.1231,
+    "prob_ruin": 0.004
+  },
+  "best_sweep": {
+    "threshold": 0.4,
+    "commission": 0.0005,
+    "sharpe": 0.033
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}

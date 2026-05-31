@@ -1,0 +1,43 @@
+{
+  "ticker": "GS",
+  "strategy_metrics": {
+    "total_return": 0.1937,
+    "cagr": 0.0216,
+    "sharpe_ratio": 0.009,
+    "sortino_ratio": 0.009,
+    "max_drawdown": -0.4361,
+    "calmar_ratio": 0.05,
+    "volatility": 0.2435,
+    "n_days": 2085,
+    "win_rate": 0.4949,
+    "n_trades": 99,
+    "avg_win": 319.4521,
+    "avg_loss": -232.1647,
+    "expectancy": 40.8577
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -0.807,
+    "sharpe_median": 0.034,
+    "sharpe_p95": 0.955,
+    "cagr_p5": -0.1718,
+    "cagr_median": 0.0262,
+    "cagr_p95": 0.2736,
+    "max_dd_p5": -0.5615,
+    "max_dd_median": -0.3293,
+    "max_dd_p95": -0.1777,
+    "prob_ruin": 0.028
+  },
+  "best_sweep": {
+    "threshold": 0.35,
+    "commission": 0.0005,
+    "sharpe": 0.079
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}

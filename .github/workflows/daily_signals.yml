@@ -1,0 +1,117 @@
+name: Daily Signal Engine
+
+on:
+  # Fires at 21:30 UTC Monday–Friday — ~30 min after US market close (21:00 UTC)
+  schedule:
+    - cron: "30 21 * * 1-5"
+
+  # Allow manual trigger from the Actions tab for testing
+  workflow_dispatch:
+    inputs:
+      tickers:
+        description: "Space-separated ticker list (leave blank for defaults)"
+        required: false
+        default: ""
+      dry_run:
+        description: "Dry run (no orders submitted)"
+        required: false
+        default: "false"
+        type: choice
+        options: ["true", "false"]
+
+jobs:
+  signals:
+    name: Generate Signals & Submit Orders
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
+      ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+      ALPACA_BASE_URL:   ${{ secrets.ALPACA_BASE_URL || 'https://paper-api.alpaca.markets' }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      ALERT_EMAIL:       ${{ secrets.ALERT_EMAIL }}
+      SMTP_HOST:         ${{ secrets.SMTP_HOST }}
+      SMTP_PORT:         ${{ secrets.SMTP_PORT }}
+      SMTP_USER:         ${{ secrets.SMTP_USER }}
+      SMTP_PASS:         ${{ secrets.SMTP_PASS }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Restore cached Parquet data store and trained models from previous runs.
+      # This avoids re-fetching 5 years of OHLCV and retraining models every day.
+      - name: Restore data cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/parquet/
+            data/features/
+            data/models/
+            data/backtest/
+            data/live/signal_log.db
+          key: ml-data-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            ml-data-${{ runner.os }}-
+
+      - name: Build ticker argument
+        id: tickers
+        run: |
+          INPUT="${{ github.event.inputs.tickers }}"
+          if [ -n "$INPUT" ]; then
+            echo "args=--tickers $INPUT" >> $GITHUB_OUTPUT
+          else
+            echo "args=" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build dry-run flag
+        id: dryrun
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "flag=--dry-run" >> $GITHUB_OUTPUT
+          else
+            echo "flag=" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run live signal engine
+        run: |
+          python3 live.py run ${{ steps.tickers.outputs.args }} ${{ steps.dryrun.outputs.flag }}
+
+      - name: Print signal log
+        if: always()
+        run: python3 live.py status --n 10
+
+      - name: Print order log
+        if: always()
+        run: python3 live.py orders --n 10
+
+      # Save the updated SQLite log and any newly cached Parquet files
+      - name: Save data cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/parquet/
+            data/features/
+            data/models/
+            data/backtest/
+            data/live/signal_log.db
+          key: ml-data-${{ runner.os }}-${{ github.run_id }}
+
+      - name: Upload signal log artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-log-${{ github.run_id }}
+          path: data/live/signal_log.db
+          retention-days: 90

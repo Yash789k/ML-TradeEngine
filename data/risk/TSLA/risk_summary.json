@@ -1,0 +1,62 @@
+{
+  "ticker": "TSLA",
+  "risk_metrics": {
+    "total_return": -0.2239,
+    "cagr": -0.0302,
+    "sharpe_ratio": -0.598,
+    "sortino_ratio": -0.232,
+    "max_drawdown": -0.3451,
+    "calmar_ratio": -0.087,
+    "volatility": 0.1208,
+    "n_days": 2085,
+    "win_rate": 0.619,
+    "n_trades": 21,
+    "avg_win": 263.534,
+    "avg_loss": -708.0675,
+    "expectancy": -106.5999
+  },
+  "var_report": {
+    "var_95_pct": -0.0,
+    "cvar_99_pct": 0.0455,
+    "var_95_dollar": -0.0,
+    "cvar_99_dollar": 455.48,
+    "worst_day_pct": -0.0786,
+    "best_day_pct": 0.1856,
+    "negative_days_pct": 0.0398
+  },
+  "phase04_metrics": {
+    "total_return": 1.1872,
+    "cagr": 0.0992,
+    "sharpe_ratio": 0.302,
+    "sortino_ratio": 0.24,
+    "max_drawdown": -0.5294,
+    "calmar_ratio": 0.187,
+    "volatility": 0.311,
+    "n_days": 2085,
+    "win_rate": 0.633,
+    "n_trades": 109,
+    "avg_win": 659.9052,
+    "avg_loss": -671.1508,
+    "expectancy": 171.4443
+  },
+  "improvement": {
+    "sharpe_ratio": -0.9,
+    "cagr": -0.1294,
+    "max_drawdown": 0.1843,
+    "calmar_ratio": -0.274
+  },
+  "params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "position_frac": 0.95,
+    "kelly_multiplier": 0.5,
+    "min_kelly": 0.0,
+    "atr_multiplier": 2.0,
+    "trailing_stop": false,
+    "cb_threshold": 0.85,
+    "cb_cooldown_bars": 63,
+    "win_loss_ratio": 0.9832443021747125,
+    "n_kelly_filtered": 1705
+  }
+}

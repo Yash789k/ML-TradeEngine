@@ -1,11 +1,12 @@
 """
-Phase 06A/B — Research CLI
+Phase 06A/B/C — Research CLI
 
 Subcommands
 -----------
   zoo    Run all strategies on all cached tickers (Phase 06A)
   rank   Enrich scorecard with alpha/beta/t-stat/IR and rank (Phase 06B)
   show   Print the ranked scorecard table
+  env    Run Phase 06C environment characterisation (4 analyses)
 
 Usage Examples
 --------------
@@ -26,6 +27,18 @@ Usage Examples
 
   # Print top-20 ranked strategies
   python3 research.py show --top 20
+
+  # Phase 06C: run all 4 environment analyses (uses saved artifacts)
+  python3 research.py env
+
+  # Run only specific analyses
+  python3 research.py env --regime
+  python3 research.py env --decay
+  python3 research.py env --factors
+  python3 research.py env --cost --cost-tickers AAPL NVDA SPY TSLA GLD
+
+  # Show saved env results without re-running
+  python3 research.py env --show-only
 """
 
 from __future__ import annotations
@@ -113,6 +126,41 @@ def parse_args() -> argparse.Namespace:
     # ── show ──────────────────────────────────────────────────────────────
     show_p = sub.add_parser("show", help="Print ranked scorecard.")
     show_p.add_argument("--top", type=int, default=20, help="Top-N rows to show.")
+
+    # ── env ───────────────────────────────────────────────────────────────
+    env_p = sub.add_parser(
+        "env",
+        help="Phase 06C — Environment Characterisation (4 analyses).",
+    )
+    env_p.add_argument(
+        "--regime",   action="store_true", help="Run regime breakdown only."
+    )
+    env_p.add_argument(
+        "--cost",     action="store_true", help="Run cost sensitivity only."
+    )
+    env_p.add_argument(
+        "--decay",    action="store_true", help="Run signal decay only."
+    )
+    env_p.add_argument(
+        "--factors",  action="store_true", help="Run factor attribution only."
+    )
+    env_p.add_argument(
+        "--show-only", action="store_true",
+        help="Print saved results without re-running any analysis.",
+    )
+    env_p.add_argument(
+        "--cost-tickers", nargs="+", default=None, metavar="TICK",
+        help="Subset of tickers for the cost sensitivity sweep "
+             "(default: AAPL NVDA SPY TSLA GLD).",
+    )
+    env_p.add_argument(
+        "--research", action="store_true",
+        help="Load the full 22-ticker universe for regime/cost analyses.",
+    )
+    env_p.add_argument(
+        "--tickers", nargs="+", default=None, metavar="TICK",
+        help="Explicit ticker subset for regime/cost analyses.",
+    )
 
     return p.parse_args()
 
@@ -268,6 +316,117 @@ def cmd_show(args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Command: env  (Phase 06C)
+# ---------------------------------------------------------------------------
+
+def cmd_env(args: argparse.Namespace) -> None:
+    from src.data.loader import DataLoader
+    from src.research.env_analyzer import EnvAnalyzer
+    from src.research.strategies import ALL_STRATEGIES
+
+    analyzer = EnvAnalyzer()
+
+    # ── show-only: print saved results without running anything ──────────
+    if args.show_only:
+        env_dir = Path("data/research/env")
+        if (env_dir / "regime_breakdown.parquet").exists():
+            import pandas as pd
+            analyzer.print_regime_summary(
+                pd.read_parquet(env_dir / "regime_breakdown.parquet")
+            )
+        if (env_dir / "cost_sensitivity.parquet").exists():
+            import pandas as pd
+            analyzer.print_cost_summary(
+                pd.read_parquet(env_dir / "cost_sensitivity.parquet")
+            )
+        if (env_dir / "signal_decay_summary.parquet").exists():
+            import pandas as pd
+            analyzer.print_decay_summary(
+                pd.read_parquet(env_dir / "signal_decay_summary.parquet")
+            )
+        if (env_dir / "factor_attribution.parquet").exists():
+            import pandas as pd
+            analyzer.print_factor_summary(
+                pd.read_parquet(env_dir / "factor_attribution.parquet")
+            )
+        return
+
+    # ── Determine which analyses to run ──────────────────────────────────
+    run_all = not any([args.regime, args.cost, args.decay, args.factors])
+
+    # ── Resolve tickers ───────────────────────────────────────────────────
+    if args.tickers:
+        tickers = [t.upper() for t in args.tickers]
+    elif getattr(args, "research", False):
+        tickers = _RESEARCH_TICKERS
+    else:
+        tickers = _DEFAULT_TICKERS
+
+    # ── Load OHLCV data (only needed for regime + cost analyses) ─────────
+    ohlcv_dict: dict = {}
+    spy_df  = None
+    macro   = None
+    loader  = DataLoader()
+
+    if run_all or args.regime or args.cost:
+        log.info("Loading OHLCV data for %d tickers …", len(tickers))
+        for ticker in tickers:
+            try:
+                ohlcv_dict[ticker] = loader.load_equity(ticker)
+                log.info("  ✓ %s", ticker)
+            except Exception as exc:
+                log.warning("  ✗ %s (%s)", ticker, exc)
+
+        if "SPY" not in ohlcv_dict:
+            try:
+                spy_df = loader.load_equity("SPY")
+            except Exception:
+                pass
+        else:
+            spy_df = ohlcv_dict["SPY"]
+
+        try:
+            macro = loader.load_macro()
+        except Exception:
+            pass
+
+    # ── Run selected analyses ─────────────────────────────────────────────
+    if run_all or args.regime:
+        log.info("\n── 1/4 Regime Breakdown ─────────────────────────────────")
+        df = analyzer.regime_breakdown(ohlcv_dict)
+        analyzer.print_regime_summary(df)
+
+    if run_all or args.cost:
+        cost_ticker_list = (
+            [t.upper() for t in args.cost_tickers]
+            if args.cost_tickers
+            else ["AAPL", "NVDA", "SPY", "TSLA", "GLD"]
+        )
+        cost_dict = {t: ohlcv_dict[t] for t in cost_ticker_list if t in ohlcv_dict}
+        if not cost_dict:
+            log.warning("No cost-sensitivity tickers available in loaded data — skipping.")
+        else:
+            log.info("\n── 2/4 Cost Sensitivity (%s) ────────────────────────",
+                     list(cost_dict.keys()))
+            df = analyzer.cost_sensitivity(
+                cost_dict, ALL_STRATEGIES, spy_df=spy_df, macro=macro
+            )
+            analyzer.print_cost_summary(df)
+
+    if run_all or args.decay:
+        log.info("\n── 3/4 Signal Decay ─────────────────────────────────────")
+        df = analyzer.signal_decay()
+        analyzer.print_decay_summary(df)
+
+    if run_all or args.factors:
+        log.info("\n── 4/4 Factor Attribution (Fama-French 3) ───────────────")
+        df = analyzer.factor_attribution()
+        analyzer.print_factor_summary(df)
+
+    log.info("\nPhase 06C complete. Artifacts saved to data/research/env/")
+
+
+# ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
 
@@ -280,6 +439,8 @@ def main() -> None:
         cmd_rank(args)
     elif args.command == "show":
         cmd_show(args)
+    elif args.command == "env":
+        cmd_env(args)
     else:
         log.error("Unknown command: %s", args.command)
         sys.exit(1)

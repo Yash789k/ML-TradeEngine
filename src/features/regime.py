@@ -41,10 +41,17 @@ def fit_hmm(
     df: pd.DataFrame,
     n_states: int = 3,
     random_state: int = 42,
+    covariance_type: str = "full",
 ) -> GaussianHMM:
     """
     Fit a Gaussian HMM on (log_return, realized_vol_21).
     Requires these columns to already exist in `df`.
+
+    Parameters
+    ----------
+    covariance_type : {"full", "diag", "tied", "spherical"}
+        Passed directly to GaussianHMM.  Use "diag" as a fallback when
+        "full" is near-singular (e.g. very short or IID synthetic data).
 
     Returns the fitted model — caller decides when to decode.
     """
@@ -64,7 +71,7 @@ def fit_hmm(
 
     model = GaussianHMM(
         n_components=n_states,
-        covariance_type="full",
+        covariance_type=covariance_type,
         n_iter=500,
         tol=1e-4,
         random_state=random_state,
@@ -122,9 +129,17 @@ def add_hmm_regime(
     n_states: int = 3,
     random_state: int = 42,
     col_name: str = "hmm_regime",
+    covariance_type: str = "full",
 ) -> tuple[pd.DataFrame, GaussianHMM]:
     """
     Fit a Gaussian HMM and add a regime column to `df`.
+
+    Parameters
+    ----------
+    covariance_type : {"full", "diag", "tied", "spherical"}
+        Passed to the underlying GaussianHMM.  "full" is the default and
+        generally best on real market data; "diag" is a useful fallback when
+        the observation matrix is near-singular.
 
     Returns
     -------
@@ -137,7 +152,8 @@ def add_hmm_regime(
     1 → ranging (middle state)
     2 → bull    (highest mean return state)
     """
-    model       = fit_hmm(df, n_states=n_states, random_state=random_state)
+    model       = fit_hmm(df, n_states=n_states, random_state=random_state,
+                          covariance_type=covariance_type)
     raw_states  = decode_hmm(model, df)
     regime      = _map_states_to_regime(model, raw_states, n_states)
     df[col_name] = regime

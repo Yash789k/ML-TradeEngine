@@ -1,49 +1,49 @@
 {
   "ticker": "QQQ",
   "risk_metrics": {
-    "total_return": 0.0908,
-    "cagr": 0.0223,
-    "sharpe_ratio": -0.223,
-    "sortino_ratio": -0.14,
-    "max_drawdown": -0.1897,
-    "calmar_ratio": 0.117,
-    "volatility": 0.0982,
+    "total_return": 0.1481,
+    "cagr": 0.0356,
+    "sharpe_ratio": -0.049,
+    "sortino_ratio": -0.037,
+    "max_drawdown": -0.1093,
+    "calmar_ratio": 0.326,
+    "volatility": 0.125,
     "n_days": 995,
-    "win_rate": 0.6275,
-    "n_trades": 51,
-    "avg_win": 163.5356,
-    "avg_loss": -227.6314,
-    "expectancy": 17.8067
+    "win_rate": 0.6034,
+    "n_trades": 58,
+    "avg_win": 160.9857,
+    "avg_loss": -180.5834,
+    "expectancy": 25.5359
   },
   "var_report": {
-    "var_95_pct": 0.0061,
-    "cvar_99_pct": 0.0335,
-    "var_95_dollar": 61.44,
-    "cvar_99_dollar": 334.93,
-    "worst_day_pct": -0.0603,
-    "best_day_pct": 0.0433,
-    "negative_days_pct": 0.1317
+    "var_95_pct": 0.0075,
+    "cvar_99_pct": 0.0364,
+    "var_95_dollar": 74.78,
+    "cvar_99_dollar": 363.97,
+    "worst_day_pct": -0.0602,
+    "best_day_pct": 0.114,
+    "negative_days_pct": 0.1437
   },
   "phase04_metrics": {
-    "total_return": 0.302,
-    "cagr": 0.0691,
-    "sharpe_ratio": 0.202,
-    "sortino_ratio": 0.185,
-    "max_drawdown": -0.1406,
-    "calmar_ratio": 0.491,
-    "volatility": 0.1317,
+    "total_return": 0.1215,
+    "cagr": 0.0295,
+    "sharpe_ratio": -0.073,
+    "sortino_ratio": -0.071,
+    "max_drawdown": -0.1836,
+    "calmar_ratio": 0.161,
+    "volatility": 0.1391,
     "n_days": 995,
-    "win_rate": 0.6102,
-    "n_trades": 59,
-    "avg_win": 297.4915,
-    "avg_loss": -231.8303,
-    "expectancy": 91.1457
+    "win_rate": 0.6301,
+    "n_trades": 73,
+    "avg_win": 186.6542,
+    "avg_loss": -158.3718,
+    "expectancy": 59.0418
   },
   "improvement": {
-    "sharpe_ratio": -0.425,
-    "cagr": -0.0468,
-    "max_drawdown": -0.0491,
-    "calmar_ratio": -0.374
+    "sharpe_ratio": 0.024,
+    "cagr": 0.0061,
+    "max_drawdown": 0.0743,
+    "calmar_ratio": 0.165
   },
   "params": {
     "initial_capital": 10000.0,
@@ -56,7 +56,7 @@
     "trailing_stop": false,
     "cb_threshold": 0.85,
     "cb_cooldown_bars": 63,
-    "win_loss_ratio": 1.283229586469068,
-    "n_kelly_filtered": 795
+    "win_loss_ratio": 1.1785822981111536,
+    "n_kelly_filtered": 800
   }
 }

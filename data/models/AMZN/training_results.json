@@ -1,0 +1,67 @@
+{
+  "ticker": "AMZN",
+  "n_folds": 5,
+  "oos_metrics": {
+    "accuracy": 0.40431654676258993,
+    "f1_macro": 0.3031862409339398,
+    "f1_down": 0.48266546600630345,
+    "f1_flat": 0.06535947712418301,
+    "f1_up": 0.36153377967133293
+  },
+  "best_params_xgb": {
+    "n_estimators": 289,
+    "max_depth": 8,
+    "learning_rate": 0.2987014414156221,
+    "subsample": 0.6146968582185466,
+    "colsample_bytree": 0.8441479903584219,
+    "min_child_weight": 17,
+    "gamma": 2.327122497128112,
+    "reg_alpha": 3.8142985789990353e-07,
+    "reg_lambda": 4.4998382817684655e-06
+  },
+  "best_params_lgbm": {
+    "n_estimators": 263,
+    "max_depth": 8,
+    "learning_rate": 0.12247998252622001,
+    "num_leaves": 58,
+    "subsample": 0.8371106465943068,
+    "colsample_bytree": 0.9615591671927557,
+    "min_child_samples": 23,
+    "reg_alpha": 3.4360721669972045e-08,
+    "reg_lambda": 1.501883862108475
+  },
+  "feature_cols": [
+    "hmm_regime",
+    "bb_width",
+    "spy_corr_21",
+    "return_21d",
+    "rs_vs_spy_63",
+    "hurst_100",
+    "adx_14",
+    "macro_VIX",
+    "bb_upper",
+    "macro_yield_spread_10_2",
+    "macd_line",
+    "realized_vol_21",
+    "log_return",
+    "kurtosis_60",
+    "bb_pct",
+    "bb_mid",
+    "rs_vs_spy_21",
+    "rsi_14",
+    "macro_CPI",
+    "macro_rate_2y",
+    "macd_signal",
+    "spy_corr_63",
+    "macd_hist",
+    "realized_vol_5",
+    "macro_rate_10y"
+  ],
+  "model_paths": {
+    "xgb": "/Users/a/Downloads/ml-trade-engine/data/models/AMZN/xgb_final.json",
+    "lgbm": "/Users/a/Downloads/ml-trade-engine/data/models/AMZN/lgbm_final.txt",
+    "lstm": "/Users/a/Downloads/ml-trade-engine/data/models/AMZN/lstm_final.pt",
+    "feature_cols": "/Users/a/Downloads/ml-trade-engine/data/models/AMZN/feature_cols.json"
+  },
+  "elapsed_s": 567.0303039550781
+}

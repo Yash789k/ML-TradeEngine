@@ -1,0 +1,43 @@
+{
+  "ticker": "META",
+  "strategy_metrics": {
+    "total_return": -0.5316,
+    "cagr": -0.0876,
+    "sharpe_ratio": -0.319,
+    "sortino_ratio": -0.274,
+    "max_drawdown": -0.7856,
+    "calmar_ratio": -0.111,
+    "volatility": 0.2972,
+    "n_days": 2085,
+    "win_rate": 0.5743,
+    "n_trades": 149,
+    "avg_win": 225.7018,
+    "avg_loss": -341.4274,
+    "expectancy": -15.7113
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -1.139,
+    "sharpe_median": -0.304,
+    "sharpe_p95": 0.626,
+    "cagr_p5": -0.3151,
+    "cagr_median": -0.0812,
+    "cagr_p95": 0.2086,
+    "max_dd_p5": -0.7498,
+    "max_dd_median": -0.465,
+    "max_dd_p95": -0.2377,
+    "prob_ruin": 0.191
+  },
+  "best_sweep": {
+    "threshold": 0.45,
+    "commission": 0.0005,
+    "sharpe": -0.26
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}

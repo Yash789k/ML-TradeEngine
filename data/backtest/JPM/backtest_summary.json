@@ -1,0 +1,43 @@
+{
+  "ticker": "JPM",
+  "strategy_metrics": {
+    "total_return": 0.8206,
+    "cagr": 0.0751,
+    "sharpe_ratio": 0.218,
+    "sortino_ratio": 0.246,
+    "max_drawdown": -0.4106,
+    "calmar_ratio": 0.183,
+    "volatility": 0.2442,
+    "n_days": 2085,
+    "win_rate": 0.5315,
+    "n_trades": 111,
+    "avg_win": 503.6319,
+    "avg_loss": -336.0159,
+    "expectancy": 110.2833
+  },
+  "monte_carlo": {
+    "n_paths": 1000,
+    "n_years": 3.0,
+    "sharpe_p5": -0.635,
+    "sharpe_median": 0.236,
+    "sharpe_p95": 1.11,
+    "cagr_p5": -0.1295,
+    "cagr_median": 0.0792,
+    "cagr_p95": 0.3257,
+    "max_dd_p5": -0.507,
+    "max_dd_median": -0.3009,
+    "max_dd_p95": -0.1702,
+    "prob_ruin": 0.01
+  },
+  "best_sweep": {
+    "threshold": 0.35,
+    "commission": 0.0005,
+    "sharpe": 0.283
+  },
+  "sim_params": {
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005,
+    "mode": "long_only"
+  }
+}
