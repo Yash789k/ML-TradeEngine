@@ -302,11 +302,13 @@ python3 data_retrieval.py [--ticker AAPL MSFT ...] [--start 2018-01-01]
 
 # Training
 python3 train.py --ticker AAPL                   # single ticker
-python3 train.py --all-tickers --n-trials 50     # all default tickers
+python3 train.py --all-tickers --n-trials 50 --lstm-epochs 50 --lstm-seq-len 60   # all default tickers
 python3 train.py --ticker AAPL --skip-lstm        # skip LSTM (faster)
 
 # Backtesting
 python3 backtest.py --ticker AAPL                # single ticker
+"--capital 10000 --commission 0.001 --slippage 0.0005 \
+  --confidence 0.38 --mode long_only --mc-paths 1000" # Reference params
 python3 backtest.py --all-tickers --no-mc        # skip Monte Carlo
 python3 backtest.py --all-tickers --confidence 0.45 --mode long_short
 
@@ -315,10 +317,25 @@ python3 risk.py --ticker AAPL                    # single ticker
 python3 risk.py --all-tickers                    # all tickers
 python3 risk.py --all-tickers --atr-mult 3.0     # wider stop (3×ATR)
 python3 risk.py --all-tickers --kelly 0.25       # quarter-Kelly filter
+"--kelly 0.5 --atr-mult 2.0 --cb-threshold 0.85" # Reference params
 
 # Tests
 python3 -m pytest tests/ -v
 python3 -m pytest tests/test_risk.py -v          # risk tests only
+
+# Extract paper numbers
+python3 extract_paper_numbers.py 2>&1 | tee docs/paper_numbers.txt
+
+# Launch Dashboard
+pip install streamlit plotly   # if not already installed
+cd /ml-trade-engine # go into the repo
+
+- streamlit run dashboard.py --server.port 8501
+- mlflow ui --port 8501 --backend-store-uri ./mlruns
+# Open http://localhost:8501
+
+kill $(lsof -ti :8501) # Kill dashboard / Ctrl C - Pending vercel deployment
+
 ```
 
 ---
