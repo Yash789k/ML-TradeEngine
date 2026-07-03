@@ -1,0 +1,68 @@
+{
+  "AAPL": {
+    "old": {
+      "pct_up": 0.324,
+      "pct_down": 0.624,
+      "up_precision": 0.491,
+      "n": 995,
+      "sharpe": -0.051,
+      "cagr": 0.023,
+      "max_dd": -0.3174,
+      "exposure": 0.324
+    },
+    "new": {
+      "pct_up": 0.312,
+      "pct_down": 0.513,
+      "up_precision": 0.455,
+      "n": 995,
+      "sharpe": 0.003,
+      "cagr": 0.0333,
+      "max_dd": -0.3722,
+      "exposure": 0.312
+    }
+  },
+  "NVDA": {
+    "old": {
+      "pct_up": 0.528,
+      "pct_down": 0.399,
+      "up_precision": 0.55,
+      "n": 2085,
+      "sharpe": 0.604,
+      "cagr": 0.2289,
+      "max_dd": -0.6076,
+      "exposure": 0.527
+    },
+    "new": {
+      "pct_up": 0.356,
+      "pct_down": 0.438,
+      "up_precision": 0.503,
+      "n": 2080,
+      "sharpe": -0.055,
+      "cagr": -0.0273,
+      "max_dd": -0.6525,
+      "exposure": 0.356
+    }
+  },
+  "SPY": {
+    "old": {
+      "pct_up": 0.174,
+      "pct_down": 0.686,
+      "up_precision": 0.514,
+      "n": 995,
+      "sharpe": -0.307,
+      "cagr": 0.0142,
+      "max_dd": -0.1753,
+      "exposure": 0.174
+    },
+    "new": {
+      "pct_up": 0.143,
+      "pct_down": 0.591,
+      "up_precision": 0.528,
+      "n": 995,
+      "sharpe": -0.582,
+      "cagr": -0.0145,
+      "max_dd": -0.2272,
+      "exposure": 0.143
+    }
+  }
+}

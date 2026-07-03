@@ -267,12 +267,15 @@ Minimum thresholds before live paper deployment.
 
 | Metric | Target | Current Status |
 |---|:---:|---|
-| Sharpe Ratio | > 1.0 | ⏳ Phase 06 portfolio required |
-| Max Drawdown | < 20% | ⚠️ AAPL ✅, others wider |
+| Sharpe Ratio | > 1.0 | ⚠️ Meta-strategy 0.70 (beats SPY 0.65 + all 8 singles) |
+| Max Drawdown | < 20% | ✅ Meta-strategy −4.5% |
 | Win Rate | > 55% | ✅ 61–64% on AAPL, MSFT, GOOGL, QQQ |
-| CAGR | > 15% | ⏳ 7–10% single-asset |
-| Calmar Ratio | > 0.5 | ✅ AAPL: 1.11 |
-| t-stat on returns | > 2.0 | ⏳ Phase 06B |
+| CAGR | > 15% | ⏳ Meta-strategy 9.4% (vol 6.2% — leverable) |
+| Calmar Ratio | > 0.5 | ✅ Meta-strategy 2.08 |
+| t-stat on returns | > 2.0 | ✅ Meta-strategy 3.41 |
+
+*Meta-strategy = Phase 06D regime-gated allocator, 22-ticker EW portfolio,
+May 2021 – May 2026. See `docs/PHASE_06D_LOG.md`.*
 
 ---
 
@@ -287,17 +290,18 @@ Minimum thresholds before live paper deployment.
 | 03 | ML Models | XGB + LGBM + LSTM ensemble, walk-forward CV, MLflow |
 | 04 | Backtesting | Vectorized OOS sim, 1000× Monte Carlo, threshold sweep |
 | 05 | Risk Management | Kelly filter, ATR hard stop, circuit breaker, VaR/CVaR |
+| 06A | Strategy Zoo | 8 strategies × 22 tickers, full OOS scorecards |
+| 06B | Ranking System | Unified scorecard: Sharpe, Alpha, IR, t-stat, composite rank |
+| 06C | Env Characterisation | Cost sensitivity, signal decay, factor attribution |
+| 06D | Meta-Strategy | Regime-gated allocator: Sharpe 0.70, MaxDD −4.5%, t 3.41 |
 
 ### In Progress
 
 | Phase | Milestone | Key Deliverable | Gate to Proceed |
 |:---:|---|---|---|
-| 06A | Strategy Zoo | 8 strategies × 20–30 tickers, full OOS scorecards | Each strategy has clean, reproducible backtest |
-| 06B | Ranking System | Unified scorecard table: Sharpe, Alpha, IR, t-stat, regime breakdown | All strategies statistically comparable |
-| 06C | Env Characterisation | Cost sensitivity, signal decay, factor attribution | Factor α isolated from market β |
-| 06D | Research Paper | Draft: Regime-Gated Alpha Trends | Results reproducible; novelty confirmed |
-| 06E | Live Execution | Alpaca paper orders daily *(parallel)* | Orders execute cleanly; logs clean |
-| 07 | Dashboard | Streamlit app showing equity, signals, rankings | Public URL, all charts functional |
+| 06D | Research Paper | Draft v0.2 — §5 populated; §4/§6 numbers pending | Results reproducible; novelty confirmed |
+| 06E | Live Execution | Alpaca paper orders daily *(parallel)* — dry-runs verified, scheduled runs pending | Orders execute cleanly; logs clean |
+| 07 | Dashboard | Streamlit app built and running locally | Public URL, all charts functional |
 
 ---
 

@@ -415,6 +415,8 @@ class ModelTrainer:
         elapsed_total = time.time() - t0
         results = {
             "ticker":           ticker,
+            "horizon":          horizon,
+            "threshold":        threshold,
             "n_folds":          len(fold_results),
             "fold_metrics":     fold_results,
             "oos_metrics":      oos_m,

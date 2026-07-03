@@ -1,3 +1,7 @@
+# NOTE: requires Python >= 3.12 — pandas-ta only publishes 0.4.x wheels with
+# Requires-Python >=3.12 (all older versions were removed from PyPI).
+# CI (.github/workflows/daily_signals.yml) runs 3.12 for this reason.
+
 # Phase 01 — Data Layer
 requests
 pandas
@@ -5,9 +9,10 @@ ccxt
 pandas-datareader
 pyarrow
 pytest
+yfinance
 
 # Phase 02 — Feature Engineering
-pandas-ta
+pandas-ta>=0.4.71b0
 hmmlearn
 scipy
 numpy

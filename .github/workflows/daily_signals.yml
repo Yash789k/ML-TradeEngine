@@ -19,11 +19,20 @@ on:
         type: choice
         options: ["true", "false"]
 
+# Least privilege: the job only needs to read the repo contents.
+permissions:
+  contents: read
+
+# Never let two signal runs overlap (e.g. a retried run + the next day's run)
+concurrency:
+  group: daily-signals
+  cancel-in-progress: false
+
 jobs:
   signals:
     name: Generate Signals & Submit Orders
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
 
     env:
       ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
@@ -35,16 +44,27 @@ jobs:
       SMTP_PORT:         ${{ secrets.SMTP_PORT }}
       SMTP_USER:         ${{ secrets.SMTP_USER }}
       SMTP_PASS:         ${{ secrets.SMTP_PASS }}
+      SUPABASE_URL:      ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
+      # pandas-ta ≥0.4 (the only versions left on PyPI) requires Python ≥3.12.
+      # Do NOT downgrade below 3.12 — the install will fail with
+      # "No matching distribution found for pandas-ta".
+      - name: Set up Python 3.12
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
           cache: "pip"
+
+      # CPU-only torch first: the default PyPI torch wheel drags in ~2 GB of
+      # CUDA libraries that are useless on a GitHub runner. This cuts install
+      # time from ~8 min to ~2 min and avoids disk-space failures.
+      - name: Install CPU-only PyTorch
+        run: pip install torch --index-url https://download.pytorch.org/whl/cpu
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -94,6 +114,12 @@ jobs:
       - name: Print order log
         if: always()
         run: python3 live.py orders --n 10
+
+      # Durable persistence: mirror the SQLite signal log to Supabase Postgres.
+      # Best-effort — skipped silently when SUPABASE_* secrets are not set.
+      - name: Sync signal log to Supabase
+        if: always()
+        run: python3 scripts/sync_supabase.py
 
       # Save the updated SQLite log and any newly cached Parquet files
       - name: Save data cache

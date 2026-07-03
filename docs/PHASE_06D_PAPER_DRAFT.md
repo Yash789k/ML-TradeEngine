@@ -1,9 +1,9 @@
 # Regime-Gated Alpha Trends: A Unified Framework for Strategy Selection Under Non-Stationary Market States
 
-**Draft version 0.1 — for internal review**  
-**Authors:** [Author]  
+**Draft version 0.2 — for internal review**  
+**Authors:** [Yash Kataria]  
 **Target:** *Quantitative Finance* or *Journal of Portfolio Management*  
-**Status:** Scaffold — populate with Phase 06A–06C numerical results
+**Status:** Meta-strategy results populated (Phase 06D); env-characterisation numbers pending
 
 ---
 
@@ -12,11 +12,12 @@
 We present a unified quantitative framework that uses a Hidden Markov Model (HMM)
 regime classifier as a meta-strategy gating layer, dynamically allocating capital
 to the historically best-performing strategy in each detected market state.
-Applied to a 20–30 asset universe of US equities, ETFs, and macro instruments
-over a five-year out-of-sample period, the regime-gated meta-strategy achieves
-a Sharpe ratio of [FILL], CAGR of [FILL], and maximum drawdown of [FILL],
-outperforming all eight constituent strategies and the SPY benchmark on a
-risk-adjusted basis.
+Applied to a 22-asset universe of US equities, ETFs, and macro instruments
+over a five-year period (May 2021 – May 2026), the regime-gated meta-strategy
+achieves a Sharpe ratio of 0.70 (t = 3.41), CAGR of 9.4%, and maximum drawdown
+of −4.5%, outperforming all eight constituent strategies and the SPY benchmark
+(Sharpe 0.65, max drawdown −18.8%) on a risk-adjusted basis, with roughly
+one-quarter of the benchmark's drawdown and a market beta of 0.33.
 We further characterise the trading environment through cost-sensitivity analysis,
 rolling signal-decay diagnostics, and Fama–French three-factor decomposition,
 demonstrating that the ensemble alpha is robust to realistic transaction costs
@@ -185,25 +186,35 @@ three-class directional labels (up/flat/down) using PurgedGroupTimeSeriesSplit
 walk-forward cross-validation. The ensemble serves as the signal source for
 the Alpha Trends strategy and as a standalone benchmark.
 
-**Label construction:** Forward return thresholded at ±[X]% over [N] bars.
+**Label construction:** Forward return thresholded at ±0.5% over 5 bars
+(production configuration; a redesigned ±1.5% / 10-bar labelling scheme is
+under evaluation to reduce label noise and directional class imbalance).
 
 ### 3.6 Meta-Strategy (Regime-Gated Allocation)
 
-The meta-strategy allocates to the strategy with the highest historical
-Sharpe ratio in the current HMM regime state, sized by half-Kelly based
-on the ML ensemble's directional confidence:
+Per ticker, the meta-strategy holds the constituent strategy with the highest
+*historical* Sharpe ratio in the *current* HMM regime state, computed on an
+expanding walk-forward window (only data strictly before day *t* is used by
+the allocator):
 
 ```
-If HMM_state == BULL:      allocate to argmax(Sharpe | state=BULL)
-If HMM_state == RANGING:   allocate to argmax(Sharpe | state=RANGING)
-If HMM_state == BEAR:      allocate to argmax(Sharpe | state=BEAR)
-
-Position size = 0.5 × Kelly_fraction(p_up, win_loss_ratio) × ATR_volatility_scale
+state(t)  = HMM regime confirmed over the last `confirm_bars`=3 known bars
+candidate = argmax_s Sharpe( returns_s | regime == state(t), d < t )
 ```
 
-The meta-strategy respects the same risk controls as Phase 05:
-ATR-based hard stop-loss (2×ATR), 15% portfolio drawdown circuit breaker,
-and a maximum 20% portfolio heat constraint.
+Anti-whipsaw controls:
+- **Burn-in:** the ranking requires ≥ 60 in-regime observations; until then
+  the allocator holds the equal-weight average of all eight strategies.
+- **Regime confirmation:** a regime change must persist 3 consecutive bars
+  before a re-selection is triggered.
+- **Minimum hold:** a selection is held ≥ 10 bars before switching again;
+  rankings are re-evaluated at most every 21 bars otherwise.
+- **Switch cost:** every strategy switch is charged 15 bps to model the
+  liquidate/re-enter round trip (constituent equity curves already embed
+  their own per-trade costs).
+
+The portfolio is the equal-weight daily average of the 22 per-ticker
+meta-strategies.
 
 ### 3.7 Statistical Testing
 
@@ -250,24 +261,39 @@ Key findings:
 
 ### 5.1 Allocation Mechanism
 
-[FILL: describe dynamic allocation, transitions, Kelly sizing per signal]
+See §3.6. Over the full sample the allocator selected Mean Reversion 28.0% of
+bars, Turtle Breakout 19.3%, Momentum 12-1 15.0%, Alpha Trends 11.4%,
+equal-weight burn-in 9.2%, EMA Crossover 7.2%, Pairs StatArb 4.9%,
+Vol Breakout 3.9% and Carry Proxy 1.1% — i.e. no single constituent dominates,
+and the mix shifts materially across regimes.
 
 ### 5.2 Backtested Performance
 
-> [TABLE] — Meta-strategy vs all individual strategies vs SPY
+Full period May 2021 – May 2026 (1,304 trading days), 22-ticker equal-weight
+portfolio; results from `data/research/meta/meta_summary.json`:
 
-| Metric | Meta-Strategy | Best Individual | SPY (B&H) |
+| Metric | Meta-Strategy | Best Individual (Momentum 12-1) | SPY (B&H) |
 |--------|:-------------:|:---------------:|:---------:|
-| Sharpe | [FILL] | [FILL] | ~0.6 |
-| CAGR | [FILL] | [FILL] | ~11% |
-| Max DD | [FILL] | [FILL] | ~34% |
-| Calmar | [FILL] | [FILL] | ~0.3 |
-| t-stat | [FILL] | [FILL] | — |
-| Alpha | [FILL] | [FILL] | 0% |
+| Sharpe | **0.70** | 0.56 | 0.65 |
+| CAGR | 9.4% | 11.1% | 14.0% |
+| Max DD | **−4.5%** | −18.9% | −18.8% |
+| Calmar | **2.08** | 0.59 | 0.75 |
+| Sortino | 1.05 | 0.64 | 0.79 |
+| t-stat | **3.41** | 2.25 | — |
+| Alpha (vs SPY) | +4.6%/yr | — | 0% |
+| Beta (vs SPY) | 0.33 | — | 1.00 |
+| Volatility | 6.2% | 11.3% | 14.2% |
+
+The meta-strategy underperforms SPY on raw CAGR (9.4% vs 14.0% in a strongly
+bullish sample) but dominates on every risk-adjusted measure: 4× better Calmar,
+one-quarter of the drawdown, less than half the volatility, and a mean daily
+return that is statistically distinguishable from zero at the 0.1% level
+(t = 3.41). It also beats every one of its eight constituents on Sharpe.
 
 ### 5.3 Equity Curve
 
-[INSERT: equity curve chart — meta-strategy vs best single strategy vs SPY]
+[INSERT: equity curve chart — meta-strategy vs best single strategy vs SPY;
+data in `data/research/meta/meta_returns.parquet`]
 
 ---
 
@@ -334,9 +360,12 @@ not dominated by a single constituent.
 - **Parameter sensitivity:** [FILL — discuss sensitivity of Kelly fraction,
   confidence threshold, ATR multiplier]
 
-- **Look-ahead in ranking:** The meta-strategy ranks constituent strategies
-  on historical in-regime Sharpe; this is an optimistic estimate. Live
-  performance will depend on regime-Sharpe persistence.
+- **Look-ahead in regime labels:** The allocator itself is strictly
+  walk-forward (rankings use only data before day *t*; a no-lookahead
+  property verified by unit test). However, the HMM regime sequence was
+  decoded from a model fitted on the full sample (Phase 02), so the regime
+  labels themselves carry mild look-ahead. Live deployment requires rolling
+  HMM re-estimation, which may degrade regime quality at state boundaries.
 
 ### 7.2 Overfitting Risk
 
@@ -359,8 +388,9 @@ is left for future work.
 We have presented and validated a regime-gated meta-strategy framework that
 dynamically allocates to the historically best-performing constituent strategy
 in each HMM-detected market state. The framework achieves a Sharpe ratio of
-[FILL] (t = [FILL]) out-of-sample, materially outperforming both the best
-constituent strategy ([FILL]) and the passive benchmark (SPY: [FILL]).
+0.70 (t = 3.41) with a −4.5% maximum drawdown, outperforming both the best
+constituent strategy (Momentum 12-1: Sharpe 0.56, −18.9% drawdown) and the
+passive benchmark (SPY: Sharpe 0.65, −18.8% drawdown) on a risk-adjusted basis.
 
 The edge is robust to realistic transaction costs up to [FILL] bps, shows no
 significant decay over the sample period, and produces a statistically
@@ -424,6 +454,7 @@ python3 risk.py                    # Phase 05: risk engine
 python3 research.py zoo            # Phase 06A: strategy zoo
 python3 research.py rank           # Phase 06B: ranking
 python3 research.py env            # Phase 06C: environment characterisation
+python3 research.py meta --research  # Phase 06D: regime-gated meta-strategy
 streamlit run dashboard.py         # Phase 07: visualise all results
 ```
 

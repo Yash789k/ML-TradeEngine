@@ -1,0 +1,151 @@
+{
+  "tickers": [
+    "AAPL",
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+    "NVDA",
+    "META",
+    "TSLA",
+    "JPM",
+    "BAC",
+    "GS",
+    "XLK",
+    "XLF",
+    "XLE",
+    "XLV",
+    "XLI",
+    "XLP",
+    "GLD",
+    "TLT",
+    "IWM",
+    "DIA",
+    "SPY",
+    "QQQ"
+  ],
+  "meta_portfolio": {
+    "total_return": 0.5978,
+    "cagr": 0.0949,
+    "sharpe_ratio": 0.712,
+    "sortino_ratio": 1.061,
+    "max_drawdown": -0.0454,
+    "calmar_ratio": 2.089,
+    "volatility": 0.0615,
+    "n_days": 1303,
+    "t_stat": 3.4234,
+    "alpha": 0.0463,
+    "beta": 0.3278,
+    "info_ratio": -0.4706
+  },
+  "single_strategy_portfolios": {
+    "Alpha_Trends": {
+      "total_return": 0.4575,
+      "cagr": 0.0756,
+      "sharpe_ratio": 0.378,
+      "sortino_ratio": 0.477,
+      "max_drawdown": -0.0869,
+      "calmar_ratio": 0.87,
+      "volatility": 0.0701,
+      "n_days": 1303,
+      "t_stat": 2.4421
+    },
+    "Carry_Proxy": {
+      "total_return": 0.1822,
+      "cagr": 0.0329,
+      "sharpe_ratio": -0.22,
+      "sortino_ratio": -0.191,
+      "max_drawdown": -0.1257,
+      "calmar_ratio": 0.262,
+      "volatility": 0.0651,
+      "n_days": 1303,
+      "t_stat": 1.2043
+    },
+    "EMA_Crossover": {
+      "total_return": 0.3039,
+      "cagr": 0.0527,
+      "sharpe_ratio": 0.071,
+      "sortino_ratio": 0.09,
+      "max_drawdown": -0.1007,
+      "calmar_ratio": 0.523,
+      "volatility": 0.0676,
+      "n_days": 1303,
+      "t_stat": 1.8036
+    },
+    "Mean_Reversion": {
+      "total_return": 0.3117,
+      "cagr": 0.0539,
+      "sharpe_ratio": 0.096,
+      "sortino_ratio": 0.125,
+      "max_drawdown": -0.0293,
+      "calmar_ratio": 1.84,
+      "volatility": 0.0517,
+      "n_days": 1303,
+      "t_stat": 2.3672
+    },
+    "Momentum_12_1": {
+      "total_return": 0.721,
+      "cagr": 0.1107,
+      "sharpe_ratio": 0.555,
+      "sortino_ratio": 0.639,
+      "max_drawdown": -0.1892,
+      "calmar_ratio": 0.585,
+      "volatility": 0.1128,
+      "n_days": 1303,
+      "t_stat": 2.2456
+    },
+    "Pairs_StatArb": {
+      "total_return": 0.1011,
+      "cagr": 0.0188,
+      "sharpe_ratio": -0.639,
+      "sortino_ratio": -0.767,
+      "max_drawdown": -0.0872,
+      "calmar_ratio": 0.216,
+      "volatility": 0.0456,
+      "n_days": 1303,
+      "t_stat": 0.9802
+    },
+    "Turtle_Breakout": {
+      "total_return": 0.4392,
+      "cagr": 0.073,
+      "sharpe_ratio": 0.337,
+      "sortino_ratio": 0.466,
+      "max_drawdown": -0.0994,
+      "calmar_ratio": 0.734,
+      "volatility": 0.0718,
+      "n_days": 1303,
+      "t_stat": 2.3114
+    },
+    "Vol_Breakout": {
+      "total_return": 0.1362,
+      "cagr": 0.025,
+      "sharpe_ratio": -0.956,
+      "sortino_ratio": -1.188,
+      "max_drawdown": -0.0282,
+      "calmar_ratio": 0.887,
+      "volatility": 0.0249,
+      "n_days": 1303,
+      "t_stat": 2.2849
+    }
+  },
+  "spy_buy_hold": {
+    "total_return": 0.9705,
+    "cagr": 0.1402,
+    "sharpe_ratio": 0.653,
+    "sortino_ratio": 0.794,
+    "max_drawdown": -0.1876,
+    "calmar_ratio": 0.747,
+    "volatility": 0.1416,
+    "n_days": 1303
+  },
+  "allocation_pct": {
+    "Mean_Reversion": 0.2804,
+    "Turtle_Breakout": 0.1932,
+    "Momentum_12_1": 0.1498,
+    "Alpha_Trends": 0.1136,
+    "EW": 0.092,
+    "EMA_Crossover": 0.0718,
+    "Pairs_StatArb": 0.0491,
+    "Vol_Breakout": 0.0392,
+    "Carry_Proxy": 0.011
+  }
+}

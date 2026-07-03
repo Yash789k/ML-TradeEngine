@@ -1,0 +1,68 @@
+{
+  "ticker": "AAPL",
+  "horizon": 10,
+  "threshold": 0.015,
+  "n_folds": 5,
+  "oos_metrics": {
+    "accuracy": 0.3527638190954774,
+    "f1_macro": 0.3277500019742126,
+    "f1_down": 0.4121951219512195,
+    "f1_flat": 0.19951338199513383,
+    "f1_up": 0.3715415019762846
+  },
+  "best_params_xgb": {
+    "n_estimators": 107,
+    "max_depth": 6,
+    "learning_rate": 0.006753546167992032,
+    "subsample": 0.9996812193207756,
+    "colsample_bytree": 0.7413740413563565,
+    "min_child_weight": 9,
+    "gamma": 3.4437760808631843,
+    "reg_alpha": 0.01830638360153773,
+    "reg_lambda": 1.0369636508613627e-06
+  },
+  "best_params_lgbm": {
+    "n_estimators": 381,
+    "max_depth": 6,
+    "learning_rate": 0.04606255386133509,
+    "num_leaves": 72,
+    "subsample": 0.707289201615861,
+    "colsample_bytree": 0.9139395991927128,
+    "min_child_samples": 7,
+    "reg_alpha": 0.0039049334172539477,
+    "reg_lambda": 0.0018341309270531111
+  },
+  "feature_cols": [
+    "realized_vol_21",
+    "adx_14",
+    "zscore_60",
+    "skew_60",
+    "close_ema200_ratio",
+    "macro_VIX",
+    "bb_upper",
+    "bb_lower",
+    "kurtosis_60",
+    "macd_hist",
+    "spy_corr_21",
+    "macro_CPI",
+    "btc_return_21d",
+    "rsi_14",
+    "bb_mid",
+    "macro_rate_10y",
+    "close_ema20_ratio",
+    "hurst_100",
+    "obv",
+    "realized_vol_5",
+    "gap_return",
+    "rs_vs_spy_63",
+    "btc_return_5d",
+    "atr_14",
+    "return_5d"
+  ],
+  "model_paths": {
+    "xgb": "/Users/a/Downloads/ml-trade-engine/data/models_pilot/AAPL/xgb_final.json",
+    "lgbm": "/Users/a/Downloads/ml-trade-engine/data/models_pilot/AAPL/lgbm_final.txt",
+    "feature_cols": "/Users/a/Downloads/ml-trade-engine/data/models_pilot/AAPL/feature_cols.json"
+  },
+  "elapsed_s": 81.18306994438171
+}

@@ -7,6 +7,7 @@ Subcommands
   rank   Enrich scorecard with alpha/beta/t-stat/IR and rank (Phase 06B)
   show   Print the ranked scorecard table
   env    Run Phase 06C environment characterisation (4 analyses)
+  meta   Run the regime-gated meta-strategy backtest (Phase 06D)
 
 Usage Examples
 --------------
@@ -39,6 +40,12 @@ Usage Examples
 
   # Show saved env results without re-running
   python3 research.py env --show-only
+
+  # Phase 06D: regime-gated meta-strategy on the full research universe
+  python3 research.py meta --research
+
+  # Meta-strategy with custom burn-in and rebalance cadence
+  python3 research.py meta --research --min-obs 90 --rebalance 42
 """
 
 from __future__ import annotations
@@ -160,6 +167,32 @@ def parse_args() -> argparse.Namespace:
     env_p.add_argument(
         "--tickers", nargs="+", default=None, metavar="TICK",
         help="Explicit ticker subset for regime/cost analyses.",
+    )
+
+    # ── meta ──────────────────────────────────────────────────────────────
+    meta_p = sub.add_parser(
+        "meta",
+        help="Phase 06D — Regime-gated meta-strategy backtest.",
+    )
+    meta_p.add_argument(
+        "--research", action="store_true",
+        help="Run on the full 22-ticker research universe.",
+    )
+    meta_p.add_argument(
+        "--tickers", nargs="+", default=None, metavar="TICK",
+        help="Explicit ticker list (overrides --research and defaults).",
+    )
+    meta_p.add_argument(
+        "--min-obs", type=int, default=60,
+        help="Min in-regime observations before trusting ranking (default 60).",
+    )
+    meta_p.add_argument(
+        "--rebalance", type=int, default=21,
+        help="Re-evaluate selection at most every N bars (default 21).",
+    )
+    meta_p.add_argument(
+        "--no-save", action="store_true",
+        help="Skip writing artifacts to disk.",
     )
 
     return p.parse_args()
@@ -427,6 +460,65 @@ def cmd_env(args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Command: meta  (Phase 06D)
+# ---------------------------------------------------------------------------
+
+def cmd_meta(args: argparse.Namespace) -> None:
+    from src.research.meta_strategy import MetaStrategy
+
+    # Resolve tickers: explicit --tickers > --research universe > default 5
+    if args.tickers:
+        tickers = [t.upper() for t in args.tickers]
+    elif getattr(args, "research", False):
+        tickers = _RESEARCH_TICKERS
+        log.info("Using full research universe (%d tickers)", len(tickers))
+    else:
+        tickers = _DEFAULT_TICKERS
+    log.info("Tickers: %s", tickers)
+
+    meta = MetaStrategy(
+        min_regime_obs  = args.min_obs,
+        rebalance_every = args.rebalance,
+    )
+
+    log.info("Running regime-gated meta-strategy (walk-forward selection) …")
+    results = meta.run_universe(tickers, save=not args.no_save)
+
+    # ── Print comparison table ─────────────────────────────────────────
+    mp = results["meta_portfolio"]
+    print("\n" + "─" * 78)
+    print("  Phase 06D — Regime-Gated Meta-Strategy vs Benchmarks")
+    print("─" * 78)
+    print(f"  {'Portfolio':<28} {'Sharpe':>7}  {'CAGR':>7}  {'MaxDD':>7}  {'Calmar':>7}  {'t-stat':>7}")
+    print("  " + "-" * 70)
+
+    def _row(name, m):
+        print(f"  {name:<28} {m.get('sharpe_ratio', 0):>7.3f}  "
+              f"{m.get('cagr', 0) * 100:>6.1f}%  "
+              f"{m.get('max_drawdown', 0) * 100:>6.1f}%  "
+              f"{m.get('calmar_ratio', 0):>7.2f}  "
+              f"{m.get('t_stat', float('nan')):>7.2f}")
+
+    _row("META (regime-gated)", mp)
+    for s, m in sorted(
+        results["single_strategy_portfolios"].items(),
+        key=lambda kv: -kv[1].get("sharpe_ratio", 0),
+    ):
+        _row(f"  single: {s}", m)
+    if "spy_buy_hold" in results:
+        _row("SPY buy & hold", results["spy_buy_hold"])
+
+    if "alpha" in mp:
+        print(f"\n  META alpha vs SPY: {mp['alpha']:.2%} annualised   "
+              f"beta: {mp['beta']:.2f}   IR: {mp.get('info_ratio', 0):.2f}")
+
+    print("\n  Allocation frequency:")
+    for s, pct in sorted(results["allocation_pct"].items(), key=lambda kv: -kv[1]):
+        print(f"    {s:<20} {pct * 100:>5.1f}%")
+    print("─" * 78)
+
+
+# ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
 
@@ -441,6 +533,8 @@ def main() -> None:
         cmd_show(args)
     elif args.command == "env":
         cmd_env(args)
+    elif args.command == "meta":
+        cmd_meta(args)
     else:
         log.error("Unknown command: %s", args.command)
         sys.exit(1)

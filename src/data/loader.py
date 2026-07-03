@@ -95,6 +95,8 @@ def _gap_fill(df: pd.DataFrame, freq: str = "B") -> pd.DataFrame:
     df[price_present] = df[price_present].ffill()
     if _VOL_COL in df.columns:
         df[_VOL_COL] = df[_VOL_COL].fillna(0)
+    if "ticker" in df.columns:
+        df["ticker"] = df["ticker"].ffill().bfill()
     df.index.name = "Date"
     return df
 
