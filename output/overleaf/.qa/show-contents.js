@@ -1,0 +1,1 @@
+(()=>{const b=Array.from(document.querySelectorAll('button')).find(b=>b.innerText==='File'&&b.getAttribute('aria-expanded')==='true');if(b)b.click();document.querySelector('.cm-scroller').scrollTop=0;document.querySelector('[data-page-number="2"]').scrollIntoView({block:'start'});return 'Left the editor at the LaTeX source and PDF contents page';})()

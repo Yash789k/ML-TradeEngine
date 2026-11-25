@@ -1,0 +1,15 @@
+\begin{table}[!htbp]\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.14}
+\caption{Consumed recent-audit forecasts; identical mature observations}\label{tab:5}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.14286\textwidth-5.143pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.14286\textwidth-5.143pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.14286\textwidth-5.143pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.14286\textwidth-5.143pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.14286\textwidth-5.143pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.14286\textwidth-5.143pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.14286\textwidth-5.143pt\relax}@{}}
+\toprule
+\textbf{Model} & \textbf{Rows} & \textbf{Accuracy} & \textbf{Balanced} & \textbf{Macro F1} & \textbf{Log loss} & \textbf{Brier} \\
+\midrule
+linear & 1,056 & 38.35\% & 37.89\% & 0.378 & 1.1291 & 0.6858 \\
+tree & 1,056 & 36.93\% & 36.63\% & 0.366 & 1.1679 & 0.7049 \\
+raw\_\allowbreak{}mix & 1,056 & 37.59\% & 37.24\% & 0.372 & 1.1171 & 0.6796 \\
+hybrid & 1,056 & 37.59\% & 37.24\% & 0.372 & 1.0882 & 0.6594 \\
+prior & 1,056 & 40.62\% & 39.26\% & 0.307 & 1.0756 & 0.6540 \\
+always\_\allowbreak{}up & 1,056 & 35.89\% & 33.33\% & 0.176 & 17.7142 & 1.2822 \\
+\bottomrule\end{tabular}\par\smallskip
+\raggedright\textit{Source:} \path{data/research-v2/tables/diag_forecast_summary.csv}.
+\end{table}

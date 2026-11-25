@@ -1,0 +1,106 @@
+\begin{thebibliography}{14}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Gu et~al.(2020)Gu, Kelly, and Xiu]{gu2020}
+Shihao Gu, Bryan Kelly, and Dacheng Xiu.
+\newblock Empirical asset pricing via machine learning.
+\newblock \emph{The Review of Financial Studies}, 33\penalty0 (5):\penalty0
+  2223--2273, 2020.
+\newblock URL \url{https://doi.org/10.1093/rfs/hhaa009}.
+
+\bibitem[Moskowitz et~al.(2012)Moskowitz, Ooi, and Pedersen]{momentum2012}
+Tobias~J. Moskowitz, Yao~Hua Ooi, and Lasse~Heje Pedersen.
+\newblock Time series momentum.
+\newblock \emph{Journal of Financial Economics}, 104\penalty0 (2):\penalty0
+  228--250, 2012.
+\newblock URL \url{https://doi.org/10.1016/j.jfineco.2011.11.003}.
+
+\bibitem[Friedman(2001)]{friedman2001}
+Jerome~H. Friedman.
+\newblock Greedy function approximation: A gradient boosting machine.
+\newblock \emph{The Annals of Statistics}, 29\penalty0 (5):\penalty0
+  1189--1232, 2001.
+\newblock URL \url{https://doi.org/10.1214/aos/1013203451}.
+
+\bibitem[Gneiting and Raftery(2007)]{gneiting2007}
+Tilmann Gneiting and Adrian~E. Raftery.
+\newblock Strictly proper scoring rules, prediction, and estimation.
+\newblock \emph{Journal of the American Statistical Association}, 102\penalty0
+  (477):\penalty0 359--378, 2007.
+\newblock URL
+  \url{https://sites.stat.washington.edu/people/raftery/Research/PDF/Gneiting2007jasa.pdf}.
+
+\bibitem[Guo et~al.(2017)Guo, Pleiss, Sun, and Weinberger]{guo2017}
+Chuan Guo, Geoff Pleiss, Yu~Sun, and Kilian~Q. Weinberger.
+\newblock On calibration of modern neural networks.
+\newblock Proceedings of ICML, PMLR 70, 1321-1330, 2017.
+\newblock URL \url{https://proceedings.mlr.press/v70/guo17a.html}.
+
+\bibitem[Kunsch(1989)]{kunsch1989}
+Hans~R. Kunsch.
+\newblock The jackknife and the bootstrap for general stationary observations.
+\newblock \emph{The Annals of Statistics}, 17\penalty0 (3):\penalty0
+  1217--1241, 1989.
+\newblock URL \url{https://doi.org/10.1214/aos/1176347265}.
+
+\bibitem[Newey and West(1987)]{newey1987}
+Whitney~K. Newey and Kenneth~D. West.
+\newblock A simple, positive semi-definite, heteroskedasticity and
+  autocorrelation consistent covariance matrix.
+\newblock \emph{Econometrica}, 55\penalty0 (3):\penalty0 703--708, 1987.
+\newblock URL \url{https://www.nber.org/papers/t0055}.
+
+\bibitem[Harvey et~al.(2016)Harvey, Liu, and Zhu]{harvey2016}
+Campbell~R. Harvey, Yan Liu, and Heqing Zhu.
+\newblock ... and the cross-section of expected returns.
+\newblock \emph{The Review of Financial Studies}, 29\penalty0 (1):\penalty0
+  5--68, 2016.
+\newblock URL \url{https://www.nber.org/papers/w20592}.
+
+\bibitem[Holm(1979)]{holm1979}
+Sture Holm.
+\newblock A simple sequentially rejective multiple test procedure.
+\newblock \emph{Scandinavian Journal of Statistics}, 6\penalty0 (2):\penalty0
+  65--70, 1979.
+\newblock URL \url{https://www.jstor.org/stable/4615733}.
+
+\bibitem[Bailey and de~Prado(2014)]{bailey2014}
+David~H. Bailey and Marcos~Lopez de~Prado.
+\newblock The deflated sharpe ratio: Correcting for selection bias, backtest
+  overfitting and non-normality.
+\newblock \emph{Journal of Portfolio Management}, 40\penalty0 (5):\penalty0
+  94--107, 2014.
+\newblock URL \url{https://doi.org/10.2139/ssrn.2460551}.
+
+\bibitem[Bailey et~al.(2015)Bailey, Borwein, de~Prado, and Zhu]{bailey2015}
+David~H. Bailey, Jonathan~M. Borwein, Marcos~Lopez de~Prado, and Qiji~Jim Zhu.
+\newblock The probability of backtest overfitting.
+\newblock Author manuscript, revised February 2015, 2015.
+\newblock URL \url{https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf}.
+
+\bibitem[Ledoit and Wolf(2004)]{ledoit2004}
+Olivier Ledoit and Michael Wolf.
+\newblock A well-conditioned estimator for large-dimensional covariance
+  matrices.
+\newblock \emph{Journal of Multivariate Analysis}, 88\penalty0 (2):\penalty0
+  365--411, 2004.
+\newblock URL \url{https://www.ledoit.net/Well-conditioned2004.pdf}.
+
+\bibitem[{New York Stock Exchange}(2026)]{nyse2026}
+{New York Stock Exchange}.
+\newblock Holidays and trading hours.
+\newblock Official exchange calendar, accessed 28 September 2026, 2026.
+\newblock URL \url{https://www.nyse.com/trade/hours-calendars}.
+
+\bibitem[{GitHub}(2026)]{github2026}
+{GitHub}.
+\newblock Troubleshooting workflows.
+\newblock Official documentation, accessed 28 September 2026, 2026.
+\newblock URL
+  \url{https://docs.github.com/en/actions/how-tos/troubleshoot-workflows}.
+
+\end{thebibliography}

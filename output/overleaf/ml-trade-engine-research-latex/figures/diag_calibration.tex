@@ -1,0 +1,39 @@
+% Native editable figure; frozen statistics 0d291b4aebf8c524dc6705d872c070feb990e86a1cebbd59a758f400b240c952
+\begin{minipage}[t]{.48\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth,height=5.4cm,xmin=0,xmax=1,ymin=0,ymax=1,xlabel={Mean top probability},ylabel={Observed accuracy},legend pos=north west]
+\addplot+[violet,mark=*,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error minus=lo,y error plus=hi,row sep=\\]{x y lo hi\\0.377941396125 0.321739130435 0.061465157832 0.0711180124224\\
+0.451112648618 0.354709418838 0.036937544687 0.0473755946032\\
+0.540554545882 0.381381381381 0.0908637745748 0.112484584502\\
+0.643079026906 0.590361445783 0.171317044239 0.182983792312\\
+0.745038302803 0.28 0.12625 0.0836363636364\\
+0.800526928081 0 0 0\\};
+\addlegendentry{raw\_mix}
+\addplot+[teal,mark=*,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error minus=lo,y error plus=hi,row sep=\\]{x y lo hi\\0.372554098696 0.343680709534 0.033947623608 0.0388077697283\\
+0.443490294143 0.370454545455 0.0928049251844 0.127299994627\\
+0.535517133114 0.48275862069 0.113193403298 0.113135192247\\
+0.62391873958 0.45 0.227777777778 0.327777777778\\};
+\addlegendentry{hybrid}
+\addplot+[black,mark=*,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error minus=lo,y error plus=hi,row sep=\\]{x y lo hi\\0.390609751495 0.379146919431 0.123131687251 0.11015361194\\
+0.444825090677 0.405269761606 0.0664880431194 0.0743930239297\\
+0.531641069397 0.541666666667 0.166666666667 0.1875\\};
+\addlegendentry{prior}
+\addplot+[gray,mark=none,dashed] coordinates {(0,0) (1,1)};
+
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.48\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth,height=5.4cm,xmin=0,xmax=1,ymin=0,ymax=1,xlabel={Retained fraction},ylabel={Accuracy},legend pos=north east]
+\addplot+[violet,mark=none,mark=*] coordinates {(1,0.375946969697) (0.891098484848,0.3825717322) (0.647727272727,0.393274853801) (0.418560606061,0.414027149321) (0.10321969697,0.51376146789) (0.0246212121212,0.269230769231) (0.00094696969697,0)};
+\addlegendentry{raw\_mix}
+\addplot+[teal,mark=none,mark=*] coordinates {(0.995265151515,0.37773549001) (0.572916666667,0.4) (0.332386363636,0.447293447293) (0.15625,0.478787878788) (0.0189393939394,0.45)};
+\addlegendentry{hybrid}
+\addplot+[black,mark=none,mark=*] coordinates {(1,0.40625) (0.800189393939,0.413017751479) (0.381628787879,0.416873449132) (0.0454545454545,0.541666666667)};
+\addlegendentry{prior}
+
+\end{axis}
+\end{tikzpicture}
+\end{minipage}

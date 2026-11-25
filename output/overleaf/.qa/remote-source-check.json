@@ -1,0 +1,11 @@
+{
+  "README.md": true,
+  "latexmkrc": true,
+  "main.tex": true,
+  "portfolio-adaptive_hybrid.csv": true,
+  "portfolio-cash.csv": true,
+  "portfolio-equal_weight.csv": true,
+  "portfolio-ml.csv": true,
+  "portfolio-trend.csv": true,
+  "references.bib": true
+}

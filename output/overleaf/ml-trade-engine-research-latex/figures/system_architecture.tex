@@ -1,0 +1,10 @@
+% Native editable figure; frozen statistics 0d291b4aebf8c524dc6705d872c070feb990e86a1cebbd59a758f400b240c952
+\begin{tikzpicture}[node distance=9mm and 7mm,box/.style={draw,rounded corners=1mm,align=center,text width=40mm,minimum height=15mm,font=\footnotesize},>=Stealth]
+\node[box] (data) {Completed public bars\\Raw response and adjustments\\Session/freshness checks};
+\node[box,right=of data] (model) {Frozen causal model\\Past-only fit/calibration/gate\\Registered refit anchor};
+\node[box,right=of model] (plan) {Immutable daily plan\\Probabilities and target deltas\\Input/model/source hashes};
+\node[box,below=of data] (research) {Versioned historical evidence\\Registered trials and forecasts\\Exploratory diagnostics};
+\node[box,below=of model] (account) {Shared execution contract\\Cash, reservations, fills and fees\\Deployment cash; trend shadow};
+\node[box,below=of plan] (state) {Durable state and receipts\\Lock/recovery/backup\\Calendar scheduler and watchdog};
+\draw[->] (data)--(model);\draw[->] (model)--(plan);\draw[->] (plan)--(state);\draw[->] (model)--(account);\draw[->] (state)--(account);\draw[->] (account)--(research);
+\end{tikzpicture}

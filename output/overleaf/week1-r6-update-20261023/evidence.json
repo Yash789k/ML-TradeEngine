@@ -1,0 +1,41 @@
+{
+  "created_at": "2026-10-22T21:42:05.983054+00:00",
+  "review_only": true,
+  "report": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r6/reports/week-close-20261023T0538HKT",
+  "total_decision_dates": 5,
+  "mature_dates": [
+    "2026-10-01",
+    "2026-10-02",
+    "2026-10-14"
+  ],
+  "labeled_rows": 66,
+  "active_terminal_receipts": 0,
+  "rounded_values": {
+    "RESERVED": "4,126.18",
+    "HACC": "28.7879\\%",
+    "PACC": "31.8182\\%",
+    "HF1": "0.2150",
+    "PF1": "0.2107",
+    "HLOSS": "1.0978",
+    "PLOSS": "1.1013",
+    "HBRIER": "0.6676",
+    "PBRIER": "0.6724",
+    "R2RETURN": "-0.0604\\%",
+    "R2CASH": "0.0000\\%",
+    "R4RETURN": "-0.0601\\%",
+    "R4CASH": "0.0000\\%",
+    "R6RETURN": "0.0000\\%",
+    "R6CASH": "0.0000\\%"
+  },
+  "sources": {
+    "data/research-week1-r6/reports/week-close-20261023T0538HKT/report.json": "f917360807714bb57223ae2617cca07c50a6fe582e9b431d40a7fa1a528bb714",
+    "data/research-week1-r6/reports/week-close-20261023T0538HKT/manifest.json": "b69c5e7595c5ce86cf1c51ce82a3a969852961bdc5069f2a893307ebc05e92f7",
+    "data/research-week1-r6/reports/week-close-20261023T0538HKT/prediction_rows.json": "9d79ca034052c92343e8513b2483388ca56f6aeb726599cf9e848604fa69d780",
+    "data/paper/research-week1-r6/days/2026-10-22/result.json": "df57e2185cbc7ca31aaf2ca8db882f735b90d94f12b293c9e1fedd35d3b09a87",
+    "data/paper/research-week1-r6/events/2026-10-22-watchdog.json": "8604fa517c0f8b2d72723a02166cc392804d14afdc40c5fc7cf41955db729159",
+    "data/paper/research-week1-r6/milestones/1.json": "a8d6d9f89a3a6dedfa6c9eb28d75236407d314a573c92da185fe9762fcc0bb2b",
+    "data/research-week1-r2/failed-trial-preservation.json": "3bf78320bbe3e465db67fa03793ba502df78a4f655fe9c7eaf0c9225caed8b5f",
+    "data/research-week1-r6/protocol.json": "8e9d183bcb2b7291fc8c0202d3de0c3be1e7760d8f1ac06fcb8b81092c80eab7",
+    "scripts/week1_r6/prepare_interim_20261023.py": "907faa6f012fefb257100eafca8ed710dbc181726df5092e7e449cfe6887508f"
+  }
+}

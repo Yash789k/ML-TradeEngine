@@ -1,0 +1,1 @@
+JSON.stringify({text:document.body.innerText.slice(-11000),buttons:Array.from(document.querySelectorAll('button')).map(e=>({text:e.innerText,aria:e.getAttribute('aria-label'),disabled:e.disabled})).filter(x=>/upload|replace|overwrite|compile/i.test(JSON.stringify(x)))})

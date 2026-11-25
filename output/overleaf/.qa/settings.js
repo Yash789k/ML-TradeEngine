@@ -1,0 +1,1 @@
+(()=>{const b=Array.from(document.querySelectorAll('button')).find(e=>e.innerText==='settings');if(b)b.click();return JSON.stringify(Array.from(document.querySelectorAll('button')).filter(e=>/settings/i.test(e.innerText+' '+e.getAttribute('aria-label'))).map(e=>({text:e.innerText,aria:e.getAttribute('aria-label')})))})()

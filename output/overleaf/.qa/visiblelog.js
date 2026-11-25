@@ -1,0 +1,1 @@
+(()=>{const a=Array.from(document.querySelectorAll('*')).find(e=>e.children.length===0&&e.textContent==='Raw logs');if(a){a.click();return a.parentElement.outerHTML;}return document.body.innerText.slice(-3500)})()

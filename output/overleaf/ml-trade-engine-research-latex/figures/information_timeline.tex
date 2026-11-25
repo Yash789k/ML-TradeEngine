@@ -1,0 +1,10 @@
+% Native editable figure; frozen statistics 0d291b4aebf8c524dc6705d872c070feb990e86a1cebbd59a758f400b240c952
+\begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,font=\small]
+\draw[->,thick] (0,0)--(13.5,0);
+\foreach \x/\t in {1/t,3/{t+1},11/{t+6}}{\draw (\x,-.15)--(\x,.15);\node[above] at (\x,.2) {$\t$};}
+\node[align=center,text width=30mm,below] at (1,-.4) {Completed close;\\features available};
+\node[align=center,text width=33mm,below] at (4,-.4) {First permitted fill;\\target denominator};
+\node[align=center,text width=38mm,below] at (11,-.4) {Outcome endpoint;\\label becomes observed};
+\draw[<->,teal] (3,1.2)--(11,1.2);\node[above] at (7,1.3) {Five-session target return; adjacent labels overlap};
+\node[align=center] at (6.7,-2.0) {Model fitting uses labels whose endpoints strictly precede the decision.};
+\end{tikzpicture}

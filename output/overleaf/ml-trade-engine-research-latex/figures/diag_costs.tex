@@ -1,0 +1,20 @@
+% Native editable figure; frozen statistics 0d291b4aebf8c524dc6705d872c070feb990e86a1cebbd59a758f400b240c952
+\begin{minipage}[t]{.48\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth,height=5.2cm,xtick={0,1,2,3},xticklabels={Trend,ML,Hybrid,Equal weight},enlarge x limits=.18,ybar stacked,bar width=14pt,ylabel={Cost (USD)},legend style={at={(.5,1.05)},anchor=south}]
+\addplot+[blue] coordinates {(0,123.207203497) (1,247.34447747) (2,156.536969368) (3,37.1132402528)};
+\addlegendentry{Commission}
+\addplot+[orange] coordinates {(0,61.6036017484) (1,123.672238735) (2,78.2684846841) (3,18.5566201264)};
+\addlegendentry{Slippage proxy}
+
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.48\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth,height=5.2cm,xtick={0,1,2,3},xticklabels={Trend,ML,Hybrid,Equal weight},enlarge x limits=.18,ybar,bar width=14pt,ylabel={Executed notional / initial capital}]
+\addplot+[teal] coordinates {(0,12.3207203497) (1,24.734447747) (2,15.6536969368) (3,3.71132402528)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}

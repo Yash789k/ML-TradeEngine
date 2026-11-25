@@ -1,0 +1,56 @@
+\section{Controlled ablations, adaptation and transfer}\label{sec:section-07}
+
+R5-momentum: candidate-minus-reference log loss -0.0022 (lower loss), 95\% interval [-0.0099, 0.0057], Holm p=1.000. R5-trend: candidate-minus-reference log loss 0.0027 (higher loss), 95\% interval [-0.0020, 0.0075], Holm p=1.000. R5-risk: candidate-minus-reference log loss -0.0021 (lower loss), 95\% interval [-0.0097, 0.0054], Holm p=1.000. R5-context\_volume: candidate-minus-reference log loss 0.0053 (higher loss), 95\% interval [0.0005, 0.0100], Holm p=0.243.
+
+\noindent Table~\ref{tab:8} reports controlled feature ablations.
+
+\input{tables/table-08}
+
+\noindent Figure~\ref{fig:7} shows registered controlled contrasts on development outer blocks; intervals preserve date dependence.
+
+\begin{figure}[htbp]\centering
+\input{figures/exp_contrasts}
+\caption{Registered controlled contrasts on development outer blocks; intervals preserve date dependence.}\label{fig:7}
+\end{figure}
+
+A feature-importance ranking is not a feature ablation. The experiments remove a registered feature family, refit the eligible model and compare outer predictions on matching dates. This evaluates the value of allowing that family under the stated model and budget. Correlated families can substitute for one another; removing one does not estimate an isolated economic causal effect. The sign of an ablation also depends on regularization and sampling variance. We retain unfavorable and near-zero changes alongside any improvement.
+
+R3-calibration: candidate-minus-reference log loss -0.0146 (lower loss), 95\% interval [-0.0223, -0.0060], Holm p=0.018. R3-gate-separation: candidate-minus-reference log loss -0.0046 (lower loss), 95\% interval [-0.0124, 0.0029], Holm p=1.000. R3-gate-off: candidate-minus-reference log loss -0.0094 (lower loss), 95\% interval [-0.0190, 0.0010], Holm p=0.458. The forecast gate here chooses between calibrated predictions and the prior as a diagnostic view. The portfolio gate separately controls the trend/ML weight. Neither is silently substituted for the frozen trend shadow.
+
+\noindent Table~\ref{tab:9} reports controlled base forecast views on development outer blocks.
+
+\input{tables/table-09}
+
+R6-fraction\_0.5: candidate-minus-reference log loss 0.0365 (higher loss), 95\% interval [0.0232, 0.0503], Holm p=0.008. R6-fraction\_0.75: candidate-minus-reference log loss 0.0183 (higher loss), 95\% interval [0.0044, 0.0324], Holm p=0.082. R6-history\_504: candidate-minus-reference log loss 0.0442 (higher loss), 95\% interval [0.0299, 0.0600], Holm p=0.008. R6-cadence\_21: candidate-minus-reference log loss 0.0004 (higher loss), 95\% interval [-0.0075, 0.0091], Holm p=1.000.
+
+\noindent Table~\ref{tab:10} reports controlled history, fraction and cadence contrasts.
+
+\input{tables/table-10}
+
+\noindent Figure~\ref{fig:8} shows fitting versus outer validation log loss under training-design changes.
+
+\begin{figure}[htbp]\centering
+\input{figures/exp_learning_v2}
+\caption{Fitting versus outer validation log loss under training-design changes.}\label{fig:8}
+\end{figure}
+
+Across the registered seed comparisons, the largest probability difference is 0.0e+00. The tested deterministic estimator settings therefore produced identical probabilities across seeds. Zero seed variation is not zero research uncertainty: the calendar path, data vintage, history span and target instrument remain sources of variation. Shorter recent-history fractions change both row count and temporal span, so the learning curves do not identify a pure sample-size effect. Separating the gate also changes its recency as well as its information overlap.
+
+Learning curves report fitting and outer-period loss together. A widening gap can be consistent with variance or time shift, while high loss on both partitions can indicate limited representation or model capacity. A smaller history can adapt faster but discard rare conditions; a larger history can stabilize estimation while retaining outdated relationships. Refit-cadence tests ask whether refreshing a fixed model matters under aligned information. No cadence is promoted merely because it is best on these consumed development blocks.
+
+R7-transfer: candidate-minus-reference log loss -0.0222 (lower loss), 95\% interval [-0.0466, 0.0002], Holm p=0.458. The held-target comparison reports the aligned target subset only. Training on other instruments increases the number of fitting rows but does not increase the number of independent outer dates.
+
+\noindent Table~\ref{tab:11} reports controlled held-instrument transfer contrast.
+
+\input{tables/table-11}
+
+\noindent Figure~\ref{fig:9} shows historical instrument/period heterogeneity. Consumed-period slices are descriptive.
+
+\begin{figure}[htbp]\centering
+\input{figures/diag_generalization}
+\caption{Historical instrument/period heterogeneity. Consumed-period slices are descriptive.}\label{fig:9}
+\end{figure}
+
+The instrument-transfer experiment withholds target instruments from pooled fitting and respects the temporal outer boundary. That is stronger than reporting each single-instrument model on its own later observations, but it is still limited by overlapping economic exposures and a shared market feature. Excluding an instrument's labels does not remove all information about the market in which it trades. Transfer results therefore describe the declared source/target grouping, not universal generalization to unseen exchanges or delisted securities.
+
+Regime slices use conditions observable at the decision time. Realized future volatility is not used to assign a model's historical input state. Support counts accompany every slice, because a dramatic result from few dates is less stable than an aggregate over many market episodes. Instrument, period and regime analyses describe heterogeneity; they do not license a selector trained retrospectively to keep only the favorable cells.

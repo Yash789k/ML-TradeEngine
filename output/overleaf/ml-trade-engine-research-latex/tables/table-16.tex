@@ -1,0 +1,19 @@
+\begin{table}[!htbp]\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.14}
+\caption{Hybrid execution and risk sensitivities; fresh-capital audit}\label{tab:16}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.20189\textwidth-5.000pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.30284\textwidth-5.000pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.12618\textwidth-5.000pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.12303\textwidth-5.000pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.12303\textwidth-5.000pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.12303\textwidth-5.000pt\relax}@{}}
+\toprule
+\textbf{Scenario} & \textbf{Status} & \textbf{Net return} & \textbf{Max DD} & \textbf{Fills} & \textbf{Rejected} \\
+\midrule
+base & completed & -0.46\% & -2.21\% & 217 & 6 \\
+cost\_\allowbreak{}zero & completed & -0.25\% & -2.17\% & 217 & 6 \\
+cost\_\allowbreak{}2x & completed & -0.66\% & -2.26\% & 217 & 6 \\
+cost\_\allowbreak{}4x & completed & -1.07\% & -2.35\% & 217 & 6 \\
+delay\_\allowbreak{}1 & completed & -1.17\% & -2.29\% & 219 & 4 \\
+liquidity\_\allowbreak{}50pct & completed & -0.35\% & -2.22\% & 1,043 & 25 \\
+gap\_\allowbreak{}down\_\allowbreak{}10pct & completed & -0.46\% & -6.45\% & 217 & 6 \\
+risk\_\allowbreak{}gross\_\allowbreak{}60pct & completed & -0.47\% & -2.09\% & 213 & 7 \\
+reserve\_\allowbreak{}zero & completed & 0.93\% & -2.09\% & 151 & 70 \\
+missing\_\allowbreak{}bar & expected\_\allowbreak{}validation\_\allowbreak{}halt & - & - & - & - \\
+\bottomrule\end{tabular}\par\smallskip
+\raggedright\textit{Source:} \path{data/research-v2/tables/diag_stress.csv}.
+\end{table}

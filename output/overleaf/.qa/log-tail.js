@@ -1,0 +1,1 @@
+JSON.stringify({tail:document.body.innerText.slice(-1600),compile:Array.from(document.querySelectorAll('button')).filter(e=>/Recompile|Compiling|Stop compile/.test(e.innerText)).map(e=>({text:e.innerText,disabled:e.disabled}))})

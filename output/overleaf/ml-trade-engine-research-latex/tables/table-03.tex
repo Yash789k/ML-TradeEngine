@@ -1,0 +1,16 @@
+\begin{table}[!htbp]\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.14}
+\caption{Fixed model configurations and distinct chronological contracts}\label{tab:3}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.23009\textwidth-4.000pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.26549\textwidth-4.000pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.50442\textwidth-4.000pt\relax}@{}}
+\toprule
+\textbf{Contract} & \textbf{Component} & \textbf{Configuration} \\
+\midrule
+Controlled & Hist\allowbreak{}Gradient\allowbreak{}Boosting\allowbreak{}Classifier & max\_\allowbreak{}iter=100; max\_\allowbreak{}leaf\_\allowbreak{}nodes=7; l2\_\allowbreak{}regularization=10; learning\_\allowbreak{}rate=0.05; min\_\allowbreak{}samples\_\allowbreak{}leaf=40; early\_\allowbreak{}stopping=False; random\_\allowbreak{}state=cfg.seed \\
+Controlled & LogisticRegression & C=0.1; max\_\allowbreak{}iter=500; random\_\allowbreak{}state=cfg.seed \\
+Historical /\allowbreak{} carried pilot & Hist\allowbreak{}Gradient\allowbreak{}Boosting\allowbreak{}Classifier & max\_\allowbreak{}iter=100; max\_\allowbreak{}leaf\_\allowbreak{}nodes=7; l2\_\allowbreak{}regularization=10; learning\_\allowbreak{}rate=0.05; min\_\allowbreak{}samples\_\allowbreak{}leaf=40; early\_\allowbreak{}stopping=False; random\_\allowbreak{}state=cfg.seed \\
+Historical /\allowbreak{} carried pilot & LogisticRegression & C=0.1; max\_\allowbreak{}iter=500; random\_\allowbreak{}state=cfg.seed \\
+Controlled base & Chronology & history=1008; calibration=63; gate=63; cadence=63 \\
+Historical /\allowbreak{} pilot & Chronology & window=1008; calibration=126; min\_\allowbreak{}fit=504; retrain\_\allowbreak{}every=21 \\
+Both & Temperature candidates & [0.75, 1, 1.5, 2, 3] \\
+\bottomrule\end{tabular}\par\smallskip
+\raggedright\textit{Source:} \path{data/research-v2/tables/model_configurations.csv; evidence/configuration-sources.json}.
+\end{table}

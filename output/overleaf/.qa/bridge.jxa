@@ -1,0 +1,6 @@
+function run(argv) {
+ var js=ObjC.unwrap($.NSString.stringWithContentsOfFileEncodingError(argv[0],$.NSUTF8StringEncoding,null));
+ var t=Application(646).windows().flatMap(w=>w.tabs()).find(t=>t.url().includes('overleaf.com/project/6aba2fa5d6050f063aaea85a'));
+ if(!t) throw new Error('Expected authorized Overleaf tab not found');
+ return t.execute({javascript:js});
+}

@@ -1,0 +1,19 @@
+\begin{table}[!htbp]\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.14}
+\caption{Frozen controlled training design}\label{tab:4}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.34646\textwidth-4.800pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.15354\textwidth-4.800pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.15354\textwidth-4.800pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.17323\textwidth-4.800pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.17323\textwidth-4.800pt\relax}@{}}
+\toprule
+\textbf{Variant} & \textbf{Trials} & \textbf{Targets} & \textbf{Outer folds} & \textbf{Seeds} \\
+\midrule
+base & 136 & 22 & 4 & 42,137,2026 \\
+without\_\allowbreak{}momentum & 88 & 22 & 4 & 42 \\
+without\_\allowbreak{}trend & 88 & 22 & 4 & 42 \\
+without\_\allowbreak{}risk & 88 & 22 & 4 & 42 \\
+without\_\allowbreak{}context\_\allowbreak{}volume & 88 & 22 & 4 & 42 \\
+fraction\_\allowbreak{}0.5 & 88 & 22 & 4 & 42 \\
+fraction\_\allowbreak{}0.75 & 88 & 22 & 4 & 42 \\
+history\_\allowbreak{}504 & 88 & 22 & 4 & 42 \\
+cadence\_\allowbreak{}21 & 72 & 6 & 4 & 42 \\
+transfer & 24 & 6 & 4 & 42 \\
+\bottomrule\end{tabular}\par\smallskip
+\raggedright\textit{Source:} \path{data/research-v2/experiments/design.json}.
+\end{table}

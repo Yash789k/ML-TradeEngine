@@ -1,0 +1,44 @@
+\section{Prediction quality and error structure}\label{sec:section-06}
+
+The recent audit has 1,056 labeled instrument-dates across 48 sessions. Hybrid accuracy is 37.59\%, while prior accuracy is 40.62\%. Hybrid balanced accuracy is 37.24\% and macro F1 is 0.372. The prior's stronger aggregate accuracy does not imply equal recall across classes; the class report makes that tradeoff visible. Log loss also favors the prior in this sample, so there is no probability-quality improvement to hide behind a change in class balance.
+
+\noindent Table~\ref{tab:5} reports consumed recent-audit forecasts; identical mature observations.
+
+\input{tables/table-05}
+
+\noindent Figure~\ref{fig:4} shows audit confusion matrices with class support; row normalization does not create independent observations.
+
+\begin{figure}[htbp]\centering
+\input{figures/diag_confusion}
+\caption{Audit confusion matrices with class support; row normalization does not create independent observations.}\label{fig:4}
+\end{figure}
+
+\noindent Table~\ref{tab:6} reports audit class report for calibrated mixture and prior.
+
+\input{tables/table-06}
+
+Per-class reporting prevents a common majority class from concealing weak recall elsewhere. Precision asks what fraction of a model's class assignments were right; recall asks how many observed examples of that class it recovered. F1 combines these two rates, and support states the denominator. Row-normalized confusion matrices emphasize which true classes are confused, while raw counts identify where most mistakes occur. The dominant transition can change when class prevalence changes even if the conditional error rates remain stable.
+
+The most frequent off-diagonal transition in the audit is DOWN to UP, with 172 errors, or 49.00\% of that true class. Temperature scaling changes raw-mixture log loss by -0.0289 with interval [-0.0476, -0.0065]. The argmax labels are unchanged, as expected for positive temperature scaling. Better calibrated confidence can coexist with unchanged directional accuracy and still fail to beat the prior.
+
+\noindent Figure~\ref{fig:5} shows probability reliability and confidence coverage, including bin support and uncertainty.
+
+\begin{figure}[htbp]\centering
+\input{figures/diag_calibration}
+\caption{Probability reliability and confidence coverage, including bin support and uncertainty.}\label{fig:5}
+\end{figure}
+
+\noindent Table~\ref{tab:7} reports audit mixture confidence coverage; thresholds fixed for description.
+
+\input{tables/table-07}
+
+Confidence-coverage curves retain only predictions above fixed confidence cutoffs and report both accuracy and remaining observations. A higher accuracy at low coverage can be practically irrelevant when almost no decisions remain. These curves are diagnostics, not an opportunity to choose the best threshold after viewing outcomes. Reliability-bin uncertainty is also limited by correlated dates; bins with little support cannot justify a confident calibration claim. For trading, an apparently well-calibrated probability still needs useful class-return estimates and enough expected advantage to pay costs.
+
+\noindent Figure~\ref{fig:6} shows paired audit forecast effects and date-block uncertainty. Lower log loss is better.
+
+\begin{figure}[htbp]\centering
+\input{figures/diag_forecast_inference}
+\caption{Paired audit forecast effects and date-block uncertainty. Lower log loss is better.}\label{fig:6}
+\end{figure}
+
+For the primary audit hybrid-minus-prior comparison, the estimated loss difference is 0.0126, the bootstrap standard error is 0.0076, and the approximate 80\%-power detectable magnitude is 0.0213. With 48 dates and primary blocks of 10 dates, the effective information is much smaller than the number of stock rows suggests. This approximation ignores additional uncertainty about structural change and is not a prospective power guarantee.

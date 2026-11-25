@@ -1,0 +1,24 @@
+\clearpage
+
+\section{Reproduction commands and interpretation}\label{sec:appendix-c}
+
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\scriptsize]
+# From /Users/a/Downloads/ml-trade-engine
+# Verify / inspect the frozen collector (read-only)
+data/research-v2/clean-env/bin/python data/releases/research-v2-runtime-20260928-r2/scripts/collector_v2.py status --release data/releases/research-v2-runtime-20260928-r2 --workspace data/paper/research-v2
+# Launch the product console
+/Users/a/miniconda3/bin/python -m streamlit run app_v2.py --server.port 8504
+# Recompute saved-data diagnostics under their recorded protocol
+/Users/a/miniconda3/bin/python -B -m research_v2.diagnostics
+# Resume registered controlled trials; completed checkpoints are verified
+/Users/a/miniconda3/bin/python -B -m research_v2.experiments run
+# Interim observed evidence (new output directory; never starts collection)
+data/research-v2/clean-env/bin/python -B -m research_v2.prospective_report --output data/research-v2/prospective/NEW-DATED-RUN
+# After all63 decisions and final six-session maturity only, add --freeze
+# Compile checked statistics / editable manuscript
+/Users/a/miniconda3/bin/python -B -m research_v2.paper compile
+# Render PDF using bundled document runtime
+/Users/a/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B -m research_v2.paper pdf
+\end{Verbatim}
+
+Every command writes new evidence or reads a sealed artifact. Do not overwrite the existing release to conceal a changed method. Historical diagnostics can be regenerated immediately from the saved data. Prospective receipts and outcomes require the actual passage of exchange sessions, host availability and completed label endpoints. The historical manuscript can be substantively complete while the full prospective study remains interim.

@@ -1,0 +1,1 @@
+JSON.stringify(Array.from(document.querySelectorAll('label,button,a,input')).filter(e=>/Raw logs|Logs and output/i.test(e.innerText+' '+e.getAttribute('aria-label'))).map(e=>e.outerHTML.slice(0,2000)))
