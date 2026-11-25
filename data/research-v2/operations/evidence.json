@@ -1,0 +1,11 @@
+{
+  "manuscript_text": "The active r2 runtime passed 27 source-bound tests. All 8 actual process-kill checkpoints recovered with equivalent state, and 5 altered-release evidence cases were refused. The operating system invoked the frozen command at 2026-09-28T08:50:56.358915+00:00; its parent PID was 1. That commissioning run validated 22 instruments, prepared signals and targets, persisted both accounts and reconciled them. Its receipt was then restored at the registered original path while preserving the prior directory. Commissioning is isolated from the pilot: the verified observed decision count is 0, mature count 0, and terminal mark count 0. The schedule's next event is 2026-09-30T04:30:00+08:00 Hong Kong. No remote trading workflow was executed; the inspected GitHub workflow was disabled by inactivity. Physical sleep/power-loss and sustained session-close availability remain unobserved.",
+  "release_sha256": "570372e203c6ef943deb37c2856a4ca7f0c3d34a168ac247d5b1cb2232916f43",
+  "sources": [
+    "scheduler-verification-r2.json",
+    "process-recovery-r2.json",
+    "commissioning-restore-r2.json",
+    "github-workflows-readonly.json",
+    "data/releases/research-v2-runtime-20260928-r2/test-evidence.json"
+  ]
+}

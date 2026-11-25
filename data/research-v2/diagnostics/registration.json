@@ -1,0 +1,296 @@
+{
+  "id": "DIAG-SAVED-20260928-01",
+  "registered_at": "2026-09-28T08:14:31.564454+00:00",
+  "protocol_sha256": "97d597a5c44a88a16ff444eb7e61786701907b2cb10b68b89faed8b62dcbae79",
+  "status": "registered",
+  "classification": "exploratory follow-up of previously inspected history",
+  "seed": 20260928,
+  "replicates": 2000,
+  "block_lengths": [
+    6,
+    10,
+    21
+  ],
+  "models": [
+    "linear",
+    "tree",
+    "raw_mix",
+    "hybrid",
+    "prior",
+    "always_up"
+  ],
+  "predictive_family": [
+    {
+      "period": "development",
+      "model": "linear",
+      "comparator": "prior",
+      "endpoint": "log_loss"
+    },
+    {
+      "period": "development",
+      "model": "linear",
+      "comparator": "prior",
+      "endpoint": "accuracy"
+    },
+    {
+      "period": "development",
+      "model": "tree",
+      "comparator": "prior",
+      "endpoint": "log_loss"
+    },
+    {
+      "period": "development",
+      "model": "tree",
+      "comparator": "prior",
+      "endpoint": "accuracy"
+    },
+    {
+      "period": "development",
+      "model": "raw_mix",
+      "comparator": "prior",
+      "endpoint": "log_loss"
+    },
+    {
+      "period": "development",
+      "model": "raw_mix",
+      "comparator": "prior",
+      "endpoint": "accuracy"
+    },
+    {
+      "period": "development",
+      "model": "hybrid",
+      "comparator": "prior",
+      "endpoint": "log_loss"
+    },
+    {
+      "period": "development",
+      "model": "hybrid",
+      "comparator": "prior",
+      "endpoint": "accuracy"
+    },
+    {
+      "period": "selection",
+      "model": "linear",
+      "comparator": "prior",
+      "endpoint": "log_loss"
+    },
+    {
+      "period": "selection",
+      "model": "linear",
+      "comparator": "prior",
+      "endpoint": "accuracy"
+    },
+    {
+      "period": "selection",
+      "model": "tree",
+      "comparator": "prior",
+      "endpoint": "log_loss"
+    },
+    {
+      "period": "selection",
+      "model": "tree",
+      "comparator": "prior",
+      "endpoint": "accuracy"
+    },
+    {
+      "period": "selection",
+      "model": "raw_mix",
+      "comparator": "prior",
+      "endpoint": "log_loss"
+    },
+    {
+      "period": "selection",
+      "model": "raw_mix",
+      "comparator": "prior",
+      "endpoint": "accuracy"
+    },
+    {
+      "period": "selection",
+      "model": "hybrid",
+      "comparator": "prior",
+      "endpoint": "log_loss"
+    },
+    {
+      "period": "selection",
+      "model": "hybrid",
+      "comparator": "prior",
+      "endpoint": "accuracy"
+    },
+    {
+      "period": "audit",
+      "model": "linear",
+      "comparator": "prior",
+      "endpoint": "log_loss"
+    },
+    {
+      "period": "audit",
+      "model": "linear",
+      "comparator": "prior",
+      "endpoint": "accuracy"
+    },
+    {
+      "period": "audit",
+      "model": "tree",
+      "comparator": "prior",
+      "endpoint": "log_loss"
+    },
+    {
+      "period": "audit",
+      "model": "tree",
+      "comparator": "prior",
+      "endpoint": "accuracy"
+    },
+    {
+      "period": "audit",
+      "model": "raw_mix",
+      "comparator": "prior",
+      "endpoint": "log_loss"
+    },
+    {
+      "period": "audit",
+      "model": "raw_mix",
+      "comparator": "prior",
+      "endpoint": "accuracy"
+    },
+    {
+      "period": "audit",
+      "model": "hybrid",
+      "comparator": "prior",
+      "endpoint": "log_loss"
+    },
+    {
+      "period": "audit",
+      "model": "hybrid",
+      "comparator": "prior",
+      "endpoint": "accuracy"
+    }
+  ],
+  "economic_family": [
+    {
+      "period": "development",
+      "model": "trend",
+      "comparator": "equal_weight",
+      "endpoint": "net_daily_return"
+    },
+    {
+      "period": "development",
+      "model": "ml",
+      "comparator": "equal_weight",
+      "endpoint": "net_daily_return"
+    },
+    {
+      "period": "development",
+      "model": "adaptive_hybrid",
+      "comparator": "equal_weight",
+      "endpoint": "net_daily_return"
+    },
+    {
+      "period": "development",
+      "model": "cash",
+      "comparator": "equal_weight",
+      "endpoint": "net_daily_return"
+    },
+    {
+      "period": "selection",
+      "model": "trend",
+      "comparator": "equal_weight",
+      "endpoint": "net_daily_return"
+    },
+    {
+      "period": "selection",
+      "model": "ml",
+      "comparator": "equal_weight",
+      "endpoint": "net_daily_return"
+    },
+    {
+      "period": "selection",
+      "model": "adaptive_hybrid",
+      "comparator": "equal_weight",
+      "endpoint": "net_daily_return"
+    },
+    {
+      "period": "selection",
+      "model": "cash",
+      "comparator": "equal_weight",
+      "endpoint": "net_daily_return"
+    },
+    {
+      "period": "audit",
+      "model": "trend",
+      "comparator": "equal_weight",
+      "endpoint": "net_daily_return"
+    },
+    {
+      "period": "audit",
+      "model": "ml",
+      "comparator": "equal_weight",
+      "endpoint": "net_daily_return"
+    },
+    {
+      "period": "audit",
+      "model": "adaptive_hybrid",
+      "comparator": "equal_weight",
+      "endpoint": "net_daily_return"
+    },
+    {
+      "period": "audit",
+      "model": "cash",
+      "comparator": "equal_weight",
+      "endpoint": "net_daily_return"
+    }
+  ],
+  "primary_block": 10,
+  "multiplicity": "Holm over 24 predictive contrasts and separately 12 economic contrasts; block 6/21 sensitivity, not additional confirmatory discovery; all history exploratory",
+  "failure_rules": [
+    "largest hybrid log-loss, 20 rows per period",
+    "highest hybrid confidence among mistakes,20 per period",
+    "chronological first mistaken prediction nearest median erroneous log-loss, each class and period",
+    "largest losing closed sell fills,20 per strategy, and loss by instrument"
+  ],
+  "regimes": "SPY contemporaneously available trailing63 return sign and trailing21 annual volatility fixed0.20 cutoff; no forward information",
+  "stress": [
+    {
+      "id": "base",
+      "meaning": "fresh $10000 audit accounts; frozen targets; first audit decision plus original Friday rebalances"
+    },
+    {
+      "id": "cost_zero",
+      "cost_multiplier": 0
+    },
+    {
+      "id": "cost_2x",
+      "cost_multiplier": 2
+    },
+    {
+      "id": "cost_4x",
+      "cost_multiplier": 4
+    },
+    {
+      "id": "delay_1",
+      "meaning": "shift all decision submissions by1 observed session, filled following close; frozen targets"
+    },
+    {
+      "id": "liquidity_50pct",
+      "meaning": "each close fills at most50% remaining quantity; unfilled remainder persists until next rebalance cancellation"
+    },
+    {
+      "id": "gap_down_10pct",
+      "meaning": "10% simultaneous mark shock on midpoint audit session, rebound next session; synthetic frozen-decision shock"
+    },
+    {
+      "id": "risk_gross_60pct",
+      "meaning": "cap account gross0.6 and proportionally clip frozen weights to0.6; no model change"
+    },
+    {
+      "id": "reserve_zero",
+      "meaning": "remove3% purchase reservation buffer"
+    },
+    {
+      "id": "missing_bar",
+      "meaning": "inject one missing SPY close; must halt before replay, no padding"
+    }
+  ],
+  "limits": "no new fitted predictive models; 5 fresh strategies x3 periods plus4 strategies x9 valid stress scenarios; 60min wall budget",
+  "calibration": "raw arithmetic mixture vs saved temperature calibrated mixture on identical samples; confidence thresholds [0.34,0.4,0.45,0.5,0.6,0.7,0.8,0.9], equal width10 reliability bins; no selected thresholds",
+  "preservation": "read-only sealed artifacts; new in-memory Account instances, never active pilot DB"
+}

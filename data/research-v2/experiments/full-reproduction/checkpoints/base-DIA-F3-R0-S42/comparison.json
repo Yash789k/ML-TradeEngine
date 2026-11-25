@@ -1,0 +1,10 @@
+{
+  "trial": "base-DIA-F3-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "fd531f2ba7abce73e77ece950bad6152461ae9ee3a6beed92c7a3565a7b91a8d",
+  "expected_prediction_sha256": "a26d6cfa9a08cbe43fe0c61a16579510e6836e68263283d58789e0aeff90e184",
+  "model_sha256": "b8bddf33e354ba1676c762867476c215f113b661bafe8cac4326fa2545041bd1"
+}

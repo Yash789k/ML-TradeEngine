@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "config": {
+      "history": 1008,
+      "fraction": 0.5,
+      "remove": "",
+      "seed": 42,
+      "calibration": 63,
+      "gate": 63,
+      "cadence": 63
+    },
+    "decision": "2025-01-02 00:00:00+00:00",
+    "fitting_symbols": [
+      "QQQ"
+    ],
+    "boundaries": [
+      {
+        "symbol": "QQQ",
+        "fit_start": "2022-09-13 00:00:00+00:00",
+        "fit_end": "2024-06-05 00:00:00+00:00",
+        "fit_endpoint": "2024-06-13 00:00:00+00:00",
+        "calibration_start": "2024-06-14 00:00:00+00:00",
+        "calibration_end": "2024-09-13 00:00:00+00:00",
+        "calibration_endpoint": "2024-09-23 00:00:00+00:00",
+        "gate_start": "2024-09-24 00:00:00+00:00",
+        "gate_end": "2024-12-20 00:00:00+00:00",
+        "gate_endpoint": "2024-12-31 00:00:00+00:00",
+        "n_fit": 435,
+        "n_cal": 63,
+        "n_gate": 63
+      }
+    ],
+    "n_fit": 435,
+    "n_cal": 63,
+    "n_gate": 63,
+    "temperature": 1.5,
+    "gate_same": true,
+    "gate_separate": true,
+    "calibration_loss": 1.07967014801673,
+    "calibration_prior_loss": 1.0994512131771415,
+    "gate_loss": 1.054625461626481,
+    "gate_prior_loss": 1.0751055329973138,
+    "train_log_loss": 0.8561190922937452,
+    "train_accuracy": 0.7793103448275862,
+    "fit_seconds": 0.14835120800125878,
+    "training_hash": "4cc9c54fbf0dc544cdca9c8d54060da7ee9306bcbdc7afeb6b28c1beecfeffe3"
+  },
+  "sha256": "21ac08ba71c811888a3b170ce23567feaa94836b89a71f83aff3d8600b8eeee3"
+}

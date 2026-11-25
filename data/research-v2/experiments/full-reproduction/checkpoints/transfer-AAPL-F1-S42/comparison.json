@@ -1,0 +1,10 @@
+{
+  "trial": "transfer-AAPL-F1-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "c897ebb35b1cf36d08df87fd507d00b1b5a145fc1c7748ff0ce9ebbcb7617de3",
+  "expected_prediction_sha256": "ac4dd56e204717f584cd808b243497820ad4813815e934496d509680a48eebca",
+  "model_sha256": "fb9103033d14f40851e191578e98d09f1a9d241f56a054e4f39ae7eb9a6ad00d"
+}

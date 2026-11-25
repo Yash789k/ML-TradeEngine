@@ -1,0 +1,14 @@
+{
+  "recorded_at": "2026-09-28T08:55:38.484225+00:00",
+  "sealed_files_checked": 722,
+  "changed_sealed_files": [],
+  "existing_source_changed": [
+    ".github/workflows/daily_signals.yml",
+    "README.md"
+  ],
+  "expected_source_changes": [
+    "README.md",
+    ".github/workflows/daily_signals.yml"
+  ],
+  "status": "passed"
+}

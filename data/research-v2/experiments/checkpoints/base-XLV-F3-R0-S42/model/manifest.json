@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "config": {
+      "history": 1008,
+      "fraction": 1.0,
+      "remove": "",
+      "seed": 42,
+      "calibration": 63,
+      "gate": 63,
+      "cadence": 63
+    },
+    "decision": "2025-07-01 00:00:00+00:00",
+    "fitting_symbols": [
+      "XLV"
+    ],
+    "boundaries": [
+      {
+        "symbol": "XLV",
+        "fit_start": "2021-06-16 00:00:00+00:00",
+        "fit_end": "2024-11-27 00:00:00+00:00",
+        "fit_endpoint": "2024-12-06 00:00:00+00:00",
+        "calibration_start": "2024-12-09 00:00:00+00:00",
+        "calibration_end": "2025-03-12 00:00:00+00:00",
+        "calibration_endpoint": "2025-03-20 00:00:00+00:00",
+        "gate_start": "2025-03-21 00:00:00+00:00",
+        "gate_end": "2025-06-20 00:00:00+00:00",
+        "gate_endpoint": "2025-06-30 00:00:00+00:00",
+        "n_fit": 870,
+        "n_cal": 63,
+        "n_gate": 63
+      }
+    ],
+    "n_fit": 870,
+    "n_cal": 63,
+    "n_gate": 63,
+    "temperature": 2.0,
+    "gate_same": false,
+    "gate_separate": true,
+    "calibration_loss": 1.07629065574642,
+    "calibration_prior_loss": 1.0635898908028052,
+    "gate_loss": 1.1298295653498986,
+    "gate_prior_loss": 1.1608005204153626,
+    "train_log_loss": 0.92296427815622,
+    "train_accuracy": 0.7275862068965517,
+    "fit_seconds": 0.9855134159879526,
+    "training_hash": "a3d8f007ed9db2d5ade993906562e35e550ad34c1e6bb0268a86d96fb72bb10c"
+  },
+  "sha256": "1a62dc8d601f1a7f932c51cba21970545f64744f28ff61c320d0adc9dde708d5"
+}

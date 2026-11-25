@@ -1,0 +1,11 @@
+period,class_name,n,sessions
+audit,DOWN,351,48
+audit,FLAT,326,48
+audit,UNMATURED,132,6
+audit,UP,379,48
+development,DOWN,3081,479
+development,FLAT,3230,492
+development,UP,4733,494
+selection,DOWN,952,130
+selection,FLAT,768,129
+selection,UP,1140,130

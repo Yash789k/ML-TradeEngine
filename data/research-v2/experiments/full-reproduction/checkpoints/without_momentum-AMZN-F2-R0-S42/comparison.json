@@ -1,0 +1,10 @@
+{
+  "trial": "without_momentum-AMZN-F2-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "e348737501f623a1199e31cebc333966915ee89732fcd83f73cfeecc30544bee",
+  "expected_prediction_sha256": "2d8a82059d3ae8aebe20c9e22a8a600d39b4e6e7316eccc0ed43ab863466118a",
+  "model_sha256": "bab4be482510ecd0fce8a8217bbddf1cf354356fb22e9c01b1868629e97e8208"
+}

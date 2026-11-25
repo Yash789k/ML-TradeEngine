@@ -1,0 +1,203 @@
+[
+  {
+    "id": "D01",
+    "artifact": "data/research-v2/tables/diag_forecast_summary.csv",
+    "sha256": "ce6861b1a2da8c29baa4d8c98fe03a427c1528e023a905b6888e8f41d0785d63",
+    "selector": {
+      "period": "audit",
+      "model": "hybrid"
+    },
+    "values": {
+      "n": 1056,
+      "sessions": 48,
+      "accuracy": 0.3759469696969697,
+      "log_loss": 1.088162490641695,
+      "brier": 0.659441844300362
+    },
+    "interpretation": "exploratory consumed history"
+  },
+  {
+    "id": "D02",
+    "artifact": "data/research-v2/tables/diag_forecast_summary.csv",
+    "sha256": "ce6861b1a2da8c29baa4d8c98fe03a427c1528e023a905b6888e8f41d0785d63",
+    "selector": {
+      "period": "audit",
+      "model": "prior"
+    },
+    "values": {
+      "n": 1056,
+      "sessions": 48,
+      "accuracy": 0.40625,
+      "log_loss": 1.07555805605924,
+      "brier": 0.6539742079243123
+    },
+    "interpretation": "exploratory consumed history"
+  },
+  {
+    "id": "D03",
+    "artifact": "data/research-v2/tables/diag_paired_inference.csv",
+    "sha256": "07c981fecf0b3518d575ed9a2c4abbe585cc8f5e0b0010dfeb9eb531e6134a05",
+    "selector": {
+      "period": "audit",
+      "model": "hybrid",
+      "endpoint": "log_loss",
+      "block_length": 10
+    },
+    "values": {
+      "effect": 0.0126044345824551,
+      "ci_low": -0.0024649172543739,
+      "ci_high": 0.0269498961600991,
+      "holm_p": 0.9795102448775612,
+      "family_size": 24.0,
+      "mde80_approx": 0.0213422366840706
+    },
+    "interpretation": "exploratory consumed history"
+  },
+  {
+    "id": "D04",
+    "artifact": "data/research-v2/tables/diag_portfolio.csv",
+    "sha256": "cd4454a6f96e879c8380c1a5fcfd75b92cca6e3096e75d470f09f856cd860104",
+    "selector": {
+      "scope": "matched_fresh_10000",
+      "period": "audit",
+      "strategy": "adaptive_hybrid"
+    },
+    "values": {
+      "net_return": -0.0045709774979509,
+      "gross_fixed_fill_return": -0.0025201774876079,
+      "combined_fees_usd": 20.508000103431822,
+      "max_drawdown": -0.0221232543056818
+    },
+    "interpretation": "exploratory consumed history"
+  },
+  {
+    "id": "D05",
+    "artifact": "data/research-v2/tables/diag_portfolio.csv",
+    "sha256": "cd4454a6f96e879c8380c1a5fcfd75b92cca6e3096e75d470f09f856cd860104",
+    "selector": {
+      "scope": "matched_fresh_10000",
+      "period": "audit",
+      "strategy": "equal_weight"
+    },
+    "values": {
+      "net_return": 0.0254732311055776,
+      "gross_fixed_fill_return": 0.0268309552867533,
+      "combined_fees_usd": 13.577241811757126,
+      "max_drawdown": -0.026624581884405
+    },
+    "interpretation": "exploratory consumed history"
+  },
+  {
+    "id": "D06",
+    "artifact": "data/research-v2/tables/diag_round_trip_summary.csv",
+    "sha256": "20cf631995df0eb0b9dc14ef9e1410d6c39fa106c488da9105f3e47f1152d5cf",
+    "selector": {
+      "scope": "continuous_2024_start",
+      "period": "full",
+      "strategy": "adaptive_hybrid"
+    },
+    "values": {
+      "closed_episodes": 86,
+      "open_episodes": 18,
+      "closed_episode_win_rate": 0.4651162790697674,
+      "closed_episode_net_pnl_usd": 1605.167658070826,
+      "terminal_open_episode_pnl_usd": 1902.899865140103
+    },
+    "interpretation": "exploratory consumed history"
+  },
+  {
+    "id": "D07",
+    "artifact": "data/research-v2/tables/diag_round_trip_summary.csv",
+    "sha256": "20cf631995df0eb0b9dc14ef9e1410d6c39fa106c488da9105f3e47f1152d5cf",
+    "selector": {
+      "scope": "matched_fresh_10000",
+      "period": "audit",
+      "strategy": "adaptive_hybrid"
+    },
+    "values": {
+      "closed_episodes": 14,
+      "open_episodes": 16,
+      "closed_episode_win_rate": 0.1428571428571428,
+      "closed_episode_net_pnl_usd": -141.85160429569734,
+      "terminal_open_episode_pnl_usd": 96.1418293161862
+    },
+    "interpretation": "exploratory consumed history"
+  },
+  {
+    "id": "D08",
+    "artifact": "data/research-v2/tables/diag_calibration_contrast.csv",
+    "sha256": "a950343a2b3147eb11bb698697d4358ff3b9fe636ad52a58a40bcd3535b4bea1",
+    "selector": {
+      "period": "audit"
+    },
+    "values": {
+      "effect": -0.0289086922699689,
+      "ci_low": -0.0475904693469968,
+      "ci_high": -0.0065009235616005,
+      "same_argmax": true
+    },
+    "interpretation": "exploratory consumed history"
+  },
+  {
+    "id": "D09",
+    "artifact": "data/research-v2/tables/diag_stress.csv",
+    "sha256": "5a937987640806da45a550395044595cff7871b3f8de93dd2d6ae34aad1b1fff",
+    "selector": {
+      "scenario": "delay_1",
+      "strategy": "adaptive_hybrid"
+    },
+    "values": {
+      "net_return": -0.0116825586102818,
+      "max_drawdown": -0.0229337820488438,
+      "rejections": 4.0
+    },
+    "interpretation": "exploratory consumed history"
+  },
+  {
+    "id": "D10",
+    "artifact": "data/research-v2/tables/diag_stress.csv",
+    "sha256": "5a937987640806da45a550395044595cff7871b3f8de93dd2d6ae34aad1b1fff",
+    "selector": {
+      "scenario": "cost_4x",
+      "strategy": "adaptive_hybrid"
+    },
+    "values": {
+      "net_return": -0.0106945059908958,
+      "max_drawdown": -0.0235038859608146,
+      "rejections": 6.0
+    },
+    "interpretation": "exploratory consumed history"
+  },
+  {
+    "id": "D11",
+    "artifact": "data/research-v2/tables/diag_stress.csv",
+    "sha256": "5a937987640806da45a550395044595cff7871b3f8de93dd2d6ae34aad1b1fff",
+    "selector": {
+      "scenario": "gap_down_10pct",
+      "strategy": "adaptive_hybrid"
+    },
+    "values": {
+      "net_return": -0.0045709774979509,
+      "max_drawdown": -0.0645079450323373,
+      "rejections": 6.0
+    },
+    "interpretation": "exploratory consumed history"
+  },
+  {
+    "id": "D12",
+    "artifact": "data/research-v2/tables/diag_coverage.csv",
+    "sha256": "57ef0bd66bb1c4f472d078660423762243303514af6e9f392349bdc5f5ced247",
+    "selector": {
+      "period": "audit",
+      "model": "hybrid",
+      "threshold": 0.6
+    },
+    "values": {
+      "n": 20,
+      "sessions": 15,
+      "coverage": 0.0189393939393939,
+      "accuracy": 0.45
+    },
+    "interpretation": "exploratory consumed history"
+  }
+]

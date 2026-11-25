@@ -1,0 +1,80 @@
+{
+  "trial": {
+    "id": "base-MSFT-F1-R0-S42",
+    "variant": "base",
+    "family": "R4",
+    "symbol": "MSFT",
+    "fit_symbols": [
+      "MSFT"
+    ],
+    "fold": 1,
+    "start": "2024-07-01 00:00:00+00:00",
+    "stop": "2024-09-27 00:00:00+00:00",
+    "cfg": {
+      "history": 1008,
+      "fraction": 1.0,
+      "remove": "",
+      "seed": 42,
+      "calibration": 63,
+      "gate": 63,
+      "cadence": 63
+    }
+  },
+  "cache_hash": "d923b28dc4c9bf84c10d0d126d882fe27fbf8aa6836fedfb88ba081437ff40db",
+  "status": "complete",
+  "model_metadata": {
+    "config": {
+      "history": 1008,
+      "fraction": 1.0,
+      "remove": "",
+      "seed": 42,
+      "calibration": 63,
+      "gate": 63,
+      "cadence": 63
+    },
+    "decision": "2024-07-01 00:00:00+00:00",
+    "fitting_symbols": [
+      "MSFT"
+    ],
+    "boundaries": [
+      {
+        "symbol": "MSFT",
+        "fit_start": "2020-06-18 00:00:00+00:00",
+        "fit_end": "2023-11-30 00:00:00+00:00",
+        "fit_endpoint": "2023-12-08 00:00:00+00:00",
+        "calibration_start": "2023-12-11 00:00:00+00:00",
+        "calibration_end": "2024-03-12 00:00:00+00:00",
+        "calibration_endpoint": "2024-03-20 00:00:00+00:00",
+        "gate_start": "2024-03-21 00:00:00+00:00",
+        "gate_end": "2024-06-20 00:00:00+00:00",
+        "gate_endpoint": "2024-06-28 00:00:00+00:00",
+        "n_fit": 870,
+        "n_cal": 63,
+        "n_gate": 63
+      }
+    ],
+    "n_fit": 870,
+    "n_cal": 63,
+    "n_gate": 63,
+    "temperature": 1.0,
+    "gate_same": false,
+    "gate_separate": true,
+    "calibration_loss": 1.053394643238638,
+    "calibration_prior_loss": 1.0494163718853426,
+    "gate_loss": 1.000652482191633,
+    "gate_prior_loss": 1.0462289486134728,
+    "train_log_loss": 0.8221892483857104,
+    "train_accuracy": 0.7183908045977011,
+    "fit_seconds": 1.3799492089892738,
+    "training_hash": "b4039a3a98d4be8d0c6280bd26db06cffb0a60296c0780590795a34486229e9b"
+  },
+  "n_decisions": 63,
+  "prediction_rows": 441,
+  "estimator_fits": 2,
+  "seconds": 1.6587486670032376,
+  "inference_seconds": 0.03951625000627246,
+  "model_bytes": 119844,
+  "rss_peak_bytes": 460390400,
+  "predictions_sha256": "c1cbf0540bdb13cc4494d95ddfce7554bf8e2e548b5e9bfcbccf44aeb28e1132",
+  "model_sha256": "0da391c0d663e2bd20d1e5011835f1ebfaf292006220ca5490d73c2faa8d66e3"
+}

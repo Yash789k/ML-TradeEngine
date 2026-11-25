@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "config": {
+      "history": 1008,
+      "fraction": 1.0,
+      "remove": "momentum",
+      "seed": 42,
+      "calibration": 63,
+      "gate": 63,
+      "cadence": 63
+    },
+    "decision": "2024-07-01 00:00:00+00:00",
+    "fitting_symbols": [
+      "BAC"
+    ],
+    "boundaries": [
+      {
+        "symbol": "BAC",
+        "fit_start": "2020-06-18 00:00:00+00:00",
+        "fit_end": "2023-11-30 00:00:00+00:00",
+        "fit_endpoint": "2023-12-08 00:00:00+00:00",
+        "calibration_start": "2023-12-11 00:00:00+00:00",
+        "calibration_end": "2024-03-12 00:00:00+00:00",
+        "calibration_endpoint": "2024-03-20 00:00:00+00:00",
+        "gate_start": "2024-03-21 00:00:00+00:00",
+        "gate_end": "2024-06-20 00:00:00+00:00",
+        "gate_endpoint": "2024-06-28 00:00:00+00:00",
+        "n_fit": 870,
+        "n_cal": 63,
+        "n_gate": 63
+      }
+    ],
+    "n_fit": 870,
+    "n_cal": 63,
+    "n_gate": 63,
+    "temperature": 3.0,
+    "gate_same": false,
+    "gate_separate": false,
+    "calibration_loss": 1.1104120395807802,
+    "calibration_prior_loss": 1.0878573974847034,
+    "gate_loss": 1.0968811590598522,
+    "gate_prior_loss": 1.0745600116551974,
+    "train_log_loss": 0.985522548806218,
+    "train_accuracy": 0.6770114942528735,
+    "fit_seconds": 0.4253094160085311,
+    "training_hash": "7c0dd89267a289f2cb9f3cca99de431bc25831f25bc1d2037b52cc628f8f6549"
+  },
+  "sha256": "da556c4a57d9289961e81378b9b29b326ab70bf8f2764ac91baed7694e24fecb"
+}

@@ -1,0 +1,31 @@
+{
+  "role": "Descriptive postprocessing only; no fitting or winner selection",
+  "input_sha256": "0dbd2c7dc75b628c415dee262ffc5b2ecc6902652bb6a510966c9c53983a041e",
+  "source_sha256": "1585b337ba319b06b7e29b31e00cd04c398890e274d33a0284fdb7d71b4da8bf",
+  "expert_disagreement_rate": 0.36002886002886003,
+  "n_base_symbol_dates": 5544,
+  "maximum_seed_probability_difference": 0.0,
+  "files": {
+    "data/research-v2/tables/exp_portfolios.csv": "db867eb292368727693c462adbcbbdee893ce238960d75d6b572be63230eec7d",
+    "data/research-v2/tables/exp_transfer_class_metrics.csv": "c905cee3e97a1ec5eae371b27ed6afad379367a85d135fcf247f8935bda2fb5e",
+    "data/research-v2/tables/exp_disagreement.csv": "8753cd3d057ce5c2dd22c1959a3eb96f141d497421bf7aa4ae5ce55a817fc0d7",
+    "data/research-v2/tables/exp_seed_variance.csv": "ba040376eafc29b122aa4be57d16e535917a07be85cd8f4a7db1841dd5b24c7a",
+    "data/research-v2/tables/exp_learning.csv": "c741a758904989662c64de302aa92a3aa5a7c36f1e4ccf24511a13033a526406",
+    "data/research-v2/tables/exp_model_age.csv": "725c65b57b2e0c716672de20696d85c653e4d16bb0b19768e8ab08ef33048053",
+    "data/research-v2/tables/exp_seeds.csv": "b8a7a13f705a57e9e2dda8ed6ffd0b7cd0cccc9cff2625570ca76350ebede2be",
+    "data/research-v2/tables/exp_transfer.csv": "b6366b667e28466d449c3c686c79575aba395cd1d1cdf81d2796f15a2100fe53",
+    "data/research-v2/tables/exp_confidence_coverage.csv": "d0e672980625aef7ceff5d221c38d4ee35fe54cf0d9355480b144f1436ea8789",
+    "data/research-v2/tables/exp_reliability_uncertainty.csv": "921c99ec7d045507424fe761d002476bc30a23a5a0cba2d1d227daffdb6c0675",
+    "data/research-v2/tables/exp_economic_contrasts.csv": "03d966c949c70e3d0f32224075f4a503a213437ccd23b44e323ca61f4f6ebe29",
+    "data/research-v2/tables/exp_predictive.csv": "0bba4837ecfa62eabe596706ea01a54de6cf028bbaa8c0b26619b4705c3d355a",
+    "data/research-v2/tables/exp_transfer_confusion.csv": "ac64ccb3031eb22fa5cb44307a00a5485a0f700104f146f9eeceb35a7aafe82c",
+    "data/research-v2/tables/exp_contrasts.csv": "ee209571aeda41d4c95ec84bda1f93c6f68b90b19cb0751f2ab8a5cc9cc0609c",
+    "data/research-v2/tables/exp_reliability.csv": "0db98fbc3f69d30269821b06758bdf5e6378890bc0689678c379ba44732a738a",
+    "data/research-v2/tables/exp_runtime.csv": "5d5b95f527e01bd069f3a8b1459302306d9e30743ceb9eaa36a095e2d00d31f2",
+    "data/research-v2/figures/exp_reliability.png": "cdcacb5568c743f45f507f9eceb2553c87e6d68c7d2b790f5f406787927c3050",
+    "data/research-v2/figures/exp_contrasts.png": "62d6fef4e75697c920b4222ccf571cf826d518c8de3e9f4564e461089c216b30",
+    "data/research-v2/figures/exp_runtime.png": "73339f33253ff87d7c37ac48261d7511d1bfbc0c29036b240635b22f114e09e5",
+    "data/research-v2/figures/exp_calibration_uncertainty.png": "e778bd0f87ad37608ed04fd6cc814d2feaebcf20f659e1b92d6d24adb35bde8d",
+    "data/research-v2/figures/exp_learning.png": "a4d0d28c3082119702a27eccd4f888dc471161b540304ffbcbef695e5219797a"
+  }
+}

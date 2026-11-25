@@ -1,0 +1,10 @@
+{
+  "trial": "cadence_21-IWM-F1-R21-S42",
+  "probability_view_rows": 147,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "c134e37c2c4687e27b337e75f9f91b826f2f9f07ce9be8bafc381e31122126ba",
+  "expected_prediction_sha256": "a43ad68a8b77773a47450d1d43f2963f318d270a72b46c29bec04e1b53036287",
+  "model_sha256": "15504102518d26c7ae24e3267866df7d1cdd8bdf4c4beda631548f4024e4ee1a"
+}

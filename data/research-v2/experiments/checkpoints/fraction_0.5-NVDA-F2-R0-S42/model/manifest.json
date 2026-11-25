@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "config": {
+      "history": 1008,
+      "fraction": 0.5,
+      "remove": "",
+      "seed": 42,
+      "calibration": 63,
+      "gate": 63,
+      "cadence": 63
+    },
+    "decision": "2025-01-02 00:00:00+00:00",
+    "fitting_symbols": [
+      "NVDA"
+    ],
+    "boundaries": [
+      {
+        "symbol": "NVDA",
+        "fit_start": "2022-09-13 00:00:00+00:00",
+        "fit_end": "2024-06-05 00:00:00+00:00",
+        "fit_endpoint": "2024-06-13 00:00:00+00:00",
+        "calibration_start": "2024-06-14 00:00:00+00:00",
+        "calibration_end": "2024-09-13 00:00:00+00:00",
+        "calibration_endpoint": "2024-09-23 00:00:00+00:00",
+        "gate_start": "2024-09-24 00:00:00+00:00",
+        "gate_end": "2024-12-20 00:00:00+00:00",
+        "gate_endpoint": "2024-12-31 00:00:00+00:00",
+        "n_fit": 435,
+        "n_cal": 63,
+        "n_gate": 63
+      }
+    ],
+    "n_fit": 435,
+    "n_cal": 63,
+    "n_gate": 63,
+    "temperature": 3.0,
+    "gate_same": true,
+    "gate_separate": true,
+    "calibration_loss": 1.062281055837815,
+    "calibration_prior_loss": 1.0950915202162452,
+    "gate_loss": 1.0342577753195281,
+    "gate_prior_loss": 1.0697857591543454,
+    "train_log_loss": 0.8776849363488822,
+    "train_accuracy": 0.7517241379310344,
+    "fit_seconds": 0.1541035000118427,
+    "training_hash": "0ec895ebbfd39a96ecad44236898949daacdd28b6cea722c7fc7b9b39097dbd9"
+  },
+  "sha256": "e909bfb95417d444471c15fa9fc636ede755d23e9e1482045c26b1386d347859"
+}

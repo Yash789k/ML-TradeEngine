@@ -1,0 +1,10 @@
+{
+  "trial": "without_momentum-AAPL-F0-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "40f6e0df84fb168eb01b21ef86198edcd5afd1ac01fc0559d190ac18d302d2ad",
+  "expected_prediction_sha256": "bdff225c1628cc2f1d03764ee80d2370e9bf2f6d775fe9ec54c1fafcc814b5c0",
+  "model_sha256": "aca24ed62ec2883163a157d7a3b875f186377b864ac0aef7e872b3aa2729bc1b"
+}

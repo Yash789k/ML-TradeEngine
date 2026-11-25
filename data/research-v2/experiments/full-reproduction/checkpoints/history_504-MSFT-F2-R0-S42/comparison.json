@@ -1,0 +1,10 @@
+{
+  "trial": "history_504-MSFT-F2-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "c6ae9aa93c2ff172429059924204fe1dffdd2ab438b14576604ee044c54e828a",
+  "expected_prediction_sha256": "cc51f870e79c2787aee1c9816b1966a83c8dbfd56457a49c8d905392cbd1e148",
+  "model_sha256": "b5b5c17f1bab47aed681c32a03e20b0bb7d9f5f688cb76d0944cf7eee6175b32"
+}

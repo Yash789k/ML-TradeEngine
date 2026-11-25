@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "automation_id": "trading-pilot-evidence-watch",
+  "observer_only": true,
+  "last_checked_at": "2026-09-28T09:45:11.391941+00:00",
+  "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2",
+  "release_sha256": "570372e203c6ef943deb37c2856a4ca7f0c3d34a168ac247d5b1cb2232916f43",
+  "trial_id": "PILOT-TREND-V2-20260929",
+  "verification": {
+    "sealed_status_command_exit_code": 0,
+    "sealed_status_command_verified_release": true,
+    "heartbeat_source_hash_matches": true
+  },
+  "heartbeat": {
+    "at": "2026-09-28T09:44:29.689044+00:00",
+    "parent_pid": 1,
+    "pid": 21105,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+    "status": "awake"
+  },
+  "heartbeat_age_seconds": 41.703,
+  "heartbeat_stale_threshold_seconds": 300,
+  "launchd": {
+    "service": "local.ml-trade-engine.collector-v2",
+    "loaded": true,
+    "last_exit_code": 0,
+    "run_interval_seconds": 60
+  },
+  "status": {
+    "deployment": "cash",
+    "expected_elapsed_sessions": 0,
+    "external_orders": false,
+    "halted": false,
+    "label_complete_decisions": 0,
+    "ledger_consistent": true,
+    "limitations": [
+      "Local launch agent requires logged-in awake host; no wake guarantee",
+      "No external broker execution",
+      "Commissioning/replays never count as prospective",
+      "Missed sessions halt; no fabricated backfill"
+    ],
+    "missing_sessions": [],
+    "next_event": {
+      "due": "2026-09-29T20:30:00+00:00",
+      "hong_kong": "2026-09-30T04:30:00+08:00",
+      "id": "2026-09-29:daily",
+      "kind": "daily",
+      "ordinal": 1,
+      "session": "2026-09-29"
+    },
+    "prospective_status": "incomplete",
+    "required_sessions": 63,
+    "shadow": "trend",
+    "state_consistency_errors": [],
+    "terminal_observed_sessions": 0,
+    "terminal_required_sessions": 6,
+    "trial_id": "PILOT-TREND-V2-20260929",
+    "valid_observed_sessions": 0
+  },
+  "durable_records": {
+    "days": [],
+    "attempts": [],
+    "outcomes": [],
+    "events": [],
+    "terminal": [],
+    "outcome-runs": [],
+    "outcome-attempts": [],
+    "milestones": [],
+    "outages": []
+  },
+  "commissioning": {
+    "mode": "commissioning_preview",
+    "completed_at": "2026-09-28T08:51:29.940664+00:00",
+    "content_sha256": "a680d37f7c83119722bd1248ab9a6b6bde9734734ed6458dd1baf9c5551b4152",
+    "counts_as_prospective": false
+  },
+  "actionable_event_ids": [],
+  "notified_event_ids": [],
+  "last_check_disposition": "quiet_no_actionable_change"
+}

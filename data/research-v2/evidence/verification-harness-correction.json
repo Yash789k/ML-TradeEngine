@@ -1,0 +1,25 @@
+{
+  "recorded_at": "2026-09-28T08:57:49.284073+00:00",
+  "initial_full_job": "tests/final-offline/manifest.json",
+  "initial_ui_job": "tests/ui-r2/manifest.json",
+  "test_outcome": "370 offline passes and1UIpass; zero failures; stable source",
+  "manifest_failure": "Collection command appended a second -q and pytest collapsed node IDs into file counts, so evidence qualification correctly refused a zero collected-ID count.",
+  "correction": "Remove duplicate quiet flags, explicitly bind marker selection, collect exact IDs with one -q; repeat full and UI jobs with corrected harness. Original reports retained.",
+  "replacement_jobs": [
+    "tests/final-qualified/manifest.json",
+    "tests/ui-r2-qualified/manifest.json"
+  ],
+  "additional_source_guard_refusal": {
+    "job": "tests/final-qualified/manifest.json",
+    "passed_tests": 370,
+    "collected_tests": 370,
+    "changed_files": [
+      "research_v2/paper.py"
+    ],
+    "qualification": "not_qualified; report source edited during execution"
+  },
+  "final_qualified_jobs": [
+    "tests/final-stable/manifest.json",
+    "tests/ui-r2-qualified/manifest.json"
+  ]
+}

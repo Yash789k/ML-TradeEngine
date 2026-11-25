@@ -1,0 +1,20 @@
+{
+  "id": "R2",
+  "question": "baselines and predictive value",
+  "registered_at": "2026-09-28T08:11:44.578747+00:00",
+  "status": "completed_exploratory",
+  "protocol_sha256": "97d597a5c44a88a16ff444eb7e61786701907b2cb10b68b89faed8b62dcbae79",
+  "child_trials": [
+    {
+      "id": "DIAG-SAVED-20260928-01",
+      "registration": "data/research-v2/diagnostics/registration.json",
+      "registered_at": "2026-09-28T08:14:31.564454+00:00"
+    }
+  ],
+  "completed_at": "2026-09-28T08:25:20.393359+00:00",
+  "summary": "data/research-v2/diagnostics/summary.json",
+  "source_sha256": "e30849296081941b04002463bbc0b90494cbf03a2389901ca4eba9fa29f2dfd5",
+  "supplement": "data/research-v2/diagnostics/episode_registration.json",
+  "tested_source_sha256": "6dd72acb64ed9b6944314ba2015b93c096cf32f36927a582b1ebfbe1d598e8ef",
+  "test_manifest": "data/research-v2/diagnostics/test_manifest.json"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "R11",
+  "question": "runtime/recovery/scheduler/full-policy parity",
+  "registered_at": "2026-09-28T08:11:44.578747+00:00",
+  "status": "tested_local_scope",
+  "protocol_sha256": "97d597a5c44a88a16ff444eb7e61786701907b2cb10b68b89faed8b62dcbae79",
+  "child_trials": [
+    "R11-OPS-V2",
+    "R11-LATENCY-V2",
+    "R11-PROCESS-CRASH",
+    "R11-LATENCY-V2-R2",
+    "R11-PROCESS-CRASH-R2"
+  ],
+  "updated_at": "2026-09-28T08:54:12.846539+00:00",
+  "active_release_sha256": "570372e203c6ef943deb37c2856a4ca7f0c3d34a168ac247d5b1cb2232916f43",
+  "evidence": [
+    "operations/r2-final-tests.xml",
+    "operations/scheduler-verification-r2.json",
+    "operations/commissioning-restore-r2.json",
+    "operations/latency-r2.json",
+    "operations/process-recovery-r2.json"
+  ],
+  "scope": "Source-bound local simulation and scheduler commissioning; no remote job or physical host sleep test, no alpha approval"
+}

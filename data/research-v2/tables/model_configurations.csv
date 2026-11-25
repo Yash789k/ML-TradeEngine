@@ -1,0 +1,8 @@
+contract,component,configuration
+Controlled,HistGradientBoostingClassifier,max_iter=100; max_leaf_nodes=7; l2_regularization=10; learning_rate=0.05; min_samples_leaf=40; early_stopping=False; random_state=cfg.seed
+Controlled,LogisticRegression,C=0.1; max_iter=500; random_state=cfg.seed
+Historical / carried pilot,HistGradientBoostingClassifier,max_iter=100; max_leaf_nodes=7; l2_regularization=10; learning_rate=0.05; min_samples_leaf=40; early_stopping=False; random_state=cfg.seed
+Historical / carried pilot,LogisticRegression,C=0.1; max_iter=500; random_state=cfg.seed
+Controlled base,Chronology,history=1008; calibration=63; gate=63; cadence=63
+Historical / pilot,Chronology,window=1008; calibration=126; min_fit=504; retrain_every=21
+Both,Temperature candidates,"[0.75, 1, 1.5, 2, 3]"

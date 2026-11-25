@@ -1,0 +1,13 @@
+id,status,evidence,remaining
+R1,verified with limitations,diag_data_coverage / dataset_flow; snapshot hashes,Current-vintage prices; historical constituent/action tape unavailable
+R2,completed exploratory,diag_forecast_summary / paired_inference; exp_predictive,No independent historical confirmation; no edge approval
+R3,completed exploratory,diag_calibration_contrast; exp_contrasts R3,Separated gate benefit inconclusive
+R4,completed exploratory,exp_predictive / portfolios / economic_contrasts,Legacy larger models excluded from controlled comparisons
+R5,completed exploratory,exp_contrasts R5; saved refit predictions,"Family ablations are model-conditional, not causal mechanisms"
+R6,completed exploratory,exp_learning / model_age / seeds,Bounded development-only budget; no pilot tuning
+R7,completed exploratory,diag_instrument / regime; exp_transfer,Held targets retain overlapping ETF economic exposures
+R8,completed exploratory,diag_portfolio / round_trip_summary / total_pnl_attribution,Proxy fills and fixed proportional costs
+R9,completed exploratory,diag_stress and replay ledgers,No closing-auction or empirical market-impact model
+R10,completed exploratory,diag_failures / closed episodes / worst sell fills,Descriptive conditional evidence
+R11,tested local scope,Sealed runtime tests; scheduler-verification; UI and clean-env reports,Physical sleep/power-loss cycle and sustained availability unobserved
+R12,time-dependent,Registered63 sessions; active launchd; commissioning receipt,Independent sessions and final labels have not yet occurred

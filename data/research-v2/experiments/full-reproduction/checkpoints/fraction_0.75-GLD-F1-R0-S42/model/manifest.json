@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "config": {
+      "history": 1008,
+      "fraction": 0.75,
+      "remove": "",
+      "seed": 42,
+      "calibration": 63,
+      "gate": 63,
+      "cadence": 63
+    },
+    "decision": "2024-07-01 00:00:00+00:00",
+    "fitting_symbols": [
+      "GLD"
+    ],
+    "boundaries": [
+      {
+        "symbol": "GLD",
+        "fit_start": "2021-04-30 00:00:00+00:00",
+        "fit_end": "2023-11-30 00:00:00+00:00",
+        "fit_endpoint": "2023-12-08 00:00:00+00:00",
+        "calibration_start": "2023-12-11 00:00:00+00:00",
+        "calibration_end": "2024-03-12 00:00:00+00:00",
+        "calibration_endpoint": "2024-03-20 00:00:00+00:00",
+        "gate_start": "2024-03-21 00:00:00+00:00",
+        "gate_end": "2024-06-20 00:00:00+00:00",
+        "gate_endpoint": "2024-06-28 00:00:00+00:00",
+        "n_fit": 652,
+        "n_cal": 63,
+        "n_gate": 63
+      }
+    ],
+    "n_fit": 652,
+    "n_cal": 63,
+    "n_gate": 63,
+    "temperature": 1.5,
+    "gate_same": false,
+    "gate_separate": false,
+    "calibration_loss": 1.063482443634379,
+    "calibration_prior_loss": 1.0456101951363526,
+    "gate_loss": 1.1422987124105213,
+    "gate_prior_loss": 1.1210944389984039,
+    "train_log_loss": 0.8637977891092563,
+    "train_accuracy": 0.7622699386503068,
+    "fit_seconds": 0.17591674999857787,
+    "training_hash": "e61034a731da94c81f45eacef32c9c303a7b0b6dbc1f134f1f0bf4b32ac1efe2"
+  },
+  "sha256": "0d45c62d3ed2dcebbf1dcf5bbddf1d1df011697f180d2264a84a1af9a143730e"
+}

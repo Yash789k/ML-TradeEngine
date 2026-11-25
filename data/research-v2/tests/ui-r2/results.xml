@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="36.670" timestamp="2026-09-28T16:54:33.867500+08:00" hostname="Yash-Katarias-Macbook-Pro-583.local"><testcase classname="tests.test_research_v2_ui" name="test_dashboard_commissioning_roundtrip" time="36.625" /></testsuite></testsuites>

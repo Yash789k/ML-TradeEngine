@@ -1,0 +1,42 @@
+Using Python 3.13.11 environment at: data/research-v2/clean-env
+Resolved 26 packages in 4.33s
+Downloading numpy (4.8MiB)
+Downloading pygments (1.2MiB)
+Downloading scikit-learn (7.7MiB)
+Downloading pandas (10.2MiB)
+Downloading scipy (19.4MiB)
+Downloading pyarrow (29.7MiB)
+ Downloaded pygments
+ Downloaded numpy
+ Downloaded scikit-learn
+ Downloaded pandas
+ Downloaded scipy
+ Downloaded pyarrow
+Prepared 25 packages in 1m 14s
+Installed 26 packages in 188ms
+ + certifi==2026.2.25
+ + charset-normalizer==3.4.4
+ + exchange-calendars==4.13.2
+ + idna==3.11
+ + iniconfig==2.3.0
+ + joblib==1.5.3
+ + korean-lunar-calendar==0.4.0
+ + numpy==2.2.6
+ + packaging==26.1
+ + pandas==2.3.3
+ + pluggy==1.5.0
+ + psutil==7.2.2
+ + pyarrow==21.0.0
+ + pygments==2.19.2
+ + pyluach==2.3.0
+ + pytest==9.0.3
+ + python-dateutil==2.9.0.post0
+ + pytz==2025.2
+ + requests==2.32.3
+ + scikit-learn==1.8.0
+ + scipy==1.17.1
+ + six==1.17.0
+ + threadpoolctl==3.6.0
+ + toolz==1.1.0
+ + tzdata==2025.3
+ + urllib3==2.6.3

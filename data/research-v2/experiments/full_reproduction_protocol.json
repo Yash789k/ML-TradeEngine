@@ -1,0 +1,27 @@
+{
+  "registered_at": "2026-09-28T08:39:24.409686+00:00",
+  "role": "Full deterministic clean-environment validation; no new candidate, selection, split, endpoint or hypothesis",
+  "parent_design_sha256": "77681045e724dd6240a71c39ae939db04bf95d17d4305becf42db944c72972bd",
+  "execution_source_sha256": "2db3a1be4d6810704b9a98b5e6a06440275930a7bcdc2c360cb098f4812eaa2c",
+  "source_hashes": {
+    "research_v2/experiments.py": "df9405b20dbeb48e4284c09d23fbd5253ffa160b9040196b52a6e59ff7cd66d8",
+    "src/models/adaptive.py": "17b17d73328b95f3e71ff5c7a0610e244c7a52254e30c022a8a7fe8a3621a071",
+    "src/execution/account.py": "73c5aa89826c5ad5a0b04721344a0fa067f4cf4a13c480bdfb8165d6d5a1acc9",
+    "src/backtest/portfolio.py": "9c3b2832ee54d55d696f617bfb394e44460716b10eedb935a67d7b6d33c4a8f3",
+    "src/research/adaptive_portfolio.py": "a58a69e0e53a04e82d355a4a544c043a99f6f6d38829bcbbdc8ebbf176e0ff73"
+  },
+  "budget_amendment": "The original1800-estimator research-selection budget is unchanged. A separate1696-estimator validation replay budget is added before replay, requested by the lead task to verify every registered trial in the clean environment.",
+  "maximum_estimator_fits": 1696,
+  "maximum_cumulative_seconds": 1800,
+  "expected_trials": 848,
+  "expected_probability_view_rows": 352800,
+  "expected_portfolio_policies": 10,
+  "expected_portfolio_blocks": 4,
+  "rtol": 1e-10,
+  "atol": 1e-12,
+  "comparison": "Every forecast field, complete non-runtime fit metadata, and40actual cash-ledger/target/event histories",
+  "output_directory": "data/research-v2/experiments/full-reproduction",
+  "clean_environment": "data/research-v2/clean-env",
+  "adapter": "Namespace-only packages; exact archived experiment, feature/label, risk and account implementations; output paths isolated",
+  "old_artifacts": "Read only; original source/manifests/results retained"
+}

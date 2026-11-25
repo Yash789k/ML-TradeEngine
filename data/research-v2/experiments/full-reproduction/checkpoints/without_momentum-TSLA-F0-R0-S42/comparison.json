@@ -1,0 +1,10 @@
+{
+  "trial": "without_momentum-TSLA-F0-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "246de4fc71ede281ba480617cd58914a55ef65569d1d4fc259941309f4240bcc",
+  "expected_prediction_sha256": "7fe68a5662a665fd275a85d61a14679f1e79c274b8b580ba41b142d4a99a5485",
+  "model_sha256": "6a92e34ec031cd0f761f65b7f07f3aa3ca8d87a810a4830da1883067867d8fab"
+}

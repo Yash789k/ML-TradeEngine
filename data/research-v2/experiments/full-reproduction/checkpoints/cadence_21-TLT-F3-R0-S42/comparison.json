@@ -1,0 +1,10 @@
+{
+  "trial": "cadence_21-TLT-F3-R0-S42",
+  "probability_view_rows": 147,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "a2abc5060f6e932d1e720ba0bf32c498a1a76a2086ae200d74fbe83bfd7b6a55",
+  "expected_prediction_sha256": "a2abc5060f6e932d1e720ba0bf32c498a1a76a2086ae200d74fbe83bfd7b6a55",
+  "model_sha256": "7d4e59d02895fdf5a8b3f08343c82706483341a853807e99aac8156aa18b9f08"
+}

@@ -1,0 +1,43 @@
+# Saved-evidence diagnostics — DIAG-SAVED-20260928-01
+
+This is an exploratory follow-up of history already inspected before registration. It supplies dataset, predictive, accounting and robustness evidence; it does not approve a historical trading edge or manufacture prospective observations. The source protocol is `data/research-v2/protocol.json`; the diagnostic registration precedes evaluation and is retained in `data/research-v2/diagnostics/registration.json`.
+
+## Verification and data accounting
+
+All 722 baseline sealed-file hashes were checked and preserved. 66 experiment outputs were compared again against the archived reproduction with exact numeric or JSON-object equality, without retraining. The saved JUnit contains 310 historical cases and the historical provider exclusion record reports 17 unrun integrations. These saved tests do not certify changed current source.
+
+There are 2511 common market sessions × 22 instruments = 55242 raw instrument-session observations. Each symbol loses 252 feature warmup rows, leaving 2,259 complete feature rows. The saved experiment has 686 decisions per symbol, 15092 rows, and 726 rolling refits. Of these, 14960 rows across 680 dates have mature labels; 132 endpoint-unobserved rows are withheld. No missing exchange sessions, duplicate keys or nonfinite adjusted OHLCV rows were found. Tables `diag_data_coverage.csv`, `diag_dataset_flow.csv` and `diag_class_counts.csv` reconcile these quantities.
+
+This is a fixed survivor universe with overlapping ETFs, not historical constituent reconstruction. The archived raw columns contain current-vintage provider prices and adjusted closes; no split/dividend event tape is saved. Adjustment-factor ranges can be checked, but event-level corporate-action accounting cannot be certified. These are total-return proxy units, not broker-share records. Current-vintage adjustments and survivor membership limit external generalization.
+
+## Probability quality and dependence
+
+The consumed audit has 1056 labeled rows on 48 dates. Hybrid accuracy is 0.37594697, compared with 0.40625000 for the training-frequency prior. Hybrid log loss is 1.08816249, versus 1.07555806. The paired daily mean difference is +0.01260443, with block-10 percentile interval [-0.00246492, +0.02694990], where a negative difference would favor the hybrid. Holm-adjusted p is 0.979510 across the actual registered 24 predictive comparisons. Block lengths 6 and 21 are sensitivity checks. The approximate 80%-power detectable difference is 0.021342 log-loss units, larger than the protocol's practical 0.01 gain. This approximation does not turn the 48 strongly dependent dates into independent trials.
+
+The predictive family contains four candidates against the prior, two endpoints and three consumed periods. Accuracy comparisons for raw mixture and temperature-calibrated mixture are algebraically identical but retained as registered, making this part of Holm conservative. Directional classification is reported alongside log loss and multiclass Brier; the almost-deterministic always-UP control uses explicit 1e-12 probability clipping, so its extreme log loss is a scoring consequence of certainty, not an equivalent learned probability model.
+
+Calibration lowers audit log loss relative to the uncalibrated arithmetic mixture by -0.02890869, interval [-0.04759047, -0.00650092]. Temperature leaves all class argmax decisions unchanged. This can support a probability-calibration claim on consumed history, but not an independent gate-benefit claim: the legacy gate and temperature both used the same trailing block. Reliability bins retain support and date-block ratio intervals. Confidence ≥0.60 retains only 20 rows on 15 dates (1.894% coverage), with accuracy 45.000%; this is too sparse to advertise as a robust high-confidence trading threshold. No threshold was selected.
+
+Per-class reports and confusion counts, instrument/quarter/regime/fold summaries, model-age support and gate/disagreement slices are exported as separate CSV tables. Regimes use only contemporaneously available SPY trailing return and volatility with a fixed 20% annual volatility cutoff. The slices are descriptive, not an extra family of discovered significance tests. The single-symbol models do not by themselves establish cross-instrument transfer.
+
+## Capital-matched economics and failure accounting
+
+The original continuous audit account period returns remain hybrid -0.56360% and equal-weight 2.02510%. New matched accounts both start the audit with $10,000 in cash: hybrid -0.45710%, equal-weight 2.54732%. Different opening inventory and commissioning costs explain why fresh-period returns are not copied from a segment of the continuous account. All new economic comparisons use these common starting conditions and the same tested release-pinned ledger; all dates and targets are frozen.
+
+Costs comprise 10 basis points commission and 5 basis points additive slippage on filled notional on each side. Fixed-fill gross return adds actual debits to terminal equity; this is distinct from a zero-cost rerun, which can change feasible quantities and rejections. Turnover is two-way absolute filled notional divided by initial capital. Sharpe uses 252 sessions/year and zero risk-free rate; Sortino uses zero minimum acceptable return over all sessions. Cash risk ratios are undefined instead of artificial numerical values.
+
+A high win rate from partial reductions is misleading. The full hybrid record has profitable sell-fill fraction 87.710%, but only 86 fully closed flat-to-flat episodes, with win rate 46.512%; 18 episodes remain open. The fresh audit has 14 closed episodes with win rate 14.286%, net closed P&L $-141.85, and 16 open episodes with terminal marked P&L $96.14. Their sum exactly reconciles the net account loss $-45.71. Entry and exit costs are included. Equal-weight has no fully closed episodes and therefore no defined closed-trade win rate. Tables `diag_round_trip_episodes.csv`, `diag_round_trip_summary.csv` and `diag_total_pnl_attribution.csv` expose these denominators.
+
+Worst-loss and high-confidence error cases follow registered ranking rules; a representative error is selected nearest the within-class error-loss median, with a chronological tie-break. They explain how outcomes occurred without implying a causal market mechanism or choosing anecdotes to imply profitability.
+
+## Frozen-decision robustness
+
+The fresh-audit hybrid baseline return is -0.45710%; a one-session submission delay changes it to -1.16826%, and fourfold costs to -1.06945%. A synthetic one-session 10% mark shock and next-session rebound leaves terminal wealth unchanged in this realized target path but worsens maximum drawdown from -2.2123% to -6.4508%; unchanged final return is not proof of gap resilience. Partial-fill, gross-cap and reservation-buffer tests also change account execution while preserving model forecasts. Removing the reservation buffer can improve a realized path by rejecting more buys; that contingent selection effect is not a new preferred policy. Every perturbation is listed, including unfavorable outcomes. Injecting one missing SPY bar halts all four replays before execution.
+
+These synthetic scenarios do not model a quote book or estimate event probabilities. No stress result changes the frozen prospective candidate. Report `diag_stress.csv` with its capital scope and include both final wealth and drawdown.
+
+## Reproduction and scope
+
+Run from the repository root with `/Users/a/miniconda3/bin/python -m research_v2.diagnostics`, followed by `/Users/a/miniconda3/bin/python -c 'from research_v2.diagnostics import episode_supplement, write_diagnostics_report; episode_supplement(); write_diagnostics_report()'`. Run `/Users/a/miniconda3/bin/python -m pytest tests/test_research_v2_diagnostics.py -q`. The source and archived inputs, every table and plot, the diagnostic claims map, run log, JUnit, and runtime metadata are retained in `data/research-v2/diagnostics/` and the referenced tables/figures directories. The baseline verification intentionally fails if any sealed input changes. Reproduction writes only the unsealed research-v2 output workspace; preserve a dated copy before intentionally regenerating it.
+
+Historical diagnostics are complete within their registered scope. Missing corporate-action events and historical membership are explicit limitations; independent instrument transfer, refitted ablations, prospective replication and operational readiness belong to their separate trials. Prospective outcomes require actual future sessions and six-session label maturity. No evidence here approves external broker orders.

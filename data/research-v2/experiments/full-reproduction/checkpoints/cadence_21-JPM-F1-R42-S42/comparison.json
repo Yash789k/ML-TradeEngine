@@ -1,0 +1,10 @@
+{
+  "trial": "cadence_21-JPM-F1-R42-S42",
+  "probability_view_rows": 147,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "aa300351ce745146be699a5e98bc9c8a8b7e93c2b8b0dde03f1f9a703ccabb04",
+  "expected_prediction_sha256": "aa300351ce745146be699a5e98bc9c8a8b7e93c2b8b0dde03f1f9a703ccabb04",
+  "model_sha256": "b531a6de1796789b63f1aa676d1f7f1d44492ec7b512e5f85a7ade1ccc592343"
+}

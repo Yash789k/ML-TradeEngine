@@ -1,0 +1,10 @@
+{
+  "trial": "transfer-XLE-F2-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "9ad512255faa508a117a4f9b91197adc58a178b597b977951d0c47ef3292fd5a",
+  "expected_prediction_sha256": "c0b8af4c8f1fa59cfa07678afb81623c680046dd87c82e86b91afac00a77e5fa",
+  "model_sha256": "8f2fac9a4a90338b3334705056907045dc138072d426d227bcc7469927ff4fe0"
+}

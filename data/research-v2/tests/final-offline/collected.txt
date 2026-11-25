@@ -1,0 +1,25 @@
+tests/test_accounting_regressions.py: 9
+tests/test_adaptive_release.py: 9
+tests/test_backtest.py: 26
+tests/test_causality_regressions.py: 7
+tests/test_collector_v2.py: 27
+tests/test_data_pipeline.py: 6
+tests/test_env_analyzer.py: 27
+tests/test_feature_pipeline.py: 24
+tests/test_gating.py: 17
+tests/test_live.py: 37
+tests/test_meta_signal_generator.py: 13
+tests/test_meta_strategy.py: 12
+tests/test_ml_pipeline.py: 24
+tests/test_operational_regressions.py: 7
+tests/test_policy_engine.py: 13
+tests/test_portfolio_execution.py: 10
+tests/test_prospective_report_v2.py: 8
+tests/test_research.py: 21
+tests/test_research_protocol.py: 2
+tests/test_research_v2_diagnostics.py: 12
+tests/test_research_v2_experiments.py: 7
+tests/test_research_v2_paper.py: 6
+tests/test_risk.py: 31
+tests/test_sentiment.py: 15
+

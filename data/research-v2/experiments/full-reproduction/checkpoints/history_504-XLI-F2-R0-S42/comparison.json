@@ -1,0 +1,10 @@
+{
+  "trial": "history_504-XLI-F2-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "25be7cc37b25e0f8b2db7b080f71a82bd76eaec5a6aa6a5d6c45f965ce53b0fe",
+  "expected_prediction_sha256": "e6f89e40cbb677dd3ca9af9091f6da836bda5a5a9bc44c955903decdef1d4bd2",
+  "model_sha256": "a430d6922f9c44db3b8431c93383d0376c772c6b916e6ea22b9e42494ce2a7c7"
+}

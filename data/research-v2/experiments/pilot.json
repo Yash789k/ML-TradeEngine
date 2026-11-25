@@ -1,0 +1,34 @@
+{
+  "registered_role": "development runtime only; no predictive outcomes used",
+  "recorded_at": "2026-09-28T08:19:22.217748+00:00",
+  "symbols": [
+    "AAPL",
+    "SPY"
+  ],
+  "fits": 4,
+  "rows": [
+    {
+      "symbol": "AAPL",
+      "fit_seconds": 0.2308430419943761,
+      "n_fit": 870,
+      "artifact_bytes": 121028
+    },
+    {
+      "symbol": "SPY",
+      "fit_seconds": 0.18611537499236874,
+      "n_fit": 870,
+      "artifact_bytes": 115770
+    }
+  ],
+  "elapsed_seconds": 0.8305627500085393,
+  "rss_peak_bytes": 481755136,
+  "hardware": "macOS-26.3-arm64-arm-64bit-Mach-O",
+  "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]",
+  "source_hashes": {
+    "research_v2/experiments.py": "76470c61b9788090ed6e13e550383bd73ec0cf51abc812ac8933e5efa66376f0",
+    "src/models/adaptive.py": "17b17d73328b95f3e71ff5c7a0610e244c7a52254e30c022a8a7fe8a3621a071",
+    "src/execution/account.py": "73c5aa89826c5ad5a0b04721344a0fa067f4cf4a13c480bdfb8165d6d5a1acc9",
+    "src/backtest/portfolio.py": "9c3b2832ee54d55d696f617bfb394e44460716b10eedb935a67d7b6d33c4a8f3",
+    "src/research/adaptive_portfolio.py": "a58a69e0e53a04e82d355a4a544c043a99f6f6d38829bcbbdc8ebbf176e0ff73"
+  }
+}

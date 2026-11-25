@@ -1,0 +1,10 @@
+{
+  "trial": "cadence_21-AAPL-F2-R21-S42",
+  "probability_view_rows": 147,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "fdde278ffdc96cbf48633c2c681b4f4e8b056d91cb0d4e079700651203fcbd06",
+  "expected_prediction_sha256": "f72c6ccc073dab76d9e85c53e8c96d4741898bb934366eed7bc142d3db25b7e2",
+  "model_sha256": "e981f8ba01606c285fc18cf46457bd6695c1469873f5add2e1c524546f047897"
+}

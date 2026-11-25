@@ -1,0 +1,16 @@
+{
+  "id": "R11-PROCESS-CRASH-R2",
+  "parent": "R11",
+  "registered_at": "2026-09-28T08:46:27.154876+00:00",
+  "status": "completed",
+  "budget": "six actual SIGKILL points plus model partial-write/rename points; isolated commissioning states; one clean reference",
+  "endpoint": "restart recovered same targets and account states, no duplicate events",
+  "selection": "none",
+  "revision_reason": "Independent integrity/restore review; no model selection change",
+  "supersedes": "R11-PROCESS-CRASH",
+  "completed_at": "2026-09-28T08:54:43.706874+00:00",
+  "release_sha256": "570372e203c6ef943deb37c2856a4ca7f0c3d34a168ac247d5b1cb2232916f43",
+  "evidence": [
+    "operations/process-recovery-r2.json"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "trial": "without_risk-IWM-F3-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "e4adc6dcf67c30da81320cb066f27aa6059383307cbe4359e998f45077b1d3ff",
+  "expected_prediction_sha256": "2d7ef82299b3fa5efcf8816e60824f6f9dd74c42f39ce7d5c870b716de57f33a",
+  "model_sha256": "e9120569c4d5483aa94f28c940d42f2a78e7d205a8412158f005101084341389"
+}

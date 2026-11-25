@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "config": {
+      "history": 1008,
+      "fraction": 1.0,
+      "remove": "",
+      "seed": 42,
+      "calibration": 63,
+      "gate": 63,
+      "cadence": 63
+    },
+    "decision": "2025-07-01 00:00:00+00:00",
+    "fitting_symbols": [
+      "XLK"
+    ],
+    "boundaries": [
+      {
+        "symbol": "XLK",
+        "fit_start": "2021-06-16 00:00:00+00:00",
+        "fit_end": "2024-11-27 00:00:00+00:00",
+        "fit_endpoint": "2024-12-06 00:00:00+00:00",
+        "calibration_start": "2024-12-09 00:00:00+00:00",
+        "calibration_end": "2025-03-12 00:00:00+00:00",
+        "calibration_endpoint": "2025-03-20 00:00:00+00:00",
+        "gate_start": "2025-03-21 00:00:00+00:00",
+        "gate_end": "2025-06-20 00:00:00+00:00",
+        "gate_endpoint": "2025-06-30 00:00:00+00:00",
+        "n_fit": 870,
+        "n_cal": 63,
+        "n_gate": 63
+      }
+    ],
+    "n_fit": 870,
+    "n_cal": 63,
+    "n_gate": 63,
+    "temperature": 3.0,
+    "gate_same": false,
+    "gate_separate": false,
+    "calibration_loss": 1.1099148000332644,
+    "calibration_prior_loss": 1.0967708858228915,
+    "gate_loss": 1.0666388611082536,
+    "gate_prior_loss": 1.0208711085403757,
+    "train_log_loss": 0.9861003078331623,
+    "train_accuracy": 0.7103448275862069,
+    "fit_seconds": 1.2761344169994118,
+    "training_hash": "7e6b8a891da309ff20ecf8519e20e1e8b900150cdcff846cdc51493f6217a4a5"
+  },
+  "sha256": "51e1aa5189d647c1b0e3b21e20703099ca1bf03ab4fd8a03880dba24c565d365"
+}

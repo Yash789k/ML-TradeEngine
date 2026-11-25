@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "config": {
+      "history": 1008,
+      "fraction": 0.5,
+      "remove": "",
+      "seed": 42,
+      "calibration": 63,
+      "gate": 63,
+      "cadence": 63
+    },
+    "decision": "2025-07-01 00:00:00+00:00",
+    "fitting_symbols": [
+      "TLT"
+    ],
+    "boundaries": [
+      {
+        "symbol": "TLT",
+        "fit_start": "2023-03-09 00:00:00+00:00",
+        "fit_end": "2024-11-27 00:00:00+00:00",
+        "fit_endpoint": "2024-12-06 00:00:00+00:00",
+        "calibration_start": "2024-12-09 00:00:00+00:00",
+        "calibration_end": "2025-03-12 00:00:00+00:00",
+        "calibration_endpoint": "2025-03-20 00:00:00+00:00",
+        "gate_start": "2025-03-21 00:00:00+00:00",
+        "gate_end": "2025-06-20 00:00:00+00:00",
+        "gate_endpoint": "2025-06-30 00:00:00+00:00",
+        "n_fit": 435,
+        "n_cal": 63,
+        "n_gate": 63
+      }
+    ],
+    "n_fit": 435,
+    "n_cal": 63,
+    "n_gate": 63,
+    "temperature": 2.0,
+    "gate_same": true,
+    "gate_separate": false,
+    "calibration_loss": 1.0791195814555747,
+    "calibration_prior_loss": 1.0896359559600977,
+    "gate_loss": 1.1113433564282535,
+    "gate_prior_loss": 1.101786688716413,
+    "train_log_loss": 0.9152504250596581,
+    "train_accuracy": 0.8183908045977012,
+    "fit_seconds": 0.14812820800580084,
+    "training_hash": "d53ced119d7b5e5b0ff2e59dd63324f0b5bd60c63c5eb02531a6763c8e3fa594"
+  },
+  "sha256": "5043bb47dd51136f447ad5ec6bbc17b1f865fc3bec2e90d57b3a697d685122b2"
+}

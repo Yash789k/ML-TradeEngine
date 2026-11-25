@@ -1,0 +1,13 @@
+{
+  "id": "R11-PROCESS-CRASH",
+  "parent": "R11",
+  "registered_at": "2026-09-28T08:31:56.127699+00:00",
+  "status": "completed",
+  "budget": "six actual SIGKILL points plus model partial-write/rename points; isolated commissioning states; one clean reference",
+  "endpoint": "restart recovered same targets and account states, no duplicate events",
+  "selection": "none",
+  "evidence": [
+    "operations/process-recovery.json"
+  ],
+  "note": "r1 proof retained; r2 repeat registered separately"
+}

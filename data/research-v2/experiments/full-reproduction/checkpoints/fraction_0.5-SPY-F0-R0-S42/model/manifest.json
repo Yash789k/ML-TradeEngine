@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "config": {
+      "history": 1008,
+      "fraction": 0.5,
+      "remove": "",
+      "seed": 42,
+      "calibration": 63,
+      "gate": 63,
+      "cadence": 63
+    },
+    "decision": "2024-01-02 00:00:00+00:00",
+    "fitting_symbols": [
+      "SPY"
+    ],
+    "boundaries": [
+      {
+        "symbol": "SPY",
+        "fit_start": "2021-09-13 00:00:00+00:00",
+        "fit_end": "2023-06-05 00:00:00+00:00",
+        "fit_endpoint": "2023-06-13 00:00:00+00:00",
+        "calibration_start": "2023-06-14 00:00:00+00:00",
+        "calibration_end": "2023-09-13 00:00:00+00:00",
+        "calibration_endpoint": "2023-09-21 00:00:00+00:00",
+        "gate_start": "2023-09-22 00:00:00+00:00",
+        "gate_end": "2023-12-20 00:00:00+00:00",
+        "gate_endpoint": "2023-12-29 00:00:00+00:00",
+        "n_fit": 435,
+        "n_cal": 63,
+        "n_gate": 63
+      }
+    ],
+    "n_fit": 435,
+    "n_cal": 63,
+    "n_gate": 63,
+    "temperature": 1.5,
+    "gate_same": true,
+    "gate_separate": true,
+    "calibration_loss": 1.0633304277950153,
+    "calibration_prior_loss": 1.121681874419107,
+    "gate_loss": 1.0256506714657874,
+    "gate_prior_loss": 1.0822616603592563,
+    "train_log_loss": 0.861409178650697,
+    "train_accuracy": 0.7770114942528735,
+    "fit_seconds": 0.16405433299951255,
+    "training_hash": "d098281b7013cdc77a7ce24369be6fcfe66452b1fbb2fedbf37d166496aec5de"
+  },
+  "sha256": "f9bf715efd9ba276d4ca76d83ac00292b574fbf16c5c7faf4e766f9ead8c72a2"
+}

@@ -1,0 +1,10 @@
+{
+  "trial": "without_momentum-MSFT-F0-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "caa2085b2421032af4291c20d7da536e4f12ab3049af493982a58e9f7ce66fa5",
+  "expected_prediction_sha256": "7b81c4b697ceac560aaa824aad2cb5e2f63a1fc1c06b9d3ed612d7414e74e486",
+  "model_sha256": "d2ab21cff2559cb9c3b5144243fd45b19633df5e6d793d327658d0dae4b72570"
+}

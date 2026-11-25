@@ -1,0 +1,15 @@
+{
+  "id": "R11-LATENCY-V2",
+  "parent": "R11",
+  "registered_at": "2026-09-28T08:29:04.600340+00:00",
+  "status": "completed",
+  "budget": "20 warm 22-symbol targets batches; 5 SPY fits fixed config; one actual cold public commissioning batch reused",
+  "endpoint": "stage seconds and peak resident bytes; n20 empirical P50/P95, P99 unreported; cold n1 no quantile",
+  "selection": "no model selection",
+  "input": "new source-bound public commissioning snapshot from actual launchd",
+  "completed_at": "2026-09-28T08:32:36.966085+00:00",
+  "evidence": [
+    "operations/latency.json"
+  ],
+  "release_sha256": "2a53ac1b6f91e93b949b4c6f35754225e7a0b1fab9174cde114c5e7c5e485751"
+}

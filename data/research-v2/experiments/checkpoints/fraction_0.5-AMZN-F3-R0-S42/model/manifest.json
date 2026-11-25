@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "config": {
+      "history": 1008,
+      "fraction": 0.5,
+      "remove": "",
+      "seed": 42,
+      "calibration": 63,
+      "gate": 63,
+      "cadence": 63
+    },
+    "decision": "2025-07-01 00:00:00+00:00",
+    "fitting_symbols": [
+      "AMZN"
+    ],
+    "boundaries": [
+      {
+        "symbol": "AMZN",
+        "fit_start": "2023-03-09 00:00:00+00:00",
+        "fit_end": "2024-11-27 00:00:00+00:00",
+        "fit_endpoint": "2024-12-06 00:00:00+00:00",
+        "calibration_start": "2024-12-09 00:00:00+00:00",
+        "calibration_end": "2025-03-12 00:00:00+00:00",
+        "calibration_endpoint": "2025-03-20 00:00:00+00:00",
+        "gate_start": "2025-03-21 00:00:00+00:00",
+        "gate_end": "2025-06-20 00:00:00+00:00",
+        "gate_endpoint": "2025-06-30 00:00:00+00:00",
+        "n_fit": 435,
+        "n_cal": 63,
+        "n_gate": 63
+      }
+    ],
+    "n_fit": 435,
+    "n_cal": 63,
+    "n_gate": 63,
+    "temperature": 3.0,
+    "gate_same": true,
+    "gate_separate": true,
+    "calibration_loss": 1.1272736949861242,
+    "calibration_prior_loss": 1.1931391000987135,
+    "gate_loss": 1.0257284906122173,
+    "gate_prior_loss": 1.0487326826322099,
+    "train_log_loss": 0.9319986830039839,
+    "train_accuracy": 0.767816091954023,
+    "fit_seconds": 0.16647262500191573,
+    "training_hash": "ffcfaf50e565cf92e2318dafeed646164e8e2ef9c489804ef01526af17a37cac"
+  },
+  "sha256": "d05db1b82d58b7af8e3c76431f394f63dc48151c20ccf4d8eb6fee288382fe04"
+}

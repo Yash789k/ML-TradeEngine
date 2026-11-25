@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/a/Downloads/ml-trade-engine/research_v2/experiments.py", line 32, in <module>
+    from src.models.adaptive import features, execution_labels, probabilities
+  File "/Users/a/Downloads/ml-trade-engine/src/models/__init__.py", line 6, in <module>
+    from src.models.trainer import ModelTrainer  # noqa: F401
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/a/Downloads/ml-trade-engine/src/models/trainer.py", line 56, in <module>
+    import mlflow
+ModuleNotFoundError: No module named 'mlflow'

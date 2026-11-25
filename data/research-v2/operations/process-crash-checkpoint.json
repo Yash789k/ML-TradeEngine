@@ -1,0 +1,50 @@
+[
+  {
+    "elapsed_seconds": 6.026282999999239,
+    "exit_code": -9,
+    "point": "before_plan",
+    "status": "recovered_exactly"
+  },
+  {
+    "elapsed_seconds": 5.448110916986479,
+    "exit_code": -9,
+    "point": "after_plan",
+    "status": "recovered_exactly"
+  },
+  {
+    "elapsed_seconds": 8.059666625005775,
+    "exit_code": -9,
+    "point": "after_deployment",
+    "status": "recovered_exactly"
+  },
+  {
+    "elapsed_seconds": 13.443330624999362,
+    "exit_code": -9,
+    "point": "after_shadow",
+    "status": "recovered_exactly"
+  },
+  {
+    "elapsed_seconds": 12.762628458003746,
+    "exit_code": -9,
+    "point": "before_receipt",
+    "status": "recovered_exactly"
+  },
+  {
+    "elapsed_seconds": 9.801504375005607,
+    "exit_code": -9,
+    "point": "after_receipt",
+    "status": "recovered_exactly"
+  },
+  {
+    "elapsed_seconds": 26.524612791996333,
+    "exit_code": -9,
+    "point": "model_partial",
+    "status": "recovered_exactly"
+  },
+  {
+    "elapsed_seconds": 16.174844875000417,
+    "exit_code": -9,
+    "point": "model_committed",
+    "status": "recovered_exactly"
+  }
+]
