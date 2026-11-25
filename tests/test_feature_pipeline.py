@@ -278,7 +278,7 @@ def test_btc_proxy_present(full_feat_df):
 
 def test_macro_columns_attached(full_feat_df):
     for col in ["macro_VIX", "macro_yield_spread_10_2"]:
-        assert col in full_feat_df.columns, f"Missing {col}"
+        assert col not in full_feat_df.columns, "Latest-vintage macro must be excluded"
 
 
 # ---------------------------------------------------------------------------

@@ -1,0 +1,75 @@
+........................................................................ [ 24%]
+........................................................................ [ 48%]
+.......................................................................F [ 73%]
+........................................................................ [ 97%]
+.......                                                                  [100%]
+=================================== FAILURES ===================================
+___ TestSignalIntegration.test_dynamic_threshold_flips_marginal_bars_to_flat ___
+
+self = <tests.test_policy_engine.TestSignalIntegration object at 0x179636fd0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x321fafe70>
+tmp_path = PosixPath('/private/var/folders/wr/ns9m5k0d0h9f7bfgt25g6mm80000gn/T/pytest-of-a/pytest-13/test_dynamic_threshold_flips_m0')
+
+    def test_dynamic_threshold_flips_marginal_bars_to_flat(self, monkeypatch, tmp_path):
+        """A bar with confidence between base (0.38) and tightened (0.48)
+        threshold must be FLAT when the regime is unstable."""
+        import src.backtest.signals as sig_mod
+    
+        n = 300
+        regime = np.full(n, 2)
+        regime[n - 40:] = np.where(np.arange(40) % 2 == 0, 0, 2)  # unstable tail
+        feat = _feat_df(regime_seq=regime)
+    
+        # OOS predictions with confidence 0.42 everywhere (UP-leaning)
+        proba = pd.DataFrame(
+            {"p_down": 0.29, "p_flat": 0.29, "p_up": 0.42, "true_label": 2},
+            index=feat.index,
+        )
+        monkeypatch.setattr(sig_mod, "load_oos_predictions", lambda t: proba)
+        monkeypatch.setattr(
+            sig_mod, "_MODELS_ROOT", tmp_path
+        )
+        (tmp_path / "TEST").mkdir()
+        (tmp_path / "TEST" / "feature_cols.json").write_text('["rsi_14"]')
+    
+>       df_static = sig_mod.build_signal_df("TEST", feat)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_policy_engine.py:194: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/backtest/signals.py:148: in build_signal_df
+    validate_bundle(_MODELS_ROOT / ticker)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+directory = PosixPath('/private/var/folders/wr/ns9m5k0d0h9f7bfgt25g6mm80000gn/T/pytest-of-a/pytest-13/test_dynamic_threshold_flips_m0/TEST')
+
+    def validate_bundle(directory):
+        directory = Path(directory)
+        if not (directory / "bundle.json").exists():
+>           raise ValueError(
+                f"{directory}: missing versioned bundle; retrain using repaired pipeline"
+            )
+E           ValueError: /private/var/folders/wr/ns9m5k0d0h9f7bfgt25g6mm80000gn/T/pytest-of-a/pytest-13/test_dynamic_threshold_flips_m0/TEST: missing versioned bundle; retrain using repaired pipeline
+
+src/models/bundle.py:38: ValueError
+=============================== warnings summary ===============================
+tests/test_ml_pipeline.py::test_lgbm_fit_predict_shape
+tests/test_ml_pipeline.py::test_lgbm_fit_predict_shape
+tests/test_ml_pipeline.py::test_lgbm_fit_predict_shape
+tests/test_ml_pipeline.py::test_lgbm_proba_sums_to_one
+tests/test_ml_pipeline.py::test_lgbm_proba_sums_to_one
+tests/test_ml_pipeline.py::test_lgbm_proba_sums_to_one
+tests/test_ml_pipeline.py::test_lgbm_predict_labels_valid
+tests/test_ml_pipeline.py::test_lgbm_predict_labels_valid
+tests/test_ml_pipeline.py::test_lgbm_predict_labels_valid
+  /Users/a/miniconda3/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+    warnings.warn(
+
+tests/test_ml_pipeline.py::test_trainer_prepare_data_alignment
+  /Users/a/miniconda3/lib/python3.13/site-packages/mlflow/tracking/_tracking_service/utils.py:184: FutureWarning: The filesystem tracking backend (e.g., './mlruns') is deprecated as of February 2026. Consider transitioning to a database backend (e.g., 'sqlite:///mlflow.db') to take advantage of the latest MLflow features. See https://mlflow.org/docs/latest/self-hosting/migrate-from-file-store for migration guidance.
+    return FileStore(store_uri, store_uri)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_policy_engine.py::TestSignalIntegration::test_dynamic_threshold_flips_marginal_bars_to_flat
+1 failed, 294 passed, 23 deselected, 10 warnings in 60.19s (0:01:00)

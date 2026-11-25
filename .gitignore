@@ -33,3 +33,14 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+
+# Isolated repair experiments and temporary test stores
+data/repairs/
+data/releases/
+data/paper/
+tmp/pdfs/
+.playwright-mcp/
+data/local-paper/
+data/ci-sandbox/
+tests/.test_feature_cache/
+tests/.test_data_cache/

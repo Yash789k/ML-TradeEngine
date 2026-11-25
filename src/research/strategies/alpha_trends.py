@@ -1,5 +1,5 @@
 """
-Phase 06A — Alpha Trends Strategy (Novel — Paper Thesis Strategy)
+Phase 06A — Alpha Trends Strategy (Experimental)
 
 This is the original strategy at the core of the research paper:
 
@@ -23,19 +23,11 @@ Signal Logic
   Entry : all three conditions active
   Exit  : any one condition becomes false
 
-Why This Is Novel
------------------
-  Most trend-following strategies use only price-based filters (1+2).
-  The HMM regime gate (1) is explicitly non-stationary — it captures the
-  latent market state from return/volatility dynamics — and dynamically
-  suppresses false entries in ranging or bear states.
-
-  Combining regime awareness with a classical price trend + momentum filter
-  reduces drawdown (bear state suppression) while preserving upside
-  (bull state capture), producing a higher Calmar ratio than any individual
-  filter in isolation.
-
-  This combination is the paper's primary contribution.
+Research status
+---------------
+This is a hypothesis combining a causal regime filter with trend and momentum.
+Novelty and incremental profitability have not been established. Prior saved
+results used noncausal regimes and must not support publication claims.
 
 Regime Hypothesis
 -----------------
@@ -65,7 +57,7 @@ from src.research.strategies.base import BaseStrategy
 
 class AlphaTrendsStrategy(BaseStrategy):
     """
-    Regime-gated trend + momentum strategy — the paper's core contribution.
+    Regime-gated trend + momentum strategy — an exploratory candidate.
 
     Parameters
     ----------

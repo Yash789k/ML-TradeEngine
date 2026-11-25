@@ -82,23 +82,10 @@ def _gap_fill(df: pd.DataFrame, freq: str = "B") -> pd.DataFrame:
     `freq='B'` = business day (equities/macro), `freq='h'` = hourly (crypto intraday).
     Crypto daily data uses 'D' because exchanges trade 24/7.
     """
-    start, end = df.index.min(), df.index.max()
-    if freq == "D":
-        full_idx = pd.date_range(start=start, end=end, freq="D", tz="UTC")
-    elif freq == "h":
-        full_idx = pd.date_range(start=start, end=end, freq="h", tz="UTC")
-    else:
-        full_idx = pd.bdate_range(start=start, end=end, tz="UTC")
+    # Retain observed bars only. Holidays, weekends and missing provider
+    # observations are never converted into tradable synthetic bars.
+    return df.sort_index().copy()
 
-    df = df.reindex(full_idx)
-    price_present = [c for c in _PRICE_COLS if c in df.columns]
-    df[price_present] = df[price_present].ffill()
-    if _VOL_COL in df.columns:
-        df[_VOL_COL] = df[_VOL_COL].fillna(0)
-    if "ticker" in df.columns:
-        df["ticker"] = df["ticker"].ffill().bfill()
-    df.index.name = "Date"
-    return df
 
 
 def _split_adjust(df: pd.DataFrame) -> pd.DataFrame:
@@ -174,8 +161,10 @@ class DataLoader:
         slug = ticker.upper().replace(".", "-")
         path = self.cache_dir / f"{slug}_{timeframe}.parquet"
 
+        from src.data.validation import observed_equity_bars
         if not force_refresh and not _is_stale(path, self.max_age_hours):
-            return _read_parquet(path)
+            cached = _read_parquet(path)
+            return observed_equity_bars(cached, require_fresh=True) if timeframe == "daily" else cached
 
         if timeframe == "hourly":
             df = fetch_equity_hourly(ticker, period=period)
@@ -184,6 +173,12 @@ class DataLoader:
             df = fetch_equity_daily(ticker, period=period)
             df = _gap_fill(df, freq="B")
             df = _split_adjust(df)
+            if path.exists():
+                historical = _read_parquet(path)
+                # Retain the original feature calibration window as the live
+                # history expands. Fresh vendor bars replace matching dates.
+                df = pd.concat([historical.loc[historical.index < df.index[0]], df]).sort_index()
+            df = observed_equity_bars(df, require_fresh=True)
 
         _write_parquet(df, path)
         return df

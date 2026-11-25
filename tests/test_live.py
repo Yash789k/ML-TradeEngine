@@ -352,8 +352,7 @@ class TestLiveEngine:
         assert "AAPL" in result.signals
         assert "MSFT" in result.signals
         # MSFT is FLAT → should be skipped
-        any_skip_msft = any(t == "MSFT" for t, _ in result.skipped)
-        assert any_skip_msft
+        assert result.targets["MSFT"] == 0.0
 
     def test_dry_run_no_orders(self, tmp_path):
         from src.live.engine import LiveEngine
@@ -390,7 +389,7 @@ class TestLiveEngine:
             result = engine.run()
 
         reasons = [r for _, r in result.skipped]
-        assert "flat_signal" in reasons
+        assert result.targets["SPY"] == 0.0
 
     def test_zero_kelly_skipped(self):
         from src.live.engine import LiveEngine
@@ -408,4 +407,4 @@ class TestLiveEngine:
             result = engine.run()
 
         reasons = [r for _, r in result.skipped]
-        assert "no_kelly_edge" in reasons
+        assert result.targets["QQQ"] == 0.0

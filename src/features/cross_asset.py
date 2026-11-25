@@ -101,6 +101,7 @@ def add_macro_features(
     df: pd.DataFrame,
     macro_df: pd.DataFrame,
     cols: list[str] | None = None,
+    exploratory: bool = False,
 ) -> pd.DataFrame:
     """
     Left-join macro columns onto the asset DataFrame.
@@ -113,10 +114,15 @@ def add_macro_features(
         cols = [c for c in ["VIX", "yield_spread_10_2", "CPI", "rate_10y", "rate_2y"]
                 if c in macro_df.columns]
 
+    # A date-indexed latest-vintage FRED series does not establish historical
+    # availability. Validated data must carry actual release/vintage timestamps.
+    if not exploratory and ("available_at" not in macro_df or not macro_df.attrs.get("point_in_time")):
+        return df
+    source = macro_df.copy()
+    if "available_at" in source:
+        source.index = pd.to_datetime(source["available_at"], utc=True)
+        source = source.sort_index().groupby(level=0).last()
     for col in cols:
-        series = macro_df[col].reindex(df.index).ffill()
-        # Fill any remaining NaN (e.g. macro starts after asset history) with
-        # the column's first available value so no rows are dropped
-        df[f"macro_{col}"] = series.fillna(series.bfill())
-
+        series = source[col].reindex(source.index.union(df.index)).sort_index().ffill().reindex(df.index)
+        df[f"macro_{col}"] = series
     return df

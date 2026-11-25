@@ -23,6 +23,9 @@ Statistical (8)  : zscore_20, zscore_60, realized_vol_5, realized_vol_21,
 Cross-asset (7)  : spy_corr_21, spy_corr_63, rs_vs_spy_21, rs_vs_spy_63,
                    btc_return_5d, btc_return_21d, macro_VIX ...
 Regime      (1)  : hmm_regime
+Sentiment   (5)  : sent_pos_1d, sent_neg_5d, event_count, guidance_tag,
+                   has_news  (optional — FeatureEngineer(sentiment=True);
+                   requires Alpaca News API credentials or a news cache)
 """
 
 from __future__ import annotations
@@ -119,6 +122,9 @@ class FeatureEngineer:
     cache_dir      : override default features store location
     max_age_hours  : stale threshold; default matches DataLoader (12 h)
     n_hmm_states   : number of hidden market regimes (default 3)
+    sentiment      : append FinBERT news-sentiment columns (default False;
+                     requires Alpaca News credentials or a populated
+                     data/news/ cache — fails soft with a warning)
     """
 
     def __init__(
@@ -126,11 +132,13 @@ class FeatureEngineer:
         cache_dir: Optional[Path] = None,
         max_age_hours: float = 12.0,
         n_hmm_states: int = 3,
+        sentiment: bool = False,
     ) -> None:
         self.cache_dir      = Path(cache_dir) if cache_dir else _FEATURE_ROOT
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.max_age_hours  = max_age_hours
         self.n_hmm_states   = n_hmm_states
+        self.sentiment      = sentiment
         self._hmm_models: dict[str, object] = {}
 
     # ------------------------------------------------------------------
@@ -158,9 +166,20 @@ class FeatureEngineer:
         macro_df   : FRED macro DataFrame (enables VIX, yield-curve features)
         """
         path = self.cache_dir / f"{asset_slug}_features.parquet"
-
-        if not force_refresh and not _is_stale(path, self.max_age_hours):
-            return _read_parquet(path)
+        import hashlib, json
+        digest = hashlib.sha256(f"causal-v3:{self.n_hmm_states}:{self.sentiment}".encode())
+        for frame in [df, spy_df, btc_df, macro_df]:
+            if frame is not None:
+                digest.update(str(list(frame.columns)).encode())
+                digest.update(str(frame.attrs).encode())
+                digest.update(pd.util.hash_pandas_object(frame, index=True).values.tobytes())
+            else:
+                digest.update(b"missing-input")
+        fingerprint = digest.hexdigest()
+        meta_path = path.with_suffix(".manifest.json")
+        if not force_refresh and not _is_stale(path, self.max_age_hours) and meta_path.exists():
+            if json.loads(meta_path.read_text()).get("fingerprint") == fingerprint:
+                return _read_parquet(path)
 
         feat = df.copy()
 
@@ -185,7 +204,28 @@ class FeatureEngineer:
         feat, hmm = add_hmm_regime(feat, n_states=self.n_hmm_states)
         self._hmm_models[asset_slug] = hmm
 
+        # ── sentiment (optional, appended last — existing columns are
+        #    never modified, so SHAP selection picks the new ones up
+        #    automatically) ───────────────────────────────────────────
+        if self.sentiment:
+            try:
+                from src.features.sentiment import SentimentPipeline
+                sp   = SentimentPipeline()
+                sent = sp.build_features(asset_slug, trading_index=feat.index)
+                feat = feat.join(sent)
+            except Exception as exc:
+                import logging
+                logging.getLogger(__name__).warning(
+                    "%s: sentiment features skipped (%s)", asset_slug, exc
+                )
+
+        feat.attrs["causality_version"] = 2
+        feat.attrs["feature_history_start"] = str(df.index[0])
+        feat.attrs["hmm_calibration_sha256"] = hashlib.sha256(pd.util.hash_pandas_object(
+            feat[["log_return", "realized_vol_21"]].dropna().iloc[:252], index=True).values.tobytes()).hexdigest() if "log_return" in feat else None
         _write_parquet(feat, path)
+        meta_path.write_text(json.dumps(dict(fingerprint=fingerprint, causality_version=2,
+            last_observation=str(feat.index[-1]), columns=list(feat.columns))))
         return feat
 
     # ------------------------------------------------------------------
@@ -205,7 +245,7 @@ class FeatureEngineer:
         """
         path = self.cache_dir / f"{asset_slug}_features.parquet"
 
-        if not force_refresh and not _is_stale(path, self.max_age_hours):
+        if not kwargs and not force_refresh and not _is_stale(path, self.max_age_hours) and path.with_suffix(".manifest.json").exists():
             return _read_parquet(path)
 
         if "df" not in kwargs:
@@ -213,7 +253,7 @@ class FeatureEngineer:
                 "Cache is stale or missing — supply df= (and optional spy_df, "
                 "btc_df, macro_df) to recompute."
             )
-        return self.compute_features(asset_slug=asset_slug, **kwargs)
+        return self.compute_features(asset_slug=asset_slug, force_refresh=force_refresh, **kwargs)
 
     # ------------------------------------------------------------------
     # SHAP-based feature selection  (optional, requires xgboost + shap)

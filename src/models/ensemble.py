@@ -1,10 +1,17 @@
 """
-Phase 03 — Ensemble Classifier (Soft-Vote)
+Phase 03 — Ensemble Classifier (Soft-Vote / Mixture-of-Experts)
 
-Combines probability outputs from XGBoost, LightGBM, and LSTM via a
-weighted soft-vote average.
+Combines probability outputs from XGBoost, LightGBM, and LSTM.
 
-  P_ensemble[t, c] = Σ_m  w_m * P_m[t, c]   for class c ∈ {0,1,2}
+Two modes (select via ensemble_mode):
+
+  static : P_ensemble[t, c] = Σ_m  w_m        * P_m[t, c]
+           Fixed weight vector for every bar (original behaviour).
+
+  moe    : P_ensemble[t, c] = Σ_m  w_m(x_t)   * P_m[t, c]
+           Per-bar weights from a fitted GatingModel (src/models/gating.py)
+           conditioned on HMM regime, volatility, drawdown state, and
+           rolling per-expert accuracy.
 
 Default weights are equal (1/3 each).  Weights can be overridden to reflect
 per-model out-of-sample performance (e.g., weight by validation F1 score).
@@ -16,9 +23,13 @@ optional confidence score (max probability).
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import TYPE_CHECKING, Literal, Optional
 
 import numpy as np
+
+if TYPE_CHECKING:
+    import pandas as pd
+    from src.models.gating import GatingModel
 
 
 _CLASS_NAMES = {0: "DOWN", 1: "FLAT", 2: "UP"}
@@ -26,18 +37,33 @@ _CLASS_NAMES = {0: "DOWN", 1: "FLAT", 2: "UP"}
 
 class EnsembleClassifier:
     """
-    Soft-vote ensemble over three model outputs.
+    Ensemble over three model outputs.
 
     Parameters
     ----------
-    weights : optional (3,) weight vector [w_xgb, w_lgbm, w_lstm].
-              Defaults to equal weights.  Weights are L1-normalized internally.
+    weights       : optional (3,) weight vector [w_xgb, w_lgbm, w_lstm].
+                    Defaults to equal weights.  L1-normalized internally.
+                    Used in 'static' mode and as the 'moe' fallback when no
+                    gate/context is supplied.
+    ensemble_mode : 'static' (fixed soft-vote, default) or 'moe'
+                    (context-dependent weights from a GatingModel).
+    gate          : fitted GatingModel; required for 'moe' mode.
     """
 
     def __init__(
         self,
         weights: Optional[list[float]] = None,
+        ensemble_mode: Literal["static", "moe"] = "static",
+        gate: Optional["GatingModel"] = None,
     ) -> None:
+        if ensemble_mode not in ("static", "moe"):
+            raise ValueError(f"ensemble_mode must be 'static' or 'moe', got {ensemble_mode!r}")
+        if ensemble_mode == "moe" and gate is None:
+            raise ValueError("ensemble_mode='moe' requires a fitted GatingModel via gate=")
+
+        self.ensemble_mode = ensemble_mode
+        self.gate          = gate
+
         if weights is not None:
             w = np.array(weights, dtype=float)
             self.weights = w / w.sum()
@@ -53,6 +79,7 @@ class EnsembleClassifier:
         xgb_proba:  np.ndarray,
         lgbm_proba: np.ndarray,
         lstm_proba: np.ndarray,
+        context: Optional["pd.DataFrame"] = None,
     ) -> np.ndarray:
         """
         Weighted average of the three probability matrices.
@@ -60,6 +87,10 @@ class EnsembleClassifier:
         Parameters
         ----------
         xgb_proba, lgbm_proba, lstm_proba : ndarray of shape (n, 3)
+        context : gate context DataFrame (build_gate_context output),
+                  aligned row-for-row with the probability matrices.
+                  Only used in 'moe' mode; when omitted the ensemble
+                  falls back to its static weights.
 
         Returns
         -------
@@ -69,11 +100,24 @@ class EnsembleClassifier:
         self._validate(lgbm_proba, "lgbm_proba")
         self._validate(lstm_proba, "lstm_proba")
 
-        proba = (
-            self.weights[0] * xgb_proba
-            + self.weights[1] * lgbm_proba
-            + self.weights[2] * lstm_proba
-        )
+        if self.ensemble_mode == "moe" and context is not None:
+            if len(context) != len(xgb_proba):
+                raise ValueError(
+                    f"context has {len(context)} rows but probabilities have "
+                    f"{len(xgb_proba)} — they must align row-for-row"
+                )
+            W = self.gate.predict_weights(context)          # (n, 3)
+            proba = (
+                W[:, [0]] * xgb_proba
+                + W[:, [1]] * lgbm_proba
+                + W[:, [2]] * lstm_proba
+            )
+        else:
+            proba = (
+                self.weights[0] * xgb_proba
+                + self.weights[1] * lgbm_proba
+                + self.weights[2] * lstm_proba
+            )
         # Re-normalise to handle any floating-point drift
         row_sums = proba.sum(axis=1, keepdims=True)
         return proba / np.where(row_sums == 0, 1.0, row_sums)
@@ -83,9 +127,13 @@ class EnsembleClassifier:
         xgb_proba:  np.ndarray,
         lgbm_proba: np.ndarray,
         lstm_proba: np.ndarray,
+        context: Optional["pd.DataFrame"] = None,
     ) -> np.ndarray:
         """Return argmax class labels (0=DOWN, 1=FLAT, 2=UP)."""
-        return np.argmax(self.predict_proba(xgb_proba, lgbm_proba, lstm_proba), axis=1)
+        return np.argmax(
+            self.predict_proba(xgb_proba, lgbm_proba, lstm_proba, context=context),
+            axis=1,
+        )
 
     def signal_frame(
         self,

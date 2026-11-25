@@ -113,15 +113,24 @@ class LGBMModel:
         X_train: np.ndarray,
         y_train: np.ndarray,
         class_weight_map: dict[int, float] | None = None,
+        label_horizon: int = 5,
     ) -> "LGBMModel":
-        X_train = self.scaler_.fit_transform(X_train)
+        raw_train = np.asarray(X_train)
 
         cw    = class_weight_map or {0: 1.0, 1: 1.0, 2: 1.0}
         w_arr = np.array([cw.get(int(c), 1.0) for c in y_train])
 
         n_val  = max(10, int(len(X_train) * self.val_fraction))
-        X_tr, X_val = X_train[:-n_val], X_train[-n_val:]
-        y_tr, y_val = y_train[:-n_val], y_train[-n_val:]
+        inner_end = len(raw_train) - n_val - label_horizon
+        if inner_end < 20:
+            raise ValueError("Insufficient purged inner training history")
+        inner_scaler = RobustScaler().fit(raw_train[:inner_end])
+        X_tr = inner_scaler.transform(raw_train[:inner_end])
+        X_val = inner_scaler.transform(raw_train[-n_val:])
+        y_tr, y_val = y_train[:inner_end], y_train[-n_val:]
+        from src.models.labels import compute_class_weights
+        import pandas as pd
+        cw = compute_class_weights(pd.Series(y_tr))
 
         study = optuna.create_study(
             direction = "maximize",
@@ -146,6 +155,7 @@ class LGBMModel:
             verbosity    = -1,
             n_jobs       = -1,
         )
+        X_train = self.scaler_.fit_transform(raw_train)
         self.model_.fit(X_train, y_train, sample_weight=w_arr)
         return self
 

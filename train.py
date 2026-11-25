@@ -104,7 +104,9 @@ def _load_or_build_features(fe, ticker: str, max_age_hours: float = 8760.0):
 
     # Treat any existing cache as valid for training (1-year TTL)
     if path.exists() and not _is_stale(path, max_age_hours):
-        return _read_parquet(path)
+        cached = _read_parquet(path)
+        if cached.attrs.get("causality_version") == 2:
+            return cached
 
     # Cache missing or truly ancient — rebuild from raw data
     log.info("Feature cache not found for %s — building now …", ticker)
@@ -113,8 +115,8 @@ def _load_or_build_features(fe, ticker: str, max_age_hours: float = 8760.0):
 
     raw   = loader.load_equity(ticker)
     spy   = loader.load_equity("SPY")
-    btc   = loader.load_crypto("BTC/USDT", limit=1825)
-    macro = loader.load_macro()
+    # Optional layers require separate historical coverage/availability evidence.
+    btc = macro = None
 
     return fe.compute_features(
         df         = raw,

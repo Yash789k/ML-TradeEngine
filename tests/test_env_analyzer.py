@@ -140,7 +140,7 @@ class TestHelpers:
             "HMM returned empty regime — check that _make_ohlcv generates "
             "distinct volatility regimes (bull/ranging/bear)."
         )
-        assert regime.dropna().isin([0, 1, 2]).all()
+        assert regime.dropna().isin([-1, 0, 1, 2]).all()
 
     def test_compute_ticker_regime_short_data(self):
         ohlcv  = _make_ohlcv(n=30)
@@ -178,7 +178,7 @@ class TestRegimeBreakdown:
 
         if not df.empty:
             regime_vals = df.index.get_level_values("regime")
-            assert set(regime_vals).issubset({"bear", "ranging", "bull"})
+            assert set(regime_vals).issubset({"unknown_warmup", "bear", "ranging", "bull"})
 
     def test_pct_days_sums_to_one(self, tmp_research_dir):
         analyzer = EnvAnalyzer(research_dir=tmp_research_dir)

@@ -50,6 +50,8 @@ CREATE TABLE IF NOT EXISTS signals (
     atr         REAL,
     stop_loss   REAL,
     close       REAL,
+    strategy_mode      TEXT,
+    selected_strategy  TEXT,
     run_ts      TEXT    NOT NULL
 );
 
@@ -104,6 +106,22 @@ class SignalLogger:
     def _init_db(self) -> None:
         with self._conn() as conn:
             conn.executescript(_DDL)
+            self._migrate(conn)
+
+    @staticmethod
+    def _migrate(conn: sqlite3.Connection) -> None:
+        """
+        Add columns introduced after the original schema to any pre-existing
+        database file (fresh databases already get them from _DDL above).
+        SQLite has no "ADD COLUMN IF NOT EXISTS" — probe and ignore duplicates.
+        """
+        existing = {row[1] for row in conn.execute("PRAGMA table_info(signals)")}
+        for col, decl in [
+            ("strategy_mode",     "TEXT"),
+            ("selected_strategy", "TEXT"),
+        ]:
+            if col not in existing:
+                conn.execute(f"ALTER TABLE signals ADD COLUMN {col} {decl}")
 
     def _conn(self) -> sqlite3.Connection:
         return sqlite3.connect(self.db_path)
@@ -121,8 +139,9 @@ class SignalLogger:
         sql = """
             INSERT INTO signals
               (ticker, date, direction, label, confidence,
-               p_up, p_flat, p_down, kelly_frac, atr, stop_loss, close, run_ts)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+               p_up, p_flat, p_down, kelly_frac, atr, stop_loss, close,
+               strategy_mode, selected_strategy, run_ts)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """
         with self._conn() as conn:
             conn.execute(sql, (
@@ -138,6 +157,8 @@ class SignalLogger:
                 signal.atr,
                 signal.stop_loss,
                 signal.close,
+                getattr(signal, "strategy_mode", "ensemble"),
+                getattr(signal, "selected_strategy", None),
                 self._now(),
             ))
         log.debug("[Logger] signal logged: %s → %s", signal.ticker, signal.label)

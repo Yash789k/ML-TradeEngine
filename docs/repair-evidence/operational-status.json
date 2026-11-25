@@ -1,0 +1,38 @@
+{
+  "macro": {
+    "status": "intentionally_disabled",
+    "reason": "Latest-vintage FRED data excluded without release/vintage evidence"
+  },
+  "sentiment": {
+    "status": "intentionally_disabled",
+    "reason": "No frozen historical availability/content vintage evidence"
+  },
+  "crypto": {
+    "status": "intentionally_disabled",
+    "reason": "Full training-period coverage unavailable; excluded from validated models"
+  },
+  "broker": {
+    "status": "intentionally_disabled",
+    "reason": "External submission isolated; local account only"
+  },
+  "alerts": {
+    "status": "intentionally_disabled",
+    "reason": "External messaging disabled during repairs"
+  },
+  "supabase": {
+    "status": "intentionally_disabled",
+    "reason": "Remote writes disabled; local SQLite is authoritative"
+  },
+  "equity_data": {
+    "status": "unavailable",
+    "reason": "Stale OHLCV: last completed observation 2026-07-10 00:00:00+00:00"
+  },
+  "production_models": {
+    "status": "unavailable",
+    "reason": "/Users/a/Downloads/ml-trade-engine/data/models/SPY: missing versioned bundle; retrain using repaired pipeline"
+  },
+  "local_persistence": {
+    "status": "working",
+    "reason": "Transactional SQLite snapshots, events and restart tests"
+  }
+}

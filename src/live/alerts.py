@@ -58,7 +58,7 @@ class Alerts:
         self.slack_url   = slack_url   or os.environ.get("SLACK_WEBHOOK_URL")
         self.alert_email = alert_email or os.environ.get("ALERT_EMAIL")
         self.smtp_host   = smtp_host   or os.environ.get("SMTP_HOST", "smtp.gmail.com")
-        self.smtp_port   = smtp_port   or int(os.environ.get("SMTP_PORT", "587"))
+        self.smtp_port   = smtp_port   or int(os.environ.get("SMTP_PORT", "").strip() or "587")
         self.smtp_user   = smtp_user   or os.environ.get("SMTP_USER")
         self.smtp_pass   = smtp_pass   or os.environ.get("SMTP_PASS")
 

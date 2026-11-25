@@ -1,5 +1,7 @@
 # ML Trade Engine — MVP Blueprint
 
+> **28 September 2026 repair status:** the phase statuses below are historical. Current implementation, evidence, reopened gates and limitations are recorded in [REPAIR_CHECKLIST.md](REPAIR_CHECKLIST.md). Local account execution is implemented; no strategy or external prospective trial is approved.
+
 A production-grade, Python-native algorithmic trading system using ML ensembles, multi-strategy signals, rigorous backtesting, a full risk management layer, and a systematic quantitative research programme targeting academic publication. No Pine Script. No TradingView lock-in.
 
 **5 Phases Complete · 4 Research Phases In Progress · 3 ML Models (Ensemble) · 30+ Engineered Features · 1000× Monte Carlo Paths · 20–30 Ticker Universe**
@@ -294,6 +296,10 @@ May 2021 – May 2026. See `docs/PHASE_06D_LOG.md`.*
 | 06B | Ranking System | Unified scorecard: Sharpe, Alpha, IR, t-stat, composite rank |
 | 06C | Env Characterisation | Cost sensitivity, signal decay, factor attribution |
 | 06D | Meta-Strategy | Regime-gated allocator: Sharpe 0.70, MaxDD −4.5%, t 3.41 |
+| 08A | MoE Gating Model | Context-gated ensemble (`src/models/gating.py`); improves 2/3 pilot tickers, see `docs/MOE_RESULTS.md` |
+| 08B | Dynamic Policy Layer | Regime/vol-adaptive threshold, ATR stop, size cap, eligibility (`src/risk/policy_engine.py`); −28% mean MaxDD across 22 tickers, see `docs/POLICY_RESULTS.md` |
+| 08C | Sentiment Feature Pipeline | FinBERT news sentiment (`src/features/sentiment.py`); `sent_neg_5d` clears SHAP selection on AAPL/NVDA/SPY, see `docs/SENTIMENT_RESULTS.md` |
+| 08D | Meta-Strategy → Live Wiring | `src/live/meta_signal_generator.py` recomputes the Phase 06D walk-forward allocator live and drives `LiveEngine` (`--strategy-mode meta`); closes the gap where paper trading ran the (thin-edge) raw ensemble instead of the validated meta-strategy. Manual-dispatch only until it earns its own paper track record — see "Sandbox Validation" below. |
 
 ### In Progress
 
@@ -302,6 +308,8 @@ May 2021 – May 2026. See `docs/PHASE_06D_LOG.md`.*
 | 06D | Research Paper | Draft v0.2 — §5 populated; §4/§6 numbers pending | Results reproducible; novelty confirmed |
 | 06E | Live Execution | Alpaca paper orders daily *(parallel)* — dry-runs verified, scheduled runs pending | Orders execute cleanly; logs clean |
 | 07 | Dashboard | Streamlit app built and running locally | Public URL, all charts functional |
+| 08 | MoE / Policy / Sentiment → Live | MoE gate + sentiment features still not in the trained/live models; policy layer opt-in via `--policy`; meta-strategy now reachable live via `--strategy-mode meta` (08D) but running in shadow/manual mode only | Retrain ensemble with sentiment features; enable `--policy` by default; roll MoE gate context forward daily; promote `--strategy-mode meta` to the scheduled cron default after a 3–6 month paper track record |
+| 09 | Sandbox Validation | Realized-vs-backtest reconciliation report: compare live paper fills/slippage/latency against Phase 06D backtest assumptions before any real-money discussion | Realized Sharpe/MaxDD tracking error small and understood; no unexplained divergence |
 
 ---
 

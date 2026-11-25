@@ -283,14 +283,11 @@ class MetaStrategy:
         portfolio = ret_df.mean(axis=1).rename("portfolio")
 
         # ── Benchchmarks ────────────────────────────────────────────────
-        spy_bh: Optional[pd.Series] = None
-        try:
-            spy_eq = pd.read_parquet(_PROJECT_ROOT / "data" / "backtest" / "SPY" / "equity_curves.parquet")
-            spy_bh = spy_eq["buy_hold"].pct_change().fillna(0.0)
-            spy_bh.index = pd.to_datetime(spy_bh.index, utc=True)
-            spy_bh = spy_bh.reindex(portfolio.index).fillna(0.0)
-        except Exception as exc:
-            log.warning("Could not load SPY benchmark: %s", exc)
+        spy_raw = pd.read_parquet(_PROJECT_ROOT / "data" / "parquet" / "SPY_daily.parquet")
+        spy_raw.index = pd.to_datetime(spy_raw.index, utc=True)
+        spy_bh = spy_raw["Close"].pct_change(fill_method=None).reindex(portfolio.index)
+        if spy_bh.isna().any():
+            raise ValueError("SPY benchmark has missing observations; obtain a matching frozen snapshot")
 
         # Best single zoo strategy portfolio (same strategy on all tickers, EW)
         best_single: dict[str, pd.Series] = {}
@@ -305,10 +302,12 @@ class MetaStrategy:
                 except Exception:
                     pass
             if legs:
-                best_single[s] = pd.concat(legs, axis=1).mean(axis=1).reindex(portfolio.index).fillna(0.0)
+                best_single[s] = pd.concat(legs, axis=1).mean(axis=1, skipna=False).reindex(portfolio.index)
 
         # ── Metrics ─────────────────────────────────────────────────────
-        results: dict = {"tickers": list(per_ticker_ret.keys())}
+        results: dict = {"tickers": list(per_ticker_ret.keys()),
+            "status": "exploratory_return_stream_blend_not_executable_portfolio",
+            "period_start": str(portfolio.index[0]), "period_end": str(portfolio.index[-1])}
 
         m = compute_metrics(portfolio)
         m["t_stat"] = t_stat_returns(portfolio)

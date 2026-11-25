@@ -1,0 +1,56 @@
+Zoo AAPL
+Zoo AMZN
+Zoo BAC
+Zoo DIA
+Zoo GLD
+Model is not converging.  Current: -569.0257870443098 is not greater than -569.0257554611509. Delta is -3.1583158943249146e-05
+Zoo GOOGL
+Zoo GS
+Zoo IWM
+Zoo JPM
+Zoo META
+Zoo MSFT
+Zoo NVDA
+Zoo QQQ
+Zoo SPY
+Zoo TLT
+Zoo TSLA
+Zoo XLE
+Zoo XLF
+Zoo XLI
+Model is not converging.  Current: -554.2435742829489 is not greater than -554.2435308092622. Delta is -4.347368667367846e-05
+Zoo XLK
+Model is not converging.  Current: -535.0201564186673 is not greater than -535.0201087950949. Delta is -4.762357241361315e-05
+Zoo XLP
+Zoo XLV
+ML AAPL
+2026/09/28 00:40:10 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/09/28 00:40:10 INFO mlflow.store.db.utils: Updating database tables
+2026/09/28 00:40:10 INFO mlflow.tracking.fluent: Experiment with name 'ml-trade-engine-phase03' does not exist. Creating a new experiment.
+ML AMZN
+ML BAC
+ML DIA
+ML GLD
+Model is not converging.  Current: -499.3413556849578 is not greater than -499.3413385439607. Delta is -1.714099710170558e-05
+ML GOOGL
+ML GS
+ML IWM
+ML JPM
+ML META
+ML MSFT
+Model is not converging.  Current: -524.4274959947437 is not greater than -524.4274834824023. Delta is -1.251234141363966e-05
+ML NVDA
+ML QQQ
+ML SPY
+ML TLT
+Model is not converging.  Current: -559.672681740902 is not greater than -559.6726255537286. Delta is -5.618717341349111e-05
+ML TSLA
+ML XLE
+Model is not converging.  Current: -552.2353679490973 is not greater than -552.2343261322137. Delta is -0.0010418168835713004
+ML XLF
+Model is not converging.  Current: -562.6501641016134 is not greater than -562.6499548980107. Delta is -0.00020920360270793026
+ML XLI
+ML XLK
+ML XLP
+ML XLV
+/Users/a/Downloads/ml-trade-engine/data/repairs/2026-09-28-causal-v2

@@ -39,15 +39,21 @@ class StopState:
     entry_atr:    float = 0.0
 
 
-def initial_stop(entry_price: float, atr: float, direction: int = 1) -> float:
+def initial_stop(
+    entry_price: float,
+    atr: float,
+    direction: int = 1,
+    atr_multiplier: float = 2.0,
+) -> float:
     """Compute the initial stop price on entry."""
-    return entry_price - direction * 2.0 * atr
+    return entry_price - direction * atr_multiplier * atr
 
 
 def update_trailing_stop(
     state: StopState,
     current_price: float,
     current_atr: float,
+    atr_multiplier: float = 2.0,
 ) -> StopState:
     """
     Ratchet the trailing stop up (for longs) or down (for shorts).
@@ -56,7 +62,7 @@ def update_trailing_stop(
     if not state.active:
         return state
 
-    new_candidate = current_price - state.direction * 2.0 * current_atr
+    new_candidate = current_price - state.direction * atr_multiplier * current_atr
     if state.direction == 1:   # long: stop can only rise
         state.stop_level = max(state.stop_level, new_candidate)
     else:                       # short: stop can only fall

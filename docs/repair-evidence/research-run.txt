@@ -1,0 +1,63 @@
+Zoo AAPL
+Zoo AMZN
+Model is not converging.  Current: 1418.8136774238112 is not greater than 1418.893302699552. Delta is -0.0796252757406819
+Zoo BAC
+Zoo DIA
+Zoo GLD
+Zoo GOOGL
+Zoo GS
+Zoo IWM
+Zoo JPM
+Zoo META
+Zoo MSFT
+Zoo NVDA
+Model is not converging.  Current: 1257.7750034544945 is not greater than 1257.7772554617914. Delta is -0.002252007296874581
+Zoo QQQ
+Zoo SPY
+/Users/a/miniconda3/lib/python3.13/site-packages/hmmlearn/hmm.py:352: RuntimeWarning: invalid value encountered in divide
+  self.means_ = ((means_weight * means_prior + stats['obs'])
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Zoo TLT
+Zoo TSLA
+Model is not converging.  Current: 1318.0580098038279 is not greater than 1318.0580168601361. Delta is -7.056308277242351e-06
+Zoo XLE
+Model is not converging.  Current: 1512.5264083355244 is not greater than 1524.988774148676. Delta is -12.462365813151564
+Zoo XLF
+Zoo XLI
+Zoo XLK
+Zoo XLP
+Model is not converging.  Current: 1725.2561537635577 is not greater than 1738.625952668397. Delta is -13.3697989048394
+Zoo XLV
+ML AAPL
+2026/09/28 00:28:11 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/09/28 00:28:11 INFO mlflow.store.db.utils: Updating database tables
+2026/09/28 00:28:11 INFO mlflow.tracking.fluent: Experiment with name 'ml-trade-engine-phase03' does not exist. Creating a new experiment.
+ML AMZN
+ML BAC
+ML DIA
+Model is not converging.  Current: 1278.0021192645943 is not greater than 1278.0029002748888. Delta is -0.0007810102945313702
+ML GLD
+ML GOOGL
+ML GS
+ML IWM
+ML JPM
+ML META
+ML MSFT
+Model is not converging.  Current: 1073.5765173908842 is not greater than 1073.5879184627847. Delta is -0.011401071900536408
+ML NVDA
+ML QQQ
+Model is not converging.  Current: 1073.3169173250071 is not greater than 1073.53749306795. Delta is -0.22057574294285587
+ML SPY
+Model is not converging.  Current: 1174.7828132032225 is not greater than 1174.827018831407. Delta is -0.0442056281844998
+ML TLT
+Model is not converging.  Current: 1380.0746463082585 is not greater than 1380.2401809373018. Delta is -0.16553462904334992
+ML TSLA
+ML XLE
+ML XLF
+ML XLI
+Model is not converging.  Current: 1276.5697636903856 is not greater than 1276.5879548921637. Delta is -0.018191201778108734
+ML XLK
+ML XLP
+Model is not converging.  Current: 1351.2216447255855 is not greater than 1351.2504565023025. Delta is -0.02881177671702062
+ML XLV
+/Users/a/Downloads/ml-trade-engine/data/repairs/2026-09-28-causal-rerun

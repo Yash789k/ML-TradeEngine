@@ -1,0 +1,20 @@
+.............                                                            [100%]
+=============================== warnings summary ===============================
+tests/test_data_pipeline.py::test_parquet_roundtrip
+  /Users/a/miniconda3/lib/python3.13/site-packages/pandas_datareader/compat/__init__.py:11: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    PANDAS_VERSION = LooseVersion(pd.__version__)
+
+tests/test_data_pipeline.py::test_parquet_roundtrip
+  /Users/a/miniconda3/lib/python3.13/site-packages/pandas_datareader/compat/__init__.py:13: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    PANDAS_0210 = PANDAS_VERSION >= LooseVersion("0.21.0")
+
+tests/test_data_pipeline.py::test_parquet_roundtrip
+  /Users/a/miniconda3/lib/python3.13/site-packages/pandas_datareader/compat/__init__.py:14: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    PANDAS_0220 = PANDAS_VERSION >= LooseVersion("0.22.0")
+
+tests/test_data_pipeline.py::test_parquet_roundtrip
+  /Users/a/miniconda3/lib/python3.13/site-packages/pandas_datareader/compat/__init__.py:15: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    PANDAS_0230 = PANDAS_VERSION >= LooseVersion("0.23.0")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+13 passed, 17 deselected, 4 warnings in 5.95s

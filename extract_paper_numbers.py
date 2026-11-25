@@ -514,6 +514,7 @@ def print_targets() -> None:
 # ===========================================================================
 
 if __name__ == "__main__":
+    print("HISTORICAL EXTRACTION ONLY: legacy accounting and leakage invalidate these publication claims. Use the repair report and immutable corrected runs.")
     print_inventory()
     print_oos_metrics()
     print_abstract()
@@ -526,5 +527,5 @@ if __name__ == "__main__":
 
     print("\n" + "═" * 70)
     print("  EXTRACTION COMPLETE")
-    print("  Copy values above into docs/PHASE_06D_PAPER_DRAFT.md")
+    print("  Do not use these legacy values as validated paper findings.")
     print("═" * 70)

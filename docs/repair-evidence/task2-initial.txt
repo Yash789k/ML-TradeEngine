@@ -1,0 +1,102 @@
+.............F.............................F........F................... [ 72%]
+...........................                                              [100%]
+=================================== FAILURES ===================================
+_________________________ test_macro_columns_attached __________________________
+
+full_feat_df =                                  Open        High  ...  btc_return_21d  hmm_regime
+Date                               ...          2
+2023-02-24 00:00:00+00:00  100.966836  101.868543  ...       -0.046307           1
+
+[300 rows x 41 columns]
+
+    def test_macro_columns_attached(full_feat_df):
+        for col in ["macro_VIX", "macro_yield_spread_10_2"]:
+>           assert col in full_feat_df.columns, f"Missing {col}"
+E           AssertionError: Missing macro_VIX
+E           assert 'macro_VIX' in Index(['Open', 'High', 'Low', 'Close', 'Adj_Close', 'Volume', 'rsi_14',\n       'macd_line', 'macd_hist', 'macd_signal'...orr_63', 'rs_vs_spy_21', 'rs_vs_spy_63', 'btc_return_5d',\n       'btc_return_21d', 'hmm_regime'],\n      dtype='object')
+E            +  where Index(['Open', 'High', 'Low', 'Close', 'Adj_Close', 'Volume', 'rsi_14',\n       'macd_line', 'macd_hist', 'macd_signal'...orr_63', 'rs_vs_spy_21', 'rs_vs_spy_63', 'btc_return_5d',\n       'btc_return_21d', 'hmm_regime'],\n      dtype='object') =                                  Open        High  ...  btc_return_21d  hmm_regime\nDate                               ...          2\n2023-02-24 00:00:00+00:00  100.966836  101.868543  ...       -0.046307           1\n\n[300 rows x 41 columns].columns
+
+tests/test_feature_pipeline.py:281: AssertionError
+_________________________ test_lstm_smoke_fit_predict __________________________
+
+tiny_xy = (array([[ 8.24943036e-02, -4.64418411e-01,  5.05150631e-02,
+         6.86230838e-01, -1.75679052e+00,  1.68443155e+00,...   2, 0, 0, 1, 0, 0, 0, 2, 1, 1, 1, 2, 1, 0, 1, 0, 2, 2, 0, 0, 2, 2,
+       2, 1, 2, 0, 1, 2, 0, 2, 2, 0, 0, 0, 0, 0]))
+
+    def test_lstm_smoke_fit_predict(tiny_xy):
+        """2-epoch LSTM smoke test — checks API contract only, not convergence."""
+        from src.models.lstm_model import LSTMModel
+        X, y = tiny_xy
+        # Use seq_len=5 so 80-row data has enough sequences
+        model = LSTMModel(seq_len=5, n_epochs=2, patience=2, hidden_dim=16, n_layers=1)
+        model.fit(X, y)
+        proba = model.predict_proba(X)
+        assert proba.shape == (80, 3), f"Expected (80,3), got {proba.shape}"
+        # First seq_len-1 rows get uniform prior
+>       assert np.allclose(proba[:4].sum(axis=1), 1.0, atol=1e-5)
+E       assert False
+E        +  where False = <function allclose at 0x108411030>(array([nan, nan, nan, nan], dtype=float32), 1.0, atol=1e-05)
+E        +    where <function allclose at 0x108411030> = np.allclose
+E        +    and   array([nan, nan, nan, nan], dtype=float32) = <built-in method sum of numpy.ndarray object at 0x15c5379f0>(axis=1)
+E        +      where <built-in method sum of numpy.ndarray object at 0x15c5379f0> = array([[nan, nan, nan],\n       [nan, nan, nan],\n       [nan, nan, nan],\n       [nan, nan, nan]], dtype=float32).sum
+
+tests/test_ml_pipeline.py:290: AssertionError
+_____________ TestContext.test_rolling_accuracy_shifted_no_leakage _____________
+
+self = <tests.test_gating.TestContext object at 0x1200868d0>
+
+    def test_rolling_accuracy_shifted_no_leakage(self):
+        """Accuracy at row t must not include row t's own outcome."""
+        n = 100
+        y = np.zeros(n, dtype=int)
+        # expert right ONLY on row 50
+        preds = np.ones(n, dtype=int)
+        preds[50] = 0
+        probs = [_proba(preds, 0.9)]
+        acc = rolling_expert_accuracy(probs, y, window=10)
+        # at row 50 the window covers rows <=49 where expert was always wrong
+        assert acc[50, 0] == 0.0
+        # row 51 sees row 50's success
+>       assert acc[51, 0] > 0.0
+E       assert np.float64(0.0) > 0.0
+
+tests/test_gating.py:96: AssertionError
+=============================== warnings summary ===============================
+tests/test_ml_pipeline.py::test_lgbm_fit_predict_shape
+tests/test_ml_pipeline.py::test_lgbm_fit_predict_shape
+tests/test_ml_pipeline.py::test_lgbm_fit_predict_shape
+tests/test_ml_pipeline.py::test_lgbm_proba_sums_to_one
+tests/test_ml_pipeline.py::test_lgbm_proba_sums_to_one
+tests/test_ml_pipeline.py::test_lgbm_proba_sums_to_one
+tests/test_ml_pipeline.py::test_lgbm_predict_labels_valid
+tests/test_ml_pipeline.py::test_lgbm_predict_labels_valid
+tests/test_ml_pipeline.py::test_lgbm_predict_labels_valid
+  /Users/a/miniconda3/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+    warnings.warn(
+
+tests/test_ml_pipeline.py::test_trainer_prepare_data_alignment
+  /Users/a/miniconda3/lib/python3.13/site-packages/mlflow/tracking/_tracking_service/utils.py:184: FutureWarning: The filesystem tracking backend (e.g., './mlruns') is deprecated as of February 2026. Consider transitioning to a database backend (e.g., 'sqlite:///mlflow.db') to take advantage of the latest MLflow features. See https://mlflow.org/docs/latest/self-hosting/migrate-from-file-store for migration guidance.
+    return FileStore(store_uri, store_uri)
+
+tests/test_research.py::TestBaseStrategyContract::test_momentum_signals
+  /Users/a/miniconda3/lib/python3.13/site-packages/pandas_datareader/compat/__init__.py:11: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    PANDAS_VERSION = LooseVersion(pd.__version__)
+
+tests/test_research.py::TestBaseStrategyContract::test_momentum_signals
+  /Users/a/miniconda3/lib/python3.13/site-packages/pandas_datareader/compat/__init__.py:13: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    PANDAS_0210 = PANDAS_VERSION >= LooseVersion("0.21.0")
+
+tests/test_research.py::TestBaseStrategyContract::test_momentum_signals
+  /Users/a/miniconda3/lib/python3.13/site-packages/pandas_datareader/compat/__init__.py:14: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    PANDAS_0220 = PANDAS_VERSION >= LooseVersion("0.22.0")
+
+tests/test_research.py::TestBaseStrategyContract::test_momentum_signals
+  /Users/a/miniconda3/lib/python3.13/site-packages/pandas_datareader/compat/__init__.py:15: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    PANDAS_0230 = PANDAS_VERSION >= LooseVersion("0.23.0")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_feature_pipeline.py::test_macro_columns_attached - Assertio...
+FAILED tests/test_ml_pipeline.py::test_lstm_smoke_fit_predict - assert False
+FAILED tests/test_gating.py::TestContext::test_rolling_accuracy_shifted_no_leakage
+3 failed, 96 passed, 14 warnings in 17.21s

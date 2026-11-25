@@ -1,0 +1,827 @@
+diff --git a/.github/workflows/daily_signals.yml b/.github/workflows/daily_signals.yml
+index 2683546..4276833 100644
+--- a/.github/workflows/daily_signals.yml
++++ b/.github/workflows/daily_signals.yml
+@@ -18,6 +18,18 @@ on:
+         default: "false"
+         type: choice
+         options: ["true", "false"]
++      strategy_mode:
++        description: >
++          'ensemble' = raw ML ensemble (current scheduled default; thin/
++          negative standalone edge per Phase 06D). 'meta' = regime-gated
++          meta-strategy (the only component with a validated backtested
++          edge — Sharpe 0.70, t=3.41). Manual-dispatch only until it has
++          its own paper-trading track record; the scheduled cron below
++          stays on 'ensemble' until that validation period completes.
++        required: false
++        default: "ensemble"
++        type: choice
++        options: ["ensemble", "meta"]
+ 
+ # Least privilege: the job only needs to read the repo contents.
+ permissions:
+@@ -103,9 +115,16 @@ jobs:
+             echo "flag=" >> $GITHUB_OUTPUT
+           fi
+ 
++      - name: Build strategy-mode flag
++        id: stratmode
++        run: |
++          MODE="${{ github.event.inputs.strategy_mode }}"
++          if [ -z "$MODE" ]; then MODE="ensemble"; fi
++          echo "flag=--strategy-mode $MODE" >> $GITHUB_OUTPUT
++
+       - name: Run live signal engine
+         run: |
+-          python3 live.py run ${{ steps.tickers.outputs.args }} ${{ steps.dryrun.outputs.flag }}
++          python3 live.py run ${{ steps.tickers.outputs.args }} ${{ steps.dryrun.outputs.flag }} ${{ steps.stratmode.outputs.flag }}
+ 
+       - name: Print signal log
+         if: always()
+diff --git a/data/live/signal_log.db b/data/live/signal_log.db
+index afd58cfb994231aa82d558e29c5a95ee71264d41..d27e7ae958500501d1eb3a18e70fd1a4ce1dbcc1 100644
+GIT binary patch
+delta 573
+zcmZp8z}WDBae}m<FarYvI}pPF+e95>eqjc^-XFZ&I~dqF)-!Od-<apf!PT72$Sy7|
+z&DgHH*@JI8qpprZaY<2PNosm!d~SY9szQisL<mqUH77N>BsC=-CJ7eT+&q^{nvsdm
+zZu2hg7A6)32F61h8}~6za$u3;<&<OKFXem97tec@*PG`6j~VwWZUwGsToRl!IpsDs
+z{^6*v<P~HPwr3RN<mBMsWM^mh6;%%oh%_=VGSf9M*EKW<F)*+KBW*Cr6dK^56lr_2
+zK54r{JInd|)+tdA?bBxh!7R8Q;}8R5D<cCdV`Du-V*?`#bBNa5)RIKs{M^*MlG5CG
+zL!)@ZS{^}$dQp2$QBDq^<zTzD{lZ)v;Rc~w?&jkd;viEu;s11%5{Haw=N&%@U3bWe
+z+Y$J>RUWPh*>)pKV*@jU?IEQ_B{`|_PDQDS+4-d<HQX5XYdSgx_`r?AYQMq})pgGd
+ze>xPcxD%V)k>*gmRSx6;xF!_)Ees4S5%&A0Cg#NlrIw`@6=&w>HL`Q@GfWPU&7LeH
+QBd}Ra`lSdX?;-;S0P5kJn*aa+
+
+delta 139
+zcmZp8z}WDBae}lU9|HpeI}pPF%S0Vxem(}h-XFZ&I~drw<}&cvZOn7z*f`-G<L0?s
+z(u_<D44Zdxw=i)v+cUC@OG`7hg>K%-v7J#?lNV?P7uPff{!+fzeDS<jdA)fK@R)J0
+l;#T0Awpmc2ii^3Coolk6Z0=+k8G+4W(l13AxfU5X005ZaAxHoK
+
+diff --git a/docs/ml-trade-engine-mvp.md b/docs/ml-trade-engine-mvp.md
+index a91e2fb..195adc3 100644
+--- a/docs/ml-trade-engine-mvp.md
++++ b/docs/ml-trade-engine-mvp.md
+@@ -294,6 +294,10 @@ May 2021 – May 2026. See `docs/PHASE_06D_LOG.md`.*
+ | 06B | Ranking System | Unified scorecard: Sharpe, Alpha, IR, t-stat, composite rank |
+ | 06C | Env Characterisation | Cost sensitivity, signal decay, factor attribution |
+ | 06D | Meta-Strategy | Regime-gated allocator: Sharpe 0.70, MaxDD −4.5%, t 3.41 |
++| 08A | MoE Gating Model | Context-gated ensemble (`src/models/gating.py`); improves 2/3 pilot tickers, see `docs/MOE_RESULTS.md` |
++| 08B | Dynamic Policy Layer | Regime/vol-adaptive threshold, ATR stop, size cap, eligibility (`src/risk/policy_engine.py`); −28% mean MaxDD across 22 tickers, see `docs/POLICY_RESULTS.md` |
++| 08C | Sentiment Feature Pipeline | FinBERT news sentiment (`src/features/sentiment.py`); `sent_neg_5d` clears SHAP selection on AAPL/NVDA/SPY, see `docs/SENTIMENT_RESULTS.md` |
++| 08D | Meta-Strategy → Live Wiring | `src/live/meta_signal_generator.py` recomputes the Phase 06D walk-forward allocator live and drives `LiveEngine` (`--strategy-mode meta`); closes the gap where paper trading ran the (thin-edge) raw ensemble instead of the validated meta-strategy. Manual-dispatch only until it earns its own paper track record — see "Sandbox Validation" below. |
+ 
+ ### In Progress
+ 
+@@ -302,6 +306,8 @@ May 2021 – May 2026. See `docs/PHASE_06D_LOG.md`.*
+ | 06D | Research Paper | Draft v0.2 — §5 populated; §4/§6 numbers pending | Results reproducible; novelty confirmed |
+ | 06E | Live Execution | Alpaca paper orders daily *(parallel)* — dry-runs verified, scheduled runs pending | Orders execute cleanly; logs clean |
+ | 07 | Dashboard | Streamlit app built and running locally | Public URL, all charts functional |
++| 08 | MoE / Policy / Sentiment → Live | MoE gate + sentiment features still not in the trained/live models; policy layer opt-in via `--policy`; meta-strategy now reachable live via `--strategy-mode meta` (08D) but running in shadow/manual mode only | Retrain ensemble with sentiment features; enable `--policy` by default; roll MoE gate context forward daily; promote `--strategy-mode meta` to the scheduled cron default after a 3–6 month paper track record |
++| 09 | Sandbox Validation | Realized-vs-backtest reconciliation report: compare live paper fills/slippage/latency against Phase 06D backtest assumptions before any real-money discussion | Realized Sharpe/MaxDD tracking error small and understood; no unexplained divergence |
+ 
+ ---
+ 
+diff --git a/live.py b/live.py
+index b1842c0..fe3dceb 100644
+--- a/live.py
++++ b/live.py
+@@ -88,6 +88,18 @@ def parse_args() -> argparse.Namespace:
+         "--max-heat", type=float, default=0.80,
+         help="Max portfolio heat fraction (default 0.80).",
+     )
++    run_p.add_argument(
++        "--policy", action="store_true",
++        help="Enable the dynamic policy layer (regime/vol-adaptive "
++             "confidence threshold, ATR stop, and eligibility).",
++    )
++    run_p.add_argument(
++        "--strategy-mode", choices=["ensemble", "meta"], default="ensemble",
++        help="'ensemble' = raw per-ticker ML ensemble (default, thin/negative "
++             "standalone edge per Phase 06D). 'meta' = regime-gated "
++             "meta-strategy — the only component with a validated backtested "
++             "edge (Sharpe 0.70, t=3.41). Recommended for paper trading.",
++    )
+ 
+     # ── status ────────────────────────────────────────────────────────────
+     status_p = sub.add_parser("status", help="Show recent signals from log.")
+@@ -122,6 +134,8 @@ def cmd_run(args: argparse.Namespace) -> None:
+         confidence_threshold = args.confidence,
+         max_portfolio_heat   = args.max_heat,
+         dry_run              = args.dry_run,
++        use_policy           = args.policy,
++        strategy_mode        = args.strategy_mode,
+     )
+ 
+     result = engine.run(force_refresh=not args.no_refresh)
+@@ -133,9 +147,14 @@ def cmd_run(args: argparse.Namespace) -> None:
+ 
+     print(f"\n  Signals ({len(result.signals)}):")
+     for ticker, sig in result.signals.items():
++        extra = ""
++        if getattr(sig, "strategy_mode", "ensemble") == "meta":
++            extra = f"  selected={sig.selected_strategy}"
++        else:
++            extra = f"  kelly={sig.kelly_frac:.3f}"
+         print(
+             f"    {ticker:<8}  {sig.label:<5}  conf={sig.confidence:.3f}"
+-            f"  kelly={sig.kelly_frac:.3f}  close=${sig.close:.2f}"
++            f"{extra}  close=${sig.close:.2f}"
+         )
+ 
+     if result.orders:
+diff --git a/requirements.txt b/requirements.txt
+index 4e46731..90dd7e1 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -36,6 +36,9 @@ statsmodels
+ # Phase 06E — Live Signal Engine
+ alpaca-trade-api
+ 
++# Sentiment Feature Pipeline (FinBERT news sentiment)
++transformers
++
+ # Phase 07 — Dashboard
+ streamlit
+ plotly
+diff --git a/src/backtest/signals.py b/src/backtest/signals.py
+index 5ac5c6c..8c6198e 100644
+--- a/src/backtest/signals.py
++++ b/src/backtest/signals.py
+@@ -114,6 +114,7 @@ def build_signal_df(
+     ticker: str,
+     feat_df: pd.DataFrame,
+     confidence_threshold: float = 0.38,
++    policy_engine=None,
+ ) -> pd.DataFrame:
+     """
+     Build a time-indexed signal DataFrame for backtesting.
+@@ -123,6 +124,7 @@ def build_signal_df(
+       signal                 : {0=DOWN, 1=FLAT, 2=UP}
+       confidence             : max(p_down, p_flat, p_up)
+       filtered_signal        : signal if confidence >= threshold, else 1 (FLAT)
++      conf_threshold         : the threshold applied per bar (scalar or dynamic)
+       true_label             : actual class (only from OOS; NaN for fallback)
+ 
+     Parameters
+@@ -130,6 +132,11 @@ def build_signal_df(
+     ticker               : asset symbol, must match data/models/{ticker}/ path
+     feat_df              : Phase 02 feature matrix (provides close prices + dates)
+     confidence_threshold : min max-probability to emit a non-FLAT signal
++                           (ignored when policy_engine is supplied)
++    policy_engine        : optional src.risk.policy_engine.PolicyEngine — when
++                           given, the confidence threshold becomes dynamic
++                           per bar (tightened while the HMM regime is
++                           transitioning) and ineligible bars are forced FLAT.
+     """
+     import json
+     feat_path = _MODELS_ROOT / ticker / "feature_cols.json"
+@@ -159,8 +166,20 @@ def build_signal_df(
+ 
+     df["signal"]    = np.argmax(df[["p_down", "p_flat", "p_up"]].values, axis=1)
+     df["confidence"]= df[["p_down", "p_flat", "p_up"]].max(axis=1)
++
++    if policy_engine is not None:
++        # Note: only the dynamic threshold is applied here.  The policy's
++        # eligibility gate is enforced by RiskEngine (blocks NEW entries
++        # only) — flattening the signal here would force-close open
++        # positions and churn re-entries.
++        policy = policy_engine.compute_policy(feat_df).reindex(df.index).ffill()
++        thresholds = policy["conf_threshold"].fillna(confidence_threshold).values
++    else:
++        thresholds = np.full(len(df), confidence_threshold)
++
++    df["conf_threshold"] = thresholds
+     df["filtered_signal"] = np.where(
+-        df["confidence"] >= confidence_threshold,
++        df["confidence"].values >= thresholds,
+         df["signal"],
+         1,   # fall back to FLAT when model is unsure
+     )
+@@ -174,7 +193,7 @@ def build_signal_df(
+         (df["filtered_signal"] == 0).mean() * 100,
+         (df["filtered_signal"] == 1).mean() * 100,
+         (df["filtered_signal"] == 2).mean() * 100,
+-        confidence_threshold,
+-        (df["confidence"] >= confidence_threshold).mean() * 100,
++        float(np.mean(thresholds)),
++        (df["confidence"].values >= thresholds).mean() * 100,
+     )
+     return df
+diff --git a/src/features/pipeline.py b/src/features/pipeline.py
+index a56ee70..bb22a20 100644
+--- a/src/features/pipeline.py
++++ b/src/features/pipeline.py
+@@ -23,6 +23,9 @@ Statistical (8)  : zscore_20, zscore_60, realized_vol_5, realized_vol_21,
+ Cross-asset (7)  : spy_corr_21, spy_corr_63, rs_vs_spy_21, rs_vs_spy_63,
+                    btc_return_5d, btc_return_21d, macro_VIX ...
+ Regime      (1)  : hmm_regime
++Sentiment   (5)  : sent_pos_1d, sent_neg_5d, event_count, guidance_tag,
++                   has_news  (optional — FeatureEngineer(sentiment=True);
++                   requires Alpaca News API credentials or a news cache)
+ """
+ 
+ from __future__ import annotations
+@@ -119,6 +122,9 @@ class FeatureEngineer:
+     cache_dir      : override default features store location
+     max_age_hours  : stale threshold; default matches DataLoader (12 h)
+     n_hmm_states   : number of hidden market regimes (default 3)
++    sentiment      : append FinBERT news-sentiment columns (default False;
++                     requires Alpaca News credentials or a populated
++                     data/news/ cache — fails soft with a warning)
+     """
+ 
+     def __init__(
+@@ -126,11 +132,13 @@ class FeatureEngineer:
+         cache_dir: Optional[Path] = None,
+         max_age_hours: float = 12.0,
+         n_hmm_states: int = 3,
++        sentiment: bool = False,
+     ) -> None:
+         self.cache_dir      = Path(cache_dir) if cache_dir else _FEATURE_ROOT
+         self.cache_dir.mkdir(parents=True, exist_ok=True)
+         self.max_age_hours  = max_age_hours
+         self.n_hmm_states   = n_hmm_states
++        self.sentiment      = sentiment
+         self._hmm_models: dict[str, object] = {}
+ 
+     # ------------------------------------------------------------------
+@@ -185,6 +193,21 @@ class FeatureEngineer:
+         feat, hmm = add_hmm_regime(feat, n_states=self.n_hmm_states)
+         self._hmm_models[asset_slug] = hmm
+ 
++        # ── sentiment (optional, appended last — existing columns are
++        #    never modified, so SHAP selection picks the new ones up
++        #    automatically) ───────────────────────────────────────────
++        if self.sentiment:
++            try:
++                from src.features.sentiment import SentimentPipeline
++                sp   = SentimentPipeline()
++                sent = sp.build_features(asset_slug, trading_index=feat.index)
++                feat = feat.join(sent)
++            except Exception as exc:
++                import logging
++                logging.getLogger(__name__).warning(
++                    "%s: sentiment features skipped (%s)", asset_slug, exc
++                )
++
+         _write_parquet(feat, path)
+         return feat
+ 
+diff --git a/src/live/engine.py b/src/live/engine.py
+index 537458a..769fa03 100644
+--- a/src/live/engine.py
++++ b/src/live/engine.py
+@@ -81,6 +81,12 @@ class LiveEngine:
+     circuit_breaker_dd    : circuit breaker drawdown threshold   (default 15%)
+     atr_tp_multiplier     : take-profit = entry + N × ATR        (default 3×)
+     dry_run               : log signals but do NOT submit orders (default False)
++    strategy_mode         : "ensemble" (raw per-ticker ML ensemble — thin/
++                            negative standalone edge per Phase 06D) or "meta"
++                            (regime-gated meta-strategy — the only component
++                            with a validated backtested edge: Sharpe 0.70,
++                            t=3.41). Default "ensemble" for backward
++                            compatibility; "meta" is the recommended mode.
+     """
+ 
+     def __init__(
+@@ -92,7 +98,11 @@ class LiveEngine:
+         circuit_breaker_dd:   float = _CIRCUIT_BREAKER_DD,
+         atr_tp_multiplier:    float = _ATR_TP_MULTIPLIER,
+         dry_run:              bool  = False,
++        use_policy:           bool  = False,
++        strategy_mode:        str   = "ensemble",
+     ) -> None:
++        if strategy_mode not in ("ensemble", "meta"):
++            raise ValueError(f"strategy_mode must be 'ensemble' or 'meta', got {strategy_mode!r}")
+         self.tickers              = tickers or _DEFAULT_TICKERS
+         self.confidence_threshold = confidence_threshold
+         self.max_portfolio_heat   = max_portfolio_heat
+@@ -100,6 +110,8 @@ class LiveEngine:
+         self.circuit_breaker_dd   = circuit_breaker_dd
+         self.atr_tp_multiplier    = atr_tp_multiplier
+         self.dry_run              = dry_run
++        self.use_policy           = use_policy
++        self.strategy_mode        = strategy_mode
+ 
+     # ------------------------------------------------------------------
+     # Main entry point
+@@ -131,7 +143,21 @@ class LiveEngine:
+         log.info("══════════════════════════════════════")
+ 
+         # ── Instantiate components ──────────────────────────────────────
+-        gen    = SignalGenerator(confidence_threshold=self.confidence_threshold)
++        policy_engine = None
++        if self.use_policy:
++            from src.risk.policy_engine import PolicyEngine
++            policy_engine = PolicyEngine(base_confidence=self.confidence_threshold)
++            log.info("  Dynamic policy layer ENABLED")
++
++        log.info("  Strategy mode: %s", self.strategy_mode)
++        if self.strategy_mode == "meta":
++            from src.live.meta_signal_generator import MetaSignalGenerator
++            gen = MetaSignalGenerator(policy_engine=policy_engine)
++        else:
++            gen = SignalGenerator(
++                confidence_threshold=self.confidence_threshold,
++                policy_engine=policy_engine,
++            )
+         logger = SignalLogger()
+         alerts = Alerts()
+ 
+@@ -239,7 +265,7 @@ class LiveEngine:
+                     log.warning("    Heat check failed: %s", exc)
+ 
+             # ── Execute ──────────────────────────────────────────────────
+-            order = self._execute(ticker, signal, broker, equity)
++            order = self._execute(ticker, signal, broker, equity, len(ticker_list))
+             result.orders[ticker] = order
+ 
+             if order is not None:
+@@ -265,10 +291,11 @@ class LiveEngine:
+ 
+     def _execute(
+         self,
+-        ticker:  str,
++        ticker:      str,
+         signal,
+-        broker:  Optional[object],
+-        equity:  float,
++        broker:      Optional[object],
++        equity:      float,
++        n_tickers:   int = 1,
+     ):
+         """
+         Decide and submit the appropriate order based on the signal direction.
+@@ -282,7 +309,7 @@ class LiveEngine:
+ 
+         try:
+             if signal.direction == 2:   # UP → enter long
+-                qty         = self._compute_qty(signal, equity, broker)
++                qty         = self._compute_qty(signal, equity, broker, n_tickers)
+                 take_profit = round(signal.close + self.atr_tp_multiplier * signal.atr, 2)
+                 order = broker.submit_bracket_buy(
+                     ticker      = ticker,
+@@ -310,15 +337,24 @@ class LiveEngine:
+                 order_type="?", status="error", error=str(exc),
+             )
+ 
+-    def _compute_qty(self, signal, equity: float, broker) -> float:
++    def _compute_qty(self, signal, equity: float, broker, n_tickers: int = 1) -> float:
+         """
+-        Position size = min(kelly_frac, max_position_frac) × equity / close.
++        Position size:
++          ensemble mode : min(kelly_frac, max_position_frac) × equity / close
++          meta mode     : min(1/n_tickers, max_position_frac) × equity / close
++                          — equal-weight across the run's ticker list, matching
++                          the Phase 06D backtest's EW portfolio construction
++                          (NOT Kelly-sized; the meta-strategy was never
++                          backtested with Kelly sizing).
+         Clips to available buying power.
+         """
+         if equity <= 0 or signal.close <= 0:
+             return 0.0
+ 
+-        frac        = min(signal.kelly_frac, self.max_position_frac)
++        if getattr(signal, "strategy_mode", "ensemble") == "meta":
++            frac = min(1.0 / max(n_tickers, 1), self.max_position_frac)
++        else:
++            frac = min(signal.kelly_frac, self.max_position_frac)
+         dollar_size = frac * equity
+         try:
+             bp          = broker.buying_power()
+diff --git a/src/live/logger.py b/src/live/logger.py
+index db1913f..a450615 100644
+--- a/src/live/logger.py
++++ b/src/live/logger.py
+@@ -50,6 +50,8 @@ CREATE TABLE IF NOT EXISTS signals (
+     atr         REAL,
+     stop_loss   REAL,
+     close       REAL,
++    strategy_mode      TEXT,
++    selected_strategy  TEXT,
+     run_ts      TEXT    NOT NULL
+ );
+ 
+@@ -104,6 +106,22 @@ class SignalLogger:
+     def _init_db(self) -> None:
+         with self._conn() as conn:
+             conn.executescript(_DDL)
++            self._migrate(conn)
++
++    @staticmethod
++    def _migrate(conn: sqlite3.Connection) -> None:
++        """
++        Add columns introduced after the original schema to any pre-existing
++        database file (fresh databases already get them from _DDL above).
++        SQLite has no "ADD COLUMN IF NOT EXISTS" — probe and ignore duplicates.
++        """
++        existing = {row[1] for row in conn.execute("PRAGMA table_info(signals)")}
++        for col, decl in [
++            ("strategy_mode",     "TEXT"),
++            ("selected_strategy", "TEXT"),
++        ]:
++            if col not in existing:
++                conn.execute(f"ALTER TABLE signals ADD COLUMN {col} {decl}")
+ 
+     def _conn(self) -> sqlite3.Connection:
+         return sqlite3.connect(self.db_path)
+@@ -121,8 +139,9 @@ class SignalLogger:
+         sql = """
+             INSERT INTO signals
+               (ticker, date, direction, label, confidence,
+-               p_up, p_flat, p_down, kelly_frac, atr, stop_loss, close, run_ts)
+-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
++               p_up, p_flat, p_down, kelly_frac, atr, stop_loss, close,
++               strategy_mode, selected_strategy, run_ts)
++            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+         """
+         with self._conn() as conn:
+             conn.execute(sql, (
+@@ -138,6 +157,8 @@ class SignalLogger:
+                 signal.atr,
+                 signal.stop_loss,
+                 signal.close,
++                getattr(signal, "strategy_mode", "ensemble"),
++                getattr(signal, "selected_strategy", None),
+                 self._now(),
+             ))
+         log.debug("[Logger] signal logged: %s → %s", signal.ticker, signal.label)
+diff --git a/src/live/signal_generator.py b/src/live/signal_generator.py
+index 2350368..04a7a28 100644
+--- a/src/live/signal_generator.py
++++ b/src/live/signal_generator.py
+@@ -56,6 +56,12 @@ class LiveSignal:
+     stop_loss:    float           # entry_price - 2×ATR (set after fill price known)
+     close:        float           # last close price used for sizing estimate
+ 
++    # Set by MetaSignalGenerator (src/live/meta_signal_generator.py); default
++    # values keep this dataclass fully backward-compatible with the static
++    # ensemble path and with existing SignalLogger rows.
++    strategy_mode:     str           = "ensemble"   # "ensemble" | "meta"
++    selected_strategy: Optional[str] = None         # zoo strategy name, or "EW"
++
+     # Human-readable label
+     @property
+     def label(self) -> str:
+@@ -163,9 +169,17 @@ class SignalGenerator:
+         self,
+         confidence_threshold: float = _CONFIDENCE_THRESHOLD,
+         atr_multiplier:       float = 2.0,
++        policy_engine=None,
+     ) -> None:
++        """
++        policy_engine : optional src.risk.policy_engine.PolicyEngine — when
++                        given, confidence threshold and ATR stop multiplier
++                        are computed per ticker from the latest market state
++                        (dynamic policy layer) instead of the static values.
++        """
+         self.confidence_threshold = confidence_threshold
+         self.atr_multiplier       = atr_multiplier
++        self.policy_engine        = policy_engine
+ 
+     # ------------------------------------------------------------------
+     # Public API
+@@ -235,8 +249,18 @@ class SignalGenerator:
+         raw_signal  = int(np.argmax([p_down, p_flat, p_up]))
+         confidence  = max(p_down, p_flat, p_up)
+ 
+-        # ── 5. Confidence filter ────────────────────────────────────────
+-        direction = raw_signal if confidence >= self.confidence_threshold else 1
++        # ── 5. Resolve operating policy (static or dynamic) ─────────────
++        conf_threshold = self.confidence_threshold
++        atr_multiplier = self.atr_multiplier
++        policy_eligible = True
++        if self.policy_engine is not None:
++            decision = self.policy_engine.decide_latest(feat_df)
++            conf_threshold  = decision.confidence_threshold
++            atr_multiplier  = decision.atr_multiplier
++            policy_eligible = decision.eligible
++
++        # ── 5b. Confidence filter + eligibility gate ─────────────────────
++        direction = raw_signal if (confidence >= conf_threshold and policy_eligible) else 1
+ 
+         # ── 6. Kelly sizing (uses calibrated win/loss ratio) ─────────────
+         wl_ratio   = _load_win_loss_ratio(ticker)
+@@ -246,7 +270,7 @@ class SignalGenerator:
+         last_row  = feat_df.dropna(subset=["atr_14"]).iloc[-1]
+         atr_val   = float(last_row.get("atr_14", 0.0))
+         last_close = float(feat_df["Close"].iloc[-1])
+-        stop_loss  = last_close - self.atr_multiplier * atr_val  # for long positions
++        stop_loss  = last_close - atr_multiplier * atr_val  # for long positions
+ 
+         signal_date = feat_df.index[-1].to_pydatetime().replace(tzinfo=timezone.utc)
+ 
+diff --git a/src/models/ensemble.py b/src/models/ensemble.py
+index 5c41c11..876a23a 100644
+--- a/src/models/ensemble.py
++++ b/src/models/ensemble.py
+@@ -1,10 +1,17 @@
+ """
+-Phase 03 — Ensemble Classifier (Soft-Vote)
++Phase 03 — Ensemble Classifier (Soft-Vote / Mixture-of-Experts)
+ 
+-Combines probability outputs from XGBoost, LightGBM, and LSTM via a
+-weighted soft-vote average.
++Combines probability outputs from XGBoost, LightGBM, and LSTM.
+ 
+-  P_ensemble[t, c] = Σ_m  w_m * P_m[t, c]   for class c ∈ {0,1,2}
++Two modes (select via ensemble_mode):
++
++  static : P_ensemble[t, c] = Σ_m  w_m        * P_m[t, c]
++           Fixed weight vector for every bar (original behaviour).
++
++  moe    : P_ensemble[t, c] = Σ_m  w_m(x_t)   * P_m[t, c]
++           Per-bar weights from a fitted GatingModel (src/models/gating.py)
++           conditioned on HMM regime, volatility, drawdown state, and
++           rolling per-expert accuracy.
+ 
+ Default weights are equal (1/3 each).  Weights can be overridden to reflect
+ per-model out-of-sample performance (e.g., weight by validation F1 score).
+@@ -16,28 +23,47 @@ optional confidence score (max probability).
+ 
+ from __future__ import annotations
+ 
+-from typing import Optional
++from typing import TYPE_CHECKING, Literal, Optional
+ 
+ import numpy as np
+ 
++if TYPE_CHECKING:
++    import pandas as pd
++    from src.models.gating import GatingModel
++
+ 
+ _CLASS_NAMES = {0: "DOWN", 1: "FLAT", 2: "UP"}
+ 
+ 
+ class EnsembleClassifier:
+     """
+-    Soft-vote ensemble over three model outputs.
++    Ensemble over three model outputs.
+ 
+     Parameters
+     ----------
+-    weights : optional (3,) weight vector [w_xgb, w_lgbm, w_lstm].
+-              Defaults to equal weights.  Weights are L1-normalized internally.
++    weights       : optional (3,) weight vector [w_xgb, w_lgbm, w_lstm].
++                    Defaults to equal weights.  L1-normalized internally.
++                    Used in 'static' mode and as the 'moe' fallback when no
++                    gate/context is supplied.
++    ensemble_mode : 'static' (fixed soft-vote, default) or 'moe'
++                    (context-dependent weights from a GatingModel).
++    gate          : fitted GatingModel; required for 'moe' mode.
+     """
+ 
+     def __init__(
+         self,
+         weights: Optional[list[float]] = None,
++        ensemble_mode: Literal["static", "moe"] = "static",
++        gate: Optional["GatingModel"] = None,
+     ) -> None:
++        if ensemble_mode not in ("static", "moe"):
++            raise ValueError(f"ensemble_mode must be 'static' or 'moe', got {ensemble_mode!r}")
++        if ensemble_mode == "moe" and gate is None:
++            raise ValueError("ensemble_mode='moe' requires a fitted GatingModel via gate=")
++
++        self.ensemble_mode = ensemble_mode
++        self.gate          = gate
++
+         if weights is not None:
+             w = np.array(weights, dtype=float)
+             self.weights = w / w.sum()
+@@ -53,6 +79,7 @@ class EnsembleClassifier:
+         xgb_proba:  np.ndarray,
+         lgbm_proba: np.ndarray,
+         lstm_proba: np.ndarray,
++        context: Optional["pd.DataFrame"] = None,
+     ) -> np.ndarray:
+         """
+         Weighted average of the three probability matrices.
+@@ -60,6 +87,10 @@ class EnsembleClassifier:
+         Parameters
+         ----------
+         xgb_proba, lgbm_proba, lstm_proba : ndarray of shape (n, 3)
++        context : gate context DataFrame (build_gate_context output),
++                  aligned row-for-row with the probability matrices.
++                  Only used in 'moe' mode; when omitted the ensemble
++                  falls back to its static weights.
+ 
+         Returns
+         -------
+@@ -69,11 +100,24 @@ class EnsembleClassifier:
+         self._validate(lgbm_proba, "lgbm_proba")
+         self._validate(lstm_proba, "lstm_proba")
+ 
+-        proba = (
+-            self.weights[0] * xgb_proba
+-            + self.weights[1] * lgbm_proba
+-            + self.weights[2] * lstm_proba
+-        )
++        if self.ensemble_mode == "moe" and context is not None:
++            if len(context) != len(xgb_proba):
++                raise ValueError(
++                    f"context has {len(context)} rows but probabilities have "
++                    f"{len(xgb_proba)} — they must align row-for-row"
++                )
++            W = self.gate.predict_weights(context)          # (n, 3)
++            proba = (
++                W[:, [0]] * xgb_proba
++                + W[:, [1]] * lgbm_proba
++                + W[:, [2]] * lstm_proba
++            )
++        else:
++            proba = (
++                self.weights[0] * xgb_proba
++                + self.weights[1] * lgbm_proba
++                + self.weights[2] * lstm_proba
++            )
+         # Re-normalise to handle any floating-point drift
+         row_sums = proba.sum(axis=1, keepdims=True)
+         return proba / np.where(row_sums == 0, 1.0, row_sums)
+@@ -83,9 +127,13 @@ class EnsembleClassifier:
+         xgb_proba:  np.ndarray,
+         lgbm_proba: np.ndarray,
+         lstm_proba: np.ndarray,
++        context: Optional["pd.DataFrame"] = None,
+     ) -> np.ndarray:
+         """Return argmax class labels (0=DOWN, 1=FLAT, 2=UP)."""
+-        return np.argmax(self.predict_proba(xgb_proba, lgbm_proba, lstm_proba), axis=1)
++        return np.argmax(
++            self.predict_proba(xgb_proba, lgbm_proba, lstm_proba, context=context),
++            axis=1,
++        )
+ 
+     def signal_frame(
+         self,
+diff --git a/src/models/trainer.py b/src/models/trainer.py
+index abc74ac..bb5c48a 100644
+--- a/src/models/trainer.py
++++ b/src/models/trainer.py
+@@ -406,6 +406,28 @@ class ModelTrainer:
+                            str(oos_path), compression="snappy")
+             log.info("OOS predictions saved → %s  (%d rows)", oos_path, len(oos_df))
+ 
++            # Per-model OOS probabilities — required to train/evaluate the
++            # MoE gating model (src/models/gating.py) without retraining.
++            per_model_df = pd.DataFrame(
++                {
++                    "xgb_p_down":  oos_preds_xgb[tested_mask, 0],
++                    "xgb_p_flat":  oos_preds_xgb[tested_mask, 1],
++                    "xgb_p_up":    oos_preds_xgb[tested_mask, 2],
++                    "lgbm_p_down": oos_preds_lgbm[tested_mask, 0],
++                    "lgbm_p_flat": oos_preds_lgbm[tested_mask, 1],
++                    "lgbm_p_up":   oos_preds_lgbm[tested_mask, 2],
++                    "lstm_p_down": oos_preds_lstm[tested_mask, 0],
++                    "lstm_p_flat": oos_preds_lstm[tested_mask, 1],
++                    "lstm_p_up":   oos_preds_lstm[tested_mask, 2],
++                    "true_label":  y_arr[tested_mask],
++                },
++                index = X.index[tested_mask],
++            )
++            pm_path = self.models_dir / ticker / "oos_predictions_per_model.parquet"
++            pq.write_table(pa.Table.from_pandas(per_model_df, preserve_index=True),
++                           str(pm_path), compression="snappy")
++            log.info("Per-model OOS predictions saved → %s", pm_path)
++
+         # ── Save final models (retrained on all data) ─────────────────
+         model_paths = self._save_final_models(
+             ticker, feat_cols, last_xgb, last_lgbm,
+diff --git a/src/risk/engine.py b/src/risk/engine.py
+index f4654bf..0600952 100644
+--- a/src/risk/engine.py
++++ b/src/risk/engine.py
+@@ -157,15 +157,21 @@ class RiskEngine:
+         ticker:    str,
+         signal_df: pd.DataFrame,
+         feat_df:   pd.DataFrame,
++        policy_engine=None,
+     ) -> RiskResult:
+         """
+         Execute the risk-managed simulation for a single ticker.
+ 
+         Parameters
+         ----------
+-        ticker    : asset symbol (used for Phase 04 win/loss calibration)
+-        signal_df : from signals.build_signal_df() — columns: p_up, filtered_signal, close
+-        feat_df   : Phase 02 feature matrix — must include 'atr_14'
++        ticker        : asset symbol (used for Phase 04 win/loss calibration)
++        signal_df     : from signals.build_signal_df() — columns: p_up,
++                        filtered_signal, close
++        feat_df       : Phase 02 feature matrix — must include 'atr_14'
++        policy_engine : optional src.risk.policy_engine.PolicyEngine — when
++                        given, the ATR stop multiplier widens with volatility,
++                        position size is capped in stress, and new entries are
++                        blocked on ineligible bars (dynamic policy layer).
+         """
+         if "atr_14" not in feat_df.columns:
+             raise KeyError("feat_df missing 'atr_14'. Re-run Phase 02 pipeline.")
+@@ -177,6 +183,17 @@ class RiskEngine:
+         sig_arr     = signal_df["filtered_signal"].values.astype(int)
+         n           = len(prices)
+ 
++        # ── Dynamic policy (per-bar) or static constants ────────────────
++        if policy_engine is not None:
++            pol = policy_engine.compute_policy(feat_df).reindex(signal_df.index).ffill()
++            atr_mult_arr = pol["atr_mult"].fillna(self.atr_multiplier).values
++            size_cap_arr = pol["size_cap"].fillna(1.0).values
++            eligible_arr = pol["eligible"].fillna(True).astype(bool).values
++        else:
++            atr_mult_arr = np.full(n, self.atr_multiplier)
++            size_cap_arr = np.ones(n)
++            eligible_arr = np.ones(n, dtype=bool)
++
+         # ── Kelly filter calibration ───────────────────────────────────
+         win_loss_ratio = _estimate_win_loss_ratio(ticker)
+         half_kellys    = kelly_series(p_up_arr, win_loss_ratio, self.kelly_multiplier)
+@@ -231,7 +248,10 @@ class RiskEngine:
+             stop_triggered = False
+             if current_pos == 1:
+                 if self.trailing_stop:
+-                    update_trailing_stop(stop_state, price, atr_val)
++                    update_trailing_stop(
++                        stop_state, price, atr_val,
++                        atr_multiplier=float(atr_mult_arr[i]),
++                    )
+                 if is_stop_hit(stop_state, price):
+                     gross  = shares * price
+                     net    = gross * (1.0 - cost_per_side)
+@@ -262,6 +282,12 @@ class RiskEngine:
+                 if circuit_broken and current_pos == 0:
+                     target = 0
+ 
++                # Dynamic policy: block new entries on ineligible bars
++                # (extreme volatility / unknown regime); existing positions
++                # are managed by stops, not force-closed.
++                if not eligible_arr[i - 1] and current_pos == 0:
++                    target = 0
++
+                 # ── Execute position change ────────────────────────────
+                 if target != current_pos:
+ 
+@@ -283,7 +309,7 @@ class RiskEngine:
+ 
+                     # Open new long position
+                     if target == 1 and cash > 0:
+-                        deploy_gross = cash * self.position_frac
++                        deploy_gross = cash * self.position_frac * float(size_cap_arr[i])
+                         deploy_net   = deploy_gross * (1.0 - cost_per_side)
+                         shares       = deploy_net / price
+                         entry_cost   = deploy_gross
+@@ -292,7 +318,10 @@ class RiskEngine:
+                         current_pos  = 1
+                         stop_state   = StopState(
+                             active      = True,
+-                            stop_level  = initial_stop(price, atr_val, direction=1),
++                            stop_level  = initial_stop(
++                                price, atr_val, direction=1,
++                                atr_multiplier=float(atr_mult_arr[i]),
++                            ),
+                             direction   = 1,
+                             entry_price = price,
+                             entry_atr   = atr_val,
+@@ -335,6 +364,7 @@ class RiskEngine:
+             "cb_cooldown_bars": self.cb_cooldown_bars,
+             "win_loss_ratio":   win_loss_ratio,
+             "n_kelly_filtered": n_kelly_filtered,
++            "dynamic_policy":   policy_engine is not None,
+         }
+ 
+         return RiskResult(
+diff --git a/src/risk/stops.py b/src/risk/stops.py
+index d9e97e1..374ce5c 100644
+--- a/src/risk/stops.py
++++ b/src/risk/stops.py
+@@ -39,15 +39,21 @@ class StopState:
+     entry_atr:    float = 0.0
+ 
+ 
+-def initial_stop(entry_price: float, atr: float, direction: int = 1) -> float:
++def initial_stop(
++    entry_price: float,
++    atr: float,
++    direction: int = 1,
++    atr_multiplier: float = 2.0,
++) -> float:
+     """Compute the initial stop price on entry."""
+-    return entry_price - direction * 2.0 * atr
++    return entry_price - direction * atr_multiplier * atr
+ 
+ 
+ def update_trailing_stop(
+     state: StopState,
+     current_price: float,
+     current_atr: float,
++    atr_multiplier: float = 2.0,
+ ) -> StopState:
+     """
+     Ratchet the trailing stop up (for longs) or down (for shorts).
+@@ -56,7 +62,7 @@ def update_trailing_stop(
+     if not state.active:
+         return state
+ 
+-    new_candidate = current_price - state.direction * 2.0 * current_atr
++    new_candidate = current_price - state.direction * atr_multiplier * current_atr
+     if state.direction == 1:   # long: stop can only rise
+         state.stop_level = max(state.stop_level, new_candidate)
+     else:                       # short: stop can only fall
