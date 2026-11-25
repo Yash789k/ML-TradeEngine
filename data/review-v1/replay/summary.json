@@ -1,0 +1,298 @@
+{
+  "account": {
+    "capital": 10000,
+    "deployment_terminal_equity": 10000.0,
+    "fees": 19.01401455885357,
+    "max_drawdown": -0.04304810303099371,
+    "mean_gross_exposure": 0.4223050681652686,
+    "net_return": -0.025011559423715135,
+    "terminal_equity": 9749.884405762848
+  },
+  "agreement_with_receipts": {
+    "all_trend_flags_equal": true,
+    "available": true,
+    "max_abs_probability_difference": 0.02375805118170765,
+    "max_abs_weight_difference": 0.0,
+    "note": "Recorded receipts used the bars downloaded each evening; the replay uses one November download.",
+    "rows": [
+      {
+        "case_id": "r2-2026-10-01",
+        "max_abs_probability_difference": 0.017800289487383325,
+        "max_abs_weight_difference": 0.0,
+        "session": "2026-10-01",
+        "trend_flags_equal": true
+      },
+      {
+        "case_id": "r2-2026-10-02",
+        "max_abs_probability_difference": 0.02375805118170765,
+        "max_abs_weight_difference": 0.0,
+        "session": "2026-10-02",
+        "trend_flags_equal": true
+      },
+      {
+        "case_id": "r4-2026-10-14",
+        "max_abs_probability_difference": 0.012117127355656843,
+        "max_abs_weight_difference": 0.0,
+        "session": "2026-10-14",
+        "trend_flags_equal": true
+      },
+      {
+        "case_id": "r4-2026-10-15",
+        "max_abs_probability_difference": 0.006816096747699396,
+        "max_abs_weight_difference": 0.0,
+        "session": "2026-10-15",
+        "trend_flags_equal": true
+      },
+      {
+        "case_id": "r6-2026-10-22",
+        "max_abs_probability_difference": 0.004031734156665079,
+        "max_abs_weight_difference": 0.0,
+        "session": "2026-10-22",
+        "trend_flags_equal": true
+      }
+    ]
+  },
+  "classification": {
+    "available": true,
+    "first": "2026-09-29",
+    "hybrid": {
+      "accuracy": 0.3103896103896104,
+      "balanced_accuracy": 0.3259741472649013,
+      "brier": 0.6916454229200137,
+      "classes": [
+        {
+          "class_name": "DOWN",
+          "f1": 0.15012106537530265,
+          "precision": 0.31,
+          "predicted": 100,
+          "recall": 0.09904153354632587,
+          "support": 313
+        },
+        {
+          "class_name": "FLAT",
+          "f1": 0.31884057971014496,
+          "precision": 0.40145985401459855,
+          "predicted": 137,
+          "recall": 0.2644230769230769,
+          "support": 208
+        },
+        {
+          "class_name": "UP",
+          "f1": 0.3913043478260869,
+          "precision": 0.2870544090056285,
+          "predicted": 533,
+          "recall": 0.6144578313253012,
+          "support": 249
+        }
+      ],
+      "confusion": [
+        [
+          31,
+          32,
+          250
+        ],
+        [
+          23,
+          55,
+          130
+        ],
+        [
+          46,
+          50,
+          153
+        ]
+      ],
+      "log_loss": 1.1284569715484027,
+      "macro_f1": 0.2867553309705115
+    },
+    "hybrid_minus_prior_log_loss": {
+      "block_length": 5,
+      "ci_high": 0.03329873329785881,
+      "ci_low": -0.02731752302362482,
+      "effect": 0.005105810502337227,
+      "p_two_sided": 0.7371314342828585,
+      "sessions": 35
+    },
+    "label_share": {
+      "DOWN": 0.4064935064935065,
+      "FLAT": 0.2701298701298701,
+      "UP": 0.3233766233766234
+    },
+    "last": "2026-11-16",
+    "n": 770,
+    "prior": {
+      "accuracy": 0.3090909090909091,
+      "balanced_accuracy": 0.333843627973021,
+      "brier": 0.6870405010092135,
+      "classes": [
+        {
+          "class_name": "DOWN",
+          "f1": 0.041916167664670656,
+          "precision": 0.3333333333333333,
+          "predicted": 21,
+          "recall": 0.022364217252396165,
+          "support": 313
+        },
+        {
+          "class_name": "FLAT",
+          "f1": 0.33942558746736295,
+          "precision": 0.37142857142857144,
+          "predicted": 175,
+          "recall": 0.3125,
+          "support": 208
+        },
+        {
+          "class_name": "UP",
+          "f1": 0.40340218712029163,
+          "precision": 0.289198606271777,
+          "predicted": 574,
+          "recall": 0.6666666666666666,
+          "support": 249
+        }
+      ],
+      "confusion": [
+        [
+          7,
+          39,
+          267
+        ],
+        [
+          2,
+          65,
+          141
+        ],
+        [
+          12,
+          71,
+          166
+        ]
+      ],
+      "log_loss": 1.1233511610460656,
+      "macro_f1": 0.2615813140841084
+    },
+    "provenance": "simulated",
+    "reading": "35 overlapping five-session outcomes from one two-month stretch are roughly 5 independent windows. Descriptive only; the interval is wide and conditional on this stretch.",
+    "sessions": 35
+  },
+  "data_quality": {
+    "first": "2026-09-29",
+    "largest_moves": [
+      {
+        "close": 165.0500030517578,
+        "return": 0.3148251784973235,
+        "second_source_return": 0.31482514140046214,
+        "session": "2026-11-23",
+        "symbol": "NVDA"
+      },
+      {
+        "close": 125.52999877929688,
+        "return": -0.14008766643897297,
+        "second_source_return": -0.14008768324428,
+        "session": "2026-11-20",
+        "symbol": "NVDA"
+      },
+      {
+        "close": 283.82000732421875,
+        "return": -0.12641203321887406,
+        "second_source_return": -0.12641201637477295,
+        "session": "2026-10-29",
+        "symbol": "GOOGL"
+      },
+      {
+        "close": 385.4599914550781,
+        "return": 0.11462605775060153,
+        "second_source_return": 0.11462610606673995,
+        "session": "2026-11-23",
+        "symbol": "TSLA"
+      },
+      {
+        "close": 343.69000244140625,
+        "return": -0.10773903719454103,
+        "second_source_return": -0.10773903787741113,
+        "session": "2026-11-05",
+        "symbol": "TSLA"
+      },
+      {
+        "close": 181.60000610351562,
+        "return": -0.09258980826062158,
+        "second_source_return": -0.09258981661919752,
+        "session": "2026-11-05",
+        "symbol": "NVDA"
+      },
+      {
+        "close": 162.3800048828125,
+        "return": 0.0897255947174953,
+        "second_source_return": 0.08972552177706206,
+        "session": "2026-11-23",
+        "symbol": "XLK"
+      },
+      {
+        "close": 162.3800048828125,
+        "return": -0.07999997233533995,
+        "second_source_return": -0.08000000000000007,
+        "session": "2026-11-05",
+        "symbol": "XLK"
+      },
+      {
+        "close": 345.82000732421875,
+        "return": -0.07636012942563364,
+        "second_source_return": -0.07636013995352697,
+        "session": "2026-11-20",
+        "symbol": "TSLA"
+      },
+      {
+        "close": 149.00999450683594,
+        "return": -0.07268658757304636,
+        "second_source_return": -0.07268653929927194,
+        "session": "2026-11-20",
+        "symbol": "XLK"
+      }
+    ],
+    "last": "2026-11-24",
+    "note": "Returns are close to close on adjusted prices. The primary source is the public download used everywhere in this review; the second source is used only for this comparison.",
+    "rows": 902,
+    "second_source": {
+      "available": true,
+      "max_abs_return_difference": 0.00013702594085940323,
+      "median_abs_return_difference": 2.883115635121669e-08,
+      "passed": true,
+      "rows_compared": 902,
+      "rows_expected": 902,
+      "rows_over_tolerance": 0,
+      "source": "Alpaca market data v2, consolidated daily bars, adjusted",
+      "symbols": 22,
+      "tolerance": 0.005,
+      "worst": {
+        "primary": -0.0016821008782674784,
+        "second": -0.0018191268191268817,
+        "session": "2026-10-07",
+        "symbol": "TLT"
+      }
+    },
+    "share_of_days_over_5pct": 0.02993348115299335
+  },
+  "first": "2026-09-29",
+  "last": "2026-11-24",
+  "models": "carried 25 September pilot models; refit on the scheduled sessions listed in `refits`",
+  "provenance": "simulated",
+  "rebalances": 9,
+  "refits": [
+    "2026-10-28"
+  ],
+  "regime_at_last": {
+    "p_turbulent": 0.9999996551,
+    "session": "2026-11-24",
+    "state": "turbulent"
+  },
+  "registration_sha256": "abc146e5bffdae819a5245e1fdec89813e4cf9e7a5d5a9f6e1de2b5c902b011b",
+  "seconds": 32.232850084023084,
+  "sessions": 41,
+  "snapshot": {
+    "expected_session": "2026-11-24",
+    "path": "data/paper/review-v1/market/2026-11-24-20261125T131502645854",
+    "provider": "Yahoo Finance public chart v8",
+    "retrieved_at": "2026-11-25T13:15:02.645993+00:00"
+  },
+  "warning": "Simulated replay. Not a pilot observation and not prospective evidence. No order left this machine.",
+  "workspace": "data/paper/review-v1/replay/2026-11-24-20261125T131502645854"
+}

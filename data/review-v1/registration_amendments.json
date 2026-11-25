@@ -1,0 +1,10 @@
+[
+  {
+    "change": "History period (2 January 2024 to 25 September 2026): every arm rebalances on the first session and on each Friday session, the calendar the sealed target files were built with, instead of 'the last XNYS session of each ISO week'. The two calendars differ only in the six weeks whose Friday was a market holiday (weeks ending 28 March 2024, 17 April 2025, 3 July 2025, 2 April 2026, 18 June 2026 and 2 July 2026), in which the sealed history makes no rebalance. The post-release period keeps the registered runtime calendar.",
+    "id": "A1-history-rebalance-calendar",
+    "made_before": "any sandbox arm, contrast or portfolio number was computed in this review",
+    "reason": "The registration reuses the sealed target files unchanged, and those targets are refreshed only on Fridays. Rebalancing on a holiday-week Thursday would trade toward a week-old target. Using the sealed calendar also lets the harness be checked for exact equality against the sealed trend and equal-weight accounts.",
+    "recorded_at": "2026-11-25T13:20:18.555974+00:00",
+    "registration_sha256": "abc146e5bffdae819a5245e1fdec89813e4cf9e7a5d5a9f6e1de2b5c902b011b"
+  }
+]

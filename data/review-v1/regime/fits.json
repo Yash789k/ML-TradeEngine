@@ -1,0 +1,2982 @@
+{
+  "history": [
+    {
+      "converged": true,
+      "fit_date": "2019-01-02",
+      "iterations": 17,
+      "log_likelihood": -990.6907636181583,
+      "n": 547,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.23056188578683368,
+          "annualised_volatility": 0.07387050278213443,
+          "expected_duration_sessions": 212.9331977804334,
+          "mean_daily_return": 0.000914928118201721,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9953036914373908,
+          "typical_realised_volatility": 0.07141882298920382
+        },
+        {
+          "annualised_return": -0.3863933476003156,
+          "annualised_volatility": 0.22913147578016121,
+          "expected_duration_sessions": 120.04616095154562,
+          "mean_daily_return": -0.0015333069349218872,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9916698710556547,
+          "typical_realised_volatility": 0.20802085436375709
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2019-02-01",
+      "iterations": 8,
+      "log_likelihood": -1005.3801855284495,
+      "n": 568,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.23056225735676353,
+          "annualised_volatility": 0.0738720622086606,
+          "expected_duration_sessions": 212.9276401354999,
+          "mean_daily_return": 0.0009149295926855695,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9953035688585867,
+          "typical_realised_volatility": 0.07141821746053566
+        },
+        {
+          "annualised_return": -0.1936393010044432,
+          "annualised_volatility": 0.22414402508657483,
+          "expected_duration_sessions": 141.04296935307036,
+          "mean_daily_return": -0.0007684099246208064,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9929099620875343,
+          "typical_realised_volatility": 0.2144541337998934
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2019-03-05",
+      "iterations": 9,
+      "log_likelihood": -1076.4287870132277,
+      "n": 589,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.23520342961381702,
+          "annualised_volatility": 0.07412716012843416,
+          "expected_duration_sessions": 222.45545761000085,
+          "mean_daily_return": 0.0009333469429119723,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9955047180647141,
+          "typical_realised_volatility": 0.07269454188815846
+        },
+        {
+          "annualised_return": -0.1819319820065385,
+          "annualised_volatility": 0.22367425323864673,
+          "expected_duration_sessions": 71.44264571767455,
+          "mean_daily_return": -0.000721952309549756,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9860027580172244,
+          "typical_realised_volatility": 0.2140129268045933
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2019-04-03",
+      "iterations": 9,
+      "log_likelihood": -1144.0284192328584,
+      "n": 610,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.24150632979079134,
+          "annualised_volatility": 0.0766624700391944,
+          "expected_duration_sessions": 231.86761572554627,
+          "mean_daily_return": 0.0009583584515507593,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9956871941910868,
+          "typical_realised_volatility": 0.0737255835159122
+        },
+        {
+          "annualised_return": -0.1834211565653257,
+          "annualised_volatility": 0.22372033278355377,
+          "expected_duration_sessions": 71.06669129913638,
+          "mean_daily_return": -0.0007278617324020861,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9859287103181607,
+          "typical_realised_volatility": 0.2140567708521605
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2019-05-03",
+      "iterations": 8,
+      "log_likelihood": -1194.1219318150916,
+      "n": 631,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.24475089454523744,
+          "annualised_volatility": 0.07623120474516129,
+          "expected_duration_sessions": 242.3453816599645,
+          "mean_daily_return": 0.000971233708512847,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9958736576981562,
+          "typical_realised_volatility": 0.07421406932157662
+        },
+        {
+          "annualised_return": -0.18385979413242934,
+          "annualised_volatility": 0.22373819231553607,
+          "expected_duration_sessions": 71.04515762928618,
+          "mean_daily_return": -0.0007296023576683704,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9859244453335159,
+          "typical_realised_volatility": 0.21407811740399982
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2019-06-04",
+      "iterations": 9,
+      "log_likelihood": -1265.558334296847,
+      "n": 652,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.23140896828058719,
+          "annualised_volatility": 0.07707146845453997,
+          "expected_duration_sessions": 162.30382152326203,
+          "mean_daily_return": 0.0009182895566689968,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9938387156222525,
+          "typical_realised_volatility": 0.0742937538480425
+        },
+        {
+          "annualised_return": -0.2050712823410104,
+          "annualised_volatility": 0.21911949137707598,
+          "expected_duration_sessions": 77.70993273610054,
+          "mean_daily_return": -0.0008137749299246445,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9871316321506035,
+          "typical_realised_volatility": 0.2050713787639433
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2019-07-03",
+      "iterations": 9,
+      "log_likelihood": -1336.776765913584,
+      "n": 673,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.24017611456227908,
+          "annualised_volatility": 0.07718418208879609,
+          "expected_duration_sessions": 162.32506301919895,
+          "mean_daily_return": 0.0009530798196915836,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9938395218741931,
+          "typical_realised_volatility": 0.07471663183255424
+        },
+        {
+          "annualised_return": -0.12452956113694058,
+          "annualised_volatility": 0.21213392576060153,
+          "expected_duration_sessions": 56.328570472568856,
+          "mean_daily_return": -0.0004941649251465896,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9822470197342043,
+          "typical_realised_volatility": 0.1992906110222473
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2019-08-02",
+      "iterations": 13,
+      "log_likelihood": -1381.1629134235452,
+      "n": 694,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.22006246927577797,
+          "annualised_volatility": 0.07767047142889275,
+          "expected_duration_sessions": 169.90858002474923,
+          "mean_daily_return": 0.0008732637669673728,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9941144820358434,
+          "typical_realised_volatility": 0.07490722563365615
+        },
+        {
+          "annualised_return": -0.12309452480426096,
+          "annualised_volatility": 0.21200399323228422,
+          "expected_duration_sessions": 56.6831587612674,
+          "mean_daily_return": -0.0004884703365248451,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9823580756285707,
+          "typical_realised_volatility": 0.19917306087757866
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2019-09-03",
+      "iterations": 13,
+      "log_likelihood": -1403.7295778068353,
+      "n": 715,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.21995136727013506,
+          "annualised_volatility": 0.07768314544380711,
+          "expected_duration_sessions": 128.30532196737138,
+          "mean_daily_return": 0.0008728228859925995,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9922060910282872,
+          "typical_realised_volatility": 0.07494158822729698
+        },
+        {
+          "annualised_return": -0.11865007919799804,
+          "annualised_volatility": 0.21416228604833829,
+          "expected_duration_sessions": 63.00980589470444,
+          "mean_daily_return": -0.00047083364761110334,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9841294543634828,
+          "typical_realised_volatility": 0.19902808509461084
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2019-10-02",
+      "iterations": 9,
+      "log_likelihood": -1463.9506526751122,
+      "n": 736,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.20412639657912987,
+          "annualised_volatility": 0.07866818986441881,
+          "expected_duration_sessions": 116.32671253127637,
+          "mean_daily_return": 0.0008100253832505153,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9914035222156636,
+          "typical_realised_volatility": 0.07518299855129061
+        },
+        {
+          "annualised_return": -0.08324960680873097,
+          "annualised_volatility": 0.2084553452835213,
+          "expected_duration_sessions": 51.03102405431748,
+          "mean_daily_return": -0.0003303555825743293,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9804040773523259,
+          "typical_realised_volatility": 0.19652337694214259
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2019-10-31",
+      "iterations": 29,
+      "log_likelihood": -1539.0094570874155,
+      "n": 757,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.20895117001689512,
+          "annualised_volatility": 0.07717144954199286,
+          "expected_duration_sessions": 95.55521133818597,
+          "mean_daily_return": 0.0008291713095908537,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9895348460225698,
+          "typical_realised_volatility": 0.07433741990410081
+        },
+        {
+          "annualised_return": -0.017257559540458992,
+          "annualised_volatility": 0.19817348365148552,
+          "expected_duration_sessions": 52.56025076838416,
+          "mean_daily_return": -6.848237912880552e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9809742155834326,
+          "typical_realised_volatility": 0.1844024371748639
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2019-12-02",
+      "iterations": 27,
+      "log_likelihood": -1581.914039177766,
+      "n": 778,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.21272451792534927,
+          "annualised_volatility": 0.07643854805103399,
+          "expected_duration_sessions": 96.83566541149654,
+          "mean_daily_return": 0.0008441449124021796,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9896732263288472,
+          "typical_realised_volatility": 0.07381470047408915
+        },
+        {
+          "annualised_return": -0.015564084098551473,
+          "annualised_volatility": 0.19839990301020388,
+          "expected_duration_sessions": 43.78905499570985,
+          "mean_daily_return": -6.176223848631537e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9771632431871852,
+          "typical_realised_volatility": 0.1843964159532938
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2020-01-02",
+      "iterations": 36,
+      "log_likelihood": -1619.3469176516292,
+      "n": 799,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.22017121507905735,
+          "annualised_volatility": 0.07529969542777801,
+          "expected_duration_sessions": 89.88501502755422,
+          "mean_daily_return": 0.0008736952979327673,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9888746750535287,
+          "typical_realised_volatility": 0.07317957207085242
+        },
+        {
+          "annualised_return": 0.006351287478616352,
+          "annualised_volatility": 0.19581659755172445,
+          "expected_duration_sessions": 41.548330099014414,
+          "mean_daily_return": 2.520352174054108e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9759316440006882,
+          "typical_realised_volatility": 0.18097926963548516
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2020-02-03",
+      "iterations": 24,
+      "log_likelihood": -1671.245993698658,
+      "n": 820,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.2146374795144712,
+          "annualised_volatility": 0.07565394120891393,
+          "expected_duration_sessions": 77.45250638469086,
+          "mean_daily_return": 0.0008517360298193302,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9870888619790662,
+          "typical_realised_volatility": 0.07298928035288615
+        },
+        {
+          "annualised_return": 0.004706249547236948,
+          "annualised_volatility": 0.19470746731602617,
+          "expected_duration_sessions": 41.47898764527962,
+          "mean_daily_return": 1.8675593441416457e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.975891407751997,
+          "typical_realised_volatility": 0.17845212677138556
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2020-03-04",
+      "iterations": 16,
+      "log_likelihood": -1686.0957123325227,
+      "n": 841,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.21465016806542586,
+          "annualised_volatility": 0.07556183578666899,
+          "expected_duration_sessions": 77.07775829724528,
+          "mean_daily_return": 0.0008517863812120074,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9870260886915838,
+          "typical_realised_volatility": 0.0729955213989815
+        },
+        {
+          "annualised_return": -0.027390580250746505,
+          "annualised_volatility": 0.208263280923245,
+          "expected_duration_sessions": 44.71229848942123,
+          "mean_daily_return": -0.00010869277877280359,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9776347887765914,
+          "typical_realised_volatility": 0.17765247936654152
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2020-04-02",
+      "iterations": 14,
+      "log_likelihood": -1549.9160463816186,
+      "n": 862,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.22619460884475515,
+          "annualised_volatility": 0.07715925262950721,
+          "expected_duration_sessions": 89.12222830156023,
+          "mean_daily_return": 0.0008975976541458538,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9887794546988173,
+          "typical_realised_volatility": 0.07446837637801035
+        },
+        {
+          "annualised_return": -0.26231493348230045,
+          "annualised_volatility": 0.32172476871807865,
+          "expected_duration_sessions": 49.82442133754292,
+          "mean_daily_return": -0.0010409322757234144,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9799295210429971,
+          "typical_realised_volatility": 0.20433935930432864
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2020-05-04",
+      "iterations": 11,
+      "log_likelihood": -1554.4388844969067,
+      "n": 883,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.22645773459637994,
+          "annualised_volatility": 0.07749079794113731,
+          "expected_duration_sessions": 92.36573883195965,
+          "mean_daily_return": 0.0008986418039538886,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9891734747900486,
+          "typical_realised_volatility": 0.0748785086432216
+        },
+        {
+          "annualised_return": -0.15241383833401373,
+          "annualised_volatility": 0.3289536143847019,
+          "expected_duration_sessions": 54.011769613191596,
+          "mean_daily_return": -0.0006048168187857688,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9814855168204716,
+          "typical_realised_volatility": 0.22260281627343032
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2020-06-03",
+      "iterations": 19,
+      "log_likelihood": -1595.453407124136,
+      "n": 904,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.22597603817447517,
+          "annualised_volatility": 0.07759322051798626,
+          "expected_duration_sessions": 93.28588533247343,
+          "mean_daily_return": 0.0008967303102161713,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9892802646784562,
+          "typical_realised_volatility": 0.07490268135430253
+        },
+        {
+          "annualised_return": -0.06444575601304138,
+          "annualised_volatility": 0.32234200903251414,
+          "expected_duration_sessions": 58.4410811778547,
+          "mean_daily_return": -0.0002557371270358785,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.982888749149649,
+          "typical_realised_volatility": 0.2249231761873452
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2020-07-02",
+      "iterations": 14,
+      "log_likelihood": -1629.0701298751185,
+      "n": 925,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2255562631949819,
+          "annualised_volatility": 0.07770269015564861,
+          "expected_duration_sessions": 94.28898139124732,
+          "mean_daily_return": 0.0008950645364880234,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9893943068930764,
+          "typical_realised_volatility": 0.07498053882809079
+        },
+        {
+          "annualised_return": -0.057291263035448015,
+          "annualised_volatility": 0.32083513422635407,
+          "expected_duration_sessions": 62.77236053498005,
+          "mean_daily_return": -0.00022734628188669846,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9840694217729354,
+          "typical_realised_volatility": 0.22759548794570042
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2020-08-03",
+      "iterations": 10,
+      "log_likelihood": -1685.5706675335794,
+      "n": 946,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.22554614804518036,
+          "annualised_volatility": 0.07767952152051807,
+          "expected_duration_sessions": 94.06714124752258,
+          "mean_daily_return": 0.000895024397004684,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9893692953061191,
+          "typical_realised_volatility": 0.07486611034200909
+        },
+        {
+          "annualised_return": -0.015883349967635154,
+          "annualised_volatility": 0.312239959160505,
+          "expected_duration_sessions": 66.89305698117309,
+          "mean_daily_return": -6.302916653823474e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9850507654287433,
+          "typical_realised_volatility": 0.22457958333153497
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2020-09-01",
+      "iterations": 12,
+      "log_likelihood": -1735.7845266200304,
+      "n": 967,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2590467945733088,
+          "annualised_volatility": 0.08162394598713207,
+          "expected_duration_sessions": 124.06121937948838,
+          "mean_daily_return": 0.0010279634705290031,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9919394633955586,
+          "typical_realised_volatility": 0.07860923717645919
+        },
+        {
+          "annualised_return": -0.08247657495377488,
+          "annualised_volatility": 0.33183796994023307,
+          "expected_duration_sessions": 58.159435926843685,
+          "mean_daily_return": -0.000327287995848313,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9828058855099995,
+          "typical_realised_volatility": 0.24417243747725403
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2020-10-01",
+      "iterations": 17,
+      "log_likelihood": -1785.716581263911,
+      "n": 988,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2527145483746009,
+          "annualised_volatility": 0.07850478554909322,
+          "expected_duration_sessions": 85.04179216365736,
+          "mean_daily_return": 0.0010028355094230195,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9882410756575359,
+          "typical_realised_volatility": 0.07612663118758733
+        },
+        {
+          "annualised_return": -0.05883189637581232,
+          "annualised_volatility": 0.3114541281183768,
+          "expected_duration_sessions": 58.51029366014261,
+          "mean_daily_return": -0.0002334599062532235,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9829089902401019,
+          "typical_realised_volatility": 0.22619837924435746
+        }
+      ],
+      "window_start": "2016-10-28"
+    },
+    {
+      "converged": true,
+      "fit_date": "2020-10-30",
+      "iterations": 15,
+      "log_likelihood": -1834.5324051765062,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2538892646142339,
+          "annualised_volatility": 0.07852813605818046,
+          "expected_duration_sessions": 84.84838216390678,
+          "mean_daily_return": 0.0010074970818025155,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9882142714510662,
+          "typical_realised_volatility": 0.07601737648204403
+        },
+        {
+          "annualised_return": -0.07402531836129413,
+          "annualised_volatility": 0.3060094196852972,
+          "expected_duration_sessions": 62.266144197144975,
+          "mean_daily_return": -0.00029375126333846873,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9839399080689205,
+          "typical_realised_volatility": 0.2238673117167327
+        }
+      ],
+      "window_start": "2016-10-31"
+    },
+    {
+      "converged": true,
+      "fit_date": "2020-12-01",
+      "iterations": 11,
+      "log_likelihood": -1837.0084399613004,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.24525379728705998,
+          "annualised_volatility": 0.07750135439981815,
+          "expected_duration_sessions": 81.66080781183516,
+          "mean_daily_return": 0.0009732293543137301,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9877542235155912,
+          "typical_realised_volatility": 0.07510802261932907
+        },
+        {
+          "annualised_return": 0.004080864796773997,
+          "annualised_volatility": 0.29925606999125887,
+          "expected_duration_sessions": 66.70494574775944,
+          "mean_daily_return": 1.6193907923706336e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9850086078507366,
+          "typical_realised_volatility": 0.22168583085632515
+        }
+      ],
+      "window_start": "2016-11-30"
+    },
+    {
+      "converged": true,
+      "fit_date": "2020-12-31",
+      "iterations": 20,
+      "log_likelihood": -1864.8407496500836,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.24829965630807113,
+          "annualised_volatility": 0.07761472999939399,
+          "expected_duration_sessions": 81.34940995475935,
+          "mean_daily_return": 0.0009853160964605997,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9877073478399397,
+          "typical_realised_volatility": 0.07599887830238779
+        },
+        {
+          "annualised_return": 0.0020596668924344713,
+          "annualised_volatility": 0.2993690784664163,
+          "expected_duration_sessions": 57.41834543139361,
+          "mean_daily_return": 8.17328131918441e-06,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9825839634965648,
+          "typical_realised_volatility": 0.2219585526371247
+        }
+      ],
+      "window_start": "2016-12-30"
+    },
+    {
+      "converged": true,
+      "fit_date": "2021-02-02",
+      "iterations": 19,
+      "log_likelihood": -1896.5476395239125,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.266278470352767,
+          "annualised_volatility": 0.08310188281699035,
+          "expected_duration_sessions": 87.31559879931046,
+          "mean_daily_return": 0.0010566605966379644,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9885472926515864,
+          "typical_realised_volatility": 0.07993777858273657
+        },
+        {
+          "annualised_return": -0.05109294448015265,
+          "annualised_volatility": 0.3140776697669651,
+          "expected_duration_sessions": 59.95768073065363,
+          "mean_daily_return": -0.00020274977968314542,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9833215696835861,
+          "typical_realised_volatility": 0.23602375611984827
+        }
+      ],
+      "window_start": "2017-02-01"
+    },
+    {
+      "converged": true,
+      "fit_date": "2021-03-04",
+      "iterations": 18,
+      "log_likelihood": -1930.090204827683,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2563691453411046,
+          "annualised_volatility": 0.08356638399002539,
+          "expected_duration_sessions": 84.42369101147892,
+          "mean_daily_return": 0.0010173378783377167,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9881549836542443,
+          "typical_realised_volatility": 0.08072064785934761
+        },
+        {
+          "annualised_return": -0.056236560469997615,
+          "annualised_volatility": 0.30763703040160056,
+          "expected_duration_sessions": 63.40022000325972,
+          "mean_daily_return": -0.00022316095424602229,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9842271840705192,
+          "typical_realised_volatility": 0.23130239948614972
+        }
+      ],
+      "window_start": "2017-03-03"
+    },
+    {
+      "converged": true,
+      "fit_date": "2021-04-05",
+      "iterations": 15,
+      "log_likelihood": -1963.426281768222,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.2681903630503,
+          "annualised_volatility": 0.08399746297440132,
+          "expected_duration_sessions": 81.54320592369825,
+          "mean_daily_return": 0.0010642474724218253,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9877365626152138,
+          "typical_realised_volatility": 0.08094288614514873
+        },
+        {
+          "annualised_return": -0.0055968734472432065,
+          "annualised_volatility": 0.3015209120035545,
+          "expected_duration_sessions": 66.75530181195728,
+          "mean_daily_return": -2.220981526683812e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9850199164282577,
+          "typical_realised_volatility": 0.2277948020116094
+        }
+      ],
+      "window_start": "2017-04-03"
+    },
+    {
+      "converged": true,
+      "fit_date": "2021-05-04",
+      "iterations": 13,
+      "log_likelihood": -1986.8799132939218,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2770491347633236,
+          "annualised_volatility": 0.08505761970977592,
+          "expected_duration_sessions": 82.52912365368701,
+          "mean_daily_return": 0.0010994013284258872,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.987883065326172,
+          "typical_realised_volatility": 0.08255327854648585
+        },
+        {
+          "annualised_return": -0.015028551401189244,
+          "annualised_volatility": 0.3026976369984432,
+          "expected_duration_sessions": 57.586934731351555,
+          "mean_daily_return": -5.963710873487795e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9826349500166124,
+          "typical_realised_volatility": 0.22886960028716172
+        }
+      ],
+      "window_start": "2017-05-03"
+    },
+    {
+      "converged": true,
+      "fit_date": "2021-06-03",
+      "iterations": 11,
+      "log_likelihood": -2023.5935098419038,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.2776525653412357,
+          "annualised_volatility": 0.0853537332730568,
+          "expected_duration_sessions": 71.42693137863597,
+          "mean_daily_return": 0.0011017958942112528,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9859996785428318,
+          "typical_realised_volatility": 0.08377038394358148
+        },
+        {
+          "annualised_return": -0.01919684987779586,
+          "annualised_volatility": 0.3017670572770374,
+          "expected_duration_sessions": 51.050384428688986,
+          "mean_daily_return": -7.617797570553912e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.980411508920234,
+          "typical_realised_volatility": 0.22739887209536044
+        }
+      ],
+      "window_start": "2017-06-02"
+    },
+    {
+      "converged": true,
+      "fit_date": "2021-07-02",
+      "iterations": 13,
+      "log_likelihood": -2032.3108558369033,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.29605712769308407,
+          "annualised_volatility": 0.08604130927683869,
+          "expected_duration_sessions": 71.98398455307203,
+          "mean_daily_return": 0.0011748298717979527,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9861080210242776,
+          "typical_realised_volatility": 0.0848765470112946
+        },
+        {
+          "annualised_return": -0.022834774000179227,
+          "annualised_volatility": 0.30246926214636055,
+          "expected_duration_sessions": 50.81164896446681,
+          "mean_daily_return": -9.061418254039375e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9803194735778146,
+          "typical_realised_volatility": 0.22799338450946402
+        }
+      ],
+      "window_start": "2017-07-03"
+    },
+    {
+      "converged": true,
+      "fit_date": "2021-08-03",
+      "iterations": 13,
+      "log_likelihood": -2051.7970032481753,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2943604494958511,
+          "annualised_volatility": 0.08825037896990794,
+          "expected_duration_sessions": 72.83439252260142,
+          "mean_daily_return": 0.001168097021808933,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9862702225505665,
+          "typical_realised_volatility": 0.086117302082077
+        },
+        {
+          "annualised_return": -0.026310478589280605,
+          "annualised_volatility": 0.30342761117260447,
+          "expected_duration_sessions": 50.74091214747015,
+          "mean_daily_return": -0.00010440666106857383,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9802920373781681,
+          "typical_realised_volatility": 0.22883818317958524
+        }
+      ],
+      "window_start": "2017-08-02"
+    },
+    {
+      "converged": true,
+      "fit_date": "2021-09-01",
+      "iterations": 16,
+      "log_likelihood": -2044.896779129384,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.306773191726467,
+          "annualised_volatility": 0.08764104947664082,
+          "expected_duration_sessions": 72.76929019929297,
+          "mean_daily_return": 0.0012173539354224882,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9862579393414268,
+          "typical_realised_volatility": 0.08705975006763174
+        },
+        {
+          "annualised_return": -0.02661595488833531,
+          "annualised_volatility": 0.3035218405567111,
+          "expected_duration_sessions": 50.62368817923476,
+          "mean_daily_return": -0.0001056188686045052,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9802464017149547,
+          "typical_realised_volatility": 0.22891972422496376
+        }
+      ],
+      "window_start": "2017-08-31"
+    },
+    {
+      "converged": true,
+      "fit_date": "2021-10-01",
+      "iterations": 20,
+      "log_likelihood": -2065.1488942262135,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.2840124968179272,
+          "annualised_volatility": 0.09072402337175389,
+          "expected_duration_sessions": 69.47014305286145,
+          "mean_daily_return": 0.001127033717531457,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9856053268921718,
+          "typical_realised_volatility": 0.08785809611054188
+        },
+        {
+          "annualised_return": -0.03230114228546611,
+          "annualised_volatility": 0.303798647192745,
+          "expected_duration_sessions": 50.827151549801115,
+          "mean_daily_return": -0.00012817913605343693,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9803254762561269,
+          "typical_realised_volatility": 0.2289748833408229
+        }
+      ],
+      "window_start": "2017-10-02"
+    },
+    {
+      "converged": true,
+      "fit_date": "2021-11-01",
+      "iterations": 15,
+      "log_likelihood": -2063.5951907964795,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2965204071644383,
+          "annualised_volatility": 0.09069737678731878,
+          "expected_duration_sessions": 63.38104011996242,
+          "mean_daily_return": 0.0011766682823985647,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9842224110221719,
+          "typical_realised_volatility": 0.09065053428882489
+        },
+        {
+          "annualised_return": -0.01682658253359108,
+          "annualised_volatility": 0.2995838888481293,
+          "expected_duration_sessions": 46.81955038566332,
+          "mean_daily_return": -6.677215291107572e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9786414010437355,
+          "typical_realised_volatility": 0.22548151654750279
+        }
+      ],
+      "window_start": "2017-10-31"
+    },
+    {
+      "converged": true,
+      "fit_date": "2021-12-01",
+      "iterations": 17,
+      "log_likelihood": -2057.367430075894,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.29605125930747234,
+          "annualised_volatility": 0.09085009243644332,
+          "expected_duration_sessions": 56.38320523019095,
+          "mean_daily_return": 0.0011748065845534617,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9822642221931622,
+          "typical_realised_volatility": 0.09165980523452107
+        },
+        {
+          "annualised_return": -0.036631754169662314,
+          "annualised_volatility": 0.29844932605971375,
+          "expected_duration_sessions": 47.261965565736865,
+          "mean_daily_return": -0.00014536410384786633,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9788413370449205,
+          "typical_realised_volatility": 0.22350565965592026
+        }
+      ],
+      "window_start": "2017-11-30"
+    },
+    {
+      "converged": true,
+      "fit_date": "2021-12-31",
+      "iterations": 18,
+      "log_likelihood": -2087.107603448171,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.29750453442910674,
+          "annualised_volatility": 0.092084744366696,
+          "expected_duration_sessions": 54.685164566896965,
+          "mean_daily_return": 0.0011805735493218522,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9817135047883656,
+          "typical_realised_volatility": 0.09290503684226001
+        },
+        {
+          "annualised_return": -0.004467731854289336,
+          "annualised_volatility": 0.29409946708895346,
+          "expected_duration_sessions": 49.58904160607339,
+          "mean_daily_return": -1.7729094659878317e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.979834254351116,
+          "typical_realised_volatility": 0.2214602331351624
+        }
+      ],
+      "window_start": "2018-01-02"
+    },
+    {
+      "converged": true,
+      "fit_date": "2022-02-01",
+      "iterations": 25,
+      "log_likelihood": -2113.3565895107618,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.28442922841285945,
+          "annualised_volatility": 0.09222238849054004,
+          "expected_duration_sessions": 52.51628644274776,
+          "mean_daily_return": 0.001128687414336744,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9809582880333669,
+          "typical_realised_volatility": 0.09420402200462506
+        },
+        {
+          "annualised_return": -0.030570969582271346,
+          "annualised_volatility": 0.29006408104620063,
+          "expected_duration_sessions": 51.866623622741656,
+          "mean_daily_return": -0.00012131337135821963,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9807197783438995,
+          "typical_realised_volatility": 0.21793865547262198
+        }
+      ],
+      "window_start": "2018-02-01"
+    },
+    {
+      "converged": true,
+      "fit_date": "2022-03-03",
+      "iterations": 14,
+      "log_likelihood": -2115.560398846037,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.28521368621032595,
+          "annualised_volatility": 0.09227057983933375,
+          "expected_duration_sessions": 58.317262526168584,
+          "mean_daily_return": 0.001131800342104468,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9828524187061889,
+          "typical_realised_volatility": 0.09417323742247605
+        },
+        {
+          "annualised_return": -0.02627687984488886,
+          "annualised_volatility": 0.28803684429696236,
+          "expected_duration_sessions": 52.26965368487633,
+          "mean_daily_return": -0.00010427333271781293,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9808684402994363,
+          "typical_realised_volatility": 0.21689600299243367
+        }
+      ],
+      "window_start": "2018-03-05"
+    },
+    {
+      "converged": true,
+      "fit_date": "2022-04-01",
+      "iterations": 14,
+      "log_likelihood": -2104.5538443418686,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2850267767439751,
+          "annualised_volatility": 0.09254769783279558,
+          "expected_duration_sessions": 58.82396117250075,
+          "mean_daily_return": 0.001131058637872917,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9830001247779369,
+          "typical_realised_volatility": 0.094330829202892
+        },
+        {
+          "annualised_return": 0.009200936988849091,
+          "annualised_volatility": 0.2890686954483748,
+          "expected_duration_sessions": 52.253443615136874,
+          "mean_daily_return": 3.651165471765512e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9808625053046204,
+          "typical_realised_volatility": 0.22006429215399995
+        }
+      ],
+      "window_start": "2018-04-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2022-05-03",
+      "iterations": 16,
+      "log_likelihood": -2098.937815976425,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.28774890582452495,
+          "annualised_volatility": 0.09268604347411065,
+          "expected_duration_sessions": 59.264646322391705,
+          "mean_daily_return": 0.0011418607373989086,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9831265339109571,
+          "typical_realised_volatility": 0.09440255169891194
+        },
+        {
+          "annualised_return": -0.044134677523681026,
+          "annualised_volatility": 0.29245046002880826,
+          "expected_duration_sessions": 58.97759189858181,
+          "mean_daily_return": -0.00017513760922095647,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9830444077520221,
+          "typical_realised_volatility": 0.2197522320801264
+        }
+      ],
+      "window_start": "2018-05-03"
+    },
+    {
+      "converged": true,
+      "fit_date": "2022-06-02",
+      "iterations": 11,
+      "log_likelihood": -2093.62358929272,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.27994124507900275,
+          "annualised_volatility": 0.09231080575250458,
+          "expected_duration_sessions": 57.106913393474315,
+          "mean_daily_return": 0.0011108779566627093,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9824889852983322,
+          "typical_realised_volatility": 0.09388324071891294
+        },
+        {
+          "annualised_return": -0.04109706710062949,
+          "annualised_volatility": 0.2936094478777619,
+          "expected_duration_sessions": 61.5485102146291,
+          "mean_daily_return": -0.00016308359960567258,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9837526530453321,
+          "typical_realised_volatility": 0.2235122692828994
+        }
+      ],
+      "window_start": "2018-06-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2022-07-05",
+      "iterations": 25,
+      "log_likelihood": -2103.7675911387046,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.2751596909765924,
+          "annualised_volatility": 0.09886231891740878,
+          "expected_duration_sessions": 73.48043541389883,
+          "mean_daily_return": 0.0010919035356213983,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9863909352963517,
+          "typical_realised_volatility": 0.09661744226277794
+        },
+        {
+          "annualised_return": -0.08880229447735467,
+          "annualised_volatility": 0.3010083292361228,
+          "expected_duration_sessions": 77.23001159804828,
+          "mean_daily_return": -0.00035239005744982013,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9870516658057155,
+          "typical_realised_volatility": 0.2338609643920844
+        }
+      ],
+      "window_start": "2018-07-03"
+    },
+    {
+      "converged": true,
+      "fit_date": "2022-08-03",
+      "iterations": 16,
+      "log_likelihood": -2127.318985095786,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2697207991128826,
+          "annualised_volatility": 0.09994538229338985,
+          "expected_duration_sessions": 73.11407216380466,
+          "mean_daily_return": 0.001070320631400328,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9863227423886389,
+          "typical_realised_volatility": 0.09718984149945777
+        },
+        {
+          "annualised_return": -0.04523072903477521,
+          "annualised_volatility": 0.2981183041656589,
+          "expected_duration_sessions": 82.91929081173429,
+          "mean_daily_return": -0.0001794870199792667,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9879400801645727,
+          "typical_realised_volatility": 0.23412185602260657
+        }
+      ],
+      "window_start": "2018-08-02"
+    },
+    {
+      "converged": true,
+      "fit_date": "2022-09-01",
+      "iterations": 21,
+      "log_likelihood": -2158.3449109714097,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.2647181047249417,
+          "annualised_volatility": 0.10151536624229986,
+          "expected_duration_sessions": 72.92115400573365,
+          "mean_daily_return": 0.0010504686695434196,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.986286558219836,
+          "typical_realised_volatility": 0.09855384442085427
+        },
+        {
+          "annualised_return": -0.067309108288913,
+          "annualised_volatility": 0.2951106350173485,
+          "expected_duration_sessions": 89.33046213751565,
+          "mean_daily_return": -0.0002670996360671151,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9888056103587531,
+          "typical_realised_volatility": 0.23251959187604587
+        }
+      ],
+      "window_start": "2018-08-31"
+    },
+    {
+      "converged": true,
+      "fit_date": "2022-10-03",
+      "iterations": 11,
+      "log_likelihood": -2172.4495360642973,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.27066487426474656,
+          "annualised_volatility": 0.10392474666641607,
+          "expected_duration_sessions": 72.99098438199614,
+          "mean_daily_return": 0.0010740669613680419,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9862996778510819,
+          "typical_realised_volatility": 0.10081877768803298
+        },
+        {
+          "annualised_return": -0.1011997601379868,
+          "annualised_volatility": 0.2944486286075776,
+          "expected_duration_sessions": 96.54401069384878,
+          "mean_daily_return": -0.0004015863497539159,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9896420296524545,
+          "typical_realised_volatility": 0.23316227469637038
+        }
+      ],
+      "window_start": "2018-10-02"
+    },
+    {
+      "converged": true,
+      "fit_date": "2022-11-01",
+      "iterations": 13,
+      "log_likelihood": -2158.162533176958,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2806561058715207,
+          "annualised_volatility": 0.10484751323397584,
+          "expected_duration_sessions": 87.72981532286781,
+          "mean_daily_return": 0.0011137147058393679,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9886013666355076,
+          "typical_realised_volatility": 0.10172367456589107
+        },
+        {
+          "annualised_return": -0.04500169814530255,
+          "annualised_volatility": 0.2944695277229927,
+          "expected_duration_sessions": 99.51585702158917,
+          "mean_daily_return": -0.0001785781672432641,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9899513501674104,
+          "typical_realised_volatility": 0.23713941411501663
+        }
+      ],
+      "window_start": "2018-10-31"
+    },
+    {
+      "converged": true,
+      "fit_date": "2022-12-01",
+      "iterations": 18,
+      "log_likelihood": -2148.138122046994,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.28019289384127766,
+          "annualised_volatility": 0.10502921752692444,
+          "expected_duration_sessions": 87.78984368216003,
+          "mean_daily_return": 0.001111876562862213,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9886091607177196,
+          "typical_realised_volatility": 0.10186290575530564
+        },
+        {
+          "annualised_return": -0.029152185390785557,
+          "annualised_volatility": 0.29740627939722997,
+          "expected_duration_sessions": 98.94968530368845,
+          "mean_daily_return": -0.00011568327536026014,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9898938536597577,
+          "typical_realised_volatility": 0.23964058614999822
+        }
+      ],
+      "window_start": "2018-11-30"
+    },
+    {
+      "converged": true,
+      "fit_date": "2023-01-03",
+      "iterations": 13,
+      "log_likelihood": -2155.5882160574056,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.28035935051494515,
+          "annualised_volatility": 0.10493638017703269,
+          "expected_duration_sessions": 87.84492210394843,
+          "mean_daily_return": 0.0011125371052180364,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9886163027292951,
+          "typical_realised_volatility": 0.101776508543367
+        },
+        {
+          "annualised_return": -0.018279941100377034,
+          "annualised_volatility": 0.2939677242078806,
+          "expected_duration_sessions": 99.31301319105302,
+          "mean_daily_return": -7.253944881101997e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9899308261035615,
+          "typical_realised_volatility": 0.2385675670637501
+        }
+      ],
+      "window_start": "2019-01-03"
+    },
+    {
+      "converged": true,
+      "fit_date": "2023-02-02",
+      "iterations": 13,
+      "log_likelihood": -2164.433517759102,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2819595673822626,
+          "annualised_volatility": 0.10471623896741238,
+          "expected_duration_sessions": 88.24560500019501,
+          "mean_daily_return": 0.0011188871721518356,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9886679908875032,
+          "typical_realised_volatility": 0.10158927799105877
+        },
+        {
+          "annualised_return": -0.012088019803812581,
+          "annualised_volatility": 0.2932663942481525,
+          "expected_duration_sessions": 123.81286815963828,
+          "mean_daily_return": -4.7968332554811826e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9919232950915033,
+          "typical_realised_volatility": 0.2347831006427712
+        }
+      ],
+      "window_start": "2019-02-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2023-03-06",
+      "iterations": 18,
+      "log_likelihood": -2198.8786254232796,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2767460721926553,
+          "annualised_volatility": 0.10565541116683219,
+          "expected_duration_sessions": 83.61627684904742,
+          "mean_daily_return": 0.0010981986991772034,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9880406059958242,
+          "typical_realised_volatility": 0.10125965262841606
+        },
+        {
+          "annualised_return": -0.024666404420200697,
+          "annualised_volatility": 0.2889393379660211,
+          "expected_duration_sessions": 125.86629005877967,
+          "mean_daily_return": -9.788255722301863e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9920550609735697,
+          "typical_realised_volatility": 0.23144047401680568
+        }
+      ],
+      "window_start": "2019-03-06"
+    },
+    {
+      "converged": true,
+      "fit_date": "2023-04-04",
+      "iterations": 19,
+      "log_likelihood": -2226.653829765964,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.27280388581196996,
+          "annualised_volatility": 0.10471529188203638,
+          "expected_duration_sessions": 78.90803148693409,
+          "mean_daily_return": 0.0010825551024284522,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9873270187944609,
+          "typical_realised_volatility": 0.10128102693296116
+        },
+        {
+          "annualised_return": -0.017483908211063513,
+          "annualised_volatility": 0.28554795429519547,
+          "expected_duration_sessions": 131.65009947765412,
+          "mean_daily_return": -6.938058813914092e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9924041075246606,
+          "typical_realised_volatility": 0.2288127474037739
+        }
+      ],
+      "window_start": "2019-04-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2023-05-04",
+      "iterations": 34,
+      "log_likelihood": -2249.939053707235,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.25041443728552754,
+          "annualised_volatility": 0.10820400969277737,
+          "expected_duration_sessions": 80.11860868554484,
+          "mean_daily_return": 0.000993708084466379,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.987518505171191,
+          "typical_realised_volatility": 0.10341667679432978
+        },
+        {
+          "annualised_return": -0.017122686316619867,
+          "annualised_volatility": 0.28571050421778255,
+          "expected_duration_sessions": 108.61396226481011,
+          "mean_daily_return": -6.79471679230947e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9907930805658124,
+          "typical_realised_volatility": 0.22923912957859247
+        }
+      ],
+      "window_start": "2019-05-06"
+    },
+    {
+      "converged": true,
+      "fit_date": "2023-06-05",
+      "iterations": 31,
+      "log_likelihood": -2242.0652989845366,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.31521948080142315,
+          "annualised_volatility": 0.10474360236430938,
+          "expected_duration_sessions": 82.12933998767535,
+          "mean_daily_return": 0.001250870955561203,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9878240833281984,
+          "typical_realised_volatility": 0.10398847994713321
+        },
+        {
+          "annualised_return": -0.022076742933822252,
+          "annualised_volatility": 0.28596108106581397,
+          "expected_duration_sessions": 111.00516085682092,
+          "mean_daily_return": -8.76061227532629e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9909914098382341,
+          "typical_realised_volatility": 0.2292523344357394
+        }
+      ],
+      "window_start": "2019-06-05"
+    },
+    {
+      "converged": true,
+      "fit_date": "2023-07-06",
+      "iterations": 7,
+      "log_likelihood": -2228.5743033869535,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.29384167552797197,
+          "annualised_volatility": 0.1053404936568674,
+          "expected_duration_sessions": 83.33932867578186,
+          "mean_daily_return": 0.0011660383949522698,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9880008632672056,
+          "typical_realised_volatility": 0.10285465878286264
+        },
+        {
+          "annualised_return": -0.02045068671730507,
+          "annualised_volatility": 0.28548300600351434,
+          "expected_duration_sessions": 113.54681584595117,
+          "mean_daily_return": -8.115351871946456e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9911930599502086,
+          "typical_realised_volatility": 0.22898057066922428
+        }
+      ],
+      "window_start": "2019-07-05"
+    },
+    {
+      "converged": true,
+      "fit_date": "2023-08-04",
+      "iterations": 7,
+      "log_likelihood": -2223.9534692512975,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.3152352087243376,
+          "annualised_volatility": 0.10545765692556153,
+          "expected_duration_sessions": 104.10076317106481,
+          "mean_daily_return": 0.0012509333679537205,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9903939224887647,
+          "typical_realised_volatility": 0.10356904042628447
+        },
+        {
+          "annualised_return": -0.020269747587323826,
+          "annualised_volatility": 0.28551950643878266,
+          "expected_duration_sessions": 113.88161842140357,
+          "mean_daily_return": -8.043550629890407e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9912189516283512,
+          "typical_realised_volatility": 0.22903588447690165
+        }
+      ],
+      "window_start": "2019-08-05"
+    },
+    {
+      "converged": true,
+      "fit_date": "2023-09-05",
+      "iterations": 18,
+      "log_likelihood": -2201.733948392254,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.3025219412909949,
+          "annualised_volatility": 0.10618590910945212,
+          "expected_duration_sessions": 109.40081437945067,
+          "mean_daily_return": 0.0012004838940118845,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9908593002193608,
+          "typical_realised_volatility": 0.10369197565460547
+        },
+        {
+          "annualised_return": -0.017399592536524504,
+          "annualised_volatility": 0.2873975249538746,
+          "expected_duration_sessions": 109.86464284071994,
+          "mean_daily_return": -6.90460021290655e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9908978905847827,
+          "typical_realised_volatility": 0.23043259752444523
+        }
+      ],
+      "window_start": "2019-09-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2023-10-04",
+      "iterations": 7,
+      "log_likelihood": -2190.3938442422136,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.28871787735845944,
+          "annualised_volatility": 0.1071619994673459,
+          "expected_duration_sessions": 111.75256885917878,
+          "mean_daily_return": 0.0011457058625335692,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9910516598391567,
+          "typical_realised_volatility": 0.10391091676021401
+        },
+        {
+          "annualised_return": -0.03221209990034857,
+          "annualised_volatility": 0.28896225345903087,
+          "expected_duration_sessions": 135.59926481593126,
+          "mean_daily_return": -0.00012782579325535146,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9926253287482241,
+          "typical_realised_volatility": 0.23095185347743122
+        }
+      ],
+      "window_start": "2019-10-03"
+    },
+    {
+      "converged": true,
+      "fit_date": "2023-11-02",
+      "iterations": 7,
+      "log_likelihood": -2199.94586438072,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.2641757356455817,
+          "annualised_volatility": 0.10991820112007676,
+          "expected_duration_sessions": 109.25870949704135,
+          "mean_daily_return": 0.001048316411291991,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9908474115738382,
+          "typical_realised_volatility": 0.10404650825427886
+        },
+        {
+          "annualised_return": -0.029338718239081574,
+          "annualised_volatility": 0.28902022713581976,
+          "expected_duration_sessions": 135.31639277456767,
+          "mean_daily_return": -0.00011642348507572052,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9926099123728049,
+          "typical_realised_volatility": 0.23110793235584234
+        }
+      ],
+      "window_start": "2019-11-01"
+    },
+    {
+      "converged": true,
+      "fit_date": "2023-12-04",
+      "iterations": 11,
+      "log_likelihood": -2197.3083678407947,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2799041976082063,
+          "annualised_volatility": 0.11167760639170024,
+          "expected_duration_sessions": 110.88573643629094,
+          "mean_daily_return": 0.0011107309428897074,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9909817075474396,
+          "typical_realised_volatility": 0.10810536727032753
+        },
+        {
+          "annualised_return": -0.029254476649963793,
+          "annualised_volatility": 0.28935319943951227,
+          "expected_duration_sessions": 132.9937457168235,
+          "mean_daily_return": -0.00011608919305541187,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9924808494218273,
+          "typical_realised_volatility": 0.23155618248516022
+        }
+      ],
+      "window_start": "2019-12-03"
+    },
+    {
+      "converged": true,
+      "fit_date": "2024-01-04",
+      "iterations": 10,
+      "log_likelihood": -2190.113666190584,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2681899755954531,
+          "annualised_volatility": 0.11275399404424304,
+          "expected_duration_sessions": 111.3040101784192,
+          "mean_daily_return": 0.0010642459349025917,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9910155977453372,
+          "typical_realised_volatility": 0.10901446089478029
+        },
+        {
+          "annualised_return": -0.028386205910453922,
+          "annualised_volatility": 0.2892855850161459,
+          "expected_duration_sessions": 133.5267935444192,
+          "mean_daily_return": -0.00011264367424783302,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9925108663702964,
+          "typical_realised_volatility": 0.2315777294820842
+        }
+      ],
+      "window_start": "2020-01-03"
+    },
+    {
+      "converged": true,
+      "fit_date": "2024-02-05",
+      "iterations": 11,
+      "log_likelihood": -2174.133239791262,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2982703916978322,
+          "annualised_volatility": 0.11258293392214809,
+          "expected_duration_sessions": 111.63873189231415,
+          "mean_daily_return": 0.001183612665467588,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9910425353007002,
+          "typical_realised_volatility": 0.11017143010438069
+        },
+        {
+          "annualised_return": -0.02797296097763064,
+          "annualised_volatility": 0.28915182714175824,
+          "expected_duration_sessions": 134.22233439004717,
+          "mean_daily_return": -0.0001110038134032962,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9925496751003151,
+          "typical_realised_volatility": 0.23150547063580296
+        }
+      ],
+      "window_start": "2020-02-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2024-03-06",
+      "iterations": 10,
+      "log_likelihood": -2167.2402020815357,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2935361516806586,
+          "annualised_volatility": 0.11289312115919355,
+          "expected_duration_sessions": 151.70937557468218,
+          "mean_daily_return": 0.0011648259987327722,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9934084495687102,
+          "typical_realised_volatility": 0.11006555711314164
+        },
+        {
+          "annualised_return": 0.0037664667214050893,
+          "annualised_volatility": 0.2843162132050154,
+          "expected_duration_sessions": 133.27197760076766,
+          "mean_daily_return": 1.494629651351226e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9924965471511527,
+          "typical_realised_volatility": 0.23128629565278602
+        }
+      ],
+      "window_start": "2020-03-05"
+    },
+    {
+      "converged": true,
+      "fit_date": "2024-04-05",
+      "iterations": 21,
+      "log_likelihood": -2203.017932120706,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.28852686131155847,
+          "annualised_volatility": 0.11236406693595068,
+          "expected_duration_sessions": 152.6816439809169,
+          "mean_daily_return": 0.0011449478623474542,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9934504242034164,
+          "typical_realised_volatility": 0.10960873858282284
+        },
+        {
+          "annualised_return": 0.10980716966559735,
+          "annualised_volatility": 0.22645660038036117,
+          "expected_duration_sessions": 126.03010640801547,
+          "mean_daily_return": 0.00043574273676824345,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9920653879576793,
+          "typical_realised_volatility": 0.2206360816519423
+        }
+      ],
+      "window_start": "2020-04-03"
+    },
+    {
+      "converged": true,
+      "fit_date": "2024-05-06",
+      "iterations": 20,
+      "log_likelihood": -2161.074444738144,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.27020153135849145,
+          "annualised_volatility": 0.11405633358563115,
+          "expected_duration_sessions": 155.67220868929255,
+          "mean_daily_return": 0.0010722282990416328,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9935762458282075,
+          "typical_realised_volatility": 0.10994744155401558
+        },
+        {
+          "annualised_return": 0.05915096044410141,
+          "annualised_volatility": 0.21828692521270177,
+          "expected_duration_sessions": 118.59434591595131,
+          "mean_daily_return": 0.00023472603350833894,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9915678948074919,
+          "typical_realised_volatility": 0.21216425635031494
+        }
+      ],
+      "window_start": "2020-05-05"
+    },
+    {
+      "converged": true,
+      "fit_date": "2024-06-05",
+      "iterations": 23,
+      "log_likelihood": -2159.0155978147186,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.27014865565411045,
+          "annualised_volatility": 0.1126990839609085,
+          "expected_duration_sessions": 147.88065714795638,
+          "mean_daily_return": 0.0010720184748178986,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9932377903960794,
+          "typical_realised_volatility": 0.10970779097328744
+        },
+        {
+          "annualised_return": 0.019694109365092433,
+          "annualised_volatility": 0.21856357945257274,
+          "expected_duration_sessions": 107.196673231148,
+          "mean_daily_return": 7.815122763925569e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9906713522924009,
+          "typical_realised_volatility": 0.20993923232298664
+        }
+      ],
+      "window_start": "2020-06-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2024-07-08",
+      "iterations": 25,
+      "log_likelihood": -2171.446043872396,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.2643867005150953,
+          "annualised_volatility": 0.11027412209325968,
+          "expected_duration_sessions": 129.81195037987573,
+          "mean_daily_return": 0.0010491535734726003,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9922965489920331,
+          "typical_realised_volatility": 0.10755368860566573
+        },
+        {
+          "annualised_return": 0.03943977588108675,
+          "annualised_volatility": 0.21384791074250134,
+          "expected_duration_sessions": 92.72357454579902,
+          "mean_daily_return": 0.00015650704714716964,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9892152561535894,
+          "typical_realised_volatility": 0.20661443224198942
+        }
+      ],
+      "window_start": "2020-07-06"
+    },
+    {
+      "converged": true,
+      "fit_date": "2024-08-06",
+      "iterations": 17,
+      "log_likelihood": -2177.576187947421,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.23832557146151875,
+          "annualised_volatility": 0.11163162902648747,
+          "expected_duration_sessions": 104.79053579509237,
+          "mean_daily_return": 0.0009457363946885665,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.990457153478484,
+          "typical_realised_volatility": 0.10674184727221878
+        },
+        {
+          "annualised_return": 0.0038737559464334897,
+          "annualised_volatility": 0.21681027640071154,
+          "expected_duration_sessions": 110.50758825691972,
+          "mean_daily_return": 1.5372047406482102e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9909508476678082,
+          "typical_realised_volatility": 0.20578624712803475
+        }
+      ],
+      "window_start": "2020-08-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2024-09-05",
+      "iterations": 25,
+      "log_likelihood": -2185.651229586111,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.21951475641144147,
+          "annualised_volatility": 0.11269259028068646,
+          "expected_duration_sessions": 105.49147429798955,
+          "mean_daily_return": 0.0008710903032200058,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9905205609585546,
+          "typical_realised_volatility": 0.10723878624219402
+        },
+        {
+          "annualised_return": 0.023099379528457694,
+          "annualised_volatility": 0.2149200851988564,
+          "expected_duration_sessions": 119.91255249032014,
+          "mean_daily_return": 9.166420447800672e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9916605894943257,
+          "typical_realised_volatility": 0.20604789155749897
+        }
+      ],
+      "window_start": "2020-09-02"
+    },
+    {
+      "converged": true,
+      "fit_date": "2024-10-04",
+      "iterations": 21,
+      "log_likelihood": -2203.960217429171,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.23596060443849734,
+          "annualised_volatility": 0.11216475772676018,
+          "expected_duration_sessions": 150.30188672960372,
+          "mean_daily_return": 0.0009363516049146719,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9933467235724125,
+          "typical_realised_volatility": 0.1084512744478878
+        },
+        {
+          "annualised_return": 0.041220157086303465,
+          "annualised_volatility": 0.21414973386221794,
+          "expected_duration_sessions": 98.99658338694508,
+          "mean_daily_return": 0.00016357205192977565,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.989898641288545,
+          "typical_realised_volatility": 0.2058971432905748
+        }
+      ],
+      "window_start": "2020-10-02"
+    },
+    {
+      "converged": true,
+      "fit_date": "2024-11-04",
+      "iterations": 20,
+      "log_likelihood": -2197.6420210747856,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.21150537177776554,
+          "annualised_volatility": 0.11151930670555547,
+          "expected_duration_sessions": 137.5337499834034,
+          "mean_daily_return": 0.000839307030864149,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.992729057412303,
+          "typical_realised_volatility": 0.10753487102365765
+        },
+        {
+          "annualised_return": 0.0808539400676762,
+          "annualised_volatility": 0.21367191795408308,
+          "expected_duration_sessions": 87.8017657410651,
+          "mean_daily_return": 0.0003208489685225246,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.988610707409358,
+          "typical_realised_volatility": 0.20542367181395474
+        }
+      ],
+      "window_start": "2020-11-02"
+    },
+    {
+      "converged": true,
+      "fit_date": "2024-12-04",
+      "iterations": 17,
+      "log_likelihood": -2208.728021580434,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.25122416251502827,
+          "annualised_volatility": 0.11230818161939969,
+          "expected_duration_sessions": 178.0989418644436,
+          "mean_daily_return": 0.0009969212798215407,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9943851435076962,
+          "typical_realised_volatility": 0.10910016350471398
+        },
+        {
+          "annualised_return": -0.016956444792021467,
+          "annualised_volatility": 0.2169934928218884,
+          "expected_duration_sessions": 124.02165464372762,
+          "mean_daily_return": -6.728747933341852e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9919368919655792,
+          "typical_realised_volatility": 0.2069382665870374
+        }
+      ],
+      "window_start": "2020-12-02"
+    },
+    {
+      "converged": true,
+      "fit_date": "2025-01-06",
+      "iterations": 18,
+      "log_likelihood": -2223.2903270439774,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.23543123976524644,
+          "annualised_volatility": 0.1150325244099279,
+          "expected_duration_sessions": 184.99709171414804,
+          "mean_daily_return": 0.0009342509514493906,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9945945096177773,
+          "typical_realised_volatility": 0.10911368963088806
+        },
+        {
+          "annualised_return": -0.021354550853072238,
+          "annualised_volatility": 0.21717351744953206,
+          "expected_duration_sessions": 128.320756384739,
+          "mean_daily_return": -8.474028116298507e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9922070284794633,
+          "typical_realised_volatility": 0.2072226334551188
+        }
+      ],
+      "window_start": "2021-01-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2025-02-06",
+      "iterations": 17,
+      "log_likelihood": -2241.7046947566078,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.22631502898293585,
+          "annualised_volatility": 0.11476427699281673,
+          "expected_duration_sessions": 185.74267711519948,
+          "mean_daily_return": 0.000898075511837047,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9946162076721884,
+          "typical_realised_volatility": 0.10976015449059133
+        },
+        {
+          "annualised_return": -0.006708426083829837,
+          "annualised_volatility": 0.21505899960723915,
+          "expected_duration_sessions": 99.59946892568722,
+          "mean_daily_return": -2.662073842789618e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9899597858222907,
+          "typical_realised_volatility": 0.2067400538403152
+        }
+      ],
+      "window_start": "2021-02-03"
+    },
+    {
+      "converged": true,
+      "fit_date": "2025-03-10",
+      "iterations": 24,
+      "log_likelihood": -2234.9835274963198,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.20700395912225933,
+          "annualised_volatility": 0.11601089247038762,
+          "expected_duration_sessions": 147.27226085751673,
+          "mean_daily_return": 0.0008214442822311878,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9932098550387063,
+          "typical_realised_volatility": 0.11008175121196942
+        },
+        {
+          "annualised_return": -0.029380034942351092,
+          "annualised_volatility": 0.21874201539504068,
+          "expected_duration_sessions": 95.80028501638192,
+          "mean_daily_return": -0.00011658744024742497,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9895616176942584,
+          "typical_realised_volatility": 0.20901698747338177
+        }
+      ],
+      "window_start": "2021-03-05"
+    },
+    {
+      "converged": true,
+      "fit_date": "2025-04-08",
+      "iterations": 22,
+      "log_likelihood": -2205.8492579912436,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.19801333551008607,
+          "annualised_volatility": 0.11601367000279994,
+          "expected_duration_sessions": 150.61666474554977,
+          "mean_daily_return": 0.0007857672044051035,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9933606284424809,
+          "typical_realised_volatility": 0.110030993878538
+        },
+        {
+          "annualised_return": -0.13936039995172098,
+          "annualised_volatility": 0.2277638363912421,
+          "expected_duration_sessions": 131.0858898200982,
+          "mean_daily_return": -0.0005530174601258769,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9923714138770207,
+          "typical_realised_volatility": 0.21115638183645943
+        }
+      ],
+      "window_start": "2021-04-06"
+    },
+    {
+      "converged": true,
+      "fit_date": "2025-05-08",
+      "iterations": 13,
+      "log_likelihood": -2208.464652363589,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.20158656461198934,
+          "annualised_volatility": 0.11710953777829229,
+          "expected_duration_sessions": 172.9125932032165,
+          "mean_daily_return": 0.0007999466849682117,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9942167312312253,
+          "typical_realised_volatility": 0.11053520447354154
+        },
+        {
+          "annualised_return": -0.06762610744321329,
+          "annualised_volatility": 0.24313752009251569,
+          "expected_duration_sessions": 169.59868110707953,
+          "mean_daily_return": -0.00026835756921910034,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9941037277325958,
+          "typical_realised_volatility": 0.22142741898458632
+        }
+      ],
+      "window_start": "2021-05-05"
+    },
+    {
+      "converged": true,
+      "fit_date": "2025-06-09",
+      "iterations": 12,
+      "log_likelihood": -2214.453188017779,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.20374468829512404,
+          "annualised_volatility": 0.11585352577819191,
+          "expected_duration_sessions": 145.8920388555,
+          "mean_daily_return": 0.0008085106678377939,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9931456163897301,
+          "typical_realised_volatility": 0.10945119730115531
+        },
+        {
+          "annualised_return": -0.024051528547866578,
+          "annualised_volatility": 0.2389613994931274,
+          "expected_duration_sessions": 151.14842435965852,
+          "mean_daily_return": -9.544257360264514e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.993383986606301,
+          "typical_realised_volatility": 0.2181047082454869
+        }
+      ],
+      "window_start": "2021-06-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2025-07-10",
+      "iterations": 16,
+      "log_likelihood": -2217.3912117206355,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.20867170091634213,
+          "annualised_volatility": 0.11621148517584994,
+          "expected_duration_sessions": 149.1710487400084,
+          "mean_daily_return": 0.0008280623052235799,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9932962863206592,
+          "typical_realised_volatility": 0.11044510437516455
+        },
+        {
+          "annualised_return": -0.02861392906601352,
+          "annualised_volatility": 0.23981841314484795,
+          "expected_duration_sessions": 114.34436989660622,
+          "mean_daily_return": -0.00011354733756354572,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.991254488516538,
+          "typical_realised_volatility": 0.21882885454895684
+        }
+      ],
+      "window_start": "2021-07-06"
+    },
+    {
+      "converged": true,
+      "fit_date": "2025-08-08",
+      "iterations": 13,
+      "log_likelihood": -2224.369238526453,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.21001495356048647,
+          "annualised_volatility": 0.11580034688064438,
+          "expected_duration_sessions": 151.35702675423065,
+          "mean_daily_return": 0.0008333926728590733,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9933931048895155,
+          "typical_realised_volatility": 0.10953195376446481
+        },
+        {
+          "annualised_return": -0.02995385762662999,
+          "annualised_volatility": 0.2399095014100998,
+          "expected_duration_sessions": 115.8820228481147,
+          "mean_daily_return": -0.00011886451439138885,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9913705337944377,
+          "typical_realised_volatility": 0.2188448616292721
+        }
+      ],
+      "window_start": "2021-08-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2025-09-09",
+      "iterations": 18,
+      "log_likelihood": -2223.8135434848973,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.20869098761451266,
+          "annualised_volatility": 0.11620097322273257,
+          "expected_duration_sessions": 154.24258422301625,
+          "mean_daily_return": 0.0008281388397401296,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9935167061350961,
+          "typical_realised_volatility": 0.1101790445361165
+        },
+        {
+          "annualised_return": -0.030890243991767912,
+          "annualised_volatility": 0.24009429916320962,
+          "expected_duration_sessions": 117.48897689872676,
+          "mean_daily_return": -0.00012258033330066632,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9914885632133644,
+          "typical_realised_volatility": 0.21906031302855355
+        }
+      ],
+      "window_start": "2021-09-02"
+    },
+    {
+      "converged": true,
+      "fit_date": "2025-10-08",
+      "iterations": 26,
+      "log_likelihood": -2225.081860062573,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.24257502295931838,
+          "annualised_volatility": 0.11337356783608149,
+          "expected_duration_sessions": 152.66306830207927,
+          "mean_daily_return": 0.0009625992974576126,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9934496272666204,
+          "typical_realised_volatility": 0.10911600785892775
+        },
+        {
+          "annualised_return": -0.03208476276807497,
+          "annualised_volatility": 0.24002753017789874,
+          "expected_duration_sessions": 116.84198923681113,
+          "mean_daily_return": -0.00012732048717490068,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9914414329426279,
+          "typical_realised_volatility": 0.2188089203003268
+        }
+      ],
+      "window_start": "2021-10-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2025-11-06",
+      "iterations": 23,
+      "log_likelihood": -2225.3948166254972,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.2122130658894288,
+          "annualised_volatility": 0.11526006206999635,
+          "expected_duration_sessions": 145.27593672658202,
+          "mean_daily_return": 0.0008421153408310667,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.993116547567805,
+          "typical_realised_volatility": 0.10861314049870209
+        },
+        {
+          "annualised_return": -0.02686007368689934,
+          "annualised_volatility": 0.23957676240468143,
+          "expected_duration_sessions": 113.08628749904183,
+          "mean_daily_return": -0.0001065875939956323,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.991157194898555,
+          "typical_realised_volatility": 0.2184920066106764
+        }
+      ],
+      "window_start": "2021-11-02"
+    },
+    {
+      "converged": true,
+      "fit_date": "2025-12-08",
+      "iterations": 19,
+      "log_likelihood": -2227.913808362476,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.2275884774199705,
+          "annualised_volatility": 0.11560547682225172,
+          "expected_duration_sessions": 248.70681738500275,
+          "mean_daily_return": 0.0009031288786506765,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9959792014930898,
+          "typical_realised_volatility": 0.11131500214960646
+        },
+        {
+          "annualised_return": -0.0276757635028796,
+          "annualised_volatility": 0.2408352644767086,
+          "expected_duration_sessions": 130.2592071505084,
+          "mean_daily_return": -0.00010982445834476032,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9923229994879015,
+          "typical_realised_volatility": 0.21961209372706866
+        }
+      ],
+      "window_start": "2021-12-02"
+    },
+    {
+      "converged": true,
+      "fit_date": "2026-01-08",
+      "iterations": 15,
+      "log_likelihood": -2206.6531318675566,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.22488870959371376,
+          "annualised_volatility": 0.11481820810034116,
+          "expected_duration_sessions": 261.6862432550705,
+          "mean_daily_return": 0.0008924155142607689,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9961786298448051,
+          "typical_realised_volatility": 0.11110128152708237
+        },
+        {
+          "annualised_return": -0.06495520957902283,
+          "annualised_volatility": 0.2441399498080747,
+          "expected_duration_sessions": 124.80609645305003,
+          "mean_daily_return": -0.0002577587681707255,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9919875708926111,
+          "typical_realised_volatility": 0.22223047956214387
+        }
+      ],
+      "window_start": "2022-01-03"
+    },
+    {
+      "converged": true,
+      "fit_date": "2026-02-09",
+      "iterations": 21,
+      "log_likelihood": -2176.8662602400304,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.2198721273388662,
+          "annualised_volatility": 0.11552728615730322,
+          "expected_duration_sessions": 286.52926438221147,
+          "mean_daily_return": 0.0008725084418208977,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9965099550925239,
+          "typical_realised_volatility": 0.11093205023131508
+        },
+        {
+          "annualised_return": -0.039229543343343415,
+          "annualised_volatility": 0.24741828196618162,
+          "expected_duration_sessions": 122.06081015277641,
+          "mean_daily_return": -0.00015567279104501355,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9918073622586286,
+          "typical_realised_volatility": 0.22710904232454968
+        }
+      ],
+      "window_start": "2022-02-02"
+    },
+    {
+      "converged": true,
+      "fit_date": "2026-03-11",
+      "iterations": 21,
+      "log_likelihood": -2182.4757404111806,
+      "n": 1008,
+      "seed": 42,
+      "states": [
+        {
+          "annualised_return": 0.20235571867051644,
+          "annualised_volatility": 0.11552050883754282,
+          "expected_duration_sessions": 299.90553008248,
+          "mean_daily_return": 0.0008029988836131605,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9966656166702729,
+          "typical_realised_volatility": 0.1114980469930587
+        },
+        {
+          "annualised_return": -0.014672565121864893,
+          "annualised_volatility": 0.2488221741734633,
+          "expected_duration_sessions": 116.10370228751393,
+          "mean_daily_return": -5.822446476930513e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9913870102305296,
+          "typical_realised_volatility": 0.2278832966773024
+        }
+      ],
+      "window_start": "2022-03-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2026-04-10",
+      "iterations": 12,
+      "log_likelihood": -2206.7516492183695,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.18153644062901822,
+          "annualised_volatility": 0.11652093521698845,
+          "expected_duration_sessions": 196.98702374877573,
+          "mean_daily_return": 0.0007203827009088024,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9949235234840883,
+          "typical_realised_volatility": 0.11161378869420083
+        },
+        {
+          "annualised_return": -0.0061744646961930175,
+          "annualised_volatility": 0.24886828457174617,
+          "expected_duration_sessions": 107.32417357269642,
+          "mean_daily_return": -2.4501844032511974e-05,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9906824346583704,
+          "typical_realised_volatility": 0.22493028916735613
+        }
+      ],
+      "window_start": "2022-04-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2026-05-11",
+      "iterations": 13,
+      "log_likelihood": -2215.4391435564285,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.19135481532728446,
+          "annualised_volatility": 0.11625527262875614,
+          "expected_duration_sessions": 193.40848186745225,
+          "mean_daily_return": 0.0007593445052670019,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9948295959394101,
+          "typical_realised_volatility": 0.11169296655582155
+        },
+        {
+          "annualised_return": 0.09236225614942543,
+          "annualised_volatility": 0.24575407468169258,
+          "expected_duration_sessions": 78.46294837586069,
+          "mean_daily_return": 0.00036651688948184695,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9872551309796606,
+          "typical_realised_volatility": 0.2253338624253456
+        }
+      ],
+      "window_start": "2022-05-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2026-06-10",
+      "iterations": 12,
+      "log_likelihood": -2243.0264150504167,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.17471014138888485,
+          "annualised_volatility": 0.11648228260495465,
+          "expected_duration_sessions": 168.70462555008748,
+          "mean_daily_return": 0.0006932942118606541,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9940724802491968,
+          "typical_realised_volatility": 0.11095254073177965
+        },
+        {
+          "annualised_return": 0.10631942245042655,
+          "annualised_volatility": 0.2385653757464446,
+          "expected_duration_sessions": 67.31179027558325,
+          "mean_daily_return": 0.0004219024700413752,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9851437616514749,
+          "typical_realised_volatility": 0.2183040046160635
+        }
+      ],
+      "window_start": "2022-06-03"
+    },
+    {
+      "converged": true,
+      "fit_date": "2026-07-13",
+      "iterations": 18,
+      "log_likelihood": -2291.215493786519,
+      "n": 1008,
+      "seed": 43,
+      "states": [
+        {
+          "annualised_return": 0.17156301510896863,
+          "annualised_volatility": 0.11542600360481553,
+          "expected_duration_sessions": 116.90976495336719,
+          "mean_daily_return": 0.0006808056155117803,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9914463945727812,
+          "typical_realised_volatility": 0.1102203633019348
+        },
+        {
+          "annualised_return": 0.20110825366083326,
+          "annualised_volatility": 0.22738915335288737,
+          "expected_duration_sessions": 60.92238660883402,
+          "mean_daily_return": 0.0007980486256382272,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9835856725965001,
+          "typical_realised_volatility": 0.2076299569649005
+        }
+      ],
+      "window_start": "2022-07-06"
+    },
+    {
+      "converged": true,
+      "fit_date": "2026-08-11",
+      "iterations": 15,
+      "log_likelihood": -2306.9041274322794,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.18130534264718037,
+          "annualised_volatility": 0.1161998988063728,
+          "expected_duration_sessions": 125.51379476579534,
+          "mean_daily_return": 0.000719465645425319,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9920327482579427,
+          "typical_realised_volatility": 0.11098745449450981
+        },
+        {
+          "annualised_return": 0.14094463493396775,
+          "annualised_volatility": 0.2306051814870019,
+          "expected_duration_sessions": 49.88434638053391,
+          "mean_daily_return": 0.0005593041068808244,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9799536312980494,
+          "typical_realised_volatility": 0.20763600952258401
+        }
+      ],
+      "window_start": "2022-08-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2026-09-10",
+      "iterations": 15,
+      "log_likelihood": -2306.0932193250737,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.17192688802692727,
+          "annualised_volatility": 0.11546419703597872,
+          "expected_duration_sessions": 132.0003224074944,
+          "mean_daily_return": 0.0006822495556624098,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9924242609278413,
+          "typical_realised_volatility": 0.11107216674192032
+        },
+        {
+          "annualised_return": 0.18353877005638383,
+          "annualised_volatility": 0.23354377413387148,
+          "expected_duration_sessions": 46.92014818273295,
+          "mean_daily_return": 0.0007283284526046977,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9786871943348208,
+          "typical_realised_volatility": 0.20969666805489548
+        }
+      ],
+      "window_start": "2022-09-02"
+    }
+  ],
+  "recent": [
+    {
+      "converged": true,
+      "fit_date": "2026-09-10",
+      "iterations": 15,
+      "log_likelihood": -2306.0943915136636,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.17192511391334717,
+          "annualised_volatility": 0.11546419544251225,
+          "expected_duration_sessions": 131.99791405276338,
+          "mean_daily_return": 0.0006822425155291554,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9924241227054522,
+          "typical_realised_volatility": 0.1110721816341831
+        },
+        {
+          "annualised_return": 0.18354292486316723,
+          "annualised_volatility": 0.23354313270996999,
+          "expected_duration_sessions": 46.91974569763367,
+          "mean_daily_return": 0.0007283449399332033,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9786870115101576,
+          "typical_realised_volatility": 0.20969615716757142
+        }
+      ],
+      "window_start": "2022-09-02"
+    },
+    {
+      "converged": true,
+      "fit_date": "2026-10-09",
+      "iterations": 15,
+      "log_likelihood": -2320.151792269717,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.16838634525810836,
+          "annualised_volatility": 0.11431488760896028,
+          "expected_duration_sessions": 122.33061825671962,
+          "mean_daily_return": 0.0006681997827702713,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9918254316519399,
+          "typical_realised_volatility": 0.11021871303461007
+        },
+        {
+          "annualised_return": 0.2831873911628798,
+          "annualised_volatility": 0.2284601285169852,
+          "expected_duration_sessions": 41.99747280684733,
+          "mean_daily_return": 0.0011237594887415865,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9761890434550872,
+          "typical_realised_volatility": 0.2056657750412056
+        }
+      ],
+      "window_start": "2022-10-04"
+    },
+    {
+      "converged": true,
+      "fit_date": "2026-11-09",
+      "iterations": 12,
+      "log_likelihood": -2348.02055257183,
+      "n": 1008,
+      "seed": 44,
+      "states": [
+        {
+          "annualised_return": 0.15080581159528245,
+          "annualised_volatility": 0.11393826030408163,
+          "expected_duration_sessions": 101.11281035580552,
+          "mean_daily_return": 0.0005984357602987399,
+          "name": "calm",
+          "state": 0,
+          "stay_probability": 0.9901100563174824,
+          "typical_realised_volatility": 0.10949019911117382
+        },
+        {
+          "annualised_return": 0.25822611509931576,
+          "annualised_volatility": 0.22730825645317665,
+          "expected_duration_sessions": 39.177895056728744,
+          "mean_daily_return": 0.0010247068059496657,
+          "name": "turbulent",
+          "state": 1,
+          "stay_probability": 0.9744754025566708,
+          "typical_realised_volatility": 0.19826611806402608
+        }
+      ],
+      "window_start": "2022-11-02"
+    }
+  ]
+}

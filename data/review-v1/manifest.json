@@ -1,0 +1,330 @@
+{
+  "audit": [
+    {
+      "area": "Data",
+      "code": "runtime_v2/market.py",
+      "component": "Daily market data collection and validation",
+      "finding": "Public daily bars for 22 instruments are downloaded into immutable, hashed snapshots and checked against the exchange calendar. 10 snapshots were recorded by the scheduler in October; every file hash still matches.",
+      "status": "works",
+      "verify": "Dashboard section 2; `python -m review_v1.live` downloads and validates a new snapshot"
+    },
+    {
+      "area": "Models",
+      "code": "runtime_v2/model.py",
+      "component": "Feature pipeline (17 price and volume features)",
+      "finding": "Features recomputed from the recorded bars reproduce the recorded trend flag for all 22 instruments on all 5 decision dates.",
+      "status": "works",
+      "verify": "`python -m review_v1.walkthrough` stops if any value differs; `pytest tests/test_review_v1_walkthrough.py`"
+    },
+    {
+      "area": "Models",
+      "code": "runtime_v2/model.py",
+      "component": "Classifier software (logistic + boosted trees, calibration, purged rolling refits)",
+      "finding": "Saved models reload with checksum verification, and the replay of all 5 recorded decisions stops unless every recorded probability is reproduced. The scheduled monthly refit ran in the simulated replay (2026-10-28).",
+      "status": "works",
+      "verify": "Dashboard section 3, step 3; walkthrough `verification` block; `pytest tests/test_review_v1_walkthrough.py`"
+    },
+    {
+      "area": "Decision",
+      "code": "runtime_v2/policy.py, runtime_v2/risk.py",
+      "component": "Decision rule and portfolio risk constraints",
+      "finding": "The trend rule and the four portfolio constraints reproduce every recorded target weight exactly; the ledger's turnover cap reproduces every recorded order quantity.",
+      "status": "works",
+      "verify": "Dashboard section 3, step 4; `pytest tests/test_review_v1_walkthrough.py` re-derives each order from the recorded account"
+    },
+    {
+      "area": "Execution",
+      "code": "runtime_v2/account.py",
+      "component": "Paper ledger (orders, next-close fills, costs, limits, reconciliation)",
+      "finding": "25 fills were recorded by the scheduler. The review harness reproduces the sealed September accounts to the cent (maximum equity difference $0.00).",
+      "status": "works",
+      "verify": "Dashboard section 7, 'Checks'; `pytest tests/test_review_v1_sandbox.py`"
+    },
+    {
+      "area": "Operations",
+      "code": "runtime_v2/storage.py, review_v1/receipts.py",
+      "component": "Receipts and audit trail",
+      "finding": "All 5 decision receipts match the SHA-256 hashes registered on 27 October, each binds to its plan and its market snapshot.",
+      "status": "works",
+      "verify": "`python -m review_v1.walkthrough` re-checks every hash before replaying; `pytest tests/test_review_v1_walkthrough.py` shows an edited receipt is refused"
+    },
+    {
+      "area": "Evaluation",
+      "code": "review_v1/classifier.py, review_v1/stats.py",
+      "component": "Classifier statistics (new in this review)",
+      "finding": "Accuracy, balanced accuracy, macro F1, log loss, Brier score, per-class precision and recall, confusion matrices and paired date-block intervals against the prior. Agrees with the independently generated research table to 2e-16.",
+      "status": "works",
+      "verify": "Dashboard section 4; `python -m review_v1.classifier`; `pytest tests/test_review_v1_stats.py` checks the measures against hand-computed values"
+    },
+    {
+      "area": "Evaluation",
+      "code": "review_v1/stats.py, review_v1/sandbox.py",
+      "component": "Trading statistics (new in this review)",
+      "finding": "Sharpe ratio with a date-block interval, probabilistic and deflated Sharpe ratio, paired Sharpe-difference bootstrap with Holm adjustment. The deflated Sharpe ratio is tested against the worked example in Bailey and L\u00f3pez de Prado (2014).",
+      "status": "works",
+      "verify": "`pytest tests/test_review_v1_stats.py tests/test_review_v1_sandbox.py`"
+    },
+    {
+      "area": "Demo",
+      "code": "app_review.py",
+      "component": "Review dashboard and decision replay (new in this review)",
+      "finding": "Nine sections; 5 recorded decisions can be traced step by step for any of 22 instruments; one button runs the current pipeline.",
+      "status": "works",
+      "verify": "`streamlit run app_review.py --server.port 8510`; `pytest tests/test_review_v1_app.py`"
+    },
+    {
+      "area": "Models",
+      "code": "review_v1/regime.py",
+      "component": "Hidden Markov model of market regimes (new in this review)",
+      "finding": "Causal two-state Gaussian HMM on SPY, refit every 21 sessions (93 of 93 refits converged). Removing later data leaves earlier probabilities unchanged. It was not an input to any recorded decision. As an exposure overlay in the sandbox neither registered contrast showed an improvement in the Sharpe ratio.",
+      "status": "diagnostic",
+      "verify": "Dashboard section 5; `pytest tests/test_review_v1_regime.py`"
+    },
+    {
+      "area": "Models",
+      "code": "src/features/sentiment.py, review_v1/sentiment_link.py",
+      "component": "News sentiment (FinBERT)",
+      "finding": "A FinBERT pipeline exists and runs, but it is not connected to the pilot: the pilot feature set has no news column, and every recorded decision reproduces from prices alone. Adding six FinBERT columns to the classifier for NVDA and SPY changed log loss by +0.0462 (95% interval +0.0103 to +0.0848; lower is better): the forecasts got worse on these two tickers.",
+      "status": "diagnostic",
+      "verify": "Dashboard section 6; `python -m review_v1.sentiment_link`; `pytest tests/test_review_v1_sentiment.py`"
+    },
+    {
+      "area": "Operations",
+      "code": "scripts/, launchd services",
+      "component": "Unattended daily collection",
+      "finding": "6 collection attempts were registered between 29 September and 22 October; together they scheduled 18 decision sessions and recorded 5. 5 attempts halted: 4 windows passed with no run (the collector is a local launch agent that needs a logged-in, awake machine) and 1 download was rejected by validation. The longest attempt that recorded every scheduled session was 1 session long, so operational reliability is not established.",
+      "status": "unvalidated",
+      "verify": "Dashboard section 2, collection calendar"
+    },
+    {
+      "area": "Models",
+      "code": "runtime_v2/model.py",
+      "component": "Predictive value of the classifier",
+      "finding": "On 14,960 saved out-of-fold forecasts the calibrated mixture has log loss 1.0762 against 1.0641 for the class-frequency prior (lower is better). On the 88 recorded October rows it scored 1.1189 against 1.1060. It is behind the prior on both samples.",
+      "status": "unvalidated",
+      "verify": "Dashboard section 4"
+    },
+    {
+      "area": "Strategy",
+      "code": "runtime_v2/policy.py",
+      "component": "Trading edge of the trend rule",
+      "finding": "On the 2024 to September 2026 history the trend rule returned +35.0% (Sharpe 1.30) against +55.2% (Sharpe 1.40) for equal weight, and -2.5% in the simulated replay since. Its Sharpe ratio is not distinguishable from the benchmark's, so no edge is established.",
+      "status": "unvalidated",
+      "verify": "Dashboard section 7"
+    },
+    {
+      "area": "Legacy",
+      "code": "src/models, src/live, app.py",
+      "component": "Summer prototype stack (XGBoost, LightGBM, LSTM, gating network, Alpaca broker adapter, original dashboards)",
+      "finding": "Present under `src/` with unit tests, built on a different label and split design. It is not part of the pilot contract and none of its results are used in this review.",
+      "status": "unvalidated",
+      "verify": "`pytest tests/` (legacy suites)"
+    },
+    {
+      "area": "Models",
+      "code": "src/features/regime.py",
+      "component": "Prototype HMM in `src/features/regime.py`",
+      "finding": "Fits once on the first 252 rows and emits hard labels. Superseded for this review by the rolling, causal version; left unchanged.",
+      "status": "unvalidated",
+      "verify": "Compare with `review_v1/regime.py`"
+    },
+    {
+      "area": "Proposal",
+      "code": "not present",
+      "component": "Main experiment: learned gate versus static ensemble",
+      "finding": "The contextual mixture gate over four experts, evaluated through one trading policy with registered contrasts, has not been built. The October screen tested probability combination only.",
+      "status": "missing",
+      "verify": "docs/research-controller-v1/PROPOSAL_ALIGNMENT_AND_GAPS.md"
+    },
+    {
+      "area": "Proposal",
+      "code": "not present",
+      "component": "Proposal label (next open, cost- and volatility-scaled threshold)",
+      "finding": "Everything measured so far uses next-close entry and a fixed \u00b11% threshold. With a fixed threshold the class mix moves with volatility; whether the proposal's volatility-scaled label changes the comparison with the prior has not been tested.",
+      "status": "missing",
+      "verify": "Dashboard section 4, label mix by regime"
+    },
+    {
+      "area": "Proposal",
+      "code": "not present",
+      "component": "HMM state-count selection and use as a gate input",
+      "finding": "Two states are fixed by assumption here. Choosing among 2, 3 and 4 states on validation data, and testing the gate with and without regime inputs, are not done.",
+      "status": "missing",
+      "verify": "data/review-v1/regime/summary.json, `assumptions`"
+    },
+    {
+      "area": "Proposal",
+      "code": "not present",
+      "component": "Text data beyond headlines (filings, FOMC, LLM features)",
+      "finding": "Only Alpaca headlines for three tickers are cached, plus a one-month fetch for the pilot window made for this review.",
+      "status": "missing",
+      "verify": "Dashboard section 2"
+    },
+    {
+      "area": "Data",
+      "code": "not needed yet",
+      "component": "Price history back to 2010",
+      "finding": "Not extended, on purpose. Every evaluation here starts in 2024 with a 1,008-session training window, and the HMM starts in 2019; none of it needs pre-2016 bars. The proposal wants 2010 only so the 2011 and 2015 to 2016 stress periods are in sample, which matters when the stress-period test is run.",
+      "status": "missing",
+      "verify": "data/review-v1/inventory.json"
+    },
+    {
+      "area": "Evidence",
+      "code": "operational",
+      "component": "A prospective sample long enough to judge",
+      "finding": "5 decision dates and 88 matured outcome rows exist. The simulated replay adds 41 sessions but is not prospective evidence. At least one uninterrupted quarter of recorded sessions is needed before a Sharpe ratio means anything.",
+      "status": "missing",
+      "verify": "Dashboard sections 4 and 7"
+    }
+  ],
+  "audit_summary": {
+    "diagnostic": 2,
+    "missing": 6,
+    "unvalidated": 5,
+    "works": 9
+  },
+  "built_at": "2026-11-25T14:38:25.790378+00:00",
+  "checks": [
+    {
+      "check": "Registration written before evaluation",
+      "detail": "sha256 abc146e5bffdae81\u2026; amendments: 1",
+      "passed": true
+    },
+    {
+      "check": "Decision receipts match registered hashes",
+      "detail": "5 receipts",
+      "passed": true
+    },
+    {
+      "check": "Recorded probabilities reproduce from recorded bars",
+      "detail": "maximum difference 0.0e+00 over 110 instrument-decisions",
+      "passed": true
+    },
+    {
+      "check": "Recorded weights and order quantities reproduce",
+      "detail": "trend rule, four portfolio constraints, turnover cap",
+      "passed": true
+    },
+    {
+      "check": "Classifier statistics match the independent research table",
+      "detail": "15 rows, maximum difference 2.2e-16",
+      "passed": true
+    },
+    {
+      "check": "Recorded outcome metrics match the collector's own report",
+      "detail": "maximum difference 0.0e+00",
+      "passed": true
+    },
+    {
+      "check": "HMM is causal (removing later data changes nothing earlier)",
+      "detail": "cut 2020-03-23: 308 rows, max difference 0.0e+00; cut 2022-06-16: 872 rows, max difference 0.0e+00; cut 2025-04-08: 1576 rows, max difference 0.0e+00",
+      "passed": true
+    },
+    {
+      "check": "HMM stable across data vintages",
+      "detail": "label agreement 100.0%, max probability difference 6.5e-05",
+      "passed": true
+    },
+    {
+      "check": "All HMM refits converged",
+      "detail": "93 of 93",
+      "passed": true
+    },
+    {
+      "check": "Sandbox harness reproduces the sealed September accounts",
+      "detail": "cash: $0.000000; equal_weight: $0.000000; trend: $0.000000",
+      "passed": true
+    },
+    {
+      "check": "Sandbox harness equals the pilot's reference replay",
+      "detail": "maximum equity difference $0.000000",
+      "passed": true
+    },
+    {
+      "check": "Simulated replay agrees with recorded decisions where both exist",
+      "detail": "trend flags and weights equal on 5 dates; probabilities differ by at most 0.024 (price vintage)",
+      "passed": true
+    },
+    {
+      "check": "Replay prices agree with a second source",
+      "detail": "902 of 902 daily returns compared, largest difference 0.01% (tolerance 0.5%)",
+      "passed": true
+    },
+    {
+      "check": "Pilot features contain no sentiment input",
+      "detail": "17 price and volume columns",
+      "passed": true
+    },
+    {
+      "check": "Sentiment ablation price-only arm reproduces sealed forecasts",
+      "detail": "NVDA: 0.0e+00; SPY: 0.0e+00",
+      "passed": true
+    }
+  ],
+  "local_evidence_present": true,
+  "output_sha256": {
+    "data/review-v1/classifier/by_period.csv": "9d6e331464ee49ae66d9105273b1006e9e93aa7979247a3814f3172ffd5e94b8",
+    "data/review-v1/classifier/by_regime.csv": "058ec31290c35429482d95b3bded3d8c9df6198bcb72b6d4c6623eab1186017b",
+    "data/review-v1/classifier/by_symbol.csv": "f20ce6b76ac5a826a3e613ce3103562b673c3a3987841bb12ba54693cace6c82",
+    "data/review-v1/classifier/class_report.csv": "2914577c6cfbcc197303f4625a7064163c3ec899d9d07df2d0142c0dc63ccda3",
+    "data/review-v1/classifier/confusion.csv": "4c71ee70b3b9330b866598922ad0d68e9cc355d9d89fbe97f8c8fdf4f6b39803",
+    "data/review-v1/classifier/paired_vs_prior.csv": "2c132ff74d78798517c9b1a761771e607170dde5dc5b9d4fee7c96e0463f8268",
+    "data/review-v1/classifier/regime_contrasts.csv": "1bc3c47718d855e067512441163b34ef37673c6de167e4c894f9f58002143655",
+    "data/review-v1/classifier/summary.json": "ae35d7948da8add3480163351476f2af7d9fd53c89d569a3600cf610fdabaa80",
+    "data/review-v1/inventory.json": "ddad761f3d07d31914b8fa1c0a08743ce9c4b713e9827a452d9950e3aaee341d",
+    "data/review-v1/live/last_run.json": "bfbafc3aa6bcbb627211a3c622e392608d907ab1a6202f2dcdd8f05b5e8a802a",
+    "data/review-v1/narration.json": "726c3c79d3c0622b3f69cc5c7e80b5cab14bae9996c2f80df89109f424fabcfd",
+    "data/review-v1/regime/fits.json": "228d04d28e041242ccffb07c2a5e8c05ca5e069f8717d4b8ab1e02968e67628c",
+    "data/review-v1/regime/posterior_history.csv": "f10ede14acbd32bccc3f650476a116550e721f840a2207ac5337a0773d7e7fa6",
+    "data/review-v1/regime/posterior_recent.csv": "aebc928f6877243feb20b139f3ce73ccf99ca71e465b1a2d67048f2290729ad0",
+    "data/review-v1/regime/summary.json": "dfe7dd76bb86daf0ef16fbb87bbbce8236b5085aec7519824a657287f4cd36c7",
+    "data/review-v1/registration.json": "abc146e5bffdae819a5245e1fdec89813e4cf9e7a5d5a9f6e1de2b5c902b011b",
+    "data/review-v1/registration_amendments.json": "c28b6366ec19e524fa6fb20b3c328f5b5a3ce46efc2a945fd503de44b58a891f",
+    "data/review-v1/replay/days.csv": "c09d1229e2c274a3432a17beb2b42e6c48470c90f627d35a16b5765647e0b843",
+    "data/review-v1/replay/signals.csv": "27eea940219efbe27d63a657fc784e2b5c2aa8d428402035f81ee2dc2669f8d5",
+    "data/review-v1/replay/summary.json": "927a05de8bc2268b5bc94f833a337ca1b93136adff3982f9ff5b68357ef48f8a",
+    "data/review-v1/sandbox/contrasts.csv": "20d92e818e4b8f1acd7df13d1b6636a2cedc655a114a6a4e28724ba2cb930b78",
+    "data/review-v1/sandbox/curves_history.csv": "b525adfaecb5eae5f14418b75de1d913a8d4926fbbfbe32e145051c25aa1da92",
+    "data/review-v1/sandbox/curves_post_release.csv": "f412a4c6ee59f97af720ef7f1ae8926a536bb739a357661a823df4dbac6b85f3",
+    "data/review-v1/sandbox/metrics.csv": "b3c75da1b47c544469d6179ee4e1a751fc20e912671723dc1c9325b9ac02410d",
+    "data/review-v1/sandbox/summary.json": "148237d7e2b93ba7566150c3eeabaca50fd870e4cd40f0856bf5d3f68b39b849",
+    "data/review-v1/sandbox/versus_benchmark.csv": "f440cabe49b7afea71c2887e5b0e484404a857d44d2c71e7822a34d72a8a10df",
+    "data/review-v1/sentiment/decision_dates.csv": "ae684882f9b4ade57e917ef65d2c1b4869c618cb1d8d990c2ff4bad5043aff2d",
+    "data/review-v1/sentiment/history_daily.csv": "85930dfbef2803a6125ecd7905d1e9cde1fb703eef8460fc016366020b792d03",
+    "data/review-v1/sentiment/history_link.csv": "4a8e0a118e1620fbbfe9c4cd896668440db1cb07441971b43e971e18d2be86ff",
+    "data/review-v1/sentiment/summary.json": "8d29166fc10bdf398cc335b76e42aff91200bd451fedb9d2332d888f1f272391",
+    "data/review-v1/ui_contract.json": "d51af012b40e1b62578abbf591227fbb8e615d0bc478e5810bb0fc4c6829d9a6",
+    "data/review-v1/walkthrough/index.json": "71abe35e2ea16efb3524ad4a17ecfb05ba0d3d0eabad6fc26bbe4e151bce9cc8",
+    "data/review-v1/walkthrough/r2-2026-10-01.json": "48d0770271501a3316637f2f105db330831c937c399c57ddbd0836129f99522b",
+    "data/review-v1/walkthrough/r2-2026-10-02.json": "be899d27611a51a9b40e8f5966e70fe3342383c486446beb542318ee6d5b6366",
+    "data/review-v1/walkthrough/r4-2026-10-14.json": "b1366e231f7598ee7fceb7d30d359cb241ba33a0b7ce4ca562e2c96e251d0b77",
+    "data/review-v1/walkthrough/r4-2026-10-15.json": "5189c975d29534a5753c8edf9be6087fbc881899644c8e240a8f940aa750d85f",
+    "data/review-v1/walkthrough/r6-2026-10-22.json": "07c85c1b31c534ea2a240cd66ab25bc6f3b05fee1ab2e9753b4277d9a886f6e0"
+  },
+  "registration_sha256": "abc146e5bffdae819a5245e1fdec89813e4cf9e7a5d5a9f6e1de2b5c902b011b",
+  "schema": 1,
+  "source_sha256": {
+    "app_review.py": "7242b481a9f7e65e337ba24804f126b2b733c635d6c9a90bdb7084d9d32f29e2",
+    "review_v1/__init__.py": "b3ef4c487620e434002391eb27362c41f1a66d8c7ab9cd4d685e249a731510ec",
+    "review_v1/audit.py": "a7d1930b317815d42f9193ecf45f3a7978cdfa0e663240a3dd3ef0bd482c8468",
+    "review_v1/build.py": "723d75c3bfcff3881b3762f086be66b9e96a139ee5f1ae5482a10b98b3abbb0e",
+    "review_v1/classifier.py": "8f33d6f81322a33e7da2d889ca978bd7c7b75e5b5665720e381b642c0a19411e",
+    "review_v1/explain.py": "e8cf07a40902b032b47753e3820bd1f5a1700b10514f40819a294527dfa813c3",
+    "review_v1/finbert.py": "b54d99c085b84c16477abfaf70a3cbd0ce22267ea2f553025327e81575f5e865",
+    "review_v1/fresh.py": "3e5c5b172670544c93bdc11aec3a4570acc4376ec5dad4ae710a8b14d987f5c1",
+    "review_v1/live.py": "214ded8d71987f159e4b17e75480b98fe0c90a11e64628451338e2fe1ee7a07b",
+    "review_v1/nav.py": "91a7e06890f5cce55ed2f3507b540c9137edd08e1712be7c9c0deca5eb82a4d7",
+    "review_v1/paths.py": "2dff9edfcfdf2c65d12359ce784799f5703e65c9fdca03027d34d37b3ba5addb",
+    "review_v1/quality.py": "f56f156d918696a69fd936ac6ae1604b8adf35569246d275a5220e2b250e839d",
+    "review_v1/receipts.py": "8cbbb5040908d272712e7108bfe36a1fe634573e1509a0e9f2cd1416cf0e8e1b",
+    "review_v1/regime.py": "09b7ddfa12c38212dcc18be02f67a9195c92c68c8d591b1724a3f28c42af0ef9",
+    "review_v1/regime_report.py": "65f380b8067733a2710b29c011d268ac83dfee3cf85d4bd6dd62b8e01e3d1b6e",
+    "review_v1/registration.py": "a3e1ca673844912d23600fb0994a623146e045d8c85947afa64f4e9175a6040b",
+    "review_v1/replay.py": "328be9185112a1253df05c3515f2924cfd3f964ede8c692400e6bb9e467a5123",
+    "review_v1/report.py": "17f8d97a8a3962cff20401b116250e20d62a9e02f07f8da7f603908e762923af",
+    "review_v1/sandbox.py": "e2404e559c73cfe7dc27ddc89f2e9749c6fa0addff0810dcaeab92545a75b7f7",
+    "review_v1/sentiment_link.py": "eddb5cfe4cad473dfffcf81e00fceb6715025413be23ec31153dbea9b753cdcd",
+    "review_v1/stats.py": "2d2fd1bddae1cd78faa6b3aac198c7b3af75845b9d1005b4d761c8a241849b00",
+    "review_v1/walkthrough.py": "36dffbf53c7f3204e82635bab20486da1ea6ddbbe5f6659558892d359000b41b"
+  }
+}

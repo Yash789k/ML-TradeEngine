@@ -1,0 +1,698 @@
+{
+  "fresh_download": {
+    "expected_session": "2026-11-24",
+    "path": "data/paper/review-v1/market/2026-11-24-20261125T131502645854",
+    "provider": "Yahoo Finance public chart v8",
+    "retrieved_at": "2026-11-25T13:15:02.645993+00:00"
+  },
+  "market_history": {
+    "available": true,
+    "convention": "retrospectively split/dividend-adjusted OHLC proxy",
+    "first": "2016-09-29",
+    "instruments": 22,
+    "last": "2026-09-25",
+    "path": "data/releases/2026-09-28-adaptive/market",
+    "provider": "Yahoo Finance public daily chart",
+    "retrieved_at": "2026-09-27T17:05:41.837608+00:00",
+    "rows": 55242
+  },
+  "models": {
+    "calibration_rows": 126,
+    "count": 22,
+    "features": 17,
+    "fit_rows": 876,
+    "fitted_at": "2026-09-25"
+  },
+  "news": {
+    "history": [
+      {
+        "first": "2023-12-27",
+        "headlines": 8611,
+        "last": "2026-07-06",
+        "source": "Alpaca News API, cached July 2026",
+        "symbol": "AAPL"
+      },
+      {
+        "first": "2021-11-02",
+        "headlines": 12205,
+        "last": "2026-07-06",
+        "source": "Alpaca News API, cached July 2026",
+        "symbol": "NVDA"
+      },
+      {
+        "first": "2017-05-27",
+        "headlines": 20000,
+        "last": "2026-04-14",
+        "source": "Alpaca News API, cached July 2026",
+        "symbol": "SPY"
+      }
+    ],
+    "note": "Headline text is kept in local caches only; the repository holds daily aggregates.",
+    "pilot_window": [
+      {
+        "headlines": 79,
+        "symbol": "AAPL"
+      },
+      {
+        "headlines": 79,
+        "symbol": "AMZN"
+      },
+      {
+        "headlines": 61,
+        "symbol": "BAC"
+      },
+      {
+        "headlines": 9,
+        "symbol": "DIA"
+      },
+      {
+        "headlines": 0,
+        "symbol": "GLD"
+      },
+      {
+        "headlines": 0,
+        "symbol": "GOOGL"
+      },
+      {
+        "headlines": 101,
+        "symbol": "GS"
+      },
+      {
+        "headlines": 0,
+        "symbol": "IWM"
+      },
+      {
+        "headlines": 94,
+        "symbol": "JPM"
+      },
+      {
+        "headlines": 94,
+        "symbol": "META"
+      },
+      {
+        "headlines": 81,
+        "symbol": "MSFT"
+      },
+      {
+        "headlines": 128,
+        "symbol": "NVDA"
+      },
+      {
+        "headlines": 1,
+        "symbol": "QQQ"
+      },
+      {
+        "headlines": 0,
+        "symbol": "SPY"
+      },
+      {
+        "headlines": 1,
+        "symbol": "TLT"
+      },
+      {
+        "headlines": 66,
+        "symbol": "TSLA"
+      },
+      {
+        "headlines": 0,
+        "symbol": "XLE"
+      },
+      {
+        "headlines": 0,
+        "symbol": "XLF"
+      },
+      {
+        "headlines": 0,
+        "symbol": "XLI"
+      },
+      {
+        "headlines": 0,
+        "symbol": "XLK"
+      },
+      {
+        "headlines": 0,
+        "symbol": "XLP"
+      },
+      {
+        "headlines": 0,
+        "symbol": "XLV"
+      }
+    ],
+    "pilot_window_total": 794,
+    "pilot_window_without_headlines": [
+      "GLD",
+      "GOOGL",
+      "IWM",
+      "SPY",
+      "XLE",
+      "XLF",
+      "XLI",
+      "XLK",
+      "XLP",
+      "XLV"
+    ]
+  },
+  "pilot": {
+    "attempts": [
+      {
+        "attempt": "week1",
+        "end": "2026-10-05",
+        "halt_at": "2026-10-01T13:00:19.049890+00:00",
+        "halt_reason": "Missing expected reconciled receipt",
+        "halted": true,
+        "host_requirement": "Local launch agent requires logged-in awake host; no wake guarantee",
+        "missing_sessions": [
+          "2026-09-29",
+          "2026-09-30"
+        ],
+        "not_run": [
+          "2026-09-29"
+        ],
+        "rejected": [],
+        "required_sessions": 5,
+        "start": "2026-09-29",
+        "trial_id": "PILOT-TREND-WEEK1-20260929",
+        "valid_sessions": 0
+      },
+      {
+        "attempt": "r2",
+        "end": "2026-10-07",
+        "halt_at": "2026-10-08T13:00:36.971451+00:00",
+        "halt_reason": "Missing expected reconciled receipt",
+        "halted": true,
+        "host_requirement": "Local launch agent requires logged-in awake host; no wake guarantee",
+        "missing_sessions": [
+          "2026-10-05",
+          "2026-10-06",
+          "2026-10-07"
+        ],
+        "not_run": [
+          "2026-10-05"
+        ],
+        "rejected": [],
+        "required_sessions": 5,
+        "start": "2026-10-01",
+        "trial_id": "PILOT-TREND-WEEK1-R2-20261001",
+        "valid_sessions": 2
+      },
+      {
+        "attempt": "r3",
+        "end": "2026-10-14",
+        "halt_at": "2026-10-14T13:00:32.255146+00:00",
+        "halt_reason": "Missing expected reconciled receipt",
+        "halted": true,
+        "host_requirement": "Local launch agent requires logged-in awake host; no wake guarantee",
+        "missing_sessions": [
+          "2026-10-12",
+          "2026-10-13"
+        ],
+        "not_run": [
+          "2026-10-12"
+        ],
+        "rejected": [],
+        "required_sessions": 3,
+        "start": "2026-10-12",
+        "trial_id": "PILOT-TREND-WEEK1-R3-20261012",
+        "valid_sessions": 0
+      },
+      {
+        "attempt": "r4",
+        "end": "2026-10-16",
+        "halt_at": "2026-10-19T13:45:05.104046+00:00",
+        "halt_reason": "Missing expected reconciled receipt",
+        "halted": true,
+        "host_requirement": "Local launch agent requires logged-in awake host; no wake guarantee",
+        "missing_sessions": [
+          "2026-10-16"
+        ],
+        "not_run": [
+          "2026-10-16"
+        ],
+        "rejected": [],
+        "required_sessions": 3,
+        "start": "2026-10-14",
+        "trial_id": "PILOT-TREND-WEEK1-R4-20261014",
+        "valid_sessions": 2
+      },
+      {
+        "attempt": "r5",
+        "end": "2026-10-21",
+        "halt_at": "2026-10-21T21:30:52.228079+00:00",
+        "halt_reason": "Missing expected reconciled receipt",
+        "halted": true,
+        "host_requirement": "Local launch agent requires logged-in awake host; no wake guarantee",
+        "missing_sessions": [
+          "2026-10-21"
+        ],
+        "not_run": [],
+        "rejected": [
+          "2026-10-21"
+        ],
+        "required_sessions": 1,
+        "start": "2026-10-21",
+        "trial_id": "PILOT-TREND-WEEK1-R5-20261021",
+        "valid_sessions": 0
+      },
+      {
+        "attempt": "r6",
+        "end": "2026-10-22",
+        "halt_at": null,
+        "halt_reason": null,
+        "halted": false,
+        "host_requirement": "Local launch agent requires logged-in awake host; no wake guarantee",
+        "missing_sessions": [],
+        "not_run": [],
+        "rejected": [],
+        "required_sessions": 1,
+        "start": "2026-10-22",
+        "trial_id": "PILOT-TREND-WEEK1-R6-20261022",
+        "valid_sessions": 1
+      }
+    ],
+    "attempts_halted": 5,
+    "available": true,
+    "calendar": [
+      {
+        "decision": "Missed: collector did not run",
+        "decision_status": "missed_deadline",
+        "outcome_read": "",
+        "segment": "week1",
+        "session": "2026-09-29",
+        "valid_receipt": false,
+        "weekday": "Tue"
+      },
+      {
+        "decision": "Halted after a missed session",
+        "decision_status": "halted",
+        "outcome_read": "",
+        "segment": "week1",
+        "session": "2026-09-30",
+        "valid_receipt": false,
+        "weekday": "Wed"
+      },
+      {
+        "decision": "Decision recorded",
+        "decision_status": "complete",
+        "outcome_read": "",
+        "segment": "r2",
+        "session": "2026-10-01",
+        "valid_receipt": true,
+        "weekday": "Thu"
+      },
+      {
+        "decision": "Decision recorded",
+        "decision_status": "complete",
+        "outcome_read": "",
+        "segment": "r2",
+        "session": "2026-10-02",
+        "valid_receipt": true,
+        "weekday": "Fri"
+      },
+      {
+        "decision": "Missed: collector did not run",
+        "decision_status": "missed_deadline",
+        "outcome_read": "",
+        "segment": "r2",
+        "session": "2026-10-05",
+        "valid_receipt": false,
+        "weekday": "Mon"
+      },
+      {
+        "decision": "Halted after a missed session",
+        "decision_status": "halted",
+        "outcome_read": "",
+        "segment": "r2",
+        "session": "2026-10-06",
+        "valid_receipt": false,
+        "weekday": "Tue"
+      },
+      {
+        "decision": "Halted after a missed session",
+        "decision_status": "halted",
+        "outcome_read": "",
+        "segment": "r2",
+        "session": "2026-10-07",
+        "valid_receipt": false,
+        "weekday": "Wed"
+      },
+      {
+        "decision": "No decision scheduled",
+        "decision_status": "not_scheduled",
+        "outcome_read": "Outcome prices read",
+        "segment": null,
+        "session": "2026-10-08",
+        "valid_receipt": false,
+        "weekday": "Thu"
+      },
+      {
+        "decision": "No decision scheduled",
+        "decision_status": "not_scheduled",
+        "outcome_read": "Outcome read missed",
+        "segment": null,
+        "session": "2026-10-09",
+        "valid_receipt": false,
+        "weekday": "Fri"
+      },
+      {
+        "decision": "Missed: collector did not run",
+        "decision_status": "missed_deadline",
+        "outcome_read": "",
+        "segment": "r3",
+        "session": "2026-10-12",
+        "valid_receipt": false,
+        "weekday": "Mon"
+      },
+      {
+        "decision": "Halted after a missed session",
+        "decision_status": "halted",
+        "outcome_read": "",
+        "segment": "r3",
+        "session": "2026-10-13",
+        "valid_receipt": false,
+        "weekday": "Tue"
+      },
+      {
+        "decision": "Decision recorded",
+        "decision_status": "complete",
+        "outcome_read": "",
+        "segment": "r4",
+        "session": "2026-10-14",
+        "valid_receipt": true,
+        "weekday": "Wed"
+      },
+      {
+        "decision": "Decision recorded",
+        "decision_status": "complete",
+        "outcome_read": "",
+        "segment": "r4",
+        "session": "2026-10-15",
+        "valid_receipt": true,
+        "weekday": "Thu"
+      },
+      {
+        "decision": "Missed: collector did not run",
+        "decision_status": "missed_deadline",
+        "outcome_read": "",
+        "segment": "r4",
+        "session": "2026-10-16",
+        "valid_receipt": false,
+        "weekday": "Fri"
+      },
+      {
+        "decision": "No decision scheduled",
+        "decision_status": "not_scheduled",
+        "outcome_read": "Outcome prices read",
+        "segment": null,
+        "session": "2026-10-19",
+        "valid_receipt": false,
+        "weekday": "Mon"
+      },
+      {
+        "decision": "No decision scheduled",
+        "decision_status": "not_scheduled",
+        "outcome_read": "Outcome prices read",
+        "segment": null,
+        "session": "2026-10-20",
+        "valid_receipt": false,
+        "weekday": "Tue"
+      },
+      {
+        "decision": "Failed: download rejected by validation",
+        "decision_status": "failed",
+        "outcome_read": "",
+        "segment": "r5",
+        "session": "2026-10-21",
+        "valid_receipt": false,
+        "weekday": "Wed"
+      },
+      {
+        "decision": "Decision recorded",
+        "decision_status": "complete",
+        "outcome_read": "",
+        "segment": "r6",
+        "session": "2026-10-22",
+        "valid_receipt": true,
+        "weekday": "Thu"
+      },
+      {
+        "decision": "No decision scheduled",
+        "decision_status": "not_scheduled",
+        "outcome_read": "Outcome read missed",
+        "segment": null,
+        "session": "2026-10-23",
+        "valid_receipt": false,
+        "weekday": "Fri"
+      },
+      {
+        "decision": "No decision scheduled",
+        "decision_status": "not_scheduled",
+        "outcome_read": "Outcome read missed",
+        "segment": null,
+        "session": "2026-10-26",
+        "valid_receipt": false,
+        "weekday": "Mon"
+      },
+      {
+        "decision": "No decision scheduled",
+        "decision_status": "not_scheduled",
+        "outcome_read": "Outcome prices read (recovery collector)",
+        "segment": null,
+        "session": "2026-10-27",
+        "valid_receipt": false,
+        "weekday": "Tue"
+      },
+      {
+        "decision": "No decision scheduled",
+        "decision_status": "not_scheduled",
+        "outcome_read": "Outcome prices read (recovery collector)",
+        "segment": null,
+        "session": "2026-10-28",
+        "valid_receipt": false,
+        "weekday": "Wed"
+      },
+      {
+        "decision": "No decision scheduled",
+        "decision_status": "not_scheduled",
+        "outcome_read": "",
+        "segment": null,
+        "session": "2026-10-29",
+        "valid_receipt": false,
+        "weekday": "Thu"
+      },
+      {
+        "decision": "No decision scheduled",
+        "decision_status": "not_scheduled",
+        "outcome_read": "",
+        "segment": null,
+        "session": "2026-10-30",
+        "valid_receipt": false,
+        "weekday": "Fri"
+      }
+    ],
+    "collection_window": [
+      "2026-09-29",
+      "2026-10-30"
+    ],
+    "decision_sessions": [
+      "2026-10-01",
+      "2026-10-02",
+      "2026-10-14",
+      "2026-10-15",
+      "2026-10-22"
+    ],
+    "decisions": 5,
+    "external_orders": false,
+    "fills": 25,
+    "orders": 51,
+    "outcome_decision_sessions": [
+      "2026-10-01",
+      "2026-10-02",
+      "2026-10-14",
+      "2026-10-15"
+    ],
+    "outcome_recovery": {
+      "completed_outcome_reads": 2,
+      "mature_decision_dates": 4,
+      "missing_new_sessions": [
+        "2026-10-29",
+        "2026-10-30",
+        "2026-11-02",
+        "2026-11-03"
+      ],
+      "required_mature_decision_dates": 5,
+      "required_outcome_reads": 6
+    },
+    "outcome_rows": 88,
+    "scheduled_decision_sessions": 18,
+    "segments": [
+      {
+        "end": "2026-10-07",
+        "fees": 6.039152906718812,
+        "fills": 12,
+        "halt_reason": "Missing expected reconciled receipt",
+        "halted": true,
+        "last_equity": 9993.960847093282,
+        "missing_sessions": [
+          "2026-10-05",
+          "2026-10-06",
+          "2026-10-07"
+        ],
+        "orders": 25,
+        "required_sessions": 5,
+        "segment": "r2",
+        "start": "2026-10-01",
+        "valid_sessions": 2
+      },
+      {
+        "end": "2026-10-16",
+        "fees": 6.00750972012327,
+        "fills": 13,
+        "halt_reason": "Missing expected reconciled receipt",
+        "halted": true,
+        "last_equity": 9993.992490279881,
+        "missing_sessions": [
+          "2026-10-16"
+        ],
+        "orders": 13,
+        "required_sessions": 3,
+        "segment": "r4",
+        "start": "2026-10-14",
+        "valid_sessions": 2
+      },
+      {
+        "end": "2026-10-22",
+        "fees": 0.0,
+        "fills": 0,
+        "halt_reason": null,
+        "halted": false,
+        "last_equity": 10000.0,
+        "missing_sessions": [],
+        "orders": 13,
+        "required_sessions": 1,
+        "segment": "r6",
+        "start": "2026-10-22",
+        "valid_sessions": 1
+      }
+    ],
+    "sessions_not_run": [
+      "2026-09-29",
+      "2026-10-05",
+      "2026-10-12",
+      "2026-10-16"
+    ],
+    "sessions_rejected": [
+      "2026-10-21"
+    ],
+    "snapshot_list": [
+      {
+        "instruments": 22,
+        "kind": "decision",
+        "path": "data/paper/research-week1-r2/days/2026-10-01/market-20261001T203027068632-501f4172",
+        "retrieved_at": "2026-10-01T20:30:27.068632+00:00",
+        "rows": 55286,
+        "session": "2026-10-01"
+      },
+      {
+        "instruments": 22,
+        "kind": "decision",
+        "path": "data/paper/research-week1-r2/days/2026-10-02/market-20261002T203040602072-04c26ad2",
+        "retrieved_at": "2026-10-02T20:30:40.602072+00:00",
+        "rows": 55286,
+        "session": "2026-10-02"
+      },
+      {
+        "instruments": 22,
+        "kind": "outcome read",
+        "path": "data/paper/research-week1-r2/outcome-snapshots/2026-10-08-203043",
+        "retrieved_at": "2026-10-08T20:30:43.170499+00:00",
+        "rows": 55286,
+        "session": "2026-10-08"
+      },
+      {
+        "instruments": 22,
+        "kind": "decision",
+        "path": "data/paper/research-week1-r4/days/2026-10-14/market-20261014T203001633998-75c47f2c",
+        "retrieved_at": "2026-10-14T20:30:01.633998+00:00",
+        "rows": 55264,
+        "session": "2026-10-14"
+      },
+      {
+        "instruments": 22,
+        "kind": "decision",
+        "path": "data/paper/research-week1-r4/days/2026-10-15/market-20261015T203047543523-abc0bff3",
+        "retrieved_at": "2026-10-15T20:30:47.543523+00:00",
+        "rows": 55286,
+        "session": "2026-10-15"
+      },
+      {
+        "instruments": 22,
+        "kind": "outcome read",
+        "path": "data/paper/research-week1-r4/outcome-snapshots/2026-10-19-203012",
+        "retrieved_at": "2026-10-19T20:30:12.070929+00:00",
+        "rows": 55242,
+        "session": "2026-10-19"
+      },
+      {
+        "instruments": 22,
+        "kind": "outcome read",
+        "path": "data/paper/research-week1-r4/outcome-snapshots/2026-10-20-203023",
+        "retrieved_at": "2026-10-20T20:30:23.892955+00:00",
+        "rows": 55242,
+        "session": "2026-10-20"
+      },
+      {
+        "instruments": 22,
+        "kind": "decision",
+        "path": "data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+        "retrieved_at": "2026-10-22T20:30:48.128896+00:00",
+        "rows": 55286,
+        "session": "2026-10-22"
+      },
+      {
+        "instruments": 22,
+        "kind": "outcome read",
+        "path": "data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+        "retrieved_at": "2026-10-27T20:30:37.485929+00:00",
+        "rows": 55242,
+        "session": "2026-10-27"
+      },
+      {
+        "instruments": 22,
+        "kind": "outcome read",
+        "path": "data/paper/research-outcomes-r7/snapshots/2026-10-28-initial-84c23663",
+        "retrieved_at": "2026-10-28T20:30:01.835277+00:00",
+        "rows": 55264,
+        "session": "2026-10-28"
+      }
+    ],
+    "snapshots": 10
+  },
+  "universe": {
+    "count": 22,
+    "description": "12 large US stocks and 10 exchange-traded funds (index, sector, bond and gold)",
+    "symbols": [
+      "AAPL",
+      "AMZN",
+      "BAC",
+      "DIA",
+      "GLD",
+      "GOOGL",
+      "GS",
+      "IWM",
+      "JPM",
+      "META",
+      "MSFT",
+      "NVDA",
+      "QQQ",
+      "SPY",
+      "TLT",
+      "TSLA",
+      "XLE",
+      "XLF",
+      "XLI",
+      "XLK",
+      "XLP",
+      "XLV"
+    ]
+  }
+}
