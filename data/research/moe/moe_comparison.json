@@ -1,0 +1,113 @@
+{
+  "AAPL": {
+    "n_oos_rows": 1000,
+    "static": {
+      "accuracy": 0.378,
+      "cagr": 0.0266,
+      "sharpe_ratio": -0.085,
+      "max_drawdown": -0.2924,
+      "calmar_ratio": 0.091
+    },
+    "moe": {
+      "accuracy": 0.384,
+      "cagr": 0.0222,
+      "sharpe_ratio": -0.112,
+      "max_drawdown": -0.32,
+      "calmar_ratio": 0.069
+    },
+    "mean_gate_weights_per_regime": {
+      "bear": {
+        "xgb": 0.4146,
+        "lgbm": 0.3988,
+        "lstm": 0.1866,
+        "n_bars": 106
+      },
+      "ranging": {
+        "xgb": 0.4144,
+        "lgbm": 0.3693,
+        "lstm": 0.2162,
+        "n_bars": 352
+      },
+      "bull": {
+        "xgb": 0.4807,
+        "lgbm": 0.261,
+        "lstm": 0.2583,
+        "n_bars": 337
+      }
+    }
+  },
+  "NVDA": {
+    "n_oos_rows": 2085,
+    "static": {
+      "accuracy": 0.4594724220623501,
+      "cagr": 0.2546,
+      "sharpe_ratio": 0.658,
+      "max_drawdown": -0.5371,
+      "calmar_ratio": 0.474
+    },
+    "moe": {
+      "accuracy": 0.4594724220623501,
+      "cagr": 0.2574,
+      "sharpe_ratio": 0.664,
+      "max_drawdown": -0.5371,
+      "calmar_ratio": 0.479
+    },
+    "mean_gate_weights_per_regime": {
+      "bear": {
+        "xgb": 0.4102,
+        "lgbm": 0.397,
+        "lstm": 0.1928,
+        "n_bars": 767
+      },
+      "ranging": {
+        "xgb": 0.4294,
+        "lgbm": 0.4406,
+        "lstm": 0.1299,
+        "n_bars": 443
+      },
+      "bull": {
+        "xgb": 0.4369,
+        "lgbm": 0.4236,
+        "lstm": 0.1395,
+        "n_bars": 453
+      }
+    }
+  },
+  "SPY": {
+    "n_oos_rows": 1000,
+    "static": {
+      "accuracy": 0.365,
+      "cagr": 0.0177,
+      "sharpe_ratio": -0.272,
+      "max_drawdown": -0.189,
+      "calmar_ratio": 0.094
+    },
+    "moe": {
+      "accuracy": 0.354,
+      "cagr": 0.0321,
+      "sharpe_ratio": -0.125,
+      "max_drawdown": -0.189,
+      "calmar_ratio": 0.17
+    },
+    "mean_gate_weights_per_regime": {
+      "bear": {
+        "xgb": 0.3203,
+        "lgbm": 0.3734,
+        "lstm": 0.3062,
+        "n_bars": 348
+      },
+      "ranging": {
+        "xgb": 0.331,
+        "lgbm": 0.401,
+        "lstm": 0.268,
+        "n_bars": 96
+      },
+      "bull": {
+        "xgb": 0.3105,
+        "lgbm": 0.3462,
+        "lstm": 0.3433,
+        "n_bars": 351
+      }
+    }
+  }
+}

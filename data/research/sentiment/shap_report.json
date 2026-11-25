@@ -1,0 +1,140 @@
+{
+  "AAPL": {
+    "n_headlines": 8253,
+    "news_days": 621,
+    "coverage": 0.476,
+    "n_features": 45,
+    "shap_fit_rows": 624,
+    "sentiment": {
+      "sent_pos_1d": {
+        "rank": 5,
+        "importance": 0.03765,
+        "selected": true
+      },
+      "sent_neg_5d": {
+        "rank": 12,
+        "importance": 0.02991,
+        "selected": true
+      },
+      "event_count": {
+        "rank": 30,
+        "importance": 0.01785,
+        "selected": false
+      },
+      "guidance_tag": {
+        "rank": 44,
+        "importance": 0.0,
+        "selected": false
+      },
+      "has_news": {
+        "rank": 45,
+        "importance": 0.0,
+        "selected": false
+      }
+    },
+    "top10": {
+      "log_return": 0.04423,
+      "realized_vol_21": 0.04172,
+      "adx_14": 0.04107,
+      "kurtosis_60": 0.03868,
+      "sent_pos_1d": 0.03765,
+      "bb_lower": 0.03578,
+      "macro_VIX": 0.03494,
+      "skew_60": 0.03328,
+      "macro_rate_2y": 0.03209,
+      "macro_rate_10y": 0.03115
+    }
+  },
+  "NVDA": {
+    "n_headlines": 11269,
+    "news_days": 622,
+    "coverage": 0.238,
+    "n_features": 45,
+    "shap_fit_rows": 1184,
+    "sentiment": {
+      "sent_pos_1d": {
+        "rank": 40,
+        "importance": 0.01022,
+        "selected": false
+      },
+      "sent_neg_5d": {
+        "rank": 10,
+        "importance": 0.02905,
+        "selected": true
+      },
+      "event_count": {
+        "rank": 38,
+        "importance": 0.01056,
+        "selected": false
+      },
+      "guidance_tag": {
+        "rank": 43,
+        "importance": 0.00032,
+        "selected": false
+      },
+      "has_news": {
+        "rank": 45,
+        "importance": 0.0,
+        "selected": false
+      }
+    },
+    "top10": {
+      "bb_width": 0.04686,
+      "spy_corr_63": 0.04565,
+      "macd_hist": 0.04131,
+      "atr_14": 0.0372,
+      "skew_60": 0.03638,
+      "macro_rate_10y": 0.03572,
+      "spy_corr_21": 0.03571,
+      "volume_ratio_20": 0.03349,
+      "realized_vol_5": 0.032,
+      "sent_neg_5d": 0.02905
+    }
+  },
+  "SPY": {
+    "n_headlines": 20000,
+    "news_days": 601,
+    "coverage": 0.461,
+    "n_features": 45,
+    "shap_fit_rows": 1304,
+    "sentiment": {
+      "sent_pos_1d": {
+        "rank": 17,
+        "importance": 0.02521,
+        "selected": true
+      },
+      "sent_neg_5d": {
+        "rank": 11,
+        "importance": 0.0353,
+        "selected": true
+      },
+      "event_count": {
+        "rank": 38,
+        "importance": 0.00585,
+        "selected": false
+      },
+      "guidance_tag": {
+        "rank": 39,
+        "importance": 0.00318,
+        "selected": false
+      },
+      "has_news": {
+        "rank": 45,
+        "importance": 0.0,
+        "selected": false
+      }
+    },
+    "top10": {
+      "macro_CPI": 0.04746,
+      "zscore_60": 0.04494,
+      "obv": 0.04403,
+      "adx_14": 0.04381,
+      "macro_yield_spread_10_2": 0.041,
+      "bb_lower": 0.03969,
+      "macd_hist": 0.03897,
+      "close_ema50_ratio": 0.03895,
+      "bb_width": 0.03801,
+      "realized_vol_5": 0.03532
+    }
+  }
+}
