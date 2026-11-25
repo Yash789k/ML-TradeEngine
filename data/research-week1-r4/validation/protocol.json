@@ -1,0 +1,235 @@
+{
+  "version": "research-week1-r4-20261014",
+  "registered_at": "2026-10-14T13:37:28.716468+00:00",
+  "kind": "exploratory_historical_followup_and_independent_prospective_operation",
+  "historical_cutoff": "2026-09-25",
+  "dataset": {
+    "path": "data/releases/2026-09-28-adaptive/market",
+    "manifest_sha256": "8c2441c940ff7eebdbab505517e531f28e15a01d8e640fd069c7fc475142c218",
+    "universe_rule": "Existing 22 symbols, fixed before follow-up; selected survivors and overlapping ETFs; no market-wide inference",
+    "availability": "historical current-vintage adjusted prices; prospective retrieval times retained"
+  },
+  "labels": {
+    "return": "close[t+6]/close[t+1]-1",
+    "down": "return < -0.01",
+    "up": "return > 0.01",
+    "flat": "otherwise only if mature",
+    "eligibility": "label endpoint strictly before fitting decision",
+    "purge": "endpoint of earlier partition must precede first decision of next partition"
+  },
+  "splits": {
+    "development": "2024-01-02 through 2025-12-31",
+    "selection_consumed": "2026-01-02 through 2026-07-10",
+    "audit_consumed": "2026-07-13 through 2026-09-25",
+    "outer_design": "chronological development validation blocks, expanding eligibility; all inspected history exploratory",
+    "inner_design": "past model fit, endpoint-purged temperature calibration, distinct endpoint-purged gate validation; no outer outcomes used to choose hyperparameters"
+  },
+  "primary_endpoints": {
+    "predictive": "paired daily mean log-loss difference candidate minus trailing prior; negative better",
+    "economic": "paired daily net-return difference candidate minus matched costed equal-weight; positive better"
+  },
+  "inference": {
+    "unit": "session, retaining every symbol within date",
+    "bootstrap": "2000 circular date-block replicates; seed 20260928",
+    "block_lengths": [
+      6,
+      10,
+      21
+    ],
+    "primary_block": 10,
+    "multiplicity": "Holm family-wise adjustment on actual registered predictive contrasts separately from economic contrasts; exploratory slices descriptive",
+    "alpha": 0.05,
+    "practical_predictive_gain": 0.01,
+    "practical_annual_active_return": 0.02,
+    "power": "report block-bootstrap standard-error based detectable effect for 80% power, approximate and descriptive",
+    "dsr_pbo": "excluded: complete independent historical search universe is not recoverable",
+    "prospective": "Descriptive only: five dates cannot support the registered block-bootstrap inference; no p-values or profitability approval"
+  },
+  "compute": {
+    "pilot": "first development fold, 2 representative symbols, <=120 seconds",
+    "maximum_new_fits": 1800,
+    "maximum_elapsed_minutes": 60,
+    "seeds": [
+      42,
+      137,
+      2026
+    ],
+    "search": "bounded one-factor designs; no Cartesian grid and no winner substitution into pilot",
+    "failed_trials": "retain status/error/runtime and partial artifacts; never overwrite completed trials"
+  },
+  "families": {
+    "R1": "data provenance and accounting",
+    "R2": "baselines and predictive value",
+    "R3": "raw/calibrated and separated gating",
+    "R4": "components/fixed mixture/adaptive gate",
+    "R5": "feature family refits",
+    "R6": "training fraction/history/cadence",
+    "R7": "temporal and genuinely held-instrument transfer",
+    "R8": "matched-capital economic performance",
+    "R9": "cost/delay/missing-bar/gap/liquidity/risk sensitivity",
+    "R10": "registered worst/confident-error and representative cases",
+    "R11": "runtime/recovery/scheduler/full-policy parity",
+    "R12": "prospective replication"
+  },
+  "pilot": {
+    "trial_id": "PILOT-TREND-WEEK1-R4-20261014",
+    "first_session": "2026-10-14",
+    "sessions": 3,
+    "cutoff_rule": "Three fixed future XNYS sessions in a fresh account; two prior observations retained as a separate failed segment; never backfill or splice portfolio returns",
+    "shadow": "historically selected trend",
+    "deployment": "cash",
+    "capital": 10000,
+    "external_orders": false,
+    "refit_anchor": "explicit XNYS anchor shared by historical replay and daily path; register runtime before first decision",
+    "weekly": "last XNYS session of ISO week (Thursday when Friday is holiday); explicit v2 correction tested before first decision",
+    "price_units": "adjusted total-return proxy units",
+    "cadence": "21 exchange sessions",
+    "schedule": "XNYS close+30, retries +45/+60, watchdog +90; segment milestone 3; six hold-only tail sessions",
+    "outcome_maturity": "six further sessions after last decision",
+    "last_session": "2026-10-16",
+    "operational_review_sessions": [
+      3
+    ],
+    "final_outcome_session": "2026-10-26",
+    "refit_scope": "No scheduled refit within the three-session continuation window; carried models remain fixed",
+    "ship_scope": "Interrupted five-observation report: two archived plus three new, separately disclosed; labels may remain pending"
+  },
+  "promotion": {
+    "engineering": "exact tested source/config, full critical test IDs and pipeline receipts",
+    "historical_edge": "never approved solely by these exploratory follow-ups",
+    "prospective": "Separate three-session continuation operational completion from six-session outcome tail; no economic qualification",
+    "manuscript": "historical manuscript plus explicitly interim prospective section; full study pending maturity",
+    "broker": "disabled"
+  },
+  "amendment": {
+    "reason": "User requested: can we continue tonight, after disclosure of the r3 missed-session halt",
+    "timing": "Registered during US 14 October session, before its close and decision cutoff; earlier observations and missed sessions already inspected",
+    "parent_protocol_sha256": "3383450ad87a6a31002c67089fe92cb5d86db5f9c2ebd0c77cd384a9c01465de",
+    "parent_release_sha256": "7bfc89e8f58a97d61a3ec800aa4819480f1bb66dd653f3fcce9493dc4d501946",
+    "parent_observations": 0,
+    "archived_observations": 2,
+    "parent_trial": "PILOT-TREND-WEEK1-R3-20261012",
+    "parent_status": "r3 has zero valid decisions, missed US 12 and 13 October, and a preserved halt; US 14 October cancelled before its close",
+    "archived_observed_segment": "r2 retains two valid decisions on 1 and 2 October; missed 5, 6 and 7 October; halted account preserved",
+    "supersedes": "Only future collection ownership; preserve all original dates, halt, receipts and releases",
+    "selection": "Same frozen models, symbols, costs, cash deployment and trend shadow; no performance-based reselection",
+    "authorization": "can we continue tonight",
+    "superseded_status": {
+      "trial_id": "PILOT-TREND-WEEK1-R3-20261012",
+      "external_orders": false,
+      "deployment": "cash",
+      "shadow": "trend",
+      "state_consistency_errors": [],
+      "ledger_consistent": true,
+      "valid_observed_sessions": 0,
+      "expected_elapsed_sessions": 2,
+      "missing_sessions": [
+        "2026-10-12",
+        "2026-10-13"
+      ],
+      "label_complete_decisions": 0,
+      "required_sessions": 3,
+      "next_event": {
+        "id": "2026-10-14:daily",
+        "session": "2026-10-14",
+        "kind": "daily",
+        "due": "2026-10-14T20:30:00+00:00",
+        "ordinal": 3,
+        "hong_kong": "2026-10-15T04:30:00+08:00"
+      },
+      "terminal_observed_sessions": 0,
+      "terminal_required_sessions": 6,
+      "halted": true,
+      "prospective_status": "incomplete",
+      "limitations": [
+        "Local launch agent requires logged-in awake host; no wake guarantee",
+        "No external broker execution",
+        "Commissioning/replays never count as prospective",
+        "Missed sessions halt; no fabricated backfill"
+      ]
+    },
+    "unattempted_after_supersession": [
+      "2026-10-14"
+    ]
+  },
+  "prior_amendment": {
+    "reason": "User instructed: So make it work, after discussion of retaining two decisions and collecting three more",
+    "timing": "Registered before US 12 October session; existing two observations and failed sessions already inspected",
+    "parent_protocol_sha256": "92cc11fcfb182193585a3a05f705d36b634ec594c687dd87eda95a9c7224fed9",
+    "parent_release_sha256": "12eefa88386aaa2929866554e51b0b818c113489ab12ddc4813a1591cc34906d",
+    "parent_observations": 2,
+    "parent_trial": "PILOT-TREND-WEEK1-R2-20261001",
+    "parent_status": "Two valid decisions on 1 and 2 October; missed 5, 6 and 7 October; halted account preserved",
+    "supersedes": "Only future collection ownership; preserve all original dates, halt, receipts and releases",
+    "selection": "Same frozen models, symbols, costs, cash deployment and trend shadow; no performance-based reselection",
+    "authorization": "So make it work"
+  },
+  "continuation": {
+    "design": "Five observed decision dates across two explicitly separate segments",
+    "prior_release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261001-week1-r2",
+    "prior_release_sha256": "12eefa88386aaa2929866554e51b0b818c113489ab12ddc4813a1591cc34906d",
+    "prior_workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2",
+    "prior_decision_dates": [
+      "2026-10-01",
+      "2026-10-02"
+    ],
+    "missed_dates": [
+      "2026-10-05",
+      "2026-10-06",
+      "2026-10-07"
+    ],
+    "failed_continuations": [
+      {
+        "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261011-week1-r3",
+        "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r3",
+        "release_sha256": "7bfc89e8f58a97d61a3ec800aa4819480f1bb66dd653f3fcce9493dc4d501946",
+        "status_at_supersession": {
+          "trial_id": "PILOT-TREND-WEEK1-R3-20261012",
+          "external_orders": false,
+          "deployment": "cash",
+          "shadow": "trend",
+          "state_consistency_errors": [],
+          "ledger_consistent": true,
+          "valid_observed_sessions": 0,
+          "expected_elapsed_sessions": 2,
+          "missing_sessions": [
+            "2026-10-12",
+            "2026-10-13"
+          ],
+          "label_complete_decisions": 0,
+          "required_sessions": 3,
+          "next_event": {
+            "id": "2026-10-14:daily",
+            "session": "2026-10-14",
+            "kind": "daily",
+            "due": "2026-10-14T20:30:00+00:00",
+            "ordinal": 3,
+            "hong_kong": "2026-10-15T04:30:00+08:00"
+          },
+          "terminal_observed_sessions": 0,
+          "terminal_required_sessions": 6,
+          "halted": true,
+          "prospective_status": "incomplete",
+          "limitations": [
+            "Local launch agent requires logged-in awake host; no wake guarantee",
+            "No external broker execution",
+            "Commissioning/replays never count as prospective",
+            "Missed sessions halt; no fabricated backfill"
+          ]
+        },
+        "unattempted_after_supersession": [
+          "2026-10-14"
+        ]
+      }
+    ],
+    "prior_receipt_sha256": {
+      "2026-10-01": "e334ec1cdde0dc31408b5172cbf3ebb0e7d55aea589c97604d5e33ef65cee17a",
+      "2026-10-02": "4416ac3300c06a9a354c06ce7f371199ebb00152a4d3d450b8f32268009b0467"
+    },
+    "new_account": "Fresh 10000 cash per account; no positions, pending orders or fills carried across the gap",
+    "analysis": "Descriptive forecasts may be pooled with date/segment identifiers; returns and reliability reported per segment; original failed trial never marked complete",
+    "total_observed_target": 5,
+    "future_observed_target": 3,
+    "prior_label_source": "Derive later labels from new segment recorded snapshots, in report artifacts only; do not mutate archived prior state"
+  }
+}

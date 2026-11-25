@@ -1,0 +1,31 @@
+2026-10-14 21:41:46 +0800 
+Assertion status system-wide:
+   BackgroundTask                 0
+   ApplePushServiceTask           0
+   UserIsActive                   1
+   PreventUserIdleDisplaySleep    0
+   SoftwareUpdateTask             0
+   PreventSystemSleep             0
+   ExternalMedia                  0
+   PreventUserIdleSystemSleep     1
+   NetworkClientActive            0
+Listed by owning process:
+   pid 433(WindowServer): [0x000000d00009808b] 00:03:08 UserIsActive named: "com.apple.iohideventsystem.queue.tickle serviceID:100015b2d service:AppleMultitouchDevice product:Apple Internal Keyboard / Trackpad eventType:17"  
+   pid 373(powerd): [0x0005a2530001a463] 00:34:20 PreventUserIdleSystemSleep named: "Powerd - Prevent sleep while display is on"  
+   pid 373(powerd): [0x000003eb000987ed] 09:23:12 UserIsActive named: "com.apple.powermanagement.lidopen"  
+   pid 373(powerd): [0x0001c37500099c97] 103:26:55 UserIsActive named: "com.apple.powermanagement.kernel.useractive IOPMrootDomain:hibernate user wake"  
+   pid 373(powerd): [0x000000cc00098007] 223:29:32 UserIsActive named: "com.apple.powerd.ws.initialize"  
+   pid 59082(WhatsApp): [0x0004f49200019e2c] 22:46:32 PreventUserIdleSystemSleep named: "cameracaptured-idleSleepPreventionForBWFigCaptureDevice"  
+   pid 75622(caffeinate): [0x0005a9d00001a5e9] 00:02:24 PreventUserIdleSystemSleep named: "caffeinate command-line tool"  
+	Details: caffeinate asserting for 1066838 secs
+	Localized=THE CAFFEINATE TOOL IS PREVENTING SLEEP.
+	Timeout will fire in 1066694 secs Action=TimeoutActionRelease
+   pid 75622(caffeinate): [0x0005a9d00007a5ea] 00:02:24 PreventSystemSleep named: "caffeinate command-line tool"  
+	Details: caffeinate asserting for 1066838 secs
+	Localized=THE CAFFEINATE TOOL IS PREVENTING SLEEP.
+	Timeout will fire in 1066694 secs Action=TimeoutActionRelease
+   pid 438(runningboardd): [0x0005aa5d0001a614] 00:00:03 PreventUserIdleSystemSleep named: "app<application.net.whatsapp.WhatsApp.129970042.129970070(501)>438-59082-200602:Shared Background Assertion 6392 for net.whatsapp.WhatsApp(FinishTask)"  
+	Created for PID: 59082. 
+   pid 438(runningboardd): [0x0005a9740001a5cf] 00:03:56 PreventUserIdleSystemSleep named: "app<application.com.cw.int.1263694.1263699(501)>438-69463-190867:com.apple.coredata.cloudkit.activity.import.A359B036-48AC-41B4-B589-44049E5C5156(FinishTask)"  
+	Created for PID: 69463. 
+No kernel assertions.

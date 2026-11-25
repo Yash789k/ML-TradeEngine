@@ -1,0 +1,13 @@
+{
+  "passing_tests": 8,
+  "junit": "data/research-week1-r3/report-qualified-tests-v2.xml",
+  "junit_sha256": "9900239c1597a8a6aa35d219f94d89e811624a4aa77a357479b0b5a4f17e7dc0",
+  "sources": {
+    "research_week1_r3/report.py": "33d507cee2ffd51ce3d7c29781a8f6ad1e254e84b7a9258f619997d27f75a181",
+    "tests/test_week1_r3_report.py": "23a6bc2a27e19ee82033dafb6c962722a168375d7772adc015955387a020ea6f",
+    "app_week1_r3.py": "627aad1e9b9210c967de91e0a702646a397122a469fdb2823f9a9d1cedb3232b",
+    "scripts/week1_r3/prepare_release.py": "0236fa7cfd7aef4cb7fa04503094a17f7d1743961a8d1ac1e01438523efb12e4",
+    "scripts/week1_r3/install_schedule.py": "23b12a9190db17ebf410bf69f5d90455e1242410fffb47b26653d4d278c1d335"
+  },
+  "scope": "Report maturity/refusal gates plus hand-calculated prior-label endpoint oracle; unchanged archived account evidence; dashboard separately rendered and actual commissioning verified"
+}

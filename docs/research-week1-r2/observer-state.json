@@ -1,0 +1,1912 @@
+{
+  "schema_version": 1,
+  "automation_id": "trading-pilot-evidence-watch",
+  "observer_only": true,
+  "trial_id": "PILOT-TREND-WEEK1-R2-20261001",
+  "last_checked_at": "2026-10-08T21:30:56.324558+00:00",
+  "notified_event_ids": [
+    "PILOT-TREND-WEEK1-R2-20261001:missing-session:2026-10-05"
+  ],
+  "notification_records": [
+    {
+      "id": "PILOT-TREND-WEEK1-R2-20261001:missing-session:2026-10-05",
+      "first_observed_at": "2026-10-06T13:31:45.326185+00:00",
+      "session": "2026-10-05",
+      "classification": "missed_collection_window_and_halt",
+      "prospective_decisions": 2,
+      "required_decisions": 5,
+      "collection_due_hkt": "2026-10-06T04:30:00+08:00",
+      "scheduler_gap_start_hkt": "2026-10-06T03:12:39.837258+08:00",
+      "scheduler_gap_end_hkt": "2026-10-06T05:14:20.094856+08:00",
+      "evidence_paths": [
+        "data/paper/research-week1-r2/events/2026-10-05-daily.json",
+        "data/paper/research-week1-r2/outages/20261005T211420.json",
+        "data/paper/research-week1-r2/events/2026-10-05-watchdog.json",
+        "data/paper/research-week1-r2/events/2026-10-05-preopen.json"
+      ],
+      "deduplicate_consequences_of_halt": true,
+      "required_action": "The fixed five-session trial cannot complete as registered. A recovery decision and reliable host availability are required before any separately registered continuation; preserve the halt and existing evidence.",
+      "cause_limit": "A scheduler gap is proven; sleep, logout and other local outage causes are not distinguished by this receipt.",
+      "notification_at": "2026-10-06T13:31:45.326185+00:00",
+      "message": "Pilot halted at 2/5 after missing US 5 October; collector gap covered the 6 October 04:30 HKT collection. Fixed five-session schedule cannot complete; recovery requires a new decision. No backfill or halt clearing performed."
+    }
+  ],
+  "observed_events": [
+    {
+      "recorded_at": "2026-10-01T21:31:45.639984+00:00",
+      "receipt": "data/paper/research-week1-r2/days/2026-10-01/input.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_collection_before_registered_five_session_milestone"
+    },
+    {
+      "recorded_at": "2026-10-01T21:31:45.639984+00:00",
+      "receipt": "data/paper/research-week1-r2/days/2026-10-01/plan.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_collection_before_registered_five_session_milestone"
+    },
+    {
+      "recorded_at": "2026-10-01T21:31:45.639984+00:00",
+      "receipt": "data/paper/research-week1-r2/days/2026-10-01/result.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_collection_before_registered_five_session_milestone"
+    },
+    {
+      "recorded_at": "2026-10-01T21:31:45.639984+00:00",
+      "receipt": "data/paper/research-week1-r2/attempts/2026-10-01-20261001T203027068632-501f4172.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_collection_before_registered_five_session_milestone"
+    },
+    {
+      "recorded_at": "2026-10-01T21:31:45.639984+00:00",
+      "receipt": "data/paper/research-week1-r2/events/2026-10-01-daily.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_collection_before_registered_five_session_milestone"
+    },
+    {
+      "recorded_at": "2026-10-01T21:31:45.639984+00:00",
+      "receipt": "data/paper/research-week1-r2/events/2026-10-01-retry45.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_collection_before_registered_five_session_milestone"
+    },
+    {
+      "recorded_at": "2026-10-01T21:31:45.639984+00:00",
+      "receipt": "data/paper/research-week1-r2/events/2026-10-01-retry60.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_collection_before_registered_five_session_milestone"
+    },
+    {
+      "recorded_at": "2026-10-01T21:31:45.639984+00:00",
+      "receipt": "data/paper/research-week1-r2/events/2026-10-01-watchdog.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_collection_before_registered_five_session_milestone"
+    },
+    {
+      "recorded_at": "2026-10-02T13:32:12.226354+00:00",
+      "receipt": "data/paper/research-week1-r2/events/2026-10-01-preopen.json",
+      "notification_sent": false,
+      "disposition": "quiet_valid_preopen_receipt"
+    },
+    {
+      "recorded_at": "2026-10-02T13:32:12.226354+00:00",
+      "receipt": "data/paper/research-week1-r2/outages/20261002T014619.json",
+      "notification_sent": false,
+      "disposition": "quiet_recovered_gap_no_missed_due_event_or_new_required_action"
+    },
+    {
+      "recorded_at": "2026-10-02T13:32:12.226354+00:00",
+      "receipt": "data/paper/research-week1-r2/outages/20261002T075212.json",
+      "notification_sent": false,
+      "disposition": "quiet_recovered_gap_no_missed_due_event_or_new_required_action"
+    },
+    {
+      "recorded_at": "2026-10-02T13:32:12.226354+00:00",
+      "receipt": "data/paper/research-week1-r2/outages/20261002T082003.json",
+      "notification_sent": false,
+      "disposition": "quiet_recovered_gap_no_missed_due_event_or_new_required_action"
+    },
+    {
+      "recorded_at": "2026-10-02T21:33:22.639787+00:00",
+      "receipt": "data/paper/research-week1-r2/days/2026-10-02/input.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_session_before_registered_five_session_milestone"
+    },
+    {
+      "recorded_at": "2026-10-02T21:33:22.639787+00:00",
+      "receipt": "data/paper/research-week1-r2/days/2026-10-02/plan.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_session_before_registered_five_session_milestone"
+    },
+    {
+      "recorded_at": "2026-10-02T21:33:22.639787+00:00",
+      "receipt": "data/paper/research-week1-r2/days/2026-10-02/result.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_session_before_registered_five_session_milestone"
+    },
+    {
+      "recorded_at": "2026-10-02T21:33:22.639787+00:00",
+      "receipt": "data/paper/research-week1-r2/attempts/2026-10-02-20261002T203040602072-04c26ad2.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_session_before_registered_five_session_milestone"
+    },
+    {
+      "recorded_at": "2026-10-02T21:33:22.639787+00:00",
+      "receipt": "data/paper/research-week1-r2/events/2026-10-02-daily.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_session_before_registered_five_session_milestone"
+    },
+    {
+      "recorded_at": "2026-10-02T21:33:22.639787+00:00",
+      "receipt": "data/paper/research-week1-r2/events/2026-10-02-retry45.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_session_before_registered_five_session_milestone"
+    },
+    {
+      "recorded_at": "2026-10-02T21:33:22.639787+00:00",
+      "receipt": "data/paper/research-week1-r2/events/2026-10-02-retry60.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_session_before_registered_five_session_milestone"
+    },
+    {
+      "recorded_at": "2026-10-02T21:33:22.639787+00:00",
+      "receipt": "data/paper/research-week1-r2/events/2026-10-02-watchdog.json",
+      "notification_sent": false,
+      "disposition": "quiet_successful_session_before_registered_five_session_milestone"
+    },
+    {
+      "id": "PILOT-TREND-WEEK1-R2-20261001:missing-session:2026-10-05",
+      "first_observed_at": "2026-10-06T13:31:45.326185+00:00",
+      "session": "2026-10-05",
+      "classification": "missed_collection_window_and_halt",
+      "prospective_decisions": 2,
+      "required_decisions": 5,
+      "collection_due_hkt": "2026-10-06T04:30:00+08:00",
+      "scheduler_gap_start_hkt": "2026-10-06T03:12:39.837258+08:00",
+      "scheduler_gap_end_hkt": "2026-10-06T05:14:20.094856+08:00",
+      "evidence_paths": [
+        "data/paper/research-week1-r2/events/2026-10-05-daily.json",
+        "data/paper/research-week1-r2/outages/20261005T211420.json",
+        "data/paper/research-week1-r2/events/2026-10-05-watchdog.json",
+        "data/paper/research-week1-r2/events/2026-10-05-preopen.json"
+      ],
+      "deduplicate_consequences_of_halt": true,
+      "required_action": "The fixed five-session trial cannot complete as registered. A recovery decision and reliable host availability are required before any separately registered continuation; preserve the halt and existing evidence.",
+      "cause_limit": "A scheduler gap is proven; sleep, logout and other local outage causes are not distinguished by this receipt.",
+      "last_observed_at": "2026-10-08T21:30:56.324558+00:00",
+      "consequence_sessions": [
+        "2026-10-06",
+        "2026-10-07"
+      ],
+      "terminal_consequence_sessions": [
+        "2026-10-08"
+      ]
+    }
+  ],
+  "actionable_event_ids": [
+    "PILOT-TREND-WEEK1-R2-20261001:missing-session:2026-10-05"
+  ],
+  "heartbeat_stale_threshold_seconds": 300,
+  "superseded_workspaces": [
+    "data/paper/research-week1",
+    "data/paper/research-v2"
+  ],
+  "durable_records": {
+    "days": [
+      {
+        "path": "days/2026-10-01/input.json",
+        "sha256": "8b741c7781bd992f18db13533ba564af3b4306cdc4717abe6a18e18bbac4eb6c",
+        "content_sha256_valid": true,
+        "summary": {
+          "session": "2026-10-01",
+          "snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2/days/2026-10-01/market-20261001T203027068632-501f4172",
+          "snapshot_sha256": "cb022a63276119c9e40b11bc465260a29aaf5ade50bce78ff9276c00509c552d"
+        }
+      },
+      {
+        "path": "days/2026-10-01/plan.json",
+        "sha256": "a127f06492e7c1061672ea57df1d7a3170faed076ee2d0c45eb85a36be9b5d03",
+        "content_sha256_valid": true,
+        "summary": {
+          "session": "2026-10-01",
+          "mode": "prospective_shadow",
+          "trigger_mode": "scheduled",
+          "refit": false,
+          "rebalance": true,
+          "snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2/days/2026-10-01/market-20261001T203027068632-501f4172",
+          "snapshot_sha256": "cb022a63276119c9e40b11bc465260a29aaf5ade50bce78ff9276c00509c552d",
+          "information_cutoff": "2026-10-01T20:00:00+00:00",
+          "signal_count": 22,
+          "mark_count": 22
+        }
+      },
+      {
+        "path": "days/2026-10-01/result.json",
+        "sha256": "e334ec1cdde0dc31408b5172cbf3ebb0e7d55aea589c97604d5e33ef65cee17a",
+        "content_sha256_valid": true,
+        "summary": {
+          "session": "2026-10-01",
+          "mode": "prospective_shadow",
+          "trigger_mode": "scheduled",
+          "completed_at": "2026-10-01T20:30:58.113936+00:00",
+          "refit": false,
+          "rebalance": true,
+          "snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2/days/2026-10-01/market-20261001T203027068632-501f4172",
+          "snapshot_sha256": "cb022a63276119c9e40b11bc465260a29aaf5ade50bce78ff9276c00509c552d",
+          "information_cutoff": "2026-10-01T20:00:00+00:00",
+          "external_orders": false,
+          "signal_count": 22,
+          "mark_count": 22,
+          "deployment": {
+            "equity": 10000,
+            "cash": 10000,
+            "reconciliation_error": 0,
+            "fees": 0
+          },
+          "shadow": {
+            "equity": 10000,
+            "cash": 10000,
+            "reconciliation_error": 0,
+            "fees": 0
+          }
+        }
+      },
+      {
+        "path": "days/2026-10-02/input.json",
+        "sha256": "ceb1ab54d7a68b49ddc2c2a2d2cb3b1db532de121d4f1a85fb5740b6650419e3",
+        "content_sha256_valid": true,
+        "summary": {
+          "session": "2026-10-02",
+          "snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2/days/2026-10-02/market-20261002T203040602072-04c26ad2",
+          "snapshot_sha256": "f3a3d09cfc3e57df185218e699eeddf7aa80401f9de2b643f7c011f27816ea99"
+        }
+      },
+      {
+        "path": "days/2026-10-02/plan.json",
+        "sha256": "d5712eac804edcff66415010862c1a728fd61ae24c7d49af34a8821f46497442",
+        "content_sha256_valid": true,
+        "summary": {
+          "session": "2026-10-02",
+          "mode": "prospective_shadow",
+          "trigger_mode": "scheduled",
+          "refit": false,
+          "rebalance": true,
+          "snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2/days/2026-10-02/market-20261002T203040602072-04c26ad2",
+          "snapshot_sha256": "f3a3d09cfc3e57df185218e699eeddf7aa80401f9de2b643f7c011f27816ea99",
+          "information_cutoff": "2026-10-02T20:00:00+00:00",
+          "signal_count": 22,
+          "mark_count": 22
+        }
+      },
+      {
+        "path": "days/2026-10-02/result.json",
+        "sha256": "4416ac3300c06a9a354c06ce7f371199ebb00152a4d3d450b8f32268009b0467",
+        "content_sha256_valid": true,
+        "summary": {
+          "session": "2026-10-02",
+          "mode": "prospective_shadow",
+          "trigger_mode": "scheduled",
+          "completed_at": "2026-10-02T20:31:13.601180+00:00",
+          "refit": false,
+          "rebalance": true,
+          "snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2/days/2026-10-02/market-20261002T203040602072-04c26ad2",
+          "snapshot_sha256": "f3a3d09cfc3e57df185218e699eeddf7aa80401f9de2b643f7c011f27816ea99",
+          "information_cutoff": "2026-10-02T20:00:00+00:00",
+          "external_orders": false,
+          "signal_count": 22,
+          "mark_count": 22,
+          "deployment": {
+            "equity": 10000,
+            "cash": 10000,
+            "fees": 0,
+            "reconciliation_error": 0
+          },
+          "shadow": {
+            "equity": 9993.960847093282,
+            "cash": 5967.85890928074,
+            "fees": 6.039152906718812,
+            "reconciliation_error": 0
+          }
+        }
+      }
+    ],
+    "attempts": [
+      {
+        "path": "attempts/2026-10-01-20261001T203027068632-501f4172.json",
+        "sha256": "011d8a57c0f251c74777d615231339337a78103bc313ccdf45b5dff8dc73ad30",
+        "content_sha256_valid": null,
+        "summary": {
+          "session": "2026-10-01",
+          "mode": "scheduled",
+          "status": "complete",
+          "started_at": "2026-10-01T20:30:27.068632+00:00",
+          "elapsed_seconds": 30.17920266604051
+        }
+      },
+      {
+        "path": "attempts/2026-10-02-20261002T203040602072-04c26ad2.json",
+        "sha256": "cac0e42ad9c74b287403ca68915954d012e5943356ee64ca2cf4146c6665e7aa",
+        "content_sha256_valid": null,
+        "summary": {
+          "session": "2026-10-02",
+          "mode": "scheduled",
+          "status": "complete",
+          "started_at": "2026-10-02T20:30:40.602072+00:00",
+          "elapsed_seconds": 32.178906874964014
+        }
+      }
+    ],
+    "events": [
+      {
+        "path": "events/2026-10-01-daily.json",
+        "sha256": "2ea1c5e4c3eb4333f5f433c868843767042112689d445b3de2e1ca892615403f",
+        "content_sha256_valid": true,
+        "summary": {
+          "session": "2026-10-01",
+          "kind": "daily",
+          "status": "complete",
+          "id": "2026-10-01:daily",
+          "checked_at": "2026-10-01T20:30:27.068632+00:00",
+          "due": "2026-10-01T20:30:00+00:00"
+        }
+      },
+      {
+        "path": "events/2026-10-01-preopen.json",
+        "sha256": "0c39fbb5002804cb0cf45b830410d846ea67e900b10b5da9d4825279c39e8430",
+        "content_sha256_valid": true,
+        "content": {
+          "checked_at": "2026-10-02T13:01:03.242116+00:00",
+          "content_sha256": "dea41f010695cf413a6047fd9d592ea4701d8f9914513e46d906a9d82b4396fa",
+          "due": "2026-10-02T13:00:00+00:00",
+          "id": "2026-10-01:preopen",
+          "kind": "preopen",
+          "ordinal": 1,
+          "session": "2026-10-01",
+          "status": "valid_receipt"
+        }
+      },
+      {
+        "path": "events/2026-10-01-retry45.json",
+        "sha256": "51a480b77126d7250e135a3a499f8ba08a8a110f671b424a7873bf684b0dacc7",
+        "content_sha256_valid": true,
+        "summary": {
+          "session": "2026-10-01",
+          "kind": "retry45",
+          "status": "covered_by_valid_receipt",
+          "id": "2026-10-01:retry45",
+          "checked_at": "2026-10-01T20:45:10.191237+00:00",
+          "due": "2026-10-01T20:45:00+00:00"
+        }
+      },
+      {
+        "path": "events/2026-10-01-retry60.json",
+        "sha256": "4738a75a251bd8b3e389a01a0d59093547075d4e10bfc4f8411f98866b304a34",
+        "content_sha256_valid": true,
+        "summary": {
+          "session": "2026-10-01",
+          "kind": "retry60",
+          "status": "covered_by_valid_receipt",
+          "id": "2026-10-01:retry60",
+          "checked_at": "2026-10-01T21:00:26.013983+00:00",
+          "due": "2026-10-01T21:00:00+00:00"
+        }
+      },
+      {
+        "path": "events/2026-10-01-watchdog.json",
+        "sha256": "edce3922ea484b46afc94dc28bfd77dfe69a740d5612ccd3b99d28c217350c3c",
+        "content_sha256_valid": true,
+        "summary": {
+          "session": "2026-10-01",
+          "kind": "watchdog",
+          "status": "valid_receipt",
+          "id": "2026-10-01:watchdog",
+          "checked_at": "2026-10-01T21:30:02.193906+00:00",
+          "due": "2026-10-01T21:30:00+00:00"
+        }
+      },
+      {
+        "path": "events/2026-10-02-daily.json",
+        "sha256": "07033d4caba1e70c78a0171a5a9fa0eb5d3040e8a7483958265bfe93f0b4dedf",
+        "content_sha256_valid": true,
+        "summary": {
+          "session": "2026-10-02",
+          "kind": "daily",
+          "status": "complete",
+          "id": "2026-10-02:daily",
+          "checked_at": "2026-10-02T20:30:40.602072+00:00",
+          "due": "2026-10-02T20:30:00+00:00"
+        }
+      },
+      {
+        "path": "events/2026-10-02-preopen.json",
+        "sha256": "9613655736b7fcd84aecceab0c99f3abfb7173709b958c92173d4976b9999fcd",
+        "content_sha256_valid": true,
+        "content": {
+          "checked_at": "2026-10-05T13:00:46.473262+00:00",
+          "content_sha256": "5f00e7cc3b9c543f68a32bf60df1cefd7764384ae4795ad7661d0605ee17ba99",
+          "due": "2026-10-05T13:00:00+00:00",
+          "id": "2026-10-02:preopen",
+          "kind": "preopen",
+          "ordinal": 2,
+          "session": "2026-10-02",
+          "status": "valid_receipt"
+        }
+      },
+      {
+        "path": "events/2026-10-02-retry45.json",
+        "sha256": "b7cafc58c8608dfae02d1bc6e55b6ea9cea6ee46b20803ac37b69a9c8ef9f570",
+        "content_sha256_valid": true,
+        "summary": {
+          "session": "2026-10-02",
+          "kind": "retry45",
+          "status": "covered_by_valid_receipt",
+          "id": "2026-10-02:retry45",
+          "checked_at": "2026-10-02T20:45:24.917560+00:00",
+          "due": "2026-10-02T20:45:00+00:00"
+        }
+      },
+      {
+        "path": "events/2026-10-02-retry60.json",
+        "sha256": "ecef6da18b06823bae8a09f03073a81526002fb748e1a1c8749de9dabb8f1169",
+        "content_sha256_valid": true,
+        "summary": {
+          "session": "2026-10-02",
+          "kind": "retry60",
+          "status": "covered_by_valid_receipt",
+          "id": "2026-10-02:retry60",
+          "checked_at": "2026-10-02T21:00:47.094580+00:00",
+          "due": "2026-10-02T21:00:00+00:00"
+        }
+      },
+      {
+        "path": "events/2026-10-02-watchdog.json",
+        "sha256": "7a743283060794d269ac18d4296a3e14785616afb2c29758a3b205571dd1e4a3",
+        "content_sha256_valid": true,
+        "summary": {
+          "session": "2026-10-02",
+          "kind": "watchdog",
+          "status": "valid_receipt",
+          "id": "2026-10-02:watchdog",
+          "checked_at": "2026-10-02T21:31:01.670514+00:00",
+          "due": "2026-10-02T21:30:00+00:00"
+        }
+      },
+      {
+        "path": "events/2026-10-05-daily.json",
+        "sha256": "37d8722efab1ca92004f860bc92d53adc52c5d24baff85f3a04d89530b5006ca",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-05T21:14:20.094856+00:00",
+          "content_sha256": "ce965404d75baf963d73e812d9ad1459fcd402e1587cbc44d97c0506018ec846",
+          "due": "2026-10-05T20:30:00+00:00",
+          "id": "2026-10-05:daily",
+          "kind": "daily",
+          "ordinal": 3,
+          "session": "2026-10-05",
+          "status": "missed_deadline"
+        }
+      },
+      {
+        "path": "events/2026-10-05-preopen.json",
+        "sha256": "dd6bcc3eb4b9f247264993861ed81d44c6ad63d8ba653fc0f7bec572e659f798",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-06T13:02:34.524794+00:00",
+          "content_sha256": "0f6a63849fd7ba70d18dc9bea86d32fac1f50d2bad3fa1f238fa0965fa842063",
+          "due": "2026-10-06T13:00:00+00:00",
+          "id": "2026-10-05:preopen",
+          "kind": "preopen",
+          "ordinal": 3,
+          "session": "2026-10-05",
+          "status": "missing_expected_receipt"
+        }
+      },
+      {
+        "path": "events/2026-10-05-retry45.json",
+        "sha256": "52a5a4ac56e5715c4300940c567497102c705a135118be2858dc34a2162fec68",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-05T21:14:20.094856+00:00",
+          "content_sha256": "0971ea4395df8f56817af8680594076e6f0d19d8f9ca305151b818d3c54cb9f3",
+          "due": "2026-10-05T20:45:00+00:00",
+          "id": "2026-10-05:retry45",
+          "kind": "retry45",
+          "ordinal": 3,
+          "reason": {
+            "at": "2026-10-05T21:14:20.094856+00:00",
+            "reason": "Missed daily decision window; no backfill",
+            "session": "2026-10-05"
+          },
+          "session": "2026-10-05",
+          "status": "halted"
+        }
+      },
+      {
+        "path": "events/2026-10-05-retry60.json",
+        "sha256": "40535009ab48a8734bf743380f1fd0d00554773120a15966967fbb2101aebce6",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-05T21:14:20.094856+00:00",
+          "content_sha256": "524c68ed0f2fb061f5516d1b5dd1dc13719923d3dce1c6461bb3629aef4e1bd5",
+          "due": "2026-10-05T21:00:00+00:00",
+          "id": "2026-10-05:retry60",
+          "kind": "retry60",
+          "ordinal": 3,
+          "reason": {
+            "at": "2026-10-05T21:14:20.094856+00:00",
+            "reason": "Missed daily decision window; no backfill",
+            "session": "2026-10-05"
+          },
+          "session": "2026-10-05",
+          "status": "halted"
+        }
+      },
+      {
+        "path": "events/2026-10-05-watchdog.json",
+        "sha256": "79b8f50867d549737ef97db66132368e627ffb5f6398bc468e1c8a740d635e6a",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-05T23:16:12.160917+00:00",
+          "content_sha256": "87d7104d02b3114a21ae312280920f45669622abf723895ff454edbcb633eba8",
+          "due": "2026-10-05T21:30:00+00:00",
+          "id": "2026-10-05:watchdog",
+          "kind": "watchdog",
+          "ordinal": 3,
+          "session": "2026-10-05",
+          "status": "missing_expected_receipt"
+        }
+      },
+      {
+        "path": "events/2026-10-06-daily.json",
+        "sha256": "311c038e822276e4ff65f5e757c68c7068d2d84a6f80949233f83764da81e319",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-06T21:20:12.050966+00:00",
+          "content_sha256": "50daca504b069b3f544afb84c675d841e72f84747be955a27d46d8b5038e082e",
+          "due": "2026-10-06T20:30:00+00:00",
+          "id": "2026-10-06:daily",
+          "kind": "daily",
+          "ordinal": 4,
+          "reason": {
+            "at": "2026-10-06T13:02:34.524794+00:00",
+            "reason": "Missing expected reconciled receipt",
+            "session": "2026-10-05"
+          },
+          "session": "2026-10-06",
+          "status": "halted"
+        }
+      },
+      {
+        "path": "events/2026-10-06-preopen.json",
+        "sha256": "6d14ef1c89110345d11be0ef131623e003fcb0ef5426bc433833e7c37d6ae129",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-07T15:10:22.150850+00:00",
+          "content_sha256": "341a487392a62c39964048617b6afa943e4e3b789c440b66b091a97d67297647",
+          "due": "2026-10-07T13:00:00+00:00",
+          "id": "2026-10-06:preopen",
+          "kind": "preopen",
+          "ordinal": 4,
+          "session": "2026-10-06",
+          "status": "missing_expected_receipt"
+        }
+      },
+      {
+        "path": "events/2026-10-06-retry45.json",
+        "sha256": "573ca9bf3acc03c146063c9c4567e17e9e73e86559e948b2ff7ef0eb5174f65d",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-06T21:20:12.050966+00:00",
+          "content_sha256": "8c847372413c3de4961c3dd835d8add477ccfdeb46d9204d5f4e33773f189a00",
+          "due": "2026-10-06T20:45:00+00:00",
+          "id": "2026-10-06:retry45",
+          "kind": "retry45",
+          "ordinal": 4,
+          "reason": {
+            "at": "2026-10-06T13:02:34.524794+00:00",
+            "reason": "Missing expected reconciled receipt",
+            "session": "2026-10-05"
+          },
+          "session": "2026-10-06",
+          "status": "halted"
+        }
+      },
+      {
+        "path": "events/2026-10-06-retry60.json",
+        "sha256": "e642929ee494aefeac59bf43204aaeb07b9a6bdb331b3b53ea426b91264aefb4",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-06T21:20:12.050966+00:00",
+          "content_sha256": "d72d5d32c0c68b6ed5134bae09865a3341ab101594fd736dff35c27b77f14fb9",
+          "due": "2026-10-06T21:00:00+00:00",
+          "id": "2026-10-06:retry60",
+          "kind": "retry60",
+          "ordinal": 4,
+          "reason": {
+            "at": "2026-10-06T13:02:34.524794+00:00",
+            "reason": "Missing expected reconciled receipt",
+            "session": "2026-10-05"
+          },
+          "session": "2026-10-06",
+          "status": "halted"
+        }
+      },
+      {
+        "path": "events/2026-10-06-watchdog.json",
+        "sha256": "8dd1ed340a84441d5caebdc45063db4150c06a83aed7bbfd26c11c7e4c4daa11",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-06T22:21:33.459887+00:00",
+          "content_sha256": "d1ce6b92f3dea6f289b6c6433f530c34653063544719254da0ff07492b2155cb",
+          "due": "2026-10-06T21:30:00+00:00",
+          "id": "2026-10-06:watchdog",
+          "kind": "watchdog",
+          "ordinal": 4,
+          "session": "2026-10-06",
+          "status": "missing_expected_receipt"
+        }
+      },
+      {
+        "path": "events/2026-10-07-daily.json",
+        "sha256": "579ff4c6707d3f07516a577121ce3f2812113317a62268da254253ed12a1838f",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-07T20:30:15.227915+00:00",
+          "content_sha256": "236184b80921068b5e67d364c362b8c4d0fff4a69f7c558e64ba9c99e9827e2a",
+          "due": "2026-10-07T20:30:00+00:00",
+          "id": "2026-10-07:daily",
+          "kind": "daily",
+          "ordinal": 5,
+          "reason": {
+            "at": "2026-10-07T15:10:22.150850+00:00",
+            "reason": "Missing expected reconciled receipt",
+            "session": "2026-10-06"
+          },
+          "session": "2026-10-07",
+          "status": "halted"
+        }
+      },
+      {
+        "path": "events/2026-10-07-preopen.json",
+        "sha256": "d4a958be9d56063a20ec15cefc184e709de296cbc14052143568664352534d85",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-08T13:00:36.971451+00:00",
+          "content_sha256": "31895b14fa796c1f277618e6a5aae579395cbf852c8c5b8e21010cf122219518",
+          "due": "2026-10-08T13:00:00+00:00",
+          "id": "2026-10-07:preopen",
+          "kind": "preopen",
+          "ordinal": 5,
+          "session": "2026-10-07",
+          "status": "missing_expected_receipt"
+        }
+      },
+      {
+        "path": "events/2026-10-07-retry45.json",
+        "sha256": "3e0c1a41256f2c575931f185e0bb712f13f154bffc9c139d2fb2fc9871d4f250",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-07T20:45:38.280081+00:00",
+          "content_sha256": "669c51a928a0d66c754fa1441ee73c6f0be44f9448e641e3f7881df6ab64084f",
+          "due": "2026-10-07T20:45:00+00:00",
+          "id": "2026-10-07:retry45",
+          "kind": "retry45",
+          "ordinal": 5,
+          "reason": {
+            "at": "2026-10-07T15:10:22.150850+00:00",
+            "reason": "Missing expected reconciled receipt",
+            "session": "2026-10-06"
+          },
+          "session": "2026-10-07",
+          "status": "halted"
+        }
+      },
+      {
+        "path": "events/2026-10-07-retry60.json",
+        "sha256": "dffebaa11d6453815ed5cd6d126b21e8bc057f76e9a8e1f578acd7f0920fe22a",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-07T21:00:57.707341+00:00",
+          "content_sha256": "ceb5467a9c0253b46b38506b8ef72a6b9f23a750b204836bc641bd118e968b57",
+          "due": "2026-10-07T21:00:00+00:00",
+          "id": "2026-10-07:retry60",
+          "kind": "retry60",
+          "ordinal": 5,
+          "reason": {
+            "at": "2026-10-07T15:10:22.150850+00:00",
+            "reason": "Missing expected reconciled receipt",
+            "session": "2026-10-06"
+          },
+          "session": "2026-10-07",
+          "status": "halted"
+        }
+      },
+      {
+        "path": "events/2026-10-07-watchdog.json",
+        "sha256": "7d91d5903e7c91b1f4ac368907d3f95239c9eb75622157c92f368415b17abc2d",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-07T21:30:28.436075+00:00",
+          "content_sha256": "09cc6260c93d0c0cffa727bb49ab53a5216416c566da143b6dff0de8cf4869fe",
+          "due": "2026-10-07T21:30:00+00:00",
+          "id": "2026-10-07:watchdog",
+          "kind": "watchdog",
+          "ordinal": 5,
+          "session": "2026-10-07",
+          "status": "missing_expected_receipt"
+        }
+      },
+      {
+        "path": "events/2026-10-08-outcome_retry45.json",
+        "sha256": "a24676dcbf7e2b704dd5d80e8010e36fd96f6b5b05f673b7165130a25a1b57c6",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-08T20:45:23.413181+00:00",
+          "content_sha256": "167ac6496c0e878ba5536c30225dec740de9962a1eb6d6801685bfb346763b85",
+          "due": "2026-10-08T20:45:00+00:00",
+          "id": "2026-10-08:outcome_retry45",
+          "kind": "outcome_retry45",
+          "ordinal": 6,
+          "session": "2026-10-08",
+          "status": "labels_attached_terminal_failed",
+          "terminal_error": {
+            "message": "Halted pilot cannot process terminal fills",
+            "type": "ValueError"
+          }
+        }
+      },
+      {
+        "path": "events/2026-10-08-outcome_retry60.json",
+        "sha256": "7e06778561bd4c2bc195d3e5d2a38e70ad51086f776feaee4c9bf4924aafa483",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-08T21:00:52.569109+00:00",
+          "content_sha256": "240cc8f33ca22482e1be41dc3c68f9bfaccaae46861ee7c23cd5b8e903205a00",
+          "due": "2026-10-08T21:00:00+00:00",
+          "id": "2026-10-08:outcome_retry60",
+          "kind": "outcome_retry60",
+          "ordinal": 6,
+          "session": "2026-10-08",
+          "status": "labels_attached_terminal_failed",
+          "terminal_error": {
+            "message": "Halted pilot cannot process terminal fills",
+            "type": "ValueError"
+          }
+        }
+      },
+      {
+        "path": "events/2026-10-08-outcome_watchdog.json",
+        "sha256": "3526b385f285eb9d2ca31c5ef37526ab3a9e610197577d8ec742f4caed933265",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-08T21:30:41.554785+00:00",
+          "content_sha256": "2e542f219478432fb8a98df21f90c354d2d36aef282a4e10effdefec8b0e824a",
+          "due": "2026-10-08T21:30:00+00:00",
+          "id": "2026-10-08:outcome_watchdog",
+          "kind": "outcome_watchdog",
+          "ordinal": 6,
+          "session": "2026-10-08",
+          "status": "labels_attached_terminal_failed",
+          "terminal_error": {
+            "message": "Halted pilot cannot process terminal fills",
+            "type": "ValueError"
+          }
+        }
+      },
+      {
+        "path": "events/2026-10-08-outcomes.json",
+        "sha256": "cff6a333e41f8a36b1ecba40a51183dd7624e155f357f8a4acfab7047a70a63d",
+        "content_sha256_valid": true,
+        "content": {
+          "action_required": true,
+          "checked_at": "2026-10-08T20:30:43.170499+00:00",
+          "content_sha256": "554e38e0bdaf773ea73a653061c9d2fe668332958d3f5279d69498ff1ea74c6f",
+          "due": "2026-10-08T20:30:00+00:00",
+          "id": "2026-10-08:outcomes",
+          "kind": "outcomes",
+          "ordinal": 6,
+          "session": "2026-10-08",
+          "status": "labels_attached_terminal_failed",
+          "terminal_error": {
+            "message": "Halted pilot cannot process terminal fills",
+            "type": "ValueError"
+          }
+        }
+      }
+    ],
+    "milestones": [],
+    "outages": [
+      {
+        "path": "outages/20261002T014619.json",
+        "sha256": "c485f71cedecf45f7a22188f4d8bb7189496a5cb6176a20d6f651d4cfad6ac5b",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "33fd57c7ad246d24e6bd8e4a1ae9c9fdda2c3ff3b16a97882da3cba0e32e4364",
+          "gap_seconds": 14590.991261,
+          "previous": "2026-10-01T21:43:08.989634+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-02T01:46:19.980895+00:00"
+        }
+      },
+      {
+        "path": "outages/20261002T075212.json",
+        "sha256": "b4f8c74da35ea4d642a33f011f869bd236932f0d5f43333aae4f18a597a88832",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "270b56b3f0f8531635a520178c2e32f80450d37c93e72f7dacad7079ece78e64",
+          "gap_seconds": 21952.029631,
+          "previous": "2026-10-02T01:46:19.980895+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-02T07:52:12.010526+00:00"
+        }
+      },
+      {
+        "path": "outages/20261002T082003.json",
+        "sha256": "38ba5e18c43415c905d2fbef8b99230303bd25eef489806ab04ee193a3e6818f",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "6ff484b82fdc518da31fa8772cc44cc0091840cb4ca01c7cc94184a6ff45542e",
+          "gap_seconds": 1671.829268,
+          "previous": "2026-10-02T07:52:12.010526+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-02T08:20:03.839794+00:00"
+        }
+      },
+      {
+        "path": "outages/20261004T125145.json",
+        "sha256": "474414ecee72d3d19676533a622e63ce3d8ac7b685d6638416610927ce550c0b",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "69f117e15a2285b4359d9c3bfe371daacdebc5f0d12e02df56c44dad65badca7",
+          "gap_seconds": 4862.475046,
+          "previous": "2026-10-04T11:30:42.852210+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-04T12:51:45.327256+00:00"
+        }
+      },
+      {
+        "path": "outages/20261004T204306.json",
+        "sha256": "bf27b3e5f1fdd52716ac51c7a9119eeb4f2db26b69a5ca3cddc5c523b1dadfd9",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "5af492959c250ea256679c1d7400dc415652aeef46bb09f63656b97428813bb5",
+          "gap_seconds": 10955.559362,
+          "previous": "2026-10-04T17:40:31.092894+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-04T20:43:06.652256+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T000316.json",
+        "sha256": "7794d00eca99388a316ccbae5bab561caf0a0508cb58aef141367780ee80d877",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "a79c0d5983400f477671efb56acc5223f93f70680428f5605fada6643e279dfc",
+          "gap_seconds": 12010.060246,
+          "previous": "2026-10-04T20:43:06.652256+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T00:03:16.712502+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T025904.json",
+        "sha256": "1b409594fa0fb3a951e597d808794a0f1f7a8dd3fdac77e048ddb02de2efef36",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "035185aa869c3916cfe636829989e3ace55b6178e55b3aee49c1187a0a9c06ab",
+          "gap_seconds": 10548.153788,
+          "previous": "2026-10-05T00:03:16.712502+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T02:59:04.866290+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T034711.json",
+        "sha256": "b46733d80657f35eb8ff569054cbd8c636da947954e582695da52566d1299f15",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "9903cbacee8cdfad405dbd5360b344c24252c1ff41755b464fb77d3fb87918c5",
+          "gap_seconds": 2886.587739,
+          "previous": "2026-10-05T02:59:04.866290+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T03:47:11.454029+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T040310.json",
+        "sha256": "8cb4e0b319fcdcbaffad79a6d06aaaca414b5aa9055146ca91b9e05d66c1f472",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "4d369a863a28ab112293350b42f93d069da9faa8d7d2f376da91f997478da10a",
+          "gap_seconds": 888.600016,
+          "previous": "2026-10-05T03:48:21.820736+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T04:03:10.420752+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T040917.json",
+        "sha256": "fbc9518ea511b9d6fc41a57c002bebb54e66c36c562c7c7fcb1671a2cfe169f6",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "c5faa74545e0cf082437aad7f91fa7c824345ad4c4a6b0c15ad7ba686cec212b",
+          "gap_seconds": 366.774321,
+          "previous": "2026-10-05T04:03:10.420752+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T04:09:17.195073+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T061538.json",
+        "sha256": "5f5cd67e4aa5aa02c4e9dabc1fee0d76c89a70db6d499127553d9b30270e3e84",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "ee1994f8a4eec5ae2edcfc8142acd59c0ab00ab5c5ff0dd06ad97406fff3f81a",
+          "gap_seconds": 4259.446329,
+          "previous": "2026-10-05T05:04:39.032486+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T06:15:38.478815+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T063956.json",
+        "sha256": "4cdcb263167bd7df34e367c4730e1b87c15c1624da5bdbe1170f7de5c70e332b",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "158cb51820dad3ebd33af70e5bb171878c1cc20c5a83c798c89e94ce0287d10d",
+          "gap_seconds": 1155.764597,
+          "previous": "2026-10-05T06:20:40.493883+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T06:39:56.258480+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T065030.json",
+        "sha256": "4511a4c077a32bc9be1040a26af3ec1fa5b4a2b9c807e732b1538fa3974604f8",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "827d3638ed9c2b1724f1606add518b6a6d5547188cef59dc115af6a8fbf1e297",
+          "gap_seconds": 633.75699,
+          "previous": "2026-10-05T06:39:56.258480+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T06:50:30.015470+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T065620.json",
+        "sha256": "38868631b4e5310936ae6d3662f0cb5bad44f6ff1142c44380c93035d38cc14e",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "f4df72292d90737616b506a83066c1c8ecc6d6fd233beb6f7c77f47ef2d00366",
+          "gap_seconds": 350.027609,
+          "previous": "2026-10-05T06:50:30.015470+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T06:56:20.043079+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T070750.json",
+        "sha256": "7547b17fb139322a1162aee12ca4d05caa9c87d9fa6c1887413a40ee9457d51d",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "79fdf7ef0f64a14e757de2b79780142d41fde6f72541fb2935cadf3c48d3046c",
+          "gap_seconds": 690.604371,
+          "previous": "2026-10-05T06:56:20.043079+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T07:07:50.647450+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T081833.json",
+        "sha256": "de7cdab41330e47837ff15b5fe7b5e0a7ec7f65cb1973f55938f226665334c6a",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "9dd5570cd623891d4a418f527a945432f9fdcb06b50fb293ad539bb222073f3d",
+          "gap_seconds": 4242.803066,
+          "previous": "2026-10-05T07:07:50.647450+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T08:18:33.450516+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T092159.json",
+        "sha256": "add762163a0d7c18e361c3f88237088da20d78d3c99eca379c97ab6e4bb44dcd",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "89a77c74c3506ca6398e1b4d7847e01ee3016c8ddee4386f2f53214a275453b5",
+          "gap_seconds": 1488.691534,
+          "previous": "2026-10-05T08:57:10.520978+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T09:21:59.212512+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T142755.json",
+        "sha256": "761f90f659378234c4611951f81406f4ac6035a3d74f85b74d9ddc6793115981",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "4bf1c7f2fc61fe2499db0179380d6929eebf488430514641c214ed06f32bc776",
+          "gap_seconds": 818.1792,
+          "previous": "2026-10-05T14:14:16.949506+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T14:27:55.128706+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T144016.json",
+        "sha256": "4ba7ec9681b9a3ae455fd0c88105a83c0d5ff7dac9bf919983e9c4dab90f4945",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "a767412976c7ac35ec234655f6d2106aadc00ece37c389d8f74308fbd0602190",
+          "gap_seconds": 741.456923,
+          "previous": "2026-10-05T14:27:55.128706+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T14:40:16.585629+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T145846.json",
+        "sha256": "07b8f75e4d17e860333f4033e8f16dc9e514c09e3045fa44276676850c39ec3a",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "b4c576ff2cf0cc86052fa99b34e0bb012ee23e993fc50fe3e1240fa3b4c78214",
+          "gap_seconds": 774.703364,
+          "previous": "2026-10-05T14:45:51.729441+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T14:58:46.432805+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T171903.json",
+        "sha256": "6d7874485892fc8db7a17e36a022dfdfbf7b824e868ae5599e09e19c9f7581e9",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "95e36eaf66b66c5371e82bfcf244be567a5ccf31525c2de0564192c01d725e27",
+          "gap_seconds": 479.67209,
+          "previous": "2026-10-05T17:11:03.349311+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T17:19:03.021401+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T174137.json",
+        "sha256": "bff54148d44bea525b18d793c69c7b3945255f0aac9431a96a4ed50bf6924f9c",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "c1d703a3e065157dcefbac429c9227d5397a4534679249fa218f429ceb781edc",
+          "gap_seconds": 1051.874186,
+          "previous": "2026-10-05T17:24:06.025935+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T17:41:37.900121+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T185125.json",
+        "sha256": "24355f527ff0e4de5c52ef33fcb2f1ae09326fd85af4c0e34bcac6f8b0eb7193",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "8d7361eb019d3aca54618423a851212801c3544ffb11dfa64712ca3e0574189c",
+          "gap_seconds": 4188.031907,
+          "previous": "2026-10-05T17:41:37.900121+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T18:51:25.932028+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T191239.json",
+        "sha256": "6def89e45344f84454d7b3e4c891675aa9630027dd02995cdbac0e2b886730d5",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "a8dc4ea66efe7c7159c173320143c78b8c6d1f46da6128b6c21335508c836e3b",
+          "gap_seconds": 1273.90523,
+          "previous": "2026-10-05T18:51:25.932028+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T19:12:39.837258+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T211420.json",
+        "sha256": "b0ca8d6aa8db639382b13469bd667334d3245b73dab3ff267956bd32e8ae21b6",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "739ebdd214e509449739a4bd4368947dd0aab78eb7b322e4a3e48e891608aeed",
+          "gap_seconds": 7300.257598,
+          "previous": "2026-10-05T19:12:39.837258+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T21:14:20.094856+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T212841.json",
+        "sha256": "beed3284f3ce3cf15a692882445e8f7cb2ad0e919fd9d49152663f60d22cc866",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "967eaa8a3b2a3f1ed55553d95b7c4db76829a7e17c62ad3839e30d6fc6635f27",
+          "gap_seconds": 861.327066,
+          "previous": "2026-10-05T21:14:20.094856+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T21:28:41.421922+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T231612.json",
+        "sha256": "8e46b05201b86a5c2391ac870647fa70cd78d15f45eff30b6a7b14b70d17800a",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "1bfc7e42207335cfc701081e1c286f94c682b42e422791c2e4580010bd408307",
+          "gap_seconds": 6450.738995,
+          "previous": "2026-10-05T21:28:41.421922+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T23:16:12.160917+00:00"
+        }
+      },
+      {
+        "path": "outages/20261005T235554.json",
+        "sha256": "e58b2e4a7980c71a7fba9636de8b0069ca7ca7b7ec2ec926fefde120c5013cf7",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "99c6807ef566f9fa0bf1f80697bc7186f23d27be29211c8d07a563f713312a62",
+          "gap_seconds": 2382.154506,
+          "previous": "2026-10-05T23:16:12.160917+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-05T23:55:54.315423+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T001751.json",
+        "sha256": "7bf816bbf09efb642d0b508606823d029d7057dfe55c7ccf3fbef39e9e0d67b9",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "fae26c475409cadfb1a4abe4f6591d3e977465564098cb7ff56b88e2d516476e",
+          "gap_seconds": 1317.511867,
+          "previous": "2026-10-05T23:55:54.315423+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T00:17:51.827290+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T021924.json",
+        "sha256": "5b0da07be53fba0ad76eeb5ac8040971cdfe50c518aa458cffb9624376b5171c",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "60f5269446996503fe6f2d03c479b69ae2a4ce6d7d29250f4e9b045f5ebd9d7a",
+          "gap_seconds": 7293.069342,
+          "previous": "2026-10-06T00:17:51.827290+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T02:19:24.896632+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T032043.json",
+        "sha256": "895bdfaa884457aeca2b6ac584da76345242efa322d3a5c1dbccd3b286f72d88",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "61b6f8ff68421540dbda82e03e61a80de9713c1703829fb355d944f5d28dbd1c",
+          "gap_seconds": 3678.972333,
+          "previous": "2026-10-06T02:19:24.896632+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T03:20:43.868965+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T042202.json",
+        "sha256": "8610b2f5817bb89e0e3646326ef5583432a99c5445da3999f4f63909d4d3e90d",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "a37d72ff8b36f735f51cf64ddc50d14599f427485b2aead6a21ba6db8040a255",
+          "gap_seconds": 3678.482449,
+          "previous": "2026-10-06T03:20:43.868965+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T04:22:02.351414+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T044148.json",
+        "sha256": "ec8bd6b6b728ac6186812f012e1b580588ce092b6caa6a3bf957ab0fe0a14344",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "8d9eb98167fe351749619835cc4c20685efbfdb91fd58e5b0add60736569b4b6",
+          "gap_seconds": 1121.720328,
+          "previous": "2026-10-06T04:23:07.057020+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T04:41:48.777348+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T050758.json",
+        "sha256": "23c0f7680707013949751e2ffff278a8facb79f60a43d391589fe7eb5aa81b04",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "4a2cc3e673bc6e623cadf100b9d4a985a2df1f2d159377bb143691e31959e20f",
+          "gap_seconds": 1569.822731,
+          "previous": "2026-10-06T04:41:48.777348+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T05:07:58.600079+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T052241.json",
+        "sha256": "f8fd87402b1332637e390b65ff76b21a19e913db632f09a2302a0ee2ab3b3197",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "cf8e388b2a74cd4fb19b12cccf314bd6699d238a7f3d2b7e2641548d6c43fa7f",
+          "gap_seconds": 882.922034,
+          "previous": "2026-10-06T05:07:58.600079+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T05:22:41.522113+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T054225.json",
+        "sha256": "032e095ddbd271a3826a23fba2e1a39bc12aae0262196d9be0dd36c4cf6aecbe",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "52c8ae87a8ad6347c9325b7d81cee0221b22c46244650fbe2593590640b36152",
+          "gap_seconds": 793.800558,
+          "previous": "2026-10-06T05:29:11.895206+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T05:42:25.695764+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T071045.json",
+        "sha256": "ce33307ec135e134255d01e5fdcbbb1de80b30d36c5292822b8b775bba734a6f",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "4459871a5aa4bbd37bfef11e0883c58896590db705d224226b038c7b0490e441",
+          "gap_seconds": 4078.761944,
+          "previous": "2026-10-06T06:02:46.906051+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T07:10:45.667995+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T073344.json",
+        "sha256": "df84de5a773aeeea564aa8fde103aa043c5408d19fcf7d59c2e1839e5a8c8c90",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "36927ae75a7844a2d6ce39a28e31794d033c42ba60f285a7b024a48c1112a6fc",
+          "gap_seconds": 1213.908599,
+          "previous": "2026-10-06T07:13:30.428442+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T07:33:44.337041+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T074703.json",
+        "sha256": "b6972ed07bbca667b3e14b6635bcec9ab133f7df7ee80b15163b7d39b17c6a9f",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "75159143659669ee5bfaa46ada2ef10d9581f13ff48b6abbb661164ae51d9a89",
+          "gap_seconds": 798.859264,
+          "previous": "2026-10-06T07:33:44.337041+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T07:47:03.196305+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T080324.json",
+        "sha256": "6bbad3838e72626a6596270816d88bf2a3489c48cb348b99351f29c80a00f6a5",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "c57cbc92a3d9a86445f9c95f63bb1d3341f185304fad203132ebeaca64e918dc",
+          "gap_seconds": 981.408224,
+          "previous": "2026-10-06T07:47:03.196305+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T08:03:24.604529+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T104209.json",
+        "sha256": "b53d7d544a4017c619357d4a410335c08b536801710dbcbec284a24b7672b447",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "808ef333b6b22f91e808286a69b7a6ad52bab4d4c1e536f7cea9ff96e80d728f",
+          "gap_seconds": 1585.983184,
+          "previous": "2026-10-06T10:15:43.747043+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T10:42:09.730227+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T130234.json",
+        "sha256": "2da57aabb00f07bb5c6c60c59b8f4bc63edd9a47d4ae65ae630d357600aa74e0",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "01fb7c904e502231bb18e4fc72ffca475b1f39b2ca9245b4ec175cfe3d4a1185",
+          "gap_seconds": 8424.794567,
+          "previous": "2026-10-06T10:42:09.730227+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T13:02:34.524794+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T181708.json",
+        "sha256": "46fc334ec349f57de29c078f27915493cf189a239246a4e2312709cc19e77e86",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "ac03d2c96c2d97c5434aea0645eb204f98dff0062e21f49a5c0a86f5515b2963",
+          "gap_seconds": 7272.532631,
+          "previous": "2026-10-06T16:15:56.079226+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T18:17:08.611857+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T191830.json",
+        "sha256": "16f903999c190ad6f2130b26709b3ec655605f9ca0daf7c489ac033a2b715456",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "b0c59afcbcddceeb45236810148044112f5de5f9bdaab11b4a31c03b39362a44",
+          "gap_seconds": 3682.114221,
+          "previous": "2026-10-06T18:17:08.611857+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T19:18:30.726078+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T212012.json",
+        "sha256": "4240746a13e652feb9256bf244699e333bf5b63712669624dd2513c39b556012",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "81d5ae7319c8d0308dad5c9dfe9c67e838a6c5c67e0333777a5ad5d1564784c9",
+          "gap_seconds": 7301.324888,
+          "previous": "2026-10-06T19:18:30.726078+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T21:20:12.050966+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T222133.json",
+        "sha256": "ef70d3ea6e542ddac12f8f5263f0dcc5c84de15d46a416723dc2cbce4ed1f216",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "fd2232fcfb23788f1de0db695c82af1ea369fb91b04154ac7bbe54af679b3a4a",
+          "gap_seconds": 3681.408921,
+          "previous": "2026-10-06T21:20:12.050966+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T22:21:33.459887+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T234243.json",
+        "sha256": "123da6267560b72cc65fe6afeb50d249a1cd77e18a2d47cdefa70ca118276fe8",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "8a92719bb7145ce46bd2768addf34faf7db55b0d2633d13638ed90ceb8ad875a",
+          "gap_seconds": 4869.675205,
+          "previous": "2026-10-06T22:21:33.459887+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T23:42:43.135092+00:00"
+        }
+      },
+      {
+        "path": "outages/20261006T235220.json",
+        "sha256": "377d3bcf2e0c901144069444ba7201ae73c6808710dda798ed783846256d0ab0",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "04f0ef6d156a3bc50a5cbfb8375a94376cf8be5f0417ab4dbb93f01860f1fa8e",
+          "gap_seconds": 576.968932,
+          "previous": "2026-10-06T23:42:43.135092+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-06T23:52:20.104024+00:00"
+        }
+      },
+      {
+        "path": "outages/20261007T001435.json",
+        "sha256": "a869267a72437f4489df3c00a5830593686c1313a789c249497e143b19badf90",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "0f71b31667d94e169c2530e809bef1964788c6c1556e895fce0df51b5c4f31ca",
+          "gap_seconds": 1334.932162,
+          "previous": "2026-10-06T23:52:20.104024+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-07T00:14:35.036186+00:00"
+        }
+      },
+      {
+        "path": "outages/20261007T012406.json",
+        "sha256": "d71bea8b4876ae2dcc38d35374780f8b7b792d94fbffb27f40521480c7fcd98e",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "2f74b7c061c850e635de29d27fd990302e61d3edee0be4d41e9a9080509348b5",
+          "gap_seconds": 4171.932785,
+          "previous": "2026-10-07T00:14:35.036186+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-07T01:24:06.968971+00:00"
+        }
+      },
+      {
+        "path": "outages/20261007T022531.json",
+        "sha256": "3bd36ced11f73269aec3af62c261684b4defc0c493465836d6776e324798f9c7",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "f155680a705e3c2f8929e6c2b1d9a8f51c95ce1081c709c2db8488b84d93f75b",
+          "gap_seconds": 3684.089087,
+          "previous": "2026-10-07T01:24:06.968971+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-07T02:25:31.058058+00:00"
+        }
+      },
+      {
+        "path": "outages/20261007T042712.json",
+        "sha256": "dc0526a14fe1eb2702f9392eaf2d8c3c9e7c60332174d966e9e6aa9966174fe8",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "71f2d2b9e9aa472ac0b34f47575d612c60f5c8c7aa2de78d40bf0b9cd034fea3",
+          "gap_seconds": 7301.319186,
+          "previous": "2026-10-07T02:25:31.058058+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-07T04:27:12.377244+00:00"
+        }
+      },
+      {
+        "path": "outages/20261007T105643.json",
+        "sha256": "d75423b1e030673ec60b0f2ca40da9e0d1426d50f1ebf7a30682fb7e3765b5b2",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "88ee03cef310a1260fd189f23c6c9684857a03c81afd39d93d41be94eb7684e5",
+          "gap_seconds": 4231.192723,
+          "previous": "2026-10-07T09:46:11.968532+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-07T10:56:43.161255+00:00"
+        }
+      },
+      {
+        "path": "outages/20261007T121236.json",
+        "sha256": "c7ce27f8388dcef9db04fb7bd4a73cc4707829a646f30859bfeff2f097e1b3c5",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "73005ba686d9cf58d9b01eeda976d7792308675252f563d4189d51b564b8e672",
+          "gap_seconds": 4553.017135,
+          "previous": "2026-10-07T10:56:43.161255+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-07T12:12:36.178390+00:00"
+        }
+      },
+      {
+        "path": "outages/20261007T151022.json",
+        "sha256": "856766f54758caa85e7a471cc0b671173b17b568077c9532f0170db51e1d13f9",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "35475ff94ab96f938c534c39762c3c9f8a1c6fd2219c18093c6c5fa168e8f7b8",
+          "gap_seconds": 8819.984448,
+          "previous": "2026-10-07T12:43:22.166402+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-07T15:10:22.150850+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T020126.json",
+        "sha256": "aa3777248806e73b7739c3de4f00ec8237489029abb05e9c8ea308c0dae983d4",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "982cd982dc42fd1e84893888892135129a5ab809c4ff48f58235bbc9c4ef0d43",
+          "gap_seconds": 2405.834812,
+          "previous": "2026-10-08T01:21:20.605552+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T02:01:26.440364+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T021233.json",
+        "sha256": "5557aab76ce4688fd636c93f5d42be3536ba2168014423dd5f35e1eb744d7918",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "bf56215466d524ddb2e77a09737ca4d1d72d4285a0611a3bd508a0d95df4d542",
+          "gap_seconds": 667.27633,
+          "previous": "2026-10-08T02:01:26.440364+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T02:12:33.716694+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T022301.json",
+        "sha256": "5a6ab55e39810c21f135d5778f0f22f2a127550c9f1f011146fbd13bf5f68d12",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "dbbc7e6c17dd21416ac1b1fd121411ee298246bac01e415e87af11c58b18a184",
+          "gap_seconds": 364.255339,
+          "previous": "2026-10-08T02:16:57.390770+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T02:23:01.646109+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T035018.json",
+        "sha256": "525d4710381892d9d8aee84fb3733d0088128e63d110a177dbcac86b46ffe9aa",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "9696ce0eab22abbca0a4231a5d35d69f56b0ff6bd36dcfda7ef16d68a563b8a6",
+          "gap_seconds": 4855.623532,
+          "previous": "2026-10-08T02:29:23.017300+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T03:50:18.640832+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T040222.json",
+        "sha256": "b9fc65778dc060cb2b371585dbef7a3a8c3c6e80b21235f90c560da3f8fa948e",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "5c75cc31bc39ce9464309bc63c7a1607f553080f52d6126c3367c94eec81ee65",
+          "gap_seconds": 724.150154,
+          "previous": "2026-10-08T03:50:18.640832+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T04:02:22.790986+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T044122.json",
+        "sha256": "13b29d7641329cd617797cf6a8e945e67a97567ef0d4418e4d4d8b9a6b15ad50",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "cdf86a7f6fc78965a561a450b1dea2d9a46aacb627566fa1b6d3a7f9dddb7e5d",
+          "gap_seconds": 2130.701928,
+          "previous": "2026-10-08T04:05:51.794479+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T04:41:22.496407+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T045605.json",
+        "sha256": "dc65dae6396359ffc1720c47f789650576ba809129a19de05f26e595bc02553e",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "9d14d3eb99a258ef1edc9d3ffcc90602af333aa687dd897ded426db367067529",
+          "gap_seconds": 882.72488,
+          "previous": "2026-10-08T04:41:22.496407+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T04:56:05.221287+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T053032.json",
+        "sha256": "3bb35bd9ffc58b984e52f4f91912d81007f59ca32574299d0c717d46ee152ced",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "53a73955da09842a4f2b396b15fcadbc9bc0f52b9331c80a3a5fb9c0c9f112b9",
+          "gap_seconds": 1359.503598,
+          "previous": "2026-10-08T05:07:52.796475+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T05:30:32.300073+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T054314.json",
+        "sha256": "32f2ab100b94e5a5df20dfdb0d5eb2c060f009885c9b51fc466ce5b3d77f0503",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "c888f14d60f5da2fcfa5cb3cfe3c34c4a482fb386dc99a91d7fd4a8177bdea34",
+          "gap_seconds": 761.73048,
+          "previous": "2026-10-08T05:30:32.300073+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T05:43:14.030553+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T073640.json",
+        "sha256": "5e4c8deb9ec1f52454b35799f75e1beaef1214a56f42468b42ef1acd2ca9f6bc",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "cc77c1437d32af9de64ed322becc113f1743f9fe0fb5e9bab6063a402c80109f",
+          "gap_seconds": 356.144833,
+          "previous": "2026-10-08T07:30:43.893325+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T07:36:40.038158+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T075925.json",
+        "sha256": "cd467777528663f31d456b1d01545be578d1114062cc534edca7a90dde67efba",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "c48cd83975574054ca262f624cd94b85f335c518799c0978f64b85f9918b7172",
+          "gap_seconds": 1365.184692,
+          "previous": "2026-10-08T07:36:40.038158+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T07:59:25.222850+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T080842.json",
+        "sha256": "7aea8020af3e7ed0947d996ef5957ae5c4cfbe14e1f3d6db69b1e4949c722712",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "14755286691ca7c72497f00fd47188fb6c2d30cec278a1ad5a5587f71fc86e9a",
+          "gap_seconds": 557.041956,
+          "previous": "2026-10-08T07:59:25.222850+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T08:08:42.264806+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T102333.json",
+        "sha256": "8fbaeaeccc895e973e4e2861aca8d435bd6c14dd826bcbabef917013b090334b",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "36db3c3fc3f99c20cef784097cc0b01e2c1526604531efc9e01bb7ca30fd2e96",
+          "gap_seconds": 316.29644,
+          "previous": "2026-10-08T10:18:17.161942+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T10:23:33.458382+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T103943.json",
+        "sha256": "1d1e6e0f86081ed04fc81b3b76cd47aed86da41e63462f535baadf14fa309094",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "9c4034343471cecbf19c0c3179b4695436151a2d7e391c2acb9db6679ae081e6",
+          "gap_seconds": 969.819435,
+          "previous": "2026-10-08T10:23:33.458382+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T10:39:43.277817+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T105631.json",
+        "sha256": "3c07820af668ca1cb3029c297aec3fde7aa7902e9a267e7d995a1c1418f429ba",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "f75650bf00d7c6733b5d97da186dec470a595ea0ea6aef829437cae6510b6527",
+          "gap_seconds": 1008.239477,
+          "previous": "2026-10-08T10:39:43.277817+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T10:56:31.517294+00:00"
+        }
+      },
+      {
+        "path": "outages/20261008T120219.json",
+        "sha256": "a2db49918fe2c996c1fabb469a36ea4a37a54b08b87ff0957701af1a573062e9",
+        "content_sha256_valid": true,
+        "content": {
+          "content_sha256": "eff548f83f6a03a0bc9e87df01899a52e85b7e49c1a59d8fd185782f72843891",
+          "gap_seconds": 3948.402585,
+          "previous": "2026-10-08T10:56:31.517294+00:00",
+          "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+          "resumed": "2026-10-08T12:02:19.919879+00:00"
+        }
+      }
+    ],
+    "outcomes": [],
+    "terminal": [],
+    "outcome-runs": [
+      {
+        "path": "outcome-runs/2026-10-08.json",
+        "sha256": "88a3556851fdccd4c9b53c5b2ffd089b57df00c8579c103be3c51fa061422338",
+        "content_sha256_valid": true,
+        "content": {
+          "at": "2026-10-08T20:30:53.562883+00:00",
+          "content_sha256": "afaca98878479b3cabfe4825c1d35f9fd006dfacc8c61d274a5f33c91cf85f92",
+          "session": "2026-10-08",
+          "snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2/outcome-snapshots/2026-10-08-203043",
+          "snapshot_sha256": "195052eec032642971d84fd0fc6c0668cd2b8a70607af8421b94b0b1e5540a21",
+          "status": "complete",
+          "terminal_error": {
+            "message": "Halted pilot cannot process terminal fills",
+            "type": "ValueError"
+          },
+          "terminal_status": "failed"
+        }
+      }
+    ],
+    "outcome-attempts": [
+      {
+        "path": "outcome-attempts/2026-10-08-203043.json",
+        "sha256": "f03e4ff7b242361a67c1b07abe7883db93e46af30306856353c5015b351b2f86",
+        "content": {
+          "at": "2026-10-08T20:30:53.564345+00:00",
+          "status": "complete"
+        }
+      }
+    ]
+  },
+  "last_check_disposition": "quiet_known_halt_blocks_terminal_fills_outcome_snapshot_verified",
+  "status": {
+    "trial_id": "PILOT-TREND-WEEK1-R2-20261001",
+    "external_orders": false,
+    "deployment": "cash",
+    "shadow": "trend",
+    "state_consistency_errors": [],
+    "ledger_consistent": true,
+    "valid_observed_sessions": 2,
+    "expected_elapsed_sessions": 5,
+    "missing_sessions": [
+      "2026-10-05",
+      "2026-10-06",
+      "2026-10-07"
+    ],
+    "label_complete_decisions": 0,
+    "required_sessions": 5,
+    "next_event": {
+      "id": "2026-10-09:outcomes",
+      "session": "2026-10-09",
+      "kind": "outcomes",
+      "ordinal": 7,
+      "due": "2026-10-09T20:30:00+00:00",
+      "hong_kong": "2026-10-10T04:30:00+08:00"
+    },
+    "terminal_observed_sessions": 0,
+    "terminal_required_sessions": 6,
+    "halted": true,
+    "prospective_status": "incomplete",
+    "limitations": [
+      "Local launch agent requires logged-in awake host; no wake guarantee",
+      "No external broker execution",
+      "Commissioning/replays never count as prospective",
+      "Missed sessions halt; no fabricated backfill"
+    ]
+  },
+  "heartbeat": {
+    "at": "2026-10-08T21:30:41.554785+00:00",
+    "parent_pid": 1,
+    "pid": 92158,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+    "status": "awake"
+  },
+  "halt": {
+    "at": "2026-10-08T13:00:36.971451+00:00",
+    "reason": "Missing expected reconciled receipt",
+    "session": "2026-10-07"
+  },
+  "heartbeat_age_seconds": 14.769773,
+  "verification": {
+    "sealed_status_exit_code": 0,
+    "release_integrity_verified": true,
+    "launchd_loaded": true,
+    "launchd_last_exit_code": 0,
+    "launchd_interval_seconds": 60,
+    "launchd_targets_active_release": true,
+    "heartbeat_source_hash_matches": true,
+    "durable_record_content_hashes_verified": true,
+    "input_freshness_verified": true,
+    "snapshot_manifest_hash_verified": true,
+    "ledger_consistent": true,
+    "existing_durable_records_unchanged": true
+  },
+  "boundary_check": {
+    "window": "post_close",
+    "session": "2026-10-08",
+    "exchange": "XNYS",
+    "close_utc": "2026-10-08T20:00:00+00:00",
+    "new_records": 6,
+    "new_record_paths": [
+      "events/2026-10-08-outcome_retry45.json",
+      "events/2026-10-08-outcome_retry60.json",
+      "events/2026-10-08-outcome_watchdog.json",
+      "events/2026-10-08-outcomes.json",
+      "outcome-runs/2026-10-08.json",
+      "outcome-attempts/2026-10-08-203043.json"
+    ],
+    "new_actionable_events": 0,
+    "extra_tests_run": false,
+    "source_qualification_reused": true,
+    "prospective_decisions": 2,
+    "required_decisions": 5,
+    "mature_outcomes": 0,
+    "terminal_receipts": 0,
+    "registered_milestone_complete": false,
+    "week_close_report_generated": false,
+    "final_report_generated": false,
+    "related_notified_incident": "PILOT-TREND-WEEK1-R2-20261001:missing-session:2026-10-05",
+    "watchdog_receipt": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2/events/2026-10-08-outcome_watchdog.json",
+    "reason": "Scheduled outcome snapshot completed and passed provenance/freshness checks. No forecast outcome is mature yet. Terminal fills were blocked by the previously reported halt; retries and watchdog record the same guard failure. This is a consequence of the existing incident, not a new actionable failure. Both completion gates remain unmet."
+  },
+  "commissioning": {
+    "receipt": "data/research-week1-r2/provider-smoke-verification.json",
+    "counts_as_prospective": false
+  },
+  "backup_verification": {
+    "checked_at": "2026-10-02T21:33:22.639787+00:00",
+    "receipt": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2/backups/2026-10-02/receipt.json",
+    "receipt_sha256": "36e7b840d48376b05b046987d3233000245691333e855bc411aa7fbbcee2f10e",
+    "files_verified": 160,
+    "origin_workspace_matches": true,
+    "restore_performed_by_observer": false
+  },
+  "skipped_invocations": [
+    {
+      "received_at": "2026-10-03T13:31:38.251Z",
+      "checked_at": "2026-10-03T13:33:03.278605+00:00",
+      "new_york_date": "2026-10-03",
+      "xnys_session": false,
+      "disposition": "quiet_skipped_non_session_window",
+      "collector_status_invoked": false,
+      "live_workspace_inspected_or_mutated": false,
+      "notification_sent": false,
+      "reason": "Saturday market-open wake-up is outside the eligible XNYS boundary windows."
+    },
+    {
+      "invoked_at": "2026-10-05T22:15:13.383000+00:00",
+      "recorded_at": "2026-10-05T22:15:41.157498+00:00",
+      "session": "2026-10-05",
+      "reason": "Off-window invocation: 06:15 HKT is after the scheduled 05:30 HKT post-close boundary. Collector not inspected.",
+      "calendar_session": true,
+      "open_utc": "2026-10-05T13:30:00+00:00",
+      "close_utc": "2026-10-05T20:00:00+00:00",
+      "sealed_status_run": false,
+      "live_workspace_inspected": false,
+      "collector_modified": false
+    },
+    {
+      "invoked_at": "2026-10-06T22:21:04.360000+00:00",
+      "recorded_at": "2026-10-06T22:21:26.417856+00:00",
+      "session": "2026-10-06",
+      "reason": "Off-window invocation: 06:21 HKT is after the scheduled 05:30 HKT post-close boundary. Collector not inspected.",
+      "calendar_session": true,
+      "open_utc": "2026-10-06T13:30:00+00:00",
+      "close_utc": "2026-10-06T20:00:00+00:00",
+      "sealed_status_run": false,
+      "live_workspace_inspected": false,
+      "collector_modified": false
+    },
+    {
+      "invoked_at": "2026-10-07T14:21:39.566000+00:00",
+      "recorded_at": "2026-10-07T15:10:21.619333+00:00",
+      "session": "2026-10-07",
+      "reason": "Off-window invocation: 22:21 HKT is after the scheduled 21:30 HKT market-open boundary. Collector not inspected.",
+      "calendar_session": true,
+      "open_utc": "2026-10-07T13:30:00+00:00",
+      "close_utc": "2026-10-07T20:00:00+00:00",
+      "sealed_status_run": false,
+      "live_workspace_inspected": false,
+      "collector_modified": false
+    },
+    {
+      "invoked_at": "2026-10-10T06:15:16.347000+00:00",
+      "recorded_at": "2026-10-10T06:16:13.057376+00:00",
+      "session": "2026-10-10",
+      "reason": "Off-window invocation: Saturday 14:15 HKT is outside the scheduled 05:30 post-close and 21:30 market-open boundaries. XNYS has no Saturday session. Collector not inspected.",
+      "calendar_session": false,
+      "open_utc": null,
+      "close_utc": null,
+      "sealed_status_run": false,
+      "live_workspace_inspected": false,
+      "collector_modified": false
+    },
+    {
+      "invoked_at": "2026-10-10T13:31:33.342000+00:00",
+      "recorded_at": "2026-10-10T13:31:53.040166+00:00",
+      "session": "2026-10-10",
+      "reason": "Off-window invocation: Saturday 21:31 HKT has no eligible XNYS market-open session. Collector not inspected.",
+      "calendar_session": false,
+      "open_utc": null,
+      "close_utc": null,
+      "sealed_status_run": false,
+      "live_workspace_inspected": false,
+      "collector_modified": false
+    }
+  ],
+  "last_wakeup_at": "2026-10-10T13:31:33.342000+00:00",
+  "last_wakeup_disposition": "skipped_off_window_no_collector_inspection",
+  "outcome_snapshot_verification": {
+    "session": "2026-10-08",
+    "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2/outcome-snapshots/2026-10-08-203043",
+    "manifest_sha256": "195052eec032642971d84fd0fc6c0668cd2b8a70607af8421b94b0b1e5540a21",
+    "symbols": 22,
+    "adjusted_raw_and_response_hashes_verified": true,
+    "expected_session_verified": true,
+    "retrieved_after_close": true,
+    "mature_outcomes": 0,
+    "terminal_status": "failed_due_to_existing_halt"
+  }
+}

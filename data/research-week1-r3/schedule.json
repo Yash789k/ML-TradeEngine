@@ -1,0 +1,365 @@
+{
+  "config": {
+    "anchor": "2026-09-29",
+    "capital": 10000,
+    "deployment": "cash",
+    "end": "2026-10-14",
+    "external_orders": false,
+    "first_refit": null,
+    "missed_session": "visible halt; no backfill; fixed end date",
+    "parent_release_sha256": "12eefa88386aaa2929866554e51b0b818c113489ab12ddc4813a1591cc34906d",
+    "price_units": "chained adjusted total-return proxy units; not broker shares",
+    "protocol_sha256": "3383450ad87a6a31002c67089fe92cb5d86db5f9c2ebd0c77cd384a9c01465de",
+    "refit_rule": "Carried 2026-09-25 models; existing 21-session cadence has no event inside this three-session continuation pilot",
+    "registered_at": "2026-10-10T18:38:41.255797+00:00",
+    "sessions": 3,
+    "shadow": "trend",
+    "start": "2026-10-12",
+    "symbols": [
+      "AAPL",
+      "AMZN",
+      "BAC",
+      "DIA",
+      "GLD",
+      "GOOGL",
+      "GS",
+      "IWM",
+      "JPM",
+      "META",
+      "MSFT",
+      "NVDA",
+      "QQQ",
+      "SPY",
+      "TLT",
+      "TSLA",
+      "XLE",
+      "XLF",
+      "XLI",
+      "XLK",
+      "XLP",
+      "XLV"
+    ],
+    "trial_id": "PILOT-TREND-WEEK1-R3-20261012",
+    "version": 2,
+    "weekly_rule": "first decision and last XNYS session of ISO week",
+    "protocol_path": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r3/protocol.json",
+    "operational_milestones": [
+      3
+    ],
+    "reporting_scope": "descriptive operational pilot"
+  },
+  "events": [
+    {
+      "id": "2026-10-12:daily",
+      "session": "2026-10-12",
+      "kind": "daily",
+      "due": "2026-10-12T20:30:00+00:00",
+      "ordinal": 1,
+      "hong_kong": "2026-10-13T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-12:retry45",
+      "session": "2026-10-12",
+      "kind": "retry45",
+      "due": "2026-10-12T20:45:00+00:00",
+      "ordinal": 1,
+      "hong_kong": "2026-10-13T04:45:00+08:00"
+    },
+    {
+      "id": "2026-10-12:retry60",
+      "session": "2026-10-12",
+      "kind": "retry60",
+      "due": "2026-10-12T21:00:00+00:00",
+      "ordinal": 1,
+      "hong_kong": "2026-10-13T05:00:00+08:00"
+    },
+    {
+      "id": "2026-10-12:watchdog",
+      "session": "2026-10-12",
+      "kind": "watchdog",
+      "due": "2026-10-12T21:30:00+00:00",
+      "ordinal": 1,
+      "hong_kong": "2026-10-13T05:30:00+08:00"
+    },
+    {
+      "id": "2026-10-12:preopen",
+      "session": "2026-10-12",
+      "kind": "preopen",
+      "ordinal": 1,
+      "due": "2026-10-13T13:00:00+00:00",
+      "hong_kong": "2026-10-13T21:00:00+08:00"
+    },
+    {
+      "id": "2026-10-13:daily",
+      "session": "2026-10-13",
+      "kind": "daily",
+      "due": "2026-10-13T20:30:00+00:00",
+      "ordinal": 2,
+      "hong_kong": "2026-10-14T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-13:retry45",
+      "session": "2026-10-13",
+      "kind": "retry45",
+      "due": "2026-10-13T20:45:00+00:00",
+      "ordinal": 2,
+      "hong_kong": "2026-10-14T04:45:00+08:00"
+    },
+    {
+      "id": "2026-10-13:retry60",
+      "session": "2026-10-13",
+      "kind": "retry60",
+      "due": "2026-10-13T21:00:00+00:00",
+      "ordinal": 2,
+      "hong_kong": "2026-10-14T05:00:00+08:00"
+    },
+    {
+      "id": "2026-10-13:watchdog",
+      "session": "2026-10-13",
+      "kind": "watchdog",
+      "due": "2026-10-13T21:30:00+00:00",
+      "ordinal": 2,
+      "hong_kong": "2026-10-14T05:30:00+08:00"
+    },
+    {
+      "id": "2026-10-13:preopen",
+      "session": "2026-10-13",
+      "kind": "preopen",
+      "ordinal": 2,
+      "due": "2026-10-14T13:00:00+00:00",
+      "hong_kong": "2026-10-14T21:00:00+08:00"
+    },
+    {
+      "id": "2026-10-14:daily",
+      "session": "2026-10-14",
+      "kind": "daily",
+      "due": "2026-10-14T20:30:00+00:00",
+      "ordinal": 3,
+      "hong_kong": "2026-10-15T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-14:retry45",
+      "session": "2026-10-14",
+      "kind": "retry45",
+      "due": "2026-10-14T20:45:00+00:00",
+      "ordinal": 3,
+      "hong_kong": "2026-10-15T04:45:00+08:00"
+    },
+    {
+      "id": "2026-10-14:retry60",
+      "session": "2026-10-14",
+      "kind": "retry60",
+      "due": "2026-10-14T21:00:00+00:00",
+      "ordinal": 3,
+      "hong_kong": "2026-10-15T05:00:00+08:00"
+    },
+    {
+      "id": "2026-10-14:watchdog",
+      "session": "2026-10-14",
+      "kind": "watchdog",
+      "due": "2026-10-14T21:30:00+00:00",
+      "ordinal": 3,
+      "hong_kong": "2026-10-15T05:30:00+08:00"
+    },
+    {
+      "id": "2026-10-14:preopen",
+      "session": "2026-10-14",
+      "kind": "preopen",
+      "ordinal": 3,
+      "due": "2026-10-15T13:00:00+00:00",
+      "hong_kong": "2026-10-15T21:00:00+08:00"
+    },
+    {
+      "id": "2026-10-15:outcomes",
+      "session": "2026-10-15",
+      "kind": "outcomes",
+      "ordinal": 4,
+      "due": "2026-10-15T20:30:00+00:00",
+      "hong_kong": "2026-10-16T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-15:outcome_retry45",
+      "session": "2026-10-15",
+      "kind": "outcome_retry45",
+      "ordinal": 4,
+      "due": "2026-10-15T20:45:00+00:00",
+      "hong_kong": "2026-10-16T04:45:00+08:00"
+    },
+    {
+      "id": "2026-10-15:outcome_retry60",
+      "session": "2026-10-15",
+      "kind": "outcome_retry60",
+      "ordinal": 4,
+      "due": "2026-10-15T21:00:00+00:00",
+      "hong_kong": "2026-10-16T05:00:00+08:00"
+    },
+    {
+      "id": "2026-10-15:outcome_watchdog",
+      "session": "2026-10-15",
+      "kind": "outcome_watchdog",
+      "ordinal": 4,
+      "due": "2026-10-15T21:30:00+00:00",
+      "hong_kong": "2026-10-16T05:30:00+08:00"
+    },
+    {
+      "id": "2026-10-16:outcomes",
+      "session": "2026-10-16",
+      "kind": "outcomes",
+      "ordinal": 5,
+      "due": "2026-10-16T20:30:00+00:00",
+      "hong_kong": "2026-10-17T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-16:outcome_retry45",
+      "session": "2026-10-16",
+      "kind": "outcome_retry45",
+      "ordinal": 5,
+      "due": "2026-10-16T20:45:00+00:00",
+      "hong_kong": "2026-10-17T04:45:00+08:00"
+    },
+    {
+      "id": "2026-10-16:outcome_retry60",
+      "session": "2026-10-16",
+      "kind": "outcome_retry60",
+      "ordinal": 5,
+      "due": "2026-10-16T21:00:00+00:00",
+      "hong_kong": "2026-10-17T05:00:00+08:00"
+    },
+    {
+      "id": "2026-10-16:outcome_watchdog",
+      "session": "2026-10-16",
+      "kind": "outcome_watchdog",
+      "ordinal": 5,
+      "due": "2026-10-16T21:30:00+00:00",
+      "hong_kong": "2026-10-17T05:30:00+08:00"
+    },
+    {
+      "id": "2026-10-19:outcomes",
+      "session": "2026-10-19",
+      "kind": "outcomes",
+      "ordinal": 6,
+      "due": "2026-10-19T20:30:00+00:00",
+      "hong_kong": "2026-10-20T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-19:outcome_retry45",
+      "session": "2026-10-19",
+      "kind": "outcome_retry45",
+      "ordinal": 6,
+      "due": "2026-10-19T20:45:00+00:00",
+      "hong_kong": "2026-10-20T04:45:00+08:00"
+    },
+    {
+      "id": "2026-10-19:outcome_retry60",
+      "session": "2026-10-19",
+      "kind": "outcome_retry60",
+      "ordinal": 6,
+      "due": "2026-10-19T21:00:00+00:00",
+      "hong_kong": "2026-10-20T05:00:00+08:00"
+    },
+    {
+      "id": "2026-10-19:outcome_watchdog",
+      "session": "2026-10-19",
+      "kind": "outcome_watchdog",
+      "ordinal": 6,
+      "due": "2026-10-19T21:30:00+00:00",
+      "hong_kong": "2026-10-20T05:30:00+08:00"
+    },
+    {
+      "id": "2026-10-20:outcomes",
+      "session": "2026-10-20",
+      "kind": "outcomes",
+      "ordinal": 7,
+      "due": "2026-10-20T20:30:00+00:00",
+      "hong_kong": "2026-10-21T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-20:outcome_retry45",
+      "session": "2026-10-20",
+      "kind": "outcome_retry45",
+      "ordinal": 7,
+      "due": "2026-10-20T20:45:00+00:00",
+      "hong_kong": "2026-10-21T04:45:00+08:00"
+    },
+    {
+      "id": "2026-10-20:outcome_retry60",
+      "session": "2026-10-20",
+      "kind": "outcome_retry60",
+      "ordinal": 7,
+      "due": "2026-10-20T21:00:00+00:00",
+      "hong_kong": "2026-10-21T05:00:00+08:00"
+    },
+    {
+      "id": "2026-10-20:outcome_watchdog",
+      "session": "2026-10-20",
+      "kind": "outcome_watchdog",
+      "ordinal": 7,
+      "due": "2026-10-20T21:30:00+00:00",
+      "hong_kong": "2026-10-21T05:30:00+08:00"
+    },
+    {
+      "id": "2026-10-21:outcomes",
+      "session": "2026-10-21",
+      "kind": "outcomes",
+      "ordinal": 8,
+      "due": "2026-10-21T20:30:00+00:00",
+      "hong_kong": "2026-10-22T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-21:outcome_retry45",
+      "session": "2026-10-21",
+      "kind": "outcome_retry45",
+      "ordinal": 8,
+      "due": "2026-10-21T20:45:00+00:00",
+      "hong_kong": "2026-10-22T04:45:00+08:00"
+    },
+    {
+      "id": "2026-10-21:outcome_retry60",
+      "session": "2026-10-21",
+      "kind": "outcome_retry60",
+      "ordinal": 8,
+      "due": "2026-10-21T21:00:00+00:00",
+      "hong_kong": "2026-10-22T05:00:00+08:00"
+    },
+    {
+      "id": "2026-10-21:outcome_watchdog",
+      "session": "2026-10-21",
+      "kind": "outcome_watchdog",
+      "ordinal": 8,
+      "due": "2026-10-21T21:30:00+00:00",
+      "hong_kong": "2026-10-22T05:30:00+08:00"
+    },
+    {
+      "id": "2026-10-22:outcomes",
+      "session": "2026-10-22",
+      "kind": "outcomes",
+      "ordinal": 9,
+      "due": "2026-10-22T20:30:00+00:00",
+      "hong_kong": "2026-10-23T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-22:outcome_retry45",
+      "session": "2026-10-22",
+      "kind": "outcome_retry45",
+      "ordinal": 9,
+      "due": "2026-10-22T20:45:00+00:00",
+      "hong_kong": "2026-10-23T04:45:00+08:00"
+    },
+    {
+      "id": "2026-10-22:outcome_retry60",
+      "session": "2026-10-22",
+      "kind": "outcome_retry60",
+      "ordinal": 9,
+      "due": "2026-10-22T21:00:00+00:00",
+      "hong_kong": "2026-10-23T05:00:00+08:00"
+    },
+    {
+      "id": "2026-10-22:outcome_watchdog",
+      "session": "2026-10-22",
+      "kind": "outcome_watchdog",
+      "ordinal": 9,
+      "due": "2026-10-22T21:30:00+00:00",
+      "hong_kong": "2026-10-23T05:30:00+08:00"
+    }
+  ]
+}

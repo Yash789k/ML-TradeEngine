@@ -1,0 +1,159 @@
+{
+  "verified_at": "2026-10-10T18:42:54.693630+00:00",
+  "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261011-week1-r3",
+  "manifest_sha256": "7bfc89e8f58a97d61a3ec800aa4819480f1bb66dd653f3fcce9493dc4d501946",
+  "trial_id": "PILOT-TREND-WEEK1-R3-20261012",
+  "status": {
+    "trial_id": "PILOT-TREND-WEEK1-R3-20261012",
+    "external_orders": false,
+    "deployment": "cash",
+    "shadow": "trend",
+    "state_consistency_errors": [],
+    "ledger_consistent": true,
+    "valid_observed_sessions": 0,
+    "expected_elapsed_sessions": 0,
+    "missing_sessions": [],
+    "label_complete_decisions": 0,
+    "required_sessions": 3,
+    "next_event": {
+      "id": "2026-10-12:daily",
+      "session": "2026-10-12",
+      "kind": "daily",
+      "due": "2026-10-12T20:30:00+00:00",
+      "ordinal": 1,
+      "hong_kong": "2026-10-13T04:30:00+08:00"
+    },
+    "terminal_observed_sessions": 0,
+    "terminal_required_sessions": 6,
+    "halted": false,
+    "prospective_status": "incomplete",
+    "limitations": [
+      "Local launch agent requires logged-in awake host; no wake guarantee",
+      "No external broker execution",
+      "Commissioning/replays never count as prospective",
+      "Missed sessions halt; no fabricated backfill"
+    ]
+  },
+  "actual_os_trigger": {
+    "at": "2026-10-10T18:40:01.263607+00:00",
+    "parent_pid": 1,
+    "pid": 9695,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "b9ab6080fa962bd06b6416358e68cb832042248cac9362759413acf2a41f375e",
+    "status": "awake",
+    "content_sha256": "ba58563ff5871922b6859abc9a6503de94d6b8d3e2272630bb1fa537b4cfd3ec"
+  },
+  "heartbeat": {
+    "at": "2026-10-10T18:42:25.622857+00:00",
+    "parent_pid": 1,
+    "pid": 9854,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "b9ab6080fa962bd06b6416358e68cb832042248cac9362759413acf2a41f375e",
+    "status": "awake"
+  },
+  "heartbeat_age_seconds": 28.745811,
+  "sole_collector_jobs": [
+    "-\t0\tlocal.ml-trade-engine.collector-v2"
+  ],
+  "commissioning": {
+    "mode": "commissioning_preview",
+    "session": "2026-10-09",
+    "symbol_count": 22,
+    "result_sha256": "7706f8bad462a2fc5dc6a9587f66444ee18e9293978b8456655126eb939de490",
+    "snapshot_sha256": "1224c6971af2d807a67c0d63875c01b0167867a757a8defc205e4344bc9abfb1",
+    "provider_requests": 22,
+    "timings_seconds": {
+      "data_read": 9.923094625002705,
+      "features": 0.2607318719383329,
+      "inference": 0.15913287899456918,
+      "ledger": 0.012576084001921117,
+      "training": 0.0,
+      "whole_batch": 11.927120499982266
+    },
+    "accounts": {
+      "deployment": {
+        "cash": 10000.0,
+        "drawdown": 0.0,
+        "equity": 10000.0,
+        "fees": 0.0,
+        "gross_exposure": 0.0,
+        "positions": {
+          "AAPL": 0.0,
+          "AMZN": 0.0,
+          "BAC": 0.0,
+          "DIA": 0.0,
+          "GLD": 0.0,
+          "GOOGL": 0.0,
+          "GS": 0.0,
+          "IWM": 0.0,
+          "JPM": 0.0,
+          "META": 0.0,
+          "MSFT": 0.0,
+          "NVDA": 0.0,
+          "QQQ": 0.0,
+          "SPY": 0.0,
+          "TLT": 0.0,
+          "TSLA": 0.0,
+          "XLE": 0.0,
+          "XLF": 0.0,
+          "XLI": 0.0,
+          "XLK": 0.0,
+          "XLP": 0.0,
+          "XLV": 0.0
+        },
+        "realized_pnl": 0.0,
+        "reconciliation_error": 0.0,
+        "reserved_cash": 0,
+        "unrealized_pnl": 0.0
+      },
+      "shadow": {
+        "cash": 10000.0,
+        "drawdown": 0.0,
+        "equity": 10000.0,
+        "fees": 0.0,
+        "gross_exposure": 0.0,
+        "positions": {
+          "AAPL": 0.0,
+          "AMZN": 0.0,
+          "BAC": 0.0,
+          "DIA": 0.0,
+          "GLD": 0.0,
+          "GOOGL": 0.0,
+          "GS": 0.0,
+          "IWM": 0.0,
+          "JPM": 0.0,
+          "META": 0.0,
+          "MSFT": 0.0,
+          "NVDA": 0.0,
+          "QQQ": 0.0,
+          "SPY": 0.0,
+          "TLT": 0.0,
+          "TSLA": 0.0,
+          "XLE": 0.0,
+          "XLF": 0.0,
+          "XLI": 0.0,
+          "XLK": 0.0,
+          "XLP": 0.0,
+          "XLV": 0.0
+        },
+        "realized_pnl": 0.0,
+        "reconciliation_error": 0.0,
+        "reserved_cash": 4126.177755962926,
+        "unrealized_pnl": 0.0
+      }
+    },
+    "counts_as_prospective": false
+  },
+  "sleep_guard": {
+    "running": true,
+    "pid": "9685",
+    "until": "2026-10-23T06:00:00+08:00",
+    "assertion_verified": true,
+    "physical_sleep_wake_tested": false
+  },
+  "preserved_prior_files": 490,
+  "dashboard_health": "ok",
+  "external_orders": false
+}

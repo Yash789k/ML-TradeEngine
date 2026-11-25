@@ -1,0 +1,24 @@
+{
+  "source": "app_week1_r2.py",
+  "exceptions": [],
+  "metrics": [
+    {
+      "label": "Valid pilot sessions",
+      "value": "0"
+    },
+    {
+      "label": "Required sessions",
+      "value": "5"
+    },
+    {
+      "label": "Mature decision dates",
+      "value": "0"
+    },
+    {
+      "label": "Missed sessions",
+      "value": "0"
+    }
+  ],
+  "schedule_matches_replacement": true,
+  "scope": "Streamlit render, sealed CLI status, local UI only"
+}

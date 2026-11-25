@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>KeepAlive</key>
+	<dict>
+		<key>SuccessfulExit</key>
+		<false/>
+	</dict>
+	<key>Label</key>
+	<string>local.ml-trade-engine.awake-week1-r4</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Users/a/Downloads/ml-trade-engine/data/research-v2/clean-env/bin/python</string>
+		<string>-B</string>
+		<string>/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261014-week1-r4/scripts/power_guard.py</string>
+		<string>--until</string>
+		<string>2026-10-27T06:00:00+08:00</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/Users/a/Downloads/ml-trade-engine/data/research-week1-r4/power-guard.stderr.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/a/Downloads/ml-trade-engine/data/research-week1-r4/power-guard.stdout.log</string>
+	<key>ThrottleInterval</key>
+	<integer>30</integer>
+</dict>
+</plist>

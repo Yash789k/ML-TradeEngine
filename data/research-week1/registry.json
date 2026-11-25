@@ -1,0 +1,13 @@
+{
+  "id": "R12-WEEK1",
+  "registered_protocol": "data/research-week1/protocol.json",
+  "superseded_trial": "PILOT-TREND-V2-20260929",
+  "active_trial": "PILOT-TREND-WEEK1-20260929",
+  "status": "awaiting_five_actual_sessions",
+  "decision_sessions": 5,
+  "outcome_tail_sessions": 6,
+  "analysis": "descriptive only",
+  "amendment_before_first_observation": true,
+  "historical_experiments_unchanged": true,
+  "readiness_approved": false
+}

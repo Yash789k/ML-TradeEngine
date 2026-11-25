@@ -1,0 +1,9 @@
+{
+  "created_at": "2026-10-01T14:04:52.651447+00:00",
+  "label": "local.ml-trade-engine.awake-20261001",
+  "plist": "/Users/a/Library/LaunchAgents/local.ml-trade-engine.awake-20261001.plist",
+  "expires_hkt": "2026-10-02T06:00:00+08:00",
+  "seconds": 28508,
+  "purpose": "User-authorized readiness for tonight; temporary idle/system sleep assertion only; lid must remain open and host powered",
+  "permanent_power_settings_changed": false
+}

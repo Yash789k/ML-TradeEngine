@@ -1,0 +1,24 @@
+{
+  "verified_at": "2026-10-01T14:14:28.716533+00:00",
+  "installation_receipt_sha256": "efd0fd2af43f5e0ed83a48ac898553b872ca6fa2da03cf76993ae0fcc446bd93",
+  "timer_reentry_verified": true,
+  "heartbeat": {
+    "at": "2026-10-01T14:13:50.940581+00:00",
+    "parent_pid": 1,
+    "pid": 42241,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+    "status": "awake"
+  },
+  "no_halt": true,
+  "report_execution": "interim 0 observations; no completion claim",
+  "report_test_source_sha256": "99e9b095cefc5baa5a7a5b27ee170678dfb43c2547f2bf84074aab3fb3df61fa",
+  "report_source_sha256": "c3e2bd55dca9c45b6c62b2265bf623024b3f3c723ec63310281b920364bb8b7e",
+  "report_junit_sha256": "112555a63e00daec49438216772a8fef8c53defbd7f01860c239715f0495f215",
+  "qualification_passing_cases": 29,
+  "report_passing_cases": 7,
+  "prospective_observed": 0,
+  "economic_approval": false,
+  "broker_enabled": false
+}

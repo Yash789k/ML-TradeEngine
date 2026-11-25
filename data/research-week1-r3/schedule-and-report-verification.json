@@ -1,0 +1,77 @@
+{
+  "registered_collection_events": [
+    {
+      "session": "2026-10-12",
+      "kind": "daily",
+      "hong_kong": "2026-10-13T04:30:00+08:00"
+    },
+    {
+      "session": "2026-10-13",
+      "kind": "daily",
+      "hong_kong": "2026-10-14T04:30:00+08:00"
+    },
+    {
+      "session": "2026-10-14",
+      "kind": "daily",
+      "hong_kong": "2026-10-15T04:30:00+08:00"
+    },
+    {
+      "session": "2026-10-15",
+      "kind": "outcomes",
+      "hong_kong": "2026-10-16T04:30:00+08:00"
+    },
+    {
+      "session": "2026-10-16",
+      "kind": "outcomes",
+      "hong_kong": "2026-10-17T04:30:00+08:00"
+    },
+    {
+      "session": "2026-10-19",
+      "kind": "outcomes",
+      "hong_kong": "2026-10-20T04:30:00+08:00"
+    },
+    {
+      "session": "2026-10-20",
+      "kind": "outcomes",
+      "hong_kong": "2026-10-21T04:30:00+08:00"
+    },
+    {
+      "session": "2026-10-21",
+      "kind": "outcomes",
+      "hong_kong": "2026-10-22T04:30:00+08:00"
+    },
+    {
+      "session": "2026-10-22",
+      "kind": "outcomes",
+      "hong_kong": "2026-10-23T04:30:00+08:00"
+    }
+  ],
+  "intended_observer_boundaries": [
+    "2026-10-12T21:30:00+08:00",
+    "2026-10-13T05:30:00+08:00",
+    "2026-10-13T21:30:00+08:00",
+    "2026-10-14T05:30:00+08:00",
+    "2026-10-14T21:30:00+08:00",
+    "2026-10-15T05:30:00+08:00",
+    "2026-10-15T21:30:00+08:00",
+    "2026-10-16T05:30:00+08:00",
+    "2026-10-16T21:30:00+08:00",
+    "2026-10-17T05:30:00+08:00",
+    "2026-10-19T21:30:00+08:00",
+    "2026-10-20T05:30:00+08:00",
+    "2026-10-20T21:30:00+08:00",
+    "2026-10-21T05:30:00+08:00",
+    "2026-10-21T21:30:00+08:00",
+    "2026-10-22T05:30:00+08:00",
+    "2026-10-22T21:30:00+08:00",
+    "2026-10-23T05:30:00+08:00",
+    "2026-10-23T21:30:00+08:00",
+    "2026-10-24T05:30:00+08:00"
+  ],
+  "persisted_automation_r3": true,
+  "recurrence_verified_with": "python-dateutil",
+  "limitation": "App delivery can be delayed and prior off-window invocations were observed; local collector is independent and observer guards reject extra wakes",
+  "module_sha256": "33d507cee2ffd51ce3d7c29781a8f6ad1e254e84b7a9258f619997d27f75a181",
+  "reports_prospective_count": 2,
+  "commissioning_prospective_count": 0
+}

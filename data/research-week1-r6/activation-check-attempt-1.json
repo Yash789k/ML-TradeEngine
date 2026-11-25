@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-22T04:41:28.876620+00:00",
+  "verification_command": "scripts/week1_r6/verify_installation.py",
+  "result": "failed assertion on last successful launchd exit; await next ordinary scheduled timer",
+  "cause": "Read-only installation report held the shared state lock while an idle collector timer attempted an exclusive lock; lock exclusion refused that timer. No required session was due and commissioning had already succeeded.",
+  "stderr_sha256": "7844fb4afca2c90f1a382d1d9b7f3d8a118d05b421ce3683c7bb9504ac922abc",
+  "no_manual_tick": true,
+  "collector_or_halt_modified": false
+}

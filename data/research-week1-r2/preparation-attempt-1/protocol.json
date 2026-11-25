@@ -1,0 +1,124 @@
+{
+  "version": "research-week1-r2-20261001",
+  "registered_at": "2026-10-01T14:05:58.831886+00:00",
+  "kind": "exploratory_historical_followup_and_independent_prospective_operation",
+  "historical_cutoff": "2026-09-25",
+  "dataset": {
+    "path": "data/releases/2026-09-28-adaptive/market",
+    "manifest_sha256": "8c2441c940ff7eebdbab505517e531f28e15a01d8e640fd069c7fc475142c218",
+    "universe_rule": "Existing 22 symbols, fixed before follow-up; selected survivors and overlapping ETFs; no market-wide inference",
+    "availability": "historical current-vintage adjusted prices; prospective retrieval times retained"
+  },
+  "labels": {
+    "return": "close[t+6]/close[t+1]-1",
+    "down": "return < -0.01",
+    "up": "return > 0.01",
+    "flat": "otherwise only if mature",
+    "eligibility": "label endpoint strictly before fitting decision",
+    "purge": "endpoint of earlier partition must precede first decision of next partition"
+  },
+  "splits": {
+    "development": "2024-01-02 through 2025-12-31",
+    "selection_consumed": "2026-01-02 through 2026-07-10",
+    "audit_consumed": "2026-07-13 through 2026-09-25",
+    "outer_design": "chronological development validation blocks, expanding eligibility; all inspected history exploratory",
+    "inner_design": "past model fit, endpoint-purged temperature calibration, distinct endpoint-purged gate validation; no outer outcomes used to choose hyperparameters"
+  },
+  "primary_endpoints": {
+    "predictive": "paired daily mean log-loss difference candidate minus trailing prior; negative better",
+    "economic": "paired daily net-return difference candidate minus matched costed equal-weight; positive better"
+  },
+  "inference": {
+    "unit": "session, retaining every symbol within date",
+    "bootstrap": "2000 circular date-block replicates; seed 20260928",
+    "block_lengths": [
+      6,
+      10,
+      21
+    ],
+    "primary_block": 10,
+    "multiplicity": "Holm family-wise adjustment on actual registered predictive contrasts separately from economic contrasts; exploratory slices descriptive",
+    "alpha": 0.05,
+    "practical_predictive_gain": 0.01,
+    "practical_annual_active_return": 0.02,
+    "power": "report block-bootstrap standard-error based detectable effect for 80% power, approximate and descriptive",
+    "dsr_pbo": "excluded: complete independent historical search universe is not recoverable",
+    "prospective": "Descriptive only: five dates cannot support the registered block-bootstrap inference; no p-values or profitability approval"
+  },
+  "compute": {
+    "pilot": "first development fold, 2 representative symbols, <=120 seconds",
+    "maximum_new_fits": 1800,
+    "maximum_elapsed_minutes": 60,
+    "seeds": [
+      42,
+      137,
+      2026
+    ],
+    "search": "bounded one-factor designs; no Cartesian grid and no winner substitution into pilot",
+    "failed_trials": "retain status/error/runtime and partial artifacts; never overwrite completed trials"
+  },
+  "families": {
+    "R1": "data provenance and accounting",
+    "R2": "baselines and predictive value",
+    "R3": "raw/calibrated and separated gating",
+    "R4": "components/fixed mixture/adaptive gate",
+    "R5": "feature family refits",
+    "R6": "training fraction/history/cadence",
+    "R7": "temporal and genuinely held-instrument transfer",
+    "R8": "matched-capital economic performance",
+    "R9": "cost/delay/missing-bar/gap/liquidity/risk sensitivity",
+    "R10": "registered worst/confident-error and representative cases",
+    "R11": "runtime/recovery/scheduler/full-policy parity",
+    "R12": "prospective replication"
+  },
+  "pilot": {
+    "trial_id": "PILOT-TREND-WEEK1-R2-20261001",
+    "first_session": "2026-10-01",
+    "sessions": 5,
+    "cutoff_rule": "Five fixed expected XNYS sessions; do not extend for outcomes or backfill missing sessions",
+    "shadow": "historically selected trend",
+    "deployment": "cash",
+    "capital": 10000,
+    "external_orders": false,
+    "refit_anchor": "explicit XNYS anchor shared by historical replay and daily path; register runtime before first decision",
+    "weekly": "last XNYS session of ISO week (Thursday when Friday is holiday); explicit v2 correction tested before first decision",
+    "price_units": "adjusted total-return proxy units",
+    "cadence": "21 exchange sessions",
+    "schedule": "XNYS close +30; transient retries +45,+60; watchdog +90; next session pre-open; weekly backup/coverage; milestones 5,21,42,63",
+    "outcome_maturity": "six further sessions after last decision",
+    "last_session": "2026-10-07",
+    "operational_review_sessions": [
+      5
+    ],
+    "final_outcome_session": "2026-10-15",
+    "refit_scope": "No scheduled refit within the five-session window; carried models remain fixed",
+    "ship_scope": "Historical study plus five-session operational report; labels may remain pending at week close"
+  },
+  "promotion": {
+    "engineering": "exact tested source/config, full critical test IDs and pipeline receipts",
+    "historical_edge": "never approved solely by these exploratory follow-ups",
+    "prospective": "Separate five-session operational completion from six-session outcome tail; no economic qualification",
+    "manuscript": "historical manuscript plus explicitly interim prospective section; full study pending maturity",
+    "broker": "disabled"
+  },
+  "amendment": {
+    "reason": "User authorized a ready replacement tonight after being told the original pilot is halted",
+    "timing": "Registered after US 1 October market open but before close, before any replacement decision or outcome inspection",
+    "parent_protocol_sha256": "99aec26df57cdf68db2ced2bd46b2f4ccfbf7c12074ebc27feeb30a868ee17ba",
+    "parent_release_sha256": "198b36b8abcfcabd5520fd9b50fccd3a3b0c0cf68c732e7269b850677d66df93",
+    "parent_observations": 0,
+    "parent_trial": "PILOT-TREND-WEEK1-20260929",
+    "parent_status": "halted; missing 29 and 30 September; retained as failed operational evidence",
+    "supersedes": "Only future collection ownership; preserve all original dates, halt, receipts and releases",
+    "selection": "Same frozen models, symbols, costs, cash deployment and trend shadow; no performance-based reselection",
+    "authorization": "What was blocked? i will leave the laptop open tnite better make sure whatever needs to be done is ready"
+  },
+  "prior_amendment": {
+    "reason": "User requested a one-week pilot to prepare an early release",
+    "timing": "Before first prospective observation",
+    "parent_protocol_sha256": "97d597a5c44a88a16ff444eb7e61786701907b2cb10b68b89faed8b62dcbae79",
+    "parent_release_sha256": "570372e203c6ef943deb37c2856a4ca7f0c3d34a168ac247d5b1cb2232916f43",
+    "parent_observations": 0,
+    "supersedes": "63-session prospective commitment only; historical results and old seals preserved"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "verified_at": "2026-10-01T14:11:42.378068+00:00",
+  "release_manifest_sha256": "12eefa88386aaa2929866554e51b0b818c113489ab12ddc4813a1591cc34906d",
+  "active_status": {
+    "trial_id": "PILOT-TREND-WEEK1-R2-20261001",
+    "external_orders": false,
+    "deployment": "cash",
+    "shadow": "trend",
+    "state_consistency_errors": [],
+    "ledger_consistent": true,
+    "valid_observed_sessions": 0,
+    "expected_elapsed_sessions": 0,
+    "missing_sessions": [],
+    "label_complete_decisions": 0,
+    "required_sessions": 5,
+    "next_event": {
+      "id": "2026-10-01:daily",
+      "session": "2026-10-01",
+      "kind": "daily",
+      "due": "2026-10-01T20:30:00+00:00",
+      "ordinal": 1,
+      "hong_kong": "2026-10-02T04:30:00+08:00"
+    },
+    "terminal_observed_sessions": 0,
+    "terminal_required_sessions": 6,
+    "halted": false,
+    "prospective_status": "incomplete",
+    "limitations": [
+      "Local launch agent requires logged-in awake host; no wake guarantee",
+      "No external broker execution",
+      "Commissioning/replays never count as prospective",
+      "Missed sessions halt; no fabricated backfill"
+    ]
+  },
+  "os_trigger": {
+    "at": "2026-10-01T14:10:22.874914+00:00",
+    "content_sha256": "e9867d239dca827216ddcc39c88517da52774c156dc97ec01480c5672e90cb3a",
+    "parent_pid": 1,
+    "pid": 42048,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+    "status": "awake"
+  },
+  "heartbeat": {
+    "at": "2026-10-01T14:11:31.771890+00:00",
+    "parent_pid": 1,
+    "pid": 42093,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+    "status": "awake"
+  },
+  "heartbeat_age_seconds": 10.606178,
+  "os_summary": [
+    "state = not running",
+    "runs = 2",
+    "last exit code = 0",
+    "state = active",
+    "state = active",
+    "run interval = 60 seconds"
+  ],
+  "preserved_parent_files": 201,
+  "parent_files_unchanged": true,
+  "observer_cadence_unchanged": true,
+  "observer_targets_replacement": true,
+  "overnight_sleep_assertion_verified": true,
+  "power_status": "Now drawing from 'Battery Power'\n -InternalBattery-0 (id=22347875)\t93%; discharging; 10:32 remaining present: true",
+  "commissioning_scope": "Isolated manual provider preflight, zero prospective observations"
+}

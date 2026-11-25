@@ -1,0 +1,7 @@
+{
+  "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261011-week1-r3",
+  "manifest_sha256": "7bfc89e8f58a97d61a3ec800aa4819480f1bb66dd653f3fcce9493dc4d501946",
+  "parent_files_unchanged": 62,
+  "passing_cases": 31,
+  "external_orders": false
+}

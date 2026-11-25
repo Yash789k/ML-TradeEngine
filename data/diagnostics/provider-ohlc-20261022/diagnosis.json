@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-22T04:34:17.976167+00:00",
+  "purpose": "read-only provider diagnosis, not a prospective decision or backfill",
+  "url": "https://query1.finance.yahoo.com/v8/finance/chart/JPM?interval=1d&period1=1477283657&period2=1792643657&events=splits%2Cdividends",
+  "http_status": 200,
+  "response_sha256": "c00463d946944e9209d5e9dcc3c45fcf9fa708d82e757d7c7a11088889a48635",
+  "failed_response_path": "data/paper/research-week1-r5/days/2026-10-21/market-20261021T203041615851-ea629ee7/responses/JPM.json",
+  "failed_response_sha256": "08c5c92681630ef9ee687542ac8d8c9bb9c68dffcaeb7147578c1be59d82ae69",
+  "rows": [
+    {
+      "session": "2026-10-19",
+      "open": 339.2200012207031,
+      "high": 341.010009765625,
+      "low": 333.2200012207031,
+      "close": 333.5299987792969,
+      "volume": 6925800,
+      "adjclose": 333.5299987792969
+    },
+    {
+      "session": "2026-10-20",
+      "open": 333.9700012207031,
+      "high": 339.8599853515625,
+      "low": 332.54998779296875,
+      "close": 335.260009765625,
+      "volume": 6157500,
+      "adjclose": 335.260009765625
+    },
+    {
+      "session": "2026-10-21",
+      "open": 337.1199951171875,
+      "high": 337.1199951171875,
+      "low": 332.6499938964844,
+      "close": 335.19000244140625,
+      "volume": 5770600,
+      "adjclose": 335.19000244140625
+    }
+  ]
+}

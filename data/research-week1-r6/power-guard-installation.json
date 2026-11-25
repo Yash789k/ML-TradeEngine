@@ -1,0 +1,6 @@
+{
+  "label": "local.ml-trade-engine.awake-week1-r6",
+  "until": "2026-10-31T06:00:00+08:00",
+  "plist_sha256": "cf79a56c166b9448aaaf7ab004efa18dd03f9dbcefa68ef11e3c908d04af1c39",
+  "scope": "Prevent idle sleep through final watchdog; physical lid closure, logout, shutdown and depleted battery remain external limits"
+}

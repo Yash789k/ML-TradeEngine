@@ -1,0 +1,16 @@
+{
+  "contract": "same full policy, carried seed models, daily persisted restart",
+  "evidence_mode": "historical_controlled_replay_not_prospective",
+  "holiday_rebalance": "2026-07-02",
+  "max_reconciliation_error": 1.8189894035458565e-12,
+  "refit_sessions": [
+    "2026-06-22",
+    "2026-07-22"
+  ],
+  "sessions": 45,
+  "status": "passed",
+  "symbols": [
+    "AAPL",
+    "SPY"
+  ]
+}

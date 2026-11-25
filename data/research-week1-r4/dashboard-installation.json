@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-14T13:39:46.197319+00:00",
+  "label": "local.ml-trade-engine.dashboard-week1-r4",
+  "port": 8504,
+  "script_sha256": "457a8509b68fa88829f8b22ff04151e3c39c99caa02e34a7a58b2fcc88145b52",
+  "plist_sha256": "d7026775b6640816ac117825dbfdd233a4bf26fb4bc89058d561e6946aafe60f",
+  "read_only": true
+}

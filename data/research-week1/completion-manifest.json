@@ -1,0 +1,24 @@
+{
+  "created_at": "2026-09-28T10:34:03.802131+00:00",
+  "scope": "Five-session pre-observation amendment, local scheduler activation and interim LaTeX paper; no prospective success or profitability claimed",
+  "files": {
+    "data/research-week1/protocol.json": "99aec26df57cdf68db2ced2bd46b2f4ccfbf7c12074ebc27feeb30a868ee17ba",
+    "data/research-week1/schedule.json": "462cdb6e2ce0a5e2c042099355d3c05fe53420577adf267e59e917bdd2042ee6",
+    "data/research-week1/installation.json": "8850cdbfba7625d663ab888b67feed262cd36420c0ee96671eb3e17fe1abda33",
+    "data/research-week1/scheduler-verification.json": "3145a7f20cc954875031870d7d70f73d7123386014526834813ea5c1a2294ff8",
+    "data/research-week1/release-verification.json": "f415c74dc84db052d3ad61bc33e20c818e39132a088603365d9947134e524cd0",
+    "data/research-week1/qualification.xml": "3b46b66b2c6503c9c3640b305d39145484689b948e3e99e6c851af04cdfa2aec",
+    "data/research-week1/report-qualified-tests.xml": "6d2bd7e7021af9cd47de48b2fd742d2d2fadf6809467dbc91ce9bf7b23c15077",
+    "data/research-week1/report-verification.json": "583e954a14db35d5b496030bd575f73ff520c15aa06dd8f86839d209742f7c02",
+    "data/research-week1/repository-week-tests-fixed.xml": "9626cda2371690ea230ac4d64595a871b666a049083e8122e46d3823296a3ff3",
+    "data/research-week1/ui-final-check.json": "5ec26c0fb913e5c5e8f5e796fe6b82fa1870c484ab13e2581d40b0f6bf27edf0",
+    "data/research-week1/registry.json": "45640d22e07df28408e9e08e7aab69e5cac214f3e33195632c4ba5a4149467ce",
+    "data/research-week1/overleaf-verification.json": "e39694546a588bac257156f7aa3393a5da1d9952d9481e810e7499cc002df68c",
+    "data/research-week1/manuscript-amendment.json": "6767ee8b0f8e43b3cf5a867138ff4e56d2d656e134ab22203210d9ab6a1b53e7",
+    "data/research-week1/pdf-final-qa/verification.json": "2ec5a25daeda03703ccbc22d03aec780e665ab858c163bd533406c4ed8485757",
+    "research_week1/report.py": "268466cf41a586950b2513cc604aabe61028e76ff4ca8282006f867d6350caf7",
+    "app_week1.py": "40e0f8e554e50ba91b4e9546ac4e0ffcf013ee958fc2ac7359af84799b9ccd6b",
+    "output/pdf/ML_TradeEngine_Research_Week1.pdf": "06459595b086b8d22208967223316191b4161049f0ac6024c188a86173f009c6",
+    "output/overleaf/ML_TradeEngine_Week1_Overleaf.zip": "8580fa806963a7617df544bbcdc3e66c869a5b2b1eaf67b0d8e45dbea9a3db3d"
+  }
+}

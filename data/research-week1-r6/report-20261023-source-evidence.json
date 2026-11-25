@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-22T21:42:48.256613+00:00",
+  "passing": 14,
+  "command": "data/research-v2/clean-env/bin/python -B -m pytest tests/test_week1_r6_report_20261023.py -q --junitxml=data/research-week1-r6/report-20261023-qualified-tests.xml",
+  "junit_sha256": "b546926fff8aa818f9d4c7b71a5887bf64a4b09ec949ed0488631044addcde0e",
+  "source": {
+    "research_week1_r6/report_20261023.py": "f8dcc7998adcba31fade6f10f3c09433c8e8e8babab58e96700be5aac1a4a61d",
+    "tests/test_week1_r6_report_20261023.py": "ca59002704103057ebf67625668416b9e4b5c233e1208e66b16c2017b4468c77",
+    "research_v2/diagnostics.py": "6dd72acb64ed9b6944314ba2015b93c096cf32f36927a582b1ebfbe1d598e8ef"
+  },
+  "current_interim_unchanged": true,
+  "collector_modified": false,
+  "original_source_preserved": "research_week1_r6/report.py",
+  "new_module": "research_week1_r6.report_20261023"
+}

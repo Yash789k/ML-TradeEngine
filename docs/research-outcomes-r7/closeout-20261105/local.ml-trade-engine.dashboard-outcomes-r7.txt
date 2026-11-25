@@ -1,0 +1,86 @@
+gui/501/local.ml-trade-engine.dashboard-outcomes-r7 = {
+	active count = 1
+	path = /Users/a/Library/LaunchAgents/local.ml-trade-engine.dashboard-outcomes-r7.plist
+	type = LaunchAgent
+	state = running
+
+	program = /Users/a/miniconda3/bin/python
+	arguments = {
+		/Users/a/miniconda3/bin/python
+		-B
+		-m
+		streamlit
+		run
+		/Users/a/Downloads/ml-trade-engine/data/releases/outcomes-r7-20261027/dashboard.py
+		--server.port
+		8504
+		--server.address
+		127.0.0.1
+		--server.headless
+		true
+		--browser.gatherUsageStats
+		false
+	}
+
+	working directory = /Users/a/Downloads/ml-trade-engine
+
+	stdout path = /Users/a/Downloads/ml-trade-engine/data/research-outcomes-r7/dashboard.stdout.log
+	stderr path = /Users/a/Downloads/ml-trade-engine/data/research-outcomes-r7/dashboard.stderr.log
+	inherited environment = {
+		SSH_AUTH_SOCK => /private/tmp/com.apple.launchd.D7O21ZT64p/Listeners
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		OSLogRateLimit => 64
+		PYTHONDONTWRITEBYTECODE => 1
+		XPC_SERVICE_NAME => local.ml-trade-engine.dashboard-outcomes-r7
+	}
+
+	domain = gui/501 [100022]
+	asid = 100022
+	minimum runtime = 30
+	exit timeout = 5
+	runs = 1
+	pid = 44551
+	immediate reason = speculative
+	forks = 0
+	execs = 1
+	initialized = 1
+	trampolined = 1
+	started suspended = 0
+	proxy started suspended = 0
+	checked allocations = 0 (queried = 1)
+	checked allocations reason = no host
+	checked allocations flags = 0x0
+	last exit code = (never exited)
+
+	resource coalition = {
+		ID = 166670
+		type = resource
+		state = active
+		active count = 1
+		name = local.ml-trade-engine.dashboard-outcomes-r7
+	}
+
+	jetsam coalition = {
+		ID = 166671
+		type = jetsam
+		state = active
+		active count = 1
+		name = local.ml-trade-engine.dashboard-outcomes-r7
+	}
+
+	spawn type = daemon (3)
+	jetsam priority = 40
+	jetsam memory limit (active) = (unlimited)
+	jetsam memory limit (inactive) = (unlimited)
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+
+	properties = keepalive | runatload | inferred program
+}

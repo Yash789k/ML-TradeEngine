@@ -1,0 +1,7 @@
+{
+  "pid": 42205,
+  "url": "http://127.0.0.1:8504",
+  "source": "app_week1_r2.py",
+  "scope": "Local read-only dashboard; launchd owns collection",
+  "started_at": "2026-10-01T14:13:16.555496+00:00"
+}

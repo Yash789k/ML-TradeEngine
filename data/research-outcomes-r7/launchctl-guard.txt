@@ -1,0 +1,79 @@
+gui/501/local.ml-trade-engine.awake-outcomes-r7 = {
+	active count = 1
+	path = /Users/a/Library/LaunchAgents/local.ml-trade-engine.awake-outcomes-r7.plist
+	type = LaunchAgent
+	state = running
+
+	program = /Users/a/Downloads/ml-trade-engine/data/research-v2/clean-env/bin/python
+	arguments = {
+		/Users/a/Downloads/ml-trade-engine/data/research-v2/clean-env/bin/python
+		-B
+		/Users/a/Downloads/ml-trade-engine/data/releases/outcomes-r7-20261027/power_guard.py
+		--until
+		2026-11-04T07:00:00+08:00
+	}
+
+	stdout path = /Users/a/Downloads/ml-trade-engine/data/research-outcomes-r7/power-guard.stdout.log
+	stderr path = /Users/a/Downloads/ml-trade-engine/data/research-outcomes-r7/power-guard.stderr.log
+	inherited environment = {
+		SSH_AUTH_SOCK => /private/tmp/com.apple.launchd.D7O21ZT64p/Listeners
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		OSLogRateLimit => 64
+		XPC_SERVICE_NAME => local.ml-trade-engine.awake-outcomes-r7
+	}
+
+	domain = gui/501 [100022]
+	asid = 100022
+	minimum runtime = 30
+	exit timeout = 5
+	runs = 1
+	pid = 44538
+	immediate reason = speculative
+	forks = 0
+	execs = 2
+	initialized = 1
+	trampolined = 1
+	started suspended = 0
+	proxy started suspended = 0
+	checked allocations = 0 (queried = 1)
+	checked allocations reason = no host
+	checked allocations flags = 0x0
+	last exit code = (never exited)
+
+	semaphores = {
+		successful exit => 0
+	}
+
+	resource coalition = {
+		ID = 166662
+		type = resource
+		state = active
+		active count = 1
+		name = local.ml-trade-engine.awake-outcomes-r7
+	}
+
+	jetsam coalition = {
+		ID = 166663
+		type = jetsam
+		state = active
+		active count = 1
+		name = local.ml-trade-engine.awake-outcomes-r7
+	}
+
+	spawn type = daemon (3)
+	jetsam priority = 40
+	jetsam memory limit (active) = (unlimited)
+	jetsam memory limit (inactive) = (unlimited)
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	job state = running
+
+	properties = runatload | inferred program
+}

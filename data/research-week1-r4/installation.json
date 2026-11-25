@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-14T13:39:22.768459+00:00",
+  "reason": "User-authorized restart tonight; preserve r3 zero-observation failure and two archived r2 decisions; no account carryover",
+  "sole_owner": "local.ml-trade-engine.collector-v2",
+  "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261014-week1-r4",
+  "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r4",
+  "preserved_release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261011-week1-r3",
+  "preserved_workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r3",
+  "prior_status": {
+    "trial_id": "PILOT-TREND-WEEK1-R3-20261012",
+    "external_orders": false,
+    "deployment": "cash",
+    "shadow": "trend",
+    "state_consistency_errors": [],
+    "ledger_consistent": true,
+    "valid_observed_sessions": 0,
+    "expected_elapsed_sessions": 2,
+    "missing_sessions": [
+      "2026-10-12",
+      "2026-10-13"
+    ],
+    "label_complete_decisions": 0,
+    "required_sessions": 3,
+    "next_event": {
+      "id": "2026-10-14:daily",
+      "session": "2026-10-14",
+      "kind": "daily",
+      "due": "2026-10-14T20:30:00+00:00",
+      "ordinal": 3,
+      "hong_kong": "2026-10-15T04:30:00+08:00"
+    },
+    "terminal_observed_sessions": 0,
+    "terminal_required_sessions": 6,
+    "halted": true,
+    "prospective_status": "incomplete",
+    "limitations": [
+      "Local launch agent requires logged-in awake host; no wake guarantee",
+      "No external broker execution",
+      "Commissioning/replays never count as prospective",
+      "Missed sessions halt; no fabricated backfill"
+    ]
+  },
+  "old_workspace_files_unchanged": 216,
+  "new_manifest_sha256": "9f23d72fc0b892ad9af70efd2fbcdb71e2d3469f5d9f796ff40f76f52c3ec810",
+  "installed_plist_sha256": "8c8ee6a5b2fd3f021402cdc962d1c1b89240415591300b061c0ab5a06f1a4d2a",
+  "external_orders": false
+}

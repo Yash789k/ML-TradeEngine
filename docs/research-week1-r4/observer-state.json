@@ -1,0 +1,1205 @@
+{
+  "schema_version": 1,
+  "automation_id": "trading-pilot-evidence-watch",
+  "observer_only": true,
+  "trial_id": "PILOT-TREND-WEEK1-R4-20261014",
+  "last_checked_at": "2026-10-20T21:31:13.217417+00:00",
+  "status": {
+    "trial_id": "PILOT-TREND-WEEK1-R4-20261014",
+    "external_orders": false,
+    "deployment": "cash",
+    "shadow": "trend",
+    "state_consistency_errors": [],
+    "ledger_consistent": true,
+    "valid_observed_sessions": 2,
+    "expected_elapsed_sessions": 3,
+    "missing_sessions": [
+      "2026-10-16"
+    ],
+    "label_complete_decisions": 0,
+    "required_sessions": 3,
+    "next_event": {
+      "id": "2026-10-21:outcomes",
+      "session": "2026-10-21",
+      "kind": "outcomes",
+      "ordinal": 6,
+      "due": "2026-10-21T20:30:00+00:00",
+      "hong_kong": "2026-10-22T04:30:00+08:00"
+    },
+    "terminal_observed_sessions": 0,
+    "terminal_required_sessions": 6,
+    "halted": true,
+    "prospective_status": "incomplete",
+    "limitations": [
+      "Local launch agent requires logged-in awake host; no wake guarantee",
+      "No external broker execution",
+      "Commissioning/replays never count as prospective",
+      "Missed sessions halt; no fabricated backfill"
+    ]
+  },
+  "preserved_prior_valid_decisions": 2,
+  "total_valid_observations": 4,
+  "heartbeat": {
+    "at": "2026-10-20T21:30:29.248366+00:00",
+    "parent_pid": 1,
+    "pid": 5821,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "f82d9574358e753fbcb22802d73e07106fc1c26dcf5d36c66b765504741d8245",
+    "status": "awake"
+  },
+  "heartbeat_age_seconds": 43.969051,
+  "heartbeat_stale_threshold_seconds": 300,
+  "halt": {
+    "at": "2026-10-19T13:45:05.104046+00:00",
+    "reason": "Missing expected reconciled receipt",
+    "session": "2026-10-16"
+  },
+  "notified_event_ids": [
+    "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+  ],
+  "notification_records": [
+    {
+      "event_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16",
+      "observed_at": "2026-10-17T19:36:45.256217+08:00",
+      "source": "user_requested_diagnosis",
+      "message": "US 16 October decision missed during laptop sleep; collector next ran at 08:00 HKT on 17 October and halted. Four interrupted observations remain valid; no backfill or reset performed."
+    }
+  ],
+  "observed_events": [
+    {
+      "path": "days/2026-10-14/input.json",
+      "status": "record_verified",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "days/2026-10-14/plan.json",
+      "status": "prospective_shadow",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "days/2026-10-14/result.json",
+      "status": "prospective_shadow",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "attempts/2026-10-14-20261014T203001633998-75c47f2c.json",
+      "status": "complete",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "events/2026-10-14-daily.json",
+      "status": "complete",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "events/2026-10-14-retry45.json",
+      "status": "covered_by_valid_receipt",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "events/2026-10-14-retry60.json",
+      "status": "covered_by_valid_receipt",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "events/2026-10-14-watchdog.json",
+      "status": "valid_receipt",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "days/2026-10-15/input.json",
+      "status": "record_verified",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "days/2026-10-15/plan.json",
+      "status": "prospective_shadow",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "days/2026-10-15/result.json",
+      "status": "prospective_shadow",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "attempts/2026-10-15-20261015T203047543523-abc0bff3.json",
+      "status": "complete",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "events/2026-10-14-preopen.json",
+      "status": "valid_receipt",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "events/2026-10-15-daily.json",
+      "status": "complete",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "events/2026-10-15-retry45.json",
+      "status": "covered_by_valid_receipt",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "events/2026-10-15-retry60.json",
+      "status": "covered_by_valid_receipt",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "events/2026-10-15-watchdog.json",
+      "status": "valid_receipt",
+      "disposition": "valid_new_record_no_action_required"
+    },
+    {
+      "path": "outages/20261015T062331.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_between_required_events_no_missing_session",
+      "previous": "2026-10-15T05:30:14.005054+00:00",
+      "resumed": "2026-10-15T06:23:31.390758+00:00",
+      "gap_seconds": 3197.385704
+    },
+    {
+      "path": "outages/20261015T070544.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_between_required_events_no_missing_session",
+      "previous": "2026-10-15T06:23:31.390758+00:00",
+      "resumed": "2026-10-15T07:05:44.760075+00:00",
+      "gap_seconds": 2533.369317
+    },
+    {
+      "path": "outages/20261015T072113.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_between_required_events_no_missing_session",
+      "previous": "2026-10-15T07:05:44.760075+00:00",
+      "resumed": "2026-10-15T07:21:13.096481+00:00",
+      "gap_seconds": 928.336406
+    },
+    {
+      "path": "outages/20261015T074203.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_between_required_events_no_missing_session",
+      "previous": "2026-10-15T07:32:47.959104+00:00",
+      "resumed": "2026-10-15T07:42:03.066308+00:00",
+      "gap_seconds": 555.107204
+    },
+    {
+      "path": "events/2026-10-15-preopen.json",
+      "status": "valid_receipt",
+      "disposition": "verified_record_no_notification_milestone"
+    },
+    {
+      "path": "events/2026-10-16-daily.json",
+      "status": "missed_deadline",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "events/2026-10-16-preopen.json",
+      "status": "missing_expected_receipt",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "events/2026-10-16-retry45.json",
+      "status": "halted",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "events/2026-10-16-retry60.json",
+      "status": "halted",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "events/2026-10-16-watchdog.json",
+      "status": "missing_expected_receipt",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "events/2026-10-19-outcome_retry45.json",
+      "status": "labels_attached_terminal_failed",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "events/2026-10-19-outcome_retry60.json",
+      "status": "labels_attached_terminal_failed",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "events/2026-10-19-outcome_watchdog.json",
+      "status": "labels_attached_terminal_failed",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "events/2026-10-19-outcomes.json",
+      "status": "labels_attached_terminal_failed",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "events/2026-10-20-outcome_retry45.json",
+      "status": "labels_attached_terminal_failed",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "events/2026-10-20-outcome_retry60.json",
+      "status": "labels_attached_terminal_failed",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "events/2026-10-20-outcome_watchdog.json",
+      "status": "labels_attached_terminal_failed",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "events/2026-10-20-outcomes.json",
+      "status": "labels_attached_terminal_failed",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "outages/20261016T034227.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261016T065324.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261016T072621.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261016T084051.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261016T100035.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261016T104717.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261016T105544.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261016T112843.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261016T113729.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261016T114826.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261016T135031.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261016T143251.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261016T185521.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261017T000025.json",
+      "status": "recovered_gap",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "outages/20261017T063719.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261017T101039.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261017T104701.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261018T202718.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261019T021922.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261019T055020.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261019T134505.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261020T031207.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261020T031709.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261020T034459.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261020T040305.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261020T042633.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261020T044428.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261020T053618.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261020T061006.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outages/20261020T072504.json",
+      "status": "recovered_gap",
+      "disposition": "recovered_gap_no_new_missing_collection"
+    },
+    {
+      "path": "outcome-runs/2026-10-19.json",
+      "status": "complete",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "outcome-runs/2026-10-20.json",
+      "status": "complete",
+      "disposition": "consequence_of_previously_notified_halt",
+      "incident_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+    },
+    {
+      "path": "outcome-attempts/2026-10-19-203012.json",
+      "status": "complete",
+      "disposition": "verified_record_no_notification_milestone"
+    },
+    {
+      "path": "outcome-attempts/2026-10-20-203023.json",
+      "status": "complete",
+      "disposition": "verified_record_no_notification_milestone"
+    }
+  ],
+  "actionable_event_ids": [
+    "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16"
+  ],
+  "durable_records": {
+    "days": [
+      {
+        "path": "days/2026-10-14/input.json",
+        "sha256": "b947b54ef40f8d0cf7fca4137454240f534c979c508b3c8ea0a840188c144d2c"
+      },
+      {
+        "path": "days/2026-10-14/plan.json",
+        "sha256": "2afc49b045365334e96f2b7a7a70c74fc37769d9d9bfc38a2ce234984757fe08"
+      },
+      {
+        "path": "days/2026-10-14/result.json",
+        "sha256": "5f02761b1f1877b91716ee4581a758a53c928233db869c0360e8f1d554e008f7"
+      },
+      {
+        "path": "days/2026-10-15/input.json",
+        "sha256": "71080854b1992f3dbf92a8dc8d8b8ce30d3d18f5dacc46bc009a6576ea690de2"
+      },
+      {
+        "path": "days/2026-10-15/plan.json",
+        "sha256": "401323533f6c4f4c5abe683ed71c23319220a18a4e0eb675c889303ad4262d91"
+      },
+      {
+        "path": "days/2026-10-15/result.json",
+        "sha256": "0e2e5f5b44010ab529946eb1b1d7cd70ac91e607ff0319305bcf3e6b18b6449d"
+      }
+    ],
+    "attempts": [
+      {
+        "path": "attempts/2026-10-14-20261014T203001633998-75c47f2c.json",
+        "sha256": "2ea36c0e53f172dbd3c15070fcc3f3e9b80d5e2a8c1441a7861dcb617356d020"
+      },
+      {
+        "path": "attempts/2026-10-15-20261015T203047543523-abc0bff3.json",
+        "sha256": "b7a96723d69ce0d64228b25c2df7dbe037a6eefbe2c40e66c4182a58f376e58a"
+      }
+    ],
+    "events": [
+      {
+        "path": "events/2026-10-14-daily.json",
+        "sha256": "3a4d82814d298c389ad9a0cb4bdfb41dc3479f4d89c76ea8ff1ac06c8866485e"
+      },
+      {
+        "path": "events/2026-10-14-preopen.json",
+        "sha256": "2fa13170384ef1e6740550069511ec188bd7293fe40f63fb0ce4f5155b3a9f06"
+      },
+      {
+        "path": "events/2026-10-14-retry45.json",
+        "sha256": "304887e2b57ab8fc1aaf3abfe5e81f193316525c6aeca3a7d24531fb65e3c9f7"
+      },
+      {
+        "path": "events/2026-10-14-retry60.json",
+        "sha256": "386dd78a9545acacc9b56b47f5aec9a9c5a77086323c669b6e640b09fbb4cf9a"
+      },
+      {
+        "path": "events/2026-10-14-watchdog.json",
+        "sha256": "4035bb8b93e877996bea1e16068d5ff4efabd2a59ac32a924aea1bf6cc83860c"
+      },
+      {
+        "path": "events/2026-10-15-daily.json",
+        "sha256": "3bb20b32e487c0ed2b2aca233b33b1bd00e830c88f0ef41a9ea7e8e00bf1b36d"
+      },
+      {
+        "path": "events/2026-10-15-preopen.json",
+        "sha256": "2d9f416d299c18fd592fb7a5dd0cb633e52c47a591511b3d023cdf8e94631800"
+      },
+      {
+        "path": "events/2026-10-15-retry45.json",
+        "sha256": "13df88c64d8f47f85c2c0a306e300e6f2d5c68fccc4adebdcd360bf6226c9343"
+      },
+      {
+        "path": "events/2026-10-15-retry60.json",
+        "sha256": "fbec28abe48b1ca3fb4ba0d4f4039855215350592f67fccef33e96d0c2ff4a8c"
+      },
+      {
+        "path": "events/2026-10-15-watchdog.json",
+        "sha256": "8f2b7f4695f17d75e8fe36a94987d09ae8e7df479ad0c1a343dcc34720c3ef3d"
+      },
+      {
+        "path": "events/2026-10-16-daily.json",
+        "sha256": "8e0502d62c3868ae86975e79103052dccd13a1ad51e2a835e04c55e725d7d983"
+      },
+      {
+        "path": "events/2026-10-16-preopen.json",
+        "sha256": "866c075f99ab351925825de7dfbebb33c59eaeb5c855b7d8d8310ce2ec7f6375"
+      },
+      {
+        "path": "events/2026-10-16-retry45.json",
+        "sha256": "778a2479771ea6da116f6849ba30ca6ce43bd1fc2ea578de13155d7b8d811213"
+      },
+      {
+        "path": "events/2026-10-16-retry60.json",
+        "sha256": "fb62efceb9760df32a91fca46b61ead4305953ddfe682bc095daacab75b99d4e"
+      },
+      {
+        "path": "events/2026-10-16-watchdog.json",
+        "sha256": "599fe7b269b54c7b28494f56ae2eab801e1c3b887edc196ddea1297952780a9d"
+      },
+      {
+        "path": "events/2026-10-19-outcome_retry45.json",
+        "sha256": "d726509b6182abb10b514f79d04ae8a2c60f46eee04f1b47401e248f25937721"
+      },
+      {
+        "path": "events/2026-10-19-outcome_retry60.json",
+        "sha256": "c0ef82a43bcb1f1ab5970815d45fbf4f0a2c6e1bc1db920bd4c91135ba5456cb"
+      },
+      {
+        "path": "events/2026-10-19-outcome_watchdog.json",
+        "sha256": "eca1f563d355b4dc6131d3b5904f00ebf70333955c9b106924181f938b90b147"
+      },
+      {
+        "path": "events/2026-10-19-outcomes.json",
+        "sha256": "7ce168c29b829d9db53dbda718ed85c74dac4f503d0aed42f7bd4bf6cf459457"
+      },
+      {
+        "path": "events/2026-10-20-outcome_retry45.json",
+        "sha256": "3bc7c652a5ea55657328ad039865bdaf6cbd2ad665cc68e98ab79ece826e5729"
+      },
+      {
+        "path": "events/2026-10-20-outcome_retry60.json",
+        "sha256": "33ba35e957215d7b6e6526a59104304e847f8ed5120b2b1a2c5541dbe416040e"
+      },
+      {
+        "path": "events/2026-10-20-outcome_watchdog.json",
+        "sha256": "b39b76bba1fc153bcf550f492c0d4807b68dc087ec94e6d7df71d8b88559be1b"
+      },
+      {
+        "path": "events/2026-10-20-outcomes.json",
+        "sha256": "08e053fb2d59b3a4adca855c43ba03cea8c7874cb1872bc5eb524265b2a5c550"
+      }
+    ],
+    "milestones": [],
+    "outages": [
+      {
+        "path": "outages/20261015T062331.json",
+        "sha256": "b0c5cdfac67e0c83597142100a2a493e9cb9516e063c196b2636d01d4b4b1a51"
+      },
+      {
+        "path": "outages/20261015T070544.json",
+        "sha256": "caadc2277af67bd34c1a23e8b31e0c045cfe0840a23fdbfa226c80a7e7193be3"
+      },
+      {
+        "path": "outages/20261015T072113.json",
+        "sha256": "34186b38e3e66f827fc153520eb9bb088c27dbf2e7f6456ce7dbb960769a21e7"
+      },
+      {
+        "path": "outages/20261015T074203.json",
+        "sha256": "9304916029bb2172b72daad1b09678f6cb569653e58232cc03639b85f2c3f3a4"
+      },
+      {
+        "path": "outages/20261016T034227.json",
+        "sha256": "be8174c83220e4f71329ee8f5ebbb04bc82b34e5f9768914460ad3828aeab803"
+      },
+      {
+        "path": "outages/20261016T065324.json",
+        "sha256": "a3e9e0d57eeb84005380530ae4b5ac66d342a85ebf77af8e91991fde78b124c3"
+      },
+      {
+        "path": "outages/20261016T072621.json",
+        "sha256": "bacc12c11b3c0809698f28e47284b8b06d9449b4351c8c8c4543fdbad926da29"
+      },
+      {
+        "path": "outages/20261016T084051.json",
+        "sha256": "8ad314b6ad11f7c96b3679919f95faeaf6f5698eaea4603d21e43a71493a885e"
+      },
+      {
+        "path": "outages/20261016T100035.json",
+        "sha256": "4c84cda467174d8833c3f996a96da3db79a03e720a30d4772f90e3200e162525"
+      },
+      {
+        "path": "outages/20261016T104717.json",
+        "sha256": "df258a7ad9feff2790f70f44cccd66d53190138a2c3335d59d86d074c4ab42fc"
+      },
+      {
+        "path": "outages/20261016T105544.json",
+        "sha256": "8886bf3adf88ab982fbba0d2b7103f6373269c60c360a85ba685270044b71820"
+      },
+      {
+        "path": "outages/20261016T112843.json",
+        "sha256": "c9c8237cfcad1a285bc33b59df744990c16d9f109479602c97d2583f872f789e"
+      },
+      {
+        "path": "outages/20261016T113729.json",
+        "sha256": "f36ba53269110930fa08b0a86ea4b18a8840b5aad216527af0413a786cc27276"
+      },
+      {
+        "path": "outages/20261016T114826.json",
+        "sha256": "c39508f7fc4eb9f8a82c57b1fa1028dab1a9e1f548eb1af82a0cfdd195e19300"
+      },
+      {
+        "path": "outages/20261016T135031.json",
+        "sha256": "18dfe951a1b9c953f36ca96da88ad4b0a08950ece1fb249d47e8de64ef96bb55"
+      },
+      {
+        "path": "outages/20261016T143251.json",
+        "sha256": "2d9fa32e583b329e6515e643dd64c358c11b0cade5baa16839db42b2f09c7592"
+      },
+      {
+        "path": "outages/20261016T185521.json",
+        "sha256": "ea641c062cc451f9ddc0ce3de45f2eb76231dce004e3259defc29d6e21174fdd"
+      },
+      {
+        "path": "outages/20261017T000025.json",
+        "sha256": "cafd807c6c5eeecbb363de435e9f185382ce4d55b8a7dc460ef342b576ff8a84"
+      },
+      {
+        "path": "outages/20261017T063719.json",
+        "sha256": "f00ad8094974bae894e72536940a238971dda8860f198bf2e036fdd5bc3a90af"
+      },
+      {
+        "path": "outages/20261017T101039.json",
+        "sha256": "de7f0915a3029a9b0fa07598ef98f9e6c4d863f535ae7a2e1c6f7866c926c2cf"
+      },
+      {
+        "path": "outages/20261017T104701.json",
+        "sha256": "48beb71a58ec5c67963eea0848c28b03f1bfed68770b0ead1c82b588f4552b13"
+      },
+      {
+        "path": "outages/20261018T202718.json",
+        "sha256": "33f72307629df3ead078a5e121cab44362fab8c6cc7b2b0a570e8cfec3bd70d1"
+      },
+      {
+        "path": "outages/20261019T021922.json",
+        "sha256": "ba89b5d3e9771ca42c1efb2c282355864a93e9ae9dcacb63f7d638c1454dcc66"
+      },
+      {
+        "path": "outages/20261019T055020.json",
+        "sha256": "a719ee949daebac116c2cccab366f895eca94026e408085d17384073b270ae3a"
+      },
+      {
+        "path": "outages/20261019T134505.json",
+        "sha256": "5e18e3bbaa1383f53b9090b1fc2c6496ea231a278405510d6da1b8c9d84e3949"
+      },
+      {
+        "path": "outages/20261020T031207.json",
+        "sha256": "f6e85f30b483d652c066bf10bf0c0f4dde0760d13be16c763705d37f2e653828"
+      },
+      {
+        "path": "outages/20261020T031709.json",
+        "sha256": "335c9a2b0e9c664ee2080e00753ea834d1e8907f8c7034720f2001e45f8a5668"
+      },
+      {
+        "path": "outages/20261020T034459.json",
+        "sha256": "434366a8f1701d3c7e00bd4066118b4e33fdb768fdca5402c19c342b4351d48d"
+      },
+      {
+        "path": "outages/20261020T040305.json",
+        "sha256": "90a8ab5b8791b6f71572f63e7b6d6f35f080c29ff3e947812bd4afe3b78f79b5"
+      },
+      {
+        "path": "outages/20261020T042633.json",
+        "sha256": "ef6b975a7f3475c8b29fe7c289e324a56881317ecf37fce635076dd30c83508c"
+      },
+      {
+        "path": "outages/20261020T044428.json",
+        "sha256": "204ec3f9460bc8abdac8d2b3c58ff1d5d7758b81b1794f9cf0181e39d0155048"
+      },
+      {
+        "path": "outages/20261020T053618.json",
+        "sha256": "fd2a09885c536d6aacce455117d75c3b3bd3fa526f9343be458b90834abec2e8"
+      },
+      {
+        "path": "outages/20261020T061006.json",
+        "sha256": "f8ccdbbd2be93df394685a2e4dd889634c44cc1a256a9e93e9e0b2e64fbd6da6"
+      },
+      {
+        "path": "outages/20261020T072504.json",
+        "sha256": "6ab5c4c8d91c12aa930c717c91587a4d5ffeec8ae551269cb6bbb9b3abba829c"
+      }
+    ],
+    "outcomes": [],
+    "terminal": [],
+    "outcome-runs": [
+      {
+        "path": "outcome-runs/2026-10-19.json",
+        "sha256": "5193bbc8a0659e03c17dc04c10d3d426e2f408626118097e06127f9577e36bce"
+      },
+      {
+        "path": "outcome-runs/2026-10-20.json",
+        "sha256": "b220a77ab9d021a7eb4fff1f395ccc6da303aef3e13f3f0e6e2724483b8eb693"
+      }
+    ],
+    "outcome-attempts": [
+      {
+        "path": "outcome-attempts/2026-10-19-203012.json",
+        "sha256": "2fca5812f8a94b52f2b0fdb1ec2a9eda14aaf4e57e5fa1c3a81b7b84c7fec380"
+      },
+      {
+        "path": "outcome-attempts/2026-10-20-203023.json",
+        "sha256": "8fe7e8c5178babd7d60c4d82f3df852106832dbf7001b88ef0e13d71a321f204"
+      }
+    ]
+  },
+  "superseded_workspaces": [
+    "data/paper/research-week1-r3",
+    "data/paper/research-week1-r2",
+    "data/paper/research-week1",
+    "data/paper/research-v2"
+  ],
+  "commissioning": {
+    "completed_at": "2026-10-14T13:39:47.047756+00:00",
+    "mode": "commissioning_preview",
+    "session": "2026-10-13",
+    "symbol_count": 22,
+    "result_sha256": "6fac58e0fbfb623d29917bbe75d0702382049c6812f2415c740262e28c26b3d9",
+    "snapshot_sha256": "ccb5aaafe916e53479e32d4419d4f65198ef818cbaced724da582c51783ec90f",
+    "timings_seconds": {
+      "data_read": 17.313566333963536,
+      "features": 0.2427699170075357,
+      "inference": 0.14301725197583437,
+      "ledger": 0.023839791014324874,
+      "training": 0.0,
+      "whole_batch": 18.957378041988704
+    },
+    "accounts": {
+      "deployment": {
+        "cash": 10000.0,
+        "drawdown": 0.0,
+        "equity": 10000.0,
+        "fees": 0.0,
+        "gross_exposure": 0.0,
+        "positions": {
+          "AAPL": 0.0,
+          "AMZN": 0.0,
+          "BAC": 0.0,
+          "DIA": 0.0,
+          "GLD": 0.0,
+          "GOOGL": 0.0,
+          "GS": 0.0,
+          "IWM": 0.0,
+          "JPM": 0.0,
+          "META": 0.0,
+          "MSFT": 0.0,
+          "NVDA": 0.0,
+          "QQQ": 0.0,
+          "SPY": 0.0,
+          "TLT": 0.0,
+          "TSLA": 0.0,
+          "XLE": 0.0,
+          "XLF": 0.0,
+          "XLI": 0.0,
+          "XLK": 0.0,
+          "XLP": 0.0,
+          "XLV": 0.0
+        },
+        "realized_pnl": 0.0,
+        "reconciliation_error": 0.0,
+        "reserved_cash": 0,
+        "unrealized_pnl": 0.0
+      },
+      "shadow": {
+        "cash": 10000.0,
+        "drawdown": 0.0,
+        "equity": 10000.0,
+        "fees": 0.0,
+        "gross_exposure": 0.0,
+        "positions": {
+          "AAPL": 0.0,
+          "AMZN": 0.0,
+          "BAC": 0.0,
+          "DIA": 0.0,
+          "GLD": 0.0,
+          "GOOGL": 0.0,
+          "GS": 0.0,
+          "IWM": 0.0,
+          "JPM": 0.0,
+          "META": 0.0,
+          "MSFT": 0.0,
+          "NVDA": 0.0,
+          "QQQ": 0.0,
+          "SPY": 0.0,
+          "TLT": 0.0,
+          "TSLA": 0.0,
+          "XLE": 0.0,
+          "XLF": 0.0,
+          "XLI": 0.0,
+          "XLK": 0.0,
+          "XLP": 0.0,
+          "XLV": 0.0
+        },
+        "realized_pnl": 0.0,
+        "reconciliation_error": 0.0,
+        "reserved_cash": 4126.177639973659,
+        "unrealized_pnl": 0.0
+      }
+    },
+    "counts_as_prospective": false
+  },
+  "last_check_disposition": "known_halt_unchanged_followup_snapshots_verified_no_new_actionable_failure",
+  "verification": {
+    "release_integrity_verified": true,
+    "ledger_consistent": true,
+    "launchd_targets_active_release": true,
+    "sleep_guard_running": true
+  },
+  "reported_installation": true,
+  "last_boundary_check": {
+    "trigger_at": "2026-10-20T21:30:20.271000+00:00",
+    "checked_at": "2026-10-20T21:30:42.342254+00:00",
+    "session": "2026-10-20",
+    "eligible_session": true,
+    "window": "post_close",
+    "market_open": "2026-10-20T13:30:00+00:00",
+    "market_close": "2026-10-20T20:00:00+00:00",
+    "seconds_after_open": 28820.271,
+    "seconds_after_close": 5420.271,
+    "checked_seconds_after_close": 5442.342254
+  },
+  "last_readonly_checks": {
+    "sealed_status_succeeded": true,
+    "ledger_consistent": true,
+    "underlying_snapshot_and_models_verified_by_sealed_status": true,
+    "receipt_plan_input_chain_verified": true,
+    "accounts_reconciled": true,
+    "launchd_targets_active_release": true,
+    "collector_last_exit_code": 0,
+    "sleep_guard_running": true,
+    "idle_sleep_assertion_present": true,
+    "heartbeat_fresh": true,
+    "heartbeat_source_verified": true,
+    "durable_integrity_verified": true,
+    "outcome_snapshots_verified": true,
+    "watchdog_inspected": true,
+    "watchdog_valid": false,
+    "watchdog_disposition": "terminal_processing_blocked_by_previously_reported_halt",
+    "no_new_actionable_events": true
+  },
+  "latest_verified_decision": {
+    "session": "2026-10-15",
+    "completed_at": "2026-10-15T20:31:10.106668+00:00",
+    "mode": "prospective_shadow",
+    "trigger_mode": "scheduled",
+    "symbol_count": 22,
+    "receipt": "data/paper/research-week1-r4/days/2026-10-15/result.json",
+    "content_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "snapshot_sha256": "2a4350753161e988b91a0b2e075fa35745fca6c307ff18ba97d05cf4519b2cb5",
+    "accounts": {
+      "deployment": {
+        "cash": 10000,
+        "drawdown": 0,
+        "equity": 10000,
+        "fees": 0,
+        "gross_exposure": 0,
+        "positions": {
+          "AAPL": 0,
+          "AMZN": 0,
+          "BAC": 0,
+          "DIA": 0,
+          "GLD": 0,
+          "GOOGL": 0,
+          "GS": 0,
+          "IWM": 0,
+          "JPM": 0,
+          "META": 0,
+          "MSFT": 0,
+          "NVDA": 0,
+          "QQQ": 0,
+          "SPY": 0,
+          "TLT": 0,
+          "TSLA": 0,
+          "XLE": 0,
+          "XLF": 0,
+          "XLI": 0,
+          "XLK": 0,
+          "XLP": 0,
+          "XLV": 0
+        },
+        "realized_pnl": 0,
+        "reconciliation_error": 0,
+        "reserved_cash": 0,
+        "unrealized_pnl": 0
+      },
+      "shadow": {
+        "cash": 5988.986010197701,
+        "drawdown": -0.0006007509720118431,
+        "equity": 9993.992490279881,
+        "fees": 6.00750972012327,
+        "gross_exposure": 0.40074139379006274,
+        "positions": {
+          "AAPL": 0.8971659999999999,
+          "AMZN": 1.2110049999999999,
+          "BAC": 0,
+          "DIA": 0.59673,
+          "GLD": 0,
+          "GOOGL": 0.885088,
+          "GS": 0,
+          "IWM": 0,
+          "JPM": 0.917717,
+          "META": 0,
+          "MSFT": 0,
+          "NVDA": 1.390385,
+          "QQQ": 0.422103,
+          "SPY": 0.399808,
+          "TLT": 0,
+          "TSLA": 0,
+          "XLE": 4.5496419999999995,
+          "XLF": 5.6436589999999995,
+          "XLI": 0,
+          "XLK": 1.6157759999999999,
+          "XLP": 3.575323,
+          "XLV": 1.768753
+        },
+        "realized_pnl": 0,
+        "reconciliation_error": 3.637978807091713e-12,
+        "reserved_cash": 0,
+        "unrealized_pnl": -6.007509720123267
+      }
+    },
+    "timings_seconds": {
+      "data_read": 20.6729976250208,
+      "features": 0.20626362395705655,
+      "inference": 0.14374595717526972,
+      "ledger": 0.009707166987936944,
+      "training": 0,
+      "whole_batch": 22.045247457979713
+    }
+  },
+  "notification_gates": {
+    "new_actionable_failure": false,
+    "three_new_session_milestone": false,
+    "final_maturity": false
+  },
+  "skipped_invocations": [
+    {
+      "trigger_at": "2026-10-15T13:28:13.178000+00:00",
+      "invocation_checked_at": "2026-10-15T13:28:42.013140+00:00",
+      "session": "2026-10-15",
+      "eligible_session": true,
+      "collector_inspected": false,
+      "market_open": "2026-10-15T13:30:00+00:00",
+      "market_close": "2026-10-15T20:00:00+00:00",
+      "seconds_after_open": -106.822,
+      "seconds_after_close": -23506.822,
+      "window": null,
+      "disposition": "skipped_off_window_early"
+    },
+    {
+      "trigger_at": "2026-10-17T13:32:56.112000+00:00",
+      "invocation_checked_at": "2026-10-17T13:33:10.768632+00:00",
+      "session": "2026-10-17",
+      "eligible_session": false,
+      "collector_inspected": false,
+      "window": null,
+      "disposition": "skipped_non_session"
+    },
+    {
+      "trigger_at": "2026-10-19T13:44:24.580000+00:00",
+      "invocation_checked_at": "2026-10-19T14:46:43.867629+00:00",
+      "session": "2026-10-19",
+      "eligible_session": true,
+      "window": null,
+      "seconds_after_open": 4603.867,
+      "seconds_after_close": -18796.132999999998,
+      "trigger_window": "market_open",
+      "trigger_seconds_after_open": 864.58,
+      "trigger_seconds_after_close": -22535.42,
+      "collector_inspected": false,
+      "disposition": "skipped_off_window_after_interruption"
+    },
+    {
+      "trigger_at": "2026-10-19T21:28:39.687000+00:00",
+      "invocation_checked_at": "2026-10-19T21:29:07.969438+00:00",
+      "session": "2026-10-19",
+      "eligible_session": true,
+      "collector_inspected": false,
+      "window": null,
+      "market_open": "2026-10-19T13:30:00+00:00",
+      "market_close": "2026-10-19T20:00:00+00:00",
+      "seconds_after_open": 28719.687,
+      "seconds_after_close": 5319.687,
+      "disposition": "skipped_off_window_early"
+    },
+    {
+      "trigger_at": "2026-10-20T13:26:46.395000+00:00",
+      "invocation_checked_at": "2026-10-20T13:27:06.622793+00:00",
+      "session": "2026-10-20",
+      "eligible_session": true,
+      "collector_inspected": false,
+      "window": null,
+      "market_open": "2026-10-20T13:30:00+00:00",
+      "market_close": "2026-10-20T20:00:00+00:00",
+      "seconds_after_open": -193.605,
+      "seconds_after_close": -23593.605,
+      "disposition": "skipped_off_window_early"
+    }
+  ],
+  "last_invocation": {
+    "trigger_at": "2026-10-20T21:30:20.271000+00:00",
+    "checked_at": "2026-10-20T21:30:42.342254+00:00",
+    "session": "2026-10-20",
+    "eligible_session": true,
+    "window": "post_close",
+    "market_open": "2026-10-20T13:30:00+00:00",
+    "market_close": "2026-10-20T20:00:00+00:00",
+    "seconds_after_open": 28820.271,
+    "seconds_after_close": 5420.271,
+    "checked_seconds_after_close": 5442.342254,
+    "collector_inspected": true,
+    "disposition": "checked_post_close_no_new_actionable_event"
+  },
+  "last_human_diagnosis": {
+    "event_id": "PILOT-TREND-WEEK1-R4-20261014:missing-session:2026-10-16",
+    "observed_at": "2026-10-17T19:36:45.256217+08:00",
+    "source": "user_requested_diagnosis",
+    "message": "US 16 October decision missed during laptop sleep; collector next ran at 08:00 HKT on 17 October and halted. Four interrupted observations remain valid; no backfill or reset performed.",
+    "status_snapshot": {
+      "trial_id": "PILOT-TREND-WEEK1-R4-20261014",
+      "external_orders": false,
+      "deployment": "cash",
+      "shadow": "trend",
+      "state_consistency_errors": [],
+      "ledger_consistent": true,
+      "valid_observed_sessions": 2,
+      "expected_elapsed_sessions": 3,
+      "missing_sessions": [
+        "2026-10-16"
+      ],
+      "label_complete_decisions": 0,
+      "required_sessions": 3,
+      "next_event": {
+        "id": "2026-10-16:preopen",
+        "session": "2026-10-16",
+        "kind": "preopen",
+        "ordinal": 3,
+        "due": "2026-10-19T13:00:00+00:00",
+        "hong_kong": "2026-10-19T21:00:00+08:00"
+      },
+      "terminal_observed_sessions": 0,
+      "terminal_required_sessions": 6,
+      "halted": true,
+      "prospective_status": "incomplete",
+      "limitations": [
+        "Local launch agent requires logged-in awake host; no wake guarantee",
+        "No external broker execution",
+        "Commissioning/replays never count as prospective",
+        "Missed sessions halt; no fabricated backfill"
+      ]
+    },
+    "heartbeat": {
+      "at": "2026-10-17T11:36:09.660590+00:00",
+      "parent_pid": 1,
+      "pid": 38985,
+      "scheduler": "launchd",
+      "service": "local.ml-trade-engine.collector-v2",
+      "source_sha256": "f82d9574358e753fbcb22802d73e07106fc1c26dcf5d36c66b765504741d8245",
+      "status": "awake"
+    },
+    "halt": {
+      "at": "2026-10-17T00:00:25.809056+00:00",
+      "reason": "Missing expected reconciled receipt",
+      "session": "2026-10-16"
+    },
+    "attempt_count": 0,
+    "events": [
+      {
+        "action_required": true,
+        "checked_at": "2026-10-17T00:00:25.809056+00:00",
+        "content_sha256": "6505cb5b3d5824dd346ed61784154cf14044b99cf1a5ccce9b246a73d7239b92",
+        "due": "2026-10-16T20:30:00+00:00",
+        "id": "2026-10-16:daily",
+        "kind": "daily",
+        "ordinal": 3,
+        "session": "2026-10-16",
+        "status": "missed_deadline"
+      },
+      {
+        "action_required": true,
+        "checked_at": "2026-10-17T00:00:25.809056+00:00",
+        "content_sha256": "7835e829d8934a88adaf1e657e1065fc2fa0e9553002556b2704e7364fca6f09",
+        "due": "2026-10-16T20:45:00+00:00",
+        "id": "2026-10-16:retry45",
+        "kind": "retry45",
+        "ordinal": 3,
+        "reason": {
+          "at": "2026-10-17T00:00:25.809056+00:00",
+          "reason": "Missed daily decision window; no backfill",
+          "session": "2026-10-16"
+        },
+        "session": "2026-10-16",
+        "status": "halted"
+      },
+      {
+        "action_required": true,
+        "checked_at": "2026-10-17T00:00:25.809056+00:00",
+        "content_sha256": "424a307f3aa5b3df5fa2c7a89aff41047a9d8b060b30063e657483dc386db56d",
+        "due": "2026-10-16T21:00:00+00:00",
+        "id": "2026-10-16:retry60",
+        "kind": "retry60",
+        "ordinal": 3,
+        "reason": {
+          "at": "2026-10-17T00:00:25.809056+00:00",
+          "reason": "Missed daily decision window; no backfill",
+          "session": "2026-10-16"
+        },
+        "session": "2026-10-16",
+        "status": "halted"
+      },
+      {
+        "action_required": true,
+        "checked_at": "2026-10-17T00:00:25.809056+00:00",
+        "content_sha256": "9d3fba158ee46b80f8bbb7a5f1afafe316448f3a27ce81957dfb406c1b03e5ba",
+        "due": "2026-10-16T21:30:00+00:00",
+        "id": "2026-10-16:watchdog",
+        "kind": "watchdog",
+        "ordinal": 3,
+        "session": "2026-10-16",
+        "status": "missing_expected_receipt"
+      }
+    ],
+    "outage": {
+      "content_sha256": "b3698cc8b47f3b62475522239e473fd7e8f4567b101561a177ceb2fb906893bf",
+      "gap_seconds": 18304.068773,
+      "previous": "2026-10-16T18:55:21.740283+00:00",
+      "reason": "Observed scheduler gap; sleep, logout or outage indistinguishable locally",
+      "resumed": "2026-10-17T00:00:25.809056+00:00"
+    },
+    "sleep_evidence": [
+      "2026-10-17 03:56:27 +0800 Sleep               \tEntering Sleep state due to 'Maintenance Sleep':TCPKeepAlive=active Using Batt (Charge:96%) 3652 secs ",
+      "2026-10-17 04:57:25 +0800 Sleep               \tEntering Sleep state due to 'Maintenance Sleep':TCPKeepAlive=active Using Batt (Charge:96%) 3655 secs ",
+      "2026-10-17 05:58:28 +0800 Sleep               \tEntering Sleep state due to 'Maintenance Sleep':TCPKeepAlive=active Using Batt (Charge:96%) 1545 secs "
+    ],
+    "recovery_performed": false,
+    "external_orders": false
+  },
+  "outcome_snapshot_verification": [
+    {
+      "session": "2026-10-19",
+      "record": "outcome-runs/2026-10-19.json",
+      "snapshot": "outcome-snapshots/2026-10-19-203012",
+      "snapshot_sha256": "492c8c53d23e4147ee27748946e9c533bf60df743aad4365a1dfba13fb6736fa",
+      "symbol_count": 22,
+      "status": "verified",
+      "finished_at": "2026-10-19T20:30:29.475563+00:00",
+      "terminal_status": "failed",
+      "counts_as_prospective_decision": false,
+      "mature_r4_labels_attached": 0
+    },
+    {
+      "session": "2026-10-20",
+      "record": "outcome-runs/2026-10-20.json",
+      "snapshot": "outcome-snapshots/2026-10-20-203023",
+      "snapshot_sha256": "a28c0850041508d155a597142ae0950ca18af43271f5e22e110c32e79d515457",
+      "symbol_count": 22,
+      "status": "verified",
+      "finished_at": "2026-10-20T20:30:38.544574+00:00",
+      "terminal_status": "failed",
+      "counts_as_prospective_decision": false,
+      "mature_r4_labels_attached": 0
+    }
+  ],
+  "scheduler_stderr": {
+    "sha256": "ecb8ee6084fa61ad42b19e4127f93890f021f1c36de8bd892d8b827c0d4ad6e0",
+    "bytes": 336,
+    "modified_at": "2026-10-18T02:08:11.461044+00:00",
+    "text": "Exception ignored in running getpath:\nTraceback (most recent call last):\n  File \"<frozen getpath>\", line 358, in <module>\nInterruptedError: [Errno 4] Interrupted system call\nFatal Python error: error evaluating path\nPython runtime state: core initialized\n\nCurrent thread 0x000000020b987080 (most recent call first):\n  <no Python frame>\n",
+    "disposition": "recovered_startup_interruption_on_2026-10-18_no_missing_required_collection_current_heartbeat_fresh_and_exit_zero"
+  },
+  "report_gate_reason": "Only two of three r4 decisions; halt unresolved; zero mature r4 labels and zero terminal receipts. No week-close or freeze report generated."
+}

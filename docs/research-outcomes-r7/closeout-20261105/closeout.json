@@ -1,0 +1,94 @@
+{
+  "recorded_at": "2026-11-05T05:32:44.886906+00:00",
+  "trigger": "2026-11-04T22:56:33.543Z",
+  "review_kind": "one-time administrative closeout after all registered windows expired; not a market observation or collection",
+  "reason": "No future registered observation window exists. Continuing the old periodic observer would only skip; read-only closeout establishes the actual incomplete state before retiring it.",
+  "completed_reads": 2,
+  "required_reads": 6,
+  "mature_decision_dates": 4,
+  "required_mature_dates": 5,
+  "valid_sessions": [
+    "2026-10-27",
+    "2026-10-28"
+  ],
+  "missing_sessions": [
+    "2026-10-29",
+    "2026-10-30",
+    "2026-11-02",
+    "2026-11-03"
+  ],
+  "failure_summary": "29 October initial attempt recorded transient connection/read timeouts for GOOGL, GLD, DIA; no valid receipt. No attempts recorded for remaining three dates. Cause of those missing starts not established.",
+  "new_collection_performed": false,
+  "backfilled_receipts": false,
+  "archived_accounts_mutated": false,
+  "final_gate_passed": false,
+  "shutdown_performed": false,
+  "collector_and_guard_left_loaded": true,
+  "automation_removal_pending": false,
+  "records": [
+    {
+      "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/reads/2026-10-27/result.json",
+      "sha256": "b37336c0b9da8c8abd76ef33f6e686cd5e8cc1ba19ecafe7af6fd5241849045a"
+    },
+    {
+      "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/reads/2026-10-28/result.json",
+      "sha256": "5db811d4646773e7ab0b5c564bc0fc28e2e120fbc6f505025d25b0bfa2f466b7"
+    },
+    {
+      "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/attempts/2026-10-27-initial.json",
+      "sha256": "40925250d689cd49462d4d9bed58454062252105ec9184c31e9ed55d4b9c0424"
+    },
+    {
+      "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/attempts/2026-10-28-initial.json",
+      "sha256": "4de77f7ec8664d998b88a83acea6154edde69acc5584917d1977bda0be683f14"
+    },
+    {
+      "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/attempts/2026-10-29-initial.json",
+      "sha256": "fb8ab250edf45f2b17376606464bd944f599cf338c843ed6ac6a1138ac0d0bd6"
+    },
+    {
+      "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/failures/2026-10-29-initial.json",
+      "sha256": "b008b46240a1f6280a6a2fc8e968f2a62249a93c1b453e861ea810ed1fa0eb1c"
+    },
+    {
+      "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/events/2026-10-27-watchdog.json",
+      "sha256": "dfec21e15144ea41e013ff506581a92221d52bb7f95589863ade000082076459"
+    },
+    {
+      "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/events/2026-10-28-watchdog.json",
+      "sha256": "e025b64171454a43791a501ea2c9eceb550eda9048d5b834af8e010e16ddefdd"
+    },
+    {
+      "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/events/2026-10-29-watchdog.json",
+      "sha256": "8c8f9c7d060d762e10cbcc9bca05fab06af77d9ab69cc688330107e7db8dc5f8"
+    },
+    {
+      "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/events/2026-10-30-watchdog.json",
+      "sha256": "6c4fa2f3daac9d16ff3084ae7b3b5f168df68d5c361988e6255743730aacb799"
+    },
+    {
+      "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/events/2026-11-02-watchdog.json",
+      "sha256": "05eef569d802f2f9749fa2169476a940853658656a7d4b8add8f4636b842f96f"
+    },
+    {
+      "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/events/2026-11-03-watchdog.json",
+      "sha256": "779869feadfa8b8068610b6a134ff95c001ee244a9c7411cf5205a1a76fea21e"
+    }
+  ],
+  "automation_before_removal_sha256": "ea83eee10f8db644ce07a4210d04ba8b3f0c17b290485fd1a5b8ba1c856665b4",
+  "observer_delivery_limitation": "Most recent delivered heartbeat triggers were outside registered windows; the strict skip rule delayed failure notification. No routine inspection is claimed for those skips.",
+  "finalized_at": "2026-11-05T07:09:04.511407+00:00",
+  "automation_deleted": true,
+  "automation_deletion_proof": "/Users/a/Downloads/ml-trade-engine/docs/research-outcomes-r7/closeout-20261105/automation-deletion.json",
+  "report": "/Users/a/Downloads/ml-trade-engine/data/research-outcomes-r7/reports/incomplete-closeout-20261105",
+  "report_sha256": "47eda476b2b9d2316121be45072189b47886e728d1514f27487e76876e427f70",
+  "report_manifest_sha256": "cfc01b6fc49589dce7832f481f7cd027051b6baaa28558ca373e90250c9c6be4",
+  "report_verification": "/Users/a/Downloads/ml-trade-engine/docs/research-outcomes-r7/closeout-20261105/report-verification.json",
+  "preservation_verification": "/Users/a/Downloads/ml-trade-engine/docs/research-outcomes-r7/closeout-20261105/preservation-audit.json",
+  "preserved_files_verified": 1741,
+  "next_registered_event": null,
+  "sealed_status": "/Users/a/Downloads/ml-trade-engine/docs/research-outcomes-r7/closeout-20261105/sealed-status.json",
+  "external_orders": false,
+  "action_required": "Any further measurement needs a separately registered recovery; do not add dates or backfill this ended trial.",
+  "completion_shutdown_condition": "not met; no service shutdown performed"
+}

@@ -1,0 +1,326 @@
+{
+  "actionable_event_ids": [
+    "OUTCOME-RECOVERY-R7-20261027:ended-incomplete-20261105"
+  ],
+  "automation_id": "trading-pilot-evidence-watch",
+  "check_history": [
+    {
+      "at": "2026-10-27T21:40:01.074561+00:00",
+      "completed_reads": 1,
+      "mature_dates": 4,
+      "new_notifications": [],
+      "session": "2026-10-27",
+      "trigger_at": "2026-10-27T21:38:47.675Z",
+      "window": "post_close"
+    }
+  ],
+  "durable_records": {
+    "attempts": [
+      {
+        "content_sha256": "92e499b8ba1ac336a7c2867cb7f17db8441ac88d292c87b52372e21de17980a9",
+        "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/attempts/2026-10-27-initial.json",
+        "session": "2026-10-27",
+        "sha256": "40925250d689cd49462d4d9bed58454062252105ec9184c31e9ed55d4b9c0424"
+      }
+    ],
+    "events": [
+      {
+        "content_sha256": "e19e8b23a27ded50f74b62129d7e1f0c41a5498332b2a693431ae3ec1b1799fc",
+        "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/events/2026-10-27-watchdog.json",
+        "session": "2026-10-27",
+        "sha256": "dfec21e15144ea41e013ff506581a92221d52bb7f95589863ade000082076459"
+      }
+    ],
+    "failures": [],
+    "reads": [
+      {
+        "content_sha256": "daebd40961fc57cef7b5336555e78503c11eb9d7745cf56d9c24fada796fcb3d",
+        "path": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/reads/2026-10-27/result.json",
+        "session": "2026-10-27",
+        "sha256": "b37336c0b9da8c8abd76ef33f6e686cd5e8cc1ba19ecafe7af6fd5241849045a"
+      }
+    ]
+  },
+  "halt": null,
+  "heartbeat": {
+    "at": "2026-10-27T21:39:31.778929+00:00",
+    "completed_sessions": [
+      "2026-10-27"
+    ],
+    "parent_pid": 1,
+    "phase": "idle",
+    "pid": 54071,
+    "release": "/Users/a/Downloads/ml-trade-engine/data/releases/outcomes-r7-20261027",
+    "service": "local.ml-trade-engine.collector-v2",
+    "trial_id": "OUTCOME-RECOVERY-R7-20261027"
+  },
+  "heartbeat_age_seconds": 29.295632,
+  "known_prior_missed_sessions": [
+    "2026-10-23",
+    "2026-10-26"
+  ],
+  "last_check_disposition": "post_close_first_outcome_read_verified_ordinary_progress_silent",
+  "last_checked_at": "2026-10-27T21:40:01.074561+00:00",
+  "last_trigger_at": "2026-10-27T21:38:47.675Z",
+  "latest_outcome_read": {
+    "completed_at": "2026-10-27T20:30:43.778722+00:00",
+    "counts_as_new_decision": false,
+    "mature_dates": [
+      "2026-10-01",
+      "2026-10-02",
+      "2026-10-14",
+      "2026-10-15"
+    ],
+    "outcome_rows": 88,
+    "receipt": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/reads/2026-10-27/result.json",
+    "receipt_sha256": "b37336c0b9da8c8abd76ef33f6e686cd5e8cc1ba19ecafe7af6fd5241849045a",
+    "session": "2026-10-27",
+    "snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "started_at": "2026-10-27T20:30:37.485929+00:00"
+  },
+  "notification_gates": {
+    "final_completion": false,
+    "new_actionable_failure": true,
+    "required_action": true
+  },
+  "notification_records": [
+    {
+      "event": "OUTCOME-RECOVERY-R7-20261027:activation",
+      "reason": "User-authorized reschedule verified"
+    },
+    {
+      "event": "OUTCOME-RECOVERY-R7-20261027:ended-incomplete-20261105",
+      "at": "2026-11-05T07:09:04.511407+00:00",
+      "reason": "Registered period ended with 2/6 reads and 4/5 original-date outcomes; obsolete observer removed; final gate failed."
+    }
+  ],
+  "notified_event_ids": [
+    "OUTCOME-RECOVERY-R7-20261027:activation",
+    "OUTCOME-RECOVERY-R7-20261027:ended-incomplete-20261105"
+  ],
+  "observer_only": true,
+  "proof": "/Users/a/Downloads/ml-trade-engine/data/research-outcomes-r7/activation-verification.json",
+  "proof_sha256": "fd86cc4ac52954345700fa492a8ed32e0c15651d656bc10c0cc61c4984a8d72d",
+  "schema_version": 1,
+  "shutdown_after_complete": true,
+  "skipped_invocations": [
+    {
+      "trigger_at": "2026-10-28T06:10:32.688Z",
+      "processed_at": "2026-10-28T08:59:09.728940+00:00",
+      "reason": "outside_registered_boundary_windows",
+      "sealed_window_result": null,
+      "collector_inspected": false,
+      "new_notifications": []
+    },
+    {
+      "trigger_at": "2026-10-29T22:37:21.350Z",
+      "processed_at": "2026-10-30T04:56:22.778070+00:00",
+      "reason": "outside_registered_boundary_windows",
+      "sealed_window_result": null,
+      "collector_inspected": false,
+      "new_notifications": []
+    },
+    {
+      "trigger_at": "2026-10-30T05:32:20.422Z",
+      "processed_at": "2026-10-30T05:32:39.579338+00:00",
+      "reason": "outside_registered_boundary_windows",
+      "sealed_window_result": null,
+      "collector_inspected": false,
+      "new_notifications": []
+    },
+    {
+      "trigger_at": "2026-10-30T22:16:46.475Z",
+      "processed_at": "2026-10-31T09:05:32.169460+00:00",
+      "reason": "outside_registered_boundary_windows",
+      "sealed_window_result": null,
+      "collector_inspected": false,
+      "new_notifications": []
+    },
+    {
+      "trigger_at": "2026-10-31T09:56:57.214Z",
+      "processed_at": "2026-11-01T04:10:30.481975+00:00",
+      "reason": "outside_registered_boundary_windows",
+      "sealed_window_result": null,
+      "collector_inspected": false,
+      "new_notifications": []
+    }
+  ],
+  "status": {
+    "amended_outcome_collection_complete": false,
+    "archived_accounts": [
+      {
+        "decisions": 2,
+        "full_account_tail_complete": false,
+        "last_mark": "2026-10-02",
+        "ledger_consistent_at_last_mark": true,
+        "net_returns_at_last_actual_receipt": {
+          "deployment": 0.0,
+          "shadow": -0.0006039152906718304
+        },
+        "segment": "r2"
+      },
+      {
+        "decisions": 2,
+        "full_account_tail_complete": false,
+        "last_mark": "2026-10-15",
+        "ledger_consistent_at_last_mark": true,
+        "net_returns_at_last_actual_receipt": {
+          "deployment": 0.0,
+          "shadow": -0.0006007509720118431
+        },
+        "segment": "r4"
+      },
+      {
+        "decisions": 1,
+        "full_account_tail_complete": false,
+        "last_mark": "2026-10-22",
+        "ledger_consistent_at_last_mark": true,
+        "net_returns_at_last_actual_receipt": {
+          "deployment": 0.0,
+          "shadow": 0.0
+        },
+        "segment": "r6"
+      }
+    ],
+    "boundary_window": {
+      "kind": "post_close",
+      "session": "2026-10-27"
+    },
+    "completed_outcome_reads": 1,
+    "decision_dates_preserved": 5,
+    "external_orders": false,
+    "halted": false,
+    "heartbeat": {
+      "at": "2026-10-27T21:39:31.778929+00:00",
+      "completed_sessions": [
+        "2026-10-27"
+      ],
+      "parent_pid": 1,
+      "phase": "idle",
+      "pid": 54071,
+      "release": "/Users/a/Downloads/ml-trade-engine/data/releases/outcomes-r7-20261027",
+      "service": "local.ml-trade-engine.collector-v2",
+      "trial_id": "OUTCOME-RECOVERY-R7-20261027"
+    },
+    "mature_decision_dates": 4,
+    "missing_new_sessions": [],
+    "new_decisions": 0,
+    "next_event": {
+      "close": "2026-10-28T20:00:00+00:00",
+      "collection": "2026-10-28T20:30:00+00:00",
+      "collection_hkt": "2026-10-29T04:30:00+08:00",
+      "observer_close": "2026-10-28T21:35:00+00:00",
+      "observer_open": "2026-10-28T13:35:00+00:00",
+      "open": "2026-10-28T13:30:00+00:00",
+      "session": "2026-10-28",
+      "watchdog": "2026-10-28T21:30:00+00:00"
+    },
+    "original_account_tail_complete": false,
+    "original_missed_outcome_sessions": [
+      "2026-10-23",
+      "2026-10-26"
+    ],
+    "original_operational_gate": "incomplete; missed execution and marks remain disclosed",
+    "required_mature_decision_dates": 5,
+    "required_outcome_reads": 6,
+    "trial_id": "OUTCOME-RECOVERY-R7-20261027"
+  },
+  "trial_id": "OUTCOME-RECOVERY-R7-20261027",
+  "verification": {
+    "ac_power": true,
+    "all_archived_accounts_reconcile_at_last_actual_mark": true,
+    "collector_last_exit": 0,
+    "no_collector_or_evidence_mutations": true,
+    "sealed_status": "passed",
+    "sleep_guard_pid": 44538,
+    "sleep_guard_running": true,
+    "snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "snapshot_symbols": 22,
+    "sole_loaded_collection_owner": true
+  },
+  "last_invocation_disposition": "administrative_closeout_after_registered_period_ended",
+  "observer_automation_status": "deleted",
+  "administrative_closeout": {
+    "at": "2026-11-05T07:09:04.511407+00:00",
+    "trigger_at": "2026-11-04T22:56:33.543Z",
+    "eligible_boundary_inspection": false,
+    "reason": "No future registered observation window exists. Continuing the old periodic observer would only skip; read-only closeout establishes the actual incomplete state before retiring it.",
+    "status": {
+      "trial_id": "OUTCOME-RECOVERY-R7-20261027",
+      "decision_dates_preserved": 5,
+      "new_decisions": 0,
+      "completed_outcome_reads": 2,
+      "required_outcome_reads": 6,
+      "mature_decision_dates": 4,
+      "required_mature_decision_dates": 5,
+      "missing_new_sessions": [
+        "2026-10-29",
+        "2026-10-30",
+        "2026-11-02",
+        "2026-11-03"
+      ],
+      "original_missed_outcome_sessions": [
+        "2026-10-23",
+        "2026-10-26"
+      ],
+      "halted": false,
+      "external_orders": false,
+      "original_account_tail_complete": false,
+      "original_operational_gate": "incomplete; missed execution and marks remain disclosed",
+      "amended_outcome_collection_complete": false,
+      "next_event": null,
+      "archived_accounts": [
+        {
+          "segment": "r2",
+          "decisions": 2,
+          "last_mark": "2026-10-02",
+          "ledger_consistent_at_last_mark": true,
+          "net_returns_at_last_actual_receipt": {
+            "deployment": 0.0,
+            "shadow": -0.0006039152906718304
+          },
+          "full_account_tail_complete": false
+        },
+        {
+          "segment": "r4",
+          "decisions": 2,
+          "last_mark": "2026-10-15",
+          "ledger_consistent_at_last_mark": true,
+          "net_returns_at_last_actual_receipt": {
+            "deployment": 0.0,
+            "shadow": -0.0006007509720118431
+          },
+          "full_account_tail_complete": false
+        },
+        {
+          "segment": "r6",
+          "decisions": 1,
+          "last_mark": "2026-10-22",
+          "ledger_consistent_at_last_mark": true,
+          "net_returns_at_last_actual_receipt": {
+            "deployment": 0.0,
+            "shadow": 0.0
+          },
+          "full_account_tail_complete": false
+        }
+      ],
+      "heartbeat": {
+        "at": "2026-11-05T06:04:08.035254+00:00",
+        "parent_pid": 1,
+        "phase": "checking",
+        "pid": 14879,
+        "release": "/Users/a/Downloads/ml-trade-engine/data/releases/outcomes-r7-20261027",
+        "service": "local.ml-trade-engine.collector-v2",
+        "trial_id": "OUTCOME-RECOVERY-R7-20261027"
+      },
+      "boundary_window": null
+    },
+    "report": "/Users/a/Downloads/ml-trade-engine/data/research-outcomes-r7/reports/incomplete-closeout-20261105",
+    "proof": "/Users/a/Downloads/ml-trade-engine/docs/research-outcomes-r7/closeout-20261105/closeout.json",
+    "proof_sha256": "5e2ee72292c7e877f8b57f801d98625448d420b5e20a5e8e0cdc184c07393a8e",
+    "notification_event": "OUTCOME-RECOVERY-R7-20261027:ended-incomplete-20261105",
+    "automation_deleted": true,
+    "shutdown_performed": false
+  }
+}

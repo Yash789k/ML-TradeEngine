@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "source_sha256": "4032863dc4db4a75b15202546fdb32de32747bc6db98b6a83745db32552d6238",
+  "valid_sessions": "0",
+  "required_sessions": "5",
+  "collection_buttons": 0,
+  "actual_sealed_status": true
+}

@@ -1,0 +1,18 @@
+{
+  "verification": "exact file-set and SHA-256 equality",
+  "scope": "preserved r2 through r6 workspaces",
+  "independent_auditor": "/root/final_preservation_audit",
+  "files_by_segment": {
+    "r2": 490,
+    "r3": 216,
+    "r4": 501,
+    "r5": 232,
+    "r6": 302
+  },
+  "total_files": 1741,
+  "missing_files": 0,
+  "extra_files": 0,
+  "hash_mismatches": 0,
+  "prior_halts": "r2-r5 halt.json byte-identical; r6 had no halt.json at preservation and still has none",
+  "read_only": true
+}

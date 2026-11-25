@@ -1,0 +1,70 @@
+{
+  "trial_id": "OUTCOME-RECOVERY-R7-20261027",
+  "decision_dates_preserved": 5,
+  "new_decisions": 0,
+  "completed_outcome_reads": 2,
+  "required_outcome_reads": 6,
+  "mature_decision_dates": 4,
+  "required_mature_decision_dates": 5,
+  "missing_new_sessions": [
+    "2026-10-29",
+    "2026-10-30",
+    "2026-11-02",
+    "2026-11-03"
+  ],
+  "original_missed_outcome_sessions": [
+    "2026-10-23",
+    "2026-10-26"
+  ],
+  "halted": false,
+  "external_orders": false,
+  "original_account_tail_complete": false,
+  "original_operational_gate": "incomplete; missed execution and marks remain disclosed",
+  "amended_outcome_collection_complete": false,
+  "next_event": null,
+  "archived_accounts": [
+    {
+      "segment": "r2",
+      "decisions": 2,
+      "last_mark": "2026-10-02",
+      "ledger_consistent_at_last_mark": true,
+      "net_returns_at_last_actual_receipt": {
+        "deployment": 0.0,
+        "shadow": -0.0006039152906718304
+      },
+      "full_account_tail_complete": false
+    },
+    {
+      "segment": "r4",
+      "decisions": 2,
+      "last_mark": "2026-10-15",
+      "ledger_consistent_at_last_mark": true,
+      "net_returns_at_last_actual_receipt": {
+        "deployment": 0.0,
+        "shadow": -0.0006007509720118431
+      },
+      "full_account_tail_complete": false
+    },
+    {
+      "segment": "r6",
+      "decisions": 1,
+      "last_mark": "2026-10-22",
+      "ledger_consistent_at_last_mark": true,
+      "net_returns_at_last_actual_receipt": {
+        "deployment": 0.0,
+        "shadow": 0.0
+      },
+      "full_account_tail_complete": false
+    }
+  ],
+  "heartbeat": {
+    "at": "2026-11-05T06:04:08.035254+00:00",
+    "parent_pid": 1,
+    "phase": "checking",
+    "pid": 14879,
+    "release": "/Users/a/Downloads/ml-trade-engine/data/releases/outcomes-r7-20261027",
+    "service": "local.ml-trade-engine.collector-v2",
+    "trial_id": "OUTCOME-RECOVERY-R7-20261027"
+  },
+  "boundary_window": null
+}

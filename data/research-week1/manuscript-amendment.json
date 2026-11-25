@@ -1,0 +1,12 @@
+{
+  "scope": "Prospective schedule and scope only; historical empirical results unchanged",
+  "sources": {
+    "data/research-week1/protocol.json": "99aec26df57cdf68db2ced2bd46b2f4ccfbf7c12074ebc27feeb30a868ee17ba",
+    "data/research-week1/schedule.json": "462cdb6e2ce0a5e2c042099355d3c05fe53420577adf267e59e917bdd2042ee6",
+    "data/research-week1/release-verification.json": "f415c74dc84db052d3ad61bc33e20c818e39132a088603365d9947134e524cd0",
+    "data/research-week1/reports/20260928-baseline/report.json": "7bf3fd1a1c3082447f5d5277f304866a39a3f31fb728f0ead77b2717ba74c9dc",
+    "data/research-week1/overleaf-before-amendment.zip": "0e05b380a65f47327945304f4c11ceb1e2bea5990ad39fc7cd5b17000a0dc3c1",
+    "scripts/week1/build_manuscript.py": "e0709f61c14ecbe49eb9796b1de43db8c8c3440d3827a05d08e483610d202f43"
+  },
+  "main_sha256": "023cf5e95155bc7b83a15bd06aa9c79b071126608d8c088a3b8710ad01f8a9fa"
+}

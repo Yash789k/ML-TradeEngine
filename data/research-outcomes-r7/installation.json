@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-27T09:27:15.460759+00:00",
+  "authorization": "User requested outcome collection dates from tonight onwards on 27 October HKT",
+  "release": "/Users/a/Downloads/ml-trade-engine/data/releases/outcomes-r7-20261027",
+  "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7",
+  "release_manifest_sha256": "e891242d6ccb5bc84796a1b1cc4c3dc00de10327696c065e888baa9c0d3951ab",
+  "sole_collector": "local.ml-trade-engine.collector-v2",
+  "guard": "local.ml-trade-engine.awake-outcomes-r7",
+  "guard_until": "2026-11-04T07:00:00+08:00",
+  "dashboard": "local.ml-trade-engine.dashboard-outcomes-r7",
+  "old_workspace_files_preserved": 302,
+  "superseded_plists": {
+    "/Users/a/Library/LaunchAgents/local.ml-trade-engine.collector-v2.plist": "7c4ec38e5cf1dea32f9818cbbef7b4d3559e260140631f1e57088d01217e4025",
+    "/Users/a/Library/LaunchAgents/local.ml-trade-engine.awake-week1-r6.plist": "cf79a56c166b9448aaaf7ab004efa18dd03f9dbcefa68ef11e3c908d04af1c39",
+    "/Users/a/Library/LaunchAgents/local.ml-trade-engine.dashboard-week1-r6.plist": "f5e8e5ebc4b0b2257c91efabd7b697b0afea3451fe0e7f8ce937ebefafb515b4"
+  },
+  "installed_plists": {
+    "/Users/a/Library/LaunchAgents/local.ml-trade-engine.awake-outcomes-r7.plist": "722df74057d1ce1e6ee01607b1283ba006aee47167b728fe8ac8b74890a777d7",
+    "/Users/a/Library/LaunchAgents/local.ml-trade-engine.collector-v2.plist": "3214eb5877b8f21bc14999f13578ac50dde549a1ffb2c2a07e86153474e6384f",
+    "/Users/a/Library/LaunchAgents/local.ml-trade-engine.dashboard-outcomes-r7.plist": "3bdeb0cf2474f620c2fae035de6f774cb10a229d681413d9b3f2c1526bbbe723"
+  },
+  "external_orders": false,
+  "new_targets": false,
+  "old_accounts_unchanged": true
+}

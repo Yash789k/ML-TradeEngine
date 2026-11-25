@@ -1,0 +1,2611 @@
+{
+  "authorization": "User 27 October 2026 HKT: I wasnt able to keep the Outcome collection working, set the collection dates from tonight onwards.",
+  "cancelled_old_tail_sessions": [
+    "2026-10-27",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-10-30"
+  ],
+  "collection_rule": "Six new on-time validated price snapshots; initial close+30..40, bounded retries close+45..55 and +60..65; watchdog +90. No backdated receipts.",
+  "completion_gate": "6/6 new scheduled read receipts, all 5 original-date labels mature and verified, archived receipts/accounts unchanged and reconciling at their last real mark, no active integrity halt; this completes the amended outcome dataset only",
+  "create_targets": false,
+  "decisions": [
+    {
+      "content_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+      "endpoint": "2026-10-09",
+      "entry": "2026-10-02",
+      "priors": {
+        "AAPL": [
+          0.3435722411831627,
+          0.21274175199089876,
+          0.44368600682593856
+        ],
+        "AMZN": [
+          0.34584755403868034,
+          0.21387940841865757,
+          0.4402730375426621
+        ],
+        "BAC": [
+          0.34584755403868034,
+          0.2025028441410694,
+          0.45164960182025027
+        ],
+        "DIA": [
+          0.22184300341296928,
+          0.42662116040955633,
+          0.3515358361774744
+        ],
+        "GLD": [
+          0.23094425483503983,
+          0.3515358361774744,
+          0.41751990898748575
+        ],
+        "GOOGL": [
+          0.3265073947667804,
+          0.19681456200227532,
+          0.47667804323094426
+        ],
+        "GS": [
+          0.31399317406143346,
+          0.2366325369738339,
+          0.44937428896473264
+        ],
+        "IWM": [
+          0.32195676905574516,
+          0.285551763367463,
+          0.3924914675767918
+        ],
+        "JPM": [
+          0.2821387940841866,
+          0.23777019340159272,
+          0.4800910125142207
+        ],
+        "META": [
+          0.3310580204778157,
+          0.18088737201365188,
+          0.4880546075085324
+        ],
+        "MSFT": [
+          0.3242320819112628,
+          0.2514220705346985,
+          0.4243458475540387
+        ],
+        "NVDA": [
+          0.3310580204778157,
+          0.13651877133105803,
+          0.5324232081911263
+        ],
+        "QQQ": [
+          0.27303754266211605,
+          0.30489192263936293,
+          0.42207053469852107
+        ],
+        "SPY": [
+          0.22070534698521047,
+          0.40386803185437997,
+          0.37542662116040953
+        ],
+        "TLT": [
+          0.32195676905574516,
+          0.3856655290102389,
+          0.2923777019340159
+        ],
+        "TSLA": [
+          0.4482366325369738,
+          0.10466439135381114,
+          0.447098976109215
+        ],
+        "XLE": [
+          0.30489192263936293,
+          0.26507394766780434,
+          0.4300341296928328
+        ],
+        "XLF": [
+          0.25483503981797495,
+          0.3492605233219568,
+          0.39590443686006827
+        ],
+        "XLI": [
+          0.24687144482366324,
+          0.36063708759954494,
+          0.3924914675767918
+        ],
+        "XLK": [
+          0.29692832764505117,
+          0.2764505119453925,
+          0.42662116040955633
+        ],
+        "XLP": [
+          0.24118316268486917,
+          0.472127417519909,
+          0.28668941979522183
+        ],
+        "XLV": [
+          0.2616609783845279,
+          0.40386803185437997,
+          0.33447098976109213
+        ]
+      },
+      "receipt": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2/days/2026-10-01/result.json",
+      "receipt_sha256": "e334ec1cdde0dc31408b5172cbf3ebb0e7d55aea589c97604d5e33ef65cee17a",
+      "segment": "r2",
+      "session": "2026-10-01",
+      "signals": [
+        {
+          "expected_return": -0.0014477012418129404,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "8b7a3e9be21c2535d016e6b9e1fa3f2803fa09ff79577ff39e1074646d055ed2",
+          "probabilities": [
+            0.36621126543128085,
+            0.307704409093914,
+            0.3260843254748051
+          ],
+          "symbol": "AAPL",
+          "trend": true
+        },
+        {
+          "expected_return": 0.025931833855207462,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "08a87d0fe72d8a4c366241e5cb9b41ca265db2d115a16d9a18bb2e164af7f6af",
+          "probabilities": [
+            0.12098458812814071,
+            0.1418602394581587,
+            0.7371551724137005
+          ],
+          "symbol": "AMZN",
+          "trend": true
+        },
+        {
+          "expected_return": -0.0016850405205298437,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "9cc18fa3d802774f5e77dcb8d153d094ed523420207f687dbbd472920ed51e2c",
+          "probabilities": [
+            0.4259177145806161,
+            0.17161582859835162,
+            0.4024664568210323
+          ],
+          "symbol": "BAC",
+          "trend": false
+        },
+        {
+          "expected_return": 0.007539668939315551,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "7c2f3ddba5769f63b54f1d50d476af28883203ea5c0eb58beb911a4b3be7cdfb",
+          "probabilities": [
+            0.1178163424626237,
+            0.4229568400805524,
+            0.459226817456824
+          ],
+          "symbol": "DIA",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0033372383820018748,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "f2ecb8768558d4719b4d1071ccf60ea051e34e41cae7cb6c9d33ed8b7975d2d0",
+          "probabilities": [
+            0.28005858902397396,
+            0.37226387896370194,
+            0.34767753201232404
+          ],
+          "symbol": "GLD",
+          "trend": false
+        },
+        {
+          "expected_return": 0.009683036079525979,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "2d5719a6ed755e9d6648ac03c28d43b55930512274a09e3ab4c5b79d05f6f61b",
+          "probabilities": [
+            0.3137365621793345,
+            0.1577853319275577,
+            0.5284781058931078
+          ],
+          "symbol": "GOOGL",
+          "trend": false
+        },
+        {
+          "expected_return": 0.008929433655220472,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "c3a5f98f139b4b3ae0cb196cc78220e8bc4013d4232c096bbc45b357e8294b3f",
+          "probabilities": [
+            0.2574257091335579,
+            0.278409059514101,
+            0.464165231352341
+          ],
+          "symbol": "GS",
+          "trend": false
+        },
+        {
+          "expected_return": -0.00021700240320419138,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "bf69f81438bce1ddbde8cbab80ca53f0853cf2abf3c95de21f59e3dc63778ac1",
+          "probabilities": [
+            0.3414383279374651,
+            0.3353760692629511,
+            0.32318560279958386
+          ],
+          "symbol": "IWM",
+          "trend": true
+        },
+        {
+          "expected_return": 0.005472442896567285,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "ed959a553d35ca055f05cc7ba8b8777600218cb6d0f26ae31adc35f9e98c052e",
+          "probabilities": [
+            0.268274438629131,
+            0.28749704851963886,
+            0.4442285128512303
+          ],
+          "symbol": "JPM",
+          "trend": true
+        },
+        {
+          "expected_return": 0.020098619626807156,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "367bd721d919cc867fb8a612af5b84f7595efacf74b463ef12c7d827677a7e83",
+          "probabilities": [
+            0.24551445289877752,
+            0.1422443519494487,
+            0.6122411951517738
+          ],
+          "symbol": "META",
+          "trend": false
+        },
+        {
+          "expected_return": 0.013744800750547388,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "f66466c9d5dbfddca3eaa913f38322c7c395cbed019665df57761e84b413457e",
+          "probabilities": [
+            0.15342164752399856,
+            0.27967049590199605,
+            0.5669078565740053
+          ],
+          "symbol": "MSFT",
+          "trend": false
+        },
+        {
+          "expected_return": 0.0040568982269014175,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "dce0c07ba47514715fc1284620b38f410054b0b13c368b2f13b4ac40e1a855e6",
+          "probabilities": [
+            0.4016168256856584,
+            0.21048306783611598,
+            0.3879001064782257
+          ],
+          "symbol": "NVDA",
+          "trend": true
+        },
+        {
+          "expected_return": 0.007226803467898789,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "4b746cbb8c509d806663d4212a03c865e5a95432f292b43d9281b84ce3d40a88",
+          "probabilities": [
+            0.26241326578577534,
+            0.2297228571138103,
+            0.5078638771004144
+          ],
+          "symbol": "QQQ",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0038793971377797005,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "df560130f3b210083545a5f9e89fb6c69affac0f2e0651c611ed86638b873fd0",
+          "probabilities": [
+            0.23293716786024946,
+            0.3589675536791114,
+            0.40809527846063914
+          ],
+          "symbol": "SPY",
+          "trend": true
+        },
+        {
+          "expected_return": 0.00256958083279781,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "dd2e66ec5e33db41f76109005624ed3f5cf0d68fbe120b9755338bc60cc1e659",
+          "probabilities": [
+            0.2802524486725846,
+            0.3524641427997421,
+            0.3672834085276733
+          ],
+          "symbol": "TLT",
+          "trend": false
+        },
+        {
+          "expected_return": 0.03207617379247206,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "6d6000af4974606f16f5bbba3c9d9f259ec50e14daa13ca63ca8010a0baa8e68",
+          "probabilities": [
+            0.2549157186157266,
+            0.11327775773737536,
+            0.631806523646898
+          ],
+          "symbol": "TSLA",
+          "trend": false
+        },
+        {
+          "expected_return": -0.0007351554983049714,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "42501d567e39055b902a043d3d69a3201545a7e1d21b9dbf6f9ca829bb1e608c",
+          "probabilities": [
+            0.3377856295712106,
+            0.3267612038402798,
+            0.3354531665885096
+          ],
+          "symbol": "XLE",
+          "trend": true
+        },
+        {
+          "expected_return": 0.004159225249652672,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "eead0bfb0722a424d2f25897b604e234d4d3c8b77d60d74facb1716c07ea5e3c",
+          "probabilities": [
+            0.20119319802327224,
+            0.41109019526155466,
+            0.38771660671517316
+          ],
+          "symbol": "XLF",
+          "trend": true
+        },
+        {
+          "expected_return": 0.003738489827523915,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "d655ebf489e128263ede2e6db7c6ee8ffbb20bbb353497c3f7782d8f74240925",
+          "probabilities": [
+            0.27912195731682304,
+            0.30159693586445935,
+            0.4192811068187176
+          ],
+          "symbol": "XLI",
+          "trend": false
+        },
+        {
+          "expected_return": 0.00412364970241655,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "33af61dfc70d260d5a1bafe37a62cd10ebde11d16a4d3741872130cfdbf7a8df",
+          "probabilities": [
+            0.27085594856672524,
+            0.35063006229382954,
+            0.3785139891394452
+          ],
+          "symbol": "XLK",
+          "trend": true
+        },
+        {
+          "expected_return": 0.001956730732583207,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "b8266393d6b299f4060708e4751051ebc188377b71bcc28524f30bd12c3ec82a",
+          "probabilities": [
+            0.2723173064279028,
+            0.389900434185618,
+            0.3377822593864793
+          ],
+          "symbol": "XLP",
+          "trend": false
+        },
+        {
+          "expected_return": -0.0030217432308687377,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "c879f4b9dd9d6293537bcffd32fd3912e876cdd570d29b330c01b061e0d6fdf8",
+          "probabilities": [
+            0.3883130039813146,
+            0.3547789934145681,
+            0.2569080026041174
+          ],
+          "symbol": "XLV",
+          "trend": true
+        }
+      ]
+    },
+    {
+      "content_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+      "endpoint": "2026-10-12",
+      "entry": "2026-10-05",
+      "priors": {
+        "AAPL": [
+          0.3435722411831627,
+          0.21274175199089876,
+          0.44368600682593856
+        ],
+        "AMZN": [
+          0.34584755403868034,
+          0.21387940841865757,
+          0.4402730375426621
+        ],
+        "BAC": [
+          0.34584755403868034,
+          0.2025028441410694,
+          0.45164960182025027
+        ],
+        "DIA": [
+          0.22184300341296928,
+          0.42662116040955633,
+          0.3515358361774744
+        ],
+        "GLD": [
+          0.23094425483503983,
+          0.3515358361774744,
+          0.41751990898748575
+        ],
+        "GOOGL": [
+          0.3265073947667804,
+          0.19681456200227532,
+          0.47667804323094426
+        ],
+        "GS": [
+          0.31399317406143346,
+          0.2366325369738339,
+          0.44937428896473264
+        ],
+        "IWM": [
+          0.32195676905574516,
+          0.285551763367463,
+          0.3924914675767918
+        ],
+        "JPM": [
+          0.2821387940841866,
+          0.23777019340159272,
+          0.4800910125142207
+        ],
+        "META": [
+          0.3310580204778157,
+          0.18088737201365188,
+          0.4880546075085324
+        ],
+        "MSFT": [
+          0.3242320819112628,
+          0.2514220705346985,
+          0.4243458475540387
+        ],
+        "NVDA": [
+          0.3310580204778157,
+          0.13651877133105803,
+          0.5324232081911263
+        ],
+        "QQQ": [
+          0.27303754266211605,
+          0.30489192263936293,
+          0.42207053469852107
+        ],
+        "SPY": [
+          0.22070534698521047,
+          0.40386803185437997,
+          0.37542662116040953
+        ],
+        "TLT": [
+          0.32195676905574516,
+          0.3856655290102389,
+          0.2923777019340159
+        ],
+        "TSLA": [
+          0.4482366325369738,
+          0.10466439135381114,
+          0.447098976109215
+        ],
+        "XLE": [
+          0.30489192263936293,
+          0.26507394766780434,
+          0.4300341296928328
+        ],
+        "XLF": [
+          0.25483503981797495,
+          0.3492605233219568,
+          0.39590443686006827
+        ],
+        "XLI": [
+          0.24687144482366324,
+          0.36063708759954494,
+          0.3924914675767918
+        ],
+        "XLK": [
+          0.29692832764505117,
+          0.2764505119453925,
+          0.42662116040955633
+        ],
+        "XLP": [
+          0.24118316268486917,
+          0.472127417519909,
+          0.28668941979522183
+        ],
+        "XLV": [
+          0.2616609783845279,
+          0.40386803185437997,
+          0.33447098976109213
+        ]
+      },
+      "receipt": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2/days/2026-10-02/result.json",
+      "receipt_sha256": "4416ac3300c06a9a354c06ce7f371199ebb00152a4d3d450b8f32268009b0467",
+      "segment": "r2",
+      "session": "2026-10-02",
+      "signals": [
+        {
+          "expected_return": -0.0017327590057454063,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "8b7a3e9be21c2535d016e6b9e1fa3f2803fa09ff79577ff39e1074646d055ed2",
+          "probabilities": [
+            0.36734863917476296,
+            0.31324158155864823,
+            0.31940977926658876
+          ],
+          "symbol": "AAPL",
+          "trend": true
+        },
+        {
+          "expected_return": 0.022379209936203476,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "08a87d0fe72d8a4c366241e5cb9b41ca265db2d115a16d9a18bb2e164af7f6af",
+          "probabilities": [
+            0.14555497588982658,
+            0.17757190590225239,
+            0.6768731182079211
+          ],
+          "symbol": "AMZN",
+          "trend": true
+        },
+        {
+          "expected_return": 0.004373946253100881,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "9cc18fa3d802774f5e77dcb8d153d094ed523420207f687dbbd472920ed51e2c",
+          "probabilities": [
+            0.35521810728428194,
+            0.14680860919892155,
+            0.49797328351679665
+          ],
+          "symbol": "BAC",
+          "trend": false
+        },
+        {
+          "expected_return": 0.010654181625276348,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "7c2f3ddba5769f63b54f1d50d476af28883203ea5c0eb58beb911a4b3be7cdfb",
+          "probabilities": [
+            0.07929771296417558,
+            0.3555906161986638,
+            0.5651116708371607
+          ],
+          "symbol": "DIA",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0036825339644313204,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "f2ecb8768558d4719b4d1071ccf60ea051e34e41cae7cb6c9d33ed8b7975d2d0",
+          "probabilities": [
+            0.27614219425064107,
+            0.36722334934430145,
+            0.3566344564050576
+          ],
+          "symbol": "GLD",
+          "trend": false
+        },
+        {
+          "expected_return": 0.0036503611078944776,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "2d5719a6ed755e9d6648ac03c28d43b55930512274a09e3ab4c5b79d05f6f61b",
+          "probabilities": [
+            0.34719783930466297,
+            0.23865191971904773,
+            0.4141502409762893
+          ],
+          "symbol": "GOOGL",
+          "trend": true
+        },
+        {
+          "expected_return": 0.00876150192426244,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "c3a5f98f139b4b3ae0cb196cc78220e8bc4013d4232c096bbc45b357e8294b3f",
+          "probabilities": [
+            0.2655137295313945,
+            0.2670749619570387,
+            0.46741130851156676
+          ],
+          "symbol": "GS",
+          "trend": false
+        },
+        {
+          "expected_return": -0.0015358579446403502,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "bf69f81438bce1ddbde8cbab80ca53f0853cf2abf3c95de21f59e3dc63778ac1",
+          "probabilities": [
+            0.3768671959267636,
+            0.310243251191416,
+            0.31288955288182047
+          ],
+          "symbol": "IWM",
+          "trend": true
+        },
+        {
+          "expected_return": 0.006299942686402929,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "ed959a553d35ca055f05cc7ba8b8777600218cb6d0f26ae31adc35f9e98c052e",
+          "probabilities": [
+            0.2660447406684768,
+            0.26544852189752655,
+            0.4685067374339967
+          ],
+          "symbol": "JPM",
+          "trend": true
+        },
+        {
+          "expected_return": 0.019593698995618625,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "367bd721d919cc867fb8a612af5b84f7595efacf74b463ef12c7d827677a7e83",
+          "probabilities": [
+            0.2192677224425481,
+            0.20290887417500403,
+            0.5778234033824479
+          ],
+          "symbol": "META",
+          "trend": false
+        },
+        {
+          "expected_return": 0.016593609541074746,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "f66466c9d5dbfddca3eaa913f38322c7c395cbed019665df57761e84b413457e",
+          "probabilities": [
+            0.13134260895631347,
+            0.23587726784262134,
+            0.6327801232010651
+          ],
+          "symbol": "MSFT",
+          "trend": false
+        },
+        {
+          "expected_return": 0.010507096700750646,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "dce0c07ba47514715fc1284620b38f410054b0b13c368b2f13b4ac40e1a855e6",
+          "probabilities": [
+            0.3209643673677698,
+            0.25796444522774464,
+            0.4210711874044855
+          ],
+          "symbol": "NVDA",
+          "trend": true
+        },
+        {
+          "expected_return": 0.007254719977799067,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "4b746cbb8c509d806663d4212a03c865e5a95432f292b43d9281b84ce3d40a88",
+          "probabilities": [
+            0.1980551137248915,
+            0.3609460694326158,
+            0.44099881684249265
+          ],
+          "symbol": "QQQ",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0048333276768371255,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "df560130f3b210083545a5f9e89fb6c69affac0f2e0651c611ed86638b873fd0",
+          "probabilities": [
+            0.1942408271220149,
+            0.39926736182466555,
+            0.4064918110533196
+          ],
+          "symbol": "SPY",
+          "trend": true
+        },
+        {
+          "expected_return": 0.00419109552679797,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "dd2e66ec5e33db41f76109005624ed3f5cf0d68fbe120b9755338bc60cc1e659",
+          "probabilities": [
+            0.25070738767961176,
+            0.343353009045613,
+            0.4059396032747753
+          ],
+          "symbol": "TLT",
+          "trend": false
+        },
+        {
+          "expected_return": 0.02699523593019377,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "6d6000af4974606f16f5bbba3c9d9f259ec50e14daa13ca63ca8010a0baa8e68",
+          "probabilities": [
+            0.3057857916217576,
+            0.08531882630152776,
+            0.6088953820767147
+          ],
+          "symbol": "TSLA",
+          "trend": false
+        },
+        {
+          "expected_return": -0.0022166580079904883,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "42501d567e39055b902a043d3d69a3201545a7e1d21b9dbf6f9ca829bb1e608c",
+          "probabilities": [
+            0.35959946849640706,
+            0.3283554020340415,
+            0.3120451294695514
+          ],
+          "symbol": "XLE",
+          "trend": true
+        },
+        {
+          "expected_return": 0.007956509312138853,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "eead0bfb0722a424d2f25897b604e234d4d3c8b77d60d74facb1716c07ea5e3c",
+          "probabilities": [
+            0.17404329868795768,
+            0.3120680996678459,
+            0.5138886016441965
+          ],
+          "symbol": "XLF",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0032027374472668353,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "d655ebf489e128263ede2e6db7c6ee8ffbb20bbb353497c3f7782d8f74240925",
+          "probabilities": [
+            0.2836327756564806,
+            0.31494905846888754,
+            0.40141816587463175
+          ],
+          "symbol": "XLI",
+          "trend": false
+        },
+        {
+          "expected_return": 0.002767516764277434,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "33af61dfc70d260d5a1bafe37a62cd10ebde11d16a4d3741872130cfdbf7a8df",
+          "probabilities": [
+            0.2870707577106154,
+            0.3598008887699677,
+            0.3531283535194169
+          ],
+          "symbol": "XLK",
+          "trend": true
+        },
+        {
+          "expected_return": 0.002711056237650655,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "b8266393d6b299f4060708e4751051ebc188377b71bcc28524f30bd12c3ec82a",
+          "probabilities": [
+            0.24849353849896758,
+            0.40052048050618266,
+            0.3509859809948498
+          ],
+          "symbol": "XLP",
+          "trend": false
+        },
+        {
+          "expected_return": -0.002842244963532265,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "c879f4b9dd9d6293537bcffd32fd3912e876cdd570d29b330c01b061e0d6fdf8",
+          "probabilities": [
+            0.37703279256545674,
+            0.36908501509130087,
+            0.2538821923432423
+          ],
+          "symbol": "XLV",
+          "trend": true
+        }
+      ]
+    },
+    {
+      "content_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+      "endpoint": "2026-10-22",
+      "entry": "2026-10-15",
+      "priors": {
+        "AAPL": [
+          0.3435722411831627,
+          0.21274175199089876,
+          0.44368600682593856
+        ],
+        "AMZN": [
+          0.34584755403868034,
+          0.21387940841865757,
+          0.4402730375426621
+        ],
+        "BAC": [
+          0.34584755403868034,
+          0.2025028441410694,
+          0.45164960182025027
+        ],
+        "DIA": [
+          0.22184300341296928,
+          0.42662116040955633,
+          0.3515358361774744
+        ],
+        "GLD": [
+          0.23094425483503983,
+          0.3515358361774744,
+          0.41751990898748575
+        ],
+        "GOOGL": [
+          0.3265073947667804,
+          0.19681456200227532,
+          0.47667804323094426
+        ],
+        "GS": [
+          0.31399317406143346,
+          0.2366325369738339,
+          0.44937428896473264
+        ],
+        "IWM": [
+          0.32195676905574516,
+          0.285551763367463,
+          0.3924914675767918
+        ],
+        "JPM": [
+          0.2821387940841866,
+          0.23777019340159272,
+          0.4800910125142207
+        ],
+        "META": [
+          0.3310580204778157,
+          0.18088737201365188,
+          0.4880546075085324
+        ],
+        "MSFT": [
+          0.3242320819112628,
+          0.2514220705346985,
+          0.4243458475540387
+        ],
+        "NVDA": [
+          0.3310580204778157,
+          0.13651877133105803,
+          0.5324232081911263
+        ],
+        "QQQ": [
+          0.27303754266211605,
+          0.30489192263936293,
+          0.42207053469852107
+        ],
+        "SPY": [
+          0.22070534698521047,
+          0.40386803185437997,
+          0.37542662116040953
+        ],
+        "TLT": [
+          0.32195676905574516,
+          0.3856655290102389,
+          0.2923777019340159
+        ],
+        "TSLA": [
+          0.4482366325369738,
+          0.10466439135381114,
+          0.447098976109215
+        ],
+        "XLE": [
+          0.30489192263936293,
+          0.26507394766780434,
+          0.4300341296928328
+        ],
+        "XLF": [
+          0.25483503981797495,
+          0.3492605233219568,
+          0.39590443686006827
+        ],
+        "XLI": [
+          0.24687144482366324,
+          0.36063708759954494,
+          0.3924914675767918
+        ],
+        "XLK": [
+          0.29692832764505117,
+          0.2764505119453925,
+          0.42662116040955633
+        ],
+        "XLP": [
+          0.24118316268486917,
+          0.472127417519909,
+          0.28668941979522183
+        ],
+        "XLV": [
+          0.2616609783845279,
+          0.40386803185437997,
+          0.33447098976109213
+        ]
+      },
+      "receipt": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r4/days/2026-10-14/result.json",
+      "receipt_sha256": "5f02761b1f1877b91716ee4581a758a53c928233db869c0360e8f1d554e008f7",
+      "segment": "r4",
+      "session": "2026-10-14",
+      "signals": [
+        {
+          "expected_return": 0.00015491632849146467,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "8b7a3e9be21c2535d016e6b9e1fa3f2803fa09ff79577ff39e1074646d055ed2",
+          "probabilities": [
+            0.3265456641513079,
+            0.34221136936682883,
+            0.3312429664818632
+          ],
+          "symbol": "AAPL",
+          "trend": true
+        },
+        {
+          "expected_return": 0.018234568874971897,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "08a87d0fe72d8a4c366241e5cb9b41ca265db2d115a16d9a18bb2e164af7f6af",
+          "probabilities": [
+            0.18594401954468812,
+            0.19506528759975178,
+            0.6189906928555601
+          ],
+          "symbol": "AMZN",
+          "trend": true
+        },
+        {
+          "expected_return": -6.025722811309371e-05,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "9cc18fa3d802774f5e77dcb8d153d094ed523420207f687dbbd472920ed51e2c",
+          "probabilities": [
+            0.3864459526925683,
+            0.2083984286405481,
+            0.4051556186668835
+          ],
+          "symbol": "BAC",
+          "trend": false
+        },
+        {
+          "expected_return": 0.005925346052114905,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "7c2f3ddba5769f63b54f1d50d476af28883203ea5c0eb58beb911a4b3be7cdfb",
+          "probabilities": [
+            0.12006460981767897,
+            0.4957465249651479,
+            0.38418886521717316
+          ],
+          "symbol": "DIA",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0018870169970990397,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "f2ecb8768558d4719b4d1071ccf60ea051e34e41cae7cb6c9d33ed8b7975d2d0",
+          "probabilities": [
+            0.2917868731315084,
+            0.40211071683510674,
+            0.3061024100333848
+          ],
+          "symbol": "GLD",
+          "trend": false
+        },
+        {
+          "expected_return": 0.014733664271788394,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "2d5719a6ed755e9d6648ac03c28d43b55930512274a09e3ab4c5b79d05f6f61b",
+          "probabilities": [
+            0.25982820766052306,
+            0.1403144964614485,
+            0.5998572958780285
+          ],
+          "symbol": "GOOGL",
+          "trend": true
+        },
+        {
+          "expected_return": 0.006930699386242351,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "c3a5f98f139b4b3ae0cb196cc78220e8bc4013d4232c096bbc45b357e8294b3f",
+          "probabilities": [
+            0.2836908316028835,
+            0.27888920140093276,
+            0.43741996699618385
+          ],
+          "symbol": "GS",
+          "trend": false
+        },
+        {
+          "expected_return": -0.00046413613004992957,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "bf69f81438bce1ddbde8cbab80ca53f0853cf2abf3c95de21f59e3dc63778ac1",
+          "probabilities": [
+            0.3478429825555523,
+            0.3311182409024136,
+            0.3210387765420341
+          ],
+          "symbol": "IWM",
+          "trend": false
+        },
+        {
+          "expected_return": 0.0035148550735392796,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "ed959a553d35ca055f05cc7ba8b8777600218cb6d0f26ae31adc35f9e98c052e",
+          "probabilities": [
+            0.2889118140438316,
+            0.3072959606169394,
+            0.403792225339229
+          ],
+          "symbol": "JPM",
+          "trend": true
+        },
+        {
+          "expected_return": 0.017190498660518187,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "367bd721d919cc867fb8a612af5b84f7595efacf74b463ef12c7d827677a7e83",
+          "probabilities": [
+            0.24755072385613464,
+            0.19578901875439003,
+            0.5566602573894753
+          ],
+          "symbol": "META",
+          "trend": false
+        },
+        {
+          "expected_return": 0.014815012935134327,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "f66466c9d5dbfddca3eaa913f38322c7c395cbed019665df57761e84b413457e",
+          "probabilities": [
+            0.1503592159857262,
+            0.2523427963190571,
+            0.5972979876952167
+          ],
+          "symbol": "MSFT",
+          "trend": false
+        },
+        {
+          "expected_return": 0.019422648955337015,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "dce0c07ba47514715fc1284620b38f410054b0b13c368b2f13b4ac40e1a855e6",
+          "probabilities": [
+            0.3172358207150349,
+            0.1266425826965685,
+            0.5561215965883965
+          ],
+          "symbol": "NVDA",
+          "trend": true
+        },
+        {
+          "expected_return": 0.005445461165168907,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "4b746cbb8c509d806663d4212a03c865e5a95432f292b43d9281b84ce3d40a88",
+          "probabilities": [
+            0.2988710470139702,
+            0.21884490689658026,
+            0.4822840460894494
+          ],
+          "symbol": "QQQ",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0057429789303724485,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "df560130f3b210083545a5f9e89fb6c69affac0f2e0651c611ed86638b873fd0",
+          "probabilities": [
+            0.20696118004378725,
+            0.3293444590943292,
+            0.4636943608618837
+          ],
+          "symbol": "SPY",
+          "trend": true
+        },
+        {
+          "expected_return": 0.005977720606319477,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "dd2e66ec5e33db41f76109005624ed3f5cf0d68fbe120b9755338bc60cc1e659",
+          "probabilities": [
+            0.21193018739449448,
+            0.3452049395443731,
+            0.44286487306113237
+          ],
+          "symbol": "TLT",
+          "trend": false
+        },
+        {
+          "expected_return": 0.022029694205020024,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "6d6000af4974606f16f5bbba3c9d9f259ec50e14daa13ca63ca8010a0baa8e68",
+          "probabilities": [
+            0.30553411138257425,
+            0.14945599393663367,
+            0.5450098946807921
+          ],
+          "symbol": "TSLA",
+          "trend": false
+        },
+        {
+          "expected_return": 0.00031038243144026686,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "42501d567e39055b902a043d3d69a3201545a7e1d21b9dbf6f9ca829bb1e608c",
+          "probabilities": [
+            0.33444271006850873,
+            0.29960294609005733,
+            0.36595434384143394
+          ],
+          "symbol": "XLE",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0003913944196178706,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "eead0bfb0722a424d2f25897b604e234d4d3c8b77d60d74facb1716c07ea5e3c",
+          "probabilities": [
+            0.27068002793276946,
+            0.4162352172902717,
+            0.31308475477695896
+          ],
+          "symbol": "XLF",
+          "trend": true
+        },
+        {
+          "expected_return": 0.004317508502033292,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "d655ebf489e128263ede2e6db7c6ee8ffbb20bbb353497c3f7782d8f74240925",
+          "probabilities": [
+            0.27411758714419815,
+            0.2874374860048797,
+            0.438444926850922
+          ],
+          "symbol": "XLI",
+          "trend": false
+        },
+        {
+          "expected_return": 0.004347249896911268,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "33af61dfc70d260d5a1bafe37a62cd10ebde11d16a4d3741872130cfdbf7a8df",
+          "probabilities": [
+            0.29063243148660367,
+            0.30498726453257835,
+            0.404380303980818
+          ],
+          "symbol": "XLK",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0009446346197173432,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "b8266393d6b299f4060708e4751051ebc188377b71bcc28524f30bd12c3ec82a",
+          "probabilities": [
+            0.2578396524531031,
+            0.4709449571642015,
+            0.2712153903826954
+          ],
+          "symbol": "XLP",
+          "trend": true
+        },
+        {
+          "expected_return": -0.003407113810392752,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "c879f4b9dd9d6293537bcffd32fd3912e876cdd570d29b330c01b061e0d6fdf8",
+          "probabilities": [
+            0.3736267458043143,
+            0.4017335067652746,
+            0.22463974743041104
+          ],
+          "symbol": "XLV",
+          "trend": true
+        }
+      ]
+    },
+    {
+      "content_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+      "endpoint": "2026-10-23",
+      "entry": "2026-10-16",
+      "priors": {
+        "AAPL": [
+          0.3435722411831627,
+          0.21274175199089876,
+          0.44368600682593856
+        ],
+        "AMZN": [
+          0.34584755403868034,
+          0.21387940841865757,
+          0.4402730375426621
+        ],
+        "BAC": [
+          0.34584755403868034,
+          0.2025028441410694,
+          0.45164960182025027
+        ],
+        "DIA": [
+          0.22184300341296928,
+          0.42662116040955633,
+          0.3515358361774744
+        ],
+        "GLD": [
+          0.23094425483503983,
+          0.3515358361774744,
+          0.41751990898748575
+        ],
+        "GOOGL": [
+          0.3265073947667804,
+          0.19681456200227532,
+          0.47667804323094426
+        ],
+        "GS": [
+          0.31399317406143346,
+          0.2366325369738339,
+          0.44937428896473264
+        ],
+        "IWM": [
+          0.32195676905574516,
+          0.285551763367463,
+          0.3924914675767918
+        ],
+        "JPM": [
+          0.2821387940841866,
+          0.23777019340159272,
+          0.4800910125142207
+        ],
+        "META": [
+          0.3310580204778157,
+          0.18088737201365188,
+          0.4880546075085324
+        ],
+        "MSFT": [
+          0.3242320819112628,
+          0.2514220705346985,
+          0.4243458475540387
+        ],
+        "NVDA": [
+          0.3310580204778157,
+          0.13651877133105803,
+          0.5324232081911263
+        ],
+        "QQQ": [
+          0.27303754266211605,
+          0.30489192263936293,
+          0.42207053469852107
+        ],
+        "SPY": [
+          0.22070534698521047,
+          0.40386803185437997,
+          0.37542662116040953
+        ],
+        "TLT": [
+          0.32195676905574516,
+          0.3856655290102389,
+          0.2923777019340159
+        ],
+        "TSLA": [
+          0.4482366325369738,
+          0.10466439135381114,
+          0.447098976109215
+        ],
+        "XLE": [
+          0.30489192263936293,
+          0.26507394766780434,
+          0.4300341296928328
+        ],
+        "XLF": [
+          0.25483503981797495,
+          0.3492605233219568,
+          0.39590443686006827
+        ],
+        "XLI": [
+          0.24687144482366324,
+          0.36063708759954494,
+          0.3924914675767918
+        ],
+        "XLK": [
+          0.29692832764505117,
+          0.2764505119453925,
+          0.42662116040955633
+        ],
+        "XLP": [
+          0.24118316268486917,
+          0.472127417519909,
+          0.28668941979522183
+        ],
+        "XLV": [
+          0.2616609783845279,
+          0.40386803185437997,
+          0.33447098976109213
+        ]
+      },
+      "receipt": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r4/days/2026-10-15/result.json",
+      "receipt_sha256": "0e2e5f5b44010ab529946eb1b1d7cd70ac91e607ff0319305bcf3e6b18b6449d",
+      "segment": "r4",
+      "session": "2026-10-15",
+      "signals": [
+        {
+          "expected_return": 0.00029431995141867943,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "8b7a3e9be21c2535d016e6b9e1fa3f2803fa09ff79577ff39e1074646d055ed2",
+          "probabilities": [
+            0.34474901144744297,
+            0.3024946365946221,
+            0.35275635195793487
+          ],
+          "symbol": "AAPL",
+          "trend": true
+        },
+        {
+          "expected_return": 0.020769372416482135,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "08a87d0fe72d8a4c366241e5cb9b41ca265db2d115a16d9a18bb2e164af7f6af",
+          "probabilities": [
+            0.1847849743842761,
+            0.13583422345033797,
+            0.679380802165386
+          ],
+          "symbol": "AMZN",
+          "trend": true
+        },
+        {
+          "expected_return": 0.009164261066165464,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "9cc18fa3d802774f5e77dcb8d153d094ed523420207f687dbbd472920ed51e2c",
+          "probabilities": [
+            0.2696751049085302,
+            0.18997151097179577,
+            0.540353384119674
+          ],
+          "symbol": "BAC",
+          "trend": false
+        },
+        {
+          "expected_return": 0.006698584590565726,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "7c2f3ddba5769f63b54f1d50d476af28883203ea5c0eb58beb911a4b3be7cdfb",
+          "probabilities": [
+            0.10278058128984842,
+            0.49552634918023974,
+            0.40169306952991185
+          ],
+          "symbol": "DIA",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0012693100104597954,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "f2ecb8768558d4719b4d1071ccf60ea051e34e41cae7cb6c9d33ed8b7975d2d0",
+          "probabilities": [
+            0.3042354634332078,
+            0.40112353507953363,
+            0.29464100148725864
+          ],
+          "symbol": "GLD",
+          "trend": false
+        },
+        {
+          "expected_return": 0.01281741014202501,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "2d5719a6ed755e9d6648ac03c28d43b55930512274a09e3ab4c5b79d05f6f61b",
+          "probabilities": [
+            0.28155323071145644,
+            0.14447613245719507,
+            0.5739706368313484
+          ],
+          "symbol": "GOOGL",
+          "trend": true
+        },
+        {
+          "expected_return": 0.004097465998470965,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "c3a5f98f139b4b3ae0cb196cc78220e8bc4013d4232c096bbc45b357e8294b3f",
+          "probabilities": [
+            0.308692623046589,
+            0.30322164360567955,
+            0.38808573334773144
+          ],
+          "symbol": "GS",
+          "trend": false
+        },
+        {
+          "expected_return": -0.0004698232791548497,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "bf69f81438bce1ddbde8cbab80ca53f0853cf2abf3c95de21f59e3dc63778ac1",
+          "probabilities": [
+            0.35337656958591657,
+            0.3206315470770414,
+            0.325991883337042
+          ],
+          "symbol": "IWM",
+          "trend": false
+        },
+        {
+          "expected_return": 0.0039414556588694034,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "ed959a553d35ca055f05cc7ba8b8777600218cb6d0f26ae31adc35f9e98c052e",
+          "probabilities": [
+            0.2761149156944324,
+            0.32046390533879426,
+            0.4034211789667734
+          ],
+          "symbol": "JPM",
+          "trend": true
+        },
+        {
+          "expected_return": 0.02128877923304123,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "367bd721d919cc867fb8a612af5b84f7595efacf74b463ef12c7d827677a7e83",
+          "probabilities": [
+            0.22148540920072177,
+            0.1651242542478722,
+            0.6133903365514061
+          ],
+          "symbol": "META",
+          "trend": false
+        },
+        {
+          "expected_return": 0.012712956517156015,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "f66466c9d5dbfddca3eaa913f38322c7c395cbed019665df57761e84b413457e",
+          "probabilities": [
+            0.15451630614873332,
+            0.3098807104558491,
+            0.5356029833954176
+          ],
+          "symbol": "MSFT",
+          "trend": false
+        },
+        {
+          "expected_return": 0.018709915544998935,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "dce0c07ba47514715fc1284620b38f410054b0b13c368b2f13b4ac40e1a855e6",
+          "probabilities": [
+            0.28941178720619976,
+            0.18854372661790228,
+            0.5220444861758979
+          ],
+          "symbol": "NVDA",
+          "trend": true
+        },
+        {
+          "expected_return": 0.004693410422276766,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "4b746cbb8c509d806663d4212a03c865e5a95432f292b43d9281b84ce3d40a88",
+          "probabilities": [
+            0.2843589977650338,
+            0.27569122512609845,
+            0.43994977710886773
+          ],
+          "symbol": "QQQ",
+          "trend": true
+        },
+        {
+          "expected_return": 0.004559532048327951,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "df560130f3b210083545a5f9e89fb6c69affac0f2e0651c611ed86638b873fd0",
+          "probabilities": [
+            0.2187382565989744,
+            0.35846007026514487,
+            0.4228016731358807
+          ],
+          "symbol": "SPY",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0033940571985236036,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "dd2e66ec5e33db41f76109005624ed3f5cf0d68fbe120b9755338bc60cc1e659",
+          "probabilities": [
+            0.22326102012060592,
+            0.42801573647722485,
+            0.3487232434021692
+          ],
+          "symbol": "TLT",
+          "trend": false
+        },
+        {
+          "expected_return": 0.02548500301655215,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "6d6000af4974606f16f5bbba3c9d9f259ec50e14daa13ca63ca8010a0baa8e68",
+          "probabilities": [
+            0.2853502920342263,
+            0.14209175347536993,
+            0.5725579544904037
+          ],
+          "symbol": "TSLA",
+          "trend": false
+        },
+        {
+          "expected_return": 1.916625483527369e-05,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "42501d567e39055b902a043d3d69a3201545a7e1d21b9dbf6f9ca829bb1e608c",
+          "probabilities": [
+            0.3291122876882304,
+            0.3206930789993356,
+            0.35019463331243406
+          ],
+          "symbol": "XLE",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0019907506290754943,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "eead0bfb0722a424d2f25897b604e234d4d3c8b77d60d74facb1716c07ea5e3c",
+          "probabilities": [
+            0.2720766143498412,
+            0.3464483795865401,
+            0.3814750060636187
+          ],
+          "symbol": "XLF",
+          "trend": true
+        },
+        {
+          "expected_return": 0.003807654081346019,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "d655ebf489e128263ede2e6db7c6ee8ffbb20bbb353497c3f7782d8f74240925",
+          "probabilities": [
+            0.2875586429934521,
+            0.2809679739332577,
+            0.4314733830732903
+          ],
+          "symbol": "XLI",
+          "trend": false
+        },
+        {
+          "expected_return": 0.005439110207628143,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "33af61dfc70d260d5a1bafe37a62cd10ebde11d16a4d3741872130cfdbf7a8df",
+          "probabilities": [
+            0.2796731240673586,
+            0.29348401692978643,
+            0.42684285900285507
+          ],
+          "symbol": "XLK",
+          "trend": true
+        },
+        {
+          "expected_return": 0.004156028643407008,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "b8266393d6b299f4060708e4751051ebc188377b71bcc28524f30bd12c3ec82a",
+          "probabilities": [
+            0.20823743954324447,
+            0.4098244554527469,
+            0.3819381050040086
+          ],
+          "symbol": "XLP",
+          "trend": true
+        },
+        {
+          "expected_return": -0.004037639177481604,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "c879f4b9dd9d6293537bcffd32fd3912e876cdd570d29b330c01b061e0d6fdf8",
+          "probabilities": [
+            0.38355072999695283,
+            0.4107742514974809,
+            0.20567501850556638
+          ],
+          "symbol": "XLV",
+          "trend": true
+        }
+      ]
+    },
+    {
+      "content_sha256": "711e812cb93474dd9f80a639de5239afa5416a9fbac6a51c7f13e6eeca7904cc",
+      "endpoint": "2026-10-30",
+      "entry": "2026-10-23",
+      "priors": {
+        "AAPL": [
+          0.3435722411831627,
+          0.21274175199089876,
+          0.44368600682593856
+        ],
+        "AMZN": [
+          0.34584755403868034,
+          0.21387940841865757,
+          0.4402730375426621
+        ],
+        "BAC": [
+          0.34584755403868034,
+          0.2025028441410694,
+          0.45164960182025027
+        ],
+        "DIA": [
+          0.22184300341296928,
+          0.42662116040955633,
+          0.3515358361774744
+        ],
+        "GLD": [
+          0.23094425483503983,
+          0.3515358361774744,
+          0.41751990898748575
+        ],
+        "GOOGL": [
+          0.3265073947667804,
+          0.19681456200227532,
+          0.47667804323094426
+        ],
+        "GS": [
+          0.31399317406143346,
+          0.2366325369738339,
+          0.44937428896473264
+        ],
+        "IWM": [
+          0.32195676905574516,
+          0.285551763367463,
+          0.3924914675767918
+        ],
+        "JPM": [
+          0.2821387940841866,
+          0.23777019340159272,
+          0.4800910125142207
+        ],
+        "META": [
+          0.3310580204778157,
+          0.18088737201365188,
+          0.4880546075085324
+        ],
+        "MSFT": [
+          0.3242320819112628,
+          0.2514220705346985,
+          0.4243458475540387
+        ],
+        "NVDA": [
+          0.3310580204778157,
+          0.13651877133105803,
+          0.5324232081911263
+        ],
+        "QQQ": [
+          0.27303754266211605,
+          0.30489192263936293,
+          0.42207053469852107
+        ],
+        "SPY": [
+          0.22070534698521047,
+          0.40386803185437997,
+          0.37542662116040953
+        ],
+        "TLT": [
+          0.32195676905574516,
+          0.3856655290102389,
+          0.2923777019340159
+        ],
+        "TSLA": [
+          0.4482366325369738,
+          0.10466439135381114,
+          0.447098976109215
+        ],
+        "XLE": [
+          0.30489192263936293,
+          0.26507394766780434,
+          0.4300341296928328
+        ],
+        "XLF": [
+          0.25483503981797495,
+          0.3492605233219568,
+          0.39590443686006827
+        ],
+        "XLI": [
+          0.24687144482366324,
+          0.36063708759954494,
+          0.3924914675767918
+        ],
+        "XLK": [
+          0.29692832764505117,
+          0.2764505119453925,
+          0.42662116040955633
+        ],
+        "XLP": [
+          0.24118316268486917,
+          0.472127417519909,
+          0.28668941979522183
+        ],
+        "XLV": [
+          0.2616609783845279,
+          0.40386803185437997,
+          0.33447098976109213
+        ]
+      },
+      "receipt": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/result.json",
+      "receipt_sha256": "df57e2185cbc7ca31aaf2ca8db882f735b90d94f12b293c9e1fedd35d3b09a87",
+      "segment": "r6",
+      "session": "2026-10-22",
+      "signals": [
+        {
+          "expected_return": 0.0007938416180689797,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "8b7a3e9be21c2535d016e6b9e1fa3f2803fa09ff79577ff39e1074646d055ed2",
+          "probabilities": [
+            0.3263451934109338,
+            0.32516665061600614,
+            0.34848815597306
+          ],
+          "symbol": "AAPL",
+          "trend": true
+        },
+        {
+          "expected_return": 0.01779823251901273,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "08a87d0fe72d8a4c366241e5cb9b41ca265db2d115a16d9a18bb2e164af7f6af",
+          "probabilities": [
+            0.17477373728100168,
+            0.2286999879860991,
+            0.5965262747328992
+          ],
+          "symbol": "AMZN",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0081755521975096,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "9cc18fa3d802774f5e77dcb8d153d094ed523420207f687dbbd472920ed51e2c",
+          "probabilities": [
+            0.2967121446775377,
+            0.1611986614807761,
+            0.5420891938416861
+          ],
+          "symbol": "BAC",
+          "trend": false
+        },
+        {
+          "expected_return": 0.003077820638966426,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "7c2f3ddba5769f63b54f1d50d476af28883203ea5c0eb58beb911a4b3be7cdfb",
+          "probabilities": [
+            0.09837329931910611,
+            0.6789868541245169,
+            0.22263984655637703
+          ],
+          "symbol": "DIA",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0030789030080364908,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "f2ecb8768558d4719b4d1071ccf60ea051e34e41cae7cb6c9d33ed8b7975d2d0",
+          "probabilities": [
+            0.2865853047901738,
+            0.3694236758532346,
+            0.3439910193565916
+          ],
+          "symbol": "GLD",
+          "trend": false
+        },
+        {
+          "expected_return": 0.01598508088001787,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "2d5719a6ed755e9d6648ac03c28d43b55930512274a09e3ab4c5b79d05f6f61b",
+          "probabilities": [
+            0.2531851562382585,
+            0.12296118003249422,
+            0.6238536637292472
+          ],
+          "symbol": "GOOGL",
+          "trend": false
+        },
+        {
+          "expected_return": 0.006086728618217539,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "c3a5f98f139b4b3ae0cb196cc78220e8bc4013d4232c096bbc45b357e8294b3f",
+          "probabilities": [
+            0.30742289239924275,
+            0.2546429790253705,
+            0.4379341285753867
+          ],
+          "symbol": "GS",
+          "trend": false
+        },
+        {
+          "expected_return": -0.0008142863079990525,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "bf69f81438bce1ddbde8cbab80ca53f0853cf2abf3c95de21f59e3dc63778ac1",
+          "probabilities": [
+            0.36348307794334095,
+            0.31242188460679887,
+            0.32409503744986007
+          ],
+          "symbol": "IWM",
+          "trend": false
+        },
+        {
+          "expected_return": 0.0004123838433888558,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "ed959a553d35ca055f05cc7ba8b8777600218cb6d0f26ae31adc35f9e98c052e",
+          "probabilities": [
+            0.3631988821169702,
+            0.25108822188691465,
+            0.3857128959961152
+          ],
+          "symbol": "JPM",
+          "trend": true
+        },
+        {
+          "expected_return": -0.005889047637559441,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "367bd721d919cc867fb8a612af5b84f7595efacf74b463ef12c7d827677a7e83",
+          "probabilities": [
+            0.5296648127362964,
+            0.10714836247967234,
+            0.3631868247840313
+          ],
+          "symbol": "META",
+          "trend": true
+        },
+        {
+          "expected_return": 0.015586954701461438,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "f66466c9d5dbfddca3eaa913f38322c7c395cbed019665df57761e84b413457e",
+          "probabilities": [
+            0.1506640031820969,
+            0.22740606746606867,
+            0.6219299293518344
+          ],
+          "symbol": "MSFT",
+          "trend": false
+        },
+        {
+          "expected_return": 0.031112676885193213,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "dce0c07ba47514715fc1284620b38f410054b0b13c368b2f13b4ac40e1a855e6",
+          "probabilities": [
+            0.20726505482451307,
+            0.14652772678600384,
+            0.6462072183894831
+          ],
+          "symbol": "NVDA",
+          "trend": true
+        },
+        {
+          "expected_return": 0.004268712934989972,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "4b746cbb8c509d806663d4212a03c865e5a95432f292b43d9281b84ce3d40a88",
+          "probabilities": [
+            0.3146817182660386,
+            0.2286566321782555,
+            0.45666164955570593
+          ],
+          "symbol": "QQQ",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0007630326424281561,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "df560130f3b210083545a5f9e89fb6c69affac0f2e0651c611ed86638b873fd0",
+          "probabilities": [
+            0.2273391254570867,
+            0.5155809178576533,
+            0.25707995668526007
+          ],
+          "symbol": "SPY",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0025397177363098225,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "dd2e66ec5e33db41f76109005624ed3f5cf0d68fbe120b9755338bc60cc1e659",
+          "probabilities": [
+            0.22733700430776263,
+            0.4547697708690894,
+            0.3178932248231481
+          ],
+          "symbol": "TLT",
+          "trend": false
+        },
+        {
+          "expected_return": 0.007202647467250186,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "6d6000af4974606f16f5bbba3c9d9f259ec50e14daa13ca63ca8010a0baa8e68",
+          "probabilities": [
+            0.4186601719317633,
+            0.13252138776030498,
+            0.4488184403079316
+          ],
+          "symbol": "TSLA",
+          "trend": false
+        },
+        {
+          "expected_return": 0.0014375785515616211,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "42501d567e39055b902a043d3d69a3201545a7e1d21b9dbf6f9ca829bb1e608c",
+          "probabilities": [
+            0.31852989524468256,
+            0.29691211508399024,
+            0.3845579896713271
+          ],
+          "symbol": "XLE",
+          "trend": true
+        },
+        {
+          "expected_return": 0.002886808877236657,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "eead0bfb0722a424d2f25897b604e234d4d3c8b77d60d74facb1716c07ea5e3c",
+          "probabilities": [
+            0.2690059512506761,
+            0.31578146138399493,
+            0.41521258736532896
+          ],
+          "symbol": "XLF",
+          "trend": true
+        },
+        {
+          "expected_return": 0.0041534890613115,
+          "gate": true,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "d655ebf489e128263ede2e6db7c6ee8ffbb20bbb353497c3f7782d8f74240925",
+          "probabilities": [
+            0.2818427001833563,
+            0.27822693769494183,
+            0.439930362121702
+          ],
+          "symbol": "XLI",
+          "trend": false
+        },
+        {
+          "expected_return": 0.005171834746548651,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "33af61dfc70d260d5a1bafe37a62cd10ebde11d16a4d3741872130cfdbf7a8df",
+          "probabilities": [
+            0.2895545702788493,
+            0.2821491051868472,
+            0.42829632453430344
+          ],
+          "symbol": "XLK",
+          "trend": true
+        },
+        {
+          "expected_return": 0.004300355740713685,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "b8266393d6b299f4060708e4751051ebc188377b71bcc28524f30bd12c3ec82a",
+          "probabilities": [
+            0.21193932125005674,
+            0.3949077428396342,
+            0.39315293591030903
+          ],
+          "symbol": "XLP",
+          "trend": true
+        },
+        {
+          "expected_return": -0.003612780014827827,
+          "gate": false,
+          "latest_label_end": "2026-09-24 00:00:00+00:00",
+          "model_decision": "2026-09-25 00:00:00+00:00",
+          "model_manifest_sha256": "c879f4b9dd9d6293537bcffd32fd3912e876cdd570d29b330c01b061e0d6fdf8",
+          "probabilities": [
+            0.3978571105809279,
+            0.36277111649862515,
+            0.2393717729204469
+          ],
+          "symbol": "XLV",
+          "trend": true
+        }
+      ]
+    }
+  ],
+  "external_orders": false,
+  "id": "OUTCOME-RECOVERY-R7-20261027",
+  "kind": "outcome-only collection restart; no new decision, model, account or strategy",
+  "label_rule": {
+    "down": "return < -0.01",
+    "flat": "otherwise, only after endpoint",
+    "up": "return > 0.01"
+  },
+  "modify_archived_accounts": false,
+  "old_paper_account_tail": "incomplete; cannot be repaired by moving dates or filling retrospectively",
+  "original_missed_outcome_sessions": [
+    "2026-10-23",
+    "2026-10-26"
+  ],
+  "original_operational_gate": "failed/incomplete and never promoted by the new collection",
+  "outcome_rule": "Use earliest successful new snapshot at or after the original endpoint; label retrieval date and current-vintage adjustments. Earlier labels remain preserved. Never extend a forecast horizon or fabricate a fill.",
+  "parent_manifest_sha256": "24e4cdf4ec6eb6553bb8229457154d973957615263e092c373a5e33cbe41faba",
+  "parent_protocol": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r6/protocol.json",
+  "parent_protocol_sha256": "8e9d183bcb2b7291fc8c0202d3de0c3be1e7760d8f1ac06fcb8b81092c80eab7",
+  "parent_release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261022-week1-r6",
+  "qualification_plan": [
+    "XNYS calendar including November DST",
+    "strict receipt timing, uniqueness and snapshot hash verification",
+    "original entry/endpoint and future-label rejection",
+    "retry bounded to three slots and idempotent restart",
+    "missed windows remain missed, later reads cannot fill old accounts",
+    "source drift and incomplete final gate rejected",
+    "read-only status preserves archived account and receipt bytes",
+    "dashboard smoke and actual launchd heartbeat without prospective count"
+  ],
+  "refit": false,
+  "registered_at": "2026-10-27T09:20:25.085188+00:00",
+  "return_definition": "close[t+6]/close[t+1]-1; original decision dates and endpoints remain fixed",
+  "schedule": [
+    {
+      "close": "2026-10-27T20:00:00+00:00",
+      "collection": "2026-10-27T20:30:00+00:00",
+      "collection_hkt": "2026-10-28T04:30:00+08:00",
+      "observer_close": "2026-10-27T21:35:00+00:00",
+      "observer_open": "2026-10-27T13:35:00+00:00",
+      "open": "2026-10-27T13:30:00+00:00",
+      "session": "2026-10-27",
+      "watchdog": "2026-10-27T21:30:00+00:00"
+    },
+    {
+      "close": "2026-10-28T20:00:00+00:00",
+      "collection": "2026-10-28T20:30:00+00:00",
+      "collection_hkt": "2026-10-29T04:30:00+08:00",
+      "observer_close": "2026-10-28T21:35:00+00:00",
+      "observer_open": "2026-10-28T13:35:00+00:00",
+      "open": "2026-10-28T13:30:00+00:00",
+      "session": "2026-10-28",
+      "watchdog": "2026-10-28T21:30:00+00:00"
+    },
+    {
+      "close": "2026-10-29T20:00:00+00:00",
+      "collection": "2026-10-29T20:30:00+00:00",
+      "collection_hkt": "2026-10-30T04:30:00+08:00",
+      "observer_close": "2026-10-29T21:35:00+00:00",
+      "observer_open": "2026-10-29T13:35:00+00:00",
+      "open": "2026-10-29T13:30:00+00:00",
+      "session": "2026-10-29",
+      "watchdog": "2026-10-29T21:30:00+00:00"
+    },
+    {
+      "close": "2026-10-30T20:00:00+00:00",
+      "collection": "2026-10-30T20:30:00+00:00",
+      "collection_hkt": "2026-10-31T04:30:00+08:00",
+      "observer_close": "2026-10-30T21:35:00+00:00",
+      "observer_open": "2026-10-30T13:35:00+00:00",
+      "open": "2026-10-30T13:30:00+00:00",
+      "session": "2026-10-30",
+      "watchdog": "2026-10-30T21:30:00+00:00"
+    },
+    {
+      "close": "2026-11-02T21:00:00+00:00",
+      "collection": "2026-11-02T21:30:00+00:00",
+      "collection_hkt": "2026-11-03T05:30:00+08:00",
+      "observer_close": "2026-11-02T22:35:00+00:00",
+      "observer_open": "2026-11-02T14:35:00+00:00",
+      "open": "2026-11-02T14:30:00+00:00",
+      "session": "2026-11-02",
+      "watchdog": "2026-11-02T22:30:00+00:00"
+    },
+    {
+      "close": "2026-11-03T21:00:00+00:00",
+      "collection": "2026-11-03T21:30:00+00:00",
+      "collection_hkt": "2026-11-04T05:30:00+08:00",
+      "observer_close": "2026-11-03T22:35:00+00:00",
+      "observer_open": "2026-11-03T14:35:00+00:00",
+      "open": "2026-11-03T14:30:00+00:00",
+      "session": "2026-11-03",
+      "watchdog": "2026-11-03T22:30:00+00:00"
+    }
+  ],
+  "segments": [
+    {
+      "accounts_at_last_actual_receipt": {
+        "deployment": {
+          "cash": 10000.0,
+          "drawdown": 0.0,
+          "equity": 10000.0,
+          "fees": 0.0,
+          "gross_exposure": 0.0,
+          "positions": {
+            "AAPL": 0.0,
+            "AMZN": 0.0,
+            "BAC": 0.0,
+            "DIA": 0.0,
+            "GLD": 0.0,
+            "GOOGL": 0.0,
+            "GS": 0.0,
+            "IWM": 0.0,
+            "JPM": 0.0,
+            "META": 0.0,
+            "MSFT": 0.0,
+            "NVDA": 0.0,
+            "QQQ": 0.0,
+            "SPY": 0.0,
+            "TLT": 0.0,
+            "TSLA": 0.0,
+            "XLE": 0.0,
+            "XLF": 0.0,
+            "XLI": 0.0,
+            "XLK": 0.0,
+            "XLP": 0.0,
+            "XLV": 0.0
+          },
+          "realized_pnl": 0.0,
+          "reconciliation_error": 0.0,
+          "reserved_cash": 0,
+          "unrealized_pnl": 0.0
+        },
+        "shadow": {
+          "cash": 5967.85890928074,
+          "drawdown": -0.0006039152906718304,
+          "equity": 9993.960847093282,
+          "fees": 6.039152906718812,
+          "gross_exposure": 0.40285348315963465,
+          "positions": {
+            "AAPL": 1.0091219999999999,
+            "AMZN": 1.34284,
+            "BAC": 0.0,
+            "DIA": 0.655368,
+            "GLD": 0.0,
+            "GOOGL": 0.0,
+            "GS": 0.0,
+            "IWM": 1.1946569999999999,
+            "JPM": 1.00046,
+            "META": 0.0,
+            "MSFT": 0.0,
+            "NVDA": 1.443876,
+            "QQQ": 0.449218,
+            "SPY": 0.436305,
+            "TLT": 0.0,
+            "TSLA": 0.0,
+            "XLE": 5.316320999999999,
+            "XLF": 6.2351909999999995,
+            "XLI": 0.0,
+            "XLK": 1.685118,
+            "XLP": 0.0,
+            "XLV": 2.0056149999999997
+          },
+          "realized_pnl": 0.0,
+          "reconciliation_error": 0.0,
+          "reserved_cash": 720.3424834763583,
+          "unrealized_pnl": -6.039152906718812
+        }
+      },
+      "manifest_sha256": "12eefa88386aaa2929866554e51b0b818c113489ab12ddc4813a1591cc34906d",
+      "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261001-week1-r2",
+      "segment": "r2",
+      "status_at_registration": {
+        "deployment": "cash",
+        "expected_elapsed_sessions": 5,
+        "external_orders": false,
+        "halted": true,
+        "label_complete_decisions": 0,
+        "ledger_consistent": true,
+        "limitations": [
+          "Local launch agent requires logged-in awake host; no wake guarantee",
+          "No external broker execution",
+          "Commissioning/replays never count as prospective",
+          "Missed sessions halt; no fabricated backfill"
+        ],
+        "missing_sessions": [
+          "2026-10-05",
+          "2026-10-06",
+          "2026-10-07"
+        ],
+        "next_event": null,
+        "prospective_status": "incomplete",
+        "required_sessions": 5,
+        "shadow": "trend",
+        "state_consistency_errors": [],
+        "terminal_observed_sessions": 0,
+        "terminal_required_sessions": 6,
+        "trial_id": "PILOT-TREND-WEEK1-R2-20261001",
+        "valid_observed_sessions": 2
+      },
+      "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2"
+    },
+    {
+      "accounts_at_last_actual_receipt": {
+        "deployment": {
+          "cash": 10000.0,
+          "drawdown": 0.0,
+          "equity": 10000.0,
+          "fees": 0.0,
+          "gross_exposure": 0.0,
+          "positions": {
+            "AAPL": 0.0,
+            "AMZN": 0.0,
+            "BAC": 0.0,
+            "DIA": 0.0,
+            "GLD": 0.0,
+            "GOOGL": 0.0,
+            "GS": 0.0,
+            "IWM": 0.0,
+            "JPM": 0.0,
+            "META": 0.0,
+            "MSFT": 0.0,
+            "NVDA": 0.0,
+            "QQQ": 0.0,
+            "SPY": 0.0,
+            "TLT": 0.0,
+            "TSLA": 0.0,
+            "XLE": 0.0,
+            "XLF": 0.0,
+            "XLI": 0.0,
+            "XLK": 0.0,
+            "XLP": 0.0,
+            "XLV": 0.0
+          },
+          "realized_pnl": 0.0,
+          "reconciliation_error": 0.0,
+          "reserved_cash": 0,
+          "unrealized_pnl": 0.0
+        },
+        "shadow": {
+          "cash": 5988.986010197701,
+          "drawdown": -0.0006007509720118431,
+          "equity": 9993.992490279881,
+          "fees": 6.00750972012327,
+          "gross_exposure": 0.40074139379006274,
+          "positions": {
+            "AAPL": 0.8971659999999999,
+            "AMZN": 1.2110049999999999,
+            "BAC": 0.0,
+            "DIA": 0.59673,
+            "GLD": 0.0,
+            "GOOGL": 0.885088,
+            "GS": 0.0,
+            "IWM": 0.0,
+            "JPM": 0.917717,
+            "META": 0.0,
+            "MSFT": 0.0,
+            "NVDA": 1.390385,
+            "QQQ": 0.422103,
+            "SPY": 0.399808,
+            "TLT": 0.0,
+            "TSLA": 0.0,
+            "XLE": 4.5496419999999995,
+            "XLF": 5.6436589999999995,
+            "XLI": 0.0,
+            "XLK": 1.6157759999999999,
+            "XLP": 3.575323,
+            "XLV": 1.768753
+          },
+          "realized_pnl": 0.0,
+          "reconciliation_error": 3.637978807091713e-12,
+          "reserved_cash": 0,
+          "unrealized_pnl": -6.007509720123267
+        }
+      },
+      "manifest_sha256": "9f23d72fc0b892ad9af70efd2fbcdb71e2d3469f5d9f796ff40f76f52c3ec810",
+      "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261014-week1-r4",
+      "segment": "r4",
+      "status_at_registration": {
+        "deployment": "cash",
+        "expected_elapsed_sessions": 3,
+        "external_orders": false,
+        "halted": true,
+        "label_complete_decisions": 0,
+        "ledger_consistent": true,
+        "limitations": [
+          "Local launch agent requires logged-in awake host; no wake guarantee",
+          "No external broker execution",
+          "Commissioning/replays never count as prospective",
+          "Missed sessions halt; no fabricated backfill"
+        ],
+        "missing_sessions": [
+          "2026-10-16"
+        ],
+        "next_event": null,
+        "prospective_status": "incomplete",
+        "required_sessions": 3,
+        "shadow": "trend",
+        "state_consistency_errors": [],
+        "terminal_observed_sessions": 0,
+        "terminal_required_sessions": 6,
+        "trial_id": "PILOT-TREND-WEEK1-R4-20261014",
+        "valid_observed_sessions": 2
+      },
+      "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r4"
+    },
+    {
+      "accounts_at_last_actual_receipt": {
+        "deployment": {
+          "cash": 10000.0,
+          "drawdown": 0.0,
+          "equity": 10000.0,
+          "fees": 0.0,
+          "gross_exposure": 0.0,
+          "positions": {
+            "AAPL": 0.0,
+            "AMZN": 0.0,
+            "BAC": 0.0,
+            "DIA": 0.0,
+            "GLD": 0.0,
+            "GOOGL": 0.0,
+            "GS": 0.0,
+            "IWM": 0.0,
+            "JPM": 0.0,
+            "META": 0.0,
+            "MSFT": 0.0,
+            "NVDA": 0.0,
+            "QQQ": 0.0,
+            "SPY": 0.0,
+            "TLT": 0.0,
+            "TSLA": 0.0,
+            "XLE": 0.0,
+            "XLF": 0.0,
+            "XLI": 0.0,
+            "XLK": 0.0,
+            "XLP": 0.0,
+            "XLV": 0.0
+          },
+          "realized_pnl": 0.0,
+          "reconciliation_error": 0.0,
+          "reserved_cash": 0,
+          "unrealized_pnl": 0.0
+        },
+        "shadow": {
+          "cash": 10000.0,
+          "drawdown": 0.0,
+          "equity": 10000.0,
+          "fees": 0.0,
+          "gross_exposure": 0.0,
+          "positions": {
+            "AAPL": 0.0,
+            "AMZN": 0.0,
+            "BAC": 0.0,
+            "DIA": 0.0,
+            "GLD": 0.0,
+            "GOOGL": 0.0,
+            "GS": 0.0,
+            "IWM": 0.0,
+            "JPM": 0.0,
+            "META": 0.0,
+            "MSFT": 0.0,
+            "NVDA": 0.0,
+            "QQQ": 0.0,
+            "SPY": 0.0,
+            "TLT": 0.0,
+            "TSLA": 0.0,
+            "XLE": 0.0,
+            "XLF": 0.0,
+            "XLI": 0.0,
+            "XLK": 0.0,
+            "XLP": 0.0,
+            "XLV": 0.0
+          },
+          "realized_pnl": 0.0,
+          "reconciliation_error": 0.0,
+          "reserved_cash": 4126.1771904058505,
+          "unrealized_pnl": 0.0
+        }
+      },
+      "manifest_sha256": "24e4cdf4ec6eb6553bb8229457154d973957615263e092c373a5e33cbe41faba",
+      "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261022-week1-r6",
+      "segment": "r6",
+      "status_at_registration": {
+        "deployment": "cash",
+        "expected_elapsed_sessions": 1,
+        "external_orders": false,
+        "halted": false,
+        "label_complete_decisions": 0,
+        "ledger_consistent": true,
+        "limitations": [
+          "Local launch agent requires logged-in awake host; no wake guarantee",
+          "No external broker execution",
+          "Commissioning/replays never count as prospective",
+          "Missed sessions halt; no fabricated backfill"
+        ],
+        "missing_sessions": [],
+        "next_event": {
+          "due": "2026-10-27T20:30:00+00:00",
+          "hong_kong": "2026-10-28T04:30:00+08:00",
+          "id": "2026-10-27:outcomes",
+          "kind": "outcomes",
+          "ordinal": 4,
+          "session": "2026-10-27"
+        },
+        "prospective_status": "incomplete",
+        "required_sessions": 1,
+        "shadow": "trend",
+        "state_consistency_errors": [],
+        "terminal_observed_sessions": 0,
+        "terminal_required_sessions": 6,
+        "trial_id": "PILOT-TREND-WEEK1-R6-20261022",
+        "valid_observed_sessions": 1
+      },
+      "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6"
+    }
+  ],
+  "shutdown_after_amended_completion": true,
+  "statistics": "Descriptive accuracy, log loss, Brier score against frozen training-frequency priors; five dependent dates, no p-values or profitability approval",
+  "symbols": [
+    "AAPL",
+    "AMZN",
+    "BAC",
+    "DIA",
+    "GLD",
+    "GOOGL",
+    "GS",
+    "IWM",
+    "JPM",
+    "META",
+    "MSFT",
+    "NVDA",
+    "QQQ",
+    "SPY",
+    "TLT",
+    "TSLA",
+    "XLE",
+    "XLF",
+    "XLI",
+    "XLK",
+    "XLP",
+    "XLV"
+  ]
+}

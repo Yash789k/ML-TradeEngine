@@ -1,0 +1,37 @@
+{
+  "checked_at": "2026-09-30T06:07:40.459314+00:00",
+  "automation_id": "trading-pilot-evidence-watch",
+  "changed_fields": [
+    "rrule",
+    "prompt",
+    "updated_at"
+  ],
+  "automation_sha256": "f89c9eb3b79cf28e7ae6c74feb5aa3688f762f58147d7efeb4d646af5aca5d52",
+  "timezone": "Asia/Hong_Kong",
+  "tests": {
+    "saved_recurrence_matches": true,
+    "other_automation_fields_preserved": true,
+    "30_runs_across_15_US_weekdays_exact_open_and_post_close": true,
+    "collector_plist_unchanged": true
+  },
+  "scheduled_runs_per_week": 10,
+  "previous_runs_per_week": 168,
+  "next_observer_hkt": "2026-09-30T21:30:00+08:00",
+  "collector_interval_seconds": 60,
+  "halt": {
+    "at": "2026-09-29T23:05:41.947765+00:00",
+    "reason": "Missing expected reconciled receipt",
+    "session": "2026-09-29"
+  },
+  "heartbeat": {
+    "at": "2026-09-30T06:05:42.891893+00:00",
+    "parent_pid": 1,
+    "pid": 67601,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+    "status": "awake"
+  },
+  "known_notification_state_preserved": true,
+  "schedule_scope": "Current September\u2013October 2026 five-session pilot; register/recalculate any extension across DST. Exchange guard excludes holidays."
+}

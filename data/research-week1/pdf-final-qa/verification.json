@@ -1,0 +1,19 @@
+{
+  "pages": 27,
+  "changed_pages": [
+    20,
+    21,
+    26,
+    27
+  ],
+  "references_pages": [
+    24
+  ],
+  "raster_images": 0,
+  "contents_page": 2,
+  "pdf_sha256": "06459595b086b8d22208967223316191b4161049f0ac6024c188a86173f009c6",
+  "visual_review": "All 27 final pages inspected in rendered contact sheets; amended operational and appendix pages inspected at larger resolution. No clipping or overlap remains.",
+  "overleaf_errors": 0,
+  "overleaf_warnings": 0,
+  "reviewed_at": "2026-09-28T10:34:03.775734+00:00"
+}

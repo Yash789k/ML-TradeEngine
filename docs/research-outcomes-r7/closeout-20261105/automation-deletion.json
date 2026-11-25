@@ -1,0 +1,8 @@
+{
+  "automationId": "trading-pilot-evidence-watch",
+  "mode": "delete",
+  "deleteStatus": "deleted",
+  "recorded_at": "2026-11-05T07:09:04.511407+00:00",
+  "source": "confirmed automation_update tool result in this turn",
+  "reason": "No future registered observer windows remain; recurring observer is obsolete. Removal is not a statement of study completion."
+}

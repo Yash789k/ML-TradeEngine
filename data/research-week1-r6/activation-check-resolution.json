@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-22T04:42:38.017210+00:00",
+  "prior_check": "activation-check-attempt-1.json",
+  "resolved": true,
+  "scheduler_verification_sha256": "b991117f9d351cb225b940eae0c7f493cf890c681dea0dd7d24bbc5d096e3eb4",
+  "evidence": "Next ordinary launchd timer exited 0; heartbeat fresh; no active halt or missing session. No manual collection command ran.",
+  "stderr_sha256": "7844fb4afca2c90f1a382d1d9b7f3d8a118d05b421ce3683c7bb9504ac922abc",
+  "event_scope": "Recovered idle timer lock contention during read-only installation report, outside all collection windows"
+}

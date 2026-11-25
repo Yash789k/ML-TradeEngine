@@ -1,0 +1,12 @@
+{
+  "project": "https://www.overleaf.com/project/6aba2fa5d6050f063aaea85a",
+  "source_download_matches_all_project_files": true,
+  "source_archive_sha256": "1d884e872d7312c80caed10af1e304dea21d65a1035025bce623a882a316833d",
+  "pdf_sha256": "06459595b086b8d22208967223316191b4161049f0ac6024c188a86173f009c6",
+  "main_sha256": "023cf5e95155bc7b83a15bd06aa9c79b071126608d8c088a3b8710ad01f8a9fa",
+  "overleaf_log_buttons": [
+    "All logs0",
+    "Errors0",
+    "Warnings0"
+  ]
+}
