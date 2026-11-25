@@ -1,0 +1,10 @@
+{
+  "created_at": "2026-10-30T08:51:54.241215+00:00",
+  "status": "passed",
+  "files": {
+    "data/research-controller-v1/review-v1/pytest.log": "c859de1ae59eb361ed2f04277658275ce0630a304e0b00d410554f8a797c5de4",
+    "data/research-controller-v1/review-v1/evidence.json": "c40d1f8630d5e37aae1120ff79ff7654ef09bc075a8fd7a7fb5b5ffd6438bf26",
+    "data/research-controller-v1/review-v1/tests.xml": "d5c2d434ab8c143c6f6a40b251ac87959f24a4720eb6b08e5a969edb8771a4b0",
+    "tests/controller_v1_review/test_independent.py": "d02141f0f9ea03ee09eda8ac181ec3d7a4fafa7118d4682f580f14f99166b8e7"
+  }
+}

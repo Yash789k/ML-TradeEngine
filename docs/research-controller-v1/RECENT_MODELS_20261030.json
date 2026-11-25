@@ -1,0 +1,137 @@
+{
+  "as_of": "2026-10-30",
+  "models": [
+    {
+      "name": "TabPFN-3.5 base",
+      "release_date": "2026-09-15",
+      "availability": "Released; official local checkpoint/model card verified. Not downloaded or tested here.",
+      "role": "Tabular three-class expert; a separate meta-model hypothesis is possible.",
+      "adaptation": "Fit on eligible past rows with the same UP/FLAT/DOWN target; calibrate separately; preserve the gate and fixed policy.",
+      "caveat": "Research/internal-evaluation weight terms; a classifier is not automatically a convex expert-weight gate. Pin checkpoint and budget.",
+      "priority": "First",
+      "source_title": "TabPFN-3.5: Technical Report — official Prior Labs release",
+      "source_url": "https://priorlabs.ai/technical-reports/tabpfn-3-5"
+    },
+    {
+      "name": "TabPFN-3.5 Thinking upgrade",
+      "release_date": "2026-10-28",
+      "availability": "Announced; official post says rollout starts next week and is initially API-exclusive. Availability as of 30 October is not established.",
+      "role": "Higher-compute tabular inference service.",
+      "adaptation": "If later admitted, use the same class target and account for search/inference compute as part of the trial.",
+      "caveat": "Do not confuse this upcoming upgrade with the already released September base model or claim testing/access.",
+      "priority": "Deferred",
+      "source_title": "TabPFN-3.5-Thinking sets the new bar — official announcement",
+      "source_url": "https://priorlabs.ai/blog-posts/tabpfn-3-5-thinking-upgrade"
+    },
+    {
+      "name": "TabICLv2",
+      "release_date": "2026-02-11",
+      "availability": "Paper first submitted on this date; revised September 2026; author record identifies ICML 2026. Official classifier/regressor checkpoints verified. Not tested here.",
+      "role": "Tabular three-class expert.",
+      "adaptation": "Use the classifier on the existing eligible feature table; freeze the checkpoint; calibrate using a later past-only partition.",
+      "caveat": "Generic tabular benchmark findings do not establish market-regime generalization; correlated rows do not increase independent time history.",
+      "priority": "First",
+      "source_title": "TabICLv2: A better, faster, scalable, and open tabular foundation model",
+      "source_url": "https://arxiv.org/abs/2602.11139"
+    },
+    {
+      "name": "TabM",
+      "release_date": "2024-10-31",
+      "availability": "Preprint first submitted on this date; ICLR 2025 paper and official implementation verified. Not tested here.",
+      "role": "Trainable tabular expert or an explicitly adapted small gate.",
+      "adaptation": "Train a bounded three-class neural model; changing its output to expert weights requires a separately tested simplex gate.",
+      "caveat": "Parameter-efficient ensembling does not remove small-sample risk; expert and gate adaptations are different trials.",
+      "priority": "Second",
+      "source_title": "TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling",
+      "source_url": "https://arxiv.org/abs/2410.24210"
+    },
+    {
+      "name": "Chronos-2",
+      "release_date": "2025-10-20",
+      "availability": "Official introduction; October 17 paper and amazon/chronos-2 model card verified. No weights downloaded here.",
+      "role": "Multivariate/covariate forecast features or adapted classification expert.",
+      "adaptation": "Use a validated exact-target distribution-to-class adapter or frozen features followed by a chronological classifier.",
+      "caveat": "Future covariates must be genuinely known; marginal price quantiles do not determine the target return-ratio distribution.",
+      "priority": "Second",
+      "source_title": "Introducing Chronos-2: From univariate to universal forecasting — Amazon Science",
+      "source_url": "https://www.amazon.science/blog/introducing-chronos-2-from-univariate-to-universal-forecasting"
+    },
+    {
+      "name": "TimesFM-3",
+      "release_date": "2026-08-31",
+      "availability": "Official announcement and google/timesfm-3.0-pytorch weights card verified; non-commercial model terms. Not tested here.",
+      "role": "Multivariate forecasting expert requiring classification adaptation.",
+      "adaptation": "Use the same adapter and fixed downstream gate/policy as any other new forecasting expert.",
+      "caveat": "TimesFM-2.5 is not the latest release as of review date; the original TimesFM paper is not a new TimesFM-3 paper.",
+      "priority": "Second",
+      "source_title": "TimesFM-3: A zero-shot foundation model for multivariate forecasting — Google Research",
+      "source_url": "https://www.research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/"
+    },
+    {
+      "name": "Moirai 2.0",
+      "release_date": "2025-08-08",
+      "availability": "Official introduction; later November 2025 paper, February 2026 revision and official small checkpoint verified. Not tested here.",
+      "role": "Compact quantile forecaster requiring classification adaptation.",
+      "adaptation": "Use frozen forecast features with a three-class head or a justified return-distribution adapter.",
+      "caveat": "Model card uses non-commercial terms; quantile interpolation, tails and execution horizon need validation.",
+      "priority": "Second",
+      "source_title": "Introducing Moirai 2.0 — Salesforce AI Research",
+      "source_url": "https://www.salesforce.com/blog/moirai-2-0/"
+    },
+    {
+      "name": "TiRex with frozen classification features",
+      "release_date": "2025-05-29",
+      "availability": "TiRex preprint date; NeurIPS 2025 model plus October 2025 workshop classification-transfer study and official workflow verified. Not tested here.",
+      "role": "Frozen xLSTM sequence representation plus three-class head.",
+      "adaptation": "Extract only observed-prefix features; train and calibrate a regularized classifier chronologically.",
+      "caveat": "Frozen feature extraction does not make the learned market classifier zero-shot; whole-series classification differs from future-return classification.",
+      "priority": "Second",
+      "source_title": "TiRex: Zero-Shot Forecasting Across Long and Short Horizons with Enhanced In-Context Learning",
+      "source_url": "https://arxiv.org/abs/2505.23719"
+    },
+    {
+      "name": "Time-MoE",
+      "release_date": "2024-09-24",
+      "availability": "Preprint date; ICLR 2025 status verified in author record. No local artifact qualification performed.",
+      "role": "Sparse internal forecasting architecture.",
+      "adaptation": "Only an adapted expert in this proposal; retain the separate external gate over classifier outputs.",
+      "caveat": "Internal neural-expert routing is not evidence for HMM-conditioned routing among independently trained financial classifiers.",
+      "priority": "Deferred",
+      "source_title": "Time-MoE: Billion-Scale Time Series Foundation Models with Mixture of Experts",
+      "source_url": "https://arxiv.org/abs/2409.16040"
+    },
+    {
+      "name": "Timer-S1",
+      "release_date": "2026-03-05",
+      "availability": "Preprint date; revised April 2026; paper states model release. No local checkpoint/download/runtime qualification performed.",
+      "role": "Large sparse forecasting architecture.",
+      "adaptation": "Would need a bounded frozen-model trial and the same class-output adapter before admission.",
+      "caveat": "Large total model footprint and long-context benchmarks may poorly match the local small-data controller task.",
+      "priority": "Deferred",
+      "source_title": "Timer-S1: A Billion-Scale Time Series Foundation Model with Serial Scaling",
+      "source_url": "https://arxiv.org/abs/2603.04791"
+    },
+    {
+      "name": "TSMamba",
+      "release_date": "2024-11-05",
+      "availability": "Preprint verified; a usable released checkpoint was not verified in this review. Not installed or tested.",
+      "role": "State-space forecasting representation or architecture.",
+      "adaptation": "Use only a fully observed context; attach a validated three-class head if artifacts become reproducible.",
+      "caveat": "Paper availability is not weight availability; asymptotic efficiency is not measured local latency.",
+      "priority": "Deferred",
+      "source_title": "A Mamba Foundation Model for Time Series Forecasting",
+      "source_url": "https://arxiv.org/abs/2411.02941"
+    },
+    {
+      "name": "Decision-Focused Fine-Tuning (DFF)",
+      "release_date": "2025-04-11",
+      "availability": "AAAI 2025 proceedings publication date; primary paper verified. No project implementation or evaluation.",
+      "role": "Later constrained decision-loss training extension.",
+      "adaptation": "Keep separate from the initial fixed-policy routing study; register downstream objective, constraints and adaptation budget.",
+      "caveat": "Changing allocation and gate together confounds the proposal; decision loss can hurt probability interpretability or turnover.",
+      "priority": "Deferred",
+      "source_title": "DFF: Decision-Focused Fine-Tuning for Smarter Predict-Then-Optimize with Limited Data",
+      "source_url": "https://ojs.aaai.org/index.php/AAAI/article/view/34891"
+    }
+  ]
+}

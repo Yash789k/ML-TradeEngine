@@ -1,0 +1,19 @@
+{
+  "created_at": "2026-10-30T09:40:45.990139+00:00",
+  "role": "read-only GitHub prototype/PR inventory review",
+  "files": {
+    "data/research-controller-v1/github-review-v1/github-evidence.json": "7e658a4f4bf47188db18acc04457593c93168e56c4d9919747a870211d27cf36",
+    "data/research-controller-v1/github-review-v1/workflows.json": "763e50f70020078499d7b285f8364e5975fa368b95e01eaabb2e0998d59bfd6c",
+    "data/research-controller-v1/github-review-v1/prototype-oracles.json": "c8c3c0dd0e94a911d6b0d631f32f3bfd28233eb1a6a8ec5249b22e593504d76e",
+    "data/research-controller-v1/github-review-v1/published-source/README.md": "643433def84fad507d5b0d8798065746ef411b8db9327c1aafe48f15d5586c18",
+    "data/research-controller-v1/github-review-v1/published-source/src/features/regime.py": "3becc47d2561afd2165b1a0ddef39f7031c79bdde67bdf8e9f6f1ebc9accf77b",
+    "data/research-controller-v1/github-review-v1/published-source/src/features/pipeline.py": "4ad7727fd22dc320eff3bf89159cb01dbc6fef5bc8f88982600462a39b3f8b56",
+    "data/research-controller-v1/github-review-v1/published-source/src/models/trainer.py": "d68e52ce8c209608d84318851b403ccf4e064465af141b7d521ad3f61064cf07",
+    "data/research-controller-v1/github-review-v1/published-source/src/backtest/simulator.py": "11e4eb67bd044e7eeedf7d3149236c902c7c1678f2e06baabbaf20e5830aa5d5",
+    "data/research-controller-v1/github-review-v1/published-source/src/live/alerts.py": "ac866f07828f3e0039320ed1cc1bd9e2b66e009b6a302c0d7a1e9007d46b2f96",
+    "data/research-controller-v1/github-review-v1/published-source/src/live/engine.py": "6e676b3a83bca3081e9bb5a13a977ce97ce39576091ebd0966e889cd6fe0db0a",
+    "data/research-controller-v1/github-review-v1/published-source/.github/workflows/daily_signals.yml": "1829ce5ba74a4d4c34d7e879871df2d8d25dccdeef11d46abe53285a4ba85ed1",
+    "docs/research-controller-v1/PULL_REQUEST_REVIEW_20261030.md": "aa00497a9f72b7f72318749e18892bbf6a9136e2148d0f4e4349a268d20a6a01",
+    "data/research-controller-v1/github-review-v1/local-state.json": "dbf6bc65e9dfe4ea3d6ecc06e5ea7036fbce9764fb9d44a9e231d27ad5a5d754"
+  }
+}

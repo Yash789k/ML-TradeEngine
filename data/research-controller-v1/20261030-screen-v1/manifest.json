@@ -1,0 +1,15 @@
+{
+  "created_at": "2026-10-30T08:47:54.557708+00:00",
+  "status": "complete",
+  "files": {
+    "data/research-controller-v1/20261030-screen-v1/REPORT.md": "0a28720b03fe2df481912c1553f22cbc8ecf620f80c55b4b32d96d0df874d495",
+    "data/research-controller-v1/20261030-screen-v1/daily_metrics.csv": "7f7515e52ae3a535cd8d81a24b9be2edf1389502a2d18c6f80878267ba21e817",
+    "data/research-controller-v1/20261030-screen-v1/forecasts.parquet": "a41e4c69bd946ff19fd38b0141a7b84d7f6d14f7e0857737fead816967b10520",
+    "data/research-controller-v1/20261030-screen-v1/hedge_weights.csv": "a9bad2f08750ceb517fbbdbe4cf87e9158c0366012e2595026f9d2160efd1810",
+    "data/research-controller-v1/20261030-screen-v1/protocol.json": "d9a9c6d484c7191a7a6dd741fae8bc1a1bda52cf0aa88b6426dd866aae54e281",
+    "data/research-controller-v1/20261030-screen-v1/run.json": "073fe7082aad9b16757680c444064b636ec1522e42c995c987addb0e287c13b0",
+    "data/research-controller-v1/20261030-screen-v1/stack_fits.json": "2fc19d2a0a3f82be5f0b17617acd3efa8e91bd6352c774a3d990dca18984d377",
+    "data/research-controller-v1/20261030-screen-v1/summary.json": "f59a721eb15da79c288bdf369943b239cd50c12a7698cc7baf50db94d637cac2",
+    "data/research-controller-v1/20261030-screen-v1/tests.json": "f13305c91a8c4c6862848779347b221ca5f1253b00cac881b3ff1f8d18900347"
+  }
+}

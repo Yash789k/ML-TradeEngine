@@ -1,0 +1,32 @@
+{
+  "created_at": "2026-10-30T09:48:07.035748+00:00",
+  "scope": "Research preparation for October report; rubric/tutor additions pending; PR work withdrawn",
+  "source_input_result_hash_checks": 80,
+  "local_document_links": "all resolved",
+  "canvas_validation": "TypeScript strict check against installed cursor/canvas SDK declarations passed; no automated host-viewer visual test claimed",
+  "experiment": "Two meta fits only; preliminary probability screen, not proposal-faithful contextual gate or trading experiment",
+  "initial_behavior_tests": 11,
+  "independent_behavior_tests": 6,
+  "recent_models": "reviewed, not installed or evaluated",
+  "files": {
+    "/Users/a/Downloads/ml-trade-engine/docs/research-controller-v1/REPOSITORY_AUDIT.md": "acbaae7157a7836e0c8c43c85b9251c7235dd22877ddc4f8bd67c08c232af338",
+    "/Users/a/Downloads/ml-trade-engine/docs/research-controller-v1/RECENT_MODELS_20261030.json": "f11fce598f7e3708efaa0fb43f92d65df4ece0e2bba4de84e32f5991d8a4471c",
+    "/Users/a/Downloads/ml-trade-engine/docs/research-controller-v1/model_catalog.json": "b3f63c297e40714928bf6df2629b15b8dae80e948bb9dddbce661df20bc058b1",
+    "/Users/a/Downloads/ml-trade-engine/docs/research-controller-v1/PULL_REQUEST_REVIEW_20261030.md": "aa00497a9f72b7f72318749e18892bbf6a9136e2148d0f4e4349a268d20a6a01",
+    "/Users/a/Downloads/ml-trade-engine/docs/research-controller-v1/MEETING_SUMMARY.md": "8b3ef87ab901534117af789d2055b9f9712ca3a4360446785aa14ffc8a0b423e",
+    "/Users/a/Downloads/ml-trade-engine/docs/research-controller-v1/LITERATURE_CLASSICAL.md": "a7e7b3ae5bcdeb5927f94ea0485019e99dddd61bf40dd50db9aec6091ffd230d",
+    "/Users/a/Downloads/ml-trade-engine/docs/research-controller-v1/RECENT_MODELS_20261030.md": "b1ef62d945a53e1e165806fcec12687c255b7ceb99106d50962cf4e85b8963c2",
+    "/Users/a/Downloads/ml-trade-engine/docs/research-controller-v1/PROPOSAL_ALIGNMENT_AND_GAPS.md": "42d87645206f1f02fb7bc61a8939eb04a4207ba101ad182fe7fe7f188bfb352a",
+    "/Users/a/Downloads/ml-trade-engine/docs/research-controller-v1/SCREEN_RESULTS.md": "fcdb831f94a48ea0837123d4f6b669398663be1c8ddf4fc953a91c8a9037d18b",
+    "/Users/a/Downloads/ml-trade-engine/docs/research-controller-v1/LITERATURE_ADVANCED.md": "e970219b7884a1e168392f747c4af375a121463a3a3363d80f86da211998a4dc",
+    "/Users/a/Downloads/ml-trade-engine/docs/research-controller-v1/RESEARCH_REVIEW.md": "bcb582d04f422df41523a107005ce8daa00f5745449732ee9cfd7fae718f9804",
+    "/Users/a/Downloads/ml-trade-engine/docs/research-controller-v1/READ_ME_FIRST.md": "8e93e607949f4fe5fbaa0791c0d38d8c73663ea3ce4289501ec582be4e710c44",
+    "/Users/a/Downloads/ml-trade-engine/docs/research-v2/STATUS.md": "0d53d3a6f6daf96736b1798f7a2e6972bc68b3fd4ce253603363fd6e7ff23530",
+    "/Users/a/Downloads/ml-trade-engine/data/research-controller-v1/proposal-review-v1/proposal.txt": "40ac1eb0f7e719af295df89ac0a7d883a6deac43714d503849432e4c23c8b3b3",
+    "/Users/a/Downloads/fyp-proposal-sept9-formatted.pdf": "3546f5ed2675b6a45ef41b524dfcb02449b269ea3aee7a737438bf6b816d741b",
+    "/Users/a/.cursor/projects/Users-a-Downloads-ml-trade-engine/canvases/controller-research-v1.canvas.tsx": "58ac625f40c07f7ae041fb81e2e84fad15761e2a8fdc6232855636f5a89779cb",
+    "/Users/a/Downloads/ml-trade-engine/data/research-controller-v1/20261030-screen-v1/manifest.json": "165f599244614e49adddf93db7d14f18755dab83c5b9697d7eb1ba2224c50f99",
+    "/Users/a/Downloads/ml-trade-engine/data/research-controller-v1/review-v1/manifest.json": "be72b290d4636b8bfbae6715baaac1a61d35ca12a6cc10f601468b6a165a9657",
+    "/Users/a/Downloads/ml-trade-engine/data/research-controller-v1/qualification-20261030/reconstruction.json": "1b1ed313fa87491bbb1907f227bc55c5f379d2c5f0bfec2e4380dc008aa48e0e"
+  }
+}
