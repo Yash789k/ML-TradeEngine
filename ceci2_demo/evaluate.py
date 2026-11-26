@@ -6,7 +6,7 @@ START = 10_000.0
 COST = 0.0005
 
 
-def replay(group, policy, dynamic=False, blotter=None, exposure=None, cost=COST):
+def replay(group, policy, dynamic=False, blotter=None, exposure=None, cost=COST, *, targets=None, cadence=1):
     rows = []
     capital = START
     for _, segment in group.groupby(group.decision.dt.year):
@@ -20,6 +20,13 @@ def replay(group, policy, dynamic=False, blotter=None, exposure=None, cost=COST)
         def matrix(column):
             return panel[column].to_numpy().reshape(-1, n)
 
+        if cadence < 1:
+            raise ValueError("Rebalance cadence must be positive")
+        supplied = None
+        if targets is not None:
+            supplied = targets.reindex(panel.index).to_numpy().reshape(-1, n)
+            if not np.isfinite(supplied).all() or (supplied < 0).any() or (supplied.sum(1) > 1 + 1e-10).any():
+                raise ValueError("Invalid long-only target weights")
         entry, exit_price, vols = (matrix(name) for name in ("entry", "exit", "vol"))
         if not (
             np.isfinite(entry).all()
@@ -48,7 +55,9 @@ def replay(group, policy, dynamic=False, blotter=None, exposure=None, cost=COST)
             value = shares * entry[i]
             equity = cash + value.sum()
             weights = np.zeros(n)
-            if exposure is not None:
+            if supplied is not None:
+                weights = supplied[i]
+            elif exposure is not None:
                 weights[symbols.index("SPY")] = exposure.loc[date]
             elif policy == "Equal weight":
                 weights[:] = 1 / n
@@ -80,7 +89,7 @@ def replay(group, policy, dynamic=False, blotter=None, exposure=None, cost=COST)
             for _ in range(6):
                 target_nav = equity - cost * np.abs(weights * target_nav - value).sum()
             orders = weights * target_nav - value
-            if policy == "SPY buy and hold" and i:
+            if (policy == "SPY buy and hold" and i) or i % cadence:
                 orders[:] = 0
             if dynamic:
                 capacity = 0.01 * volume[i] * closes[i]

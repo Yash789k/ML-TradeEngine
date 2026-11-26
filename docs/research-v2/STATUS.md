@@ -193,3 +193,5 @@ point-in-time constituent/action tapes and real broker microstructure are absent
 time passing in this pilot will not repair those missing historical archives.
 
 The separate November 2026 [CECI2 experiment](../../ceci2_demo/README.md) trains on the proposal's next-open labels. It has its own data, out-of-time forecasts and exposure-matched benchmarks. The archived release remains the source for claims about the earlier pilot.
+
+The November 27 [traditional mixture and offline allocation study](../../ceci2_demo/moe_v2/README.md) adds a jointly trained mixture benchmark and a qualitative-data ablation. All three evaluation years were previously examined. The simulated economic improvement of the mixture remains exploratory. The learned allocation policy underperformed its exposure-matched SPY control. The study documents the replay command, fitted checkpoints, source papers and observations by date. The next independent comparison requires a registered future period with timestamped qualitative events.
