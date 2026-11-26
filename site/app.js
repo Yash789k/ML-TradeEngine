@@ -1,3 +1,4 @@
+import {coverageTable, glossaryView} from './terms.js';
 import {simulate,drawChart} from './simulator.js';
 import {comparisonView} from './comparison.js';
 import {renderArchitecture} from './architecture.js';
@@ -103,9 +104,10 @@ async function architecture(ticket){
 async function datasets(ticket){
  const study=await load('study-5');if(ticket!==token)return;const d=study.coverage;
  root.innerHTML=head('Research datasets','January 2017 – December 2025 · Market and publication histories')+
- '<div class="sheet"><div class="metrics">'+metric('Market observations','bars')+metric('Instruments','symbols')+metric('Factor themes','themes')+'</div></div><div class="sourcesgrid bottom"><img class="sourceplot" src="assets/datasets.png" alt="Adjusted prices of five benchmark ETFs and FinBERT sentiment for Federal Reserve statements"><img class="sourceplot" src="assets/sources.png" alt="Text counts and returns for thirteen US factor themes by year"></div><section class="bottom"><div class="sectionhead"><h2>Coverage</h2></div>'+
- table(['Source','Observations','Use'],[['Adjusted OHLCV',d.bars.toLocaleString(),'Equity and ETF price features'],['Jensen, Kelly and Pedersen',13+' daily themes','Lagged factor signals'],['SEC annual filings',d.filings,'Company narrative sentiment'],['FNSPID weekly headline sample',d.headlines,'Company news sentiment'],['Federal Reserve',d.statements,'Policy language and sentiment'],['OpenAI Decisions','107 monthly packets','Stock-specific class probabilities']])+
- '<p class="note">The selected universe includes surviving companies and overlapping ETFs. Company news coverage varies by year. Model pretraining can include events that occurred during this retrospective evaluation.</p></section><section class="bottom"><a class="link" href="https://github.com/Yash789k/ML-TradeEngine/blob/main/ceci2_demo/README.md">Data sources and training protocol</a></section>';
+ '<div class="sheet"><div class="metrics">'+metric('Instrument-days','bars')+metric('Instruments','symbols')+metric('Factor themes','themes')+'</div></div><div class="sourcesgrid bottom"><img class="sourceplot" src="assets/datasets.png" alt="Adjusted prices of five benchmark exchange-traded funds and FinBERT sentiment for Federal Reserve statements"><img class="sourceplot" src="assets/sources.png" alt="Text counts and returns for thirteen US factor themes by year"></div><section class="bottom"><div class="sectionhead"><h2>Coverage</h2></div>'+
+ '<div id="coverageTable"></div>'+
+ '<p class="note">The selected universe includes surviving companies and overlapping ETFs. The headline sample covers 2019 through 2023. Model pretraining can include events that occurred during this retrospective evaluation.</p></section><section class="bottom"><a class="link" href="https://github.com/Yash789k/ML-TradeEngine/blob/main/ceci2_demo/README.md">Data sources and training protocol</a></section>';
+ el('coverageTable').append(coverageTable(d));
  el('bars').textContent=d.bars.toLocaleString();el('symbols').textContent=d.symbols;el('themes').textContent=d.factorThemes.length;
 }
 async function comparison(ticket){
@@ -114,7 +116,7 @@ async function comparison(ticket){
 }
 async function render(){
  const ticket=++token;stop();paint=()=>{};onStep=()=>{};
- const route=location.hash.slice(1)||'simulation',views={simulation,comparison,controller,stress,architecture,data:datasets};
+ const route=location.hash.slice(1)||'simulation',views={simulation,comparison,controller,stress,architecture,data:datasets,glossary:()=>glossaryView(root)};
  document.querySelectorAll('nav a').forEach(a=>{const yes=a.hash==='#'+route;a.classList.toggle('active',yes);if(yes)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
  try{await (views[route]||simulation)(ticket)}catch(e){if(ticket===token)root.innerHTML='<h1 class="bottom">Study unavailable</h1><p class="note">'+esc(e.message)+'</p><button class="bottom" id="retry">Retry</button>';on('retry','click',render);}
 }
