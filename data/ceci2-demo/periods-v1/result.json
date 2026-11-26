@@ -1,0 +1,32 @@
+{
+  "year": 2022,
+  "decisions": 5280,
+  "sessions": 240,
+  "first_decision": "2022-01-10",
+  "last_decision": "2022-12-21",
+  "maximum_label_endpoints": {
+    "expert": "2019-12-31",
+    "calibration": "2020-12-31",
+    "policy": "2021-12-31"
+  },
+  "primary_difference": -0.004319168550044295,
+  "primary_95_interval": [
+    -0.023758049486359248,
+    0.017411659027260457
+  ],
+  "log_loss": {
+    "Classic MoE": 1.1102358577377867,
+    "MoE without text": 1.1162654163936774,
+    "Uniform vote": 1.1072575805835172,
+    "HMM gate": 1.1059166891877426
+  },
+  "text_coverage": {
+    "news_available": 0.13390151515151516,
+    "filing_available": 0.45227272727272727
+  },
+  "policy_action_counts": {
+    "SPY": 176,
+    "classic basket": 54,
+    "cash": 10
+  }
+}
