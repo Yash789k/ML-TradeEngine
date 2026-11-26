@@ -1,37 +1,9 @@
-"""
-Phase 05 — RiskEngine
+"""Exploratory single-instrument risk simulation.
 
-Runs a risk-managed portfolio simulation on top of Phase 04 signal DataFrame,
-applying three orthogonal controls:
-
-    1. Kelly binary filter   — skip UP signals where half-Kelly ≤ 0
-                               (removes trades the model is structurally wrong on)
-    2. ATR 2× trailing stop  — exit losing positions before signal flips
-                               (cuts avg_loss; improves win/loss ratio)
-    3. Max drawdown circuit breaker — pause all new entries after 15% peak-to-trough
-
-Position sizing
----------------
-When Kelly is positive the engine enters a FULL position (95% of cash).
-This preserves the Phase 04 return level while removing the worst trades.
-Half-Kelly fractional sizing would dilute returns below the 5% risk-free
-hurdle on our current ~0.3 Sharpe strategies; that sizing mode is reserved
-for Phase 06 multi-asset portfolios where 10-20 concurrent positions provide
-adequate diversification.
-
-Expected improvement over Phase 04 (naive 100% position, no stops)
--------------------------------------------------------------------
-  Kelly filter removes ≈ 25-40% of lowest-quality UP signals, increasing
-  the average edge per trade.  ATR stops cut the average losing trade by
-  ≈ 30-40%, raising the win/loss ratio.  Circuit breaker caps maximum
-  portfolio drawdown.  Together these should:
-    - Raise Sharpe by 0.1–0.3 above Phase 04 baseline
-    - Reduce MaxDD by 30–60%
-
-VaR / CVaR
-----------
-Reported on the resulting equity curve using 252-day rolling historical
-simulation (no parametric assumption).
+Uses a fixed ex-ante payoff assumption, causal policy inputs, close-observed
+stops, and marked cash/holdings. It is a separate risk ablation, not the shared
+next-close portfolio execution contract. Classifier UP probabilities have not
+been calibrated to stop-managed trade outcomes; no Kelly optimality is claimed.
 """
 
 from __future__ import annotations
@@ -67,6 +39,7 @@ class RiskResult:
     var_series:    pd.DataFrame
     risk_report:   dict = field(default_factory=dict)
     params:        dict = field(default_factory=dict)
+    ledger:        pd.DataFrame = field(default_factory=pd.DataFrame)
 
 
 # ---------------------------------------------------------------------------
@@ -136,6 +109,7 @@ class RiskEngine:
         cb_resume:        float = 0.90,
         cb_cooldown_bars: int   = 63,    # also reset after N inactive bars (~3 months)
         var_window:       int   = 252,
+        win_loss_ratio:   float = 1.5,
     ):
         self.initial_capital  = initial_capital
         self.commission       = commission
@@ -149,6 +123,7 @@ class RiskEngine:
         self.cb_resume        = cb_resume
         self.cb_cooldown_bars = cb_cooldown_bars
         self.var_window       = var_window
+        self.win_loss_ratio = win_loss_ratio
 
     # ------------------------------------------------------------------
 
@@ -157,28 +132,45 @@ class RiskEngine:
         ticker:    str,
         signal_df: pd.DataFrame,
         feat_df:   pd.DataFrame,
+        policy_engine=None,
     ) -> RiskResult:
         """
         Execute the risk-managed simulation for a single ticker.
 
         Parameters
         ----------
-        ticker    : asset symbol (used for Phase 04 win/loss calibration)
-        signal_df : from signals.build_signal_df() — columns: p_up, filtered_signal, close
-        feat_df   : Phase 02 feature matrix — must include 'atr_14'
+        ticker        : asset symbol (used for Phase 04 win/loss calibration)
+        signal_df     : from signals.build_signal_df() — columns: p_up,
+                        filtered_signal, close
+        feat_df       : Phase 02 feature matrix — must include 'atr_14'
+        policy_engine : optional src.risk.policy_engine.PolicyEngine — when
+                        given, the ATR stop multiplier widens with volatility,
+                        position size is capped in stress, and new entries are
+                        blocked on ineligible bars (dynamic policy layer).
         """
         if "atr_14" not in feat_df.columns:
             raise KeyError("feat_df missing 'atr_14'. Re-run Phase 02 pipeline.")
 
-        atr_aligned = feat_df["atr_14"].reindex(signal_df.index).ffill().bfill()
+        atr_aligned = feat_df["atr_14"].reindex(signal_df.index).ffill()
         atr_arr     = atr_aligned.values.astype(np.float64)
         prices      = signal_df["close"].values.astype(np.float64)
         p_up_arr    = signal_df["p_up"].values.astype(np.float64)
         sig_arr     = signal_df["filtered_signal"].values.astype(int)
         n           = len(prices)
 
+        # ── Dynamic policy (per-bar) or static constants ────────────────
+        if policy_engine is not None:
+            pol = policy_engine.compute_policy(feat_df).reindex(signal_df.index).ffill()
+            atr_mult_arr = pol["atr_mult"].fillna(self.atr_multiplier).values
+            size_cap_arr = pol["size_cap"].fillna(1.0).values
+            eligible_arr = pol["eligible"].fillna(True).astype(bool).values
+        else:
+            atr_mult_arr = np.full(n, self.atr_multiplier)
+            size_cap_arr = np.ones(n)
+            eligible_arr = np.ones(n, dtype=bool)
+
         # ── Kelly filter calibration ───────────────────────────────────
-        win_loss_ratio = _estimate_win_loss_ratio(ticker)
+        win_loss_ratio = self.win_loss_ratio  # fixed ex-ante assumption, not estimated from future trades
         half_kellys    = kelly_series(p_up_arr, win_loss_ratio, self.kelly_multiplier)
 
         # ── Simulation state ───────────────────────────────────────────
@@ -196,10 +188,11 @@ class RiskEngine:
         circuit_broken    = False
         cb_bars_inactive  = 0          # bars since circuit breaker tripped
         trades: list[dict] = []
+        history = [dict(cash=cash, shares=0., price=prices[0], equity=cash)]
 
         for i in range(1, n):
             price   = prices[i]
-            atr_val = float(atr_arr[i])
+            atr_val = float(atr_arr[i - 1])
 
             # ── Update peak and circuit breaker ────────────────────────
             peak_equity = max(peak_equity, cash + shares * price)
@@ -231,7 +224,10 @@ class RiskEngine:
             stop_triggered = False
             if current_pos == 1:
                 if self.trailing_stop:
-                    update_trailing_stop(stop_state, price, atr_val)
+                    update_trailing_stop(
+                        stop_state, price, atr_val,
+                        atr_multiplier=float(atr_mult_arr[i - 1]),
+                    )
                 if is_stop_hit(stop_state, price):
                     gross  = shares * price
                     net    = gross * (1.0 - cost_per_side)
@@ -239,13 +235,14 @@ class RiskEngine:
                     cash  += net
                     shares = 0.0
                     current_pos   = 0
+                    stopped_at = stop_state.stop_level
                     stop_state    = StopState()
                     stop_triggered = True
                     trades.append({
                         "type": "exit", "reason": "stop",
                         "date": signal_df.index[i], "price": price,
-                        "pnl": round(pnl, 4), "entry_price": entry_price,
-                        "stop_level": stop_state.stop_level,
+                        "pnl": pnl, "entry_price": entry_price,
+                        "stop_level": stopped_at,
                     })
 
             # ── Signal processing ──────────────────────────────────────
@@ -260,6 +257,12 @@ class RiskEngine:
 
                 # Block new entries during circuit breaker
                 if circuit_broken and current_pos == 0:
+                    target = 0
+
+                # Dynamic policy: block new entries on ineligible bars
+                # (extreme volatility / unknown regime); existing positions
+                # are managed by stops, not force-closed.
+                if not eligible_arr[i - 1] and current_pos == 0:
                     target = 0
 
                 # ── Execute position change ────────────────────────────
@@ -277,14 +280,14 @@ class RiskEngine:
                         trades.append({
                             "type": "exit", "reason": "signal",
                             "date": signal_df.index[i], "price": price,
-                            "pnl": round(pnl, 4), "entry_price": entry_price,
+                            "pnl": pnl, "entry_price": entry_price,
                             "stop_level": np.nan,
                         })
 
                     # Open new long position
-                    if target == 1 and cash > 0:
-                        deploy_gross = cash * self.position_frac
-                        deploy_net   = deploy_gross * (1.0 - cost_per_side)
+                    if target == 1 and cash > 0 and np.isfinite(atr_val) and atr_val > 0:
+                        deploy_gross = cash * self.position_frac * float(size_cap_arr[i - 1])
+                        deploy_net   = deploy_gross / (1.0 + cost_per_side)
                         shares       = deploy_net / price
                         entry_cost   = deploy_gross
                         entry_price  = price
@@ -292,7 +295,10 @@ class RiskEngine:
                         current_pos  = 1
                         stop_state   = StopState(
                             active      = True,
-                            stop_level  = initial_stop(price, atr_val, direction=1),
+                            stop_level  = initial_stop(
+                                price, atr_val, direction=1,
+                                atr_multiplier=float(atr_mult_arr[i - 1]),
+                            ),
                             direction   = 1,
                             entry_price = price,
                             entry_atr   = atr_val,
@@ -306,11 +312,12 @@ class RiskEngine:
 
             # ── Mark-to-market  ────────────────────────────────────────
             equity[i] = cash + shares * price
+            history.append(dict(cash=cash, shares=shares, price=price, equity=equity[i]))
 
         # ── Post-simulation analytics ──────────────────────────────────
         equity_s  = pd.Series(equity, index=signal_df.index, name="equity")
         returns_s = equity_s.pct_change().fillna(0.0).rename("returns")
-        trade_df  = pd.DataFrame(trades)
+        trade_df  = pd.DataFrame(trades, columns=["type", "reason", "date", "price", "pnl", "entry_price", "stop_level"])
 
         var_df   = rolling_var_cvar(returns_s, window=self.var_window)
         risk_rep = risk_summary(returns_s, initial_capital=self.initial_capital)
@@ -334,7 +341,10 @@ class RiskEngine:
             "cb_threshold":     self.cb_threshold,
             "cb_cooldown_bars": self.cb_cooldown_bars,
             "win_loss_ratio":   win_loss_ratio,
+            "calibration": "fixed_ex_ante_assumption_not_trade_probability_calibration",
+            "status": "exploratory_close_stop_simulation",
             "n_kelly_filtered": n_kelly_filtered,
+            "dynamic_policy":   policy_engine is not None,
         }
 
         return RiskResult(
@@ -344,6 +354,7 @@ class RiskEngine:
             var_series    = var_df,
             risk_report   = risk_rep,
             params        = params,
+            ledger        = pd.DataFrame(history, index=signal_df.index),
         )
 
     # ------------------------------------------------------------------
@@ -373,8 +384,7 @@ class RiskEngine:
 
         _write(result.equity_curve.to_frame(), "equity_curve")
         _write(result.var_series, "var_cvar")
-        if len(result.trade_log) > 0:
-            _write(result.trade_log, "trade_log")
+        _write(result.trade_log, "trade_log")
 
         risk_metrics = compute_metrics(
             result.daily_returns,

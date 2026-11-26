@@ -44,6 +44,7 @@ class SimResult:
     daily_returns: pd.Series
     trade_log:     pd.DataFrame
     params:        dict = field(default_factory=dict)
+    ledger:        pd.DataFrame = field(default_factory=pd.DataFrame)
 
 
 # ---------------------------------------------------------------------------
@@ -74,100 +75,60 @@ def run_simulation(
     -------
     SimResult with equity_curve, daily_returns, trade_log
     """
+    if mode not in ("long_only", "long_short"):
+        raise ValueError("Unsupported position mode")
+    if not np.isfinite([initial_capital, commission, slippage]).all() or initial_capital <= 0 or min(commission, slippage) < 0:
+        raise ValueError("Capital must be positive and costs nonnegative")
+    if signal_df.empty or not signal_df.index.is_monotonic_increasing or not signal_df.index.is_unique:
+        raise ValueError("Signals require nonempty, unique, ordered observations")
+    prices = signal_df["close"].to_numpy(dtype=float)
+    signals = signal_df["filtered_signal"].to_numpy()
+    if not np.isfinite(prices).all() or (prices <= 0).any() or not np.isin(signals, [0, 1, 2]).all():
+        raise ValueError("Invalid prices or signals")
     cost_per_side = commission + slippage
-
-    prices   = signal_df["close"].values
-    signals  = signal_df["filtered_signal"].values
-    n        = len(prices)
-
-    equity       = np.empty(n)
-    equity[0]    = initial_capital
-    positions    = np.empty(n, dtype=int)   # -1=short, 0=cash, 1=long
-    positions[0] = 0
-
-    trades: list[dict] = []
-    current_pos  = 0
-    cash         = initial_capital
-    shares       = 0.0
-    entry_price  = 0.0
-    entry_idx    = 0
-
-    for i in range(1, n):
-        price = prices[i]
-
-        # Map signal to target position
-        sig = int(signals[i - 1])       # signal is set at close of i-1, filled at i
-        if mode == "long_only":
-            target = 1 if sig == 2 else 0
-        else:
-            target = 1 if sig == 2 else (-1 if sig == 0 else 0)
-
-        # ── Execute position change ────────────────────────────────────
+    cash, shares, entry_price, entry_fee = float(initial_capital), 0.0, 0.0, 0.0
+    entry_idx, current_pos, realized = 0, 0, 0.0
+    trades, history = [], []
+    for i, price in enumerate(prices):
+        sig = int(signals[i - 1]) if i else 1
+        target = 1 if sig == 2 else (-1 if mode == "long_short" and sig == 0 else 0)
         if target != current_pos:
-            # Close existing position
-            if current_pos != 0:
-                proceeds = abs(shares) * price * (1 - cost_per_side)
-                pnl      = (proceeds - abs(shares) * entry_price) * np.sign(current_pos)
-                trades.append({
-                    "type":        "exit",
-                    "date":        signal_df.index[i],
-                    "price":       price,
-                    "shares":      shares,
-                    "direction":   current_pos,
-                    "pnl":         pnl,
-                    "entry_price": entry_price,
-                    "hold_bars":   i - entry_idx,
-                })
-                cash = equity[i - 1] * (1 - cost_per_side)
-
-            # Open new position
-            if target != 0:
-                cost_fill = cash * cost_per_side
-                cash     -= cost_fill
-                shares    = cash / price * target    # signed shares
-                entry_price = price
-                entry_idx   = i
-                trades.append({
-                    "type":        "entry",
-                    "date":        signal_df.index[i],
-                    "price":       price,
-                    "shares":      shares,
-                    "direction":   target,
-                    "pnl":         np.nan,
-                    "entry_price": entry_price,
-                    "hold_bars":   0,
-                })
-            else:
+            if current_pos:
+                exit_fee = abs(shares) * price * cost_per_side
+                pnl = shares * (price - entry_price) - entry_fee - exit_fee
+                cash += shares * price - exit_fee
+                realized += pnl
+                trades.append(dict(type="exit", date=signal_df.index[i], price=price,
+                    shares=shares, direction=current_pos, pnl=pnl, entry_price=entry_price,
+                    hold_bars=i-entry_idx, fee=exit_fee, entry_fee=entry_fee))
                 shares = 0.0
-
+            if target:
+                if cash <= 0:
+                    raise ValueError("Account insolvent; margin liquidation required")
+                # Signed cash/share ledger. Short proceeds remain in cash, with a
+                # matching marked liability. Budget includes entry friction.
+                shares = target * cash / (price * (1 + cost_per_side))
+                entry_fee = abs(shares) * price * cost_per_side
+                cash -= shares * price + entry_fee
+                entry_price, entry_idx = price, i
+                trades.append(dict(type="entry", date=signal_df.index[i], price=price,
+                    shares=shares, direction=target, pnl=np.nan, entry_price=price,
+                    hold_bars=0, fee=entry_fee, entry_fee=entry_fee))
             current_pos = target
-
-        # ── Mark-to-market ─────────────────────────────────────────────
-        if current_pos == 0:
-            equity[i] = cash
-        elif current_pos == 1:
-            equity[i] = abs(shares) * price
-        else:  # short
-            equity[i] = 2 * equity[i - 1] - abs(shares) * price
-
-        positions[i] = current_pos
-
-    equity_s  = pd.Series(equity,  index=signal_df.index, name="equity")
-    returns_s = equity_s.pct_change().fillna(0.0).rename("returns")
-
-    trade_df = pd.DataFrame(trades)
-
-    return SimResult(
-        equity_curve  = equity_s,
-        daily_returns = returns_s,
-        trade_log     = trade_df,
-        params        = {
-            "initial_capital": initial_capital,
-            "commission":      commission,
-            "slippage":        slippage,
-            "mode":            mode,
-        },
-    )
+        nav = cash + shares * price
+        if nav < 0:
+            raise ValueError("Account insolvent; leveraged short loss exceeds capital")
+        unrealized = shares * (price - entry_price) - entry_fee if shares else 0.0
+        history.append(dict(cash=cash, shares=shares, price=price, equity=nav,
+                            realized_pnl=realized, unrealized_pnl=unrealized))
+    ledger = pd.DataFrame(history, index=signal_df.index)
+    equity = ledger["equity"]
+    return SimResult(equity, equity.pct_change(fill_method=None).fillna(0).rename("returns"),
+        pd.DataFrame(trades, columns=["type", "date", "price", "shares", "direction", "pnl",
+                                     "entry_price", "hold_bars", "fee", "entry_fee"]),
+        dict(initial_capital=initial_capital, commission=commission, slippage=slippage,
+             mode=mode, accounting_version=2, execution="next_close",
+             terminal_policy="mark_open_positions", cost_model="notional_cash_charge"), ledger)
 
 
 # ---------------------------------------------------------------------------

@@ -8,7 +8,7 @@ Macro   : FRED via pandas-datareader (VIX proxy, yield spread, CPI)
 from __future__ import annotations
 
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 
 import ccxt
@@ -21,7 +21,7 @@ import requests
 # ---------------------------------------------------------------------------
 
 _PERIOD_DAYS: dict[str, int] = {
-    "1d": 1, "5d": 5, "1mo": 30, "3mo": 90,
+    "1d": 1, "5d": 5, "60d": 60, "1mo": 30, "3mo": 90,
     "6mo": 180, "1y": 365, "2y": 730, "5y": 1825, "10y": 3650,
 }
 
@@ -29,9 +29,11 @@ _YF_HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 
 def _to_timestamps(period: str) -> tuple[int, int]:
-    days = _PERIOD_DAYS.get(period, 365)
-    end = int(datetime.utcnow().timestamp())
-    start = int((datetime.utcnow() - timedelta(days=days)).timestamp())
+    if period not in _PERIOD_DAYS:
+        raise ValueError(f"Unsupported history period: {period}")
+    days = _PERIOD_DAYS[period]
+    end = int(datetime.now(timezone.utc).timestamp())
+    start = int((datetime.now(timezone.utc) - timedelta(days=days)).timestamp())
     return start, end
 
 
@@ -94,6 +96,8 @@ def fetch_equity_hourly(
     """
     Pull hourly OHLCV (Yahoo limits hourly history to ~60 days).
     """
+    if _PERIOD_DAYS.get(period, 9999) > 730:
+        raise ValueError("Hourly equity history exceeds provider limit; request <=2y")
     start, end = _to_timestamps(period)
     url = (
         f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}"
@@ -125,6 +129,7 @@ def fetch_equity_hourly(
     )
     df.index.name = "Date"
     df["ticker"] = ticker
+    df = df.loc[df.index + pd.Timedelta(hours=1) <= pd.Timestamp.now(tz="UTC")]
     return df.dropna(subset=["Open", "Close"])
 
 
@@ -156,6 +161,8 @@ def fetch_crypto_ohlcv(
     timeframe: '1d', '1h', '4h'
     limit   : total number of bars to return
     """
+    if limit > 719:
+        raise ValueError("Kraken OHLC exposes only 719 completed bars; use an archived historical snapshot")
     tf = _CCXT_TIMEFRAME.get(timeframe, timeframe)
     bars: list = []
     since = None
@@ -168,7 +175,8 @@ def fetch_crypto_ohlcv(
         if len(batch) < _KRAKEN_PAGE:
             break
 
-    bars = bars[-limit:]
+    duration_ms = _KRAKEN.parse_timeframe(tf) * 1000
+    bars = [bar for bar in bars if bar[0] + duration_ms <= _KRAKEN.milliseconds()][-limit:]
     df = pd.DataFrame(bars, columns=["ts", "Open", "High", "Low", "Close", "Volume"])
     df.index = (
         pd.to_datetime(df["ts"], unit="ms", utc=True).dt.normalize()
@@ -213,7 +221,7 @@ def fetch_macro_fred(
     Columns: VIX  yield_spread_10_2  CPI  rate_10y  rate_2y
     """
     if end is None:
-        end = datetime.utcnow().strftime("%Y-%m-%d")
+        end = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
     frames = {}
     for col, series_id in _FRED_SERIES.items():

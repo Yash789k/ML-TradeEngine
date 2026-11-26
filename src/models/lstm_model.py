@@ -18,7 +18,7 @@ Training features
 Predict contract
 ----------------
   predict_proba(X) → ndarray (n_rows, 3)
-  The first (seq_len - 1) rows get a dummy uniform probability [1/3, 1/3, 1/3]
+  The first (seq_len - 1) rows are unavailable (NaN)
   because there is not enough history to form a complete sequence.
 """
 
@@ -167,6 +167,7 @@ class LSTMModel:
         X_val:   Optional[np.ndarray] = None,
         y_val:   Optional[np.ndarray] = None,
         class_weight_map: dict[int, float] | None = None,
+        label_horizon: int = 5,
     ) -> "LSTMModel":
         """
         Train the LSTM with optional validation set for early stopping.
@@ -177,24 +178,25 @@ class LSTMModel:
         torch.manual_seed(self.random_state)
         np.random.seed(self.random_state)
 
-        X_train = self.scaler_.fit_transform(X_train)
         self.n_features_ = X_train.shape[1]
-
-        # Validation split
         if X_val is None:
-            n_val  = max(self.seq_len + 1, int(len(X_train) * 0.2))
-            X_val, X_train = X_train[-n_val:], X_train[:-n_val]
-            y_val, y_train = y_val[-n_val:] if y_val is not None else y_train[-n_val:], y_train[:-n_val]
-        else:
-            X_val = self.scaler_.transform(X_val)
+            n_val = max(self.seq_len + 1, int(len(X_train) * 0.2))
+            end = len(X_train) - n_val - label_horizon
+            if end < self.seq_len:
+                raise ValueError("Insufficient purged LSTM training history")
+            X_val, y_val = X_train[-n_val:], y_train[-n_val:]
+            X_train, y_train = X_train[:end], y_train[:end]
+        X_train = self.scaler_.fit_transform(X_train)
+        X_val = self.scaler_.transform(X_val)
+        from src.models.labels import compute_class_weights
+        import pandas as pd
+        class_weight_map = compute_class_weights(pd.Series(y_train))
 
         train_ds = SequenceDataset(X_train, y_train, self.seq_len)
         val_ds   = SequenceDataset(X_val,   y_val,   self.seq_len)
 
         if len(train_ds) < 1:
-            log.warning("LSTM: too few training samples for seq_len=%d; skipping.", self.seq_len)
-            self.net_ = _LSTMNet(self.n_features_, self.hidden_dim, self.n_layers, dropout=self.dropout)
-            return self
+            raise ValueError("Insufficient LSTM training samples")
 
         train_dl = DataLoader(train_ds, batch_size=self.batch_size, shuffle=False)
         val_dl   = DataLoader(val_ds,   batch_size=self.batch_size, shuffle=False)
@@ -274,17 +276,17 @@ class LSTMModel:
         """
         Predict class probabilities for each row.
         Rows without a full seq_len history (the first seq_len-1 rows) receive
-        uniform probability [1/3, 1/3, 1/3].
+        NaN probabilities; an entirely short sequence raises an error.
         """
         if self.net_ is None:
             raise RuntimeError("Call fit() before predict_proba().")
 
         X_scaled = self.scaler_.transform(X)
         n        = len(X_scaled)
-        result   = np.full((n, 3), 1.0 / 3.0, dtype=np.float32)
+        result   = np.full((n, 3), np.nan, dtype=np.float32)
 
         if n < self.seq_len:
-            return result
+            raise ValueError(f"LSTM requires {self.seq_len} consecutive feature rows; received {n}")
 
         # Build sequences for all valid positions
         seqs  = np.stack([X_scaled[i : i + self.seq_len]

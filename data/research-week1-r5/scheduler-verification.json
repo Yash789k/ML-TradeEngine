@@ -1,0 +1,134 @@
+{
+  "verified_at": "2026-10-21T04:41:04.791025+00:00",
+  "status": {
+    "trial_id": "PILOT-TREND-WEEK1-R5-20261021",
+    "external_orders": false,
+    "deployment": "cash",
+    "shadow": "trend",
+    "state_consistency_errors": [],
+    "ledger_consistent": true,
+    "valid_observed_sessions": 0,
+    "expected_elapsed_sessions": 0,
+    "missing_sessions": [],
+    "label_complete_decisions": 0,
+    "required_sessions": 1,
+    "next_event": {
+      "id": "2026-10-21:daily",
+      "session": "2026-10-21",
+      "kind": "daily",
+      "due": "2026-10-21T20:30:00+00:00",
+      "ordinal": 1,
+      "hong_kong": "2026-10-22T04:30:00+08:00"
+    },
+    "terminal_observed_sessions": 0,
+    "terminal_required_sessions": 6,
+    "halted": false,
+    "prospective_status": "incomplete",
+    "limitations": [
+      "Local launch agent requires logged-in awake host; no wake guarantee",
+      "No external broker execution",
+      "Commissioning/replays never count as prospective",
+      "Missed sessions halt; no fabricated backfill"
+    ]
+  },
+  "heartbeat": {
+    "at": "2026-10-21T04:40:37.133731+00:00",
+    "parent_pid": 1,
+    "pid": 14344,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "f82d9574358e753fbcb22802d73e07106fc1c26dcf5d36c66b765504741d8245",
+    "status": "awake"
+  },
+  "heartbeat_age_seconds": 27.657294,
+  "commissioning": {
+    "trigger": {
+      "at": "2026-10-21T04:35:57.484664+00:00",
+      "parent_pid": 1,
+      "pid": 14168,
+      "scheduler": "launchd",
+      "service": "local.ml-trade-engine.collector-v2",
+      "source_sha256": "f82d9574358e753fbcb22802d73e07106fc1c26dcf5d36c66b765504741d8245",
+      "status": "awake",
+      "content_sha256": "ee4c1c076ce72edad30e4c74b53f5a5563d9088b57c6ced95317063172bb4218"
+    },
+    "completed_at": "2026-10-21T04:36:15.813598+00:00",
+    "mode": "commissioning_preview",
+    "session": "2026-10-20",
+    "symbol_count": 22,
+    "result_sha256": "225c95b5cf45da8b93eca9ea095abe9b84bb764ce85e402eb83a835360cea494",
+    "snapshot_sha256": "53c17d4bf616f2c0290aec2142fc2f18dac7d1c03bb30c956e409920f1507019",
+    "timings_seconds": {
+      "data_read": 16.26183395809494,
+      "features": 0.2297438340028748,
+      "inference": 0.14049083506688476,
+      "ledger": 0.01089624990709126,
+      "training": 0.0,
+      "whole_batch": 17.682833957951516
+    },
+    "accounts": {
+      "deployment": {
+        "equity": 10000.0,
+        "cash": 10000.0,
+        "reconciliation_error": 0.0,
+        "fees": 0.0,
+        "reserved_cash": 0
+      },
+      "shadow": {
+        "equity": 10000.0,
+        "cash": 10000.0,
+        "reconciliation_error": 0.0,
+        "fees": 0.0,
+        "reserved_cash": 4126.17806940435
+      }
+    },
+    "counts_as_prospective": false
+  },
+  "sole_owner": "local.ml-trade-engine.collector-v2",
+  "source_identical_to_r4": true,
+  "model_files_identical_to_r4": 44,
+  "preservation": [
+    {
+      "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r4",
+      "files_unchanged": 501,
+      "halt_preserved": true,
+      "inventory_receipt": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r5/failed-trial-preservation.json",
+      "inventory_sha256": "5b9af98e1818beb31ede4fb6eefee1e9203452088950836a6641020c6f6dda1e"
+    },
+    {
+      "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r3",
+      "files_unchanged": 216,
+      "halt_preserved": true,
+      "inventory_receipt": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r4/failed-trial-preservation.json",
+      "inventory_sha256": "aba1e9f77647419051c7d0bf60b423f04ab6dbddb547dce3b4e1c996eb85ca73"
+    },
+    {
+      "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2",
+      "files_unchanged": 490,
+      "halt_preserved": true,
+      "inventory_receipt": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r3/failed-trial-preservation.json",
+      "inventory_sha256": "a244967833876d66dbf39e1aa8dd943da83df0e3ccfd7f683ab5a1766d9dc18d"
+    }
+  ],
+  "qualification_cases": {
+    "qualification.xml": 33,
+    "report-qualified-tests.xml": 13
+  },
+  "sleep_guard": {
+    "running": true,
+    "pid": 14160,
+    "expires": "2026-10-30T06:00:00+08:00",
+    "idle_sleep_assertion": true
+  },
+  "power_at_verification": "Now drawing from 'Battery Power'\n -InternalBattery-0 (id=24445027)\t100%; discharging; 8:13 remaining present: true",
+  "required_user_action": "Plug in the Mac; keep lid open, logged in and online overnight. Guard cannot override clamshell sleep or shutdown.",
+  "automation": {
+    "id": "trading-pilot-evidence-watch",
+    "status": "ACTIVE",
+    "rrule": "FREQ=WEEKLY;WKST=MO;BYDAY=MO,TU,WE,TH,FR,SA;BYHOUR=5,21;BYMINUTE=35;BYSECOND=0;BYSETPOS=2,3,4,5,6,7,8,9,10,11",
+    "target_thread_id": "01a0e70e-ccdd-7b91-b17e-9af2b3eca477",
+    "prompt": "In /Users/a/Downloads/ml-trade-engine, follow docs/research-week1-r5/OPERATIONS.md and STATUS.md. The active r5 continuation collects one new decision for US 21 October, at 22 October 04:30 HKT, in fresh accounts. Retain the four verified archived r2/r4 decisions separately, for five interrupted observations across three account segments; preserve all earlier failed trials and halts. Check only eligible XNYS market-open/post-close windows using sealed r5 status, new receipts, heartbeat, halt, reconciliation, sleep guard and milestones. The observer runs five minutes after market open and close+90 to tolerate early delivery, with no hourly checks. Keep observer-only state in docs/research-week1-r5/observer-state.json. Earlier workspaces are superseded: do not alert on their stopped heartbeats, preserved halts or cancelled future tail dates. Launchd alone collects. Do not run daily/tick/commission, clear halts, backfill, refit, retune, enable orders or publish. Reuse qualifications. Stay quiet on unchanged state; notify only new actionable failures, required action, a valid one-new-decision milestone or final maturity. Generate dated research_week1_r5.report --week-close only with one valid new decision, all four verified archived decisions, reconciled new accounts and no active halt. Freeze only with all five mature outcomes and six valid new terminal receipts. Report returns separately and disclose all failed trials and missed sessions. The six outcome sessions end US 29 October, with final collection on 30 October at 04:30 HKT. Commissioning never counts as prospective evidence; no profitability approval. Pause this observer after reporting the completed final package."
+  },
+  "external_orders": false,
+  "profitability_approved": false
+}

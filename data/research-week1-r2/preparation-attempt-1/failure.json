@@ -1,0 +1,6 @@
+{
+  "at": "2026-10-01T14:07:33.759341+00:00",
+  "error": "FileNotFoundError: validation/tests directory was not created by inherited preparation script",
+  "stage": "copy_test_source_before_tests_or_sealing",
+  "active_collector_changed": false
+}

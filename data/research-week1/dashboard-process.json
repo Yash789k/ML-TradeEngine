@@ -1,0 +1,6 @@
+{
+  "pid": 22741,
+  "url": "http://127.0.0.1:8504",
+  "source": "app_week1.py",
+  "scope": "local dashboard; launchd owns collection"
+}

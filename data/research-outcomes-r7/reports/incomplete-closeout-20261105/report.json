@@ -1,0 +1,103 @@
+{
+  "archived_accounts": [
+    {
+      "decisions": 2,
+      "full_account_tail_complete": false,
+      "last_mark": "2026-10-02",
+      "ledger_consistent_at_last_mark": true,
+      "net_returns_at_last_actual_receipt": {
+        "deployment": 0.0,
+        "shadow": -0.0006039152906718304
+      },
+      "segment": "r2"
+    },
+    {
+      "decisions": 2,
+      "full_account_tail_complete": false,
+      "last_mark": "2026-10-15",
+      "ledger_consistent_at_last_mark": true,
+      "net_returns_at_last_actual_receipt": {
+        "deployment": 0.0,
+        "shadow": -0.0006007509720118431
+      },
+      "segment": "r4"
+    },
+    {
+      "decisions": 1,
+      "full_account_tail_complete": false,
+      "last_mark": "2026-10-22",
+      "ledger_consistent_at_last_mark": true,
+      "net_returns_at_last_actual_receipt": {
+        "deployment": 0.0,
+        "shadow": 0.0
+      },
+      "segment": "r6"
+    }
+  ],
+  "created_at": "2026-11-05T05:32:49.131401+00:00",
+  "decision_dates": 4,
+  "external_orders": false,
+  "failed_trials_reference": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r6/protocol.json",
+  "failed_trials_reference_sha256": "8e9d183bcb2b7291fc8c0202d3de0c3be1e7760d8f1ac06fcb8b81092c80eab7",
+  "inputs": {
+    "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/reads/2026-10-27/result.json": "b37336c0b9da8c8abd76ef33f6e686cd5e8cc1ba19ecafe7af6fd5241849045a",
+    "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/reads/2026-10-28/result.json": "5db811d4646773e7ab0b5c564bc0fc28e2e120fbc6f505025d25b0bfa2f466b7"
+  },
+  "limitations": [
+    "Five interrupted forecast dates across three accounts; descriptive evidence only",
+    "Forecasts remain prospective; outcomes use explicitly later retrieved adjusted-price vintages",
+    "Old missed executions and terminal account marks cannot be recreated; original operational gate remains incomplete",
+    "Separate archived account returns only; no stitched series, no profitability approval"
+  ],
+  "manifest_sha256": "e891242d6ccb5bc84796a1b1cc4c3dc00de10327696c065e888baa9c0d3951ab",
+  "metrics": [
+    {
+      "accuracy": 0.2727272727272727,
+      "brier": 0.6853021233109741,
+      "log_loss": 1.118908122479062,
+      "model": "hybrid",
+      "rows": 88
+    },
+    {
+      "accuracy": 0.3068181818181818,
+      "brier": 0.6766194837517742,
+      "log_loss": 1.1059684561951377,
+      "model": "prior",
+      "rows": 88
+    }
+  ],
+  "original_missed_outcome_sessions": [
+    "2026-10-23",
+    "2026-10-26"
+  ],
+  "original_pilot_operational_complete": false,
+  "prediction_rows": 88,
+  "profitability_approved": false,
+  "protocol_sha256": "63620c82e0ce0db491252c17dfbe36e986ab8c7c91ac52dc3e8e30d1200d6d3b",
+  "status": "interim_outcome_recovery",
+  "status_snapshot": {
+    "amended_outcome_collection_complete": false,
+    "completed_outcome_reads": 2,
+    "decision_dates_preserved": 5,
+    "external_orders": false,
+    "halted": false,
+    "mature_decision_dates": 4,
+    "missing_new_sessions": [
+      "2026-10-29",
+      "2026-10-30",
+      "2026-11-02",
+      "2026-11-03"
+    ],
+    "new_decisions": 0,
+    "next_event": null,
+    "original_account_tail_complete": false,
+    "original_missed_outcome_sessions": [
+      "2026-10-23",
+      "2026-10-26"
+    ],
+    "original_operational_gate": "incomplete; missed execution and marks remain disclosed",
+    "required_mature_decision_dates": 5,
+    "required_outcome_reads": 6,
+    "trial_id": "OUTCOME-RECOVERY-R7-20261027"
+  }
+}

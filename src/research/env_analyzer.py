@@ -49,7 +49,7 @@ _STRATEGY_NAMES = [
     "Pairs_StatArb", "Carry_Proxy", "Vol_Breakout", "Alpha_Trends",
 ]
 
-_REGIME_LABELS = {0: "bear", 1: "ranging", 2: "bull"}
+_REGIME_LABELS = {-1: "unknown_warmup", 0: "bear", 1: "ranging", 2: "bull"}
 
 
 # ---------------------------------------------------------------------------
@@ -196,7 +196,7 @@ class EnvAnalyzer:
                     mask   = merged["regime"] == regime_val
                     subset = merged.loc[mask, "r"]
                     n      = len(subset)
-                    if n < 5:
+                    if n == 0:
                         continue
                     rows.append({
                         "ticker":      ticker,

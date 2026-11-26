@@ -1,0 +1,10 @@
+{
+  "trial": "base-XLE-F3-R0-S137",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "260932a097676a78b2605bee641b4f71ec2c6a497106f91bc7caf4cdea4b9fa5",
+  "expected_prediction_sha256": "21481ef5fe4071a0e1efe6d3d09bb815ec69b5182429f5507c0012b7510b851a",
+  "model_sha256": "53aa4d5d711420f266446fde95331f844e0d000fda3ab48e8dca565da12f0dcc"
+}

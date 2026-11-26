@@ -1,0 +1,8 @@
+{
+  "recorded_at": "2026-09-28T08:24:54.990872+00:00",
+  "reason": "Frozen source uses repository-root tables/figures paths; output-only symlinks route to canonical research-v2 locations without changing registered fitting source. Both root directories were empty and created for this experiment.",
+  "links": {
+    "tables": "data/research-v2/tables",
+    "figures": "data/research-v2/figures"
+  }
+}

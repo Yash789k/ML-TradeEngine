@@ -1,0 +1,13 @@
+[
+  {
+    "recorded_at": "2026-09-28T08:11:44.578747+00:00",
+    "period_end": "2026-09-25",
+    "sources": [
+      "referenced task histories",
+      "sealed adaptive release",
+      "repair reports"
+    ],
+    "classification": "previously examined historical data; exploratory only",
+    "notes": "July-September 2026 audit consumed before this follow-up"
+  }
+]

@@ -11,15 +11,11 @@ mapped to human-readable labels by ranking on mean return:
   middle state(s)    → 1 (ranging)  [for n_states > 2]
   highest-mean state → 2 (bull)
 
-Design decision — lookahead note
----------------------------------
-hmmlearn's Viterbi decoder (predict) operates on the FULL training series at
-once.  In a live setting you would use online filtering (forward pass only).
-For the backtesting feature store we use the full-series Viterbi, which gives
-slightly smoother labels and is the standard practise in academic quant research.
-The ML model is trained on these labels in Phase 03, so any Viterbi smoothing
-is consistent across train and test sets — as long as the HMM is fit only on
-the training split and the test labels are decoded using that frozen model.
+Causal convention
+-----------------
+Fit once on the first 252 eligible observations. Warm-up rows remain unknown.
+Thereafter use only forward-filter probabilities with frozen parameters. The
+initial fitting window is deliberately never relabeled as historical features.
 """
 
 from __future__ import annotations
@@ -69,14 +65,21 @@ def fit_hmm(
 
     obs = df[feat_cols].dropna().values
 
+    scale = np.maximum(np.std(obs, axis=0), 1e-6)
+    obs = obs / scale
     model = GaussianHMM(
         n_components=n_states,
         covariance_type=covariance_type,
-        n_iter=500,
+        n_iter=200,
+        startprob_prior=1.1,
+        transmat_prior=1.1,
         tol=1e-4,
         random_state=random_state,
     )
     model.fit(obs)
+    model.feature_scale_ = scale
+    if not np.isfinite(model.means_).all() or not np.isfinite(model.transmat_).all():
+        raise ValueError("HMM calibration failed; no regime feature may be emitted")
     return model
 
 
@@ -85,7 +88,7 @@ def decode_hmm(
     df: pd.DataFrame,
 ) -> np.ndarray:
     """
-    Run Viterbi decoding on the full DataFrame.
+    Forward-filter a sequence using a previously fitted, frozen model.
     Returns an integer array of raw state indices (length = len(df)).
     Rows with NaN features receive state -1.
     """
@@ -95,8 +98,18 @@ def decode_hmm(
     states    = np.full(len(df), -1, dtype=int)
 
     if len(valid) > 0:
-        raw = model.predict(valid.values)
-        states[valid.index.get_indexer(valid.index)] = raw  # type: ignore[call-arg]
+        from scipy.special import logsumexp
+        emissions = model._compute_log_likelihood(valid.to_numpy() / getattr(model, "feature_scale_", 1.0))
+        with np.errstate(divide="ignore"):
+            transition = np.log(model.transmat_)
+            posterior = np.log(model.startprob_)
+        raw = []
+        for i, emission in enumerate(emissions):
+            prior = posterior if i == 0 else logsumexp(posterior[:, None] + transition, axis=0)
+            posterior = prior + emission
+            posterior -= logsumexp(posterior)
+            raw.append(int(np.argmax(posterior)))
+        states[np.flatnonzero(obs_full.notna().all(axis=1).to_numpy())] = raw
 
     return states
 
@@ -130,6 +143,7 @@ def add_hmm_regime(
     random_state: int = 42,
     col_name: str = "hmm_regime",
     covariance_type: str = "full",
+    train_size: int = 252,
 ) -> tuple[pd.DataFrame, GaussianHMM]:
     """
     Fit a Gaussian HMM and add a regime column to `df`.
@@ -152,9 +166,19 @@ def add_hmm_regime(
     1 → ranging (middle state)
     2 → bull    (highest mean return state)
     """
-    model       = fit_hmm(df, n_states=n_states, random_state=random_state,
-                          covariance_type=covariance_type)
-    raw_states  = decode_hmm(model, df)
-    regime      = _map_states_to_regime(model, raw_states, n_states)
+    feat_cols = [c for c in ["log_return", "realized_vol_21"] if c in df.columns]
+    valid = df[feat_cols].dropna()
+    df[col_name] = -1
+    if len(valid) <= train_size:
+        return df, None
+    calibration = valid.iloc[:train_size]
+    model = fit_hmm(calibration, n_states=n_states, random_state=random_state,
+                    covariance_type=covariance_type)
+    cutoff = df.index.get_loc(calibration.index[-1]) + 1
+    # Filtering the training prefix initializes state probabilities; it is not
+    # published as causal history. Only observations after the cutoff are emitted.
+    raw_states = decode_hmm(model, df)
+    regime = _map_states_to_regime(model, raw_states, n_states)
+    regime[:cutoff] = -1
     df[col_name] = regime
     return df, model

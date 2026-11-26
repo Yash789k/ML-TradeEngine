@@ -1,0 +1,81 @@
+{
+  "default_case": "r2-2026-10-01",
+  "default_symbol": "NVDA",
+  "generated_at": "2026-11-25T14:36:10.716948+00:00",
+  "schema": 1,
+  "views": {
+    "classifiers": {
+      "caption": "All 680 history dates: log loss 1.0762 versus 1.0641, difference +0.0121 (95% interval +0.0044 to +0.0194); accuracy 40.2% versus 42.8%. On the 88 recorded October rows: 1.1189 versus 1.1060.",
+      "headline": "The classifier does not beat the class-frequency prior."
+    },
+    "data": {
+      "caption": "22 instruments, about ten years of daily bars each (55,242 rows from 2016-09-29 to 2026-09-25). 6 collection attempts scheduled 18 decision sessions and recorded 5, with 10 hashed snapshots. 5 attempts halted after a missed or rejected session.",
+      "headline": "What was collected, and where the collection broke."
+    },
+    "live": {
+      "caption": "Last saved run: session 2026-11-24, 8 of 22 instruments pass the trend rule, 8 pending orders in an isolated demo account, regime turbulent. Completed in 19 seconds. No fill is simulated and nothing is sent to a broker.",
+      "headline": "The current pipeline, run on the latest completed session."
+    },
+    "overview": {
+      "caption": "5 decisions and 25 paper fills were recorded in October 2026. On 14,960 saved forecasts the classifier's log loss is 1.0762 against 1.0641 for the class-frequency prior (lower is better). The trend rule returned +35.0% on the 2024 to September 2026 history against +55.2% for equal weight.",
+      "headline": "The pipeline runs end to end. Its forecasts and its strategy have not yet beaten simple baselines."
+    },
+    "performance": {
+      "caption": "History, 686 sessions, 15 bp costs per side: trend +35.0% (Sharpe 1.30), equal weight +55.2% (Sharpe 1.40). The HMM overlay changed the trend rule's Sharpe by -0.32 (95% interval -0.82 to +0.17): not established. Simulated replay since 29 September, 41 sessions: trend -2.5%, equal weight -4.9%; too short for a Sharpe ratio.",
+      "headline": "No trading edge over the benchmark has been established."
+    },
+    "regimes": {
+      "caption": "93 rolling refits on SPY, all converged. Calm state about 10% annualised volatility, turbulent about 29%. It flags 2020, 2022 and April 2025 as turbulent. No recorded decision used it.",
+      "headline": "A causal two-state HMM separates calm from turbulent markets. It is diagnostic."
+    },
+    "report": {
+      "caption": "Shows: data collection, validation, forecasting, the decision rule, risk limits, paper orders and fills all work, and every recorded decision can be reproduced from its inputs. Does not show: that the forecasts beat a naive baseline, that the strategy beats equal weight, or that the scheduler can run unattended. Recorded evidence so far is 5 decision dates out of 18 scheduled.",
+      "headline": "What the demo shows, and what it does not."
+    },
+    "sentiment": {
+      "caption": "The pilot's 17 features contain no news input, and every recorded decision reproduces from prices alone. Adding six FinBERT columns to the classifier for NVDA and SPY changed log loss by +0.0462 (95% interval +0.0103 to +0.0848; lower is better): the forecasts got worse on these two tickers.",
+      "headline": "Sentiment is not connected to any decision."
+    },
+    "walkthrough": {
+      "caption": "The system buys NVDA because the trend rule was on. The classifier's most likely class was DOWN (40%), and it was not used. Every recorded number on this page reproduces from the recorded inputs.",
+      "headline": "One recorded decision: NVDA at the close of 1 October 2026."
+    }
+  },
+  "walkthrough": {
+    "1": {
+      "caption": "At 20:30 UTC on 1 October 2026 the collector downloaded 2,513 daily bars for NVDA (and 21 other instruments) from Yahoo Finance public chart v8. The last bar closed at $230.86. No news data was collected.",
+      "provenance": "recorded",
+      "title": "Market data collected"
+    },
+    "2": {
+      "caption": "17 features are recomputed from those bars. Two drive the trend rule: price is +15.4% versus its 200-session average and 12-month momentum is +16.7%.",
+      "provenance": "reconstructed",
+      "title": "Features computed from those bars"
+    },
+    "3": {
+      "caption": "The recorded forecast for NVDA: DOWN 40%, FLAT 21%, UP 39%. The HMM, computed now from the same bars, reads calm (P(turbulent) = 0.000). Neither was used to decide.",
+      "provenance": "recorded",
+      "title": "Classifier outputs and market regime"
+    },
+    "4": {
+      "caption": "Trend rule on, so the target is 3.64% of equity. 12 of 22 instruments qualified, for 43.6% gross exposure. The 40% turnover cap was binding: every order was scaled to 91.7% of its target.",
+      "provenance": "recorded",
+      "title": "Decision rule and risk checks"
+    },
+    "5": {
+      "caption": "A buy order for 1.443876 units with a reserve price of $237.79 (close plus 3%). $343.85 of cash was reserved. The deployment account stayed in cash; no external order exists.",
+      "provenance": "recorded",
+      "title": "Order created"
+    },
+    "6": {
+      "caption": "Filled at the next close, 2 October, at $233.95 with a $0.51 cost (15 bp). After all 12 fills the account was worth $9,993.96 with 40.3% invested.",
+      "provenance": "recorded",
+      "title": "Fill and account after the next close"
+    },
+    "7": {
+      "caption": "Over the five sessions after entry NVDA returned -2.0%: class DOWN. The classifier's top class was DOWN. Held to 2026-11-24, the position would show -113.95 USD (-33.7%); the recorded portfolio, simply held, would be worth $9,761.16 (-2.4%). One case proves nothing about skill.",
+      "provenance": "reconstructed",
+      "title": "Outcome and profit or loss"
+    }
+  }
+}

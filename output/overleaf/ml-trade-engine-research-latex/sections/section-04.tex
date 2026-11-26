@@ -1,0 +1,63 @@
+\section{Methods and the shared execution contract}\label{sec:section-04}
+
+\subsection{Features and forecasting models}
+
+\noindent Table~\ref{tab:2} reports feature definitions and information availability.
+
+\input{tables/table-02}
+
+\noindent Table~\ref{tab:3} reports fixed model configurations and distinct chronological contracts.
+
+\input{tables/table-03}
+
+The scale-free feature set combines trailing returns, volatility, prices relative to moving averages, market-relative returns, intraday range, overnight gap, volume ratio and intermediate-horizon momentum. Rolling operations use only the observed prefix. There is no full-sample normalization or learned feature screening outside the fitting partition. The logistic scaler is fitted on eligible fitting rows and then applied unchanged to calibration and evaluation. Feature order is part of the inference schema; matching names in a different order is insufficient.
+
+The logistic expert minimizes regularized multinomial cross-entropy. The tree expert fits shallow histogram-based boosting with fixed iteration count, leaf budget and regularization. Their raw mixture is the arithmetic mean of their probability vectors. Temperature scaling applies:
+
+\begin{equation}\label{eq:temperature}p_T(c\mid x)=\frac{\exp\{\log p_{\mathrm{raw}}(c\mid x)/T\}}{\sum_k\exp\{\log p_{\mathrm{raw}}(k\mid x)/T\}}.\end{equation}
+
+The temperature is selected only from its registered candidate set using eligible past calibration labels. Because this transformation preserves class ordering, its direct purpose is probability quality rather than creating a different argmax classification. The training-frequency control uses Laplace-smoothed class counts from the fitting sample. Always-UP is a directional control; its near-deterministic probabilities make it a poor probability benchmark when another class occurs, which is why the prior is primary for log loss.
+
+The sealed release calibrated temperature and estimated gate benefit on the same trailing block. That is chronologically causal but permits internal optimism from evaluating a selected temperature on its fitting block. The follow-up separates fitting, temperature selection and gate evaluation with endpoint-based purges. This experiment asks whether the gate's apparent past advantage survives a distinct eligible block. It does not assume that separating the blocks must improve returns; fewer calibration or gate observations may increase estimation variance.
+
+\subsection{Chronology, folds and refitting}
+
+\noindent Figure~\ref{fig:2} shows architecture of the isolated collection and research paths.
+
+\begin{figure}[htbp]\centering
+\input{figures/system_architecture}
+\caption{Architecture of the isolated collection and research paths.}\label{fig:2}
+\end{figure}
+
+\noindent Figure~\ref{fig:3} shows information, fill and label availability under the execution-aligned target.
+
+\begin{figure}[htbp]\centering
+\input{figures/information_timeline}
+\caption{Information, fill and label availability under the execution-aligned target.}\label{fig:3}
+\end{figure}
+
+At a refit decision, eligible labels are determined by their actual session endpoints. Fitting, calibration and gate partitions are chronological. Purging removes any earlier-partition target whose outcome reaches the next partition's first decision. This rule is derived from execution timing rather than a conveniently chosen gap. A transform learned from a preceding partition is applied to later partitions without refitting. All fold records retain first/last dates, label endpoints, sample counts and source/configuration hashes.
+
+The controlled outer dates comprise four disjoint blocks, each containing the first 63 sessions of a development half-year. Date-block resampling stays within each outer block. The bounded experiment design varies one registered factor at a time. There is no Cartesian hyperparameter search. If an inner choice is fitted, that choice is made entirely before its outer block; outer results never select a replacement pilot policy. Training-history and refit-cadence experiments align features, targets and evaluation dates, preventing a model trained on a different information set from masquerading as evidence about architecture. Additional seeds cover six representative instruments; they do not cover every instrument. Registered seeds characterize estimator variability separately from uncertainty across dates. Seeds and correlated instruments are not independent replications of the market.
+
+The operational contract has an explicit exchange-session refit anchor and an explicit startup model. Research replay and the daily runner use the same anchor. Weekly target changes occur on the last eligible exchange session of the week, including holiday weeks, with an initial allocation decision. Other sessions process pending fills, marks and drawdown controls without routine rebalancing. These v2 rules are versioned changes; they do not retroactively alter the sealed experiment's dates or Friday-only results.
+
+\subsection{From probabilities to constrained targets}
+
+Expected target return is the probability-weighted mean of the fitting sample's class-conditional target returns. A positive prediction only requests an allocation when this estimate exceeds the registered round-trip cost hurdle. The trend intent requires a positive price/long-average ratio and positive intermediate-horizon momentum. A fixed hybrid combines the two intents; the adaptive hybrid allows the ML contribution only when the past-data gate accepts it. The forecasting mixture and the trading hybrid are distinct objects and are named separately in the result tables.
+
+Before account submission, target weights pass long-only, per-instrument, gross and group caps. Trailing covariance is estimated from eligible observed returns, annualized, and shrunk halfway toward its diagonal. If estimated target volatility exceeds the registered cap, all risky target weights are scaled down proportionally. This rule does not guarantee future volatility or drawdown, and estimation error remains visible in sensitivity tests. Idle cash earns zero under the simulated account contract.
+
+Orders represent changes from current holdings toward target holdings, not repeated purchases for repeated UP signals. Pending buys reserve cash; pending sales are not spendable buying power. Orders can be rejected when a price gap exceeds the reserved budget or projected exposure violates limits. A drawdown halt requests reductions and persists through restart. Marked market drift can temporarily breach a target cap between decisions, so the system records a breach and blocks risk-increasing orders rather than pretending a target limit is a pathwise guarantee.
+
+The balance identity is:
+
+\begin{equation}\label{eq:equity}E_t=B_t+\sum_s q_{s,t}M_{s,t},\end{equation}\noindent where $E_t$ is equity, $B_t$ is cash, $q_{s,t}$ is the held quantity and $M_{s,t}$ is the mark for instrument $s$.
+
+Net realized trade profit includes both entry and exit costs. The simulator applies proportional commission and slippage on each fill. Partial exits allocate the corresponding cost basis; terminal holdings remain marked rather than receiving an invented liquidation. This is one account per policy with fixed initial capital, shared constraints and explicit rejection behavior. Summing independent ticker return curves would describe a different, potentially unfundable strategy.
+
+\subsection{Persisted decisions and operational stages}
+
+The collector validates release, dependencies and state before inference. A decision plan records session, information cutoff, data manifest, model versions, probabilities, targets and marks before account processing. The plan is immutable for that session. Account commits and final receipts are recoverable stages: a restart resumes the same plan and uses event IDs to avoid duplicate fills. Concurrent CLI, dashboard and scheduler requests share the same lock and state owner.
+
+Release/model storage is separate from mutable account state. Backups retain original receipts and database state, and restoration is checked at the recorded original path after moving the original state out of the way. Relocating embedded absolute artifact paths is outside the supported recovery contract. A stale writer, truncated file, missing model or changed source must cause a visible halt; a success-shaped fallback would contaminate both the account and the research dataset. Changes to the collector after qualification require a new release and evidence. The old source and sealed releases are preserved as rollback and historical reproduction assets.

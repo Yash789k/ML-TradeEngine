@@ -1,0 +1,53 @@
+{
+  "created_at": "2026-09-28T08:24:29.686085+00:00",
+  "source_hashes": {
+    "research_v2/experiments.py": "df9405b20dbeb48e4284c09d23fbd5253ffa160b9040196b52a6e59ff7cd66d8",
+    "src/models/adaptive.py": "17b17d73328b95f3e71ff5c7a0610e244c7a52254e30c022a8a7fe8a3621a071",
+    "src/execution/account.py": "73c5aa89826c5ad5a0b04721344a0fa067f4cf4a13c480bdfb8165d6d5a1acc9",
+    "src/backtest/portfolio.py": "9c3b2832ee54d55d696f617bfb394e44460716b10eedb935a67d7b6d33c4a8f3",
+    "src/research/adaptive_portfolio.py": "a58a69e0e53a04e82d355a4a544c043a99f6f6d38829bcbbdc8ebbf176e0ff73"
+  },
+  "design_sha256": "77681045e724dd6240a71c39ae939db04bf95d17d4305becf42db944c72972bd",
+  "command": "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 /Users/a/miniconda3/bin/python -m pytest tests/test_research_v2_experiments.py -q --junitxml=data/research-v2/experiments/tests-portable.xml",
+  "test_source_sha256": "3e75b26af63bc5109ceb2c4496b636a9c77aa24751950a48c747220fe69a2785",
+  "completed_at": "2026-09-28T08:28:33.034928+00:00",
+  "junit_sha256": "fea830f502dacdc72bf3fe222edc67a0108177f0356cb4cbb13229ee1e06ab26",
+  "tests": [
+    {
+      "id": "tests.test_research_v2_experiments::test_endpoint_purged_disjoint_roles",
+      "seconds": 0.034,
+      "result": "passed"
+    },
+    {
+      "id": "tests.test_research_v2_experiments::test_future_mutation_and_training_only_scaler",
+      "seconds": 0.467,
+      "result": "passed"
+    },
+    {
+      "id": "tests.test_research_v2_experiments::test_transfer_excludes_held_target",
+      "seconds": 0.466,
+      "result": "passed"
+    },
+    {
+      "id": "tests.test_research_v2_experiments::test_probability_schema_serialization_and_tamper",
+      "seconds": 0.269,
+      "result": "passed"
+    },
+    {
+      "id": "tests.test_research_v2_experiments::test_mature_labels_required",
+      "seconds": 0.002,
+      "result": "passed"
+    },
+    {
+      "id": "tests.test_research_v2_experiments::test_block_inference_null_positive_negative_and_holm",
+      "seconds": 0.014,
+      "result": "passed"
+    },
+    {
+      "id": "tests.test_research_v2_experiments::test_actual_cli_checkpoint_portable_loader",
+      "seconds": 0.322,
+      "result": "passed"
+    }
+  ],
+  "loader_source_sha256": "a74449bb2f9d195bf3408c23012909d13c007beb5f42f73ba42f08186a2f44c0"
+}

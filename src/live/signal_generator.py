@@ -56,6 +56,14 @@ class LiveSignal:
     stop_loss:    float           # entry_price - 2×ATR (set after fill price known)
     close:        float           # last close price used for sizing estimate
 
+    # Set by MetaSignalGenerator (src/live/meta_signal_generator.py); default
+    # values keep this dataclass fully backward-compatible with the static
+    # ensemble path and with existing SignalLogger rows.
+    size_cap:          float = 1.0
+    eligible:          bool = True
+    strategy_mode:     str           = "ensemble"   # "ensemble" | "meta"
+    selected_strategy: Optional[str] = None         # zoo strategy name, or "EW"
+
     # Human-readable label
     @property
     def label(self) -> str:
@@ -121,27 +129,37 @@ def _infer_latest_bar(
 
     out_dir = _MODELS_ROOT / ticker
 
+    from src.models.bundle import validate_bundle
+    metadata = validate_bundle(out_dir)
+    for key in ["feature_history_start", "hmm_calibration_sha256"]:
+        if metadata.get(key) is not None and metadata[key] != feat_df.attrs.get(key):
+            raise ValueError(f"{ticker}: feature calibration differs from model bundle ({key}); rebuild bundle")
+    trained_through = pd.Timestamp(metadata["trained_through"])
+    if pd.Timestamp(feat_df.index[-1]) <= trained_through:
+        raise ValueError(f"{ticker}: inference date must follow model training cutoff")
     xgb  = XGBModel.load(str(out_dir / "xgb_final.json"))
     lgbm = LGBMModel.load(str(out_dir / "lgbm_final.txt"))
     lstm_path = out_dir / "lstm_final.pt"
-    lstm = LSTMModel.load(str(lstm_path)) if lstm_path.exists() else None
+    lstm = None if metadata["skip_lstm"] else LSTMModel.load(str(lstm_path))
 
-    available = [c for c in feat_cols if c in feat_df.columns]
-    X = feat_df[available].dropna()
-    if len(X) == 0:
-        raise ValueError(f"{ticker}: feature matrix has no clean rows.")
-
-    # Use only the last row for live inference
-    x_arr = X.iloc[[-1]].values.astype(np.float32)
-
-    xgb_p  = xgb.predict_proba(x_arr)
-    lgbm_p = lgbm.predict_proba(x_arr)
-    lstm_p = lstm.predict_proba(x_arr) if lstm else np.full((1, 3), 1 / 3)
+    missing = set(feat_cols) - set(feat_df.columns)
+    if missing:
+        raise ValueError(f"{ticker}: required model features missing: {sorted(missing)}; rebuild matching feature bundle")
+    needed = lstm.seq_len if lstm else 1
+    X = feat_df[feat_cols].tail(needed)
+    if len(X) < needed or not np.isfinite(X.to_numpy(dtype=float)).all():
+        raise ValueError(f"{ticker}: need {needed} consecutive complete latest feature rows")
+    x_arr = X.to_numpy(dtype=np.float32)
+    xgb_p = xgb.predict_proba(x_arr[-1:])
+    lgbm_p = lgbm.predict_proba(x_arr[-1:])
+    lstm_p = lstm.predict_proba(x_arr)[-1:] if lstm else np.full((1,3), 1/3)
 
     weights = [1 / 3, 1 / 3, 1 / 3] if lstm else [0.5, 0.5, 0.0]
     ens     = EnsembleClassifier(weights=weights)
     proba   = ens.predict_proba(xgb_p, lgbm_p, lstm_p)[0]   # shape (3,)
 
+    if not np.isfinite(proba).all() or (proba < 0).any() or not np.isclose(proba.sum(), 1):
+        raise ValueError(f"{ticker}: invalid model probabilities")
     return {"p_down": float(proba[0]), "p_flat": float(proba[1]), "p_up": float(proba[2])}
 
 
@@ -163,9 +181,17 @@ class SignalGenerator:
         self,
         confidence_threshold: float = _CONFIDENCE_THRESHOLD,
         atr_multiplier:       float = 2.0,
+        policy_engine=None,
     ) -> None:
+        """
+        policy_engine : optional src.risk.policy_engine.PolicyEngine — when
+                        given, confidence threshold and ATR stop multiplier
+                        are computed per ticker from the latest market state
+                        (dynamic policy layer) instead of the static values.
+        """
         self.confidence_threshold = confidence_threshold
         self.atr_multiplier       = atr_multiplier
+        self.policy_engine        = policy_engine
 
     # ------------------------------------------------------------------
     # Public API
@@ -199,12 +225,17 @@ class SignalGenerator:
         # ── 1. Load OHLCV + supporting series ──────────────────────────
         ohlcv = loader.load_equity(ticker, force_refresh=force_refresh)
 
+        required_columns = _load_feature_cols(ticker)
         spy_df = macro = btc_df = None
         for name, fn in [
-            ("SPY",      lambda: loader.load_equity("SPY", force_refresh=False)),
-            ("macro",    lambda: loader.load_macro(force_refresh=False)),
-            ("BTC/USDT", lambda: loader.load_crypto("BTC/USDT", force_refresh=False)),
+            ("SPY",      lambda: loader.load_equity("SPY", force_refresh=force_refresh)),
+            ("macro",    lambda: loader.load_macro(force_refresh=force_refresh)),
+            ("BTC/USDT", lambda: loader.load_crypto("BTC/USDT", force_refresh=force_refresh)),
         ]:
+            if name == "macro" and not any(c.startswith("macro_") for c in required_columns):
+                continue
+            if name == "BTC/USDT" and not any(c.startswith("btc_") for c in required_columns):
+                continue
             try:
                 if name == "SPY":
                     spy_df = fn()
@@ -222,6 +253,7 @@ class SignalGenerator:
             spy_df     = spy_df,
             btc_df     = btc_df,
             macro_df   = macro,
+            force_refresh = force_refresh,
         )
 
         # ── 3. Load feature columns expected by models ──────────────────
@@ -235,23 +267,39 @@ class SignalGenerator:
         raw_signal  = int(np.argmax([p_down, p_flat, p_up]))
         confidence  = max(p_down, p_flat, p_up)
 
-        # ── 5. Confidence filter ────────────────────────────────────────
-        direction = raw_signal if confidence >= self.confidence_threshold else 1
+        # ── 5. Resolve operating policy (static or dynamic) ─────────────
+        conf_threshold = self.confidence_threshold
+        atr_multiplier = self.atr_multiplier
+        policy_eligible = True
+        size_cap = 1.0
+        if self.policy_engine is not None:
+            decision = self.policy_engine.decide_latest(feat_df)
+            conf_threshold  = decision.confidence_threshold
+            atr_multiplier  = decision.atr_multiplier
+            policy_eligible = decision.eligible
+            size_cap = decision.size_cap
+
+        # ── 5b. Confidence filter + eligibility gate ─────────────────────
+        direction = raw_signal if (confidence >= conf_threshold and policy_eligible) else 1
 
         # ── 6. Kelly sizing (uses calibrated win/loss ratio) ─────────────
-        wl_ratio   = _load_win_loss_ratio(ticker)
+        wl_ratio   = 1.5  # fixed exploratory assumption; no full-history outcome calibration
         kelly_frac = _kelly_fraction(p_up, wl_ratio) if direction == 2 else 0.0
 
         # ── 7. ATR stop level (estimated from last close) ────────────────
-        last_row  = feat_df.dropna(subset=["atr_14"]).iloc[-1]
+        last_row  = feat_df.iloc[-1]
+        if not np.isfinite(last_row.get("atr_14", np.nan)):
+            raise ValueError(f"{ticker}: latest ATR missing")
         atr_val   = float(last_row.get("atr_14", 0.0))
         last_close = float(feat_df["Close"].iloc[-1])
-        stop_loss  = last_close - self.atr_multiplier * atr_val  # for long positions
+        stop_loss  = last_close - atr_multiplier * atr_val  # for long positions
 
         signal_date = feat_df.index[-1].to_pydatetime().replace(tzinfo=timezone.utc)
 
         signal = LiveSignal(
             ticker      = ticker,
+            size_cap    = size_cap,
+            eligible    = policy_eligible,
             date        = signal_date,
             direction   = direction,
             confidence  = round(confidence, 4),
@@ -277,9 +325,11 @@ class SignalGenerator:
     ) -> dict[str, LiveSignal]:
         """Generate signals for multiple tickers. Skips tickers that fail."""
         results: dict[str, LiveSignal] = {}
+        self.errors = {}
         for ticker in tickers:
             try:
                 results[ticker] = self.generate(ticker, force_refresh=force_refresh)
             except Exception as exc:
                 log.error("[SignalGenerator] %s failed: %s", ticker, exc)
+                self.errors[ticker] = str(exc)
         return results

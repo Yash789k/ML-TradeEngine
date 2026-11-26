@@ -1,0 +1,10 @@
+{
+  "trial": "base-SPY-F0-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "6d1f7575776e61bc5614488f3276a7991dc86507ff8d411c81db40994532e264",
+  "expected_prediction_sha256": "a4a17cf3fe72eb0ce77feae13c44ab27f98a6ea0adfc59524dab1f3e28f7d977",
+  "model_sha256": "fda84b16f35bf6e657ef27b2761094232dcb30c463ace4a738b353d0811ba5ee"
+}

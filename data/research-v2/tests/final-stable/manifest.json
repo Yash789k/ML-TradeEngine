@@ -1,0 +1,3448 @@
+{
+  "started_at": "2026-09-28T08:59:11Z",
+  "finished_at": "2026-09-28T09:00:55Z",
+  "elapsed_seconds": 103.9710021018982,
+  "command": [
+    "/Users/a/miniconda3/bin/python",
+    "-m",
+    "pytest",
+    "tests/",
+    "-q",
+    "--junitxml",
+    "data/research-v2/tests/final-stable/results.xml"
+  ],
+  "collection_command": [
+    "/Users/a/miniconda3/bin/python",
+    "-m",
+    "pytest",
+    "-o",
+    "addopts=",
+    "tests/",
+    "-m",
+    "not integration",
+    "--collect-only",
+    "-q"
+  ],
+  "source_before": {
+    "app.py": "d67a9bdc4a36bba165811bf77f5f674187d54e7e02d839fbdd526b957477290d",
+    "app_v2.py": "64184baf070459c59a9fc6afbf9dc2b15d307f123269ba05a474b51ab7bc5d30",
+    "backtest.py": "45fc38a8f55e1bdd759d26b4056707b7326df1ef7d2458986a7316f5e9a743a0",
+    "dashboard.py": "e55a7388552cd2922a3cfade05c6035e5771a46dafafe75bf2315b476a344c4e",
+    "data_retrieval.py": "4814ec80a1b6838e3036069144ca49987eb6640d4cd502c06a265c0a8d4570e0",
+    "extract_paper_numbers.py": "fa51c5bf5b8f1e3cb72bae14da12b294b412a97d12bd52c11b352e10fe926f52",
+    "live.py": "bc4031001c1a4cdf5878116e7eaa74501bb5debe9ef14b2829675a9b0ccafac2",
+    "pytest.ini": "241717c12fe09bc18464a3d8a38b456c022660e1bb0bfee7773d64de2aa727bb",
+    "requirements.txt": "97c5a96c650420daf9ab8b141787645906241b54446eb0e80b64037cecb458ec",
+    "research.py": "0b22d88529211616f2b926b1d981f2506fcf67f2caf0b3866fff6b7db3553db4",
+    "research_v2/diagnostics.py": "6dd72acb64ed9b6944314ba2015b93c096cf32f36927a582b1ebfbe1d598e8ef",
+    "research_v2/experiments.py": "df9405b20dbeb48e4284c09d23fbd5253ffa160b9040196b52a6e59ff7cd66d8",
+    "research_v2/figures.py": "a807c608e15d5ef7be21ff5364f4ba0e12781e7231bc0926f1799487bfede10d",
+    "research_v2/models.py": "a74449bb2f9d195bf3408c23012909d13c007beb5f42f73ba42f08186a2f44c0",
+    "research_v2/paper.py": "d57c916cc8078a155d48322b0c261ff74dff7bd73018bdb9e26a7b235a17422c",
+    "research_v2/prospective_report.py": "a961be5e87e81a3fb4473934ea4601de6375506f02421633b14e8b32522e78b2",
+    "research_v2/provenance.py": "ba2ceed5209a123b68e528e2936e191dc819f94a56f1815213d70db4aba9a0fa",
+    "risk.py": "dd0cda3f4da12fc51dd7cba685360862f6fb659ded47d157d6731531e41060cc",
+    "runtime_v2/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime_v2/account.py": "73c5aa89826c5ad5a0b04721344a0fa067f4cf4a13c480bdfb8165d6d5a1acc9",
+    "runtime_v2/calendar.py": "5a97b86b5a4dc17c3a86627c73172162365aec32c6f0edd8ea20e74d3630c1d5",
+    "runtime_v2/market.py": "24ad3da7c7b74e4619e896a1c41d8fde0f05df14c37e7fcb72d8922790e52a49",
+    "runtime_v2/model.py": "d82a10584dcfb614e79f04af6255b238d74ea66ff961f07b2919bb2663fa1b2d",
+    "runtime_v2/operations.py": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+    "runtime_v2/policy.py": "f4357f04fa0a270265b10802ed4ac84cee4117e62c694496eb088707de56e79d",
+    "runtime_v2/risk.py": "b784c8b972dd4fde1eef760085b63e83bef892794bdfa19af07453f4585ff2e9",
+    "runtime_v2/storage.py": "db0ef15f303dfc7cb1b312195c63f5822851d22e2116f06a022e63468725eb7a",
+    "scripts/_score_sentiment_worker.py": "17bfd71734e686d6454e3c1d60e0bbb2e5d8a8ce0fd3448440d42036dbe52134",
+    "scripts/audit_metrics.py": "ef7287a4beba528886da6a5996b31caa98786be5ae41c5f23e27d5ce792257aa",
+    "scripts/benchmark_collector_v2.py": "0ed793eeb422d343453f8d8f136d113ebe9f29f7412a621cd1e995e07881cc7e",
+    "scripts/bootstrap_models.py": "fef6e923be55ac50ee0d41e7790afc7337b3451a14b5d50753ac3a2496162d53",
+    "scripts/build_adaptive_paper.py": "f1b7ae0893f65ccbd465e11a0ae499e4c1cea102429b4b38e496127085fc5637",
+    "scripts/build_repair_report.py": "97d012faa89cbb13b3aa08b03d2114e10a447508cee773786bd2e7ced537a3dc",
+    "scripts/collector_v2.py": "2f191fcd4084961eac93c77a41bd89e4ec9a5044bc24e27c185e69a043176dd6",
+    "scripts/compare_moe.py": "0b991288c38c11bb489f640755649584aba81812a62bba813996cddd1f57a5e0",
+    "scripts/compare_policy.py": "0ceceadb6b9aac2211ea8dc05609330e90e6b01e527534acf7ae90fc69564304",
+    "scripts/fetch_release_data.py": "6d8826a6cac2a726ac0c8aa163d4756e8a1b22f2dea1695d16287c2520016004",
+    "scripts/local_sandbox.py": "734988bf9cd6ca65400f8455b9474f809ec9b2d1d5c8ac400fdb5408f8c0582f",
+    "scripts/operational_status.py": "6dcaf1b3e148a03cc9010d8a7c7fd59cf0c749358abdbbbbd0d1db14f19825a4",
+    "scripts/pilot_label_redesign.py": "4a7e65faf69f53fd3a419a672c51a1476711c7eaa6578e70eee13e3813b108f7",
+    "scripts/release_figures.py": "b942944e7dbf0cd6ca8b2f28fe2cce87d331d77c1a0d5367a99c96369cbcbf1a",
+    "scripts/replay_portfolio.py": "0e0f6f15ba7de696133f71f426141fe5544839674b014871af7634db2f7c791b",
+    "scripts/repository_audit.py": "6613ac5088fd7b0a3d68c1c1908330080bda0745a9941d962a38feac8948c558",
+    "scripts/reproduce_adaptive.py": "f8fba7e443ed557541156452d2a8d969d645224c9e53a112bd0ab05f6ae66b9d",
+    "scripts/reproduce_run.py": "8e0b48272f165e5ef6388a4c84b605b125b718e85e3daa27433f126cda497c87",
+    "scripts/seal_adaptive_release.py": "0bab657026a38b2fab6f111d866d14be555d0fcbe31639dc6eb79ac04ef57889",
+    "scripts/seal_collector_v2.py": "2ae5375144f05f7ff3a6fd925f65d3b9ef36f9c5eec2cc91df43f6a289828bdb",
+    "scripts/sentiment_shap_report.py": "5d5d0b3ed63f0372c16b2d4569d12b254d4b6ac870a695b73a73312a4a79c7cd",
+    "scripts/sync_supabase.py": "e3cf4033b2e05319c773af04a0d9c22e2989b1d836727c0ab1987ee426f340fa",
+    "scripts/train_adaptive_release.py": "cf038c2f99a74ea695a9b7a96dde8e6face324eba5ce30c2d92cc9c0f51822b0",
+    "scripts/validated_research.py": "414132973dba10729ec9652d2d0470d279857061bd19b0d2b4653317833dec85",
+    "scripts/verify_collector_installation_v2.py": "5e47f219be8a93cd6555e8d58079b3efd17b267c0ff4879a4dfe81d3614b69a5",
+    "scripts/verify_collector_recovery_v2.py": "6cc4b17d4208ec8f3efa09d77024b15b86408b4de21ab50c757923092c785171",
+    "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/backtest/__init__.py": "1641627c4d39c3da9613a6e2cd4a06f48eb4c546ead2b13ae30d6f5a36b52f2d",
+    "src/backtest/metrics.py": "5446a797e64a928d01b5cdb9570d1ad8e2c44c592138f683f0dc2df41161269a",
+    "src/backtest/montecarlo.py": "b7678cd1fc124321305ca4378a8d36d995ca4fea6e9d174786f46487bb3f88ab",
+    "src/backtest/portfolio.py": "9c3b2832ee54d55d696f617bfb394e44460716b10eedb935a67d7b6d33c4a8f3",
+    "src/backtest/runner.py": "239771d01566d353f4e86fa34a4d7c186f39f3fa81c8e690ac420b80fe3f1cd2",
+    "src/backtest/signals.py": "ba94b284f34c3950940af0532dd4514a8f5975327a8bf7c812c49e067a83a79e",
+    "src/backtest/simulator.py": "9cf981acdc4888febdf2d7561f91f9c35b6af22e17589b8023cef4e0be73080c",
+    "src/data/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/data/loader.py": "4832fd65b7323108d2341cb670cfacecdde187891f4ef10f754ab67fa2dceb2a",
+    "src/data/snapshot.py": "e8a8396a4aa939ed24b546b0671ed7a20efbcd7df50751226e4a03b65872eafb",
+    "src/data/sources.py": "db1aaf9429fd7a5e4c411efe8bbc3f5a6740f30aa7c28f85f3848496eba17fdf",
+    "src/data/validation.py": "5a97b86b5a4dc17c3a86627c73172162365aec32c6f0edd8ea20e74d3630c1d5",
+    "src/execution/__init__.py": "73f45d35ee51a7b706bf31f2b2f339a5462ac8940a883a00db2eba8fe2849927",
+    "src/execution/account.py": "73c5aa89826c5ad5a0b04721344a0fa067f4cf4a13c480bdfb8165d6d5a1acc9",
+    "src/features/__init__.py": "b19ce1ad8e148557d72842c5d7b7e505949e27b8dc69cce86f23aadfffd2e860",
+    "src/features/cross_asset.py": "dce5ce57a566fbcc7c875f5ef550264e2d52186cc1815fd52361b50e01094807",
+    "src/features/pipeline.py": "91233061850110a80cd3953ed834e1fc4d391e17a6bdcaad2821443e18da26f0",
+    "src/features/regime.py": "f753a57f56292def1ca4000c9faaa684b62186cc5d7c8fe52f9bc615c5858c07",
+    "src/features/sentiment.py": "a0e449ccb25f26695894a88b9ec68d87238f7ac1f868c57ad7a5f0cff6877ec4",
+    "src/features/statistical.py": "f58c8d032a4be98cd04c2ca921097f0c6aa11b98f0ccf99897e9ff8dc9e70074",
+    "src/features/technical.py": "48f7a5e661366b960e3458c9701e1d54f65952bd0b6bfe5d4c0dbd8862ee9437",
+    "src/live/__init__.py": "b13187aff22f6df1a7f6f5080bccab62ad91104c069e56045df6b01c94b23278",
+    "src/live/adaptive.py": "99564693893612ddede1ade6bdf45d6033981cc3e917543282c0978236c5858a",
+    "src/live/alerts.py": "5dfda8b4525de75e6d18cef36692b4906f7c1b9e1e9e2beb9fa32d76a3865430",
+    "src/live/broker.py": "838a621445fc05a3aaf2c8313a8a42392f4c1e05e8f62df7e29b88b6f67bf9f7",
+    "src/live/engine.py": "2744c8adcef881ed30faa5a45d8b0de85d77025ab498c5e03135419e066a6030",
+    "src/live/logger.py": "dec7a88a5918be9b7a4f58d0c9f109fd19335f3cc8a07f91d00ed35a382ab3b9",
+    "src/live/meta_signal_generator.py": "49328ea3684c3a949c0b866a026bc90bd4bc50a44eb627c6af487f5b7217a8a5",
+    "src/live/signal_generator.py": "2dc66568bfe337c8a54efca112716381a549ab6867e558ccde84623d5d673bd6",
+    "src/models/__init__.py": "0929625aad2554cb5c3f5118b987c866d5bcfc69921815aede83dcbae524cd22",
+    "src/models/adaptive.py": "17b17d73328b95f3e71ff5c7a0610e244c7a52254e30c022a8a7fe8a3621a071",
+    "src/models/bundle.py": "e041c605c512713ee705c683a846cab61a43e4c955c768f9b3f05467eb6adfa2",
+    "src/models/ensemble.py": "93dbc378cb5cffc29bbe5c1f33898c3f7a0a1b467d18abe69d966c5219daed8d",
+    "src/models/gating.py": "ee13e74a26140f6cdbb3dc128b5069e6f6aa8961e2f85b9dc97215fa8ac78f06",
+    "src/models/labels.py": "5c659bb05b5a0717dd78e8cf389c6f719d1255c0bddc0855ce61ecd68a4c6e13",
+    "src/models/lgbm_model.py": "1e5ec0f394554cf16d793fb166ade61c7b0de80abcc47a22103981261cfa1ffe",
+    "src/models/lstm_model.py": "63ae646acc706620053ae26dd48b472f02dab800789489b9cabfbb900423f041",
+    "src/models/splitter.py": "798c2b3168682fd6500b69ac208be87cab5ca95d6b9776c0de799f57f11f4d9f",
+    "src/models/trainer.py": "36f530ef57b1a8232001ba5daad2451911a25aec16def0d312d3264d3cb4e4da",
+    "src/models/xgb_model.py": "71224e01330b8da6763dbbcf04408475ae16a887c98a723edb6683c8156d4fab",
+    "src/research/__init__.py": "1b62ed64e3680c3d35966b71349b77f82ee7d03e7ca3e74661af99760c29773e",
+    "src/research/adaptive_portfolio.py": "a58a69e0e53a04e82d355a4a544c043a99f6f6d38829bcbbdc8ebbf176e0ff73",
+    "src/research/env_analyzer.py": "21652ca58f799d29b57a7d8370bc127ab4dd8c4c56e77f53f474d7aa7d221ae6",
+    "src/research/meta_strategy.py": "5d3936d8509a62298e739190028d65090e7a0c28b3a92854b9af03cb69174e09",
+    "src/research/protocol.py": "cdbfcce71bee34244f802b18b01482294e0ef224036249eaeef86b0d6e301ae2",
+    "src/research/ranker.py": "b58decd266269c3638c9fd7dbbf40e9b673fbfd7f936d5c459fa10bd2949741d",
+    "src/research/strategies/__init__.py": "421af9c3561c3ead3aafd2f5ef8393e765c4234a67d7e0d997c7c402ea6b04f2",
+    "src/research/strategies/alpha_trends.py": "2a3b0a784ea507de62255dce82fcf888edfae8367a699b1d1c382b81717a8bd8",
+    "src/research/strategies/base.py": "36d0d9eb688b267239ced61f3d2e6f09684d95aeeafdc570af02411f2059a668",
+    "src/research/strategies/carry_proxy.py": "c5a00e21ea02ab8036d6dfbc83b6d53bd0193679611bea5838aee7ddef8ae999",
+    "src/research/strategies/ema_crossover.py": "3c60671924214abf35ad67ecd7782dd895f54a4bdb942ae89ae8444a180d6d4c",
+    "src/research/strategies/mean_reversion.py": "d2aa1b587b989c56b0431df3bd18b6715ca6b4a4e3941ea51f00f8137096a53b",
+    "src/research/strategies/momentum.py": "c7efaa3b4e9441ecadd7e641fd3206515e02969f0b6b26dbf5d83a13c3e74012",
+    "src/research/strategies/pairs_arb.py": "4ea6361069080b615c315ef963bde89c4fed66c1d90c08666a8bfce8d564d4bc",
+    "src/research/strategies/turtle.py": "9b3b7f25b5b27e29ac6969cb86651657d6d3d0cb03fd2abf3f2bfc196f1df882",
+    "src/research/strategies/vol_breakout.py": "67cfac59454d87261f1ff900c5112c718a30e837f26d929fd41a9d1669fc3d08",
+    "src/research/zoo_runner.py": "c2459d3252682e2570ed7e23e20ce4ddb1c4b77f4e86385784aeec59a630ca8a",
+    "src/risk/__init__.py": "d65de90f6c1cada2d60bca12f91fd1a1f87d6b0e626cd8051949080bcafb894a",
+    "src/risk/engine.py": "74ad488f642556e44acf561dfedd9d04477ac62eecb45e8d7c74d62cddddcdca",
+    "src/risk/policy_engine.py": "a06032d42db633b8337941c7713df67cabecc5a3f0ee1a576f4989b05d5d962f",
+    "src/risk/portfolio.py": "048aea3f623ea9bbcd115bef9ef9eb7b72e23699ef7f7db606c4cf349a919ad8",
+    "src/risk/sizing.py": "b95a7c50eecc2d212c2519265570346e24611e0fafca34783e6a3e398953ec95",
+    "src/risk/stops.py": "ba6a9bdebf9e55b9a5066ba00b6c8464bba81c089541cde6909a8dcb63983178",
+    "src/risk/var.py": "1aa57206bbc3e5d4aefb058fd5c114e9eefad13bd458f07280bbd1dbe555be32",
+    "tests/__init__.py": "cdbede7b7c020e8fcdbf6480592d1e198f46fbc342f640a4b1f3c528f2afecbf",
+    "tests/test_accounting_regressions.py": "5abcc46dfce46270e76bdcede52a23adc98bb76c3589d93b7998251d1f5e4e8c",
+    "tests/test_adaptive_release.py": "accf5cd281bea9c778e88f12ca5740ad2f5c1b36e6b5b7c3c95e7f6050238b51",
+    "tests/test_backtest.py": "93d3f6788c01d4c9def8a7a55083576cb8f39f51f2408ff6805e0472df64edeb",
+    "tests/test_causality_regressions.py": "3c8a42a85d573cf12aefc9cf83950d2547c358ffbd580ae0f5f5756cab854c41",
+    "tests/test_collector_v2.py": "c540e70edc6fd165dac5abda79343f01f2436735fd7e14d6fee04c09b7456c9d",
+    "tests/test_data_pipeline.py": "0ee1931d200343e42c2d1a2866a688f643affcff5af5547b36c8925c467b5a3e",
+    "tests/test_env_analyzer.py": "33a0174284a3ffe06078f1b60987fcba3bdd1f439208e456c3440601f622ca29",
+    "tests/test_feature_pipeline.py": "2481e7fc1d2dfdb39d83e5a3bfaa820382336c269bbafff8f90a7576f19e004a",
+    "tests/test_gating.py": "81ba02774aade2fa5cab7d31d6d6ab228769284452cec3b29ae545c42dbce64f",
+    "tests/test_live.py": "244333be8f99833ec9e3bbaebd7ef61953c05e23087eb9408f30ace9561abfbe",
+    "tests/test_meta_signal_generator.py": "c83e72dfcca73c71e18c16ded86adfb7994a01a6d651cf04d237d74e0e456295",
+    "tests/test_meta_strategy.py": "04208176421daf5689dd734f0d52da6ef4c961a0690217912a42370c58480767",
+    "tests/test_ml_pipeline.py": "a8045e45015d60dbe428f7ed3bef450a2e31a584178797d85aef926b3b4505fb",
+    "tests/test_operational_regressions.py": "129b403e0ed223c07f72609bd86a8f7c679b6418c9b8d2fb87d2cf81ffd0c78b",
+    "tests/test_policy_engine.py": "90fc3f2be7ba5d3a76d60b511dea3a288dc2b0338a6fcbfa9dd1b1c91b818105",
+    "tests/test_portfolio_execution.py": "14684762d6080e11cc045f1df259ec04393278f3f1338e1c08b66b26460f278a",
+    "tests/test_prospective_report_v2.py": "cef5904f2e314f2103dd2a07dcc7260c0c12918228d8b34b31bebf3ca81c1157",
+    "tests/test_research.py": "5781bf6d96531c80b0650eca3261cb00728b37680a1a060b91ba2b2cbbe43220",
+    "tests/test_research_protocol.py": "c218ba45540d44faf12f7e3dbdf18918196cb01ff722422a99b16d9357e1ca1f",
+    "tests/test_research_v2_diagnostics.py": "947d896e49d41a379ceabd2be5b70a59cb87cd6d6882b8e54b05bd3c724a38b3",
+    "tests/test_research_v2_experiments.py": "3e75b26af63bc5109ceb2c4496b636a9c77aa24751950a48c747220fe69a2785",
+    "tests/test_research_v2_paper.py": "8913a2b99f4d83329a6732b2d32c6c390769ee52c5ebb06d2e65734a7e4fab94",
+    "tests/test_research_v2_ui.py": "b9d550c1f24f824189a0a968703229cc0cd4aa2e30677e6580423a9c2c0cd0d6",
+    "tests/test_risk.py": "17ca156a783a757ee9e08665b602ca24bfa1622d64d599262c2ef3bdaba9cfdb",
+    "tests/test_sentiment.py": "e3e57a80c20918a9b8117c26890fa6cc1212d05f490480fbc00330b4fab3923e",
+    "trader.py": "c5c0d01e4d7afc4654fec531d99ee0f8b74e24427d422e7df768d4cbd9ae8e4a",
+    "train.py": "30f17145529a227eb537f7d8baafca9de4721392d2360546be45eca9cdfd2461"
+  },
+  "source_after": {
+    "app.py": "d67a9bdc4a36bba165811bf77f5f674187d54e7e02d839fbdd526b957477290d",
+    "app_v2.py": "64184baf070459c59a9fc6afbf9dc2b15d307f123269ba05a474b51ab7bc5d30",
+    "backtest.py": "45fc38a8f55e1bdd759d26b4056707b7326df1ef7d2458986a7316f5e9a743a0",
+    "dashboard.py": "e55a7388552cd2922a3cfade05c6035e5771a46dafafe75bf2315b476a344c4e",
+    "data_retrieval.py": "4814ec80a1b6838e3036069144ca49987eb6640d4cd502c06a265c0a8d4570e0",
+    "extract_paper_numbers.py": "fa51c5bf5b8f1e3cb72bae14da12b294b412a97d12bd52c11b352e10fe926f52",
+    "live.py": "bc4031001c1a4cdf5878116e7eaa74501bb5debe9ef14b2829675a9b0ccafac2",
+    "pytest.ini": "241717c12fe09bc18464a3d8a38b456c022660e1bb0bfee7773d64de2aa727bb",
+    "requirements.txt": "97c5a96c650420daf9ab8b141787645906241b54446eb0e80b64037cecb458ec",
+    "research.py": "0b22d88529211616f2b926b1d981f2506fcf67f2caf0b3866fff6b7db3553db4",
+    "research_v2/diagnostics.py": "6dd72acb64ed9b6944314ba2015b93c096cf32f36927a582b1ebfbe1d598e8ef",
+    "research_v2/experiments.py": "df9405b20dbeb48e4284c09d23fbd5253ffa160b9040196b52a6e59ff7cd66d8",
+    "research_v2/figures.py": "a807c608e15d5ef7be21ff5364f4ba0e12781e7231bc0926f1799487bfede10d",
+    "research_v2/models.py": "a74449bb2f9d195bf3408c23012909d13c007beb5f42f73ba42f08186a2f44c0",
+    "research_v2/paper.py": "d57c916cc8078a155d48322b0c261ff74dff7bd73018bdb9e26a7b235a17422c",
+    "research_v2/prospective_report.py": "a961be5e87e81a3fb4473934ea4601de6375506f02421633b14e8b32522e78b2",
+    "research_v2/provenance.py": "ba2ceed5209a123b68e528e2936e191dc819f94a56f1815213d70db4aba9a0fa",
+    "risk.py": "dd0cda3f4da12fc51dd7cba685360862f6fb659ded47d157d6731531e41060cc",
+    "runtime_v2/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime_v2/account.py": "73c5aa89826c5ad5a0b04721344a0fa067f4cf4a13c480bdfb8165d6d5a1acc9",
+    "runtime_v2/calendar.py": "5a97b86b5a4dc17c3a86627c73172162365aec32c6f0edd8ea20e74d3630c1d5",
+    "runtime_v2/market.py": "24ad3da7c7b74e4619e896a1c41d8fde0f05df14c37e7fcb72d8922790e52a49",
+    "runtime_v2/model.py": "d82a10584dcfb614e79f04af6255b238d74ea66ff961f07b2919bb2663fa1b2d",
+    "runtime_v2/operations.py": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+    "runtime_v2/policy.py": "f4357f04fa0a270265b10802ed4ac84cee4117e62c694496eb088707de56e79d",
+    "runtime_v2/risk.py": "b784c8b972dd4fde1eef760085b63e83bef892794bdfa19af07453f4585ff2e9",
+    "runtime_v2/storage.py": "db0ef15f303dfc7cb1b312195c63f5822851d22e2116f06a022e63468725eb7a",
+    "scripts/_score_sentiment_worker.py": "17bfd71734e686d6454e3c1d60e0bbb2e5d8a8ce0fd3448440d42036dbe52134",
+    "scripts/audit_metrics.py": "ef7287a4beba528886da6a5996b31caa98786be5ae41c5f23e27d5ce792257aa",
+    "scripts/benchmark_collector_v2.py": "0ed793eeb422d343453f8d8f136d113ebe9f29f7412a621cd1e995e07881cc7e",
+    "scripts/bootstrap_models.py": "fef6e923be55ac50ee0d41e7790afc7337b3451a14b5d50753ac3a2496162d53",
+    "scripts/build_adaptive_paper.py": "f1b7ae0893f65ccbd465e11a0ae499e4c1cea102429b4b38e496127085fc5637",
+    "scripts/build_repair_report.py": "97d012faa89cbb13b3aa08b03d2114e10a447508cee773786bd2e7ced537a3dc",
+    "scripts/collector_v2.py": "2f191fcd4084961eac93c77a41bd89e4ec9a5044bc24e27c185e69a043176dd6",
+    "scripts/compare_moe.py": "0b991288c38c11bb489f640755649584aba81812a62bba813996cddd1f57a5e0",
+    "scripts/compare_policy.py": "0ceceadb6b9aac2211ea8dc05609330e90e6b01e527534acf7ae90fc69564304",
+    "scripts/fetch_release_data.py": "6d8826a6cac2a726ac0c8aa163d4756e8a1b22f2dea1695d16287c2520016004",
+    "scripts/local_sandbox.py": "734988bf9cd6ca65400f8455b9474f809ec9b2d1d5c8ac400fdb5408f8c0582f",
+    "scripts/operational_status.py": "6dcaf1b3e148a03cc9010d8a7c7fd59cf0c749358abdbbbbd0d1db14f19825a4",
+    "scripts/pilot_label_redesign.py": "4a7e65faf69f53fd3a419a672c51a1476711c7eaa6578e70eee13e3813b108f7",
+    "scripts/release_figures.py": "b942944e7dbf0cd6ca8b2f28fe2cce87d331d77c1a0d5367a99c96369cbcbf1a",
+    "scripts/replay_portfolio.py": "0e0f6f15ba7de696133f71f426141fe5544839674b014871af7634db2f7c791b",
+    "scripts/repository_audit.py": "6613ac5088fd7b0a3d68c1c1908330080bda0745a9941d962a38feac8948c558",
+    "scripts/reproduce_adaptive.py": "f8fba7e443ed557541156452d2a8d969d645224c9e53a112bd0ab05f6ae66b9d",
+    "scripts/reproduce_run.py": "8e0b48272f165e5ef6388a4c84b605b125b718e85e3daa27433f126cda497c87",
+    "scripts/seal_adaptive_release.py": "0bab657026a38b2fab6f111d866d14be555d0fcbe31639dc6eb79ac04ef57889",
+    "scripts/seal_collector_v2.py": "2ae5375144f05f7ff3a6fd925f65d3b9ef36f9c5eec2cc91df43f6a289828bdb",
+    "scripts/sentiment_shap_report.py": "5d5d0b3ed63f0372c16b2d4569d12b254d4b6ac870a695b73a73312a4a79c7cd",
+    "scripts/sync_supabase.py": "e3cf4033b2e05319c773af04a0d9c22e2989b1d836727c0ab1987ee426f340fa",
+    "scripts/train_adaptive_release.py": "cf038c2f99a74ea695a9b7a96dde8e6face324eba5ce30c2d92cc9c0f51822b0",
+    "scripts/validated_research.py": "414132973dba10729ec9652d2d0470d279857061bd19b0d2b4653317833dec85",
+    "scripts/verify_collector_installation_v2.py": "5e47f219be8a93cd6555e8d58079b3efd17b267c0ff4879a4dfe81d3614b69a5",
+    "scripts/verify_collector_recovery_v2.py": "6cc4b17d4208ec8f3efa09d77024b15b86408b4de21ab50c757923092c785171",
+    "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/backtest/__init__.py": "1641627c4d39c3da9613a6e2cd4a06f48eb4c546ead2b13ae30d6f5a36b52f2d",
+    "src/backtest/metrics.py": "5446a797e64a928d01b5cdb9570d1ad8e2c44c592138f683f0dc2df41161269a",
+    "src/backtest/montecarlo.py": "b7678cd1fc124321305ca4378a8d36d995ca4fea6e9d174786f46487bb3f88ab",
+    "src/backtest/portfolio.py": "9c3b2832ee54d55d696f617bfb394e44460716b10eedb935a67d7b6d33c4a8f3",
+    "src/backtest/runner.py": "239771d01566d353f4e86fa34a4d7c186f39f3fa81c8e690ac420b80fe3f1cd2",
+    "src/backtest/signals.py": "ba94b284f34c3950940af0532dd4514a8f5975327a8bf7c812c49e067a83a79e",
+    "src/backtest/simulator.py": "9cf981acdc4888febdf2d7561f91f9c35b6af22e17589b8023cef4e0be73080c",
+    "src/data/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/data/loader.py": "4832fd65b7323108d2341cb670cfacecdde187891f4ef10f754ab67fa2dceb2a",
+    "src/data/snapshot.py": "e8a8396a4aa939ed24b546b0671ed7a20efbcd7df50751226e4a03b65872eafb",
+    "src/data/sources.py": "db1aaf9429fd7a5e4c411efe8bbc3f5a6740f30aa7c28f85f3848496eba17fdf",
+    "src/data/validation.py": "5a97b86b5a4dc17c3a86627c73172162365aec32c6f0edd8ea20e74d3630c1d5",
+    "src/execution/__init__.py": "73f45d35ee51a7b706bf31f2b2f339a5462ac8940a883a00db2eba8fe2849927",
+    "src/execution/account.py": "73c5aa89826c5ad5a0b04721344a0fa067f4cf4a13c480bdfb8165d6d5a1acc9",
+    "src/features/__init__.py": "b19ce1ad8e148557d72842c5d7b7e505949e27b8dc69cce86f23aadfffd2e860",
+    "src/features/cross_asset.py": "dce5ce57a566fbcc7c875f5ef550264e2d52186cc1815fd52361b50e01094807",
+    "src/features/pipeline.py": "91233061850110a80cd3953ed834e1fc4d391e17a6bdcaad2821443e18da26f0",
+    "src/features/regime.py": "f753a57f56292def1ca4000c9faaa684b62186cc5d7c8fe52f9bc615c5858c07",
+    "src/features/sentiment.py": "a0e449ccb25f26695894a88b9ec68d87238f7ac1f868c57ad7a5f0cff6877ec4",
+    "src/features/statistical.py": "f58c8d032a4be98cd04c2ca921097f0c6aa11b98f0ccf99897e9ff8dc9e70074",
+    "src/features/technical.py": "48f7a5e661366b960e3458c9701e1d54f65952bd0b6bfe5d4c0dbd8862ee9437",
+    "src/live/__init__.py": "b13187aff22f6df1a7f6f5080bccab62ad91104c069e56045df6b01c94b23278",
+    "src/live/adaptive.py": "99564693893612ddede1ade6bdf45d6033981cc3e917543282c0978236c5858a",
+    "src/live/alerts.py": "5dfda8b4525de75e6d18cef36692b4906f7c1b9e1e9e2beb9fa32d76a3865430",
+    "src/live/broker.py": "838a621445fc05a3aaf2c8313a8a42392f4c1e05e8f62df7e29b88b6f67bf9f7",
+    "src/live/engine.py": "2744c8adcef881ed30faa5a45d8b0de85d77025ab498c5e03135419e066a6030",
+    "src/live/logger.py": "dec7a88a5918be9b7a4f58d0c9f109fd19335f3cc8a07f91d00ed35a382ab3b9",
+    "src/live/meta_signal_generator.py": "49328ea3684c3a949c0b866a026bc90bd4bc50a44eb627c6af487f5b7217a8a5",
+    "src/live/signal_generator.py": "2dc66568bfe337c8a54efca112716381a549ab6867e558ccde84623d5d673bd6",
+    "src/models/__init__.py": "0929625aad2554cb5c3f5118b987c866d5bcfc69921815aede83dcbae524cd22",
+    "src/models/adaptive.py": "17b17d73328b95f3e71ff5c7a0610e244c7a52254e30c022a8a7fe8a3621a071",
+    "src/models/bundle.py": "e041c605c512713ee705c683a846cab61a43e4c955c768f9b3f05467eb6adfa2",
+    "src/models/ensemble.py": "93dbc378cb5cffc29bbe5c1f33898c3f7a0a1b467d18abe69d966c5219daed8d",
+    "src/models/gating.py": "ee13e74a26140f6cdbb3dc128b5069e6f6aa8961e2f85b9dc97215fa8ac78f06",
+    "src/models/labels.py": "5c659bb05b5a0717dd78e8cf389c6f719d1255c0bddc0855ce61ecd68a4c6e13",
+    "src/models/lgbm_model.py": "1e5ec0f394554cf16d793fb166ade61c7b0de80abcc47a22103981261cfa1ffe",
+    "src/models/lstm_model.py": "63ae646acc706620053ae26dd48b472f02dab800789489b9cabfbb900423f041",
+    "src/models/splitter.py": "798c2b3168682fd6500b69ac208be87cab5ca95d6b9776c0de799f57f11f4d9f",
+    "src/models/trainer.py": "36f530ef57b1a8232001ba5daad2451911a25aec16def0d312d3264d3cb4e4da",
+    "src/models/xgb_model.py": "71224e01330b8da6763dbbcf04408475ae16a887c98a723edb6683c8156d4fab",
+    "src/research/__init__.py": "1b62ed64e3680c3d35966b71349b77f82ee7d03e7ca3e74661af99760c29773e",
+    "src/research/adaptive_portfolio.py": "a58a69e0e53a04e82d355a4a544c043a99f6f6d38829bcbbdc8ebbf176e0ff73",
+    "src/research/env_analyzer.py": "21652ca58f799d29b57a7d8370bc127ab4dd8c4c56e77f53f474d7aa7d221ae6",
+    "src/research/meta_strategy.py": "5d3936d8509a62298e739190028d65090e7a0c28b3a92854b9af03cb69174e09",
+    "src/research/protocol.py": "cdbfcce71bee34244f802b18b01482294e0ef224036249eaeef86b0d6e301ae2",
+    "src/research/ranker.py": "b58decd266269c3638c9fd7dbbf40e9b673fbfd7f936d5c459fa10bd2949741d",
+    "src/research/strategies/__init__.py": "421af9c3561c3ead3aafd2f5ef8393e765c4234a67d7e0d997c7c402ea6b04f2",
+    "src/research/strategies/alpha_trends.py": "2a3b0a784ea507de62255dce82fcf888edfae8367a699b1d1c382b81717a8bd8",
+    "src/research/strategies/base.py": "36d0d9eb688b267239ced61f3d2e6f09684d95aeeafdc570af02411f2059a668",
+    "src/research/strategies/carry_proxy.py": "c5a00e21ea02ab8036d6dfbc83b6d53bd0193679611bea5838aee7ddef8ae999",
+    "src/research/strategies/ema_crossover.py": "3c60671924214abf35ad67ecd7782dd895f54a4bdb942ae89ae8444a180d6d4c",
+    "src/research/strategies/mean_reversion.py": "d2aa1b587b989c56b0431df3bd18b6715ca6b4a4e3941ea51f00f8137096a53b",
+    "src/research/strategies/momentum.py": "c7efaa3b4e9441ecadd7e641fd3206515e02969f0b6b26dbf5d83a13c3e74012",
+    "src/research/strategies/pairs_arb.py": "4ea6361069080b615c315ef963bde89c4fed66c1d90c08666a8bfce8d564d4bc",
+    "src/research/strategies/turtle.py": "9b3b7f25b5b27e29ac6969cb86651657d6d3d0cb03fd2abf3f2bfc196f1df882",
+    "src/research/strategies/vol_breakout.py": "67cfac59454d87261f1ff900c5112c718a30e837f26d929fd41a9d1669fc3d08",
+    "src/research/zoo_runner.py": "c2459d3252682e2570ed7e23e20ce4ddb1c4b77f4e86385784aeec59a630ca8a",
+    "src/risk/__init__.py": "d65de90f6c1cada2d60bca12f91fd1a1f87d6b0e626cd8051949080bcafb894a",
+    "src/risk/engine.py": "74ad488f642556e44acf561dfedd9d04477ac62eecb45e8d7c74d62cddddcdca",
+    "src/risk/policy_engine.py": "a06032d42db633b8337941c7713df67cabecc5a3f0ee1a576f4989b05d5d962f",
+    "src/risk/portfolio.py": "048aea3f623ea9bbcd115bef9ef9eb7b72e23699ef7f7db606c4cf349a919ad8",
+    "src/risk/sizing.py": "b95a7c50eecc2d212c2519265570346e24611e0fafca34783e6a3e398953ec95",
+    "src/risk/stops.py": "ba6a9bdebf9e55b9a5066ba00b6c8464bba81c089541cde6909a8dcb63983178",
+    "src/risk/var.py": "1aa57206bbc3e5d4aefb058fd5c114e9eefad13bd458f07280bbd1dbe555be32",
+    "tests/__init__.py": "cdbede7b7c020e8fcdbf6480592d1e198f46fbc342f640a4b1f3c528f2afecbf",
+    "tests/test_accounting_regressions.py": "5abcc46dfce46270e76bdcede52a23adc98bb76c3589d93b7998251d1f5e4e8c",
+    "tests/test_adaptive_release.py": "accf5cd281bea9c778e88f12ca5740ad2f5c1b36e6b5b7c3c95e7f6050238b51",
+    "tests/test_backtest.py": "93d3f6788c01d4c9def8a7a55083576cb8f39f51f2408ff6805e0472df64edeb",
+    "tests/test_causality_regressions.py": "3c8a42a85d573cf12aefc9cf83950d2547c358ffbd580ae0f5f5756cab854c41",
+    "tests/test_collector_v2.py": "c540e70edc6fd165dac5abda79343f01f2436735fd7e14d6fee04c09b7456c9d",
+    "tests/test_data_pipeline.py": "0ee1931d200343e42c2d1a2866a688f643affcff5af5547b36c8925c467b5a3e",
+    "tests/test_env_analyzer.py": "33a0174284a3ffe06078f1b60987fcba3bdd1f439208e456c3440601f622ca29",
+    "tests/test_feature_pipeline.py": "2481e7fc1d2dfdb39d83e5a3bfaa820382336c269bbafff8f90a7576f19e004a",
+    "tests/test_gating.py": "81ba02774aade2fa5cab7d31d6d6ab228769284452cec3b29ae545c42dbce64f",
+    "tests/test_live.py": "244333be8f99833ec9e3bbaebd7ef61953c05e23087eb9408f30ace9561abfbe",
+    "tests/test_meta_signal_generator.py": "c83e72dfcca73c71e18c16ded86adfb7994a01a6d651cf04d237d74e0e456295",
+    "tests/test_meta_strategy.py": "04208176421daf5689dd734f0d52da6ef4c961a0690217912a42370c58480767",
+    "tests/test_ml_pipeline.py": "a8045e45015d60dbe428f7ed3bef450a2e31a584178797d85aef926b3b4505fb",
+    "tests/test_operational_regressions.py": "129b403e0ed223c07f72609bd86a8f7c679b6418c9b8d2fb87d2cf81ffd0c78b",
+    "tests/test_policy_engine.py": "90fc3f2be7ba5d3a76d60b511dea3a288dc2b0338a6fcbfa9dd1b1c91b818105",
+    "tests/test_portfolio_execution.py": "14684762d6080e11cc045f1df259ec04393278f3f1338e1c08b66b26460f278a",
+    "tests/test_prospective_report_v2.py": "cef5904f2e314f2103dd2a07dcc7260c0c12918228d8b34b31bebf3ca81c1157",
+    "tests/test_research.py": "5781bf6d96531c80b0650eca3261cb00728b37680a1a060b91ba2b2cbbe43220",
+    "tests/test_research_protocol.py": "c218ba45540d44faf12f7e3dbdf18918196cb01ff722422a99b16d9357e1ca1f",
+    "tests/test_research_v2_diagnostics.py": "947d896e49d41a379ceabd2be5b70a59cb87cd6d6882b8e54b05bd3c724a38b3",
+    "tests/test_research_v2_experiments.py": "3e75b26af63bc5109ceb2c4496b636a9c77aa24751950a48c747220fe69a2785",
+    "tests/test_research_v2_paper.py": "8913a2b99f4d83329a6732b2d32c6c390769ee52c5ebb06d2e65734a7e4fab94",
+    "tests/test_research_v2_ui.py": "b9d550c1f24f824189a0a968703229cc0cd4aa2e30677e6580423a9c2c0cd0d6",
+    "tests/test_risk.py": "17ca156a783a757ee9e08665b602ca24bfa1622d64d599262c2ef3bdaba9cfdb",
+    "tests/test_sentiment.py": "e3e57a80c20918a9b8117c26890fa6cc1212d05f490480fbc00330b4fab3923e",
+    "trader.py": "c5c0d01e4d7afc4654fec531d99ee0f8b74e24427d422e7df768d4cbd9ae8e4a",
+    "train.py": "30f17145529a227eb537f7d8baafca9de4721392d2360546be45eca9cdfd2461"
+  },
+  "source_unchanged": true,
+  "collected_ids": [
+    "tests/test_accounting_regressions.py::test_hand_calculated_nav[prices0-signals0-long_only-11000]",
+    "tests/test_accounting_regressions.py::test_hand_calculated_nav[prices1-signals1-long_short-11000]",
+    "tests/test_accounting_regressions.py::test_hand_calculated_nav[prices2-signals2-long_short-9000]",
+    "tests/test_accounting_regressions.py::test_hand_calculated_nav[prices3-signals3-long_only-10000]",
+    "tests/test_accounting_regressions.py::test_fees_and_cash_reconcile[0]",
+    "tests/test_accounting_regressions.py::test_fees_and_cash_reconcile[2]",
+    "tests/test_accounting_regressions.py::test_random_reversals_reconcile_open_and_closed_pnl",
+    "tests/test_accounting_regressions.py::test_downside_deviation_and_benchmark_coverage",
+    "tests/test_accounting_regressions.py::test_zero_trade_rerun_clears_previous_log",
+    "tests/test_adaptive_release.py::test_labels_start_at_execution_close_and_mask_unavailable_tail",
+    "tests/test_adaptive_release.py::test_future_perturbations_leave_features_fit_and_prediction_unchanged",
+    "tests/test_adaptive_release.py::test_insufficient_history_does_not_silently_predict",
+    "tests/test_adaptive_release.py::test_hold_sessions_fill_mark_and_retry_without_rebalancing",
+    "tests/test_adaptive_release.py::test_hold_session_still_enforces_drawdown_stop",
+    "tests/test_adaptive_release.py::test_covariance_caps_concentration_and_volatility",
+    "tests/test_adaptive_release.py::test_daily_snapshot_retries_restarts_and_missed_sessions",
+    "tests/test_adaptive_release.py::test_proxy_marks_are_invariant_to_vendor_scale_revision",
+    "tests/test_adaptive_release.py::test_release_verifier_rejects_artifact_tampering",
+    "tests/test_backtest.py::TestMetrics::test_sharpe_positive_drift",
+    "tests/test_backtest.py::TestMetrics::test_sharpe_zero_std_returns_zero",
+    "tests/test_backtest.py::TestMetrics::test_max_drawdown_always_non_positive",
+    "tests/test_backtest.py::TestMetrics::test_max_drawdown_known_sequence",
+    "tests/test_backtest.py::TestMetrics::test_cagr_positive_total_return",
+    "tests/test_backtest.py::TestMetrics::test_compute_metrics_keys",
+    "tests/test_backtest.py::TestMetrics::test_win_rate_basic",
+    "tests/test_backtest.py::TestMetrics::test_compare_to_benchmark_shape",
+    "tests/test_backtest.py::TestSimulator::test_run_returns_simresult",
+    "tests/test_backtest.py::TestSimulator::test_equity_starts_at_initial_capital",
+    "tests/test_backtest.py::TestSimulator::test_equity_always_positive",
+    "tests/test_backtest.py::TestSimulator::test_long_only_no_short_positions",
+    "tests/test_backtest.py::TestSimulator::test_buy_hold_positive_if_price_rises",
+    "tests/test_backtest.py::TestSimulator::test_trade_log_has_entries_and_exits",
+    "tests/test_backtest.py::TestSimulator::test_zero_commission_higher_or_equal_equity",
+    "tests/test_backtest.py::TestSimulator::test_sweep_returns_dataframe",
+    "tests/test_backtest.py::TestMonteCarlo::test_mc_output_shape",
+    "tests/test_backtest.py::TestMonteCarlo::test_mc_percentiles_ordered",
+    "tests/test_backtest.py::TestMonteCarlo::test_mc_summary_keys",
+    "tests/test_backtest.py::TestMonteCarlo::test_mc_prob_ruin_in_range",
+    "tests/test_backtest.py::TestMonteCarlo::test_mc_ci_lower_le_upper",
+    "tests/test_backtest.py::TestSignalIntegrity::test_signal_values_in_range",
+    "tests/test_backtest.py::TestSignalIntegrity::test_filtered_signal_subset_of_signal",
+    "tests/test_backtest.py::TestSignalIntegrity::test_confidence_in_01",
+    "tests/test_backtest.py::TestSignalIntegrity::test_probabilities_sum_to_one",
+    "tests/test_backtest.py::TestSignalIntegrity::test_filtered_signal_is_flat_when_low_confidence",
+    "tests/test_causality_regressions.py::test_hmm_prefix_invariant_and_warmup_alignment",
+    "tests/test_causality_regressions.py::test_gate_cannot_observe_unmatured_labels",
+    "tests/test_causality_regressions.py::test_warmup_volatility_cannot_use_future_median",
+    "tests/test_causality_regressions.py::test_macro_requires_release_and_vintage_evidence",
+    "tests/test_causality_regressions.py::test_purge_must_cover_label_horizon",
+    "tests/test_causality_regressions.py::test_supervised_selection_not_run_during_prepare",
+    "tests/test_causality_regressions.py::test_all_zoo_signals_and_risk_decisions_preserve_prefix",
+    "tests/test_collector_v2.py::test_calendar_schedule_dst_holiday",
+    "tests/test_collector_v2.py::test_policy_refits_holiday_future_invariance",
+    "tests/test_collector_v2.py::test_restart_account_boundary[before_plan]",
+    "tests/test_collector_v2.py::test_restart_account_boundary[after_input]",
+    "tests/test_collector_v2.py::test_restart_account_boundary[after_plan]",
+    "tests/test_collector_v2.py::test_restart_account_boundary[after_deployment]",
+    "tests/test_collector_v2.py::test_restart_account_boundary[after_shadow]",
+    "tests/test_collector_v2.py::test_restart_account_boundary[before_receipt]",
+    "tests/test_collector_v2.py::test_restart_account_boundary[after_receipt]",
+    "tests/test_collector_v2.py::test_lock_and_storage_failure",
+    "tests/test_collector_v2.py::test_scheduler_retries_and_outage",
+    "tests/test_collector_v2.py::test_receipt_tampering",
+    "tests/test_collector_v2.py::test_backup_restore",
+    "tests/test_collector_v2.py::test_stale_missing_mutated_data",
+    "tests/test_collector_v2.py::test_progress_requires_unique_valid_receipts",
+    "tests/test_collector_v2.py::test_outcome_tail_retries_watchdog",
+    "tests/test_collector_v2.py::test_db_corruption_and_unbound_receipts_are_not_readiness",
+    "tests/test_collector_v2.py::test_model_and_partial_snapshot_failure_before_orders",
+    "tests/test_collector_v2.py::test_outcome_provenance_maturity_and_uniqueness",
+    "tests/test_collector_v2.py::test_underlying_snapshot_and_model_bytes",
+    "tests/test_collector_v2.py::test_readonly_status_preserves_truncated_state",
+    "tests/test_collector_v2.py::test_restore_original_path_and_continue",
+    "tests/test_collector_v2.py::test_direct_daily_respects_halt",
+    "tests/test_collector_v2.py::test_interrupted_refit_freezes_input_before_models",
+    "tests/test_collector_v2.py::test_readonly_missing_events_table",
+    "tests/test_collector_v2.py::test_restore_tail_outcomes_halt_and_terminal_accounting",
+    "tests/test_collector_v2.py::test_halted_tail_still_attaches_mature_outcomes",
+    "tests/test_data_pipeline.py::test_parquet_roundtrip",
+    "tests/test_data_pipeline.py::test_gap_fill_retains_observed_sessions_only",
+    "tests/test_data_pipeline.py::test_gap_fill_does_not_fabricate_zero_volume",
+    "tests/test_data_pipeline.py::test_split_adjust_ohlc_scaled",
+    "tests/test_data_pipeline.py::test_no_lookahead_ffill_direction",
+    "tests/test_data_pipeline.py::test_no_lookahead_missing_observations_remain_missing",
+    "tests/test_env_analyzer.py::TestHelpers::test_regime_sharpe_basic",
+    "tests/test_env_analyzer.py::TestHelpers::test_regime_sharpe_zero_variance",
+    "tests/test_env_analyzer.py::TestHelpers::test_regime_ann_return",
+    "tests/test_env_analyzer.py::TestHelpers::test_compute_ticker_regime_shape",
+    "tests/test_env_analyzer.py::TestHelpers::test_compute_ticker_regime_short_data",
+    "tests/test_env_analyzer.py::TestRegimeBreakdown::test_returns_dataframe",
+    "tests/test_env_analyzer.py::TestRegimeBreakdown::test_expected_columns",
+    "tests/test_env_analyzer.py::TestRegimeBreakdown::test_regime_labels",
+    "tests/test_env_analyzer.py::TestRegimeBreakdown::test_pct_days_sums_to_one",
+    "tests/test_env_analyzer.py::TestRegimeBreakdown::test_saved_parquet",
+    "tests/test_env_analyzer.py::TestRegimeBreakdown::test_missing_strategy_dir_skipped",
+    "tests/test_env_analyzer.py::TestCostSensitivity::test_monotonic_sharpe_degradation",
+    "tests/test_env_analyzer.py::TestCostSensitivity::test_saved_parquet",
+    "tests/test_env_analyzer.py::TestCostSensitivity::test_bps_column",
+    "tests/test_env_analyzer.py::TestSignalDecay::test_returns_summary_dataframe",
+    "tests/test_env_analyzer.py::TestSignalDecay::test_expected_columns",
+    "tests/test_env_analyzer.py::TestSignalDecay::test_pct_positive_in_range",
+    "tests/test_env_analyzer.py::TestSignalDecay::test_time_series_parquet_saved",
+    "tests/test_env_analyzer.py::TestSignalDecay::test_short_series_skipped",
+    "tests/test_env_analyzer.py::TestFactorAttribution::test_runs_without_error",
+    "tests/test_env_analyzer.py::TestFactorAttribution::test_expected_columns_when_data_available",
+    "tests/test_env_analyzer.py::TestFactorAttribution::test_r2_between_0_and_1",
+    "tests/test_env_analyzer.py::TestFactorAttribution::test_saved_parquet",
+    "tests/test_env_analyzer.py::TestPrintMethods::test_print_regime_summary",
+    "tests/test_env_analyzer.py::TestPrintMethods::test_print_cost_summary",
+    "tests/test_env_analyzer.py::TestPrintMethods::test_print_decay_summary",
+    "tests/test_env_analyzer.py::TestPrintMethods::test_print_factor_summary",
+    "tests/test_feature_pipeline.py::test_technical_columns_present",
+    "tests/test_feature_pipeline.py::test_rsi_bounds",
+    "tests/test_feature_pipeline.py::test_macd_signal_smoother",
+    "tests/test_feature_pipeline.py::test_atr_positive",
+    "tests/test_feature_pipeline.py::test_bb_ordering",
+    "tests/test_feature_pipeline.py::test_volume_ratio_positive",
+    "tests/test_feature_pipeline.py::test_zscore_zero_mean",
+    "tests/test_feature_pipeline.py::test_realized_vol_nonneg",
+    "tests/test_feature_pipeline.py::test_hurst_range",
+    "tests/test_feature_pipeline.py::test_return_moments_present",
+    "tests/test_feature_pipeline.py::test_spy_correlation_bounds",
+    "tests/test_feature_pipeline.py::test_relative_strength_present",
+    "tests/test_feature_pipeline.py::test_btc_proxy_present",
+    "tests/test_feature_pipeline.py::test_macro_columns_attached",
+    "tests/test_feature_pipeline.py::test_hmm_regime_values",
+    "tests/test_feature_pipeline.py::test_hmm_regime_coverage",
+    "tests/test_feature_pipeline.py::test_feature_count",
+    "tests/test_feature_pipeline.py::test_feature_parquet_roundtrip",
+    "tests/test_feature_pipeline.py::test_feature_cache_hit",
+    "tests/test_feature_pipeline.py::test_feature_force_refresh",
+    "tests/test_feature_pipeline.py::test_no_lookahead_zscore",
+    "tests/test_feature_pipeline.py::test_no_lookahead_realized_vol",
+    "tests/test_feature_pipeline.py::test_compute_all_multiple_assets",
+    "tests/test_feature_pipeline.py::test_select_features_returns_columns",
+    "tests/test_gating.py::TestContext::test_market_context_columns",
+    "tests/test_gating.py::TestContext::test_regime_one_hot_sums_to_one",
+    "tests/test_gating.py::TestContext::test_drawdown_state_non_positive",
+    "tests/test_gating.py::TestContext::test_missing_regime_column_defaults",
+    "tests/test_gating.py::TestContext::test_rolling_accuracy_shifted_no_leakage",
+    "tests/test_gating.py::TestContext::test_gate_context_has_accuracy_columns",
+    "tests/test_gating.py::TestGatingModel::test_min_evidence_uniform",
+    "tests/test_gating.py::TestGatingModel::test_weights_sum_to_one_and_floored",
+    "tests/test_gating.py::TestGatingModel::test_learns_regime_dependent_expert",
+    "tests/test_gating.py::TestGatingModel::test_degenerate_expert_target",
+    "tests/test_gating.py::TestGatingModel::test_save_load_roundtrip",
+    "tests/test_gating.py::TestEnsembleModes::test_static_default_backward_compatible",
+    "tests/test_gating.py::TestEnsembleModes::test_moe_requires_gate",
+    "tests/test_gating.py::TestEnsembleModes::test_invalid_mode_rejected",
+    "tests/test_gating.py::TestEnsembleModes::test_moe_without_context_falls_back_to_static",
+    "tests/test_gating.py::TestEnsembleModes::test_moe_weights_change_blend",
+    "tests/test_gating.py::TestEnsembleModes::test_moe_context_length_mismatch",
+    "tests/test_live.py::TestLiveSignal::test_label_up",
+    "tests/test_live.py::TestLiveSignal::test_label_flat",
+    "tests/test_live.py::TestLiveSignal::test_label_down",
+    "tests/test_live.py::TestLiveSignal::test_is_actionable_up_with_kelly",
+    "tests/test_live.py::TestLiveSignal::test_not_actionable_flat",
+    "tests/test_live.py::TestLiveSignal::test_not_actionable_up_zero_kelly",
+    "tests/test_live.py::TestLiveSignal::test_not_actionable_down_zero_kelly",
+    "tests/test_live.py::TestKellyFraction::test_positive_edge",
+    "tests/test_live.py::TestKellyFraction::test_zero_edge_returns_zero",
+    "tests/test_live.py::TestKellyFraction::test_negative_edge_returns_zero",
+    "tests/test_live.py::TestKellyFraction::test_invalid_p_zero",
+    "tests/test_live.py::TestKellyFraction::test_invalid_p_one",
+    "tests/test_live.py::TestKellyFraction::test_invalid_wl_zero",
+    "tests/test_live.py::TestKellyFraction::test_custom_multiplier",
+    "tests/test_live.py::TestSignalLogger::test_db_created",
+    "tests/test_live.py::TestSignalLogger::test_log_signal",
+    "tests/test_live.py::TestSignalLogger::test_log_multiple_signals",
+    "tests/test_live.py::TestSignalLogger::test_log_order",
+    "tests/test_live.py::TestSignalLogger::test_log_equity",
+    "tests/test_live.py::TestSignalLogger::test_circuit_breaker_no_drawdown",
+    "tests/test_live.py::TestSignalLogger::test_circuit_breaker_trips",
+    "tests/test_live.py::TestSignalLogger::test_circuit_breaker_no_trip_small_dd",
+    "tests/test_live.py::TestSignalLogger::test_circuit_breaker_peak_persists",
+    "tests/test_live.py::TestSignalLogger::test_missing_ticker_not_broken",
+    "tests/test_live.py::TestSignalLogger::test_recent_signals_order",
+    "tests/test_live.py::TestSignalLogger::test_log_error_order",
+    "tests/test_live.py::TestOrderResult::test_ok_when_no_error",
+    "tests/test_live.py::TestOrderResult::test_not_ok_when_error",
+    "tests/test_live.py::TestAlpacaBrokerCredentials::test_raises_without_credentials",
+    "tests/test_live.py::TestAlpacaBrokerCredentials::test_import_error_bubbles",
+    "tests/test_live.py::TestAlerts::test_no_op_without_config",
+    "tests/test_live.py::TestAlerts::test_slack_called_when_configured",
+    "tests/test_live.py::TestAlerts::test_email_called_when_configured",
+    "tests/test_live.py::TestLiveEngine::test_dry_run_produces_result",
+    "tests/test_live.py::TestLiveEngine::test_dry_run_no_orders",
+    "tests/test_live.py::TestLiveEngine::test_flat_signal_skipped",
+    "tests/test_live.py::TestLiveEngine::test_zero_kelly_skipped",
+    "tests/test_meta_signal_generator.py::TestComputeStrategyReturns::test_one_column_per_strategy",
+    "tests/test_meta_signal_generator.py::TestComputeStrategyReturns::test_works_without_spy_or_macro",
+    "tests/test_meta_signal_generator.py::TestDirectionMapping::test_long_only_collapses_short_to_flat",
+    "tests/test_meta_signal_generator.py::TestDirectionMapping::test_long_signal_maps_to_up",
+    "tests/test_meta_signal_generator.py::TestDirectionMapping::test_flat_signal_maps_to_flat",
+    "tests/test_meta_signal_generator.py::TestDirectionMapping::test_strategy_lookup",
+    "tests/test_meta_signal_generator.py::TestMetaSignalGeneratorGenerate::test_returns_live_signal_with_meta_fields",
+    "tests/test_meta_signal_generator.py::TestMetaSignalGeneratorGenerate::test_kelly_frac_is_binary_weight_not_probability",
+    "tests/test_meta_signal_generator.py::TestMetaSignalGeneratorGenerate::test_ew_burnin_forces_flat",
+    "tests/test_meta_signal_generator.py::TestMetaSignalGeneratorGenerate::test_generate_batch_skips_failures",
+    "tests/test_meta_signal_generator.py::TestLiveEngineMetaSizing::test_meta_mode_uses_equal_weight_not_kelly",
+    "tests/test_meta_signal_generator.py::TestLiveEngineMetaSizing::test_ensemble_mode_still_uses_kelly",
+    "tests/test_meta_signal_generator.py::TestLiveEngineMetaSizing::test_invalid_strategy_mode_rejected",
+    "tests/test_meta_strategy.py::TestSharpeHelper::test_empty_returns_neg_inf",
+    "tests/test_meta_strategy.py::TestSharpeHelper::test_single_obs_neg_inf",
+    "tests/test_meta_strategy.py::TestSharpeHelper::test_zero_variance_neg_inf",
+    "tests/test_meta_strategy.py::TestSharpeHelper::test_positive_sharpe",
+    "tests/test_meta_strategy.py::TestRunTicker::test_output_shapes",
+    "tests/test_meta_strategy.py::TestRunTicker::test_burn_in_equal_weight",
+    "tests/test_meta_strategy.py::TestRunTicker::test_eventually_selects_strategies",
+    "tests/test_meta_strategy.py::TestRunTicker::test_regime_gating_picks_in_regime_winner",
+    "tests/test_meta_strategy.py::TestRunTicker::test_walk_forward_no_lookahead",
+    "tests/test_meta_strategy.py::TestRunTicker::test_switch_cost_reduces_returns",
+    "tests/test_meta_strategy.py::TestRunTicker::test_meta_beats_static_average_on_synthetic",
+    "tests/test_meta_strategy.py::TestRunTicker::test_handles_unknown_regime_state",
+    "tests/test_ml_pipeline.py::test_labels_three_classes",
+    "tests/test_ml_pipeline.py::test_labels_mask_trailing_rows",
+    "tests/test_ml_pipeline.py::test_labels_no_lookahead",
+    "tests/test_ml_pipeline.py::test_labels_series_index_aligned",
+    "tests/test_ml_pipeline.py::test_class_weights_all_classes",
+    "tests/test_ml_pipeline.py::test_splitter_correct_number_of_folds",
+    "tests/test_ml_pipeline.py::test_splitter_no_train_test_overlap",
+    "tests/test_ml_pipeline.py::test_splitter_embargo_gap",
+    "tests/test_ml_pipeline.py::test_splitter_train_before_test",
+    "tests/test_ml_pipeline.py::test_splitter_rolling_window",
+    "tests/test_ml_pipeline.py::test_xgb_fit_predict_shape",
+    "tests/test_ml_pipeline.py::test_xgb_proba_sums_to_one",
+    "tests/test_ml_pipeline.py::test_xgb_predict_labels_valid",
+    "tests/test_ml_pipeline.py::test_lgbm_fit_predict_shape",
+    "tests/test_ml_pipeline.py::test_lgbm_proba_sums_to_one",
+    "tests/test_ml_pipeline.py::test_lgbm_predict_labels_valid",
+    "tests/test_ml_pipeline.py::test_lstm_sequence_dataset_length",
+    "tests/test_ml_pipeline.py::test_lstm_sequence_dataset_item_shape",
+    "tests/test_ml_pipeline.py::test_lstm_forward_pass_shape",
+    "tests/test_ml_pipeline.py::test_lstm_smoke_fit_predict",
+    "tests/test_ml_pipeline.py::test_ensemble_output_shape",
+    "tests/test_ml_pipeline.py::test_ensemble_rows_sum_to_one",
+    "tests/test_ml_pipeline.py::test_ensemble_from_val_f1_weights",
+    "tests/test_ml_pipeline.py::test_trainer_prepare_data_alignment",
+    "tests/test_operational_regressions.py::test_holidays_unfinished_sessions_missing_sessions_and_freshness",
+    "tests/test_operational_regressions.py::test_blank_smtp_port_uses_default",
+    "tests/test_operational_regressions.py::test_news_early_close_and_dst_alignment",
+    "tests/test_operational_regressions.py::test_inference_requires_schema_full_sequence_and_latest_row",
+    "tests/test_operational_regressions.py::test_batch_failure_prevents_any_execution",
+    "tests/test_operational_regressions.py::test_bundle_hashes_detect_missing_or_changed_artifacts",
+    "tests/test_operational_regressions.py::test_feature_cache_invalidated_by_inputs_and_forced_load",
+    "tests/test_policy_engine.py::TestComputePolicy::test_columns_and_length",
+    "tests/test_policy_engine.py::TestComputePolicy::test_stable_regime_base_confidence",
+    "tests/test_policy_engine.py::TestComputePolicy::test_unstable_regime_tightens_confidence",
+    "tests/test_policy_engine.py::TestComputePolicy::test_high_vol_widens_atr_stop",
+    "tests/test_policy_engine.py::TestComputePolicy::test_extreme_vol_blocks_eligibility",
+    "tests/test_policy_engine.py::TestComputePolicy::test_drawdown_stress_halves_size_cap",
+    "tests/test_policy_engine.py::TestComputePolicy::test_unknown_regime_ineligible",
+    "tests/test_policy_engine.py::TestComputePolicy::test_causality_future_does_not_change_past",
+    "tests/test_policy_engine.py::TestDecideLatest::test_returns_decision",
+    "tests/test_policy_engine.py::TestDecideLatest::test_as_dict_keys",
+    "tests/test_policy_engine.py::TestStopsMultiplier::test_initial_stop_multiplier",
+    "tests/test_policy_engine.py::TestStopsMultiplier::test_trailing_stop_multiplier",
+    "tests/test_policy_engine.py::TestSignalIntegration::test_dynamic_threshold_flips_marginal_bars_to_flat",
+    "tests/test_portfolio_execution.py::test_shared_cash_pending_reservations_and_repeated_decision",
+    "tests/test_portfolio_execution.py::test_long_entry_partial_fill_restart_hold_reduce_exit",
+    "tests/test_portfolio_execution.py::test_fill_at_decision_time_and_gaps_fail_closed",
+    "tests/test_portfolio_execution.py::test_short_leverage_concentration_and_correlated_group_limits",
+    "tests/test_portfolio_execution.py::test_pending_cash_cannot_be_spent_twice",
+    "tests/test_portfolio_execution.py::test_replay_and_paper_restart_are_identical",
+    "tests/test_portfolio_execution.py::test_configuration_and_concurrent_writer_fail_closed",
+    "tests/test_portfolio_execution.py::test_conflicts_net_against_strategy_budgets",
+    "tests/test_portfolio_execution.py::test_actual_live_engine_matches_research_handler",
+    "tests/test_portfolio_execution.py::test_invalid_close_rolls_back_pending_fills",
+    "tests/test_prospective_report_v2.py::test_final_freeze_refuses_missing_maturity_or_terminal_marks",
+    "tests/test_prospective_report_v2.py::test_prospective_unobserved_stays_unobserved",
+    "tests/test_prospective_report_v2.py::test_prospective_predictive_oracle_preserves_date_dependence",
+    "tests/test_prospective_report_v2.py::test_prospective_report_output_separation_and_symlink",
+    "tests/test_prospective_report_v2.py::test_prospective_report_read_lock_never_initializes_state",
+    "tests/test_prospective_report_v2.py::test_prospective_report_read_lock_blocks_writers_and_releases",
+    "tests/test_prospective_report_v2.py::test_prospective_report_model_prior_next_close_tail_and_readonly_archive",
+    "tests/test_prospective_report_v2.py::test_prospective_report_freeze_refuses_missing_terminal_receipt",
+    "tests/test_research.py::TestBaseStrategyContract::test_momentum_signals",
+    "tests/test_research.py::TestBaseStrategyContract::test_mean_reversion_signals",
+    "tests/test_research.py::TestBaseStrategyContract::test_ema_crossover_signals",
+    "tests/test_research.py::TestBaseStrategyContract::test_turtle_signals",
+    "tests/test_research.py::TestBaseStrategyContract::test_pairs_arb_no_pair",
+    "tests/test_research.py::TestBaseStrategyContract::test_pairs_arb_with_pair",
+    "tests/test_research.py::TestBaseStrategyContract::test_carry_proxy_no_macro",
+    "tests/test_research.py::TestBaseStrategyContract::test_carry_proxy_with_macro",
+    "tests/test_research.py::TestBaseStrategyContract::test_vol_breakout_signals",
+    "tests/test_research.py::TestBaseStrategyContract::test_alpha_trends_signals",
+    "tests/test_research.py::TestBaseStrategyContract::test_alpha_trends_insufficient_data",
+    "tests/test_research.py::TestBaseStrategyContract::test_run_returns_required_keys",
+    "tests/test_research.py::TestBaseStrategyContract::test_equity_curve_length",
+    "tests/test_research.py::TestBaseStrategyContract::test_equity_curve_positive",
+    "tests/test_research.py::TestBaseStrategyContract::test_long_only_no_short_positions",
+    "tests/test_research.py::TestNoLookahead::test_momentum_signal_uses_only_past",
+    "tests/test_research.py::TestZooRunner::test_zoo_runner_returns_scorecard",
+    "tests/test_research.py::TestZooRunner::test_zoo_runner_persists_files",
+    "tests/test_research.py::TestZooRunner::test_zoo_runner_all_strategies",
+    "tests/test_research.py::TestRanker::test_ranker_produces_score_column",
+    "tests/test_research.py::TestRanker::test_ranker_sorted_descending",
+    "tests/test_research_protocol.py::test_negative_evidence_cannot_outrank_positive_evidence",
+    "tests/test_research_protocol.py::test_dependent_uncertainty_reproducible_and_multiplicity_explicit",
+    "tests/test_research_v2_diagnostics.py::test_multiclass_probability_oracle_and_maturity_guard",
+    "tests/test_research_v2_diagnostics.py::test_block_resampling_retains_temporal_runs_and_is_reproducible",
+    "tests/test_research_v2_diagnostics.py::test_block_inference_known_constant_positive_null_negative[0.1]",
+    "tests/test_research_v2_diagnostics.py::test_block_inference_known_constant_positive_null_negative[0]",
+    "tests/test_research_v2_diagnostics.py::test_block_inference_known_constant_positive_null_negative[-0.1]",
+    "tests/test_research_v2_diagnostics.py::test_holm_actual_family_hand_calculation",
+    "tests/test_research_v2_diagnostics.py::test_drawdown_includes_initial_capital_and_counts_sessions",
+    "tests/test_research_v2_diagnostics.py::test_flat_price_roundtrip_gross_net_and_both_side_fee_oracle",
+    "tests/test_research_v2_diagnostics.py::test_missing_price_halts_without_account_or_fill",
+    "tests/test_research_v2_diagnostics.py::test_cash_has_undefined_risk_ratios_instead_of_spurious_values",
+    "tests/test_research_v2_diagnostics.py::test_benchmark_mismatch_and_nonfinite_values_are_rejected",
+    "tests/test_research_v2_diagnostics.py::test_trade_episodes_separate_partial_sales_and_open_inventory",
+    "tests/test_research_v2_experiments.py::test_endpoint_purged_disjoint_roles",
+    "tests/test_research_v2_experiments.py::test_future_mutation_and_training_only_scaler",
+    "tests/test_research_v2_experiments.py::test_transfer_excludes_held_target",
+    "tests/test_research_v2_experiments.py::test_probability_schema_serialization_and_tamper",
+    "tests/test_research_v2_experiments.py::test_mature_labels_required",
+    "tests/test_research_v2_experiments.py::test_block_inference_null_positive_negative_and_holm",
+    "tests/test_research_v2_experiments.py::test_actual_cli_checkpoint_portable_loader",
+    "tests/test_research_v2_paper.py::test_changed_or_missing_source_rejected",
+    "tests/test_research_v2_paper.py::test_partial_experiments_cannot_build_final_statistics",
+    "tests/test_research_v2_paper.py::test_abstract_updates_when_metric_changes",
+    "tests/test_research_v2_paper.py::test_missing_figure_fails_build",
+    "tests/test_research_v2_paper.py::test_unresolved_bibliography_fails_instead_of_silent_plaintext",
+    "tests/test_research_v2_paper.py::test_empirical_claim_resolves_to_unique_source_row",
+    "tests/test_risk.py::TestKellySizing::test_kelly_positive_edge",
+    "tests/test_risk.py::TestKellySizing::test_kelly_zero_edge_returns_zero",
+    "tests/test_risk.py::TestKellySizing::test_kelly_half_multiplier",
+    "tests/test_risk.py::TestKellySizing::test_kelly_invalid_inputs_return_zero",
+    "tests/test_risk.py::TestKellySizing::test_kelly_series_shape",
+    "tests/test_risk.py::TestKellySizing::test_atr_scale_high_vol_reduces_size",
+    "tests/test_risk.py::TestKellySizing::test_position_fractions_bounded",
+    "tests/test_risk.py::TestATRStops::test_initial_stop_below_entry_long",
+    "tests/test_risk.py::TestATRStops::test_initial_stop_above_entry_short",
+    "tests/test_risk.py::TestATRStops::test_trailing_stop_only_rises_long",
+    "tests/test_risk.py::TestATRStops::test_stop_hit_below_level",
+    "tests/test_risk.py::TestATRStops::test_stop_not_hit_above_level",
+    "tests/test_risk.py::TestATRStops::test_inactive_stop_never_triggers",
+    "tests/test_risk.py::TestATRStops::test_compute_trailing_stops_ratchets_up",
+    "tests/test_risk.py::TestVaR::test_var_positive_number",
+    "tests/test_risk.py::TestVaR::test_var_larger_at_higher_confidence",
+    "tests/test_risk.py::TestVaR::test_cvar_ge_var",
+    "tests/test_risk.py::TestVaR::test_rolling_var_shape",
+    "tests/test_risk.py::TestVaR::test_rolling_var_non_negative",
+    "tests/test_risk.py::TestVaR::test_risk_summary_keys",
+    "tests/test_risk.py::TestPortfolio::test_heat_tracker_allows_within_limit",
+    "tests/test_risk.py::TestPortfolio::test_heat_tracker_blocks_over_limit",
+    "tests/test_risk.py::TestPortfolio::test_heat_tracker_allows_after_close",
+    "tests/test_risk.py::TestPortfolio::test_circuit_breaker_trips_on_15pct_dd",
+    "tests/test_risk.py::TestPortfolio::test_circuit_breaker_not_tripped_on_small_dd",
+    "tests/test_risk.py::TestPortfolio::test_circuit_breaker_resets_on_recovery",
+    "tests/test_risk.py::TestPortfolio::test_circuit_breaker_stays_on_partial_recovery",
+    "tests/test_risk.py::TestRiskEngine::test_run_returns_risk_result",
+    "tests/test_risk.py::TestRiskEngine::test_equity_always_positive",
+    "tests/test_risk.py::TestRiskEngine::test_equity_starts_at_capital",
+    "tests/test_risk.py::TestRiskEngine::test_risk_report_has_var_keys",
+    "tests/test_sentiment.py::TestAttribution::test_before_close_same_session",
+    "tests/test_sentiment.py::TestAttribution::test_after_close_next_session",
+    "tests/test_sentiment.py::TestAttribution::test_weekend_rolls_to_monday",
+    "tests/test_sentiment.py::TestAttribution::test_after_last_session_dropped",
+    "tests/test_sentiment.py::TestDailySentiment::test_columns_and_no_nans",
+    "tests/test_sentiment.py::TestDailySentiment::test_no_news_days_zero_filled_with_flag",
+    "tests/test_sentiment.py::TestDailySentiment::test_event_count_and_mean",
+    "tests/test_sentiment.py::TestDailySentiment::test_neg_5d_rolls",
+    "tests/test_sentiment.py::TestDailySentiment::test_empty_news_frame",
+    "tests/test_sentiment.py::TestDailySentiment::test_guidance_tag",
+    "tests/test_sentiment.py::TestDailySentiment::test_guidance_regex_examples",
+    "tests/test_sentiment.py::TestFetch::test_pagination_and_cache",
+    "tests/test_sentiment.py::TestFetch::test_missing_credentials_raises",
+    "tests/test_sentiment.py::TestPipelineIntegration::test_sentiment_columns_appended_not_modified",
+    "tests/test_sentiment.py::TestPipelineIntegration::test_sentiment_failure_is_soft"
+  ],
+  "test_cases": [
+    {
+      "classname": "tests.test_accounting_regressions",
+      "name": "test_hand_calculated_nav[prices0-signals0-long_only-11000]",
+      "seconds": "0.005",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_accounting_regressions",
+      "name": "test_hand_calculated_nav[prices1-signals1-long_short-11000]",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_accounting_regressions",
+      "name": "test_hand_calculated_nav[prices2-signals2-long_short-9000]",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_accounting_regressions",
+      "name": "test_hand_calculated_nav[prices3-signals3-long_only-10000]",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_accounting_regressions",
+      "name": "test_fees_and_cash_reconcile[0]",
+      "seconds": "0.005",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_accounting_regressions",
+      "name": "test_fees_and_cash_reconcile[2]",
+      "seconds": "0.005",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_accounting_regressions",
+      "name": "test_random_reversals_reconcile_open_and_closed_pnl",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_accounting_regressions",
+      "name": "test_downside_deviation_and_benchmark_coverage",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_accounting_regressions",
+      "name": "test_zero_trade_rerun_clears_previous_log",
+      "seconds": "0.155",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_adaptive_release",
+      "name": "test_labels_start_at_execution_close_and_mask_unavailable_tail",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_adaptive_release",
+      "name": "test_future_perturbations_leave_features_fit_and_prediction_unchanged",
+      "seconds": "0.444",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_adaptive_release",
+      "name": "test_insufficient_history_does_not_silently_predict",
+      "seconds": "0.010",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_adaptive_release",
+      "name": "test_hold_sessions_fill_mark_and_retry_without_rebalancing",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_adaptive_release",
+      "name": "test_hold_session_still_enforces_drawdown_stop",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_adaptive_release",
+      "name": "test_covariance_caps_concentration_and_volatility",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_adaptive_release",
+      "name": "test_daily_snapshot_retries_restarts_and_missed_sessions",
+      "seconds": "0.663",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_adaptive_release",
+      "name": "test_proxy_marks_are_invariant_to_vendor_scale_revision",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_adaptive_release",
+      "name": "test_release_verifier_rejects_artifact_tampering",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestMetrics",
+      "name": "test_sharpe_positive_drift",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestMetrics",
+      "name": "test_sharpe_zero_std_returns_zero",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestMetrics",
+      "name": "test_max_drawdown_always_non_positive",
+      "seconds": "0.005",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestMetrics",
+      "name": "test_max_drawdown_known_sequence",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestMetrics",
+      "name": "test_cagr_positive_total_return",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestMetrics",
+      "name": "test_compute_metrics_keys",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestMetrics",
+      "name": "test_win_rate_basic",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestMetrics",
+      "name": "test_compare_to_benchmark_shape",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestSimulator",
+      "name": "test_run_returns_simresult",
+      "seconds": "0.005",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestSimulator",
+      "name": "test_equity_starts_at_initial_capital",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestSimulator",
+      "name": "test_equity_always_positive",
+      "seconds": "0.005",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestSimulator",
+      "name": "test_long_only_no_short_positions",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestSimulator",
+      "name": "test_buy_hold_positive_if_price_rises",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestSimulator",
+      "name": "test_trade_log_has_entries_and_exits",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestSimulator",
+      "name": "test_zero_commission_higher_or_equal_equity",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestSimulator",
+      "name": "test_sweep_returns_dataframe",
+      "seconds": "0.010",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestMonteCarlo",
+      "name": "test_mc_output_shape",
+      "seconds": "0.028",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestMonteCarlo",
+      "name": "test_mc_percentiles_ordered",
+      "seconds": "0.051",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestMonteCarlo",
+      "name": "test_mc_summary_keys",
+      "seconds": "0.027",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestMonteCarlo",
+      "name": "test_mc_prob_ruin_in_range",
+      "seconds": "0.097",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestMonteCarlo",
+      "name": "test_mc_ci_lower_le_upper",
+      "seconds": "0.056",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestSignalIntegrity",
+      "name": "test_signal_values_in_range",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestSignalIntegrity",
+      "name": "test_filtered_signal_subset_of_signal",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestSignalIntegrity",
+      "name": "test_confidence_in_01",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestSignalIntegrity",
+      "name": "test_probabilities_sum_to_one",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_backtest.TestSignalIntegrity",
+      "name": "test_filtered_signal_is_flat_when_low_confidence",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_causality_regressions",
+      "name": "test_hmm_prefix_invariant_and_warmup_alignment",
+      "seconds": "0.259",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_causality_regressions",
+      "name": "test_gate_cannot_observe_unmatured_labels",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_causality_regressions",
+      "name": "test_warmup_volatility_cannot_use_future_median",
+      "seconds": "0.009",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_causality_regressions",
+      "name": "test_macro_requires_release_and_vintage_evidence",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_causality_regressions",
+      "name": "test_purge_must_cover_label_horizon",
+      "seconds": "1.019",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_causality_regressions",
+      "name": "test_supervised_selection_not_run_during_prepare",
+      "seconds": "0.375",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_causality_regressions",
+      "name": "test_all_zoo_signals_and_risk_decisions_preserve_prefix",
+      "seconds": "1.659",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_calendar_schedule_dst_holiday",
+      "seconds": "0.041",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_policy_refits_holiday_future_invariance",
+      "seconds": "22.333",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_restart_account_boundary[before_plan]",
+      "seconds": "0.634",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_restart_account_boundary[after_input]",
+      "seconds": "0.566",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_restart_account_boundary[after_plan]",
+      "seconds": "0.577",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_restart_account_boundary[after_deployment]",
+      "seconds": "0.568",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_restart_account_boundary[after_shadow]",
+      "seconds": "0.566",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_restart_account_boundary[before_receipt]",
+      "seconds": "0.564",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_restart_account_boundary[after_receipt]",
+      "seconds": "0.564",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_lock_and_storage_failure",
+      "seconds": "2.627",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_scheduler_retries_and_outage",
+      "seconds": "0.149",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_receipt_tampering",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_backup_restore",
+      "seconds": "0.240",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_stale_missing_mutated_data",
+      "seconds": "0.086",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_progress_requires_unique_valid_receipts",
+      "seconds": "0.012",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_outcome_tail_retries_watchdog",
+      "seconds": "0.309",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_db_corruption_and_unbound_receipts_are_not_readiness",
+      "seconds": "0.250",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_model_and_partial_snapshot_failure_before_orders",
+      "seconds": "0.089",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_outcome_provenance_maturity_and_uniqueness",
+      "seconds": "2.042",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_underlying_snapshot_and_model_bytes",
+      "seconds": "0.229",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_readonly_status_preserves_truncated_state",
+      "seconds": "0.234",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_restore_original_path_and_continue",
+      "seconds": "0.906",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_direct_daily_respects_halt",
+      "seconds": "0.016",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_interrupted_refit_freezes_input_before_models",
+      "seconds": "0.892",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_readonly_missing_events_table",
+      "seconds": "0.238",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_restore_tail_outcomes_halt_and_terminal_accounting",
+      "seconds": "1.504",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_collector_v2",
+      "name": "test_halted_tail_still_attaches_mature_outcomes",
+      "seconds": "0.471",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_data_pipeline",
+      "name": "test_parquet_roundtrip",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_data_pipeline",
+      "name": "test_gap_fill_retains_observed_sessions_only",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_data_pipeline",
+      "name": "test_gap_fill_does_not_fabricate_zero_volume",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_data_pipeline",
+      "name": "test_split_adjust_ohlc_scaled",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_data_pipeline",
+      "name": "test_no_lookahead_ffill_direction",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_data_pipeline",
+      "name": "test_no_lookahead_missing_observations_remain_missing",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestHelpers",
+      "name": "test_regime_sharpe_basic",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestHelpers",
+      "name": "test_regime_sharpe_zero_variance",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestHelpers",
+      "name": "test_regime_ann_return",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestHelpers",
+      "name": "test_compute_ticker_regime_shape",
+      "seconds": "0.143",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestHelpers",
+      "name": "test_compute_ticker_regime_short_data",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestRegimeBreakdown",
+      "name": "test_returns_dataframe",
+      "seconds": "0.335",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestRegimeBreakdown",
+      "name": "test_expected_columns",
+      "seconds": "0.164",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestRegimeBreakdown",
+      "name": "test_regime_labels",
+      "seconds": "0.163",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestRegimeBreakdown",
+      "name": "test_pct_days_sums_to_one",
+      "seconds": "0.164",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestRegimeBreakdown",
+      "name": "test_saved_parquet",
+      "seconds": "0.165",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestRegimeBreakdown",
+      "name": "test_missing_strategy_dir_skipped",
+      "seconds": "0.158",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestCostSensitivity",
+      "name": "test_monotonic_sharpe_degradation",
+      "seconds": "0.049",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestCostSensitivity",
+      "name": "test_saved_parquet",
+      "seconds": "0.042",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestCostSensitivity",
+      "name": "test_bps_column",
+      "seconds": "0.043",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestSignalDecay",
+      "name": "test_returns_summary_dataframe",
+      "seconds": "0.034",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestSignalDecay",
+      "name": "test_expected_columns",
+      "seconds": "0.025",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestSignalDecay",
+      "name": "test_pct_positive_in_range",
+      "seconds": "0.025",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestSignalDecay",
+      "name": "test_time_series_parquet_saved",
+      "seconds": "0.026",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestSignalDecay",
+      "name": "test_short_series_skipped",
+      "seconds": "0.029",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestFactorAttribution",
+      "name": "test_runs_without_error",
+      "seconds": "5.974",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestFactorAttribution",
+      "name": "test_expected_columns_when_data_available",
+      "seconds": "4.802",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestFactorAttribution",
+      "name": "test_r2_between_0_and_1",
+      "seconds": "4.516",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestFactorAttribution",
+      "name": "test_saved_parquet",
+      "seconds": "4.513",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestPrintMethods",
+      "name": "test_print_regime_summary",
+      "seconds": "0.168",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestPrintMethods",
+      "name": "test_print_cost_summary",
+      "seconds": "0.044",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestPrintMethods",
+      "name": "test_print_decay_summary",
+      "seconds": "0.028",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_env_analyzer.TestPrintMethods",
+      "name": "test_print_factor_summary",
+      "seconds": "4.663",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_technical_columns_present",
+      "seconds": "0.014",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_rsi_bounds",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_macd_signal_smoother",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_atr_positive",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_bb_ordering",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_volume_ratio_positive",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_zscore_zero_mean",
+      "seconds": "0.633",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_realized_vol_nonneg",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_hurst_range",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_return_moments_present",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_spy_correlation_bounds",
+      "seconds": "0.721",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_relative_strength_present",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_btc_proxy_present",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_macro_columns_attached",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_hmm_regime_values",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_hmm_regime_coverage",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_feature_count",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_feature_parquet_roundtrip",
+      "seconds": "0.011",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_feature_cache_hit",
+      "seconds": "0.061",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_feature_force_refresh",
+      "seconds": "0.818",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_no_lookahead_zscore",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_no_lookahead_realized_vol",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_compute_all_multiple_assets",
+      "seconds": "1.484",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_feature_pipeline",
+      "name": "test_select_features_returns_columns",
+      "seconds": "1.031",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestContext",
+      "name": "test_market_context_columns",
+      "seconds": "0.008",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestContext",
+      "name": "test_regime_one_hot_sums_to_one",
+      "seconds": "0.008",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestContext",
+      "name": "test_drawdown_state_non_positive",
+      "seconds": "0.007",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestContext",
+      "name": "test_missing_regime_column_defaults",
+      "seconds": "0.008",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestContext",
+      "name": "test_rolling_accuracy_shifted_no_leakage",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestContext",
+      "name": "test_gate_context_has_accuracy_columns",
+      "seconds": "0.005",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestGatingModel",
+      "name": "test_min_evidence_uniform",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestGatingModel",
+      "name": "test_weights_sum_to_one_and_floored",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestGatingModel",
+      "name": "test_learns_regime_dependent_expert",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestGatingModel",
+      "name": "test_degenerate_expert_target",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestGatingModel",
+      "name": "test_save_load_roundtrip",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestEnsembleModes",
+      "name": "test_static_default_backward_compatible",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestEnsembleModes",
+      "name": "test_moe_requires_gate",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestEnsembleModes",
+      "name": "test_invalid_mode_rejected",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestEnsembleModes",
+      "name": "test_moe_without_context_falls_back_to_static",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestEnsembleModes",
+      "name": "test_moe_weights_change_blend",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_gating.TestEnsembleModes",
+      "name": "test_moe_context_length_mismatch",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestLiveSignal",
+      "name": "test_label_up",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestLiveSignal",
+      "name": "test_label_flat",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestLiveSignal",
+      "name": "test_label_down",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestLiveSignal",
+      "name": "test_is_actionable_up_with_kelly",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestLiveSignal",
+      "name": "test_not_actionable_flat",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestLiveSignal",
+      "name": "test_not_actionable_up_zero_kelly",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestLiveSignal",
+      "name": "test_not_actionable_down_zero_kelly",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestKellyFraction",
+      "name": "test_positive_edge",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestKellyFraction",
+      "name": "test_zero_edge_returns_zero",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestKellyFraction",
+      "name": "test_negative_edge_returns_zero",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestKellyFraction",
+      "name": "test_invalid_p_zero",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestKellyFraction",
+      "name": "test_invalid_p_one",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestKellyFraction",
+      "name": "test_invalid_wl_zero",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestKellyFraction",
+      "name": "test_custom_multiplier",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestSignalLogger",
+      "name": "test_db_created",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestSignalLogger",
+      "name": "test_log_signal",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestSignalLogger",
+      "name": "test_log_multiple_signals",
+      "seconds": "0.005",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestSignalLogger",
+      "name": "test_log_order",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestSignalLogger",
+      "name": "test_log_equity",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestSignalLogger",
+      "name": "test_circuit_breaker_no_drawdown",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestSignalLogger",
+      "name": "test_circuit_breaker_trips",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestSignalLogger",
+      "name": "test_circuit_breaker_no_trip_small_dd",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestSignalLogger",
+      "name": "test_circuit_breaker_peak_persists",
+      "seconds": "0.005",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestSignalLogger",
+      "name": "test_missing_ticker_not_broken",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestSignalLogger",
+      "name": "test_recent_signals_order",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestSignalLogger",
+      "name": "test_log_error_order",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestOrderResult",
+      "name": "test_ok_when_no_error",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestOrderResult",
+      "name": "test_not_ok_when_error",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestAlpacaBrokerCredentials",
+      "name": "test_raises_without_credentials",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestAlpacaBrokerCredentials",
+      "name": "test_import_error_bubbles",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestAlerts",
+      "name": "test_no_op_without_config",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestAlerts",
+      "name": "test_slack_called_when_configured",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestAlerts",
+      "name": "test_email_called_when_configured",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestLiveEngine",
+      "name": "test_dry_run_produces_result",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestLiveEngine",
+      "name": "test_dry_run_no_orders",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestLiveEngine",
+      "name": "test_flat_signal_skipped",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_live.TestLiveEngine",
+      "name": "test_zero_kelly_skipped",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_signal_generator.TestComputeStrategyReturns",
+      "name": "test_one_column_per_strategy",
+      "seconds": "0.151",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_signal_generator.TestComputeStrategyReturns",
+      "name": "test_works_without_spy_or_macro",
+      "seconds": "0.143",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_signal_generator.TestDirectionMapping",
+      "name": "test_long_only_collapses_short_to_flat",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_signal_generator.TestDirectionMapping",
+      "name": "test_long_signal_maps_to_up",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_signal_generator.TestDirectionMapping",
+      "name": "test_flat_signal_maps_to_flat",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_signal_generator.TestDirectionMapping",
+      "name": "test_strategy_lookup",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_signal_generator.TestMetaSignalGeneratorGenerate",
+      "name": "test_returns_live_signal_with_meta_fields",
+      "seconds": "0.140",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_signal_generator.TestMetaSignalGeneratorGenerate",
+      "name": "test_kelly_frac_is_binary_weight_not_probability",
+      "seconds": "0.141",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_signal_generator.TestMetaSignalGeneratorGenerate",
+      "name": "test_ew_burnin_forces_flat",
+      "seconds": "0.021",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_signal_generator.TestMetaSignalGeneratorGenerate",
+      "name": "test_generate_batch_skips_failures",
+      "seconds": "0.141",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_signal_generator.TestLiveEngineMetaSizing",
+      "name": "test_meta_mode_uses_equal_weight_not_kelly",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_signal_generator.TestLiveEngineMetaSizing",
+      "name": "test_ensemble_mode_still_uses_kelly",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_signal_generator.TestLiveEngineMetaSizing",
+      "name": "test_invalid_strategy_mode_rejected",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_strategy.TestSharpeHelper",
+      "name": "test_empty_returns_neg_inf",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_strategy.TestSharpeHelper",
+      "name": "test_single_obs_neg_inf",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_strategy.TestSharpeHelper",
+      "name": "test_zero_variance_neg_inf",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_strategy.TestSharpeHelper",
+      "name": "test_positive_sharpe",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_strategy.TestRunTicker",
+      "name": "test_output_shapes",
+      "seconds": "0.008",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_strategy.TestRunTicker",
+      "name": "test_burn_in_equal_weight",
+      "seconds": "0.007",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_strategy.TestRunTicker",
+      "name": "test_eventually_selects_strategies",
+      "seconds": "0.007",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_strategy.TestRunTicker",
+      "name": "test_regime_gating_picks_in_regime_winner",
+      "seconds": "0.013",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_strategy.TestRunTicker",
+      "name": "test_walk_forward_no_lookahead",
+      "seconds": "0.011",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_strategy.TestRunTicker",
+      "name": "test_switch_cost_reduces_returns",
+      "seconds": "0.010",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_strategy.TestRunTicker",
+      "name": "test_meta_beats_static_average_on_synthetic",
+      "seconds": "0.016",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_meta_strategy.TestRunTicker",
+      "name": "test_handles_unknown_regime_state",
+      "seconds": "0.008",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_labels_three_classes",
+      "seconds": "0.005",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_labels_mask_trailing_rows",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_labels_no_lookahead",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_labels_series_index_aligned",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_class_weights_all_classes",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_splitter_correct_number_of_folds",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_splitter_no_train_test_overlap",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_splitter_embargo_gap",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_splitter_train_before_test",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_splitter_rolling_window",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_xgb_fit_predict_shape",
+      "seconds": "0.136",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_xgb_proba_sums_to_one",
+      "seconds": "0.133",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_xgb_predict_labels_valid",
+      "seconds": "0.132",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_lgbm_fit_predict_shape",
+      "seconds": "0.456",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_lgbm_proba_sums_to_one",
+      "seconds": "0.458",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_lgbm_predict_labels_valid",
+      "seconds": "0.448",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_lstm_sequence_dataset_length",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_lstm_sequence_dataset_item_shape",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_lstm_forward_pass_shape",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_lstm_smoke_fit_predict",
+      "seconds": "1.384",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_ensemble_output_shape",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_ensemble_rows_sum_to_one",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_ensemble_from_val_f1_weights",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_ml_pipeline",
+      "name": "test_trainer_prepare_data_alignment",
+      "seconds": "0.018",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_operational_regressions",
+      "name": "test_holidays_unfinished_sessions_missing_sessions_and_freshness",
+      "seconds": "0.010",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_operational_regressions",
+      "name": "test_blank_smtp_port_uses_default",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_operational_regressions",
+      "name": "test_news_early_close_and_dst_alignment",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_operational_regressions",
+      "name": "test_inference_requires_schema_full_sequence_and_latest_row",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_operational_regressions",
+      "name": "test_batch_failure_prevents_any_execution",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_operational_regressions",
+      "name": "test_bundle_hashes_detect_missing_or_changed_artifacts",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_operational_regressions",
+      "name": "test_feature_cache_invalidated_by_inputs_and_forced_load",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_policy_engine.TestComputePolicy",
+      "name": "test_columns_and_length",
+      "seconds": "0.007",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_policy_engine.TestComputePolicy",
+      "name": "test_stable_regime_base_confidence",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_policy_engine.TestComputePolicy",
+      "name": "test_unstable_regime_tightens_confidence",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_policy_engine.TestComputePolicy",
+      "name": "test_high_vol_widens_atr_stop",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_policy_engine.TestComputePolicy",
+      "name": "test_extreme_vol_blocks_eligibility",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_policy_engine.TestComputePolicy",
+      "name": "test_drawdown_stress_halves_size_cap",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_policy_engine.TestComputePolicy",
+      "name": "test_unknown_regime_ineligible",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_policy_engine.TestComputePolicy",
+      "name": "test_causality_future_does_not_change_past",
+      "seconds": "0.010",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_policy_engine.TestDecideLatest",
+      "name": "test_returns_decision",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_policy_engine.TestDecideLatest",
+      "name": "test_as_dict_keys",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_policy_engine.TestStopsMultiplier",
+      "name": "test_initial_stop_multiplier",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_policy_engine.TestStopsMultiplier",
+      "name": "test_trailing_stop_multiplier",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_policy_engine.TestSignalIntegration",
+      "name": "test_dynamic_threshold_flips_marginal_bars_to_flat",
+      "seconds": "0.011",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_portfolio_execution",
+      "name": "test_shared_cash_pending_reservations_and_repeated_decision",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_portfolio_execution",
+      "name": "test_long_entry_partial_fill_restart_hold_reduce_exit",
+      "seconds": "0.008",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_portfolio_execution",
+      "name": "test_fill_at_decision_time_and_gaps_fail_closed",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_portfolio_execution",
+      "name": "test_short_leverage_concentration_and_correlated_group_limits",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_portfolio_execution",
+      "name": "test_pending_cash_cannot_be_spent_twice",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_portfolio_execution",
+      "name": "test_replay_and_paper_restart_are_identical",
+      "seconds": "0.171",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_portfolio_execution",
+      "name": "test_configuration_and_concurrent_writer_fail_closed",
+      "seconds": "0.005",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_portfolio_execution",
+      "name": "test_conflicts_net_against_strategy_budgets",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_portfolio_execution",
+      "name": "test_actual_live_engine_matches_research_handler",
+      "seconds": "0.018",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_portfolio_execution",
+      "name": "test_invalid_close_rolls_back_pending_fills",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_prospective_report_v2",
+      "name": "test_final_freeze_refuses_missing_maturity_or_terminal_marks",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_prospective_report_v2",
+      "name": "test_prospective_unobserved_stays_unobserved",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_prospective_report_v2",
+      "name": "test_prospective_predictive_oracle_preserves_date_dependence",
+      "seconds": "0.008",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_prospective_report_v2",
+      "name": "test_prospective_report_output_separation_and_symlink",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_prospective_report_v2",
+      "name": "test_prospective_report_read_lock_never_initializes_state",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_prospective_report_v2",
+      "name": "test_prospective_report_read_lock_blocks_writers_and_releases",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_prospective_report_v2",
+      "name": "test_prospective_report_model_prior_next_close_tail_and_readonly_archive",
+      "seconds": "2.288",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_prospective_report_v2",
+      "name": "test_prospective_report_freeze_refuses_missing_terminal_receipt",
+      "seconds": "0.648",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestBaseStrategyContract",
+      "name": "test_momentum_signals",
+      "seconds": "0.007",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestBaseStrategyContract",
+      "name": "test_mean_reversion_signals",
+      "seconds": "0.007",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestBaseStrategyContract",
+      "name": "test_ema_crossover_signals",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestBaseStrategyContract",
+      "name": "test_turtle_signals",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestBaseStrategyContract",
+      "name": "test_pairs_arb_no_pair",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestBaseStrategyContract",
+      "name": "test_pairs_arb_with_pair",
+      "seconds": "0.008",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestBaseStrategyContract",
+      "name": "test_carry_proxy_no_macro",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestBaseStrategyContract",
+      "name": "test_carry_proxy_with_macro",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestBaseStrategyContract",
+      "name": "test_vol_breakout_signals",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestBaseStrategyContract",
+      "name": "test_alpha_trends_signals",
+      "seconds": "0.131",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestBaseStrategyContract",
+      "name": "test_alpha_trends_insufficient_data",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestBaseStrategyContract",
+      "name": "test_run_returns_required_keys",
+      "seconds": "0.007",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestBaseStrategyContract",
+      "name": "test_equity_curve_length",
+      "seconds": "0.009",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestBaseStrategyContract",
+      "name": "test_equity_curve_positive",
+      "seconds": "0.008",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestBaseStrategyContract",
+      "name": "test_long_only_no_short_positions",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestNoLookahead",
+      "name": "test_momentum_signal_uses_only_past",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestZooRunner",
+      "name": "test_zoo_runner_returns_scorecard",
+      "seconds": "0.150",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestZooRunner",
+      "name": "test_zoo_runner_persists_files",
+      "seconds": "0.015",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestZooRunner",
+      "name": "test_zoo_runner_all_strategies",
+      "seconds": "0.221",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestRanker",
+      "name": "test_ranker_produces_score_column",
+      "seconds": "0.252",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research.TestRanker",
+      "name": "test_ranker_sorted_descending",
+      "seconds": "0.251",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_protocol",
+      "name": "test_negative_evidence_cannot_outrank_positive_evidence",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_protocol",
+      "name": "test_dependent_uncertainty_reproducible_and_multiplicity_explicit",
+      "seconds": "0.005",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_diagnostics",
+      "name": "test_multiclass_probability_oracle_and_maturity_guard",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_diagnostics",
+      "name": "test_block_resampling_retains_temporal_runs_and_is_reproducible",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_diagnostics",
+      "name": "test_block_inference_known_constant_positive_null_negative[0.1]",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_diagnostics",
+      "name": "test_block_inference_known_constant_positive_null_negative[0]",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_diagnostics",
+      "name": "test_block_inference_known_constant_positive_null_negative[-0.1]",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_diagnostics",
+      "name": "test_holm_actual_family_hand_calculation",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_diagnostics",
+      "name": "test_drawdown_includes_initial_capital_and_counts_sessions",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_diagnostics",
+      "name": "test_flat_price_roundtrip_gross_net_and_both_side_fee_oracle",
+      "seconds": "0.008",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_diagnostics",
+      "name": "test_missing_price_halts_without_account_or_fill",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_diagnostics",
+      "name": "test_cash_has_undefined_risk_ratios_instead_of_spurious_values",
+      "seconds": "0.007",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_diagnostics",
+      "name": "test_benchmark_mismatch_and_nonfinite_values_are_rejected",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_diagnostics",
+      "name": "test_trade_episodes_separate_partial_sales_and_open_inventory",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_experiments",
+      "name": "test_endpoint_purged_disjoint_roles",
+      "seconds": "0.031",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_experiments",
+      "name": "test_future_mutation_and_training_only_scaler",
+      "seconds": "0.450",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_experiments",
+      "name": "test_transfer_excludes_held_target",
+      "seconds": "0.469",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_experiments",
+      "name": "test_probability_schema_serialization_and_tamper",
+      "seconds": "0.268",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_experiments",
+      "name": "test_mature_labels_required",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_experiments",
+      "name": "test_block_inference_null_positive_negative_and_holm",
+      "seconds": "0.014",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_experiments",
+      "name": "test_actual_cli_checkpoint_portable_loader",
+      "seconds": "0.208",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_paper",
+      "name": "test_changed_or_missing_source_rejected",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_paper",
+      "name": "test_partial_experiments_cannot_build_final_statistics",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_paper",
+      "name": "test_abstract_updates_when_metric_changes",
+      "seconds": "0.185",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_paper",
+      "name": "test_missing_figure_fails_build",
+      "seconds": "0.180",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_paper",
+      "name": "test_unresolved_bibliography_fails_instead_of_silent_plaintext",
+      "seconds": "0.060",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_research_v2_paper",
+      "name": "test_empirical_claim_resolves_to_unique_source_row",
+      "seconds": "0.060",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestKellySizing",
+      "name": "test_kelly_positive_edge",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestKellySizing",
+      "name": "test_kelly_zero_edge_returns_zero",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestKellySizing",
+      "name": "test_kelly_half_multiplier",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestKellySizing",
+      "name": "test_kelly_invalid_inputs_return_zero",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestKellySizing",
+      "name": "test_kelly_series_shape",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestKellySizing",
+      "name": "test_atr_scale_high_vol_reduces_size",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestKellySizing",
+      "name": "test_position_fractions_bounded",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestATRStops",
+      "name": "test_initial_stop_below_entry_long",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestATRStops",
+      "name": "test_initial_stop_above_entry_short",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestATRStops",
+      "name": "test_trailing_stop_only_rises_long",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestATRStops",
+      "name": "test_stop_hit_below_level",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestATRStops",
+      "name": "test_stop_not_hit_above_level",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestATRStops",
+      "name": "test_inactive_stop_never_triggers",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestATRStops",
+      "name": "test_compute_trailing_stops_ratchets_up",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestVaR",
+      "name": "test_var_positive_number",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestVaR",
+      "name": "test_var_larger_at_higher_confidence",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestVaR",
+      "name": "test_cvar_ge_var",
+      "seconds": "0.004",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestVaR",
+      "name": "test_rolling_var_shape",
+      "seconds": "0.034",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestVaR",
+      "name": "test_rolling_var_non_negative",
+      "seconds": "0.035",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestVaR",
+      "name": "test_risk_summary_keys",
+      "seconds": "0.003",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestPortfolio",
+      "name": "test_heat_tracker_allows_within_limit",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestPortfolio",
+      "name": "test_heat_tracker_blocks_over_limit",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestPortfolio",
+      "name": "test_heat_tracker_allows_after_close",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestPortfolio",
+      "name": "test_circuit_breaker_trips_on_15pct_dd",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestPortfolio",
+      "name": "test_circuit_breaker_not_tripped_on_small_dd",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestPortfolio",
+      "name": "test_circuit_breaker_resets_on_recovery",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestPortfolio",
+      "name": "test_circuit_breaker_stays_on_partial_recovery",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestRiskEngine",
+      "name": "test_run_returns_risk_result",
+      "seconds": "0.029",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestRiskEngine",
+      "name": "test_equity_always_positive",
+      "seconds": "0.035",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestRiskEngine",
+      "name": "test_equity_starts_at_capital",
+      "seconds": "0.029",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_risk.TestRiskEngine",
+      "name": "test_risk_report_has_var_keys",
+      "seconds": "0.028",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sentiment.TestAttribution",
+      "name": "test_before_close_same_session",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sentiment.TestAttribution",
+      "name": "test_after_close_next_session",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sentiment.TestAttribution",
+      "name": "test_weekend_rolls_to_monday",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sentiment.TestAttribution",
+      "name": "test_after_last_session_dropped",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sentiment.TestDailySentiment",
+      "name": "test_columns_and_no_nans",
+      "seconds": "0.007",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sentiment.TestDailySentiment",
+      "name": "test_no_news_days_zero_filled_with_flag",
+      "seconds": "0.008",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sentiment.TestDailySentiment",
+      "name": "test_event_count_and_mean",
+      "seconds": "0.007",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sentiment.TestDailySentiment",
+      "name": "test_neg_5d_rolls",
+      "seconds": "0.007",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sentiment.TestDailySentiment",
+      "name": "test_empty_news_frame",
+      "seconds": "0.002",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sentiment.TestDailySentiment",
+      "name": "test_guidance_tag",
+      "seconds": "0.007",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sentiment.TestDailySentiment",
+      "name": "test_guidance_regex_examples",
+      "seconds": "0.000",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sentiment.TestFetch",
+      "name": "test_pagination_and_cache",
+      "seconds": "0.006",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sentiment.TestFetch",
+      "name": "test_missing_credentials_raises",
+      "seconds": "0.001",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sentiment.TestPipelineIntegration",
+      "name": "test_sentiment_columns_appended_not_modified",
+      "seconds": "1.510",
+      "status": "passed"
+    },
+    {
+      "classname": "tests.test_sentiment.TestPipelineIntegration",
+      "name": "test_sentiment_failure_is_soft",
+      "seconds": "0.708",
+      "status": "passed"
+    }
+  ],
+  "collected_count": 370,
+  "executed_count": 370,
+  "passed": 370,
+  "failed": 0,
+  "skipped": 0,
+  "exit_code": 0,
+  "collection_exit_code": 0,
+  "environment": {
+    "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]",
+    "platform": "macOS-26.3-arm64-arm-64bit-Mach-O",
+    "executable": "/Users/a/miniconda3/bin/python"
+  },
+  "dependencies": {
+    "Flask": "3.1.3",
+    "anyio": "4.12.1",
+    "pypdfium2": "5.9.0",
+    "truststore": "0.10.1",
+    "shellingham": "1.5.4",
+    "hf-xet": "1.5.1",
+    "pkce": "1.0.3",
+    "pyobjc-framework-IOBluetooth": "12.1",
+    "black": "26.5.1",
+    "strictyaml": "1.7.3",
+    "pyobjc-framework-QuickLookThumbnailing": "12.1",
+    "readchar": "4.2.1",
+    "pyobjc-framework-SharedWithYouCore": "12.1",
+    "pyobjc-framework-Carbon": "12.1",
+    "threadpoolctl": "3.6.0",
+    "lightgbm": "4.6.0",
+    "pyobjc-framework-Virtualization": "12.1",
+    "uri-template": "1.3.0",
+    "pyobjc-framework-EventKit": "12.1",
+    "pyobjc-framework-ExternalAccessory": "12.1",
+    "conda_package_streaming": "0.12.0",
+    "setuptools": "80.9.0",
+    "rfc3339-validator": "0.1.4",
+    "pyobjc-framework-Cocoa": "12.1",
+    "pyobjc-framework-MediaAccessibility": "12.1",
+    "more-itertools": "10.8.0",
+    "pexpect": "4.9.0",
+    "narwhals": "2.21.0",
+    "pyobjc-framework-CoreHaptics": "12.1",
+    "grpcio": "1.80.0",
+    "tomli": "2.2.1",
+    "zstandard": "0.25.0",
+    "pyobjc-framework-ScriptingBridge": "12.1",
+    "cloudpickle": "3.1.2",
+    "fqdn": "1.5.1",
+    "llvmlite": "0.44.0",
+    "pyobjc-framework-Security": "12.1",
+    "toolz": "1.1.0",
+    "uuid_utils": "0.14.1",
+    "semver": "3.0.4",
+    "pyobjc-framework-SceneKit": "12.1",
+    "pyobjc-framework-SecurityFoundation": "12.1",
+    "pyobjc-framework-CloudKit": "12.1",
+    "pyobjc-framework-GameplayKit": "12.1",
+    "traitlets": "5.14.3",
+    "pyobjc-framework-MetricKit": "12.1",
+    "pyobjc-framework-CoreSpotlight": "12.1",
+    "tornado": "6.5.5",
+    "numpy": "2.2.6",
+    "multidict": "6.7.1",
+    "nest-asyncio": "1.6.0",
+    "pyarrow": "21.0.0",
+    "nbconvert": "7.17.0",
+    "pyobjc-framework-AppTrackingTransparency": "12.1",
+    "asttokens": "3.0.1",
+    "pyobjc": "12.1",
+    "pyobjc-framework-DVDPlayback": "12.1",
+    "exchange_calendars": "4.13.2",
+    "ptyprocess": "0.7.0",
+    "conda": "26.1.1",
+    "pyobjc-framework-AVRouting": "12.1",
+    "jaraco.classes": "3.4.0",
+    "lark": "1.3.1",
+    "isoduration": "20.11.0",
+    "pyobjc-framework-ModelIO": "12.1",
+    "jupyterlab": "4.5.6",
+    "pyobjc-framework-Automator": "12.1",
+    "certifi": "2026.2.25",
+    "pyobjc-framework-MapKit": "12.1",
+    "supabase-auth": "2.28.0",
+    "tzdata": "2025.3",
+    "rich": "14.3.2",
+    "iniconfig": "2.3.0",
+    "pytz": "2025.2",
+    "pyobjc-framework-CFNetwork": "12.1",
+    "langgraph-sdk": "0.3.13",
+    "pyobjc-framework-AppleScriptObjC": "12.1",
+    "boltons": "25.0.0",
+    "toml": "0.10.2",
+    "uvicorn": "0.32.1",
+    "anaconda-cli-base": "0.7.0",
+    "pyobjc-framework-AdServices": "12.1",
+    "pyobjc-framework-Network": "12.1",
+    "pyobjc-framework-WebKit": "12.1",
+    "mistune": "3.2.0",
+    "pyobjc-framework-SystemExtensions": "12.1",
+    "pyobjc-framework-CoreLocation": "12.1",
+    "webencodings": "0.5.1",
+    "google-generativeai": "0.8.3",
+    "hmmlearn": "0.3.3",
+    "flask-cors": "6.0.2",
+    "prometheus_client": "0.24.1",
+    "click": "8.4.2",
+    "pytokens": "0.4.1",
+    "tinycss2": "1.4.0",
+    "pyspark": "4.0.1",
+    "Mako": "1.3.12",
+    "jsonschema-specifications": "2025.9.1",
+    "google-api-core": "2.30.3",
+    "stripe": "15.0.1",
+    "starlette": "1.0.0",
+    "executing": "2.2.1",
+    "gunicorn": "25.3.0",
+    "httplib2": "0.31.2",
+    "databricks-sdk": "0.106.0",
+    "pyobjc-framework-NetworkExtension": "12.1",
+    "aiohttp-retry": "2.9.1",
+    "gTTS": "2.5.4",
+    "pyobjc-framework-SafariServices": "12.1",
+    "pyobjc-framework-DictionaryServices": "12.1",
+    "pyobjc-framework-Symbols": "12.1",
+    "defusedxml": "0.7.1",
+    "statsmodels": "0.14.6",
+    "pyobjc-framework-FileProvider": "12.1",
+    "slicer": "0.0.8",
+    "coincurve": "21.0.0",
+    "pandas-ta": "0.4.71b0",
+    "pyobjc-framework-LocalAuthentication": "12.1",
+    "pyobjc-framework-MetalKit": "12.1",
+    "aiohttp": "3.13.5",
+    "requests": "2.32.3",
+    "jupyterlab_server": "2.28.0",
+    "graphene": "3.4.3",
+    "propcache": "0.4.1",
+    "absl-py": "2.4.0",
+    "pyluach": "2.3.0",
+    "openai": "2.32.0",
+    "opentelemetry-semantic-conventions": "0.62b1",
+    "peewee": "4.0.5",
+    "shapely": "2.0.6",
+    "networkx": "3.6.1",
+    "numexpr": "2.14.1",
+    "pyobjc-framework-PhotosUI": "12.1",
+    "pyobjc-framework-VideoToolbox": "12.1",
+    "mediapipe": "0.10.33",
+    "blinker": "1.9.0",
+    "websocket-client": "1.9.0",
+    "pyobjc-framework-SystemConfiguration": "12.1",
+    "libmambapy": "2.3.2",
+    "jsonschema": "4.26.0",
+    "pyobjc-framework-IOSurface": "12.1",
+    "contourpy": "1.3.3",
+    "pyobjc-framework-UserNotificationsUI": "12.1",
+    "alembic": "1.18.4",
+    "pyobjc-framework-DiscRecordingUI": "12.1",
+    "pyobjc-framework-GameController": "12.1",
+    "jiter": "0.14.0",
+    "babel": "2.18.0",
+    "seaborn": "0.13.2",
+    "pyobjc-framework-ContactsUI": "12.1",
+    "playsound": "1.2.2",
+    "pyobjc-framework-MediaToolbox": "12.1",
+    "pyobjc-framework-CoreMotion": "12.1",
+    "anaconda-auth": "0.12.3",
+    "pyobjc-framework-SharedWithYou": "12.1",
+    "pip": "25.3",
+    "fsspec": "2026.2.0",
+    "pyobjc-framework-CoreServices": "12.1",
+    "pyobjc-framework-ExceptionHandling": "12.1",
+    "pyobjc-framework-KernelManagement": "12.1",
+    "python-pptx": "1.0.2",
+    "jupyter-console": "6.6.3",
+    "jedi": "0.19.2",
+    "google-api-python-client": "2.194.0",
+    "pyobjc-framework-PushKit": "12.1",
+    "mlflow": "3.11.1",
+    "shap": "0.51.0",
+    "pyobjc-framework-IOBluetoothUI": "12.1",
+    "findspark": "2.0.1",
+    "ormsgpack": "1.12.2",
+    "kiwisolver": "1.5.0",
+    "idna": "3.11",
+    "itsdangerous": "2.2.0",
+    "jupyter": "1.1.1",
+    "PySocks": "1.7.1",
+    "bleach": "6.3.0",
+    "numba": "0.61.2",
+    "debugpy": "1.8.20",
+    "conda-anaconda-telemetry": "0.3.0",
+    "altair": "6.1.0",
+    "pyobjc-framework-PreferencePanes": "12.1",
+    "cffi": "2.0.0",
+    "pyobjc-framework-DiscRecording": "12.1",
+    "supabase-functions": "2.28.0",
+    "GitPython": "3.1.49",
+    "pyobjc-framework-MetalFX": "12.1",
+    "anaconda-anon-usage": "0.7.5",
+    "pyobjc-framework-CoreText": "12.1",
+    "tqdm": "4.67.1",
+    "pyobjc-framework-Quartz": "12.1",
+    "pyobjc-framework-Vision": "12.1",
+    "pyobjc-framework-NotificationCenter": "12.1",
+    "pyobjc-framework-FSKit": "12.1",
+    "pandocfilters": "1.5.1",
+    "pyobjc-framework-OpenDirectory": "12.1",
+    "pyobjc-framework-ExecutionPolicy": "12.1",
+    "jsonpatch": "1.33",
+    "jsonpointer": "3.0.0",
+    "pydantic_core": "2.27.1",
+    "ipython_pygments_lexers": "1.1.1",
+    "pyobjc-framework-libxpc": "12.1",
+    "appnope": "0.1.4",
+    "pyobjc-framework-Metal": "12.1",
+    "grpcio-status": "1.71.2",
+    "SQLAlchemy": "2.0.49",
+    "matplotlib": "3.10.8",
+    "pyobjc-framework-PassKit": "12.1",
+    "pyttsx3": "2.99",
+    "Send2Trash": "2.1.0",
+    "uritemplate": "4.2.0",
+    "pyobjc-framework-Cinematic": "12.1",
+    "pyobjc-framework-CalendarStore": "12.1",
+    "aiodns": "4.0.0",
+    "pyobjc-framework-BrowserEngineKit": "12.1",
+    "huggingface_hub": "1.22.0",
+    "torch": "2.11.0",
+    "tenacity": "9.1.4",
+    "pillow": "12.1.1",
+    "prompt_toolkit": "3.0.52",
+    "pyobjc-framework-CoreML": "12.1",
+    "httpcore": "1.0.9",
+    "mmh3": "5.2.0",
+    "filelock": "3.25.2",
+    "decorator": "5.2.1",
+    "langgraph-prebuilt": "1.0.10",
+    "ccxt": "4.5.51",
+    "msgpack": "1.1.1",
+    "pyobjc-framework-Accessibility": "12.1",
+    "pyobjc-framework-ExtensionKit": "12.1",
+    "langsmith": "0.7.32",
+    "pyobjc-framework-CoreMIDI": "12.1",
+    "jupyter_client": "8.8.0",
+    "pyobjc-framework-PHASE": "12.1",
+    "soupsieve": "2.8.3",
+    "webcolors": "25.10.0",
+    "pyobjc-framework-UserNotifications": "12.1",
+    "nbformat": "5.10.4",
+    "pyobjc-framework-MediaLibrary": "12.1",
+    "pyobjc-framework-PencilKit": "12.1",
+    "pycares": "5.0.1",
+    "pyobjc-framework-AppleScriptKit": "12.1",
+    "stack-data": "0.6.3",
+    "orjson": "3.11.8",
+    "pyobjc-framework-GameCenter": "12.1",
+    "charset-normalizer": "3.4.4",
+    "pyobjc-framework-ServiceManagement": "12.1",
+    "sympy": "1.14.0",
+    "pyobjc-framework-LaunchServices": "12.1",
+    "StrEnum": "0.4.15",
+    "pyobjc-framework-ScreenSaver": "12.1",
+    "pyobjc-framework-HealthKit": "12.1",
+    "ngrok": "1.7.0",
+    "markdown-it-py": "4.0.0",
+    "pyobjc-framework-CryptoTokenKit": "12.1",
+    "ipykernel": "7.2.0",
+    "realtime": "2.28.0",
+    "proto-plus": "1.27.2",
+    "tiktoken": "0.12.0",
+    "mlflow-tracing": "3.11.1",
+    "langchain-core": "1.3.0",
+    "pyobjc-framework-UniformTypeIdentifiers": "12.1",
+    "pyobjc-framework-SoundAnalysis": "12.1",
+    "sse-starlette": "2.2.1",
+    "multitasking": "0.0.13",
+    "prettytable": "3.17.0",
+    "pyobjc-framework-AddressBook": "12.1",
+    "matplotlib-inline": "0.2.1",
+    "pyobjc-framework-BusinessChat": "12.1",
+    "pandas-datareader": "0.10.0",
+    "safetensors": "0.8.0",
+    "PyJWT": "2.11.0",
+    "pyobjc-framework-InputMethodKit": "12.1",
+    "python-dotenv": "1.0.1",
+    "protobuf": "5.29.6",
+    "huey": "2.6.0",
+    "pyobjc-framework-ScreenCaptureKit": "12.1",
+    "conda-content-trust": "0.2.0",
+    "pyobjc-framework-LinkPresentation": "12.1",
+    "pyobjc-framework-ImageCaptureCore": "12.1",
+    "pyobjc-framework-CallKit": "12.1",
+    "platformdirs": "4.5.0",
+    "valgrind": "0.0.0",
+    "postgrest": "2.28.0",
+    "watchfiles": "1.1.1",
+    "optuna": "4.8.0",
+    "pyobjc-framework-Photos": "12.1",
+    "google-auth": "2.49.2",
+    "ipython": "9.12.0",
+    "pyobjc-framework-MailKit": "12.1",
+    "langgraph": "1.1.8",
+    "python-json-logger": "4.0.0",
+    "graphql-relay": "3.2.0",
+    "h11": "0.16.0",
+    "gitdb": "4.0.12",
+    "opentelemetry-sdk": "1.41.1",
+    "jupyter_server_terminals": "0.5.4",
+    "pydantic-settings": "2.7.0",
+    "pyobjc-framework-InstantMessage": "12.1",
+    "sniffio": "1.3.1",
+    "smmap": "5.0.3",
+    "pycparser": "3.0",
+    "fonttools": "4.62.1",
+    "httptools": "0.7.1",
+    "typer": "0.20.0",
+    "pyobjc-framework-FileProviderUI": "12.1",
+    "cachetools": "6.2.6",
+    "pyobjc-framework-Accounts": "12.1",
+    "pyobjc-framework-CoreBluetooth": "12.1",
+    "importlib_metadata": "8.7.1",
+    "geographiclib": "2.1",
+    "pyobjc-framework-DeviceDiscoveryExtension": "12.1",
+    "pyobjc-framework-DeviceCheck": "12.1",
+    "mdurl": "0.1.2",
+    "packaging": "26.0",
+    "patsy": "1.0.2",
+    "pyobjc-framework-LocalAuthenticationEmbeddedUI": "12.1",
+    "python-dateutil": "2.9.0.post0",
+    "mlflow-skinny": "3.11.1",
+    "menuinst": "2.4.2",
+    "colorlog": "6.10.1",
+    "mpmath": "1.3.0",
+    "pyobjc-framework-MediaPlayer": "12.1",
+    "jupyterlab_pygments": "0.3.0",
+    "PyYAML": "6.0.3",
+    "pyobjc-framework-CoreAudio": "12.1",
+    "conda-anaconda-tos": "0.2.2",
+    "pyobjc-framework-ReplayKit": "12.1",
+    "pyobjc-framework-BackgroundAssets": "12.1",
+    "ruamel.yaml": "0.18.16",
+    "pyobjc-framework-Intents": "12.1",
+    "rfc3987-syntax": "1.1.0",
+    "py4j": "0.10.9.9",
+    "pyobjc-framework-FinderSync": "12.1",
+    "plotly": "6.7.0",
+    "supabase": "2.28.0",
+    "pyobjc-framework-FSEvents": "12.1",
+    "google-auth-httplib2": "0.3.1",
+    "Bottleneck": "1.4.2",
+    "parso": "0.8.6",
+    "google-genai": "1.73.1",
+    "regex": "2026.2.28",
+    "pyobjc-framework-SensitiveContentAnalysis": "12.1",
+    "urllib3": "2.6.3",
+    "jupyter-events": "0.12.0",
+    "frozenlist": "1.8.0",
+    "nbclient": "0.10.4",
+    "ipywidgets": "8.1.8",
+    "google-ai-generativelanguage": "0.6.10",
+    "pyobjc-framework-SyncServices": "12.1",
+    "pyobjc-framework-Collaboration": "12.1",
+    "pyobjc-framework-MediaExtension": "12.1",
+    "wcwidth": "0.6.0",
+    "pyobjc-framework-ApplicationServices": "12.1",
+    "typing_extensions": "4.15.0",
+    "aiosignal": "1.4.0",
+    "pyobjc-framework-OSLog": "12.1",
+    "quantstats": "0.0.81",
+    "pycosat": "0.6.6",
+    "twilio": "9.10.9",
+    "jupyter_core": "5.9.1",
+    "pyobjc-framework-GameSave": "12.1",
+    "fastjsonschema": "2.21.2",
+    "beautifulsoup4": "4.14.3",
+    "pyobjc-framework-Social": "12.1",
+    "pyobjc-framework-CoreMediaIO": "12.1",
+    "argon2-cffi": "25.1.0",
+    "jupyter_server": "2.17.0",
+    "scipy": "1.17.1",
+    "uv": "0.11.26",
+    "zipp": "3.23.1",
+    "pyobjc-framework-SpriteKit": "12.1",
+    "joblib": "1.5.3",
+    "pyobjc-framework-SafetyKit": "12.1",
+    "pyobjc-framework-CoreData": "12.1",
+    "pyobjc-framework-LatentSemanticMapping": "12.1",
+    "cycler": "0.12.1",
+    "jaraco.functools": "4.1.0",
+    "Jinja2": "3.1.6",
+    "wheel": "0.45.1",
+    "pyobjc-framework-ScreenTime": "12.1",
+    "pyobjc-framework-MetalPerformanceShaders": "12.1",
+    "widgetsnbextension": "4.0.15",
+    "referencing": "0.37.0",
+    "pyparsing": "3.3.2",
+    "pyobjc-framework-ShazamKit": "12.1",
+    "pandas": "2.3.3",
+    "pyobjc-framework-MLCompute": "12.1",
+    "pluggy": "1.5.0",
+    "jupyterlab_widgets": "3.0.16",
+    "pyobjc-framework-IntentsUI": "12.1",
+    "argon2-cffi-bindings": "25.1.0",
+    "pyobjc-framework-SecurityUI": "12.1",
+    "python-multipart": "0.0.20",
+    "pytest": "9.0.3",
+    "pyobjc-framework-MultipeerConnectivity": "12.1",
+    "geopy": "2.4.1",
+    "notebook": "7.5.5",
+    "MarkupSafe": "3.0.3",
+    "Werkzeug": "3.1.8",
+    "storage3": "2.28.0",
+    "pdfminer.six": "20251230",
+    "pure_eval": "0.2.3",
+    "pyroaring": "1.0.3",
+    "pyobjc-framework-CompositorServices": "12.1",
+    "pyobjc-framework-AdSupport": "12.1",
+    "deprecation": "2.1.0",
+    "distro": "1.9.0",
+    "pyobjc-framework-DataDetection": "12.1",
+    "tabulate": "0.10.0",
+    "opentelemetry-api": "1.41.1",
+    "flatbuffers": "25.12.19",
+    "opencv-python": "4.13.0.92",
+    "Pygments": "2.19.2",
+    "pyobjc-framework-InstallerPlugins": "12.1",
+    "rfc3986-validator": "0.1.1",
+    "pyobjc-framework-GameKit": "12.1",
+    "attrs": "26.1.0",
+    "pyobjc-framework-AVFoundation": "12.1",
+    "aiohappyeyeballs": "2.6.1",
+    "pathspec": "1.1.1",
+    "terminado": "0.18.1",
+    "opentelemetry-proto": "1.41.1",
+    "websockets": "15.0.1",
+    "jaraco.context": "0.0.0",
+    "requests-toolbelt": "1.0.0",
+    "docker": "7.1.0",
+    "pyobjc-framework-ThreadNetwork": "12.1",
+    "pyobjc-framework-SecurityInterface": "12.1",
+    "xlsxwriter": "3.2.9",
+    "pyobjc-framework-NaturalLanguage": "12.1",
+    "jupyter-lsp": "2.3.0",
+    "pdfplumber": "0.11.9",
+    "pyobjc-framework-AVKit": "12.1",
+    "pyobjc-framework-libdispatch": "12.1",
+    "httpx": "0.28.1",
+    "pyobjc-framework-NetFS": "12.1",
+    "lxml": "6.1.0",
+    "streamlit": "1.57.0",
+    "h2": "4.3.0",
+    "curl_cffi": "0.15.0",
+    "pyobjc-framework-AudioVideoBridging": "12.1",
+    "pyobjc-framework-VideoSubscriberAccount": "12.1",
+    "yfinance": "1.3.0",
+    "skops": "0.14.0",
+    "pydantic": "2.10.3",
+    "pyobjc-core": "12.1",
+    "brotlicffi": "1.2.0.0",
+    "langchain-openai": "1.1.14",
+    "pyasn1_modules": "0.4.2",
+    "async-lru": "2.3.0",
+    "googleapis-common-protos": "1.74.0",
+    "json5": "0.13.0",
+    "pyobjc-framework-CoreWLAN": "12.1",
+    "hpack": "4.1.0",
+    "pyobjc-framework-ColorSync": "12.1",
+    "tokenizers": "0.22.2",
+    "uvloop": "0.22.1",
+    "psutil": "7.2.2",
+    "conda-package-handling": "2.4.0",
+    "typer-slim": "0.20.0",
+    "pyiceberg": "0.11.0",
+    "opencv-contrib-python": "4.13.0.92",
+    "pydeck": "0.9.2",
+    "pyobjc-framework-ARKit": "12.1",
+    "korean_lunar_calendar": "0.4.0",
+    "pyobjc-framework-Contacts": "12.1",
+    "graphql-core": "3.2.8",
+    "pyobjc-framework-AuthenticationServices": "12.1",
+    "fastapi": "0.136.1",
+    "langgraph-checkpoint": "4.0.2",
+    "archspec": "0.2.5",
+    "typing-inspection": "0.4.2",
+    "frozendict": "2.4.6",
+    "annotated-types": "0.7.0",
+    "ruamel.yaml.clib": "0.2.14",
+    "pyobjc-framework-CoreAudioKit": "12.1",
+    "keyring": "25.7.0",
+    "transformers": "5.13.0",
+    "pyobjc-framework-iTunesLibrary": "12.1",
+    "cryptography": "46.0.5",
+    "arrow": "1.4.0",
+    "pyobjc-framework-DiskArbitration": "12.1",
+    "mypy_extensions": "1.1.0",
+    "rpds-py": "0.30.0",
+    "six": "1.17.0",
+    "xgboost": "3.2.0",
+    "yarl": "1.22.0",
+    "hyperframe": "6.1.0",
+    "pyobjc-framework-OSAKit": "12.1",
+    "pyzmq": "27.1.0",
+    "conda-libmamba-solver": "25.11.0",
+    "scikit-learn": "1.8.0",
+    "pyobjc-framework-AutomaticAssessmentConfiguration": "12.1",
+    "nltk": "3.9.4",
+    "xxhash": "3.6.0",
+    "pyobjc-framework-StoreKit": "12.1",
+    "wget": "3.2",
+    "pyobjc-framework-SearchKit": "12.1",
+    "sounddevice": "0.5.5",
+    "notebook_shim": "0.2.4",
+    "sqlparse": "0.5.5",
+    "pyobjc-framework-Speech": "12.1",
+    "annotated-doc": "0.0.4",
+    "fpdf2": "2.8.7",
+    "pyobjc-framework-ClassKit": "12.1",
+    "pyobjc-framework-CoreMedia": "12.1",
+    "comm": "0.2.3",
+    "pyasn1": "0.6.3",
+    "pyobjc-framework-MetalPerformanceShadersGraph": "12.1"
+  },
+  "data_manifest_sha256": "8c2441c940ff7eebdbab505517e531f28e15a01d8e640fd069c7fc475142c218",
+  "protocol_sha256": "97d597a5c44a88a16ff444eb7e61786701907b2cb10b68b89faed8b62dcbae79",
+  "reports": {
+    "results.xml": "473b532e9db8c0030988e99d230df6fd39f4666ec373a5f3fa4727b3046ec0ca",
+    "collected.txt": "a42371cef9ca88eb06d4dfd2661a317c9a6b423c432498e980e4c9e675e311aa",
+    "output.log": "0527a2468864954a18b4b3f177266c7f1af463784b47ff3a042602f817cd1062"
+  },
+  "status": "passed"
+}

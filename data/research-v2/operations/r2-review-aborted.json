@@ -1,0 +1,7 @@
+{
+  "status": "stopped",
+  "at": "2026-09-28T08:40:11.705534+00:00",
+  "reason": "Stopped outdated in-flight test process after outcome validator optimization; old process retained slow repeated full-calendar decoding, current source validates full bytes and reads only outcome Close columns. No seal from stopped tests.",
+  "elapsed_seconds": 96.35,
+  "passed_before_stop": 2
+}

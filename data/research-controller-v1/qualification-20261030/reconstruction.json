@@ -1,0 +1,104 @@
+{
+  "created_at": "2026-10-30T08:50:07.900385+00:00",
+  "kind": "post-evaluation verification supplement; no new research fitting/selection",
+  "registered_manifest_sha256": "165f599244614e49adddf93db7d14f18755dab83c5b9697d7eb1ba2224c50f99",
+  "registered_file_checks": 9,
+  "mismatches": [],
+  "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]",
+  "executable": "/Users/a/Downloads/ml-trade-engine/data/research-v2/clean-env/bin/python",
+  "platform": "macOS-26.3-arm64-arm-64bit-Mach-O",
+  "packages": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "21.0.0",
+    "threadpoolctl": "3.6.0",
+    "joblib": "1.5.3",
+    "pytest": "9.0.3"
+  },
+  "reconstructed_fits": [
+    {
+      "decision": "2025-01-02 00:00:00+00:00",
+      "scaler_mean": [
+        -1.1459403626678353,
+        -1.3900761520073839,
+        -0.9006491217558812,
+        -1.1745523078191997,
+        -1.2859594022228946,
+        -1.0387951157592215,
+        -1.23117757984732,
+        -1.4301068403118153,
+        -1.1423880166192486
+      ],
+      "scaler_var": [
+        0.027373838767423466,
+        0.1463430352906196,
+        0.023468090101958453,
+        0.09579241235303002,
+        0.21908273500276965,
+        0.10350987188422656,
+        0.33962073803333337,
+        0.4299108882231913,
+        0.3445025237068248
+      ],
+      "scaler_scale": [
+        0.16545041180795975,
+        0.3825480823251106,
+        0.15319298320079303,
+        0.30950349328081905,
+        0.4680627468649579,
+        0.32172950110959136,
+        0.5827698842882441,
+        0.655675901816737,
+        0.5869433735095958
+      ],
+      "n_samples_seen": 5412,
+      "maximum_probability_error": 1.1102230246251565e-16,
+      "n_forecasts": 2684,
+      "method": "reconstruct exact eligible rows and moments; apply already-fitted coefficients/intercept; no estimator fit"
+    },
+    {
+      "decision": "2025-07-01 00:00:00+00:00",
+      "scaler_mean": [
+        -1.1525895025124222,
+        -1.3759757487283073,
+        -0.9052466721104232,
+        -1.187514559477024,
+        -1.3639267820313739,
+        -1.0136382992419113,
+        -1.2561502654855734,
+        -1.4748627725059904,
+        -1.0847150953631686
+      ],
+      "scaler_var": [
+        0.028776832693764336,
+        0.1476088885203736,
+        0.022985782337290987,
+        0.14649865852626565,
+        0.2738184565231039,
+        0.1393609059224555,
+        0.35286197560237453,
+        0.4298787760807123,
+        0.3300538113026518
+      ],
+      "scaler_scale": [
+        0.16963735642176322,
+        0.38419902201902284,
+        0.1516106273890158,
+        0.382751431775592,
+        0.5232766539060422,
+        0.37331073641465967,
+        0.5940218645827564,
+        0.655651413542831,
+        0.5745030994717538
+      ],
+      "n_samples_seen": 8096,
+      "maximum_probability_error": 1.1102230246251565e-16,
+      "n_forecasts": 2816,
+      "method": "reconstruct exact eligible rows and moments; apply already-fitted coefficients/intercept; no estimator fit"
+    }
+  ],
+  "base_model_fits": 0,
+  "new_meta_model_fits": 0
+}

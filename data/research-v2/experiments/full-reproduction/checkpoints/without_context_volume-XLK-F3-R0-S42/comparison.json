@@ -1,0 +1,10 @@
+{
+  "trial": "without_context_volume-XLK-F3-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "343c20c49ebf04fce409788dedeae9606cd0db72ca9d2de7eea08e713de1dc63",
+  "expected_prediction_sha256": "4eb2bfc79a056a37136e7405390811b617644ef3e06d32fc4f88fe3ff577c36d",
+  "model_sha256": "c0b88d5d2517c731c573934b7e94e18482abd325257f165918e99f25a5779d0a"
+}

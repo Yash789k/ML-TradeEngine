@@ -1,0 +1,7 @@
+{
+  "tests": "/Users/a/Downloads/ml-trade-engine/tests/test_outcomes_r7_activation.py",
+  "tests_sha256": "e03e1674cae3f20754febe89bfada775140f66357ab2e719b96f28ebf7848923",
+  "sealed_manifest_sha256": "e891242d6ccb5bc84796a1b1cc4c3dc00de10327696c065e888baa9c0d3951ab",
+  "junit_sha256": "d7c79e40510465eb6528beb723585a95c904408668779fdc7b9428ccdd612222",
+  "passed": 5
+}

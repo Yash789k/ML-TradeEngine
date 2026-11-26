@@ -1,0 +1,31 @@
+{
+  "trial_id": "PILOT-TREND-V2-20260929",
+  "external_orders": false,
+  "deployment": "cash",
+  "shadow": "trend",
+  "state_consistency_errors": [],
+  "ledger_consistent": true,
+  "valid_observed_sessions": 0,
+  "expected_elapsed_sessions": 0,
+  "missing_sessions": [],
+  "label_complete_decisions": 0,
+  "required_sessions": 63,
+  "next_event": {
+    "id": "2026-09-29:daily",
+    "session": "2026-09-29",
+    "kind": "daily",
+    "due": "2026-09-29T20:30:00+00:00",
+    "ordinal": 1,
+    "hong_kong": "2026-09-30T04:30:00+08:00"
+  },
+  "terminal_observed_sessions": 0,
+  "terminal_required_sessions": 6,
+  "halted": false,
+  "prospective_status": "incomplete",
+  "limitations": [
+    "Local launch agent requires logged-in awake host; no wake guarantee",
+    "No external broker execution",
+    "Commissioning/replays never count as prospective",
+    "Missed sessions halt; no fabricated backfill"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "recorded_at": "2026-09-28T08:32:50.565960+00:00",
+  "references_read": [
+    {
+      "kind": "task",
+      "title": "Make trading research trustworthy",
+      "thread_id": "01a0e3a6-02fb-7723-bc3d-d66d3199afff",
+      "read_complete": true,
+      "use": "Historical claims verified separately against artifacts"
+    },
+    {
+      "kind": "task",
+      "title": "Audit quant trading pipeline",
+      "thread_id": "01a0e366-7089-7301-bed8-be5c83e6c518",
+      "read_complete": true,
+      "use": "Original defect context, not current execution instructions"
+    },
+    {
+      "kind": "pdf",
+      "path": "/Users/a/Downloads/ASLcontextSign_report.pdf",
+      "pages": 30,
+      "sha256": "0c2148d2de03dadd4d6e6a93f81d7485bc8da31a866c9d15c55d85412d6d14e8",
+      "use": "Coverage reference; no borrowed performance targets or authorship assertions"
+    },
+    {
+      "kind": "pdf",
+      "path": "output/pdf/ML_TradeEngine_Research.pdf",
+      "pages": 7,
+      "sha256": "2897fe86dfd38cbccabdc0daca5749a154df03d40d45326f10576db82aa5c0eb",
+      "use": "Preserved technical summary; expanded investigation in separate manuscript"
+    }
+  ],
+  "automation": {
+    "id": "trading-pilot-evidence-watch",
+    "status": "ACTIVE",
+    "interval": "hourly",
+    "role": "read-only observer; actionable changes only",
+    "collector_owner": "local.ml-trade-engine.collector-v2"
+  }
+}

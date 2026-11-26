@@ -1,0 +1,10 @@
+{
+  "trial": "without_momentum-NVDA-F1-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "25778c316e71b37de6fddafe3f5b7ee06eddd9cf67224639812ff0d30510a7b8",
+  "expected_prediction_sha256": "3732312cbea0b0a35c577e967fcde1e57f164ca9e1ebacccd7c8673f7ef5d327",
+  "model_sha256": "1b93d5e9062646bacb4f6b74481e563bcca5eb151ce56a5640efc1fb2e23f3af"
+}

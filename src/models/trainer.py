@@ -169,23 +169,6 @@ class ModelTrainer:
             (y == 2).mean() * 100,
         )
 
-        # Fast SHAP-based feature selection on a held-out 20 % slice
-        # (uses the same FeatureEngineer.select_features helper from Phase 02)
-        if len(X) >= 200 and top_n_features < len(feat_cols):
-            try:
-                from src.features.pipeline import FeatureEngineer
-                fe = FeatureEngineer()
-                df_sel = X.copy()
-                df_sel["label"] = y.values
-                selected = fe.select_features(
-                    df_sel, target_col="label", top_n=top_n_features
-                )
-                feat_cols = selected
-                X = X[feat_cols]
-                log.info("SHAP selected %d features.", len(feat_cols))
-            except Exception as exc:
-                log.warning("SHAP selection failed (%s); using all features.", exc)
-
         return X, y, feat_cols
 
     # ------------------------------------------------------------------
@@ -243,7 +226,11 @@ class ModelTrainer:
         X_arr = X.values.astype(np.float32)
         y_arr = y.values.astype(np.int64)
 
-        cw = compute_class_weights(y)
+        if embargo_days < horizon:
+            raise ValueError("embargo_days must be at least the forward label horizon")
+
+        if features.attrs.get("causality_version") != 2:
+            raise ValueError("Legacy or unversioned features: rebuild with the causal FeatureEngineer before training")
 
         splitter = WalkForwardSplit(
             n_splits     = n_splits,
@@ -285,13 +272,21 @@ class ModelTrainer:
                     te_idx[0], te_idx[-1], len(te_idx),
                 )
 
-                X_tr, y_tr = X_arr[tr_idx], y_arr[tr_idx]
-                X_te, y_te = X_arr[te_idx], y_arr[te_idx]
+                from src.features.pipeline import FeatureEngineer
+                fold_cols = feat_cols
+                if top_n_features < len(feat_cols):
+                    selection = X.iloc[tr_idx].copy()
+                    selection["label"] = y.iloc[tr_idx].to_numpy()
+                    fold_cols = FeatureEngineer().select_features(selection, target_col="label", top_n=top_n_features)
+                col_idx = [feat_cols.index(c) for c in fold_cols]
+                X_tr, y_tr = X_arr[tr_idx][:, col_idx], y_arr[tr_idx]
+                X_te, y_te = X_arr[te_idx][:, col_idx], y_arr[te_idx]
+                cw = compute_class_weights(pd.Series(y_tr))
 
                 # ── XGBoost ──────────────────────────────────────────
                 log.info("  [XGB] tuning %d trials …", n_trials_xgb)
                 xgb = XGBModel(n_trials=n_trials_xgb, random_state=random_state)
-                xgb.fit(X_tr, y_tr, class_weight_map=cw)
+                xgb.fit(X_tr, y_tr, class_weight_map=cw, label_horizon=horizon)
                 xgb_proba_te = xgb.predict_proba(X_te)
                 oos_preds_xgb[te_idx] = xgb_proba_te
                 best_xgb_params  = xgb.best_params_
@@ -304,7 +299,7 @@ class ModelTrainer:
                 # ── LightGBM ─────────────────────────────────────────
                 log.info("  [LGBM] tuning %d trials …", n_trials_lgbm)
                 lgbm = LGBMModel(n_trials=n_trials_lgbm, random_state=random_state)
-                lgbm.fit(X_tr, y_tr, class_weight_map=cw)
+                lgbm.fit(X_tr, y_tr, class_weight_map=cw, label_horizon=horizon)
                 lgbm_proba_te = lgbm.predict_proba(X_te)
                 oos_preds_lgbm[te_idx] = lgbm_proba_te
                 best_lgbm_params = lgbm.best_params_
@@ -322,8 +317,9 @@ class ModelTrainer:
                         n_epochs = lstm_epochs,
                         random_state = random_state,
                     )
-                    lstm.fit(X_tr, y_tr, class_weight_map=cw)
-                    lstm_proba_te = lstm.predict_proba(X_te)
+                    lstm.fit(X_tr, y_tr, class_weight_map=cw, label_horizon=horizon)
+                    context = X_arr[max(0, te_idx[0] - lstm_seq_len + 1):te_idx[-1] + 1][:, col_idx]
+                    lstm_proba_te = lstm.predict_proba(context)[-len(te_idx):]
                     oos_preds_lstm[te_idx] = lstm_proba_te
                     last_lstm = lstm
 
@@ -334,8 +330,7 @@ class ModelTrainer:
                     lstm_m = {"accuracy": 0.0, "f1_macro": 0.0}
 
                 # ── Ensemble ──────────────────────────────────────────
-                ens_weights = [xgb_m["f1_macro"], lgbm_m["f1_macro"], lstm_m["f1_macro"]] \
-                              if not skip_lstm else [0.5, 0.5, 0.0]
+                ens_weights = self._w(skip_lstm)
                 ens = EnsembleClassifier(weights=ens_weights)
                 ens_proba  = ens.predict_proba(
                     xgb_proba_te, lgbm_proba_te,
@@ -349,6 +344,12 @@ class ModelTrainer:
                 fold_r = {
                     "fold":        fold,
                     "train_rows":  len(tr_idx),
+                    "train_end": str(X.index[tr_idx[-1]]),
+                    "label_available_through": str(features.index[features.index.get_loc(X.index[tr_idx[-1]]) + horizon]),
+                    "test_end": str(X.index[te_idx[-1]]),
+                    "decision_start": str(X.index[te_idx[0]]),
+                    "feature_cols": fold_cols,
+                    "class_weights": cw,
                     "test_rows":   len(te_idx),
                     "elapsed_s":   elapsed,
                     "xgb":         xgb_m,
@@ -368,7 +369,7 @@ class ModelTrainer:
             tested_mask = ~np.isnan(oos_preds_xgb[:, 0])
             if tested_mask.sum() > 0:
                 y_oos      = y_arr[tested_mask]
-                ens_final  = EnsembleClassifier()
+                ens_final  = EnsembleClassifier(weights=self._w(skip_lstm))
                 oos_proba  = ens_final.predict_proba(
                     oos_preds_xgb[tested_mask],
                     oos_preds_lgbm[tested_mask],
@@ -406,7 +407,44 @@ class ModelTrainer:
                            str(oos_path), compression="snappy")
             log.info("OOS predictions saved → %s  (%d rows)", oos_path, len(oos_df))
 
-        # ── Save final models (retrained on all data) ─────────────────
+            # Per-model OOS probabilities — required to train/evaluate the
+            # MoE gating model (src/models/gating.py) without retraining.
+            per_model_df = pd.DataFrame(
+                {
+                    "xgb_p_down":  oos_preds_xgb[tested_mask, 0],
+                    "xgb_p_flat":  oos_preds_xgb[tested_mask, 1],
+                    "xgb_p_up":    oos_preds_xgb[tested_mask, 2],
+                    "lgbm_p_down": oos_preds_lgbm[tested_mask, 0],
+                    "lgbm_p_flat": oos_preds_lgbm[tested_mask, 1],
+                    "lgbm_p_up":   oos_preds_lgbm[tested_mask, 2],
+                    "lstm_p_down": oos_preds_lstm[tested_mask, 0],
+                    "lstm_p_flat": oos_preds_lstm[tested_mask, 1],
+                    "lstm_p_up":   oos_preds_lstm[tested_mask, 2],
+                    "true_label":  y_arr[tested_mask],
+                },
+                index = X.index[tested_mask],
+            )
+            pm_path = self.models_dir / ticker / "oos_predictions_per_model.parquet"
+            pq.write_table(pa.Table.from_pandas(per_model_df, preserve_index=True),
+                           str(pm_path), compression="snappy")
+            log.info("Per-model OOS predictions saved → %s", pm_path)
+
+        # Refit deployable bundles using only labels matured by the snapshot end.
+        if not fold_results:
+            raise ValueError("No eligible chronological training folds")
+        if top_n_features < len(feat_cols):
+            selection = X.copy()
+            selection["label"] = y.to_numpy()
+            feat_cols = FeatureEngineer().select_features(selection, target_col="label", top_n=top_n_features)
+        final_X = X[feat_cols].to_numpy(dtype=np.float32)
+        final_cw = compute_class_weights(y)
+        last_xgb = XGBModel(n_trials=n_trials_xgb, random_state=random_state).fit(
+            final_X, y_arr, class_weight_map=final_cw, label_horizon=horizon)
+        last_lgbm = LGBMModel(n_trials=n_trials_lgbm, random_state=random_state).fit(
+            final_X, y_arr, class_weight_map=final_cw, label_horizon=horizon)
+        if not skip_lstm:
+            last_lstm = LSTMModel(seq_len=lstm_seq_len, n_epochs=lstm_epochs, random_state=random_state).fit(
+                final_X, y_arr, class_weight_map=final_cw, label_horizon=horizon)
         model_paths = self._save_final_models(
             ticker, feat_cols, last_xgb, last_lgbm,
             last_lstm if not skip_lstm else None,
@@ -415,6 +453,13 @@ class ModelTrainer:
         elapsed_total = time.time() - t0
         results = {
             "ticker":           ticker,
+            "causality_version": 2,
+            "trained_through": str(features.index[-1]),
+            "feature_history_start": features.attrs.get("feature_history_start"),
+            "hmm_calibration_sha256": features.attrs.get("hmm_calibration_sha256"),
+            "ensemble_weights": self._w(skip_lstm),
+            "skip_lstm": skip_lstm,
+            "always_up_accuracy": float((y_arr[tested_mask] == 2).mean()),
             "horizon":          horizon,
             "threshold":        threshold,
             "n_folds":          len(fold_results),
@@ -432,9 +477,11 @@ class ModelTrainer:
         out_json.parent.mkdir(parents=True, exist_ok=True)
         with open(out_json, "w") as f:
             json.dump(
-                {k: v for k, v in results.items() if k != "fold_metrics"},
+                results,
                 f, indent=2, default=str,
             )
+        from src.models.bundle import seal_bundle
+        seal_bundle(out_json.parent)
         log.info("=== ModelTrainer.run(%s) done in %.0fs ===", ticker, elapsed_total)
         return results
 

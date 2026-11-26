@@ -1,0 +1,27 @@
+Model is not converging.  Current: 1352.5155791326874 is not greater than 1352.5259524288895. Delta is -0.010373296202033089
+2026/09/28 00:33:39 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/09/28 00:33:39 INFO mlflow.store.db.utils: Updating database tables
+2026/09/28 00:33:39 INFO mlflow.tracking.fluent: Experiment with name 'ml-trade-engine-phase03' does not exist. Creating a new experiment.
+{
+  "kind": "synthetic_operational_smoke_not_performance_evidence",
+  "capital": 10000.0,
+  "model_inference": {
+    "p_down": 0.4851767143746715,
+    "p_flat": 0.21748122848828474,
+    "p_up": 0.29734205713704365
+  },
+  "events": 200,
+  "fills": 40,
+  "reconciliation_max": 3.637978807091713e-12,
+  "metrics": {
+    "total_return": 0.0283,
+    "cagr": 0.1244,
+    "sharpe_ratio": 1.497,
+    "sortino_ratio": 2.413,
+    "max_drawdown": -0.0109,
+    "calmar_ratio": 11.391,
+    "volatility": 0.0464,
+    "n_days": 60
+  },
+  "external_orders": 0
+}

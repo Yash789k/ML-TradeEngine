@@ -72,6 +72,8 @@ def parse_args() -> argparse.Namespace:
         "--tickers", nargs="+", default=None, metavar="TICK",
         help="Ticker list (default: AAPL MSFT GOOGL SPY QQQ).",
     )
+    run_p.add_argument("--capital", type=float, default=10000., help="Local simulated initial capital")
+    run_p.add_argument("--state", default="data/local-paper/account.sqlite", help="Durable local account state")
     run_p.add_argument(
         "--dry-run", action="store_true",
         help="Generate signals but do NOT submit any orders.",
@@ -87,6 +89,17 @@ def parse_args() -> argparse.Namespace:
     run_p.add_argument(
         "--max-heat", type=float, default=0.80,
         help="Max portfolio heat fraction (default 0.80).",
+    )
+    run_p.add_argument(
+        "--policy", action="store_true",
+        help="Enable the dynamic policy layer (regime/vol-adaptive "
+             "confidence threshold, ATR stop, and eligibility).",
+    )
+    run_p.add_argument(
+        "--strategy-mode", choices=["ensemble", "meta"], default="ensemble",
+        help="'ensemble' = raw per-ticker ML ensemble (default, thin/negative "
+             "standalone edge per Phase 06D). 'meta' = regime-gated "
+             "meta-strategy. Both modes remain exploratory; execution is local only.",
     )
 
     # ── status ────────────────────────────────────────────────────────────
@@ -122,6 +135,10 @@ def cmd_run(args: argparse.Namespace) -> None:
         confidence_threshold = args.confidence,
         max_portfolio_heat   = args.max_heat,
         dry_run              = args.dry_run,
+        use_policy           = args.policy,
+        strategy_mode        = args.strategy_mode,
+        initial_capital      = args.capital,
+        state_path           = args.state,
     )
 
     result = engine.run(force_refresh=not args.no_refresh)
@@ -133,9 +150,14 @@ def cmd_run(args: argparse.Namespace) -> None:
 
     print(f"\n  Signals ({len(result.signals)}):")
     for ticker, sig in result.signals.items():
+        extra = ""
+        if getattr(sig, "strategy_mode", "ensemble") == "meta":
+            extra = f"  selected={sig.selected_strategy}"
+        else:
+            extra = f"  kelly={sig.kelly_frac:.3f}"
         print(
             f"    {ticker:<8}  {sig.label:<5}  conf={sig.confidence:.3f}"
-            f"  kelly={sig.kelly_frac:.3f}  close=${sig.close:.2f}"
+            f"{extra}  close=${sig.close:.2f}"
         )
 
     if result.orders:
@@ -144,6 +166,9 @@ def cmd_run(args: argparse.Namespace) -> None:
             if order is None:
                 print(f"    {ticker:<8}  [dry_run — no order]")
             else:
+                if isinstance(order, dict):
+                    print(f"    {ticker}  {order['side']}  qty={order['qty']:.4f}  {order['status']}")
+                    continue
                 status_str = order.status if order.ok else f"ERROR: {order.error}"
                 print(
                     f"    {ticker:<8}  {order.side:<5}  qty={order.qty:.4f}"
@@ -154,6 +179,11 @@ def cmd_run(args: argparse.Namespace) -> None:
         print(f"\n  Skipped ({len(result.skipped)}):")
         for ticker, reason in result.skipped:
             print(f"    {ticker:<8}  {reason}")
+
+    if result.errors:
+        for ticker, error in result.errors:
+            log.error("%s: %s", ticker, error)
+        raise SystemExit(1)
 
     if result.account_equity:
         print(f"\n  Account equity: ${result.account_equity:,.2f}")

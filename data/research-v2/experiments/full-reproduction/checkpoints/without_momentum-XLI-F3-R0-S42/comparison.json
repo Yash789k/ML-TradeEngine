@@ -1,0 +1,10 @@
+{
+  "trial": "without_momentum-XLI-F3-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "a9c59476415188e72f3bd02fd5e60b9796d0fcd756b2aed503ba7362df1dfc6d",
+  "expected_prediction_sha256": "594b402a302279e97aeedeb32e44bbdfe6253cbb432f80f0aecfc3ad97dc6955",
+  "model_sha256": "93db2a4e693ec8a5136beac755b8220098a46ccc32ba3fe16e122d5c89db05f6"
+}

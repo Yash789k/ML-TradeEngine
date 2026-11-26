@@ -1,0 +1,26 @@
+% Native editable figure; frozen statistics 0d291b4aebf8c524dc6705d872c070feb990e86a1cebbd59a758f400b240c952
+\begin{tikzpicture}\begin{groupplot}[group style={group size=1 by 3,vertical sep=9mm},width=.90\linewidth,height=4.1cm,scaled y ticks=false,y tick label style={/pgf/number format/fixed,/pgf/number format/precision=2},xmin=0,xmax=685,xtick={0,125,251,376,502,625,685},xticklabels={Jan24,Jul24,Jan25,Jul25,Jan26,Jul26,Sep26}]
+\nextgroupplot[ylabel={Equity (USD)},legend columns=3,legend style={at={(.5,1.06)},anchor=south},xticklabels=\empty]
+\addplot+[blue,mark=none,thin] table[col sep=comma,x=session_index,y=equity] {data/portfolio-trend.csv};
+\addlegendentry{trend}
+\addplot+[orange,mark=none,thin] table[col sep=comma,x=session_index,y=equity] {data/portfolio-ml.csv};
+\addlegendentry{ml}
+\addplot+[teal,mark=none,thin] table[col sep=comma,x=session_index,y=equity] {data/portfolio-adaptive_hybrid.csv};
+\addlegendentry{adaptive\_hybrid}
+\addplot+[black,mark=none,thin] table[col sep=comma,x=session_index,y=equity] {data/portfolio-equal_weight.csv};
+\addlegendentry{equal\_weight}
+\addplot+[gray,mark=none,thin] table[col sep=comma,x=session_index,y=equity] {data/portfolio-cash.csv};
+\addlegendentry{cash}
+\nextgroupplot[ylabel={Drawdown (fraction)},xticklabels=\empty]
+\addplot+[blue,mark=none,thin] table[col sep=comma,x=session_index,y=drawdown] {data/portfolio-trend.csv};
+\addplot+[orange,mark=none,thin] table[col sep=comma,x=session_index,y=drawdown] {data/portfolio-ml.csv};
+\addplot+[teal,mark=none,thin] table[col sep=comma,x=session_index,y=drawdown] {data/portfolio-adaptive_hybrid.csv};
+\addplot+[black,mark=none,thin] table[col sep=comma,x=session_index,y=drawdown] {data/portfolio-equal_weight.csv};
+\addplot+[gray,mark=none,thin] table[col sep=comma,x=session_index,y=drawdown] {data/portfolio-cash.csv};
+\nextgroupplot[ylabel={Gross exposure}]
+\addplot+[blue,mark=none,thin] table[col sep=comma,x=session_index,y=exposure] {data/portfolio-trend.csv};
+\addplot+[orange,mark=none,thin] table[col sep=comma,x=session_index,y=exposure] {data/portfolio-ml.csv};
+\addplot+[teal,mark=none,thin] table[col sep=comma,x=session_index,y=exposure] {data/portfolio-adaptive_hybrid.csv};
+\addplot+[black,mark=none,thin] table[col sep=comma,x=session_index,y=exposure] {data/portfolio-equal_weight.csv};
+\addplot+[gray,mark=none,thin] table[col sep=comma,x=session_index,y=exposure] {data/portfolio-cash.csv};
+\end{groupplot}\end{tikzpicture}

@@ -1,0 +1,10 @@
+% Native editable figure; frozen statistics 0d291b4aebf8c524dc6705d872c070feb990e86a1cebbd59a758f400b240c952
+\begin{tikzpicture}
+\begin{axis}[width=.88\linewidth,height=5.6cm,ybar,bar width=13pt,ymin=0,xtick={0,1,2,3},xticklabels={50\% fitting rows,75\% fitting rows,Full 1008 window,504 window},xlabel={Chronological training design},ylabel={Log loss},legend columns=2,legend style={at={(.5,1.02)},anchor=south},enlarge x limits=.18]
+\addplot+[teal] coordinates {(0,0.885257437617) (1,0.899655741498) (2,0.904358782174) (3,0.887661478304)};
+\addlegendentry{Training}
+\addplot+[orange] coordinates {(0,1.11388215622) (1,1.09560860818) (2,1.07734549646) (3,1.12152659756)};
+\addlegendentry{Outer validation}
+
+\end{axis}
+\end{tikzpicture}

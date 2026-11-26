@@ -1,0 +1,10 @@
+{
+  "trial": "without_trend-SPY-F0-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "63858134f9b80f9e671a33d07d100f39017791257835472877e49cc3d74f976a",
+  "expected_prediction_sha256": "5a9f9c1cf3c2b5a5eebe8702ffae1b830b2aefbfcf58fbcb741b4d6ce0829b6a",
+  "model_sha256": "0869938d6fd9866e7671895d46fd358c274044b6ec28f6791f5ce5fce05b2725"
+}

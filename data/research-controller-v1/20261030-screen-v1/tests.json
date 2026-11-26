@@ -1,0 +1,12 @@
+{
+  "recorded_at": "2026-10-30T08:47:36.844318+00:00",
+  "command": "data/research-v2/clean-env/bin/python -B -m pytest tests/controller_v1 -q -p no:cacheprovider",
+  "result": "11 passed in 4.73s",
+  "exit_status": 0,
+  "sources": {
+    "research_controller_v1/screen.py": "e423b2d46f26be527dec7fcb3f323e7790b1cd006b73796770508f5fa93f2a69",
+    "research_controller_v1/__init__.py": "7a3f2d5ccabd8c5d13417974b601acdbe18071b5a656f8f8230126ddd21f81af",
+    "tests/controller_v1/test_screen.py": "cea0ccd9df4e780f778b081bc489594a6e8024113566b1e9b75e9bd60d32f9c7"
+  },
+  "scope": "delay/strict t+6, future mutation, cross-section mean, idempotent feedback, invalid probabilities, checksum tamper, bootstrap/Holm oracles, two mature stack refits and train-only scaling"
+}

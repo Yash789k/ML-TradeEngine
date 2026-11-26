@@ -1,0 +1,11 @@
+{
+  "command": "data/research-v2/clean-env/bin/python -B -m pytest tests/test_week1_r6_report.py -q --junitxml=data/research-week1-r6/report-qualified-tests.xml",
+  "passing": 13,
+  "junit_sha256": "2708d35f796baf9c5b684a01ec307e0e68c30c0663e267cf417989cc35423d14",
+  "source": {
+    "research_week1_r6/report.py": "1c88335c06a979ac6c22b20cdb12359c92dd58caae33c67e66b0155ca1062f96",
+    "tests/test_week1_r6_report.py": "0b5f800a0687922d217cd4f51b3e67d2a49f37a8263a1efe99c52cbdc6745c8b",
+    "research_v2/diagnostics.py": "6dd72acb64ed9b6944314ba2015b93c096cf32f36927a582b1ebfbe1d598e8ef"
+  },
+  "installation_report": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r6/reports/installation-20261022/report.json"
+}

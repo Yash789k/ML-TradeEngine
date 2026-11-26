@@ -1,0 +1,10 @@
+{
+  "trial": "transfer-TLT-F1-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "97a881856735d4183bb7aad636267c341e20bfe9c28eaf099408af7fb336da5c",
+  "expected_prediction_sha256": "92dae21a9bda945e3f24e3f3851cf58acb88a74474882a1ca27010dbc9601628",
+  "model_sha256": "ae2a43692f17d843e09a84a4266b5c9b87d1214fe347477668a68cc9687837e8"
+}

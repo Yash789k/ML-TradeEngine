@@ -1,0 +1,10 @@
+{
+  "trial": "without_context_volume-AAPL-F2-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "063e63a735487c0a03a5aae593431177f02b1550f7d86c38d9ce5e7c35293aa6",
+  "expected_prediction_sha256": "aafccfb6375ed42a79273914c9b7ae2ddd74647aab0a8b21a5645098cf7c19a6",
+  "model_sha256": "a088bec52773142d238eb38c8d1d5326d49e7fd76aed51dac95afa08c7131f41"
+}

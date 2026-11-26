@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>local.ml-trade-engine.awake-20261001</string>
+	<key>ProcessType</key>
+	<string>Background</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Users/a/Downloads/ml-trade-engine/data/research-v2/clean-env/bin/python</string>
+		<string>-B</string>
+		<string>/Users/a/Downloads/ml-trade-engine/scripts/week1_r2/keep_awake_tonight.py</string>
+		<string>--until</string>
+		<string>2026-10-02T06:00:00+08:00</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+</dict>
+</plist>

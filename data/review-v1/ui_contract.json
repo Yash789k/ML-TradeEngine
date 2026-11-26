@@ -1,0 +1,138 @@
+{
+  "base_url": "http://127.0.0.1:8510",
+  "default_case": "r2-2026-10-01",
+  "default_symbol": "NVDA",
+  "launch": "python -B -m streamlit run app_review.py --server.port 8510 --server.address 127.0.0.1 --server.headless true --browser.gatherUsageStats false",
+  "port": 8510,
+  "provenance_labels": {
+    "reconstructed": "RECONSTRUCTED \u00b7 recomputed now from inputs recorded at the time",
+    "recorded": "RECORDED \u00b7 written by the scheduled collector at the time",
+    "simulated": "SIMULATED \u00b7 replay or demo run, never a pilot observation"
+  },
+  "query_parameters": {
+    "case": "walkthrough case id, see data/review-v1/walkthrough/index.json",
+    "step": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "symbol": "one of the 22 instruments",
+    "view": [
+      "overview",
+      "data",
+      "walkthrough",
+      "classifiers",
+      "regimes",
+      "sentiment",
+      "performance",
+      "live",
+      "report"
+    ]
+  },
+  "ready_marker": {
+    "attributes": [
+      "data-view",
+      "data-case",
+      "data-symbol",
+      "data-step"
+    ],
+    "meaning": "Rendered last on every run; present once the selected view has finished drawing.",
+    "selector": "#review-ready"
+  },
+  "schema": 1,
+  "views": [
+    {
+      "id": "overview",
+      "label": "1 \u00b7 Overview",
+      "title": "What this system is and what the results mean"
+    },
+    {
+      "id": "data",
+      "label": "2 \u00b7 Data collected",
+      "title": "Data collected and how it was validated"
+    },
+    {
+      "id": "walkthrough",
+      "label": "3 \u00b7 Decision walkthrough",
+      "title": "One logged decision, from inputs to outcome"
+    },
+    {
+      "id": "classifiers",
+      "label": "4 \u00b7 Classifier statistics",
+      "title": "Classifier performance against the class-frequency prior"
+    },
+    {
+      "id": "regimes",
+      "label": "5 \u00b7 Market regimes (HMM)",
+      "title": "Rolling hidden Markov model of market regimes"
+    },
+    {
+      "id": "sentiment",
+      "label": "6 \u00b7 Sentiment link",
+      "title": "Sentiment, model outputs and trade decisions"
+    },
+    {
+      "id": "performance",
+      "label": "7 \u00b7 Trading performance",
+      "title": "Trading performance against benchmarks"
+    },
+    {
+      "id": "live",
+      "label": "8 \u00b7 Run the pipeline",
+      "title": "Run the current pipeline on the latest completed session"
+    },
+    {
+      "id": "report",
+      "label": "9 \u00b7 Report and evidence",
+      "title": "Progress report, audit and reproduction"
+    }
+  ],
+  "walkthrough_steps": [
+    {
+      "id": "inputs",
+      "n": 1,
+      "provenance": "recorded",
+      "title": "Market data collected"
+    },
+    {
+      "id": "features",
+      "n": 2,
+      "provenance": "reconstructed",
+      "title": "Features computed from those bars"
+    },
+    {
+      "id": "models",
+      "n": 3,
+      "provenance": "recorded",
+      "title": "Classifier outputs and market regime"
+    },
+    {
+      "id": "decision",
+      "n": 4,
+      "provenance": "recorded",
+      "title": "Decision rule and risk checks"
+    },
+    {
+      "id": "order",
+      "n": 5,
+      "provenance": "recorded",
+      "title": "Order created"
+    },
+    {
+      "id": "fill",
+      "n": 6,
+      "provenance": "recorded",
+      "title": "Fill and account after the next close"
+    },
+    {
+      "id": "outcome",
+      "n": 7,
+      "provenance": "reconstructed",
+      "title": "Outcome and profit or loss"
+    }
+  ]
+}

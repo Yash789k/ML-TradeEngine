@@ -1,0 +1,1 @@
+JSON.stringify(Array.from(document.querySelectorAll('button')).filter(e=>/log|output/i.test(e.innerText+' '+e.getAttribute('aria-label'))).map(e=>({text:e.innerText,aria:e.getAttribute('aria-label')})))

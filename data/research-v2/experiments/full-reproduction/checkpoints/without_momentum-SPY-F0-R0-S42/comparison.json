@@ -1,0 +1,10 @@
+{
+  "trial": "without_momentum-SPY-F0-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "1414d07327d45d9164c18cf4d9480eaa9295e72c77db8b2bfd853f74ba089fa0",
+  "expected_prediction_sha256": "ea13c204024d90ce3918b0f6115efc648bce8ecee3c94f4cbd254f72008025a1",
+  "model_sha256": "4050cba10fc562bb8ffde5e39f496ba4133522d7e6fce093dd8b6862532048ad"
+}

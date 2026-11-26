@@ -50,7 +50,7 @@ class OrderResult:
 
     @property
     def ok(self) -> bool:
-        return self.error is None
+        return self.error is None and self.status not in {"error", "rejected", "canceled", "expired"}
 
 
 @dataclass

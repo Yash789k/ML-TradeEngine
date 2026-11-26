@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "config": {
+      "history": 1008,
+      "fraction": 1.0,
+      "remove": "momentum",
+      "seed": 42,
+      "calibration": 63,
+      "gate": 63,
+      "cadence": 63
+    },
+    "decision": "2025-01-02 00:00:00+00:00",
+    "fitting_symbols": [
+      "GOOGL"
+    ],
+    "boundaries": [
+      {
+        "symbol": "GOOGL",
+        "fit_start": "2020-12-18 00:00:00+00:00",
+        "fit_end": "2024-06-05 00:00:00+00:00",
+        "fit_endpoint": "2024-06-13 00:00:00+00:00",
+        "calibration_start": "2024-06-14 00:00:00+00:00",
+        "calibration_end": "2024-09-13 00:00:00+00:00",
+        "calibration_endpoint": "2024-09-23 00:00:00+00:00",
+        "gate_start": "2024-09-24 00:00:00+00:00",
+        "gate_end": "2024-12-20 00:00:00+00:00",
+        "gate_endpoint": "2024-12-31 00:00:00+00:00",
+        "n_fit": 870,
+        "n_cal": 63,
+        "n_gate": 63
+      }
+    ],
+    "n_fit": 870,
+    "n_cal": 63,
+    "n_gate": 63,
+    "temperature": 2.0,
+    "gate_same": false,
+    "gate_separate": false,
+    "calibration_loss": 1.0642687934201014,
+    "calibration_prior_loss": 1.026016287460832,
+    "gate_loss": 1.0839389331359053,
+    "gate_prior_loss": 1.0220558120594554,
+    "train_log_loss": 0.9454793143213313,
+    "train_accuracy": 0.6724137931034483,
+    "fit_seconds": 0.1824700420111185,
+    "training_hash": "85990240d7b3821c219b15b529bd7baabde2918ef1b6381db4f4fbbdc747ef89"
+  },
+  "sha256": "de8eebf5dbbb0b8bfd8b42a39a2c9e97b91432d6e8d38c198fde8765fbe9f068"
+}

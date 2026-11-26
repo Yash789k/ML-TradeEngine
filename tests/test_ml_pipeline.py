@@ -286,10 +286,9 @@ def test_lstm_smoke_fit_predict(tiny_xy):
     model.fit(X, y)
     proba = model.predict_proba(X)
     assert proba.shape == (80, 3), f"Expected (80,3), got {proba.shape}"
-    # First seq_len-1 rows get uniform prior
-    assert np.allclose(proba[:4].sum(axis=1), 1.0, atol=1e-5)
-    # All rows should be valid probabilities
-    assert np.allclose(proba.sum(axis=1), 1.0, atol=1e-5)
+    # Unavailable sequence history must be explicit.
+    assert np.isnan(proba[:4]).all()
+    assert np.allclose(proba[4:].sum(axis=1), 1.0, atol=1e-5)
 
 
 # ---------------------------------------------------------------------------

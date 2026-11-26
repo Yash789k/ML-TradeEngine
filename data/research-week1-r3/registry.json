@@ -1,0 +1,19 @@
+{
+  "id": "R12-WEEK1-R3",
+  "registered_protocol": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r3/protocol.json",
+  "active_trial": "PILOT-TREND-WEEK1-R3-20261012",
+  "superseded_trial": "PILOT-TREND-WEEK1-R2-20261001",
+  "status": "registered_unobserved",
+  "decision_sessions": 3,
+  "outcome_tail_sessions": 6,
+  "decision_dates": [
+    "2026-10-12",
+    "2026-10-13",
+    "2026-10-14"
+  ],
+  "final_outcome_session": "2026-10-22",
+  "analysis": "descriptive only",
+  "preserved_parent_halt": true,
+  "historical_experiments_unchanged": true,
+  "readiness_approved": false
+}

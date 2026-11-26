@@ -1,0 +1,112 @@
+% Review-only insertion. Generated from a validated report; see evidence.json.
+% Requires the existing manuscript's booktabs, array and xurl packages.
+\subsection{Interrupted prospective observations: interim update}
+\label{sec:prospective-r6-interim}
+
+At the post-close review for the US 22 October 2026 session, the study contained
+five valid prospective decision dates: 1, 2, 14, 15 and 22 October. These dates
+belong to three separate simulated-account segments (r2, r4 and r6). They are
+not five consecutive successful sessions. Commissioning previews, controlled
+replays, diagnostic provider reads and follow-up outcome marks contribute no
+additional decision dates. Each new segment was registered before its decision
+window with fresh capital; no missed decision was reconstructed retrospectively.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Prospective coverage at the interim cutoff. Missed dates refer to
+registered decisions before each supersession; cancelled future dates are excluded.}
+\label{tab:interrupted-coverage-r6}
+\begin{tabular}{@{}lp{29mm}rp{43mm}@{}}
+\toprule
+Trial & Valid US dates & Count & Missing or rejected dates \\
+\midrule
+Original week 1 & None & 0 & 29--30 September \\
+r2 & 1--2 October & 2 & 5--7 October \\
+r3 & None & 0 & 12--13 October \\
+r4 & 14--15 October & 2 & 16 October \\
+r5 & None & 0 & 21 October: invalid JPM OHLC \\
+r6 & 22 October & 1 & None at this cutoff \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The r6 scheduler started its scheduled collection at 04:30:48 HKT on
+23 October and completed at 04:31:09. All 22 instruments passed validation on
+the first attempt. The watchdog confirmed the reconciled receipt at 05:30:48;
+the two retry events correctly recognized the existing receipt and performed
+no duplicate decision. Both fresh accounts had equity and cash of
+\$10,000.00, zero exposure and zero reconciliation residual. The shadow account
+reserved \$4,126.18 for pending simulated execution. Its first decision is
+therefore not evidence of realized investment performance. Deployment remains
+cash and external broker orders remain disabled.
+
+The preceding r5 failure remains part of the operational evidence. Yahoo's
+saved JPM opening price exceeded its daily high. The validator rejected the
+batch, but the prior error classification prevented bounded provider retries.
+A later diagnostic received a corrected record; its publication time within
+the original retry window is unknown. R6 retains strict validation and permits
+only the existing retries for a range error confined to the newly completed
+provider bar. Historical corruption, nonfinite inputs and saved-snapshot
+integrity errors remain failures. This successful r6 attempt did not exercise
+that retry path in production; its recovery evidence remains controlled fault
+injection. No frozen models, portfolio policy or forecast horizon were retuned.
+
+Three decision dates (1, 2 and 14 October) have mature labels, comprising
+66 instrument-date rows. These outcomes were derived from the validated
+22 October snapshot in the report only; archived account states were not
+rewritten. The 15 and 22 October decisions remain outcome-pending.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Descriptive interim forecast scores on 66 labeled rows from three
+dates. Lower log loss and Brier score are better. No inferential test is reported.}
+\label{tab:r6-interim-prediction}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Predictor & Accuracy & Macro F1 & Log loss & Brier score \\
+\midrule
+Hybrid & 28.7879\% & 0.2150 & 1.0978 & 0.6676 \\
+Training prior & 31.8182\% & 0.2107 & 1.1013 & 0.6724 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The hybrid's lower interim probability losses coexist with lower classification
+accuracy than the prior. Three dates and correlated instruments cannot establish
+statistical power, stable predictive superiority or a trading edge. The partial
+label set must not be presented as an evaluation of all five decisions.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Separate segment accounts at their last actual receipt. Returns are
+relative to each segment's own \$10,000 capital; they are never compounded
+across restarts or across unobserved gaps.}
+\label{tab:r6-interim-accounts}
+\begin{tabular}{@{}llrr@{}}
+\toprule
+Segment & Last receipt & Trend shadow & Cash deployment \\
+\midrule
+r2 & 2 October & -0.0604\% & 0.0000\% \\
+r4 & 15 October & -0.0601\% & 0.0000\% \\
+r6 & 22 October & 0.0000\% & 0.0000\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The active continuation has completed its registered decision, but none of its
+six terminal receipts has yet occurred. The outcome-only sessions are
+23, 26, 27, 28, 29 and 30 October; they may settle pending simulated fills and
+mark existing accounts, but may not generate new strategy targets. Final
+collection is scheduled for 31 October at 04:30 HKT, followed by the 05:30
+watchdog. Final freezing requires all five mature outcomes, six valid new
+terminal receipts, reconciled active accounts and no unresolved active halt.
+These gates remain pending. The interrupted study supplies descriptive
+operational evidence, not approval of sustained reliability, profitability or
+broker deployment.
+
+\paragraph{Evidence provenance.}
+The report is stored in
+\path{data/research-week1-r6/reports/week-close-20261023T0538HKT/}.
+The registered release, immutable decision and watchdog receipts, and retained
+failure records are linked by SHA256 in the accompanying evidence manifest.
+The original r5 failure and all earlier trials remain preserved.

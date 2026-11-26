@@ -1,0 +1,333 @@
+{
+  "cross_check": {
+    "counts_equal": true,
+    "max_abs_metric_difference": 2.220446049250313e-16,
+    "passed": true,
+    "reference": "data/research-v2/tables/diag_forecast_summary.csv",
+    "rows_compared": 15
+  },
+  "earlier_studies": {
+    "controller_screen": {
+      "dates": 250,
+      "models": {
+        "fixed_mixture": {
+          "accuracy": 0.3996363636363636,
+          "log_loss": 1.098254659984461
+        },
+        "hedge": {
+          "accuracy": 0.42127272727272724,
+          "log_loss": 1.062423669465532
+        },
+        "prior": {
+          "accuracy": 0.4265454545454545,
+          "log_loss": 1.0631096686986956
+        },
+        "stack": {
+          "accuracy": 0.44236363636363635,
+          "log_loss": 1.0598512464979408
+        },
+        "uniform3": {
+          "accuracy": 0.41309090909090906,
+          "log_loss": 1.0725567665128248
+        }
+      },
+      "name": "Controller screen of 30 October 2026",
+      "observations": 5500,
+      "source": "data/research-controller-v1/20261030-screen-v1/summary.json",
+      "versus_prior": {
+        "hedge": {
+          "ci_high": 0.004130320200943963,
+          "ci_low": -0.006426416876704418,
+          "effect": -0.0006859992331638569,
+          "p_holm": 1.0
+        },
+        "stack": {
+          "ci_high": 0.012062926753513207,
+          "ci_low": -0.017410189584917683,
+          "effect": -0.0032584222007551495,
+          "p_holm": 1.0
+        }
+      },
+      "window": "calendar 2025"
+    },
+    "study_848": {
+      "dates": 252,
+      "difference": {
+        "block": 10,
+        "ci_high": 0.0236651554427272,
+        "ci_low": 0.0030480872602923,
+        "effect": 0.0135461882893658,
+        "p_holm": 0.0999500249875062
+      },
+      "mixture": {
+        "accuracy": 0.4013347763347763,
+        "log_loss": 1.0773454964628766
+      },
+      "name": "Controlled 848-trial study (research-v2)",
+      "observations": 5544,
+      "prior": {
+        "accuracy": 0.4218975468975469,
+        "log_loss": 1.0637993081735106
+      },
+      "source": "data/research-v2/tables/exp_predictive.csv",
+      "window": "four 63-session blocks in 2024 and 2025"
+    }
+  },
+  "history": {
+    "first": "2024-01-02",
+    "last": "2026-09-17",
+    "n": 14960,
+    "sessions": 680,
+    "source": "data/releases/2026-09-28-adaptive/experiment",
+    "symbols": 22
+  },
+  "inference": "2000 circular date blocks of length 10; all instruments on a date stay together; percentile interval",
+  "label_contract": {
+    "classes": {
+      "DOWN": "return < -1%",
+      "FLAT": "-1% <= return <= +1%",
+      "UP": "return > +1%"
+    },
+    "decision": "information cutoff at the XNYS close of session t",
+    "entry": "close of session t+1 (first permissible execution)",
+    "exit": "close of session t+6",
+    "forward_return": "close[t+6] / close[t+1] - 1 on dividend/split-adjusted prices",
+    "note": "This is the repository's verified contract, not the proposal's next-open, cost-and-volatility label."
+  },
+  "models": {
+    "hybrid": "Equal average after temperature calibration: the forecast the pilot records",
+    "linear": "Logistic regression (C = 0.1) on 17 standardised price and volume features",
+    "prior": "Class-frequency prior: each class's share of the training window, same answer every day until the next refit",
+    "raw_mix": "Equal average of the two, before calibration",
+    "tree": "Histogram gradient-boosted trees (100 rounds, 7 leaves)"
+  },
+  "profile": {
+    "all": {
+      "first": "2024-01-02",
+      "label_share": {
+        "DOWN": 0.293048128342246,
+        "FLAT": 0.28903743315508024,
+        "UP": 0.4179144385026738
+      },
+      "last": "2026-09-17",
+      "n": 14960,
+      "prior": {
+        "mean_probability": {
+          "DOWN": 0.31998647892293747,
+          "FLAT": 0.27111523790403536,
+          "UP": 0.40889828317302723
+        },
+        "mean_top_probability": 0.4287815669240082,
+        "predicted_class_share": {
+          "DOWN": 0.03649732620320856,
+          "FLAT": 0.20621657754010694,
+          "UP": 0.7572860962566845
+        }
+      },
+      "sessions": 680
+    },
+    "audit": {
+      "first": "2026-07-13",
+      "label_share": {
+        "DOWN": 0.33238636363636365,
+        "FLAT": 0.3087121212121212,
+        "UP": 0.35890151515151514
+      },
+      "last": "2026-09-17",
+      "n": 1056,
+      "prior": {
+        "mean_probability": {
+          "DOWN": 0.2994675854104182,
+          "FLAT": 0.28087078119074704,
+          "UP": 0.4196616333988348
+        },
+        "mean_top_probability": 0.4379384717481987,
+        "predicted_class_share": {
+          "DOWN": 0.0,
+          "FLAT": 0.20928030303030304,
+          "UP": 0.790719696969697
+        }
+      },
+      "sessions": 48
+    },
+    "development": {
+      "first": "2024-01-02",
+      "label_share": {
+        "DOWN": 0.2789750090546903,
+        "FLAT": 0.29246649764578053,
+        "UP": 0.42855849329952916
+      },
+      "last": "2025-12-31",
+      "n": 11044,
+      "prior": {
+        "mean_probability": {
+          "DOWN": 0.3226266513221084,
+          "FLAT": 0.2706810569285584,
+          "UP": 0.40669229174933325
+        },
+        "mean_top_probability": 0.4274887212964256,
+        "predicted_class_share": {
+          "DOWN": 0.03196305686345527,
+          "FLAT": 0.21414342629482072,
+          "UP": 0.753893516841724
+        }
+      },
+      "sessions": 502
+    },
+    "selection": {
+      "first": "2026-01-02",
+      "label_share": {
+        "DOWN": 0.3328671328671329,
+        "FLAT": 0.26853146853146853,
+        "UP": 0.3986013986013986
+      },
+      "last": "2026-07-10",
+      "n": 2860,
+      "prior": {
+        "mean_probability": {
+          "DOWN": 0.31736755849383835,
+          "FLAT": 0.2691897976880912,
+          "UP": 0.4134426438180704
+        },
+        "mean_top_probability": 0.4303929290277413,
+        "predicted_class_share": {
+          "DOWN": 0.06748251748251748,
+          "FLAT": 0.17447552447552447,
+          "UP": 0.7580419580419581
+        }
+      },
+      "sessions": 130
+    }
+  },
+  "prospective": {
+    "available": true,
+    "daily_log_loss_difference": {
+      "2026-10-01": -0.05108297262981976,
+      "2026-10-02": -0.036511011432797384,
+      "2026-10-14": 0.07722831192547266,
+      "2026-10-15": 0.06212433727284314
+    },
+    "decision_sessions": [
+      "2026-10-01",
+      "2026-10-02",
+      "2026-10-14",
+      "2026-10-15"
+    ],
+    "hybrid": {
+      "accuracy": 0.2727272727272727,
+      "balanced_accuracy": 0.2358709641318337,
+      "brier": 0.6853021233109741,
+      "confusion": [
+        [
+          2,
+          3,
+          18
+        ],
+        [
+          3,
+          3,
+          22
+        ],
+        [
+          7,
+          11,
+          19
+        ]
+      ],
+      "log_loss": 1.118908122479062,
+      "macro_f1": 0.21448412698412697
+    },
+    "label_share": {
+      "DOWN": 0.26136363636363635,
+      "FLAT": 0.3181818181818182,
+      "UP": 0.42045454545454547
+    },
+    "matches_recorded_report": {
+      "compared": [
+        "hybrid.accuracy",
+        "hybrid.brier",
+        "hybrid.log_loss",
+        "prior.accuracy",
+        "prior.brier",
+        "prior.log_loss"
+      ],
+      "max_abs_difference": 0.0
+    },
+    "n": 88,
+    "prior": {
+      "accuracy": 0.3068181818181818,
+      "balanced_accuracy": 0.2606177606177606,
+      "brier": 0.6766194837517742,
+      "confusion": [
+        [
+          0,
+          1,
+          22
+        ],
+        [
+          1,
+          6,
+          21
+        ],
+        [
+          3,
+          13,
+          21
+        ]
+      ],
+      "log_loss": 1.1059684561951377,
+      "macro_f1": 0.22194719471947197
+    },
+    "provenance": "recorded",
+    "reading": "Four decision dates from two weeks: effectively four dependent observations, far too few for any inference. The pilot's own closeout classed this collection as incomplete.",
+    "symbols": 22
+  },
+  "regime_shares": {
+    "calm": {
+      "label_share": {
+        "DOWN": 0.30547501279208594,
+        "FLAT": 0.3008698618454716,
+        "UP": 0.39365512536244246
+      },
+      "n": 11726,
+      "prior": {
+        "mean_probability": {
+          "DOWN": 0.3209539704170521,
+          "FLAT": 0.2698923485571284,
+          "UP": 0.4091536810258195
+        },
+        "mean_top_probability": 0.428844955649251,
+        "predicted_class_share": {
+          "DOWN": 0.036329524134402186,
+          "FLAT": 0.20467337540508274,
+          "UP": 0.758997100460515
+        }
+      },
+      "sessions": 533
+    },
+    "turbulent": {
+      "label_share": {
+        "DOWN": 0.24799010513296227,
+        "FLAT": 0.24613481756338898,
+        "UP": 0.5058750773036488
+      },
+      "n": 3234,
+      "prior": {
+        "mean_probability": {
+          "DOWN": 0.31647849955992324,
+          "FLAT": 0.27554925165846667,
+          "UP": 0.4079722487816101
+        },
+        "mean_top_probability": 0.42855172889302584,
+        "predicted_class_share": {
+          "DOWN": 0.03710575139146568,
+          "FLAT": 0.21181199752628324,
+          "UP": 0.7510822510822511
+        }
+      },
+      "sessions": 147
+    }
+  },
+  "registration_sha256": "abc146e5bffdae819a5245e1fdec89813e4cf9e7a5d5a9f6e1de2b5c902b011b",
+  "status": "exploratory: every history date was inspected before this review"
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>PYTHONDONTWRITEBYTECODE</key>
+		<string>1</string>
+	</dict>
+	<key>KeepAlive</key>
+	<true/>
+	<key>Label</key>
+	<string>local.ml-trade-engine.dashboard-week1-r6</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Users/a/miniconda3/bin/python</string>
+		<string>-B</string>
+		<string>-m</string>
+		<string>streamlit</string>
+		<string>run</string>
+		<string>/Users/a/Downloads/ml-trade-engine/app_week1_r6.py</string>
+		<string>--server.port</string>
+		<string>8504</string>
+		<string>--server.address</string>
+		<string>127.0.0.1</string>
+		<string>--server.headless</string>
+		<string>true</string>
+		<string>--browser.gatherUsageStats</string>
+		<string>false</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/Users/a/Downloads/ml-trade-engine/data/research-week1-r6/dashboard.stderr.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/a/Downloads/ml-trade-engine/data/research-week1-r6/dashboard.stdout.log</string>
+	<key>ThrottleInterval</key>
+	<integer>30</integer>
+	<key>WorkingDirectory</key>
+	<string>/Users/a/Downloads/ml-trade-engine</string>
+</dict>
+</plist>

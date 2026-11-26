@@ -178,8 +178,7 @@ class ZooRunner:
             out_dir / "equity_curve.parquet"
         )
 
-        if result.trade_log is not None and len(result.trade_log) > 0:
-            result.trade_log.to_parquet(out_dir / "trade_log.parquet")
+        result.trade_log.to_parquet(out_dir / "trade_log.parquet")
 
         with open(out_dir / "metrics.json", "w") as f:
             json.dump(

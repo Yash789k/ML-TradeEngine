@@ -1,0 +1,10 @@
+{
+  "trial": "base-TLT-F3-R0-S137",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "86e5c2c44ddf31935a793d806bc2446b79e52366afac225165f8ef66c9fad40d",
+  "expected_prediction_sha256": "a7a5fd91aa749f8d107b6947c07e6a089bf6ee1417471e29197eea9e130ccb67",
+  "model_sha256": "296881ab977352fed2e66db5b85548d1fff0aa44950a6d3cfd586646c3fd69c4"
+}

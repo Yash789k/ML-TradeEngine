@@ -1,0 +1,209 @@
+[
+  {
+    "year": 2023,
+    "method": "LLM review",
+    "proposed_l2": 1.0,
+    "accepted": false,
+    "next_l2": 1.0,
+    "trades": 244,
+    "window_sharpe_differences": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "lower_90pct": 0.0,
+    "expected_shortfall": 0.010879205670708414,
+    "drawdown": 0.04956996166191718,
+    "baseline_es": 0.010879205670708414,
+    "baseline_drawdown": 0.04956996166191718,
+    "proposal_prompt": "Select one L2 strength for the next logistic expert-weighting gate. The incumbent uses 1. Options: {\"A\": 0.1, \"B\": 0.3, \"C\": 1.0, \"D\": 3.0, \"E\": 10.0}. The only evidence is earlier out-of-time classification accuracy: {\"FinBERT logistic\": 0.38891, \"GRU\": 0.42267, \"Granite MoE statement\": 0.39325, \"JKP factors\": 0.38797, \"LSTM\": 0.42927, \"LightGBM\": 0.42569, \"Logistic\": 0.42418, \"OpenAI Decisions\": 0.37665, \"OpenAI asset digest\": 0.29706, \"Patch Transformer\": 0.404, \"Qwen statement\": 0.39325, \"TCN\": 0.38778, \"XGBoost\": 0.42437}. Account for dependence and limited evidence. Supply the option and a brief reason.",
+    "agent": {
+      "service": "OpenAI Agents API",
+      "model": "gpt-6-sol",
+      "prompt": "Select one L2 strength for the next logistic expert-weighting gate. The incumbent uses 1. Options: {\"A\": 0.1, \"B\": 0.3, \"C\": 1.0, \"D\": 3.0, \"E\": 10.0}. The only evidence is earlier out-of-time classification accuracy: {\"FinBERT logistic\": 0.38891, \"GRU\": 0.42267, \"Granite MoE statement\": 0.39325, \"JKP factors\": 0.38797, \"LSTM\": 0.42927, \"LightGBM\": 0.42569, \"Logistic\": 0.42418, \"OpenAI Decisions\": 0.37665, \"OpenAI asset digest\": 0.29706, \"Patch Transformer\": 0.404, \"Qwen statement\": 0.39325, \"TCN\": 0.38778, \"XGBoost\": 0.42437}. Account for dependence and limited evidence. Supply the option and a brief reason.",
+      "option": "C",
+      "l2": 1.0,
+      "reason": "Keep L2 at 1. The historical accuracies compare experts, not L2 settings. Dependence among experts and limited evidence give no reliable basis to change the incumbent strength.",
+      "cap_usd": 0.5,
+      "usage": null
+    }
+  },
+  {
+    "year": 2023,
+    "method": "Random review",
+    "proposed_l2": 1.0,
+    "accepted": false,
+    "next_l2": 1.0,
+    "trades": 244,
+    "window_sharpe_differences": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "lower_90pct": 0.0,
+    "expected_shortfall": 0.010879205670708414,
+    "drawdown": 0.04956996166191718,
+    "baseline_es": 0.010879205670708414,
+    "baseline_drawdown": 0.04956996166191718,
+    "proposal_prompt": null,
+    "agent": null
+  },
+  {
+    "year": 2023,
+    "method": "Conventional review",
+    "proposed_l2": 3.0,
+    "accepted": false,
+    "next_l2": 1.0,
+    "trades": 248,
+    "window_sharpe_differences": [
+      -0.2514894079276644,
+      0.7370375215098641,
+      0.0
+    ],
+    "lower_90pct": -0.3987281183847049,
+    "expected_shortfall": 0.012172869455334401,
+    "drawdown": 0.0511433815417891,
+    "baseline_es": 0.010879205670708414,
+    "baseline_drawdown": 0.04956996166191718,
+    "proposal_prompt": null,
+    "agent": null
+  },
+  {
+    "year": 2024,
+    "method": "LLM review",
+    "proposed_l2": 1.0,
+    "accepted": false,
+    "next_l2": 1.0,
+    "trades": 406,
+    "window_sharpe_differences": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "lower_90pct": 0.0,
+    "expected_shortfall": 0.01560759019682174,
+    "drawdown": 0.08578936598545339,
+    "baseline_es": 0.01560759019682174,
+    "baseline_drawdown": 0.08578936598545339,
+    "proposal_prompt": "Select one L2 strength for the next logistic expert-weighting gate. The incumbent uses 1. Options: {\"A\": 0.1, \"B\": 0.3, \"C\": 1.0, \"D\": 3.0, \"E\": 10.0}. The only evidence is earlier out-of-time classification accuracy: {\"FinBERT logistic\": 0.34508, \"GRU\": 0.3517, \"Granite MoE statement\": 0.3714, \"JKP factors\": 0.39678, \"LSTM\": 0.34659, \"LightGBM\": 0.3517, \"Logistic\": 0.35473, \"OpenAI Decisions\": 0.33333, \"OpenAI asset digest\": 0.30246, \"Patch Transformer\": 0.35265, \"Qwen statement\": 0.3714, \"TCN\": 0.33504, \"XGBoost\": 0.35057}. Account for dependence and limited evidence. Supply the option and a brief reason.",
+    "agent": {
+      "service": "OpenAI Agents API",
+      "model": "gpt-6-sol",
+      "prompt": "Select one L2 strength for the next logistic expert-weighting gate. The incumbent uses 1. Options: {\"A\": 0.1, \"B\": 0.3, \"C\": 1.0, \"D\": 3.0, \"E\": 10.0}. The only evidence is earlier out-of-time classification accuracy: {\"FinBERT logistic\": 0.34508, \"GRU\": 0.3517, \"Granite MoE statement\": 0.3714, \"JKP factors\": 0.39678, \"LSTM\": 0.34659, \"LightGBM\": 0.3517, \"Logistic\": 0.35473, \"OpenAI Decisions\": 0.33333, \"OpenAI asset digest\": 0.30246, \"Patch Transformer\": 0.35265, \"Qwen statement\": 0.3714, \"TCN\": 0.33504, \"XGBoost\": 0.35057}. Account for dependence and limited evidence. Supply the option and a brief reason.",
+      "option": "C",
+      "l2": 1.0,
+      "reason": "Keep the incumbent L2 strength of 1.0. These are accuracies for different models, not trials of gate regularization; their results may be dependent and provide too little evidence to favor a change.",
+      "cap_usd": 0.5,
+      "usage": null
+    }
+  },
+  {
+    "year": 2024,
+    "method": "Random review",
+    "proposed_l2": 0.3,
+    "accepted": false,
+    "next_l2": 1.0,
+    "trades": 391,
+    "window_sharpe_differences": [
+      0.015675083672249457,
+      -0.10254279199902605,
+      -0.37247203557902786
+    ],
+    "lower_90pct": -0.3576188697268286,
+    "expected_shortfall": 0.015607590196821808,
+    "drawdown": 0.08592548357755758,
+    "baseline_es": 0.01560759019682174,
+    "baseline_drawdown": 0.08578936598545339,
+    "proposal_prompt": null,
+    "agent": null
+  },
+  {
+    "year": 2024,
+    "method": "Conventional review",
+    "proposed_l2": 3.0,
+    "accepted": false,
+    "next_l2": 1.0,
+    "trades": 436,
+    "window_sharpe_differences": [
+      0.3904365456616379,
+      -0.3837216779392385,
+      1.0203464316256174
+    ],
+    "lower_90pct": -0.0038829402544570115,
+    "expected_shortfall": 0.01557957282458713,
+    "drawdown": 0.08128222734376422,
+    "baseline_es": 0.01560759019682174,
+    "baseline_drawdown": 0.08578936598545339,
+    "proposal_prompt": null,
+    "agent": null
+  },
+  {
+    "year": 2025,
+    "method": "LLM review",
+    "proposed_l2": 1.0,
+    "accepted": false,
+    "next_l2": 1.0,
+    "trades": 536,
+    "window_sharpe_differences": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "lower_90pct": 0.0,
+    "expected_shortfall": 0.014153761287871514,
+    "drawdown": 0.06711859194754854,
+    "baseline_es": 0.014153761287871514,
+    "baseline_drawdown": 0.06711859194754854,
+    "proposal_prompt": "Select one L2 strength for the next logistic expert-weighting gate. The incumbent uses 1. Options: {\"A\": 0.1, \"B\": 0.3, \"C\": 1.0, \"D\": 3.0, \"E\": 10.0}. The only evidence is earlier out-of-time classification accuracy: {\"FinBERT logistic\": 0.40034, \"GRU\": 0.40586, \"Granite MoE statement\": 0.38227, \"JKP factors\": 0.38589, \"LSTM\": 0.41708, \"LightGBM\": 0.41213, \"Logistic\": 0.41822, \"OpenAI Decisions\": 0.27995, \"OpenAI asset digest\": 0.32864, \"Patch Transformer\": 0.403, \"Qwen statement\": 0.38227, \"TCN\": 0.39673, \"XGBoost\": 0.41423}. Account for dependence and limited evidence. Supply the option and a brief reason.",
+    "agent": {
+      "service": "OpenAI Agents API",
+      "model": "gpt-6-sol",
+      "prompt": "Select one L2 strength for the next logistic expert-weighting gate. The incumbent uses 1. Options: {\"A\": 0.1, \"B\": 0.3, \"C\": 1.0, \"D\": 3.0, \"E\": 10.0}. The only evidence is earlier out-of-time classification accuracy: {\"FinBERT logistic\": 0.40034, \"GRU\": 0.40586, \"Granite MoE statement\": 0.38227, \"JKP factors\": 0.38589, \"LSTM\": 0.41708, \"LightGBM\": 0.41213, \"Logistic\": 0.41822, \"OpenAI Decisions\": 0.27995, \"OpenAI asset digest\": 0.32864, \"Patch Transformer\": 0.403, \"Qwen statement\": 0.38227, \"TCN\": 0.39673, \"XGBoost\": 0.41423}. Account for dependence and limited evidence. Supply the option and a brief reason.",
+      "option": "C",
+      "l2": 1.0,
+      "reason": "The accuracies describe individual experts, not how gate accuracy changes with L2 strength. Their dependence and the limited evidence do not justify changing the incumbent strength of 1.0.",
+      "cap_usd": 0.5,
+      "usage": null
+    }
+  },
+  {
+    "year": 2025,
+    "method": "Random review",
+    "proposed_l2": 0.1,
+    "accepted": true,
+    "next_l2": 0.1,
+    "trades": 538,
+    "window_sharpe_differences": [
+      0.33151207837214214,
+      1.340007741368626,
+      0.9952260888022573
+    ],
+    "lower_90pct": 0.2907539745161406,
+    "expected_shortfall": 0.014153761287871514,
+    "drawdown": 0.049636661415690564,
+    "baseline_es": 0.014153761287871514,
+    "baseline_drawdown": 0.06711859194754854,
+    "proposal_prompt": null,
+    "agent": null
+  },
+  {
+    "year": 2025,
+    "method": "Conventional review",
+    "proposed_l2": 3.0,
+    "accepted": false,
+    "next_l2": 1.0,
+    "trades": 527,
+    "window_sharpe_differences": [
+      0.7927252018686708,
+      1.4183527295423282,
+      0.2494600875812556
+    ],
+    "lower_90pct": -0.01061695844859988,
+    "expected_shortfall": 0.014771418659639313,
+    "drawdown": 0.05280998059548858,
+    "baseline_es": 0.014153761287871514,
+    "baseline_drawdown": 0.06711859194754854,
+    "proposal_prompt": null,
+    "agent": null
+  }
+]

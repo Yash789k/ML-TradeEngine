@@ -1,0 +1,97 @@
+{
+  "artifact_gates": [
+    {
+      "case": "changed_source",
+      "reason": "Runtime source differs from sealed manifest: runtime_v2/policy.py",
+      "status": "refused"
+    },
+    {
+      "case": "changed_config",
+      "reason": "Sealed artifact changed: config.json",
+      "status": "refused"
+    },
+    {
+      "case": "changed_model",
+      "reason": "Sealed artifact changed: models/SPY/model.joblib",
+      "status": "refused"
+    },
+    {
+      "case": "unrelated_junit",
+      "reason": "Sealed artifact changed: tests.xml",
+      "status": "refused"
+    },
+    {
+      "case": "missing_critical_tests",
+      "reason": "Missing critical source-bound test evidence",
+      "status": "refused"
+    }
+  ],
+  "finished_at": "2026-09-28T08:33:39.695921+00:00",
+  "process_kills": [
+    {
+      "elapsed_seconds": 6.026282999999239,
+      "exit_code": -9,
+      "point": "before_plan",
+      "status": "recovered_exactly"
+    },
+    {
+      "elapsed_seconds": 5.448110916986479,
+      "exit_code": -9,
+      "point": "after_plan",
+      "status": "recovered_exactly"
+    },
+    {
+      "elapsed_seconds": 8.059666625005775,
+      "exit_code": -9,
+      "point": "after_deployment",
+      "status": "recovered_exactly"
+    },
+    {
+      "elapsed_seconds": 13.443330624999362,
+      "exit_code": -9,
+      "point": "after_shadow",
+      "status": "recovered_exactly"
+    },
+    {
+      "elapsed_seconds": 12.762628458003746,
+      "exit_code": -9,
+      "point": "before_receipt",
+      "status": "recovered_exactly"
+    },
+    {
+      "elapsed_seconds": 9.801504375005607,
+      "exit_code": -9,
+      "point": "after_receipt",
+      "status": "recovered_exactly"
+    },
+    {
+      "elapsed_seconds": 26.524612791996333,
+      "exit_code": -9,
+      "point": "model_partial",
+      "status": "recovered_exactly"
+    },
+    {
+      "elapsed_seconds": 16.174844875000417,
+      "exit_code": -9,
+      "point": "model_committed",
+      "status": "recovered_exactly"
+    }
+  ],
+  "release_sha256": "2a53ac1b6f91e93b949b4c6f35754225e7a0b1fab9174cde114c5e7c5e485751",
+  "scope": "isolated local processes; SIGKILL on actual process, not physical power loss; no pilot observations",
+  "snapshot_sha256": "52cc2c4e50b8316d7b4cb05f9ced63e953ca77f280805479562864ee1184a752",
+  "source": {
+    "runtime_v2/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime_v2/account.py": "73c5aa89826c5ad5a0b04721344a0fa067f4cf4a13c480bdfb8165d6d5a1acc9",
+    "runtime_v2/calendar.py": "5a97b86b5a4dc17c3a86627c73172162365aec32c6f0edd8ea20e74d3630c1d5",
+    "runtime_v2/market.py": "feacf73864f530dac9b8d4e4b6b764746b898648b605901cda0f9f3c1f1a5554",
+    "runtime_v2/model.py": "d82a10584dcfb614e79f04af6255b238d74ea66ff961f07b2919bb2663fa1b2d",
+    "runtime_v2/operations.py": "61ba22462cc79b2e43e4d0f416743619993b59411871410a951477525b380b4d",
+    "runtime_v2/policy.py": "f4357f04fa0a270265b10802ed4ac84cee4117e62c694496eb088707de56e79d",
+    "runtime_v2/risk.py": "b784c8b972dd4fde1eef760085b63e83bef892794bdfa19af07453f4585ff2e9",
+    "runtime_v2/storage.py": "db0ef15f303dfc7cb1b312195c63f5822851d22e2116f06a022e63468725eb7a",
+    "scripts/collector_v2.py": "ca59186bd3d770db8d8bca5775b9a0221f850f2e65cb4d495c3b050ad7138c17"
+  },
+  "started_at": "2026-09-28T08:31:58.908655+00:00",
+  "trial_id": "R11-PROCESS-CRASH"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "R7",
+  "question": "temporal and genuinely held-instrument transfer",
+  "registered_at": "2026-09-28T08:11:44.578747+00:00",
+  "status": "completed_exploratory",
+  "protocol_sha256": "97d597a5c44a88a16ff444eb7e61786701907b2cb10b68b89faed8b62dcbae79",
+  "child_trials": [
+    "transfer-AAPL-F0-S42",
+    "transfer-AAPL-F1-S42",
+    "transfer-AAPL-F2-S42",
+    "transfer-AAPL-F3-S42",
+    "transfer-JPM-F0-S42",
+    "transfer-JPM-F1-S42",
+    "transfer-JPM-F2-S42",
+    "transfer-JPM-F3-S42",
+    "transfer-GLD-F0-S42",
+    "transfer-GLD-F1-S42",
+    "transfer-GLD-F2-S42",
+    "transfer-GLD-F3-S42",
+    "transfer-XLE-F0-S42",
+    "transfer-XLE-F1-S42",
+    "transfer-XLE-F2-S42",
+    "transfer-XLE-F3-S42",
+    "transfer-TLT-F0-S42",
+    "transfer-TLT-F1-S42",
+    "transfer-TLT-F2-S42",
+    "transfer-TLT-F3-S42",
+    "transfer-IWM-F0-S42",
+    "transfer-IWM-F1-S42",
+    "transfer-IWM-F2-S42",
+    "transfer-IWM-F3-S42"
+  ],
+  "controlled_design": "data/research-v2/experiments/design.json",
+  "controlled_design_sha256": "77681045e724dd6240a71c39ae939db04bf95d17d4305becf42db944c72972bd",
+  "predictive_contrasts": [
+    "R7-transfer"
+  ],
+  "results": "data/research-v2/experiments/summary.json",
+  "completed_at": "2026-09-28T08:30:00.061551+00:00",
+  "full_clean_reproduction": "data/research-v2/experiments/full_reproduction.json",
+  "full_clean_reproduction_sha256": "a7308939b3a76684ce104130f13bb879907ba60907f8aa7809f3b4ea57d8c2d5"
+}

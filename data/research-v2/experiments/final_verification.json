@@ -1,0 +1,24 @@
+{
+  "recorded_at": "2026-09-28T08:32:21.457353+00:00",
+  "status": "passed",
+  "trials": 848,
+  "model_and_prediction_hashes_checked": 1696,
+  "partition_boundaries_checked": 1328,
+  "held_instrument_models": 24,
+  "source_hashes_match": true,
+  "registered_fits_completed": 1696,
+  "pilot_fits": 4,
+  "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]",
+  "executable": "/Users/a/miniconda3/bin/python",
+  "packages": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "joblib": "1.5.3",
+    "pyarrow": "21.0.0",
+    "matplotlib": "3.10.8",
+    "threadpoolctl": "3.6.0"
+  },
+  "limits": "Integrity and boundary checks do not confer economic or prospective readiness."
+}

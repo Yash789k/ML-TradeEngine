@@ -1,0 +1,26 @@
+{
+  "started_source_hashes": {
+    "research_v2/experiments.py": "df9405b20dbeb48e4284c09d23fbd5253ffa160b9040196b52a6e59ff7cd66d8",
+    "src/models/adaptive.py": "17b17d73328b95f3e71ff5c7a0610e244c7a52254e30c022a8a7fe8a3621a071",
+    "src/execution/account.py": "73c5aa89826c5ad5a0b04721344a0fa067f4cf4a13c480bdfb8165d6d5a1acc9",
+    "src/backtest/portfolio.py": "9c3b2832ee54d55d696f617bfb394e44460716b10eedb935a67d7b6d33c4a8f3",
+    "src/research/adaptive_portfolio.py": "a58a69e0e53a04e82d355a4a544c043a99f6f6d38829bcbbdc8ebbf176e0ff73"
+  },
+  "recorded_at": "2026-09-28T08:29:12.389742+00:00",
+  "elapsed_seconds": 395.86258479199023,
+  "feature_generation_seconds": 0.5249688750045607,
+  "complete_trials": 848,
+  "expected_trials": 848,
+  "estimator_fits": 1696,
+  "hardware": "macOS-26.3-arm64-arm-64bit-Mach-O",
+  "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]",
+  "cpu_count": 8,
+  "thread_limit": 1,
+  "temperature_candidates": [
+    0.75,
+    1,
+    1.5,
+    2,
+    3
+  ]
+}

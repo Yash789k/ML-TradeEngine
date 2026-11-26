@@ -1,0 +1,74 @@
+gui/501/local.ml-trade-engine.collector-v2 = {
+	active count = 0
+	path = /Users/a/Library/LaunchAgents/local.ml-trade-engine.collector-v2.plist
+	type = LaunchAgent
+	state = not running
+
+	program = /Users/a/Downloads/ml-trade-engine/data/research-v2/clean-env/bin/python
+	arguments = {
+		/Users/a/Downloads/ml-trade-engine/data/research-v2/clean-env/bin/python
+		-B
+		/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261011-week1-r3/scripts/collector_v2.py
+		tick
+		--release
+		/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261011-week1-r3
+		--workspace
+		/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r3
+	}
+
+	working directory = /Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261011-week1-r3
+
+	stdout path = /Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r3/scheduler/stdout.log
+	stderr path = /Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r3/scheduler/stderr.log
+	inherited environment = {
+		SSH_AUTH_SOCK => /private/tmp/com.apple.launchd.D7O21ZT64p/Listeners
+	}
+
+	default environment = {
+		PATH => /usr/bin:/bin:/usr/sbin:/sbin
+	}
+
+	environment = {
+		OSLogRateLimit => 64
+		OMP_NUM_THREADS => 1
+		MKL_NUM_THREADS => 1
+		PYTHONUNBUFFERED => 1
+		PYTHONDONTWRITEBYTECODE => 1
+		OPENBLAS_NUM_THREADS => 1
+		XPC_SERVICE_NAME => local.ml-trade-engine.collector-v2
+	}
+
+	domain = gui/501 [100022]
+	asid = 100022
+	minimum runtime = 30
+	exit timeout = 5
+	runs = 3
+	last exit code = 0
+
+	resource coalition = {
+		ID = 36783
+		type = resource
+		state = active
+		active count = 1
+		name = local.ml-trade-engine.collector-v2
+	}
+
+	jetsam coalition = {
+		ID = 36784
+		type = jetsam
+		state = active
+		active count = 1
+		name = local.ml-trade-engine.collector-v2
+	}
+
+	spawn type = background (5)
+	jetsam priority = 40
+	jetsam memory limit (active) = (unlimited)
+	jetsam memory limit (inactive) = (unlimited)
+	jetsamproperties category = daemon
+	jetsam thread limit = 32
+	cpumon = default
+	run interval = 60 seconds
+
+	properties = runatload | inferred program
+}

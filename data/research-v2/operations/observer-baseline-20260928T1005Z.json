@@ -1,0 +1,791 @@
+{
+  "checked_at": "2026-09-28T10:05:23.750499+00:00",
+  "kind": "read_only_operational_baseline",
+  "prospective_report": "data/research-v2/prospective/20260928T1005Z-operational-baseline/report.json",
+  "prospective_report_sha256": "21337d7a690aff3b5661086373ca01341bcb11b35cf85f534419f8afa4473e66",
+  "status": {
+    "trial_id": "PILOT-TREND-V2-20260929",
+    "external_orders": false,
+    "deployment": "cash",
+    "shadow": "trend",
+    "state_consistency_errors": [],
+    "ledger_consistent": true,
+    "valid_observed_sessions": 0,
+    "expected_elapsed_sessions": 0,
+    "missing_sessions": [],
+    "label_complete_decisions": 0,
+    "required_sessions": 63,
+    "next_event": {
+      "id": "2026-09-29:daily",
+      "session": "2026-09-29",
+      "kind": "daily",
+      "due": "2026-09-29T20:30:00+00:00",
+      "ordinal": 1,
+      "hong_kong": "2026-09-30T04:30:00+08:00"
+    },
+    "terminal_observed_sessions": 0,
+    "terminal_required_sessions": 6,
+    "halted": false,
+    "prospective_status": "incomplete",
+    "limitations": [
+      "Local launch agent requires logged-in awake host; no wake guarantee",
+      "No external broker execution",
+      "Commissioning/replays never count as prospective",
+      "Missed sessions halt; no fabricated backfill"
+    ]
+  },
+  "heartbeat_age_seconds": 65.477607,
+  "launchd_exit_code": 0,
+  "launchd_summary": [
+    "state = running",
+    "runs = 61",
+    "last exit code = 0",
+    "state = active",
+    "state = active",
+    "run interval = 60 seconds"
+  ],
+  "event_counts": {
+    "days": 0,
+    "attempts": 0,
+    "events": 0,
+    "outages": 0,
+    "milestones": 0,
+    "outcomes": 0,
+    "terminal": 0
+  },
+  "commissioning_account_summary": {
+    "mode": "commissioning_preview",
+    "prospective_sessions_contributed": 0,
+    "deployment": {
+      "cash": 10000.0,
+      "drawdown": 0.0,
+      "equity": 10000.0,
+      "fees": 0.0,
+      "gross_exposure": 0.0,
+      "positions": {
+        "AAPL": 0.0,
+        "AMZN": 0.0,
+        "BAC": 0.0,
+        "DIA": 0.0,
+        "GLD": 0.0,
+        "GOOGL": 0.0,
+        "GS": 0.0,
+        "IWM": 0.0,
+        "JPM": 0.0,
+        "META": 0.0,
+        "MSFT": 0.0,
+        "NVDA": 0.0,
+        "QQQ": 0.0,
+        "SPY": 0.0,
+        "TLT": 0.0,
+        "TSLA": 0.0,
+        "XLE": 0.0,
+        "XLF": 0.0,
+        "XLI": 0.0,
+        "XLK": 0.0,
+        "XLP": 0.0,
+        "XLV": 0.0
+      },
+      "realized_pnl": 0.0,
+      "reconciliation_error": 0.0,
+      "reserved_cash": 0,
+      "unrealized_pnl": 0.0
+    },
+    "shadow": {
+      "cash": 10000.0,
+      "drawdown": 0.0,
+      "equity": 10000.0,
+      "fees": 0.0,
+      "gross_exposure": 0.0,
+      "positions": {
+        "AAPL": 0.0,
+        "AMZN": 0.0,
+        "BAC": 0.0,
+        "DIA": 0.0,
+        "GLD": 0.0,
+        "GOOGL": 0.0,
+        "GS": 0.0,
+        "IWM": 0.0,
+        "JPM": 0.0,
+        "META": 0.0,
+        "MSFT": 0.0,
+        "NVDA": 0.0,
+        "QQQ": 0.0,
+        "SPY": 0.0,
+        "TLT": 0.0,
+        "TSLA": 0.0,
+        "XLE": 0.0,
+        "XLF": 0.0,
+        "XLI": 0.0,
+        "XLK": 0.0,
+        "XLP": 0.0,
+        "XLV": 0.0
+      },
+      "realized_pnl": 0.0,
+      "reconciliation_error": 0.0,
+      "reserved_cash": 4126.177733539851,
+      "unrealized_pnl": 0.0
+    },
+    "timings_seconds": {
+      "data_read": 30.10800612499588,
+      "features": 0.4423881710099522,
+      "inference": 0.22674458396795671,
+      "ledger": 0.02576575000421144,
+      "training": 0.0,
+      "whole_batch": 33.27402058400912
+    }
+  },
+  "limitations": [
+    "Heartbeat freshness is one availability observation, not proof of uninterrupted uptime",
+    "No session is expected yet; zero missed sessions is not a measured session success rate",
+    "Commissioning, replay and injected process failures are separate from prospective evidence"
+  ],
+  "sources": {
+    "data/paper/research-v2/heartbeat.json": {
+      "sha256": "b13ef34d377f6a9cbc169ce55334045978906ac0e18fc26dccdf864448db20e4",
+      "record": {
+        "at": "2026-09-28T10:04:18.272892+00:00",
+        "parent_pid": 1,
+        "pid": 21952,
+        "scheduler": "launchd",
+        "service": "local.ml-trade-engine.collector-v2",
+        "source_sha256": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+        "status": "awake"
+      }
+    },
+    "data/paper/research-v2/binding.json": {
+      "sha256": "a0b5f990b37a16d8683d0e75c17c6a2e33b1358e14879d49d56e29ccae506d76",
+      "record": {
+        "config_sha256": "0837953e4b75ea9f210207656f6d3afd3fa1fe384e5b6db71278ba5f4216f88b",
+        "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2",
+        "release_sha256": "570372e203c6ef943deb37c2856a4ca7f0c3d34a168ac247d5b1cb2232916f43",
+        "trial_id": "PILOT-TREND-V2-20260929"
+      }
+    },
+    "data/paper/research-v2/commissioning-complete.json": {
+      "sha256": "f1ee61fc4765e3750b272567d1ff38c361e473aac37de2c1ae7b7ed36fc1060f",
+      "record": {
+        "completed_at": "2026-09-28T08:51:29.940664+00:00",
+        "content_sha256": "a680d37f7c83119722bd1248ab9a6b6bde9734734ed6458dd1baf9c5551b4152",
+        "mode": "commissioning_preview",
+        "result_sha256": "548a2b3951269e82e54a8b7aea4de54a9c5298e78a27d0861c30296805080087",
+        "trigger": {
+          "at": "2026-09-28T08:50:56.358915+00:00",
+          "parent_pid": 1,
+          "pid": 15806,
+          "scheduler": "launchd",
+          "service": "local.ml-trade-engine.collector-v2",
+          "source_sha256": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+          "status": "awake"
+        }
+      }
+    },
+    "data/paper/research-v2/commissioning/days/2026-09-25/result.json": {
+      "sha256": "53fb2adfa70868949e591f54d60f725a22d7900a723b103aae6407e06b264f71",
+      "record": {
+        "anchor": "2026-09-29",
+        "binding": {
+          "config_sha256": "0837953e4b75ea9f210207656f6d3afd3fa1fe384e5b6db71278ba5f4216f88b",
+          "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2",
+          "release_sha256": "570372e203c6ef943deb37c2856a4ca7f0c3d34a168ac247d5b1cb2232916f43",
+          "trial_id": "PILOT-TREND-V2-20260929"
+        },
+        "completed_at": "2026-09-28T08:51:29.699142+00:00",
+        "content_sha256": "548a2b3951269e82e54a8b7aea4de54a9c5298e78a27d0861c30296805080087",
+        "deployment": {
+          "cash": 10000.0,
+          "drawdown": 0.0,
+          "equity": 10000.0,
+          "fees": 0.0,
+          "gross_exposure": 0.0,
+          "positions": {
+            "AAPL": 0.0,
+            "AMZN": 0.0,
+            "BAC": 0.0,
+            "DIA": 0.0,
+            "GLD": 0.0,
+            "GOOGL": 0.0,
+            "GS": 0.0,
+            "IWM": 0.0,
+            "JPM": 0.0,
+            "META": 0.0,
+            "MSFT": 0.0,
+            "NVDA": 0.0,
+            "QQQ": 0.0,
+            "SPY": 0.0,
+            "TLT": 0.0,
+            "TSLA": 0.0,
+            "XLE": 0.0,
+            "XLF": 0.0,
+            "XLI": 0.0,
+            "XLK": 0.0,
+            "XLP": 0.0,
+            "XLV": 0.0
+          },
+          "realized_pnl": 0.0,
+          "reconciliation_error": 0.0,
+          "reserved_cash": 0,
+          "unrealized_pnl": 0.0
+        },
+        "external_orders": false,
+        "hardware": {
+          "machine": "arm64",
+          "platform": "macOS-26.3-arm64-arm-64bit-Mach-O",
+          "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]"
+        },
+        "information_cutoff": "2026-09-25T20:00:00+00:00",
+        "marks": {
+          "AAPL": 341.07000732421875,
+          "AMZN": 249.6699981689453,
+          "BAC": 56.70000076293945,
+          "DIA": 517.489990234375,
+          "GLD": 393.4100036621094,
+          "GOOGL": 343.9200134277344,
+          "GS": 935.4500122070312,
+          "IWM": 281.9700012207031,
+          "JPM": 343.05999755859375,
+          "META": 751.6599731445312,
+          "MSFT": 516.1699829101562,
+          "NVDA": 225.07000732421875,
+          "QQQ": 744.5,
+          "SPY": 771.3499755859375,
+          "TLT": 79.31999969482422,
+          "TSLA": 372.1099853515625,
+          "XLE": 62.040000915527344,
+          "XLF": 54.84000015258789,
+          "XLI": 170.42999267578125,
+          "XLK": 196.27000427246094,
+          "XLP": 82.05999755859375,
+          "XLV": 170.6999969482422
+        },
+        "mode": "commissioning_preview",
+        "models": {
+          "AAPL": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/AAPL",
+          "AMZN": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/AMZN",
+          "BAC": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/BAC",
+          "DIA": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/DIA",
+          "GLD": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/GLD",
+          "GOOGL": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/GOOGL",
+          "GS": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/GS",
+          "IWM": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/IWM",
+          "JPM": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/JPM",
+          "META": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/META",
+          "MSFT": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/MSFT",
+          "NVDA": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/NVDA",
+          "QQQ": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/QQQ",
+          "SPY": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/SPY",
+          "TLT": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/TLT",
+          "TSLA": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/TSLA",
+          "XLE": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/XLE",
+          "XLF": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/XLF",
+          "XLI": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/XLI",
+          "XLK": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/XLK",
+          "XLP": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/XLP",
+          "XLV": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2/models/XLV"
+        },
+        "peak_rss_bytes": 220839936,
+        "plan_sha256": "d17998b20e772232df52277458b0f95f0adc2aa01db1a471cb58707dbc80d7b6",
+        "prepared_at": "2026-09-28T08:50:56.358915+00:00",
+        "provider_request_count": 22,
+        "rebalance": true,
+        "refit": false,
+        "session": "2026-09-25",
+        "shadow": {
+          "cash": 10000.0,
+          "drawdown": 0.0,
+          "equity": 10000.0,
+          "fees": 0.0,
+          "gross_exposure": 0.0,
+          "positions": {
+            "AAPL": 0.0,
+            "AMZN": 0.0,
+            "BAC": 0.0,
+            "DIA": 0.0,
+            "GLD": 0.0,
+            "GOOGL": 0.0,
+            "GS": 0.0,
+            "IWM": 0.0,
+            "JPM": 0.0,
+            "META": 0.0,
+            "MSFT": 0.0,
+            "NVDA": 0.0,
+            "QQQ": 0.0,
+            "SPY": 0.0,
+            "TLT": 0.0,
+            "TSLA": 0.0,
+            "XLE": 0.0,
+            "XLF": 0.0,
+            "XLI": 0.0,
+            "XLK": 0.0,
+            "XLP": 0.0,
+            "XLV": 0.0
+          },
+          "realized_pnl": 0.0,
+          "reconciliation_error": 0.0,
+          "reserved_cash": 4126.177733539851,
+          "unrealized_pnl": 0.0
+        },
+        "shadow_weights": {
+          "AAPL": 0.03636363636363637,
+          "AMZN": 0.03636363636363637,
+          "BAC": 0.03636363636363637,
+          "DIA": 0.03636363636363637,
+          "GLD": 0.0,
+          "GOOGL": 0.03636363636363637,
+          "GS": 0.0,
+          "IWM": 0.03636363636363637,
+          "JPM": 0.03636363636363637,
+          "META": 0.0,
+          "MSFT": 0.0,
+          "NVDA": 0.03636363636363637,
+          "QQQ": 0.03636363636363637,
+          "SPY": 0.03636363636363637,
+          "TLT": 0.0,
+          "TSLA": 0.0,
+          "XLE": 0.03636363636363637,
+          "XLF": 0.03636363636363637,
+          "XLI": 0.0,
+          "XLK": 0.03636363636363637,
+          "XLP": 0.0,
+          "XLV": 0.03636363636363637
+        },
+        "signals": [
+          {
+            "expected_return": 0.00031669927936979134,
+            "gate": false,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "8b7a3e9be21c2535d016e6b9e1fa3f2803fa09ff79577ff39e1074646d055ed2",
+            "probabilities": [
+              0.3561086992702222,
+              0.27947338374264624,
+              0.3644179169871316
+            ],
+            "symbol": "AAPL",
+            "trend": true
+          },
+          {
+            "expected_return": 0.0200402412952159,
+            "gate": true,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "08a87d0fe72d8a4c366241e5cb9b41ca265db2d115a16d9a18bb2e164af7f6af",
+            "probabilities": [
+              0.185409647479519,
+              0.15227145542836307,
+              0.662318897092118
+            ],
+            "symbol": "AMZN",
+            "trend": true
+          },
+          {
+            "expected_return": 0.009952722559817988,
+            "gate": false,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "9cc18fa3d802774f5e77dcb8d153d094ed523420207f687dbbd472920ed51e2c",
+            "probabilities": [
+              0.27680395364946947,
+              0.15216744841245475,
+              0.5710285979380757
+            ],
+            "symbol": "BAC",
+            "trend": true
+          },
+          {
+            "expected_return": 0.006581032640893486,
+            "gate": true,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "7c2f3ddba5769f63b54f1d50d476af28883203ea5c0eb58beb911a4b3be7cdfb",
+            "probabilities": [
+              0.13505939651228235,
+              0.4321761212009212,
+              0.4327644822867964
+            ],
+            "symbol": "DIA",
+            "trend": true
+          },
+          {
+            "expected_return": 0.003865358022158342,
+            "gate": true,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "f2ecb8768558d4719b4d1071ccf60ea051e34e41cae7cb6c9d33ed8b7975d2d0",
+            "probabilities": [
+              0.2471968876976276,
+              0.4139498757995425,
+              0.3388532365028299
+            ],
+            "symbol": "GLD",
+            "trend": false
+          },
+          {
+            "expected_return": 0.007890959565784946,
+            "gate": true,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "2d5719a6ed755e9d6648ac03c28d43b55930512274a09e3ab4c5b79d05f6f61b",
+            "probabilities": [
+              0.3012042588048068,
+              0.22540144508905716,
+              0.47339429610613604
+            ],
+            "symbol": "GOOGL",
+            "trend": true
+          },
+          {
+            "expected_return": 0.008434735682518653,
+            "gate": false,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "c3a5f98f139b4b3ae0cb196cc78220e8bc4013d4232c096bbc45b357e8294b3f",
+            "probabilities": [
+              0.26157045318404193,
+              0.2830844833255893,
+              0.4553450634903688
+            ],
+            "symbol": "GS",
+            "trend": false
+          },
+          {
+            "expected_return": -0.0005864754690390831,
+            "gate": false,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "bf69f81438bce1ddbde8cbab80ca53f0853cf2abf3c95de21f59e3dc63778ac1",
+            "probabilities": [
+              0.36002258359266126,
+              0.31163407234512247,
+              0.32834334406221627
+            ],
+            "symbol": "IWM",
+            "trend": true
+          },
+          {
+            "expected_return": 0.004286585109620735,
+            "gate": false,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "ed959a553d35ca055f05cc7ba8b8777600218cb6d0f26ae31adc35f9e98c052e",
+            "probabilities": [
+              0.268517376364101,
+              0.3253128987224153,
+              0.4061697249134836
+            ],
+            "symbol": "JPM",
+            "trend": true
+          },
+          {
+            "expected_return": 0.0074107758107694495,
+            "gate": true,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "367bd721d919cc867fb8a612af5b84f7595efacf74b463ef12c7d827677a7e83",
+            "probabilities": [
+              0.3660163384157381,
+              0.16030893429049106,
+              0.4736747272937708
+            ],
+            "symbol": "META",
+            "trend": false
+          },
+          {
+            "expected_return": 0.009709890959981975,
+            "gate": false,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "f66466c9d5dbfddca3eaa913f38322c7c395cbed019665df57761e84b413457e",
+            "probabilities": [
+              0.22775495442783183,
+              0.25218366118251584,
+              0.5200613843896523
+            ],
+            "symbol": "MSFT",
+            "trend": false
+          },
+          {
+            "expected_return": -0.006726769588971615,
+            "gate": false,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "dce0c07ba47514715fc1284620b38f410054b0b13c368b2f13b4ac40e1a855e6",
+            "probabilities": [
+              0.5219858816810485,
+              0.15754834074902183,
+              0.32046577756992967
+            ],
+            "symbol": "NVDA",
+            "trend": true
+          },
+          {
+            "expected_return": 0.006332994458802671,
+            "gate": true,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "4b746cbb8c509d806663d4212a03c865e5a95432f292b43d9281b84ce3d40a88",
+            "probabilities": [
+              0.21568410723404977,
+              0.3578557846745551,
+              0.4264601080913952
+            ],
+            "symbol": "QQQ",
+            "trend": true
+          },
+          {
+            "expected_return": 0.0015228056948880441,
+            "gate": true,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "df560130f3b210083545a5f9e89fb6c69affac0f2e0651c611ed86638b873fd0",
+            "probabilities": [
+              0.24282687912743717,
+              0.4465593287133094,
+              0.31061379215925344
+            ],
+            "symbol": "SPY",
+            "trend": true
+          },
+          {
+            "expected_return": 0.0023749209076091553,
+            "gate": false,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "dd2e66ec5e33db41f76109005624ed3f5cf0d68fbe120b9755338bc60cc1e659",
+            "probabilities": [
+              0.2736082397283552,
+              0.3730285341505332,
+              0.3533632261211116
+            ],
+            "symbol": "TLT",
+            "trend": false
+          },
+          {
+            "expected_return": 0.025754145549944377,
+            "gate": false,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "6d6000af4974606f16f5bbba3c9d9f259ec50e14daa13ca63ca8010a0baa8e68",
+            "probabilities": [
+              0.3278929732439331,
+              0.06076803375413635,
+              0.6113389930019306
+            ],
+            "symbol": "TSLA",
+            "trend": false
+          },
+          {
+            "expected_return": 0.0004972733495877072,
+            "gate": false,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "42501d567e39055b902a043d3d69a3201545a7e1d21b9dbf6f9ca829bb1e608c",
+            "probabilities": [
+              0.33647971925863207,
+              0.2890574109798932,
+              0.37446286976147475
+            ],
+            "symbol": "XLE",
+            "trend": true
+          },
+          {
+            "expected_return": 0.00674896099940881,
+            "gate": true,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "eead0bfb0722a424d2f25897b604e234d4d3c8b77d60d74facb1716c07ea5e3c",
+            "probabilities": [
+              0.16412821468270714,
+              0.38414885831794326,
+              0.4517229269993497
+            ],
+            "symbol": "XLF",
+            "trend": true
+          },
+          {
+            "expected_return": 0.0018198386871678173,
+            "gate": true,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "d655ebf489e128263ede2e6db7c6ee8ffbb20bbb353497c3f7782d8f74240925",
+            "probabilities": [
+              0.30019821476026687,
+              0.3390966836012407,
+              0.3607051016384925
+            ],
+            "symbol": "XLI",
+            "trend": false
+          },
+          {
+            "expected_return": 0.001633558481413746,
+            "gate": false,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "33af61dfc70d260d5a1bafe37a62cd10ebde11d16a4d3741872130cfdbf7a8df",
+            "probabilities": [
+              0.331519236980519,
+              0.30674748573245003,
+              0.36173327728703086
+            ],
+            "symbol": "XLK",
+            "trend": true
+          },
+          {
+            "expected_return": 0.0012644769225802419,
+            "gate": false,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "b8266393d6b299f4060708e4751051ebc188377b71bcc28524f30bd12c3ec82a",
+            "probabilities": [
+              0.2931960227258772,
+              0.3821746500847038,
+              0.3246293271894191
+            ],
+            "symbol": "XLP",
+            "trend": false
+          },
+          {
+            "expected_return": -0.003488545287617738,
+            "gate": false,
+            "latest_label_end": "2026-09-24 00:00:00+00:00",
+            "model_decision": "2026-09-25 00:00:00+00:00",
+            "model_manifest_sha256": "c879f4b9dd9d6293537bcffd32fd3912e876cdd570d29b330c01b061e0d6fdf8",
+            "probabilities": [
+              0.3743008875769875,
+              0.4041139798387101,
+              0.22158513258430243
+            ],
+            "symbol": "XLV",
+            "trend": true
+          }
+        ],
+        "snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-v2/commissioning/days/2026-09-25/market-20260928T085056358915-1d0ef9c1",
+        "snapshot_sha256": "51dd9291a4501427f04b15d99f8e968d64c1c24a33152889e1b745733d22b6b9",
+        "timings_seconds": {
+          "data_read": 30.10800612499588,
+          "features": 0.4423881710099522,
+          "inference": 0.22674458396795671,
+          "ledger": 0.02576575000421144,
+          "training": 0.0,
+          "whole_batch": 33.27402058400912
+        },
+        "trial_id": "PILOT-TREND-V2-20260929",
+        "trigger_mode": "commissioning"
+      }
+    },
+    "data/research-v2/operations/commissioning-restore-r2.json": {
+      "sha256": "308f58665b892c4586d7b8cfa90a4af93f7b62bf6d644d6a57bfabc3948ef39f",
+      "record": {
+        "at": "2026-09-28T08:52:18.054344+00:00",
+        "backup_receipt_sha256": "bd6cff494a11962c069dc7814b720cbb71fcf08ff59798997ca1ba89824965a2",
+        "ledger_consistent": true,
+        "preserved_original": "/Users/a/Downloads/ml-trade-engine/data/paper/research-v2/commissioning-before-restore-r2",
+        "receipt_sha256": "548a2b3951269e82e54a8b7aea4de54a9c5298e78a27d0861c30296805080087",
+        "release_sha256": "570372e203c6ef943deb37c2856a4ca7f0c3d34a168ac247d5b1cb2232916f43",
+        "status": "restored_at_original_path",
+        "symbols": 22,
+        "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-v2/commissioning"
+      }
+    },
+    "data/research-v2/operations/process-recovery-r2.json": {
+      "sha256": "7856b91039365fbfa49d666dd481c899e8250253ef0c3142c46299a8244c93ca",
+      "record": {
+        "artifact_gates": [
+          {
+            "case": "changed_source",
+            "reason": "Runtime source differs from sealed manifest: runtime_v2/policy.py",
+            "status": "refused"
+          },
+          {
+            "case": "changed_config",
+            "reason": "Sealed artifact changed: config.json",
+            "status": "refused"
+          },
+          {
+            "case": "changed_model",
+            "reason": "Sealed artifact changed: models/SPY/model.joblib",
+            "status": "refused"
+          },
+          {
+            "case": "unrelated_junit",
+            "reason": "Sealed artifact changed: tests.xml",
+            "status": "refused"
+          },
+          {
+            "case": "missing_critical_tests",
+            "reason": "Missing critical source-bound test evidence",
+            "status": "refused"
+          }
+        ],
+        "finished_at": "2026-09-28T08:54:18.564271+00:00",
+        "process_kills": [
+          {
+            "elapsed_seconds": 27.243992000003345,
+            "exit_code": -9,
+            "point": "before_plan",
+            "status": "recovered_exactly"
+          },
+          {
+            "elapsed_seconds": 11.167988250002963,
+            "exit_code": -9,
+            "point": "after_plan",
+            "status": "recovered_exactly"
+          },
+          {
+            "elapsed_seconds": 8.200631750005414,
+            "exit_code": -9,
+            "point": "after_deployment",
+            "status": "recovered_exactly"
+          },
+          {
+            "elapsed_seconds": 5.345182167002349,
+            "exit_code": -9,
+            "point": "after_shadow",
+            "status": "recovered_exactly"
+          },
+          {
+            "elapsed_seconds": 5.495373041994753,
+            "exit_code": -9,
+            "point": "before_receipt",
+            "status": "recovered_exactly"
+          },
+          {
+            "elapsed_seconds": 5.976173917006236,
+            "exit_code": -9,
+            "point": "after_receipt",
+            "status": "recovered_exactly"
+          },
+          {
+            "elapsed_seconds": 17.136966500009294,
+            "exit_code": -9,
+            "point": "model_partial",
+            "status": "recovered_exactly"
+          },
+          {
+            "elapsed_seconds": 22.324408750006114,
+            "exit_code": -9,
+            "point": "model_committed",
+            "status": "recovered_exactly"
+          }
+        ],
+        "release_sha256": "570372e203c6ef943deb37c2856a4ca7f0c3d34a168ac247d5b1cb2232916f43",
+        "scope": "isolated local processes; SIGKILL on actual process, not physical power loss; no pilot observations",
+        "snapshot_sha256": "51dd9291a4501427f04b15d99f8e968d64c1c24a33152889e1b745733d22b6b9",
+        "source": {
+          "runtime_v2/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "runtime_v2/account.py": "73c5aa89826c5ad5a0b04721344a0fa067f4cf4a13c480bdfb8165d6d5a1acc9",
+          "runtime_v2/calendar.py": "5a97b86b5a4dc17c3a86627c73172162365aec32c6f0edd8ea20e74d3630c1d5",
+          "runtime_v2/market.py": "24ad3da7c7b74e4619e896a1c41d8fde0f05df14c37e7fcb72d8922790e52a49",
+          "runtime_v2/model.py": "d82a10584dcfb614e79f04af6255b238d74ea66ff961f07b2919bb2663fa1b2d",
+          "runtime_v2/operations.py": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+          "runtime_v2/policy.py": "f4357f04fa0a270265b10802ed4ac84cee4117e62c694496eb088707de56e79d",
+          "runtime_v2/risk.py": "b784c8b972dd4fde1eef760085b63e83bef892794bdfa19af07453f4585ff2e9",
+          "runtime_v2/storage.py": "db0ef15f303dfc7cb1b312195c63f5822851d22e2116f06a022e63468725eb7a",
+          "scripts/collector_v2.py": "2f191fcd4084961eac93c77a41bd89e4ec9a5044bc24e27c185e69a043176dd6"
+        },
+        "started_at": "2026-09-28T08:52:29.233444+00:00",
+        "trial_id": "R11-PROCESS-CRASH-R2"
+      }
+    }
+  }
+}

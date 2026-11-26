@@ -1,0 +1,9 @@
+{
+  "recorded_at": "2026-09-28T08:45:44.706207+00:00",
+  "experiment_runtime_file_field": "research_v2/experiments.py",
+  "actual_experiment_loader_origin": "data/research-v2/experiments/source/research_v2/experiments.py",
+  "reason": "The adapter intentionally retains canonical __file__ to resolve the registered repository data paths. importlib loader executes archived bytes, whose hash and canonical-copy hash are both checked before loading. Therefore the experiment entry in executed_archive_sources shows canonical compatibility __file__, while the actual loader origin is the archived path. All other listed mathematical modules load directly from their archived paths.",
+  "source": "data/research-v2/experiments/full_reproduce.py",
+  "source_sha256": "2db3a1be4d6810704b9a98b5e6a06440275930a7bcdc2c360cb098f4812eaa2c",
+  "mathematics_changed": false
+}

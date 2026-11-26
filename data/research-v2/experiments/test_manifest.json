@@ -1,0 +1,47 @@
+{
+  "created_at": "2026-09-28T08:24:29.686085+00:00",
+  "source_hashes": {
+    "research_v2/experiments.py": "df9405b20dbeb48e4284c09d23fbd5253ffa160b9040196b52a6e59ff7cd66d8",
+    "src/models/adaptive.py": "17b17d73328b95f3e71ff5c7a0610e244c7a52254e30c022a8a7fe8a3621a071",
+    "src/execution/account.py": "73c5aa89826c5ad5a0b04721344a0fa067f4cf4a13c480bdfb8165d6d5a1acc9",
+    "src/backtest/portfolio.py": "9c3b2832ee54d55d696f617bfb394e44460716b10eedb935a67d7b6d33c4a8f3",
+    "src/research/adaptive_portfolio.py": "a58a69e0e53a04e82d355a4a544c043a99f6f6d38829bcbbdc8ebbf176e0ff73"
+  },
+  "design_sha256": "77681045e724dd6240a71c39ae939db04bf95d17d4305becf42db944c72972bd",
+  "command": "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 /Users/a/miniconda3/bin/python -m pytest tests/test_research_v2_experiments.py -q --junitxml=data/research-v2/experiments/tests.xml",
+  "test_source_sha256": "276f2a9e0047b55f79ee865f5e834806a1e9a5e8b25cb973812058f5a789ca26",
+  "completed_at": "2026-09-28T08:25:52.193588+00:00",
+  "junit_sha256": "f7218ffeaf15557eae1fef859fe8c6a97e6abf8777c206ce7afb30604709cf53",
+  "tests": [
+    {
+      "id": "tests.test_research_v2_experiments::test_endpoint_purged_disjoint_roles",
+      "seconds": 0.102,
+      "result": "passed"
+    },
+    {
+      "id": "tests.test_research_v2_experiments::test_future_mutation_and_training_only_scaler",
+      "seconds": 1.642,
+      "result": "passed"
+    },
+    {
+      "id": "tests.test_research_v2_experiments::test_transfer_excludes_held_target",
+      "seconds": 1.693,
+      "result": "passed"
+    },
+    {
+      "id": "tests.test_research_v2_experiments::test_probability_schema_serialization_and_tamper",
+      "seconds": 0.855,
+      "result": "passed"
+    },
+    {
+      "id": "tests.test_research_v2_experiments::test_mature_labels_required",
+      "seconds": 0.007,
+      "result": "passed"
+    },
+    {
+      "id": "tests.test_research_v2_experiments::test_block_inference_null_positive_negative_and_holm",
+      "seconds": 0.041,
+      "result": "passed"
+    }
+  ]
+}

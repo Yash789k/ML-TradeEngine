@@ -1,0 +1,10 @@
+version = 1
+id = "trading-pilot-evidence-watch"
+kind = "heartbeat"
+name = "Trading pilot evidence watch"
+prompt = "In /Users/a/Downloads/ml-trade-engine, follow docs/research-week1-r2/OPERATIONS.md and STATUS.md for the separately registered five-session replacement starting US 1 October. Check only eligible XNYS market-open/post-close windows. Use sealed status and inspect new receipts, heartbeat, halt, reconciliation and milestones; keep notification state in docs/research-week1-r2/observer-state.json. The old research-week1 and research-v2 workspaces are superseded. Launchd alone collects and validates data. Do not run daily/tick/commission, clear halts, backfill, refit, retune, enable broker orders or publish. Reuse qualifications; add targeted tests only for changed code or a new failure. Stay quiet on unchanged state; notify only new actionable failures, required action or valid milestones. Generate research_week1_r2.report week-close/final reports only when their evidence gates pass, and pause after reporting final maturity. Commissioning is not prospective evidence; no profitability approval."
+status = "ACTIVE"
+rrule = "FREQ=WEEKLY;WKST=MO;BYDAY=MO,TU,WE,TH,FR,SA;BYHOUR=5,21;BYMINUTE=30;BYSECOND=0;BYSETPOS=2,3,4,5,6,7,8,9,10,11"
+target_thread_id = "01a0e70e-ccdd-7b91-b17e-9af2b3eca477"
+created_at = 1790584270625
+updated_at = 1790863844849

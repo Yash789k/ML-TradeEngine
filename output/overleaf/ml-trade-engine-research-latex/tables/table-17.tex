@@ -1,0 +1,12 @@
+\begin{table}[!htbp]\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.14}
+\caption{Warm pipeline stage timings, seconds; P99 intentionally unreported}\label{tab:17}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.22000\textwidth-4.800pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.19500\textwidth-4.800pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.19500\textwidth-4.800pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.19500\textwidth-4.800pt\relax}>{\raggedleft\arraybackslash}p{\dimexpr 0.19500\textwidth-4.800pt\relax}@{}}
+\toprule
+\textbf{Stage} & \textbf{Samples} & \textbf{P50 (s)} & \textbf{P95 (s)} & \textbf{P99 (s)} \\
+\midrule
+features & 20 & 0.372 & 1.083 & - \\
+inference & 20 & 0.191 & 0.354 & - \\
+whole\_\allowbreak{}batch & 20 & 1.798 & 4.159 & - \\
+\bottomrule\end{tabular}\par\smallskip
+\raggedright\textit{Source:} \path{data/research-v2/operations/latency-r2.json}.
+\end{table}

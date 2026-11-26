@@ -1,0 +1,4159 @@
+model,symbol,regime,label,size,mean
+Conventional review,AAPL,0,0,4,0.0
+Conventional review,AAPL,0,1,21,1.0
+Conventional review,AAPL,0,2,5,0.2
+Conventional review,AAPL,1,0,54,0.0
+Conventional review,AAPL,1,1,93,0.9247311827956989
+Conventional review,AAPL,1,2,80,0.05
+Conventional review,AAPL,2,0,122,0.0
+Conventional review,AAPL,2,1,208,0.9375
+Conventional review,AAPL,2,2,144,0.13194444444444445
+Conventional review,AMZN,0,0,10,0.1
+Conventional review,AMZN,0,1,12,1.0
+Conventional review,AMZN,0,2,8,0.25
+Conventional review,AMZN,1,0,53,0.0
+Conventional review,AMZN,1,1,105,0.9142857142857143
+Conventional review,AMZN,1,2,69,0.10144927536231885
+Conventional review,AMZN,2,0,121,0.0
+Conventional review,AMZN,2,1,214,0.9065420560747663
+Conventional review,AMZN,2,2,139,0.1223021582733813
+Conventional review,BAC,0,0,2,0.0
+Conventional review,BAC,0,1,17,0.9411764705882353
+Conventional review,BAC,0,2,11,0.09090909090909091
+Conventional review,BAC,1,0,60,0.0
+Conventional review,BAC,1,1,97,0.9175257731958762
+Conventional review,BAC,1,2,70,0.11428571428571428
+Conventional review,BAC,2,0,127,0.023622047244094488
+Conventional review,BAC,2,1,192,0.84375
+Conventional review,BAC,2,2,155,0.18064516129032257
+Conventional review,DIA,0,0,5,0.0
+Conventional review,DIA,0,1,18,1.0
+Conventional review,DIA,0,2,7,0.14285714285714285
+Conventional review,DIA,1,0,46,0.0
+Conventional review,DIA,1,1,101,0.9900990099009901
+Conventional review,DIA,1,2,80,0.0375
+Conventional review,DIA,2,0,132,0.0
+Conventional review,DIA,2,1,190,0.8947368421052632
+Conventional review,DIA,2,2,152,0.06578947368421052
+Conventional review,GLD,0,0,7,0.14285714285714285
+Conventional review,GLD,0,1,12,0.9166666666666666
+Conventional review,GLD,0,2,11,0.18181818181818182
+Conventional review,GLD,1,0,39,0.0
+Conventional review,GLD,1,1,106,0.9528301886792453
+Conventional review,GLD,1,2,82,0.024390243902439025
+Conventional review,GLD,2,0,112,0.0
+Conventional review,GLD,2,1,210,0.9476190476190476
+Conventional review,GLD,2,2,152,0.07236842105263158
+Conventional review,GOOGL,0,0,7,0.0
+Conventional review,GOOGL,0,1,14,1.0
+Conventional review,GOOGL,0,2,9,0.1111111111111111
+Conventional review,GOOGL,1,0,55,0.01818181818181818
+Conventional review,GOOGL,1,1,111,0.9459459459459459
+Conventional review,GOOGL,1,2,61,0.01639344262295082
+Conventional review,GOOGL,2,0,118,0.0
+Conventional review,GOOGL,2,1,193,0.9067357512953368
+Conventional review,GOOGL,2,2,163,0.18404907975460122
+Conventional review,GS,0,0,4,0.25
+Conventional review,GS,0,1,14,1.0
+Conventional review,GS,0,2,12,0.08333333333333333
+Conventional review,GS,1,0,46,0.0
+Conventional review,GS,1,1,106,0.9433962264150944
+Conventional review,GS,1,2,75,0.13333333333333333
+Conventional review,GS,2,0,134,0.014925373134328358
+Conventional review,GS,2,1,186,0.8709677419354839
+Conventional review,GS,2,2,154,0.1038961038961039
+Conventional review,IWM,0,0,5,0.0
+Conventional review,IWM,0,1,19,1.0
+Conventional review,IWM,0,2,6,0.16666666666666666
+Conventional review,IWM,1,0,53,0.0
+Conventional review,IWM,1,1,101,0.9702970297029703
+Conventional review,IWM,1,2,73,0.0821917808219178
+Conventional review,IWM,2,0,134,0.007462686567164179
+Conventional review,IWM,2,1,203,0.896551724137931
+Conventional review,IWM,2,2,137,0.08759124087591241
+Conventional review,JPM,0,0,4,0.0
+Conventional review,JPM,0,1,18,1.0
+Conventional review,JPM,0,2,8,0.0
+Conventional review,JPM,1,0,47,0.0
+Conventional review,JPM,1,1,103,0.9611650485436893
+Conventional review,JPM,1,2,77,0.05194805194805195
+Conventional review,JPM,2,0,114,0.0
+Conventional review,JPM,2,1,182,0.8956043956043956
+Conventional review,JPM,2,2,178,0.08426966292134831
+Conventional review,META,0,0,8,0.125
+Conventional review,META,0,1,12,1.0
+Conventional review,META,0,2,10,0.1
+Conventional review,META,1,0,45,0.0
+Conventional review,META,1,1,115,0.9565217391304348
+Conventional review,META,1,2,67,0.05970149253731343
+Conventional review,META,2,0,125,0.0
+Conventional review,META,2,1,192,0.84375
+Conventional review,META,2,2,157,0.19745222929936307
+Conventional review,MSFT,0,0,5,0.0
+Conventional review,MSFT,0,1,19,1.0
+Conventional review,MSFT,0,2,6,0.16666666666666666
+Conventional review,MSFT,1,0,58,0.0
+Conventional review,MSFT,1,1,94,0.9787234042553191
+Conventional review,MSFT,1,2,75,0.05333333333333334
+Conventional review,MSFT,2,0,130,0.0
+Conventional review,MSFT,2,1,196,0.923469387755102
+Conventional review,MSFT,2,2,148,0.13513513513513514
+Conventional review,NVDA,0,0,6,0.0
+Conventional review,NVDA,0,1,14,1.0
+Conventional review,NVDA,0,2,10,0.2
+Conventional review,NVDA,1,0,55,0.0
+Conventional review,NVDA,1,1,91,0.967032967032967
+Conventional review,NVDA,1,2,81,0.04938271604938271
+Conventional review,NVDA,2,0,119,0.0
+Conventional review,NVDA,2,1,189,0.8941798941798942
+Conventional review,NVDA,2,2,166,0.1144578313253012
+Conventional review,QQQ,0,0,6,0.0
+Conventional review,QQQ,0,1,16,1.0
+Conventional review,QQQ,0,2,8,0.125
+Conventional review,QQQ,1,0,43,0.0
+Conventional review,QQQ,1,1,105,0.9523809523809523
+Conventional review,QQQ,1,2,79,0.06329113924050633
+Conventional review,QQQ,2,0,122,0.0
+Conventional review,QQQ,2,1,179,0.888268156424581
+Conventional review,QQQ,2,2,173,0.1329479768786127
+Conventional review,SPY,0,0,3,0.0
+Conventional review,SPY,0,1,18,1.0
+Conventional review,SPY,0,2,9,0.1111111111111111
+Conventional review,SPY,1,0,49,0.0
+Conventional review,SPY,1,1,94,0.9893617021276596
+Conventional review,SPY,1,2,84,0.05952380952380952
+Conventional review,SPY,2,0,118,0.0
+Conventional review,SPY,2,1,188,0.8936170212765957
+Conventional review,SPY,2,2,168,0.08928571428571429
+Conventional review,TLT,0,0,11,0.09090909090909091
+Conventional review,TLT,0,1,11,1.0
+Conventional review,TLT,0,2,8,0.125
+Conventional review,TLT,1,0,65,0.0
+Conventional review,TLT,1,1,81,0.8888888888888888
+Conventional review,TLT,1,2,81,0.024691358024691357
+Conventional review,TLT,2,0,152,0.0
+Conventional review,TLT,2,1,183,0.9617486338797814
+Conventional review,TLT,2,2,139,0.014388489208633094
+Conventional review,TSLA,0,0,5,0.0
+Conventional review,TSLA,0,1,17,1.0
+Conventional review,TSLA,0,2,8,0.125
+Conventional review,TSLA,1,0,59,0.0
+Conventional review,TSLA,1,1,102,0.9509803921568627
+Conventional review,TSLA,1,2,66,0.06060606060606061
+Conventional review,TSLA,2,0,137,0.0
+Conventional review,TSLA,2,1,192,0.8541666666666666
+Conventional review,TSLA,2,2,145,0.19310344827586207
+Conventional review,XLE,0,0,7,0.14285714285714285
+Conventional review,XLE,0,1,15,1.0
+Conventional review,XLE,0,2,8,0.125
+Conventional review,XLE,1,0,64,0.0
+Conventional review,XLE,1,1,94,1.0
+Conventional review,XLE,1,2,69,0.057971014492753624
+Conventional review,XLE,2,0,133,0.0
+Conventional review,XLE,2,1,182,0.8956043956043956
+Conventional review,XLE,2,2,159,0.12578616352201258
+Conventional review,XLF,0,0,4,0.0
+Conventional review,XLF,0,1,19,1.0
+Conventional review,XLF,0,2,7,0.14285714285714285
+Conventional review,XLF,1,0,47,0.0
+Conventional review,XLF,1,1,112,0.9642857142857143
+Conventional review,XLF,1,2,68,0.04411764705882353
+Conventional review,XLF,2,0,122,0.0
+Conventional review,XLF,2,1,185,0.9351351351351351
+Conventional review,XLF,2,2,167,0.10778443113772455
+Conventional review,XLI,0,0,2,0.0
+Conventional review,XLI,0,1,19,1.0
+Conventional review,XLI,0,2,9,0.1111111111111111
+Conventional review,XLI,1,0,50,0.0
+Conventional review,XLI,1,1,103,0.9902912621359223
+Conventional review,XLI,1,2,74,0.04054054054054054
+Conventional review,XLI,2,0,129,0.0
+Conventional review,XLI,2,1,188,0.8882978723404256
+Conventional review,XLI,2,2,157,0.07643312101910828
+Conventional review,XLK,0,0,5,0.0
+Conventional review,XLK,0,1,15,1.0
+Conventional review,XLK,0,2,10,0.1
+Conventional review,XLK,1,0,45,0.0
+Conventional review,XLK,1,1,105,0.9619047619047619
+Conventional review,XLK,1,2,77,0.025974025974025976
+Conventional review,XLK,2,0,127,0.0
+Conventional review,XLK,2,1,171,0.9064327485380117
+Conventional review,XLK,2,2,176,0.11363636363636363
+Conventional review,XLP,0,0,6,0.0
+Conventional review,XLP,0,1,15,1.0
+Conventional review,XLP,0,2,9,0.1111111111111111
+Conventional review,XLP,1,0,57,0.0
+Conventional review,XLP,1,1,92,0.9565217391304348
+Conventional review,XLP,1,2,78,0.08974358974358974
+Conventional review,XLP,2,0,143,0.0
+Conventional review,XLP,2,1,183,0.9289617486338798
+Conventional review,XLP,2,2,148,0.05405405405405406
+Conventional review,XLV,0,0,9,0.0
+Conventional review,XLV,0,1,13,1.0
+Conventional review,XLV,0,2,8,0.125
+Conventional review,XLV,1,0,62,0.0
+Conventional review,XLV,1,1,95,0.9368421052631579
+Conventional review,XLV,1,2,70,0.1
+Conventional review,XLV,2,0,136,0.0
+Conventional review,XLV,2,1,194,0.9639175257731959
+Conventional review,XLV,2,2,144,0.05555555555555555
+FinBERT logistic,AAPL,0,0,4,0.0
+FinBERT logistic,AAPL,0,1,21,1.0
+FinBERT logistic,AAPL,0,2,5,0.0
+FinBERT logistic,AAPL,1,0,54,0.0
+FinBERT logistic,AAPL,1,1,93,1.0
+FinBERT logistic,AAPL,1,2,80,0.0
+FinBERT logistic,AAPL,2,0,122,0.0
+FinBERT logistic,AAPL,2,1,208,1.0
+FinBERT logistic,AAPL,2,2,144,0.0
+FinBERT logistic,AMZN,0,0,10,0.0
+FinBERT logistic,AMZN,0,1,12,1.0
+FinBERT logistic,AMZN,0,2,8,0.0
+FinBERT logistic,AMZN,1,0,53,0.0
+FinBERT logistic,AMZN,1,1,105,1.0
+FinBERT logistic,AMZN,1,2,69,0.0
+FinBERT logistic,AMZN,2,0,121,0.0
+FinBERT logistic,AMZN,2,1,214,1.0
+FinBERT logistic,AMZN,2,2,139,0.0
+FinBERT logistic,BAC,0,0,2,0.0
+FinBERT logistic,BAC,0,1,17,1.0
+FinBERT logistic,BAC,0,2,11,0.0
+FinBERT logistic,BAC,1,0,60,0.0
+FinBERT logistic,BAC,1,1,97,1.0
+FinBERT logistic,BAC,1,2,70,0.0
+FinBERT logistic,BAC,2,0,127,0.0
+FinBERT logistic,BAC,2,1,192,1.0
+FinBERT logistic,BAC,2,2,155,0.0
+FinBERT logistic,DIA,0,0,5,0.0
+FinBERT logistic,DIA,0,1,18,1.0
+FinBERT logistic,DIA,0,2,7,0.0
+FinBERT logistic,DIA,1,0,46,0.0
+FinBERT logistic,DIA,1,1,101,1.0
+FinBERT logistic,DIA,1,2,80,0.0
+FinBERT logistic,DIA,2,0,132,0.0
+FinBERT logistic,DIA,2,1,190,1.0
+FinBERT logistic,DIA,2,2,152,0.0
+FinBERT logistic,GLD,0,0,7,0.0
+FinBERT logistic,GLD,0,1,12,1.0
+FinBERT logistic,GLD,0,2,11,0.0
+FinBERT logistic,GLD,1,0,39,0.0
+FinBERT logistic,GLD,1,1,106,1.0
+FinBERT logistic,GLD,1,2,82,0.0
+FinBERT logistic,GLD,2,0,112,0.0
+FinBERT logistic,GLD,2,1,210,1.0
+FinBERT logistic,GLD,2,2,152,0.0
+FinBERT logistic,GOOGL,0,0,7,0.0
+FinBERT logistic,GOOGL,0,1,14,1.0
+FinBERT logistic,GOOGL,0,2,9,0.0
+FinBERT logistic,GOOGL,1,0,55,0.0
+FinBERT logistic,GOOGL,1,1,111,1.0
+FinBERT logistic,GOOGL,1,2,61,0.0
+FinBERT logistic,GOOGL,2,0,118,0.0
+FinBERT logistic,GOOGL,2,1,193,1.0
+FinBERT logistic,GOOGL,2,2,163,0.0
+FinBERT logistic,GS,0,0,4,0.0
+FinBERT logistic,GS,0,1,14,1.0
+FinBERT logistic,GS,0,2,12,0.0
+FinBERT logistic,GS,1,0,46,0.0
+FinBERT logistic,GS,1,1,106,1.0
+FinBERT logistic,GS,1,2,75,0.0
+FinBERT logistic,GS,2,0,134,0.0
+FinBERT logistic,GS,2,1,186,1.0
+FinBERT logistic,GS,2,2,154,0.0
+FinBERT logistic,IWM,0,0,5,0.0
+FinBERT logistic,IWM,0,1,19,1.0
+FinBERT logistic,IWM,0,2,6,0.0
+FinBERT logistic,IWM,1,0,53,0.0
+FinBERT logistic,IWM,1,1,101,1.0
+FinBERT logistic,IWM,1,2,73,0.0
+FinBERT logistic,IWM,2,0,134,0.0
+FinBERT logistic,IWM,2,1,203,1.0
+FinBERT logistic,IWM,2,2,137,0.0
+FinBERT logistic,JPM,0,0,4,0.0
+FinBERT logistic,JPM,0,1,18,1.0
+FinBERT logistic,JPM,0,2,8,0.0
+FinBERT logistic,JPM,1,0,47,0.0
+FinBERT logistic,JPM,1,1,103,1.0
+FinBERT logistic,JPM,1,2,77,0.0
+FinBERT logistic,JPM,2,0,114,0.0
+FinBERT logistic,JPM,2,1,182,1.0
+FinBERT logistic,JPM,2,2,178,0.0
+FinBERT logistic,META,0,0,8,0.0
+FinBERT logistic,META,0,1,12,1.0
+FinBERT logistic,META,0,2,10,0.0
+FinBERT logistic,META,1,0,45,0.0
+FinBERT logistic,META,1,1,115,1.0
+FinBERT logistic,META,1,2,67,0.0
+FinBERT logistic,META,2,0,125,0.0
+FinBERT logistic,META,2,1,192,1.0
+FinBERT logistic,META,2,2,157,0.0
+FinBERT logistic,MSFT,0,0,5,0.0
+FinBERT logistic,MSFT,0,1,19,1.0
+FinBERT logistic,MSFT,0,2,6,0.0
+FinBERT logistic,MSFT,1,0,58,0.0
+FinBERT logistic,MSFT,1,1,94,1.0
+FinBERT logistic,MSFT,1,2,75,0.0
+FinBERT logistic,MSFT,2,0,130,0.0
+FinBERT logistic,MSFT,2,1,196,1.0
+FinBERT logistic,MSFT,2,2,148,0.0
+FinBERT logistic,NVDA,0,0,6,0.0
+FinBERT logistic,NVDA,0,1,14,1.0
+FinBERT logistic,NVDA,0,2,10,0.0
+FinBERT logistic,NVDA,1,0,55,0.0
+FinBERT logistic,NVDA,1,1,91,1.0
+FinBERT logistic,NVDA,1,2,81,0.0
+FinBERT logistic,NVDA,2,0,119,0.0
+FinBERT logistic,NVDA,2,1,189,1.0
+FinBERT logistic,NVDA,2,2,166,0.0
+FinBERT logistic,QQQ,0,0,6,0.0
+FinBERT logistic,QQQ,0,1,16,1.0
+FinBERT logistic,QQQ,0,2,8,0.0
+FinBERT logistic,QQQ,1,0,43,0.0
+FinBERT logistic,QQQ,1,1,105,1.0
+FinBERT logistic,QQQ,1,2,79,0.0
+FinBERT logistic,QQQ,2,0,122,0.0
+FinBERT logistic,QQQ,2,1,179,1.0
+FinBERT logistic,QQQ,2,2,173,0.0
+FinBERT logistic,SPY,0,0,3,0.0
+FinBERT logistic,SPY,0,1,18,1.0
+FinBERT logistic,SPY,0,2,9,0.0
+FinBERT logistic,SPY,1,0,49,0.0
+FinBERT logistic,SPY,1,1,94,1.0
+FinBERT logistic,SPY,1,2,84,0.0
+FinBERT logistic,SPY,2,0,118,0.0
+FinBERT logistic,SPY,2,1,188,1.0
+FinBERT logistic,SPY,2,2,168,0.0
+FinBERT logistic,TLT,0,0,11,0.0
+FinBERT logistic,TLT,0,1,11,1.0
+FinBERT logistic,TLT,0,2,8,0.0
+FinBERT logistic,TLT,1,0,65,0.0
+FinBERT logistic,TLT,1,1,81,1.0
+FinBERT logistic,TLT,1,2,81,0.0
+FinBERT logistic,TLT,2,0,152,0.0
+FinBERT logistic,TLT,2,1,183,1.0
+FinBERT logistic,TLT,2,2,139,0.0
+FinBERT logistic,TSLA,0,0,5,0.0
+FinBERT logistic,TSLA,0,1,17,1.0
+FinBERT logistic,TSLA,0,2,8,0.0
+FinBERT logistic,TSLA,1,0,59,0.0
+FinBERT logistic,TSLA,1,1,102,1.0
+FinBERT logistic,TSLA,1,2,66,0.0
+FinBERT logistic,TSLA,2,0,137,0.0
+FinBERT logistic,TSLA,2,1,192,1.0
+FinBERT logistic,TSLA,2,2,145,0.0
+FinBERT logistic,XLE,0,0,7,0.0
+FinBERT logistic,XLE,0,1,15,1.0
+FinBERT logistic,XLE,0,2,8,0.0
+FinBERT logistic,XLE,1,0,64,0.0
+FinBERT logistic,XLE,1,1,94,1.0
+FinBERT logistic,XLE,1,2,69,0.0
+FinBERT logistic,XLE,2,0,133,0.0
+FinBERT logistic,XLE,2,1,182,1.0
+FinBERT logistic,XLE,2,2,159,0.0
+FinBERT logistic,XLF,0,0,4,0.0
+FinBERT logistic,XLF,0,1,19,1.0
+FinBERT logistic,XLF,0,2,7,0.0
+FinBERT logistic,XLF,1,0,47,0.0
+FinBERT logistic,XLF,1,1,112,1.0
+FinBERT logistic,XLF,1,2,68,0.0
+FinBERT logistic,XLF,2,0,122,0.0
+FinBERT logistic,XLF,2,1,185,1.0
+FinBERT logistic,XLF,2,2,167,0.0
+FinBERT logistic,XLI,0,0,2,0.0
+FinBERT logistic,XLI,0,1,19,1.0
+FinBERT logistic,XLI,0,2,9,0.0
+FinBERT logistic,XLI,1,0,50,0.0
+FinBERT logistic,XLI,1,1,103,1.0
+FinBERT logistic,XLI,1,2,74,0.0
+FinBERT logistic,XLI,2,0,129,0.0
+FinBERT logistic,XLI,2,1,188,1.0
+FinBERT logistic,XLI,2,2,157,0.0
+FinBERT logistic,XLK,0,0,5,0.0
+FinBERT logistic,XLK,0,1,15,1.0
+FinBERT logistic,XLK,0,2,10,0.0
+FinBERT logistic,XLK,1,0,45,0.0
+FinBERT logistic,XLK,1,1,105,1.0
+FinBERT logistic,XLK,1,2,77,0.0
+FinBERT logistic,XLK,2,0,127,0.0
+FinBERT logistic,XLK,2,1,171,1.0
+FinBERT logistic,XLK,2,2,176,0.0
+FinBERT logistic,XLP,0,0,6,0.0
+FinBERT logistic,XLP,0,1,15,1.0
+FinBERT logistic,XLP,0,2,9,0.0
+FinBERT logistic,XLP,1,0,57,0.0
+FinBERT logistic,XLP,1,1,92,1.0
+FinBERT logistic,XLP,1,2,78,0.0
+FinBERT logistic,XLP,2,0,143,0.0
+FinBERT logistic,XLP,2,1,183,1.0
+FinBERT logistic,XLP,2,2,148,0.0
+FinBERT logistic,XLV,0,0,9,0.0
+FinBERT logistic,XLV,0,1,13,1.0
+FinBERT logistic,XLV,0,2,8,0.0
+FinBERT logistic,XLV,1,0,62,0.0
+FinBERT logistic,XLV,1,1,95,1.0
+FinBERT logistic,XLV,1,2,70,0.0
+FinBERT logistic,XLV,2,0,136,0.0
+FinBERT logistic,XLV,2,1,194,1.0
+FinBERT logistic,XLV,2,2,144,0.0
+GRU,AAPL,0,0,4,0.25
+GRU,AAPL,0,1,21,0.9523809523809523
+GRU,AAPL,0,2,5,0.2
+GRU,AAPL,1,0,54,0.018518518518518517
+GRU,AAPL,1,1,93,0.7741935483870968
+GRU,AAPL,1,2,80,0.2125
+GRU,AAPL,2,0,122,0.00819672131147541
+GRU,AAPL,2,1,208,0.8269230769230769
+GRU,AAPL,2,2,144,0.24305555555555555
+GRU,AMZN,0,0,10,0.4
+GRU,AMZN,0,1,12,1.0
+GRU,AMZN,0,2,8,0.125
+GRU,AMZN,1,0,53,0.018867924528301886
+GRU,AMZN,1,1,105,0.8380952380952381
+GRU,AMZN,1,2,69,0.15942028985507245
+GRU,AMZN,2,0,121,0.008264462809917356
+GRU,AMZN,2,1,214,0.8598130841121495
+GRU,AMZN,2,2,139,0.20863309352517986
+GRU,BAC,0,0,2,1.0
+GRU,BAC,0,1,17,1.0
+GRU,BAC,0,2,11,0.09090909090909091
+GRU,BAC,1,0,60,0.03333333333333333
+GRU,BAC,1,1,97,0.8247422680412371
+GRU,BAC,1,2,70,0.24285714285714285
+GRU,BAC,2,0,127,0.05511811023622047
+GRU,BAC,2,1,192,0.7604166666666666
+GRU,BAC,2,2,155,0.2838709677419355
+GRU,DIA,0,0,5,0.6
+GRU,DIA,0,1,18,1.0
+GRU,DIA,0,2,7,0.14285714285714285
+GRU,DIA,1,0,46,0.0
+GRU,DIA,1,1,101,0.900990099009901
+GRU,DIA,1,2,80,0.2375
+GRU,DIA,2,0,132,0.007575757575757576
+GRU,DIA,2,1,190,0.7631578947368421
+GRU,DIA,2,2,152,0.20394736842105263
+GRU,GLD,0,0,7,0.2857142857142857
+GRU,GLD,0,1,12,0.9166666666666666
+GRU,GLD,0,2,11,0.18181818181818182
+GRU,GLD,1,0,39,0.0
+GRU,GLD,1,1,106,0.9339622641509434
+GRU,GLD,1,2,82,0.07317073170731707
+GRU,GLD,2,0,112,0.008928571428571428
+GRU,GLD,2,1,210,0.9
+GRU,GLD,2,2,152,0.11842105263157894
+GRU,GOOGL,0,0,7,0.0
+GRU,GOOGL,0,1,14,1.0
+GRU,GOOGL,0,2,9,0.1111111111111111
+GRU,GOOGL,1,0,55,0.0
+GRU,GOOGL,1,1,111,0.8198198198198198
+GRU,GOOGL,1,2,61,0.16393442622950818
+GRU,GOOGL,2,0,118,0.0423728813559322
+GRU,GOOGL,2,1,193,0.772020725388601
+GRU,GOOGL,2,2,163,0.25766871165644173
+GRU,GS,0,0,4,0.5
+GRU,GS,0,1,14,0.8571428571428571
+GRU,GS,0,2,12,0.08333333333333333
+GRU,GS,1,0,46,0.0
+GRU,GS,1,1,106,0.8962264150943396
+GRU,GS,1,2,75,0.25333333333333335
+GRU,GS,2,0,134,0.014925373134328358
+GRU,GS,2,1,186,0.7204301075268817
+GRU,GS,2,2,154,0.2792207792207792
+GRU,IWM,0,0,5,0.4
+GRU,IWM,0,1,19,0.9473684210526315
+GRU,IWM,0,2,6,0.16666666666666666
+GRU,IWM,1,0,53,0.0
+GRU,IWM,1,1,101,0.8811881188118812
+GRU,IWM,1,2,73,0.2328767123287671
+GRU,IWM,2,0,134,0.007462686567164179
+GRU,IWM,2,1,203,0.7586206896551724
+GRU,IWM,2,2,137,0.22627737226277372
+GRU,JPM,0,0,4,0.0
+GRU,JPM,0,1,18,0.8888888888888888
+GRU,JPM,0,2,8,0.125
+GRU,JPM,1,0,47,0.0425531914893617
+GRU,JPM,1,1,103,0.8446601941747572
+GRU,JPM,1,2,77,0.24675324675324675
+GRU,JPM,2,0,114,0.008771929824561403
+GRU,JPM,2,1,182,0.7032967032967034
+GRU,JPM,2,2,178,0.29213483146067415
+GRU,META,0,0,8,0.0
+GRU,META,0,1,12,1.0
+GRU,META,0,2,10,0.1
+GRU,META,1,0,45,0.06666666666666667
+GRU,META,1,1,115,0.8608695652173913
+GRU,META,1,2,67,0.1791044776119403
+GRU,META,2,0,125,0.032
+GRU,META,2,1,192,0.765625
+GRU,META,2,2,157,0.2929936305732484
+GRU,MSFT,0,0,5,0.2
+GRU,MSFT,0,1,19,0.9473684210526315
+GRU,MSFT,0,2,6,0.16666666666666666
+GRU,MSFT,1,0,58,0.0
+GRU,MSFT,1,1,94,0.8723404255319149
+GRU,MSFT,1,2,75,0.22666666666666666
+GRU,MSFT,2,0,130,0.038461538461538464
+GRU,MSFT,2,1,196,0.8418367346938775
+GRU,MSFT,2,2,148,0.27702702702702703
+GRU,NVDA,0,0,6,0.0
+GRU,NVDA,0,1,14,1.0
+GRU,NVDA,0,2,10,0.2
+GRU,NVDA,1,0,55,0.03636363636363636
+GRU,NVDA,1,1,91,0.8901098901098901
+GRU,NVDA,1,2,81,0.2345679012345679
+GRU,NVDA,2,0,119,0.03361344537815126
+GRU,NVDA,2,1,189,0.7671957671957672
+GRU,NVDA,2,2,166,0.24096385542168675
+GRU,QQQ,0,0,6,0.3333333333333333
+GRU,QQQ,0,1,16,1.0
+GRU,QQQ,0,2,8,0.125
+GRU,QQQ,1,0,43,0.023255813953488372
+GRU,QQQ,1,1,105,0.8666666666666667
+GRU,QQQ,1,2,79,0.1518987341772152
+GRU,QQQ,2,0,122,0.01639344262295082
+GRU,QQQ,2,1,179,0.8044692737430168
+GRU,QQQ,2,2,173,0.26011560693641617
+GRU,SPY,0,0,3,1.0
+GRU,SPY,0,1,18,1.0
+GRU,SPY,0,2,9,0.1111111111111111
+GRU,SPY,1,0,49,0.0
+GRU,SPY,1,1,94,0.8829787234042553
+GRU,SPY,1,2,84,0.17857142857142858
+GRU,SPY,2,0,118,0.01694915254237288
+GRU,SPY,2,1,188,0.824468085106383
+GRU,SPY,2,2,168,0.23809523809523808
+GRU,TLT,0,0,11,0.36363636363636365
+GRU,TLT,0,1,11,0.9090909090909091
+GRU,TLT,0,2,8,0.125
+GRU,TLT,1,0,65,0.015384615384615385
+GRU,TLT,1,1,81,0.9382716049382716
+GRU,TLT,1,2,81,0.06172839506172839
+GRU,TLT,2,0,152,0.0
+GRU,TLT,2,1,183,0.912568306010929
+GRU,TLT,2,2,139,0.12949640287769784
+GRU,TSLA,0,0,5,0.0
+GRU,TSLA,0,1,17,1.0
+GRU,TSLA,0,2,8,0.25
+GRU,TSLA,1,0,59,0.01694915254237288
+GRU,TSLA,1,1,102,0.8333333333333334
+GRU,TSLA,1,2,66,0.18181818181818182
+GRU,TSLA,2,0,137,0.051094890510948905
+GRU,TSLA,2,1,192,0.7864583333333334
+GRU,TSLA,2,2,145,0.2620689655172414
+GRU,XLE,0,0,7,0.2857142857142857
+GRU,XLE,0,1,15,1.0
+GRU,XLE,0,2,8,0.25
+GRU,XLE,1,0,64,0.03125
+GRU,XLE,1,1,94,0.8404255319148937
+GRU,XLE,1,2,69,0.30434782608695654
+GRU,XLE,2,0,133,0.0
+GRU,XLE,2,1,182,0.7197802197802198
+GRU,XLE,2,2,159,0.24528301886792453
+GRU,XLF,0,0,4,0.75
+GRU,XLF,0,1,19,0.9473684210526315
+GRU,XLF,0,2,7,0.14285714285714285
+GRU,XLF,1,0,47,0.02127659574468085
+GRU,XLF,1,1,112,0.9017857142857143
+GRU,XLF,1,2,68,0.27941176470588236
+GRU,XLF,2,0,122,0.040983606557377046
+GRU,XLF,2,1,185,0.7945945945945946
+GRU,XLF,2,2,167,0.2634730538922156
+GRU,XLI,0,0,2,1.0
+GRU,XLI,0,1,19,0.8947368421052632
+GRU,XLI,0,2,9,0.1111111111111111
+GRU,XLI,1,0,50,0.04
+GRU,XLI,1,1,103,0.912621359223301
+GRU,XLI,1,2,74,0.22972972972972974
+GRU,XLI,2,0,129,0.0
+GRU,XLI,2,1,188,0.7446808510638298
+GRU,XLI,2,2,157,0.28662420382165604
+GRU,XLK,0,0,5,0.2
+GRU,XLK,0,1,15,1.0
+GRU,XLK,0,2,10,0.1
+GRU,XLK,1,0,45,0.022222222222222223
+GRU,XLK,1,1,105,0.8857142857142857
+GRU,XLK,1,2,77,0.16883116883116883
+GRU,XLK,2,0,127,0.0
+GRU,XLK,2,1,171,0.8070175438596491
+GRU,XLK,2,2,176,0.23295454545454544
+GRU,XLP,0,0,6,0.16666666666666666
+GRU,XLP,0,1,15,0.9333333333333333
+GRU,XLP,0,2,9,0.1111111111111111
+GRU,XLP,1,0,57,0.0
+GRU,XLP,1,1,92,0.9021739130434783
+GRU,XLP,1,2,78,0.21794871794871795
+GRU,XLP,2,0,143,0.0
+GRU,XLP,2,1,183,0.8032786885245902
+GRU,XLP,2,2,148,0.22972972972972974
+GRU,XLV,0,0,9,0.3333333333333333
+GRU,XLV,0,1,13,0.9230769230769231
+GRU,XLV,0,2,8,0.125
+GRU,XLV,1,0,62,0.016129032258064516
+GRU,XLV,1,1,95,0.8526315789473684
+GRU,XLV,1,2,70,0.32857142857142857
+GRU,XLV,2,0,136,0.007352941176470588
+GRU,XLV,2,1,194,0.7680412371134021
+GRU,XLV,2,2,144,0.3194444444444444
+Gate without HMM,AAPL,0,0,4,0.25
+Gate without HMM,AAPL,0,1,21,1.0
+Gate without HMM,AAPL,0,2,5,0.2
+Gate without HMM,AAPL,1,0,54,0.0
+Gate without HMM,AAPL,1,1,93,0.9247311827956989
+Gate without HMM,AAPL,1,2,80,0.0625
+Gate without HMM,AAPL,2,0,122,0.0
+Gate without HMM,AAPL,2,1,208,0.9759615384615384
+Gate without HMM,AAPL,2,2,144,0.08333333333333333
+Gate without HMM,AMZN,0,0,10,0.2
+Gate without HMM,AMZN,0,1,12,1.0
+Gate without HMM,AMZN,0,2,8,0.25
+Gate without HMM,AMZN,1,0,53,0.0
+Gate without HMM,AMZN,1,1,105,0.9142857142857143
+Gate without HMM,AMZN,1,2,69,0.11594202898550725
+Gate without HMM,AMZN,2,0,121,0.0
+Gate without HMM,AMZN,2,1,214,0.9252336448598131
+Gate without HMM,AMZN,2,2,139,0.09352517985611511
+Gate without HMM,BAC,0,0,2,0.0
+Gate without HMM,BAC,0,1,17,0.9411764705882353
+Gate without HMM,BAC,0,2,11,0.09090909090909091
+Gate without HMM,BAC,1,0,60,0.0
+Gate without HMM,BAC,1,1,97,0.9175257731958762
+Gate without HMM,BAC,1,2,70,0.15714285714285714
+Gate without HMM,BAC,2,0,127,0.0
+Gate without HMM,BAC,2,1,192,0.8802083333333334
+Gate without HMM,BAC,2,2,155,0.16774193548387098
+Gate without HMM,DIA,0,0,5,0.0
+Gate without HMM,DIA,0,1,18,1.0
+Gate without HMM,DIA,0,2,7,0.2857142857142857
+Gate without HMM,DIA,1,0,46,0.0
+Gate without HMM,DIA,1,1,101,0.9900990099009901
+Gate without HMM,DIA,1,2,80,0.0375
+Gate without HMM,DIA,2,0,132,0.0
+Gate without HMM,DIA,2,1,190,0.9578947368421052
+Gate without HMM,DIA,2,2,152,0.019736842105263157
+Gate without HMM,GLD,0,0,7,0.14285714285714285
+Gate without HMM,GLD,0,1,12,0.9166666666666666
+Gate without HMM,GLD,0,2,11,0.18181818181818182
+Gate without HMM,GLD,1,0,39,0.0
+Gate without HMM,GLD,1,1,106,0.9622641509433962
+Gate without HMM,GLD,1,2,82,0.0
+Gate without HMM,GLD,2,0,112,0.0
+Gate without HMM,GLD,2,1,210,0.9571428571428572
+Gate without HMM,GLD,2,2,152,0.07236842105263158
+Gate without HMM,GOOGL,0,0,7,0.0
+Gate without HMM,GOOGL,0,1,14,1.0
+Gate without HMM,GOOGL,0,2,9,0.1111111111111111
+Gate without HMM,GOOGL,1,0,55,0.01818181818181818
+Gate without HMM,GOOGL,1,1,111,0.9279279279279279
+Gate without HMM,GOOGL,1,2,61,0.03278688524590164
+Gate without HMM,GOOGL,2,0,118,0.0
+Gate without HMM,GOOGL,2,1,193,0.917098445595855
+Gate without HMM,GOOGL,2,2,163,0.15950920245398773
+Gate without HMM,GS,0,0,4,0.25
+Gate without HMM,GS,0,1,14,1.0
+Gate without HMM,GS,0,2,12,0.08333333333333333
+Gate without HMM,GS,1,0,46,0.0
+Gate without HMM,GS,1,1,106,0.9811320754716981
+Gate without HMM,GS,1,2,75,0.09333333333333334
+Gate without HMM,GS,2,0,134,0.014925373134328358
+Gate without HMM,GS,2,1,186,0.8924731182795699
+Gate without HMM,GS,2,2,154,0.09090909090909091
+Gate without HMM,IWM,0,0,5,0.0
+Gate without HMM,IWM,0,1,19,1.0
+Gate without HMM,IWM,0,2,6,0.3333333333333333
+Gate without HMM,IWM,1,0,53,0.0
+Gate without HMM,IWM,1,1,101,0.9702970297029703
+Gate without HMM,IWM,1,2,73,0.0958904109589041
+Gate without HMM,IWM,2,0,134,0.0
+Gate without HMM,IWM,2,1,203,0.9458128078817734
+Gate without HMM,IWM,2,2,137,0.043795620437956206
+Gate without HMM,JPM,0,0,4,0.0
+Gate without HMM,JPM,0,1,18,1.0
+Gate without HMM,JPM,0,2,8,0.125
+Gate without HMM,JPM,1,0,47,0.0
+Gate without HMM,JPM,1,1,103,0.9514563106796117
+Gate without HMM,JPM,1,2,77,0.05194805194805195
+Gate without HMM,JPM,2,0,114,0.0
+Gate without HMM,JPM,2,1,182,0.9340659340659341
+Gate without HMM,JPM,2,2,178,0.07303370786516854
+Gate without HMM,META,0,0,8,0.125
+Gate without HMM,META,0,1,12,1.0
+Gate without HMM,META,0,2,10,0.1
+Gate without HMM,META,1,0,45,0.0
+Gate without HMM,META,1,1,115,0.9826086956521739
+Gate without HMM,META,1,2,67,0.04477611940298507
+Gate without HMM,META,2,0,125,0.0
+Gate without HMM,META,2,1,192,0.8645833333333334
+Gate without HMM,META,2,2,157,0.15286624203821655
+Gate without HMM,MSFT,0,0,5,0.0
+Gate without HMM,MSFT,0,1,19,1.0
+Gate without HMM,MSFT,0,2,6,0.16666666666666666
+Gate without HMM,MSFT,1,0,58,0.0
+Gate without HMM,MSFT,1,1,94,0.9680851063829787
+Gate without HMM,MSFT,1,2,75,0.04
+Gate without HMM,MSFT,2,0,130,0.0
+Gate without HMM,MSFT,2,1,196,0.9387755102040817
+Gate without HMM,MSFT,2,2,148,0.08108108108108109
+Gate without HMM,NVDA,0,0,6,0.0
+Gate without HMM,NVDA,0,1,14,1.0
+Gate without HMM,NVDA,0,2,10,0.2
+Gate without HMM,NVDA,1,0,55,0.0
+Gate without HMM,NVDA,1,1,91,0.967032967032967
+Gate without HMM,NVDA,1,2,81,0.06172839506172839
+Gate without HMM,NVDA,2,0,119,0.0
+Gate without HMM,NVDA,2,1,189,0.8994708994708994
+Gate without HMM,NVDA,2,2,166,0.1144578313253012
+Gate without HMM,QQQ,0,0,6,0.0
+Gate without HMM,QQQ,0,1,16,1.0
+Gate without HMM,QQQ,0,2,8,0.125
+Gate without HMM,QQQ,1,0,43,0.0
+Gate without HMM,QQQ,1,1,105,0.9523809523809523
+Gate without HMM,QQQ,1,2,79,0.06329113924050633
+Gate without HMM,QQQ,2,0,122,0.0
+Gate without HMM,QQQ,2,1,179,0.9273743016759777
+Gate without HMM,QQQ,2,2,173,0.08670520231213873
+Gate without HMM,SPY,0,0,3,0.0
+Gate without HMM,SPY,0,1,18,1.0
+Gate without HMM,SPY,0,2,9,0.2222222222222222
+Gate without HMM,SPY,1,0,49,0.0
+Gate without HMM,SPY,1,1,94,0.9893617021276596
+Gate without HMM,SPY,1,2,84,0.05952380952380952
+Gate without HMM,SPY,2,0,118,0.0
+Gate without HMM,SPY,2,1,188,0.9308510638297872
+Gate without HMM,SPY,2,2,168,0.03571428571428571
+Gate without HMM,TLT,0,0,11,0.18181818181818182
+Gate without HMM,TLT,0,1,11,1.0
+Gate without HMM,TLT,0,2,8,0.125
+Gate without HMM,TLT,1,0,65,0.0
+Gate without HMM,TLT,1,1,81,0.9506172839506173
+Gate without HMM,TLT,1,2,81,0.012345679012345678
+Gate without HMM,TLT,2,0,152,0.0
+Gate without HMM,TLT,2,1,183,0.9726775956284153
+Gate without HMM,TLT,2,2,139,0.0
+Gate without HMM,TSLA,0,0,5,0.0
+Gate without HMM,TSLA,0,1,17,1.0
+Gate without HMM,TSLA,0,2,8,0.25
+Gate without HMM,TSLA,1,0,59,0.0
+Gate without HMM,TSLA,1,1,102,0.9411764705882353
+Gate without HMM,TSLA,1,2,66,0.06060606060606061
+Gate without HMM,TSLA,2,0,137,0.0
+Gate without HMM,TSLA,2,1,192,0.8697916666666666
+Gate without HMM,TSLA,2,2,145,0.15862068965517243
+Gate without HMM,XLE,0,0,7,0.14285714285714285
+Gate without HMM,XLE,0,1,15,1.0
+Gate without HMM,XLE,0,2,8,0.25
+Gate without HMM,XLE,1,0,64,0.0
+Gate without HMM,XLE,1,1,94,1.0
+Gate without HMM,XLE,1,2,69,0.057971014492753624
+Gate without HMM,XLE,2,0,133,0.0
+Gate without HMM,XLE,2,1,182,0.9120879120879121
+Gate without HMM,XLE,2,2,159,0.0880503144654088
+Gate without HMM,XLF,0,0,4,0.0
+Gate without HMM,XLF,0,1,19,1.0
+Gate without HMM,XLF,0,2,7,0.2857142857142857
+Gate without HMM,XLF,1,0,47,0.0
+Gate without HMM,XLF,1,1,112,0.9642857142857143
+Gate without HMM,XLF,1,2,68,0.058823529411764705
+Gate without HMM,XLF,2,0,122,0.0
+Gate without HMM,XLF,2,1,185,0.972972972972973
+Gate without HMM,XLF,2,2,167,0.0718562874251497
+Gate without HMM,XLI,0,0,2,0.0
+Gate without HMM,XLI,0,1,19,1.0
+Gate without HMM,XLI,0,2,9,0.2222222222222222
+Gate without HMM,XLI,1,0,50,0.0
+Gate without HMM,XLI,1,1,103,0.9902912621359223
+Gate without HMM,XLI,1,2,74,0.05405405405405406
+Gate without HMM,XLI,2,0,129,0.0
+Gate without HMM,XLI,2,1,188,0.9468085106382979
+Gate without HMM,XLI,2,2,157,0.06369426751592357
+Gate without HMM,XLK,0,0,5,0.0
+Gate without HMM,XLK,0,1,15,1.0
+Gate without HMM,XLK,0,2,10,0.1
+Gate without HMM,XLK,1,0,45,0.0
+Gate without HMM,XLK,1,1,105,0.9523809523809523
+Gate without HMM,XLK,1,2,77,0.03896103896103896
+Gate without HMM,XLK,2,0,127,0.0
+Gate without HMM,XLK,2,1,171,0.9415204678362573
+Gate without HMM,XLK,2,2,176,0.07386363636363637
+Gate without HMM,XLP,0,0,6,0.0
+Gate without HMM,XLP,0,1,15,1.0
+Gate without HMM,XLP,0,2,9,0.1111111111111111
+Gate without HMM,XLP,1,0,57,0.0
+Gate without HMM,XLP,1,1,92,0.9456521739130435
+Gate without HMM,XLP,1,2,78,0.08974358974358974
+Gate without HMM,XLP,2,0,143,0.0
+Gate without HMM,XLP,2,1,183,0.9836065573770492
+Gate without HMM,XLP,2,2,148,0.02702702702702703
+Gate without HMM,XLV,0,0,9,0.0
+Gate without HMM,XLV,0,1,13,1.0
+Gate without HMM,XLV,0,2,8,0.125
+Gate without HMM,XLV,1,0,62,0.016129032258064516
+Gate without HMM,XLV,1,1,95,0.9368421052631579
+Gate without HMM,XLV,1,2,70,0.1
+Gate without HMM,XLV,2,0,136,0.0
+Gate without HMM,XLV,2,1,194,0.9896907216494846
+Gate without HMM,XLV,2,2,144,0.013888888888888888
+Granite MoE statement,AAPL,0,0,4,0.0
+Granite MoE statement,AAPL,0,1,21,1.0
+Granite MoE statement,AAPL,0,2,5,0.0
+Granite MoE statement,AAPL,1,0,54,0.0
+Granite MoE statement,AAPL,1,1,93,1.0
+Granite MoE statement,AAPL,1,2,80,0.0
+Granite MoE statement,AAPL,2,0,122,0.0
+Granite MoE statement,AAPL,2,1,208,1.0
+Granite MoE statement,AAPL,2,2,144,0.0
+Granite MoE statement,AMZN,0,0,10,0.0
+Granite MoE statement,AMZN,0,1,12,1.0
+Granite MoE statement,AMZN,0,2,8,0.0
+Granite MoE statement,AMZN,1,0,53,0.0
+Granite MoE statement,AMZN,1,1,105,1.0
+Granite MoE statement,AMZN,1,2,69,0.0
+Granite MoE statement,AMZN,2,0,121,0.0
+Granite MoE statement,AMZN,2,1,214,1.0
+Granite MoE statement,AMZN,2,2,139,0.0
+Granite MoE statement,BAC,0,0,2,0.0
+Granite MoE statement,BAC,0,1,17,1.0
+Granite MoE statement,BAC,0,2,11,0.0
+Granite MoE statement,BAC,1,0,60,0.0
+Granite MoE statement,BAC,1,1,97,1.0
+Granite MoE statement,BAC,1,2,70,0.0
+Granite MoE statement,BAC,2,0,127,0.0
+Granite MoE statement,BAC,2,1,192,1.0
+Granite MoE statement,BAC,2,2,155,0.0
+Granite MoE statement,DIA,0,0,5,0.0
+Granite MoE statement,DIA,0,1,18,1.0
+Granite MoE statement,DIA,0,2,7,0.0
+Granite MoE statement,DIA,1,0,46,0.0
+Granite MoE statement,DIA,1,1,101,1.0
+Granite MoE statement,DIA,1,2,80,0.0
+Granite MoE statement,DIA,2,0,132,0.0
+Granite MoE statement,DIA,2,1,190,1.0
+Granite MoE statement,DIA,2,2,152,0.0
+Granite MoE statement,GLD,0,0,7,0.0
+Granite MoE statement,GLD,0,1,12,1.0
+Granite MoE statement,GLD,0,2,11,0.0
+Granite MoE statement,GLD,1,0,39,0.0
+Granite MoE statement,GLD,1,1,106,1.0
+Granite MoE statement,GLD,1,2,82,0.0
+Granite MoE statement,GLD,2,0,112,0.0
+Granite MoE statement,GLD,2,1,210,1.0
+Granite MoE statement,GLD,2,2,152,0.0
+Granite MoE statement,GOOGL,0,0,7,0.0
+Granite MoE statement,GOOGL,0,1,14,1.0
+Granite MoE statement,GOOGL,0,2,9,0.0
+Granite MoE statement,GOOGL,1,0,55,0.0
+Granite MoE statement,GOOGL,1,1,111,1.0
+Granite MoE statement,GOOGL,1,2,61,0.0
+Granite MoE statement,GOOGL,2,0,118,0.0
+Granite MoE statement,GOOGL,2,1,193,1.0
+Granite MoE statement,GOOGL,2,2,163,0.0
+Granite MoE statement,GS,0,0,4,0.0
+Granite MoE statement,GS,0,1,14,1.0
+Granite MoE statement,GS,0,2,12,0.0
+Granite MoE statement,GS,1,0,46,0.0
+Granite MoE statement,GS,1,1,106,1.0
+Granite MoE statement,GS,1,2,75,0.0
+Granite MoE statement,GS,2,0,134,0.0
+Granite MoE statement,GS,2,1,186,1.0
+Granite MoE statement,GS,2,2,154,0.0
+Granite MoE statement,IWM,0,0,5,0.0
+Granite MoE statement,IWM,0,1,19,1.0
+Granite MoE statement,IWM,0,2,6,0.0
+Granite MoE statement,IWM,1,0,53,0.0
+Granite MoE statement,IWM,1,1,101,1.0
+Granite MoE statement,IWM,1,2,73,0.0
+Granite MoE statement,IWM,2,0,134,0.0
+Granite MoE statement,IWM,2,1,203,1.0
+Granite MoE statement,IWM,2,2,137,0.0
+Granite MoE statement,JPM,0,0,4,0.0
+Granite MoE statement,JPM,0,1,18,1.0
+Granite MoE statement,JPM,0,2,8,0.0
+Granite MoE statement,JPM,1,0,47,0.0
+Granite MoE statement,JPM,1,1,103,1.0
+Granite MoE statement,JPM,1,2,77,0.0
+Granite MoE statement,JPM,2,0,114,0.0
+Granite MoE statement,JPM,2,1,182,1.0
+Granite MoE statement,JPM,2,2,178,0.0
+Granite MoE statement,META,0,0,8,0.0
+Granite MoE statement,META,0,1,12,1.0
+Granite MoE statement,META,0,2,10,0.0
+Granite MoE statement,META,1,0,45,0.0
+Granite MoE statement,META,1,1,115,1.0
+Granite MoE statement,META,1,2,67,0.0
+Granite MoE statement,META,2,0,125,0.0
+Granite MoE statement,META,2,1,192,1.0
+Granite MoE statement,META,2,2,157,0.0
+Granite MoE statement,MSFT,0,0,5,0.0
+Granite MoE statement,MSFT,0,1,19,1.0
+Granite MoE statement,MSFT,0,2,6,0.0
+Granite MoE statement,MSFT,1,0,58,0.0
+Granite MoE statement,MSFT,1,1,94,1.0
+Granite MoE statement,MSFT,1,2,75,0.0
+Granite MoE statement,MSFT,2,0,130,0.0
+Granite MoE statement,MSFT,2,1,196,1.0
+Granite MoE statement,MSFT,2,2,148,0.0
+Granite MoE statement,NVDA,0,0,6,0.0
+Granite MoE statement,NVDA,0,1,14,1.0
+Granite MoE statement,NVDA,0,2,10,0.0
+Granite MoE statement,NVDA,1,0,55,0.0
+Granite MoE statement,NVDA,1,1,91,1.0
+Granite MoE statement,NVDA,1,2,81,0.0
+Granite MoE statement,NVDA,2,0,119,0.0
+Granite MoE statement,NVDA,2,1,189,1.0
+Granite MoE statement,NVDA,2,2,166,0.0
+Granite MoE statement,QQQ,0,0,6,0.0
+Granite MoE statement,QQQ,0,1,16,1.0
+Granite MoE statement,QQQ,0,2,8,0.0
+Granite MoE statement,QQQ,1,0,43,0.0
+Granite MoE statement,QQQ,1,1,105,1.0
+Granite MoE statement,QQQ,1,2,79,0.0
+Granite MoE statement,QQQ,2,0,122,0.0
+Granite MoE statement,QQQ,2,1,179,1.0
+Granite MoE statement,QQQ,2,2,173,0.0
+Granite MoE statement,SPY,0,0,3,0.0
+Granite MoE statement,SPY,0,1,18,1.0
+Granite MoE statement,SPY,0,2,9,0.0
+Granite MoE statement,SPY,1,0,49,0.0
+Granite MoE statement,SPY,1,1,94,1.0
+Granite MoE statement,SPY,1,2,84,0.0
+Granite MoE statement,SPY,2,0,118,0.0
+Granite MoE statement,SPY,2,1,188,1.0
+Granite MoE statement,SPY,2,2,168,0.0
+Granite MoE statement,TLT,0,0,11,0.0
+Granite MoE statement,TLT,0,1,11,1.0
+Granite MoE statement,TLT,0,2,8,0.0
+Granite MoE statement,TLT,1,0,65,0.0
+Granite MoE statement,TLT,1,1,81,1.0
+Granite MoE statement,TLT,1,2,81,0.0
+Granite MoE statement,TLT,2,0,152,0.0
+Granite MoE statement,TLT,2,1,183,1.0
+Granite MoE statement,TLT,2,2,139,0.0
+Granite MoE statement,TSLA,0,0,5,0.0
+Granite MoE statement,TSLA,0,1,17,1.0
+Granite MoE statement,TSLA,0,2,8,0.0
+Granite MoE statement,TSLA,1,0,59,0.0
+Granite MoE statement,TSLA,1,1,102,1.0
+Granite MoE statement,TSLA,1,2,66,0.0
+Granite MoE statement,TSLA,2,0,137,0.0
+Granite MoE statement,TSLA,2,1,192,1.0
+Granite MoE statement,TSLA,2,2,145,0.0
+Granite MoE statement,XLE,0,0,7,0.0
+Granite MoE statement,XLE,0,1,15,1.0
+Granite MoE statement,XLE,0,2,8,0.0
+Granite MoE statement,XLE,1,0,64,0.0
+Granite MoE statement,XLE,1,1,94,1.0
+Granite MoE statement,XLE,1,2,69,0.0
+Granite MoE statement,XLE,2,0,133,0.0
+Granite MoE statement,XLE,2,1,182,1.0
+Granite MoE statement,XLE,2,2,159,0.0
+Granite MoE statement,XLF,0,0,4,0.0
+Granite MoE statement,XLF,0,1,19,1.0
+Granite MoE statement,XLF,0,2,7,0.0
+Granite MoE statement,XLF,1,0,47,0.0
+Granite MoE statement,XLF,1,1,112,1.0
+Granite MoE statement,XLF,1,2,68,0.0
+Granite MoE statement,XLF,2,0,122,0.0
+Granite MoE statement,XLF,2,1,185,1.0
+Granite MoE statement,XLF,2,2,167,0.0
+Granite MoE statement,XLI,0,0,2,0.0
+Granite MoE statement,XLI,0,1,19,1.0
+Granite MoE statement,XLI,0,2,9,0.0
+Granite MoE statement,XLI,1,0,50,0.0
+Granite MoE statement,XLI,1,1,103,1.0
+Granite MoE statement,XLI,1,2,74,0.0
+Granite MoE statement,XLI,2,0,129,0.0
+Granite MoE statement,XLI,2,1,188,1.0
+Granite MoE statement,XLI,2,2,157,0.0
+Granite MoE statement,XLK,0,0,5,0.0
+Granite MoE statement,XLK,0,1,15,1.0
+Granite MoE statement,XLK,0,2,10,0.0
+Granite MoE statement,XLK,1,0,45,0.0
+Granite MoE statement,XLK,1,1,105,1.0
+Granite MoE statement,XLK,1,2,77,0.0
+Granite MoE statement,XLK,2,0,127,0.0
+Granite MoE statement,XLK,2,1,171,1.0
+Granite MoE statement,XLK,2,2,176,0.0
+Granite MoE statement,XLP,0,0,6,0.0
+Granite MoE statement,XLP,0,1,15,1.0
+Granite MoE statement,XLP,0,2,9,0.0
+Granite MoE statement,XLP,1,0,57,0.0
+Granite MoE statement,XLP,1,1,92,1.0
+Granite MoE statement,XLP,1,2,78,0.0
+Granite MoE statement,XLP,2,0,143,0.0
+Granite MoE statement,XLP,2,1,183,1.0
+Granite MoE statement,XLP,2,2,148,0.0
+Granite MoE statement,XLV,0,0,9,0.0
+Granite MoE statement,XLV,0,1,13,1.0
+Granite MoE statement,XLV,0,2,8,0.0
+Granite MoE statement,XLV,1,0,62,0.0
+Granite MoE statement,XLV,1,1,95,1.0
+Granite MoE statement,XLV,1,2,70,0.0
+Granite MoE statement,XLV,2,0,136,0.0
+Granite MoE statement,XLV,2,1,194,1.0
+Granite MoE statement,XLV,2,2,144,0.0
+HMM gate,AAPL,0,0,4,0.0
+HMM gate,AAPL,0,1,21,1.0
+HMM gate,AAPL,0,2,5,0.2
+HMM gate,AAPL,1,0,54,0.0
+HMM gate,AAPL,1,1,93,0.9247311827956989
+HMM gate,AAPL,1,2,80,0.05
+HMM gate,AAPL,2,0,122,0.0
+HMM gate,AAPL,2,1,208,0.9375
+HMM gate,AAPL,2,2,144,0.13194444444444445
+HMM gate,AMZN,0,0,10,0.1
+HMM gate,AMZN,0,1,12,1.0
+HMM gate,AMZN,0,2,8,0.25
+HMM gate,AMZN,1,0,53,0.0
+HMM gate,AMZN,1,1,105,0.9142857142857143
+HMM gate,AMZN,1,2,69,0.10144927536231885
+HMM gate,AMZN,2,0,121,0.0
+HMM gate,AMZN,2,1,214,0.9065420560747663
+HMM gate,AMZN,2,2,139,0.1223021582733813
+HMM gate,BAC,0,0,2,0.0
+HMM gate,BAC,0,1,17,0.9411764705882353
+HMM gate,BAC,0,2,11,0.09090909090909091
+HMM gate,BAC,1,0,60,0.0
+HMM gate,BAC,1,1,97,0.9175257731958762
+HMM gate,BAC,1,2,70,0.11428571428571428
+HMM gate,BAC,2,0,127,0.023622047244094488
+HMM gate,BAC,2,1,192,0.84375
+HMM gate,BAC,2,2,155,0.18064516129032257
+HMM gate,DIA,0,0,5,0.0
+HMM gate,DIA,0,1,18,1.0
+HMM gate,DIA,0,2,7,0.14285714285714285
+HMM gate,DIA,1,0,46,0.0
+HMM gate,DIA,1,1,101,0.9900990099009901
+HMM gate,DIA,1,2,80,0.0375
+HMM gate,DIA,2,0,132,0.0
+HMM gate,DIA,2,1,190,0.8947368421052632
+HMM gate,DIA,2,2,152,0.06578947368421052
+HMM gate,GLD,0,0,7,0.14285714285714285
+HMM gate,GLD,0,1,12,0.9166666666666666
+HMM gate,GLD,0,2,11,0.18181818181818182
+HMM gate,GLD,1,0,39,0.0
+HMM gate,GLD,1,1,106,0.9528301886792453
+HMM gate,GLD,1,2,82,0.024390243902439025
+HMM gate,GLD,2,0,112,0.0
+HMM gate,GLD,2,1,210,0.9476190476190476
+HMM gate,GLD,2,2,152,0.07236842105263158
+HMM gate,GOOGL,0,0,7,0.0
+HMM gate,GOOGL,0,1,14,1.0
+HMM gate,GOOGL,0,2,9,0.1111111111111111
+HMM gate,GOOGL,1,0,55,0.01818181818181818
+HMM gate,GOOGL,1,1,111,0.9459459459459459
+HMM gate,GOOGL,1,2,61,0.01639344262295082
+HMM gate,GOOGL,2,0,118,0.0
+HMM gate,GOOGL,2,1,193,0.9067357512953368
+HMM gate,GOOGL,2,2,163,0.18404907975460122
+HMM gate,GS,0,0,4,0.25
+HMM gate,GS,0,1,14,1.0
+HMM gate,GS,0,2,12,0.08333333333333333
+HMM gate,GS,1,0,46,0.0
+HMM gate,GS,1,1,106,0.9433962264150944
+HMM gate,GS,1,2,75,0.13333333333333333
+HMM gate,GS,2,0,134,0.014925373134328358
+HMM gate,GS,2,1,186,0.8709677419354839
+HMM gate,GS,2,2,154,0.1038961038961039
+HMM gate,IWM,0,0,5,0.0
+HMM gate,IWM,0,1,19,1.0
+HMM gate,IWM,0,2,6,0.16666666666666666
+HMM gate,IWM,1,0,53,0.0
+HMM gate,IWM,1,1,101,0.9702970297029703
+HMM gate,IWM,1,2,73,0.0821917808219178
+HMM gate,IWM,2,0,134,0.007462686567164179
+HMM gate,IWM,2,1,203,0.896551724137931
+HMM gate,IWM,2,2,137,0.08759124087591241
+HMM gate,JPM,0,0,4,0.0
+HMM gate,JPM,0,1,18,1.0
+HMM gate,JPM,0,2,8,0.0
+HMM gate,JPM,1,0,47,0.0
+HMM gate,JPM,1,1,103,0.9611650485436893
+HMM gate,JPM,1,2,77,0.05194805194805195
+HMM gate,JPM,2,0,114,0.0
+HMM gate,JPM,2,1,182,0.8956043956043956
+HMM gate,JPM,2,2,178,0.08426966292134831
+HMM gate,META,0,0,8,0.125
+HMM gate,META,0,1,12,1.0
+HMM gate,META,0,2,10,0.1
+HMM gate,META,1,0,45,0.0
+HMM gate,META,1,1,115,0.9565217391304348
+HMM gate,META,1,2,67,0.05970149253731343
+HMM gate,META,2,0,125,0.0
+HMM gate,META,2,1,192,0.84375
+HMM gate,META,2,2,157,0.19745222929936307
+HMM gate,MSFT,0,0,5,0.0
+HMM gate,MSFT,0,1,19,1.0
+HMM gate,MSFT,0,2,6,0.16666666666666666
+HMM gate,MSFT,1,0,58,0.0
+HMM gate,MSFT,1,1,94,0.9787234042553191
+HMM gate,MSFT,1,2,75,0.05333333333333334
+HMM gate,MSFT,2,0,130,0.0
+HMM gate,MSFT,2,1,196,0.923469387755102
+HMM gate,MSFT,2,2,148,0.13513513513513514
+HMM gate,NVDA,0,0,6,0.0
+HMM gate,NVDA,0,1,14,1.0
+HMM gate,NVDA,0,2,10,0.2
+HMM gate,NVDA,1,0,55,0.0
+HMM gate,NVDA,1,1,91,0.967032967032967
+HMM gate,NVDA,1,2,81,0.04938271604938271
+HMM gate,NVDA,2,0,119,0.0
+HMM gate,NVDA,2,1,189,0.8941798941798942
+HMM gate,NVDA,2,2,166,0.1144578313253012
+HMM gate,QQQ,0,0,6,0.0
+HMM gate,QQQ,0,1,16,1.0
+HMM gate,QQQ,0,2,8,0.125
+HMM gate,QQQ,1,0,43,0.0
+HMM gate,QQQ,1,1,105,0.9523809523809523
+HMM gate,QQQ,1,2,79,0.06329113924050633
+HMM gate,QQQ,2,0,122,0.0
+HMM gate,QQQ,2,1,179,0.888268156424581
+HMM gate,QQQ,2,2,173,0.1329479768786127
+HMM gate,SPY,0,0,3,0.0
+HMM gate,SPY,0,1,18,1.0
+HMM gate,SPY,0,2,9,0.1111111111111111
+HMM gate,SPY,1,0,49,0.0
+HMM gate,SPY,1,1,94,0.9893617021276596
+HMM gate,SPY,1,2,84,0.05952380952380952
+HMM gate,SPY,2,0,118,0.0
+HMM gate,SPY,2,1,188,0.8936170212765957
+HMM gate,SPY,2,2,168,0.08928571428571429
+HMM gate,TLT,0,0,11,0.09090909090909091
+HMM gate,TLT,0,1,11,1.0
+HMM gate,TLT,0,2,8,0.125
+HMM gate,TLT,1,0,65,0.0
+HMM gate,TLT,1,1,81,0.8888888888888888
+HMM gate,TLT,1,2,81,0.024691358024691357
+HMM gate,TLT,2,0,152,0.0
+HMM gate,TLT,2,1,183,0.9617486338797814
+HMM gate,TLT,2,2,139,0.014388489208633094
+HMM gate,TSLA,0,0,5,0.0
+HMM gate,TSLA,0,1,17,1.0
+HMM gate,TSLA,0,2,8,0.125
+HMM gate,TSLA,1,0,59,0.0
+HMM gate,TSLA,1,1,102,0.9509803921568627
+HMM gate,TSLA,1,2,66,0.06060606060606061
+HMM gate,TSLA,2,0,137,0.0
+HMM gate,TSLA,2,1,192,0.8541666666666666
+HMM gate,TSLA,2,2,145,0.19310344827586207
+HMM gate,XLE,0,0,7,0.14285714285714285
+HMM gate,XLE,0,1,15,1.0
+HMM gate,XLE,0,2,8,0.125
+HMM gate,XLE,1,0,64,0.0
+HMM gate,XLE,1,1,94,1.0
+HMM gate,XLE,1,2,69,0.057971014492753624
+HMM gate,XLE,2,0,133,0.0
+HMM gate,XLE,2,1,182,0.8956043956043956
+HMM gate,XLE,2,2,159,0.12578616352201258
+HMM gate,XLF,0,0,4,0.0
+HMM gate,XLF,0,1,19,1.0
+HMM gate,XLF,0,2,7,0.14285714285714285
+HMM gate,XLF,1,0,47,0.0
+HMM gate,XLF,1,1,112,0.9642857142857143
+HMM gate,XLF,1,2,68,0.04411764705882353
+HMM gate,XLF,2,0,122,0.0
+HMM gate,XLF,2,1,185,0.9351351351351351
+HMM gate,XLF,2,2,167,0.10778443113772455
+HMM gate,XLI,0,0,2,0.0
+HMM gate,XLI,0,1,19,1.0
+HMM gate,XLI,0,2,9,0.1111111111111111
+HMM gate,XLI,1,0,50,0.0
+HMM gate,XLI,1,1,103,0.9902912621359223
+HMM gate,XLI,1,2,74,0.04054054054054054
+HMM gate,XLI,2,0,129,0.0
+HMM gate,XLI,2,1,188,0.8882978723404256
+HMM gate,XLI,2,2,157,0.07643312101910828
+HMM gate,XLK,0,0,5,0.0
+HMM gate,XLK,0,1,15,1.0
+HMM gate,XLK,0,2,10,0.1
+HMM gate,XLK,1,0,45,0.0
+HMM gate,XLK,1,1,105,0.9619047619047619
+HMM gate,XLK,1,2,77,0.025974025974025976
+HMM gate,XLK,2,0,127,0.0
+HMM gate,XLK,2,1,171,0.9064327485380117
+HMM gate,XLK,2,2,176,0.11363636363636363
+HMM gate,XLP,0,0,6,0.0
+HMM gate,XLP,0,1,15,1.0
+HMM gate,XLP,0,2,9,0.1111111111111111
+HMM gate,XLP,1,0,57,0.0
+HMM gate,XLP,1,1,92,0.9565217391304348
+HMM gate,XLP,1,2,78,0.08974358974358974
+HMM gate,XLP,2,0,143,0.0
+HMM gate,XLP,2,1,183,0.9289617486338798
+HMM gate,XLP,2,2,148,0.05405405405405406
+HMM gate,XLV,0,0,9,0.0
+HMM gate,XLV,0,1,13,1.0
+HMM gate,XLV,0,2,8,0.125
+HMM gate,XLV,1,0,62,0.0
+HMM gate,XLV,1,1,95,0.9368421052631579
+HMM gate,XLV,1,2,70,0.1
+HMM gate,XLV,2,0,136,0.0
+HMM gate,XLV,2,1,194,0.9639175257731959
+HMM gate,XLV,2,2,144,0.05555555555555555
+JKP factors,AAPL,0,0,4,0.0
+JKP factors,AAPL,0,1,21,1.0
+JKP factors,AAPL,0,2,5,0.0
+JKP factors,AAPL,1,0,54,0.07407407407407407
+JKP factors,AAPL,1,1,93,0.956989247311828
+JKP factors,AAPL,1,2,80,0.0125
+JKP factors,AAPL,2,0,122,0.02459016393442623
+JKP factors,AAPL,2,1,208,0.8798076923076923
+JKP factors,AAPL,2,2,144,0.041666666666666664
+JKP factors,AMZN,0,0,10,0.0
+JKP factors,AMZN,0,1,12,1.0
+JKP factors,AMZN,0,2,8,0.0
+JKP factors,AMZN,1,0,53,0.07547169811320754
+JKP factors,AMZN,1,1,105,0.9428571428571428
+JKP factors,AMZN,1,2,69,0.014492753623188406
+JKP factors,AMZN,2,0,121,0.04132231404958678
+JKP factors,AMZN,2,1,214,0.8878504672897196
+JKP factors,AMZN,2,2,139,0.06474820143884892
+JKP factors,BAC,0,0,2,0.0
+JKP factors,BAC,0,1,17,1.0
+JKP factors,BAC,0,2,11,0.0
+JKP factors,BAC,1,0,60,0.06666666666666667
+JKP factors,BAC,1,1,97,0.9587628865979382
+JKP factors,BAC,1,2,70,0.0
+JKP factors,BAC,2,0,127,0.0
+JKP factors,BAC,2,1,192,0.8697916666666666
+JKP factors,BAC,2,2,155,0.07096774193548387
+JKP factors,DIA,0,0,5,0.0
+JKP factors,DIA,0,1,18,1.0
+JKP factors,DIA,0,2,7,0.0
+JKP factors,DIA,1,0,46,0.021739130434782608
+JKP factors,DIA,1,1,101,0.900990099009901
+JKP factors,DIA,1,2,80,0.0
+JKP factors,DIA,2,0,132,0.022727272727272728
+JKP factors,DIA,2,1,190,0.8947368421052632
+JKP factors,DIA,2,2,152,0.05263157894736842
+JKP factors,GLD,0,0,7,0.0
+JKP factors,GLD,0,1,12,1.0
+JKP factors,GLD,0,2,11,0.0
+JKP factors,GLD,1,0,39,0.07692307692307693
+JKP factors,GLD,1,1,106,0.9433962264150944
+JKP factors,GLD,1,2,82,0.0
+JKP factors,GLD,2,0,112,0.017857142857142856
+JKP factors,GLD,2,1,210,0.8857142857142857
+JKP factors,GLD,2,2,152,0.09210526315789473
+JKP factors,GOOGL,0,0,7,0.0
+JKP factors,GOOGL,0,1,14,1.0
+JKP factors,GOOGL,0,2,9,0.0
+JKP factors,GOOGL,1,0,55,0.01818181818181818
+JKP factors,GOOGL,1,1,111,0.9369369369369369
+JKP factors,GOOGL,1,2,61,0.01639344262295082
+JKP factors,GOOGL,2,0,118,0.025423728813559324
+JKP factors,GOOGL,2,1,193,0.8601036269430051
+JKP factors,GOOGL,2,2,163,0.05521472392638037
+JKP factors,GS,0,0,4,0.0
+JKP factors,GS,0,1,14,1.0
+JKP factors,GS,0,2,12,0.0
+JKP factors,GS,1,0,46,0.0
+JKP factors,GS,1,1,106,0.9056603773584906
+JKP factors,GS,1,2,75,0.0
+JKP factors,GS,2,0,134,0.014925373134328358
+JKP factors,GS,2,1,186,0.9032258064516129
+JKP factors,GS,2,2,154,0.045454545454545456
+JKP factors,IWM,0,0,5,0.0
+JKP factors,IWM,0,1,19,1.0
+JKP factors,IWM,0,2,6,0.0
+JKP factors,IWM,1,0,53,0.018867924528301886
+JKP factors,IWM,1,1,101,0.8910891089108911
+JKP factors,IWM,1,2,73,0.0
+JKP factors,IWM,2,0,134,0.029850746268656716
+JKP factors,IWM,2,1,203,0.9064039408866995
+JKP factors,IWM,2,2,137,0.0364963503649635
+JKP factors,JPM,0,0,4,0.0
+JKP factors,JPM,0,1,18,1.0
+JKP factors,JPM,0,2,8,0.0
+JKP factors,JPM,1,0,47,0.02127659574468085
+JKP factors,JPM,1,1,103,0.9029126213592233
+JKP factors,JPM,1,2,77,0.0
+JKP factors,JPM,2,0,114,0.017543859649122806
+JKP factors,JPM,2,1,182,0.9065934065934066
+JKP factors,JPM,2,2,178,0.0449438202247191
+JKP factors,META,0,0,8,0.0
+JKP factors,META,0,1,12,1.0
+JKP factors,META,0,2,10,0.0
+JKP factors,META,1,0,45,0.044444444444444446
+JKP factors,META,1,1,115,0.9652173913043478
+JKP factors,META,1,2,67,0.014925373134328358
+JKP factors,META,2,0,125,0.032
+JKP factors,META,2,1,192,0.90625
+JKP factors,META,2,2,157,0.06369426751592357
+JKP factors,MSFT,0,0,5,0.0
+JKP factors,MSFT,0,1,19,1.0
+JKP factors,MSFT,0,2,6,0.0
+JKP factors,MSFT,1,0,58,0.1206896551724138
+JKP factors,MSFT,1,1,94,0.9787234042553191
+JKP factors,MSFT,1,2,75,0.013333333333333334
+JKP factors,MSFT,2,0,130,0.038461538461538464
+JKP factors,MSFT,2,1,196,0.8928571428571429
+JKP factors,MSFT,2,2,148,0.05405405405405406
+JKP factors,NVDA,0,0,6,0.0
+JKP factors,NVDA,0,1,14,1.0
+JKP factors,NVDA,0,2,10,0.0
+JKP factors,NVDA,1,0,55,0.03636363636363636
+JKP factors,NVDA,1,1,91,0.9230769230769231
+JKP factors,NVDA,1,2,81,0.012345679012345678
+JKP factors,NVDA,2,0,119,0.05042016806722689
+JKP factors,NVDA,2,1,189,0.9047619047619048
+JKP factors,NVDA,2,2,166,0.060240963855421686
+JKP factors,QQQ,0,0,6,0.0
+JKP factors,QQQ,0,1,16,1.0
+JKP factors,QQQ,0,2,8,0.0
+JKP factors,QQQ,1,0,43,0.046511627906976744
+JKP factors,QQQ,1,1,105,0.9238095238095239
+JKP factors,QQQ,1,2,79,0.012658227848101266
+JKP factors,QQQ,2,0,122,0.04918032786885246
+JKP factors,QQQ,2,1,179,0.9106145251396648
+JKP factors,QQQ,2,2,173,0.057803468208092484
+JKP factors,SPY,0,0,3,0.0
+JKP factors,SPY,0,1,18,1.0
+JKP factors,SPY,0,2,9,0.0
+JKP factors,SPY,1,0,49,0.02040816326530612
+JKP factors,SPY,1,1,94,0.9148936170212766
+JKP factors,SPY,1,2,84,0.011904761904761904
+JKP factors,SPY,2,0,118,0.0423728813559322
+JKP factors,SPY,2,1,188,0.9148936170212766
+JKP factors,SPY,2,2,168,0.05357142857142857
+JKP factors,TLT,0,0,11,0.0
+JKP factors,TLT,0,1,11,1.0
+JKP factors,TLT,0,2,8,0.0
+JKP factors,TLT,1,0,65,0.07692307692307693
+JKP factors,TLT,1,1,81,0.9382716049382716
+JKP factors,TLT,1,2,81,0.012345679012345678
+JKP factors,TLT,2,0,152,0.019736842105263157
+JKP factors,TLT,2,1,183,0.8852459016393442
+JKP factors,TLT,2,2,139,0.05755395683453238
+JKP factors,TSLA,0,0,5,0.0
+JKP factors,TSLA,0,1,17,1.0
+JKP factors,TSLA,0,2,8,0.0
+JKP factors,TSLA,1,0,59,0.01694915254237288
+JKP factors,TSLA,1,1,102,0.9215686274509803
+JKP factors,TSLA,1,2,66,0.015151515151515152
+JKP factors,TSLA,2,0,137,0.0364963503649635
+JKP factors,TSLA,2,1,192,0.8958333333333334
+JKP factors,TSLA,2,2,145,0.05517241379310345
+JKP factors,XLE,0,0,7,0.0
+JKP factors,XLE,0,1,15,1.0
+JKP factors,XLE,0,2,8,0.0
+JKP factors,XLE,1,0,64,0.046875
+JKP factors,XLE,1,1,94,0.9361702127659575
+JKP factors,XLE,1,2,69,0.0
+JKP factors,XLE,2,0,133,0.03007518796992481
+JKP factors,XLE,2,1,182,0.9065934065934066
+JKP factors,XLE,2,2,159,0.0880503144654088
+JKP factors,XLF,0,0,4,0.0
+JKP factors,XLF,0,1,19,1.0
+JKP factors,XLF,0,2,7,0.0
+JKP factors,XLF,1,0,47,0.0425531914893617
+JKP factors,XLF,1,1,112,0.9196428571428571
+JKP factors,XLF,1,2,68,0.0
+JKP factors,XLF,2,0,122,0.01639344262295082
+JKP factors,XLF,2,1,185,0.9135135135135135
+JKP factors,XLF,2,2,167,0.0658682634730539
+JKP factors,XLI,0,0,2,0.0
+JKP factors,XLI,0,1,19,1.0
+JKP factors,XLI,0,2,9,0.0
+JKP factors,XLI,1,0,50,0.04
+JKP factors,XLI,1,1,103,0.9514563106796117
+JKP factors,XLI,1,2,74,0.0
+JKP factors,XLI,2,0,129,0.015503875968992248
+JKP factors,XLI,2,1,188,0.8936170212765957
+JKP factors,XLI,2,2,157,0.05732484076433121
+JKP factors,XLK,0,0,5,0.0
+JKP factors,XLK,0,1,15,1.0
+JKP factors,XLK,0,2,10,0.0
+JKP factors,XLK,1,0,45,0.06666666666666667
+JKP factors,XLK,1,1,105,0.9333333333333333
+JKP factors,XLK,1,2,77,0.012987012987012988
+JKP factors,XLK,2,0,127,0.047244094488188976
+JKP factors,XLK,2,1,171,0.9005847953216374
+JKP factors,XLK,2,2,176,0.045454545454545456
+JKP factors,XLP,0,0,6,0.0
+JKP factors,XLP,0,1,15,1.0
+JKP factors,XLP,0,2,9,0.0
+JKP factors,XLP,1,0,57,0.07017543859649122
+JKP factors,XLP,1,1,92,0.9456521739130435
+JKP factors,XLP,1,2,78,0.0
+JKP factors,XLP,2,0,143,0.006993006993006993
+JKP factors,XLP,2,1,183,0.8852459016393442
+JKP factors,XLP,2,2,148,0.05405405405405406
+JKP factors,XLV,0,0,9,0.0
+JKP factors,XLV,0,1,13,1.0
+JKP factors,XLV,0,2,8,0.0
+JKP factors,XLV,1,0,62,0.08064516129032258
+JKP factors,XLV,1,1,95,0.9578947368421052
+JKP factors,XLV,1,2,70,0.0
+JKP factors,XLV,2,0,136,0.007352941176470588
+JKP factors,XLV,2,1,194,0.8865979381443299
+JKP factors,XLV,2,2,144,0.05555555555555555
+LLM review,AAPL,0,0,4,0.0
+LLM review,AAPL,0,1,21,1.0
+LLM review,AAPL,0,2,5,0.2
+LLM review,AAPL,1,0,54,0.0
+LLM review,AAPL,1,1,93,0.9247311827956989
+LLM review,AAPL,1,2,80,0.05
+LLM review,AAPL,2,0,122,0.0
+LLM review,AAPL,2,1,208,0.9375
+LLM review,AAPL,2,2,144,0.13194444444444445
+LLM review,AMZN,0,0,10,0.1
+LLM review,AMZN,0,1,12,1.0
+LLM review,AMZN,0,2,8,0.25
+LLM review,AMZN,1,0,53,0.0
+LLM review,AMZN,1,1,105,0.9142857142857143
+LLM review,AMZN,1,2,69,0.10144927536231885
+LLM review,AMZN,2,0,121,0.0
+LLM review,AMZN,2,1,214,0.9065420560747663
+LLM review,AMZN,2,2,139,0.1223021582733813
+LLM review,BAC,0,0,2,0.0
+LLM review,BAC,0,1,17,0.9411764705882353
+LLM review,BAC,0,2,11,0.09090909090909091
+LLM review,BAC,1,0,60,0.0
+LLM review,BAC,1,1,97,0.9175257731958762
+LLM review,BAC,1,2,70,0.11428571428571428
+LLM review,BAC,2,0,127,0.023622047244094488
+LLM review,BAC,2,1,192,0.84375
+LLM review,BAC,2,2,155,0.18064516129032257
+LLM review,DIA,0,0,5,0.0
+LLM review,DIA,0,1,18,1.0
+LLM review,DIA,0,2,7,0.14285714285714285
+LLM review,DIA,1,0,46,0.0
+LLM review,DIA,1,1,101,0.9900990099009901
+LLM review,DIA,1,2,80,0.0375
+LLM review,DIA,2,0,132,0.0
+LLM review,DIA,2,1,190,0.8947368421052632
+LLM review,DIA,2,2,152,0.06578947368421052
+LLM review,GLD,0,0,7,0.14285714285714285
+LLM review,GLD,0,1,12,0.9166666666666666
+LLM review,GLD,0,2,11,0.18181818181818182
+LLM review,GLD,1,0,39,0.0
+LLM review,GLD,1,1,106,0.9528301886792453
+LLM review,GLD,1,2,82,0.024390243902439025
+LLM review,GLD,2,0,112,0.0
+LLM review,GLD,2,1,210,0.9476190476190476
+LLM review,GLD,2,2,152,0.07236842105263158
+LLM review,GOOGL,0,0,7,0.0
+LLM review,GOOGL,0,1,14,1.0
+LLM review,GOOGL,0,2,9,0.1111111111111111
+LLM review,GOOGL,1,0,55,0.01818181818181818
+LLM review,GOOGL,1,1,111,0.9459459459459459
+LLM review,GOOGL,1,2,61,0.01639344262295082
+LLM review,GOOGL,2,0,118,0.0
+LLM review,GOOGL,2,1,193,0.9067357512953368
+LLM review,GOOGL,2,2,163,0.18404907975460122
+LLM review,GS,0,0,4,0.25
+LLM review,GS,0,1,14,1.0
+LLM review,GS,0,2,12,0.08333333333333333
+LLM review,GS,1,0,46,0.0
+LLM review,GS,1,1,106,0.9433962264150944
+LLM review,GS,1,2,75,0.13333333333333333
+LLM review,GS,2,0,134,0.014925373134328358
+LLM review,GS,2,1,186,0.8709677419354839
+LLM review,GS,2,2,154,0.1038961038961039
+LLM review,IWM,0,0,5,0.0
+LLM review,IWM,0,1,19,1.0
+LLM review,IWM,0,2,6,0.16666666666666666
+LLM review,IWM,1,0,53,0.0
+LLM review,IWM,1,1,101,0.9702970297029703
+LLM review,IWM,1,2,73,0.0821917808219178
+LLM review,IWM,2,0,134,0.007462686567164179
+LLM review,IWM,2,1,203,0.896551724137931
+LLM review,IWM,2,2,137,0.08759124087591241
+LLM review,JPM,0,0,4,0.0
+LLM review,JPM,0,1,18,1.0
+LLM review,JPM,0,2,8,0.0
+LLM review,JPM,1,0,47,0.0
+LLM review,JPM,1,1,103,0.9611650485436893
+LLM review,JPM,1,2,77,0.05194805194805195
+LLM review,JPM,2,0,114,0.0
+LLM review,JPM,2,1,182,0.8956043956043956
+LLM review,JPM,2,2,178,0.08426966292134831
+LLM review,META,0,0,8,0.125
+LLM review,META,0,1,12,1.0
+LLM review,META,0,2,10,0.1
+LLM review,META,1,0,45,0.0
+LLM review,META,1,1,115,0.9565217391304348
+LLM review,META,1,2,67,0.05970149253731343
+LLM review,META,2,0,125,0.0
+LLM review,META,2,1,192,0.84375
+LLM review,META,2,2,157,0.19745222929936307
+LLM review,MSFT,0,0,5,0.0
+LLM review,MSFT,0,1,19,1.0
+LLM review,MSFT,0,2,6,0.16666666666666666
+LLM review,MSFT,1,0,58,0.0
+LLM review,MSFT,1,1,94,0.9787234042553191
+LLM review,MSFT,1,2,75,0.05333333333333334
+LLM review,MSFT,2,0,130,0.0
+LLM review,MSFT,2,1,196,0.923469387755102
+LLM review,MSFT,2,2,148,0.13513513513513514
+LLM review,NVDA,0,0,6,0.0
+LLM review,NVDA,0,1,14,1.0
+LLM review,NVDA,0,2,10,0.2
+LLM review,NVDA,1,0,55,0.0
+LLM review,NVDA,1,1,91,0.967032967032967
+LLM review,NVDA,1,2,81,0.04938271604938271
+LLM review,NVDA,2,0,119,0.0
+LLM review,NVDA,2,1,189,0.8941798941798942
+LLM review,NVDA,2,2,166,0.1144578313253012
+LLM review,QQQ,0,0,6,0.0
+LLM review,QQQ,0,1,16,1.0
+LLM review,QQQ,0,2,8,0.125
+LLM review,QQQ,1,0,43,0.0
+LLM review,QQQ,1,1,105,0.9523809523809523
+LLM review,QQQ,1,2,79,0.06329113924050633
+LLM review,QQQ,2,0,122,0.0
+LLM review,QQQ,2,1,179,0.888268156424581
+LLM review,QQQ,2,2,173,0.1329479768786127
+LLM review,SPY,0,0,3,0.0
+LLM review,SPY,0,1,18,1.0
+LLM review,SPY,0,2,9,0.1111111111111111
+LLM review,SPY,1,0,49,0.0
+LLM review,SPY,1,1,94,0.9893617021276596
+LLM review,SPY,1,2,84,0.05952380952380952
+LLM review,SPY,2,0,118,0.0
+LLM review,SPY,2,1,188,0.8936170212765957
+LLM review,SPY,2,2,168,0.08928571428571429
+LLM review,TLT,0,0,11,0.09090909090909091
+LLM review,TLT,0,1,11,1.0
+LLM review,TLT,0,2,8,0.125
+LLM review,TLT,1,0,65,0.0
+LLM review,TLT,1,1,81,0.8888888888888888
+LLM review,TLT,1,2,81,0.024691358024691357
+LLM review,TLT,2,0,152,0.0
+LLM review,TLT,2,1,183,0.9617486338797814
+LLM review,TLT,2,2,139,0.014388489208633094
+LLM review,TSLA,0,0,5,0.0
+LLM review,TSLA,0,1,17,1.0
+LLM review,TSLA,0,2,8,0.125
+LLM review,TSLA,1,0,59,0.0
+LLM review,TSLA,1,1,102,0.9509803921568627
+LLM review,TSLA,1,2,66,0.06060606060606061
+LLM review,TSLA,2,0,137,0.0
+LLM review,TSLA,2,1,192,0.8541666666666666
+LLM review,TSLA,2,2,145,0.19310344827586207
+LLM review,XLE,0,0,7,0.14285714285714285
+LLM review,XLE,0,1,15,1.0
+LLM review,XLE,0,2,8,0.125
+LLM review,XLE,1,0,64,0.0
+LLM review,XLE,1,1,94,1.0
+LLM review,XLE,1,2,69,0.057971014492753624
+LLM review,XLE,2,0,133,0.0
+LLM review,XLE,2,1,182,0.8956043956043956
+LLM review,XLE,2,2,159,0.12578616352201258
+LLM review,XLF,0,0,4,0.0
+LLM review,XLF,0,1,19,1.0
+LLM review,XLF,0,2,7,0.14285714285714285
+LLM review,XLF,1,0,47,0.0
+LLM review,XLF,1,1,112,0.9642857142857143
+LLM review,XLF,1,2,68,0.04411764705882353
+LLM review,XLF,2,0,122,0.0
+LLM review,XLF,2,1,185,0.9351351351351351
+LLM review,XLF,2,2,167,0.10778443113772455
+LLM review,XLI,0,0,2,0.0
+LLM review,XLI,0,1,19,1.0
+LLM review,XLI,0,2,9,0.1111111111111111
+LLM review,XLI,1,0,50,0.0
+LLM review,XLI,1,1,103,0.9902912621359223
+LLM review,XLI,1,2,74,0.04054054054054054
+LLM review,XLI,2,0,129,0.0
+LLM review,XLI,2,1,188,0.8882978723404256
+LLM review,XLI,2,2,157,0.07643312101910828
+LLM review,XLK,0,0,5,0.0
+LLM review,XLK,0,1,15,1.0
+LLM review,XLK,0,2,10,0.1
+LLM review,XLK,1,0,45,0.0
+LLM review,XLK,1,1,105,0.9619047619047619
+LLM review,XLK,1,2,77,0.025974025974025976
+LLM review,XLK,2,0,127,0.0
+LLM review,XLK,2,1,171,0.9064327485380117
+LLM review,XLK,2,2,176,0.11363636363636363
+LLM review,XLP,0,0,6,0.0
+LLM review,XLP,0,1,15,1.0
+LLM review,XLP,0,2,9,0.1111111111111111
+LLM review,XLP,1,0,57,0.0
+LLM review,XLP,1,1,92,0.9565217391304348
+LLM review,XLP,1,2,78,0.08974358974358974
+LLM review,XLP,2,0,143,0.0
+LLM review,XLP,2,1,183,0.9289617486338798
+LLM review,XLP,2,2,148,0.05405405405405406
+LLM review,XLV,0,0,9,0.0
+LLM review,XLV,0,1,13,1.0
+LLM review,XLV,0,2,8,0.125
+LLM review,XLV,1,0,62,0.0
+LLM review,XLV,1,1,95,0.9368421052631579
+LLM review,XLV,1,2,70,0.1
+LLM review,XLV,2,0,136,0.0
+LLM review,XLV,2,1,194,0.9639175257731959
+LLM review,XLV,2,2,144,0.05555555555555555
+LSTM,AAPL,0,0,4,0.25
+LSTM,AAPL,0,1,21,1.0
+LSTM,AAPL,0,2,5,0.4
+LSTM,AAPL,1,0,54,0.037037037037037035
+LSTM,AAPL,1,1,93,0.7526881720430108
+LSTM,AAPL,1,2,80,0.275
+LSTM,AAPL,2,0,122,0.0
+LSTM,AAPL,2,1,208,0.8028846153846154
+LSTM,AAPL,2,2,144,0.2916666666666667
+LSTM,AMZN,0,0,10,0.2
+LSTM,AMZN,0,1,12,1.0
+LSTM,AMZN,0,2,8,0.375
+LSTM,AMZN,1,0,53,0.05660377358490566
+LSTM,AMZN,1,1,105,0.8
+LSTM,AMZN,1,2,69,0.2463768115942029
+LSTM,AMZN,2,0,121,0.008264462809917356
+LSTM,AMZN,2,1,214,0.8364485981308412
+LSTM,AMZN,2,2,139,0.28776978417266186
+LSTM,BAC,0,0,2,0.5
+LSTM,BAC,0,1,17,1.0
+LSTM,BAC,0,2,11,0.18181818181818182
+LSTM,BAC,1,0,60,0.03333333333333333
+LSTM,BAC,1,1,97,0.8247422680412371
+LSTM,BAC,1,2,70,0.2857142857142857
+LSTM,BAC,2,0,127,0.023622047244094488
+LSTM,BAC,2,1,192,0.6979166666666666
+LSTM,BAC,2,2,155,0.3870967741935484
+LSTM,DIA,0,0,5,0.2
+LSTM,DIA,0,1,18,0.9444444444444444
+LSTM,DIA,0,2,7,0.14285714285714285
+LSTM,DIA,1,0,46,0.0
+LSTM,DIA,1,1,101,0.8811881188118812
+LSTM,DIA,1,2,80,0.3
+LSTM,DIA,2,0,132,0.0
+LSTM,DIA,2,1,190,0.7
+LSTM,DIA,2,2,152,0.3026315789473684
+LSTM,GLD,0,0,7,0.14285714285714285
+LSTM,GLD,0,1,12,0.9166666666666666
+LSTM,GLD,0,2,11,0.18181818181818182
+LSTM,GLD,1,0,39,0.0
+LSTM,GLD,1,1,106,0.8584905660377359
+LSTM,GLD,1,2,82,0.13414634146341464
+LSTM,GLD,2,0,112,0.0
+LSTM,GLD,2,1,210,0.8047619047619048
+LSTM,GLD,2,2,152,0.17105263157894737
+LSTM,GOOGL,0,0,7,0.14285714285714285
+LSTM,GOOGL,0,1,14,0.9285714285714286
+LSTM,GOOGL,0,2,9,0.2222222222222222
+LSTM,GOOGL,1,0,55,0.0
+LSTM,GOOGL,1,1,111,0.7927927927927928
+LSTM,GOOGL,1,2,61,0.21311475409836064
+LSTM,GOOGL,2,0,118,0.00847457627118644
+LSTM,GOOGL,2,1,193,0.7616580310880829
+LSTM,GOOGL,2,2,163,0.31901840490797545
+LSTM,GS,0,0,4,0.25
+LSTM,GS,0,1,14,0.9285714285714286
+LSTM,GS,0,2,12,0.16666666666666666
+LSTM,GS,1,0,46,0.021739130434782608
+LSTM,GS,1,1,106,0.8584905660377359
+LSTM,GS,1,2,75,0.32
+LSTM,GS,2,0,134,0.014925373134328358
+LSTM,GS,2,1,186,0.6451612903225806
+LSTM,GS,2,2,154,0.33116883116883117
+LSTM,IWM,0,0,5,0.4
+LSTM,IWM,0,1,19,0.9473684210526315
+LSTM,IWM,0,2,6,0.3333333333333333
+LSTM,IWM,1,0,53,0.0
+LSTM,IWM,1,1,101,0.8316831683168316
+LSTM,IWM,1,2,73,0.2328767123287671
+LSTM,IWM,2,0,134,0.0
+LSTM,IWM,2,1,203,0.7192118226600985
+LSTM,IWM,2,2,137,0.291970802919708
+LSTM,JPM,0,0,4,0.0
+LSTM,JPM,0,1,18,0.8888888888888888
+LSTM,JPM,0,2,8,0.25
+LSTM,JPM,1,0,47,0.0425531914893617
+LSTM,JPM,1,1,103,0.8252427184466019
+LSTM,JPM,1,2,77,0.2727272727272727
+LSTM,JPM,2,0,114,0.008771929824561403
+LSTM,JPM,2,1,182,0.6758241758241759
+LSTM,JPM,2,2,178,0.34831460674157305
+LSTM,META,0,0,8,0.125
+LSTM,META,0,1,12,1.0
+LSTM,META,0,2,10,0.2
+LSTM,META,1,0,45,0.06666666666666667
+LSTM,META,1,1,115,0.8173913043478261
+LSTM,META,1,2,67,0.26865671641791045
+LSTM,META,2,0,125,0.024
+LSTM,META,2,1,192,0.7291666666666666
+LSTM,META,2,2,157,0.39490445859872614
+LSTM,MSFT,0,0,5,0.0
+LSTM,MSFT,0,1,19,0.9473684210526315
+LSTM,MSFT,0,2,6,0.16666666666666666
+LSTM,MSFT,1,0,58,0.017241379310344827
+LSTM,MSFT,1,1,94,0.8617021276595744
+LSTM,MSFT,1,2,75,0.24
+LSTM,MSFT,2,0,130,0.015384615384615385
+LSTM,MSFT,2,1,196,0.8163265306122449
+LSTM,MSFT,2,2,148,0.34459459459459457
+LSTM,NVDA,0,0,6,0.0
+LSTM,NVDA,0,1,14,1.0
+LSTM,NVDA,0,2,10,0.3
+LSTM,NVDA,1,0,55,0.03636363636363636
+LSTM,NVDA,1,1,91,0.8021978021978022
+LSTM,NVDA,1,2,81,0.24691358024691357
+LSTM,NVDA,2,0,119,0.01680672268907563
+LSTM,NVDA,2,1,189,0.7037037037037037
+LSTM,NVDA,2,2,166,0.3313253012048193
+LSTM,QQQ,0,0,6,0.16666666666666666
+LSTM,QQQ,0,1,16,1.0
+LSTM,QQQ,0,2,8,0.125
+LSTM,QQQ,1,0,43,0.0
+LSTM,QQQ,1,1,105,0.8476190476190476
+LSTM,QQQ,1,2,79,0.189873417721519
+LSTM,QQQ,2,0,122,0.0
+LSTM,QQQ,2,1,179,0.7541899441340782
+LSTM,QQQ,2,2,173,0.31213872832369943
+LSTM,SPY,0,0,3,0.3333333333333333
+LSTM,SPY,0,1,18,1.0
+LSTM,SPY,0,2,9,0.1111111111111111
+LSTM,SPY,1,0,49,0.0
+LSTM,SPY,1,1,94,0.8723404255319149
+LSTM,SPY,1,2,84,0.2261904761904762
+LSTM,SPY,2,0,118,0.0
+LSTM,SPY,2,1,188,0.7393617021276596
+LSTM,SPY,2,2,168,0.3273809523809524
+LSTM,TLT,0,0,11,0.2727272727272727
+LSTM,TLT,0,1,11,0.9090909090909091
+LSTM,TLT,0,2,8,0.125
+LSTM,TLT,1,0,65,0.0
+LSTM,TLT,1,1,81,0.8641975308641975
+LSTM,TLT,1,2,81,0.14814814814814814
+LSTM,TLT,2,0,152,0.013157894736842105
+LSTM,TLT,2,1,183,0.8688524590163934
+LSTM,TLT,2,2,139,0.14388489208633093
+LSTM,TSLA,0,0,5,0.0
+LSTM,TSLA,0,1,17,0.9411764705882353
+LSTM,TSLA,0,2,8,0.25
+LSTM,TSLA,1,0,59,0.0847457627118644
+LSTM,TSLA,1,1,102,0.7843137254901961
+LSTM,TSLA,1,2,66,0.24242424242424243
+LSTM,TSLA,2,0,137,0.014598540145985401
+LSTM,TSLA,2,1,192,0.7135416666666666
+LSTM,TSLA,2,2,145,0.32413793103448274
+LSTM,XLE,0,0,7,0.42857142857142855
+LSTM,XLE,0,1,15,1.0
+LSTM,XLE,0,2,8,0.25
+LSTM,XLE,1,0,64,0.03125
+LSTM,XLE,1,1,94,0.7872340425531915
+LSTM,XLE,1,2,69,0.3188405797101449
+LSTM,XLE,2,0,133,0.0
+LSTM,XLE,2,1,182,0.6648351648351648
+LSTM,XLE,2,2,159,0.3333333333333333
+LSTM,XLF,0,0,4,0.25
+LSTM,XLF,0,1,19,0.9473684210526315
+LSTM,XLF,0,2,7,0.2857142857142857
+LSTM,XLF,1,0,47,0.02127659574468085
+LSTM,XLF,1,1,112,0.875
+LSTM,XLF,1,2,68,0.3235294117647059
+LSTM,XLF,2,0,122,0.00819672131147541
+LSTM,XLF,2,1,185,0.7351351351351352
+LSTM,XLF,2,2,167,0.3532934131736527
+LSTM,XLI,0,0,2,0.0
+LSTM,XLI,0,1,19,0.8947368421052632
+LSTM,XLI,0,2,9,0.1111111111111111
+LSTM,XLI,1,0,50,0.04
+LSTM,XLI,1,1,103,0.8543689320388349
+LSTM,XLI,1,2,74,0.28378378378378377
+LSTM,XLI,2,0,129,0.0
+LSTM,XLI,2,1,188,0.6861702127659575
+LSTM,XLI,2,2,157,0.36942675159235666
+LSTM,XLK,0,0,5,0.0
+LSTM,XLK,0,1,15,0.9333333333333333
+LSTM,XLK,0,2,10,0.1
+LSTM,XLK,1,0,45,0.022222222222222223
+LSTM,XLK,1,1,105,0.8666666666666667
+LSTM,XLK,1,2,77,0.23376623376623376
+LSTM,XLK,2,0,127,0.0
+LSTM,XLK,2,1,171,0.7777777777777778
+LSTM,XLK,2,2,176,0.29545454545454547
+LSTM,XLP,0,0,6,0.0
+LSTM,XLP,0,1,15,0.9333333333333333
+LSTM,XLP,0,2,9,0.1111111111111111
+LSTM,XLP,1,0,57,0.0
+LSTM,XLP,1,1,92,0.8260869565217391
+LSTM,XLP,1,2,78,0.28205128205128205
+LSTM,XLP,2,0,143,0.0
+LSTM,XLP,2,1,183,0.7103825136612022
+LSTM,XLP,2,2,148,0.35135135135135137
+LSTM,XLV,0,0,9,0.1111111111111111
+LSTM,XLV,0,1,13,0.9230769230769231
+LSTM,XLV,0,2,8,0.125
+LSTM,XLV,1,0,62,0.016129032258064516
+LSTM,XLV,1,1,95,0.8210526315789474
+LSTM,XLV,1,2,70,0.34285714285714286
+LSTM,XLV,2,0,136,0.0
+LSTM,XLV,2,1,194,0.7216494845360825
+LSTM,XLV,2,2,144,0.3888888888888889
+LightGBM,AAPL,0,0,4,0.25
+LightGBM,AAPL,0,1,21,1.0
+LightGBM,AAPL,0,2,5,0.6
+LightGBM,AAPL,1,0,54,0.037037037037037035
+LightGBM,AAPL,1,1,93,0.7419354838709677
+LightGBM,AAPL,1,2,80,0.2
+LightGBM,AAPL,2,0,122,0.02459016393442623
+LightGBM,AAPL,2,1,208,0.8269230769230769
+LightGBM,AAPL,2,2,144,0.20833333333333334
+LightGBM,AMZN,0,0,10,0.1
+LightGBM,AMZN,0,1,12,0.9166666666666666
+LightGBM,AMZN,0,2,8,0.375
+LightGBM,AMZN,1,0,53,0.03773584905660377
+LightGBM,AMZN,1,1,105,0.8476190476190476
+LightGBM,AMZN,1,2,69,0.17391304347826086
+LightGBM,AMZN,2,0,121,0.03305785123966942
+LightGBM,AMZN,2,1,214,0.822429906542056
+LightGBM,AMZN,2,2,139,0.23741007194244604
+LightGBM,BAC,0,0,2,0.0
+LightGBM,BAC,0,1,17,0.8823529411764706
+LightGBM,BAC,0,2,11,0.18181818181818182
+LightGBM,BAC,1,0,60,0.03333333333333333
+LightGBM,BAC,1,1,97,0.8041237113402062
+LightGBM,BAC,1,2,70,0.21428571428571427
+LightGBM,BAC,2,0,127,0.07086614173228346
+LightGBM,BAC,2,1,192,0.78125
+LightGBM,BAC,2,2,155,0.24516129032258063
+LightGBM,DIA,0,0,5,0.2
+LightGBM,DIA,0,1,18,0.9444444444444444
+LightGBM,DIA,0,2,7,0.42857142857142855
+LightGBM,DIA,1,0,46,0.021739130434782608
+LightGBM,DIA,1,1,101,0.8514851485148515
+LightGBM,DIA,1,2,80,0.2375
+LightGBM,DIA,2,0,132,0.022727272727272728
+LightGBM,DIA,2,1,190,0.6052631578947368
+LightGBM,DIA,2,2,152,0.40131578947368424
+LightGBM,GLD,0,0,7,0.14285714285714285
+LightGBM,GLD,0,1,12,0.9166666666666666
+LightGBM,GLD,0,2,11,0.18181818181818182
+LightGBM,GLD,1,0,39,0.0
+LightGBM,GLD,1,1,106,0.8113207547169812
+LightGBM,GLD,1,2,82,0.07317073170731707
+LightGBM,GLD,2,0,112,0.017857142857142856
+LightGBM,GLD,2,1,210,0.8095238095238095
+LightGBM,GLD,2,2,152,0.25
+LightGBM,GOOGL,0,0,7,0.0
+LightGBM,GOOGL,0,1,14,0.7857142857142857
+LightGBM,GOOGL,0,2,9,0.4444444444444444
+LightGBM,GOOGL,1,0,55,0.03636363636363636
+LightGBM,GOOGL,1,1,111,0.7837837837837838
+LightGBM,GOOGL,1,2,61,0.09836065573770492
+LightGBM,GOOGL,2,0,118,0.03389830508474576
+LightGBM,GOOGL,2,1,193,0.8186528497409327
+LightGBM,GOOGL,2,2,163,0.22699386503067484
+LightGBM,GS,0,0,4,0.25
+LightGBM,GS,0,1,14,1.0
+LightGBM,GS,0,2,12,0.08333333333333333
+LightGBM,GS,1,0,46,0.06521739130434782
+LightGBM,GS,1,1,106,0.8867924528301887
+LightGBM,GS,1,2,75,0.17333333333333334
+LightGBM,GS,2,0,134,0.03731343283582089
+LightGBM,GS,2,1,186,0.7634408602150538
+LightGBM,GS,2,2,154,0.2012987012987013
+LightGBM,IWM,0,0,5,0.0
+LightGBM,IWM,0,1,19,0.9473684210526315
+LightGBM,IWM,0,2,6,0.5
+LightGBM,IWM,1,0,53,0.018867924528301886
+LightGBM,IWM,1,1,101,0.7821782178217822
+LightGBM,IWM,1,2,73,0.2054794520547945
+LightGBM,IWM,2,0,134,0.05970149253731343
+LightGBM,IWM,2,1,203,0.7536945812807881
+LightGBM,IWM,2,2,137,0.26277372262773724
+LightGBM,JPM,0,0,4,0.0
+LightGBM,JPM,0,1,18,1.0
+LightGBM,JPM,0,2,8,0.25
+LightGBM,JPM,1,0,47,0.0425531914893617
+LightGBM,JPM,1,1,103,0.8349514563106796
+LightGBM,JPM,1,2,77,0.18181818181818182
+LightGBM,JPM,2,0,114,0.043859649122807015
+LightGBM,JPM,2,1,182,0.7252747252747253
+LightGBM,JPM,2,2,178,0.25280898876404495
+LightGBM,META,0,0,8,0.125
+LightGBM,META,0,1,12,0.9166666666666666
+LightGBM,META,0,2,10,0.2
+LightGBM,META,1,0,45,0.044444444444444446
+LightGBM,META,1,1,115,0.8521739130434782
+LightGBM,META,1,2,67,0.11940298507462686
+LightGBM,META,2,0,125,0.048
+LightGBM,META,2,1,192,0.8072916666666666
+LightGBM,META,2,2,157,0.19745222929936307
+LightGBM,MSFT,0,0,5,0.0
+LightGBM,MSFT,0,1,19,0.9473684210526315
+LightGBM,MSFT,0,2,6,0.16666666666666666
+LightGBM,MSFT,1,0,58,0.034482758620689655
+LightGBM,MSFT,1,1,94,0.8085106382978723
+LightGBM,MSFT,1,2,75,0.16
+LightGBM,MSFT,2,0,130,0.06153846153846154
+LightGBM,MSFT,2,1,196,0.8214285714285714
+LightGBM,MSFT,2,2,148,0.22972972972972974
+LightGBM,NVDA,0,0,6,0.16666666666666666
+LightGBM,NVDA,0,1,14,1.0
+LightGBM,NVDA,0,2,10,0.2
+LightGBM,NVDA,1,0,55,0.01818181818181818
+LightGBM,NVDA,1,1,91,0.8571428571428571
+LightGBM,NVDA,1,2,81,0.19753086419753085
+LightGBM,NVDA,2,0,119,0.008403361344537815
+LightGBM,NVDA,2,1,189,0.8783068783068783
+LightGBM,NVDA,2,2,166,0.22289156626506024
+LightGBM,QQQ,0,0,6,0.0
+LightGBM,QQQ,0,1,16,0.9375
+LightGBM,QQQ,0,2,8,0.25
+LightGBM,QQQ,1,0,43,0.0
+LightGBM,QQQ,1,1,105,0.780952380952381
+LightGBM,QQQ,1,2,79,0.21518987341772153
+LightGBM,QQQ,2,0,122,0.04918032786885246
+LightGBM,QQQ,2,1,179,0.7486033519553073
+LightGBM,QQQ,2,2,173,0.31213872832369943
+LightGBM,SPY,0,0,3,0.3333333333333333
+LightGBM,SPY,0,1,18,0.8888888888888888
+LightGBM,SPY,0,2,9,0.2222222222222222
+LightGBM,SPY,1,0,49,0.04081632653061224
+LightGBM,SPY,1,1,94,0.8191489361702128
+LightGBM,SPY,1,2,84,0.21428571428571427
+LightGBM,SPY,2,0,118,0.03389830508474576
+LightGBM,SPY,2,1,188,0.6861702127659575
+LightGBM,SPY,2,2,168,0.35119047619047616
+LightGBM,TLT,0,0,11,0.2727272727272727
+LightGBM,TLT,0,1,11,0.8181818181818182
+LightGBM,TLT,0,2,8,0.25
+LightGBM,TLT,1,0,65,0.03076923076923077
+LightGBM,TLT,1,1,81,0.8148148148148148
+LightGBM,TLT,1,2,81,0.12345679012345678
+LightGBM,TLT,2,0,152,0.019736842105263157
+LightGBM,TLT,2,1,183,0.7814207650273224
+LightGBM,TLT,2,2,139,0.23741007194244604
+LightGBM,TSLA,0,0,5,0.0
+LightGBM,TSLA,0,1,17,0.8823529411764706
+LightGBM,TSLA,0,2,8,0.125
+LightGBM,TSLA,1,0,59,0.01694915254237288
+LightGBM,TSLA,1,1,102,0.9117647058823529
+LightGBM,TSLA,1,2,66,0.16666666666666666
+LightGBM,TSLA,2,0,137,0.0
+LightGBM,TSLA,2,1,192,0.8020833333333334
+LightGBM,TSLA,2,2,145,0.2482758620689655
+LightGBM,XLE,0,0,7,0.14285714285714285
+LightGBM,XLE,0,1,15,0.9333333333333333
+LightGBM,XLE,0,2,8,0.25
+LightGBM,XLE,1,0,64,0.09375
+LightGBM,XLE,1,1,94,0.8297872340425532
+LightGBM,XLE,1,2,69,0.2753623188405797
+LightGBM,XLE,2,0,133,0.03007518796992481
+LightGBM,XLE,2,1,182,0.7527472527472527
+LightGBM,XLE,2,2,159,0.3018867924528302
+LightGBM,XLF,0,0,4,0.25
+LightGBM,XLF,0,1,19,1.0
+LightGBM,XLF,0,2,7,0.2857142857142857
+LightGBM,XLF,1,0,47,0.02127659574468085
+LightGBM,XLF,1,1,112,0.8571428571428571
+LightGBM,XLF,1,2,68,0.2647058823529412
+LightGBM,XLF,2,0,122,0.06557377049180328
+LightGBM,XLF,2,1,185,0.6972972972972973
+LightGBM,XLF,2,2,167,0.38323353293413176
+LightGBM,XLI,0,0,2,0.0
+LightGBM,XLI,0,1,19,1.0
+LightGBM,XLI,0,2,9,0.2222222222222222
+LightGBM,XLI,1,0,50,0.0
+LightGBM,XLI,1,1,103,0.8737864077669902
+LightGBM,XLI,1,2,74,0.24324324324324326
+LightGBM,XLI,2,0,129,0.023255813953488372
+LightGBM,XLI,2,1,188,0.675531914893617
+LightGBM,XLI,2,2,157,0.4267515923566879
+LightGBM,XLK,0,0,5,0.0
+LightGBM,XLK,0,1,15,1.0
+LightGBM,XLK,0,2,10,0.2
+LightGBM,XLK,1,0,45,0.022222222222222223
+LightGBM,XLK,1,1,105,0.7619047619047619
+LightGBM,XLK,1,2,77,0.15584415584415584
+LightGBM,XLK,2,0,127,0.047244094488188976
+LightGBM,XLK,2,1,171,0.8128654970760234
+LightGBM,XLK,2,2,176,0.2784090909090909
+LightGBM,XLP,0,0,6,0.16666666666666666
+LightGBM,XLP,0,1,15,0.9333333333333333
+LightGBM,XLP,0,2,9,0.2222222222222222
+LightGBM,XLP,1,0,57,0.05263157894736842
+LightGBM,XLP,1,1,92,0.6956521739130435
+LightGBM,XLP,1,2,78,0.3717948717948718
+LightGBM,XLP,2,0,143,0.02097902097902098
+LightGBM,XLP,2,1,183,0.6338797814207651
+LightGBM,XLP,2,2,148,0.3918918918918919
+LightGBM,XLV,0,0,9,0.2222222222222222
+LightGBM,XLV,0,1,13,0.8461538461538461
+LightGBM,XLV,0,2,8,0.5
+LightGBM,XLV,1,0,62,0.03225806451612903
+LightGBM,XLV,1,1,95,0.7157894736842105
+LightGBM,XLV,1,2,70,0.32857142857142857
+LightGBM,XLV,2,0,136,0.022058823529411766
+LightGBM,XLV,2,1,194,0.6649484536082474
+LightGBM,XLV,2,2,144,0.4513888888888889
+Logistic,AAPL,0,0,4,0.0
+Logistic,AAPL,0,1,21,0.9523809523809523
+Logistic,AAPL,0,2,5,0.4
+Logistic,AAPL,1,0,54,0.018518518518518517
+Logistic,AAPL,1,1,93,0.8924731182795699
+Logistic,AAPL,1,2,80,0.15
+Logistic,AAPL,2,0,122,0.00819672131147541
+Logistic,AAPL,2,1,208,0.8990384615384616
+Logistic,AAPL,2,2,144,0.13194444444444445
+Logistic,AMZN,0,0,10,0.1
+Logistic,AMZN,0,1,12,1.0
+Logistic,AMZN,0,2,8,0.25
+Logistic,AMZN,1,0,53,0.018867924528301886
+Logistic,AMZN,1,1,105,0.8857142857142857
+Logistic,AMZN,1,2,69,0.17391304347826086
+Logistic,AMZN,2,0,121,0.0
+Logistic,AMZN,2,1,214,0.9252336448598131
+Logistic,AMZN,2,2,139,0.1366906474820144
+Logistic,BAC,0,0,2,0.0
+Logistic,BAC,0,1,17,0.9411764705882353
+Logistic,BAC,0,2,11,0.2727272727272727
+Logistic,BAC,1,0,60,0.016666666666666666
+Logistic,BAC,1,1,97,0.8865979381443299
+Logistic,BAC,1,2,70,0.22857142857142856
+Logistic,BAC,2,0,127,0.015748031496062992
+Logistic,BAC,2,1,192,0.8541666666666666
+Logistic,BAC,2,2,155,0.1935483870967742
+Logistic,DIA,0,0,5,0.2
+Logistic,DIA,0,1,18,1.0
+Logistic,DIA,0,2,7,0.42857142857142855
+Logistic,DIA,1,0,46,0.0
+Logistic,DIA,1,1,101,0.9306930693069307
+Logistic,DIA,1,2,80,0.175
+Logistic,DIA,2,0,132,0.0
+Logistic,DIA,2,1,190,0.8631578947368421
+Logistic,DIA,2,2,152,0.17105263157894737
+Logistic,GLD,0,0,7,0.0
+Logistic,GLD,0,1,12,0.9166666666666666
+Logistic,GLD,0,2,11,0.18181818181818182
+Logistic,GLD,1,0,39,0.02564102564102564
+Logistic,GLD,1,1,106,0.9245283018867925
+Logistic,GLD,1,2,82,0.06097560975609756
+Logistic,GLD,2,0,112,0.008928571428571428
+Logistic,GLD,2,1,210,0.9380952380952381
+Logistic,GLD,2,2,152,0.08552631578947369
+Logistic,GOOGL,0,0,7,0.14285714285714285
+Logistic,GOOGL,0,1,14,0.9285714285714286
+Logistic,GOOGL,0,2,9,0.3333333333333333
+Logistic,GOOGL,1,0,55,0.0
+Logistic,GOOGL,1,1,111,0.8558558558558559
+Logistic,GOOGL,1,2,61,0.14754098360655737
+Logistic,GOOGL,2,0,118,0.00847457627118644
+Logistic,GOOGL,2,1,193,0.8704663212435233
+Logistic,GOOGL,2,2,163,0.12883435582822086
+Logistic,GS,0,0,4,0.0
+Logistic,GS,0,1,14,1.0
+Logistic,GS,0,2,12,0.25
+Logistic,GS,1,0,46,0.0
+Logistic,GS,1,1,106,0.9339622641509434
+Logistic,GS,1,2,75,0.26666666666666666
+Logistic,GS,2,0,134,0.0
+Logistic,GS,2,1,186,0.8333333333333334
+Logistic,GS,2,2,154,0.12337662337662338
+Logistic,IWM,0,0,5,0.2
+Logistic,IWM,0,1,19,1.0
+Logistic,IWM,0,2,6,0.5
+Logistic,IWM,1,0,53,0.0
+Logistic,IWM,1,1,101,0.9108910891089109
+Logistic,IWM,1,2,73,0.2054794520547945
+Logistic,IWM,2,0,134,0.0
+Logistic,IWM,2,1,203,0.8620689655172413
+Logistic,IWM,2,2,137,0.20437956204379562
+Logistic,JPM,0,0,4,0.0
+Logistic,JPM,0,1,18,0.9444444444444444
+Logistic,JPM,0,2,8,0.25
+Logistic,JPM,1,0,47,0.02127659574468085
+Logistic,JPM,1,1,103,0.8932038834951457
+Logistic,JPM,1,2,77,0.16883116883116883
+Logistic,JPM,2,0,114,0.008771929824561403
+Logistic,JPM,2,1,182,0.8626373626373627
+Logistic,JPM,2,2,178,0.1348314606741573
+Logistic,META,0,0,8,0.125
+Logistic,META,0,1,12,1.0
+Logistic,META,0,2,10,0.2
+Logistic,META,1,0,45,0.044444444444444446
+Logistic,META,1,1,115,0.9217391304347826
+Logistic,META,1,2,67,0.1044776119402985
+Logistic,META,2,0,125,0.016
+Logistic,META,2,1,192,0.8385416666666666
+Logistic,META,2,2,157,0.17834394904458598
+Logistic,MSFT,0,0,5,0.0
+Logistic,MSFT,0,1,19,0.9473684210526315
+Logistic,MSFT,0,2,6,0.3333333333333333
+Logistic,MSFT,1,0,58,0.0
+Logistic,MSFT,1,1,94,0.8936170212765957
+Logistic,MSFT,1,2,75,0.14666666666666667
+Logistic,MSFT,2,0,130,0.015384615384615385
+Logistic,MSFT,2,1,196,0.9285714285714286
+Logistic,MSFT,2,2,148,0.16891891891891891
+Logistic,NVDA,0,0,6,0.0
+Logistic,NVDA,0,1,14,0.9285714285714286
+Logistic,NVDA,0,2,10,0.2
+Logistic,NVDA,1,0,55,0.0
+Logistic,NVDA,1,1,91,0.9560439560439561
+Logistic,NVDA,1,2,81,0.16049382716049382
+Logistic,NVDA,2,0,119,0.0
+Logistic,NVDA,2,1,189,0.8783068783068783
+Logistic,NVDA,2,2,166,0.16265060240963855
+Logistic,QQQ,0,0,6,0.16666666666666666
+Logistic,QQQ,0,1,16,1.0
+Logistic,QQQ,0,2,8,0.25
+Logistic,QQQ,1,0,43,0.0
+Logistic,QQQ,1,1,105,0.9047619047619048
+Logistic,QQQ,1,2,79,0.12658227848101267
+Logistic,QQQ,2,0,122,0.0
+Logistic,QQQ,2,1,179,0.88268156424581
+Logistic,QQQ,2,2,173,0.1676300578034682
+Logistic,SPY,0,0,3,0.3333333333333333
+Logistic,SPY,0,1,18,1.0
+Logistic,SPY,0,2,9,0.3333333333333333
+Logistic,SPY,1,0,49,0.0
+Logistic,SPY,1,1,94,0.9148936170212766
+Logistic,SPY,1,2,84,0.16666666666666666
+Logistic,SPY,2,0,118,0.0
+Logistic,SPY,2,1,188,0.8936170212765957
+Logistic,SPY,2,2,168,0.16071428571428573
+Logistic,TLT,0,0,11,0.0
+Logistic,TLT,0,1,11,0.8181818181818182
+Logistic,TLT,0,2,8,0.375
+Logistic,TLT,1,0,65,0.0
+Logistic,TLT,1,1,81,0.9753086419753086
+Logistic,TLT,1,2,81,0.09876543209876543
+Logistic,TLT,2,0,152,0.0
+Logistic,TLT,2,1,183,0.8688524590163934
+Logistic,TLT,2,2,139,0.1079136690647482
+Logistic,TSLA,0,0,5,0.0
+Logistic,TSLA,0,1,17,0.9411764705882353
+Logistic,TSLA,0,2,8,0.25
+Logistic,TSLA,1,0,59,0.05084745762711865
+Logistic,TSLA,1,1,102,0.9019607843137255
+Logistic,TSLA,1,2,66,0.10606060606060606
+Logistic,TSLA,2,0,137,0.0072992700729927005
+Logistic,TSLA,2,1,192,0.84375
+Logistic,TSLA,2,2,145,0.18620689655172415
+Logistic,XLE,0,0,7,0.0
+Logistic,XLE,0,1,15,1.0
+Logistic,XLE,0,2,8,0.375
+Logistic,XLE,1,0,64,0.0
+Logistic,XLE,1,1,94,0.851063829787234
+Logistic,XLE,1,2,69,0.2753623188405797
+Logistic,XLE,2,0,133,0.0
+Logistic,XLE,2,1,182,0.8186813186813187
+Logistic,XLE,2,2,159,0.14465408805031446
+Logistic,XLF,0,0,4,0.0
+Logistic,XLF,0,1,19,1.0
+Logistic,XLF,0,2,7,0.42857142857142855
+Logistic,XLF,1,0,47,0.0
+Logistic,XLF,1,1,112,0.9285714285714286
+Logistic,XLF,1,2,68,0.20588235294117646
+Logistic,XLF,2,0,122,0.0
+Logistic,XLF,2,1,185,0.8864864864864865
+Logistic,XLF,2,2,167,0.1377245508982036
+Logistic,XLI,0,0,2,0.0
+Logistic,XLI,0,1,19,0.9473684210526315
+Logistic,XLI,0,2,9,0.3333333333333333
+Logistic,XLI,1,0,50,0.0
+Logistic,XLI,1,1,103,0.9320388349514563
+Logistic,XLI,1,2,74,0.16216216216216217
+Logistic,XLI,2,0,129,0.0
+Logistic,XLI,2,1,188,0.8776595744680851
+Logistic,XLI,2,2,157,0.1592356687898089
+Logistic,XLK,0,0,5,0.0
+Logistic,XLK,0,1,15,0.9333333333333333
+Logistic,XLK,0,2,10,0.2
+Logistic,XLK,1,0,45,0.0
+Logistic,XLK,1,1,105,0.9047619047619048
+Logistic,XLK,1,2,77,0.12987012987012986
+Logistic,XLK,2,0,127,0.0
+Logistic,XLK,2,1,171,0.9005847953216374
+Logistic,XLK,2,2,176,0.14204545454545456
+Logistic,XLP,0,0,6,0.0
+Logistic,XLP,0,1,15,1.0
+Logistic,XLP,0,2,9,0.3333333333333333
+Logistic,XLP,1,0,57,0.0
+Logistic,XLP,1,1,92,0.8913043478260869
+Logistic,XLP,1,2,78,0.20512820512820512
+Logistic,XLP,2,0,143,0.0
+Logistic,XLP,2,1,183,0.8852459016393442
+Logistic,XLP,2,2,148,0.1554054054054054
+Logistic,XLV,0,0,9,0.1111111111111111
+Logistic,XLV,0,1,13,1.0
+Logistic,XLV,0,2,8,0.625
+Logistic,XLV,1,0,62,0.0
+Logistic,XLV,1,1,95,0.9052631578947369
+Logistic,XLV,1,2,70,0.2571428571428571
+Logistic,XLV,2,0,136,0.0
+Logistic,XLV,2,1,194,0.8917525773195877
+Logistic,XLV,2,2,144,0.16666666666666666
+Market experts vote,AAPL,0,0,4,0.25
+Market experts vote,AAPL,0,1,21,1.0
+Market experts vote,AAPL,0,2,5,0.6
+Market experts vote,AAPL,1,0,54,0.018518518518518517
+Market experts vote,AAPL,1,1,93,0.8279569892473119
+Market experts vote,AAPL,1,2,80,0.15
+Market experts vote,AAPL,2,0,122,0.0
+Market experts vote,AAPL,2,1,208,0.8653846153846154
+Market experts vote,AAPL,2,2,144,0.2013888888888889
+Market experts vote,AMZN,0,0,10,0.1
+Market experts vote,AMZN,0,1,12,1.0
+Market experts vote,AMZN,0,2,8,0.25
+Market experts vote,AMZN,1,0,53,0.0
+Market experts vote,AMZN,1,1,105,0.9047619047619048
+Market experts vote,AMZN,1,2,69,0.14492753623188406
+Market experts vote,AMZN,2,0,121,0.0
+Market experts vote,AMZN,2,1,214,0.9299065420560748
+Market experts vote,AMZN,2,2,139,0.18705035971223022
+Market experts vote,BAC,0,0,2,0.0
+Market experts vote,BAC,0,1,17,0.9411764705882353
+Market experts vote,BAC,0,2,11,0.18181818181818182
+Market experts vote,BAC,1,0,60,0.0
+Market experts vote,BAC,1,1,97,0.865979381443299
+Market experts vote,BAC,1,2,70,0.21428571428571427
+Market experts vote,BAC,2,0,127,0.0
+Market experts vote,BAC,2,1,192,0.8125
+Market experts vote,BAC,2,2,155,0.21935483870967742
+Market experts vote,DIA,0,0,5,0.2
+Market experts vote,DIA,0,1,18,1.0
+Market experts vote,DIA,0,2,7,0.2857142857142857
+Market experts vote,DIA,1,0,46,0.0
+Market experts vote,DIA,1,1,101,0.9603960396039604
+Market experts vote,DIA,1,2,80,0.1625
+Market experts vote,DIA,2,0,132,0.0
+Market experts vote,DIA,2,1,190,0.7421052631578947
+Market experts vote,DIA,2,2,152,0.23684210526315788
+Market experts vote,GLD,0,0,7,0.14285714285714285
+Market experts vote,GLD,0,1,12,0.9166666666666666
+Market experts vote,GLD,0,2,11,0.18181818181818182
+Market experts vote,GLD,1,0,39,0.0
+Market experts vote,GLD,1,1,106,0.9433962264150944
+Market experts vote,GLD,1,2,82,0.04878048780487805
+Market experts vote,GLD,2,0,112,0.0
+Market experts vote,GLD,2,1,210,0.9095238095238095
+Market experts vote,GLD,2,2,152,0.10526315789473684
+Market experts vote,GOOGL,0,0,7,0.0
+Market experts vote,GOOGL,0,1,14,0.9285714285714286
+Market experts vote,GOOGL,0,2,9,0.2222222222222222
+Market experts vote,GOOGL,1,0,55,0.0
+Market experts vote,GOOGL,1,1,111,0.918918918918919
+Market experts vote,GOOGL,1,2,61,0.06557377049180328
+Market experts vote,GOOGL,2,0,118,0.00847457627118644
+Market experts vote,GOOGL,2,1,193,0.8963730569948186
+Market experts vote,GOOGL,2,2,163,0.17791411042944785
+Market experts vote,GS,0,0,4,0.25
+Market experts vote,GS,0,1,14,1.0
+Market experts vote,GS,0,2,12,0.08333333333333333
+Market experts vote,GS,1,0,46,0.0
+Market experts vote,GS,1,1,106,0.9056603773584906
+Market experts vote,GS,1,2,75,0.21333333333333335
+Market experts vote,GS,2,0,134,0.007462686567164179
+Market experts vote,GS,2,1,186,0.7903225806451613
+Market experts vote,GS,2,2,154,0.17532467532467533
+Market experts vote,IWM,0,0,5,0.0
+Market experts vote,IWM,0,1,19,1.0
+Market experts vote,IWM,0,2,6,0.5
+Market experts vote,IWM,1,0,53,0.0
+Market experts vote,IWM,1,1,101,0.9108910891089109
+Market experts vote,IWM,1,2,73,0.1780821917808219
+Market experts vote,IWM,2,0,134,0.0
+Market experts vote,IWM,2,1,203,0.8029556650246306
+Market experts vote,IWM,2,2,137,0.18248175182481752
+Market experts vote,JPM,0,0,4,0.0
+Market experts vote,JPM,0,1,18,1.0
+Market experts vote,JPM,0,2,8,0.25
+Market experts vote,JPM,1,0,47,0.0
+Market experts vote,JPM,1,1,103,0.8737864077669902
+Market experts vote,JPM,1,2,77,0.19480519480519481
+Market experts vote,JPM,2,0,114,0.008771929824561403
+Market experts vote,JPM,2,1,182,0.7747252747252747
+Market experts vote,JPM,2,2,178,0.21348314606741572
+Market experts vote,META,0,0,8,0.125
+Market experts vote,META,0,1,12,1.0
+Market experts vote,META,0,2,10,0.2
+Market experts vote,META,1,0,45,0.0
+Market experts vote,META,1,1,115,0.9130434782608695
+Market experts vote,META,1,2,67,0.04477611940298507
+Market experts vote,META,2,0,125,0.0
+Market experts vote,META,2,1,192,0.828125
+Market experts vote,META,2,2,157,0.24203821656050956
+Market experts vote,MSFT,0,0,5,0.0
+Market experts vote,MSFT,0,1,19,1.0
+Market experts vote,MSFT,0,2,6,0.16666666666666666
+Market experts vote,MSFT,1,0,58,0.0
+Market experts vote,MSFT,1,1,94,0.9361702127659575
+Market experts vote,MSFT,1,2,75,0.17333333333333334
+Market experts vote,MSFT,2,0,130,0.0
+Market experts vote,MSFT,2,1,196,0.8877551020408163
+Market experts vote,MSFT,2,2,148,0.23648648648648649
+Market experts vote,NVDA,0,0,6,0.16666666666666666
+Market experts vote,NVDA,0,1,14,1.0
+Market experts vote,NVDA,0,2,10,0.2
+Market experts vote,NVDA,1,0,55,0.0
+Market experts vote,NVDA,1,1,91,0.945054945054945
+Market experts vote,NVDA,1,2,81,0.14814814814814814
+Market experts vote,NVDA,2,0,119,0.0
+Market experts vote,NVDA,2,1,189,0.8888888888888888
+Market experts vote,NVDA,2,2,166,0.16265060240963855
+Market experts vote,QQQ,0,0,6,0.0
+Market experts vote,QQQ,0,1,16,1.0
+Market experts vote,QQQ,0,2,8,0.25
+Market experts vote,QQQ,1,0,43,0.0
+Market experts vote,QQQ,1,1,105,0.9333333333333333
+Market experts vote,QQQ,1,2,79,0.12658227848101267
+Market experts vote,QQQ,2,0,122,0.0
+Market experts vote,QQQ,2,1,179,0.8100558659217877
+Market experts vote,QQQ,2,2,173,0.24855491329479767
+Market experts vote,SPY,0,0,3,0.0
+Market experts vote,SPY,0,1,18,1.0
+Market experts vote,SPY,0,2,9,0.2222222222222222
+Market experts vote,SPY,1,0,49,0.0
+Market experts vote,SPY,1,1,94,0.9361702127659575
+Market experts vote,SPY,1,2,84,0.16666666666666666
+Market experts vote,SPY,2,0,118,0.0
+Market experts vote,SPY,2,1,188,0.7659574468085106
+Market experts vote,SPY,2,2,168,0.27380952380952384
+Market experts vote,TLT,0,0,11,0.2727272727272727
+Market experts vote,TLT,0,1,11,0.9090909090909091
+Market experts vote,TLT,0,2,8,0.125
+Market experts vote,TLT,1,0,65,0.0
+Market experts vote,TLT,1,1,81,0.8888888888888888
+Market experts vote,TLT,1,2,81,0.04938271604938271
+Market experts vote,TLT,2,0,152,0.0
+Market experts vote,TLT,2,1,183,0.9180327868852459
+Market experts vote,TLT,2,2,139,0.08633093525179857
+Market experts vote,TSLA,0,0,5,0.0
+Market experts vote,TSLA,0,1,17,1.0
+Market experts vote,TSLA,0,2,8,0.25
+Market experts vote,TSLA,1,0,59,0.0
+Market experts vote,TSLA,1,1,102,0.9117647058823529
+Market experts vote,TSLA,1,2,66,0.10606060606060606
+Market experts vote,TSLA,2,0,137,0.0072992700729927005
+Market experts vote,TSLA,2,1,192,0.8645833333333334
+Market experts vote,TSLA,2,2,145,0.18620689655172415
+Market experts vote,XLE,0,0,7,0.14285714285714285
+Market experts vote,XLE,0,1,15,1.0
+Market experts vote,XLE,0,2,8,0.25
+Market experts vote,XLE,1,0,64,0.0
+Market experts vote,XLE,1,1,94,0.8723404255319149
+Market experts vote,XLE,1,2,69,0.21739130434782608
+Market experts vote,XLE,2,0,133,0.0
+Market experts vote,XLE,2,1,182,0.7912087912087912
+Market experts vote,XLE,2,2,159,0.1949685534591195
+Market experts vote,XLF,0,0,4,0.0
+Market experts vote,XLF,0,1,19,1.0
+Market experts vote,XLF,0,2,7,0.42857142857142855
+Market experts vote,XLF,1,0,47,0.0
+Market experts vote,XLF,1,1,112,0.9196428571428571
+Market experts vote,XLF,1,2,68,0.25
+Market experts vote,XLF,2,0,122,0.0
+Market experts vote,XLF,2,1,185,0.827027027027027
+Market experts vote,XLF,2,2,167,0.2694610778443114
+Market experts vote,XLI,0,0,2,0.0
+Market experts vote,XLI,0,1,19,1.0
+Market experts vote,XLI,0,2,9,0.2222222222222222
+Market experts vote,XLI,1,0,50,0.0
+Market experts vote,XLI,1,1,103,0.941747572815534
+Market experts vote,XLI,1,2,74,0.20270270270270271
+Market experts vote,XLI,2,0,129,0.0
+Market experts vote,XLI,2,1,188,0.7659574468085106
+Market experts vote,XLI,2,2,157,0.28662420382165604
+Market experts vote,XLK,0,0,5,0.0
+Market experts vote,XLK,0,1,15,1.0
+Market experts vote,XLK,0,2,10,0.2
+Market experts vote,XLK,1,0,45,0.0
+Market experts vote,XLK,1,1,105,0.9142857142857143
+Market experts vote,XLK,1,2,77,0.14285714285714285
+Market experts vote,XLK,2,0,127,0.0
+Market experts vote,XLK,2,1,171,0.847953216374269
+Market experts vote,XLK,2,2,176,0.20454545454545456
+Market experts vote,XLP,0,0,6,0.0
+Market experts vote,XLP,0,1,15,1.0
+Market experts vote,XLP,0,2,9,0.1111111111111111
+Market experts vote,XLP,1,0,57,0.0
+Market experts vote,XLP,1,1,92,0.8586956521739131
+Market experts vote,XLP,1,2,78,0.23076923076923078
+Market experts vote,XLP,2,0,143,0.0
+Market experts vote,XLP,2,1,183,0.7704918032786885
+Market experts vote,XLP,2,2,148,0.25675675675675674
+Market experts vote,XLV,0,0,9,0.1111111111111111
+Market experts vote,XLV,0,1,13,1.0
+Market experts vote,XLV,0,2,8,0.25
+Market experts vote,XLV,1,0,62,0.0
+Market experts vote,XLV,1,1,95,0.8842105263157894
+Market experts vote,XLV,1,2,70,0.2714285714285714
+Market experts vote,XLV,2,0,136,0.0
+Market experts vote,XLV,2,1,194,0.788659793814433
+Market experts vote,XLV,2,2,144,0.3055555555555556
+OpenAI Decisions,AAPL,0,0,4,0.0
+OpenAI Decisions,AAPL,0,1,21,1.0
+OpenAI Decisions,AAPL,0,2,5,0.0
+OpenAI Decisions,AAPL,1,0,54,0.3148148148148148
+OpenAI Decisions,AAPL,1,1,93,0.43010752688172044
+OpenAI Decisions,AAPL,1,2,80,0.2375
+OpenAI Decisions,AAPL,2,0,122,0.09016393442622951
+OpenAI Decisions,AAPL,2,1,208,0.6298076923076923
+OpenAI Decisions,AAPL,2,2,144,0.2222222222222222
+OpenAI Decisions,AMZN,0,0,10,0.0
+OpenAI Decisions,AMZN,0,1,12,1.0
+OpenAI Decisions,AMZN,0,2,8,0.0
+OpenAI Decisions,AMZN,1,0,53,0.3584905660377358
+OpenAI Decisions,AMZN,1,1,105,0.47619047619047616
+OpenAI Decisions,AMZN,1,2,69,0.2608695652173913
+OpenAI Decisions,AMZN,2,0,121,0.14049586776859505
+OpenAI Decisions,AMZN,2,1,214,0.6635514018691588
+OpenAI Decisions,AMZN,2,2,139,0.22302158273381295
+OpenAI Decisions,BAC,0,0,2,0.0
+OpenAI Decisions,BAC,0,1,17,1.0
+OpenAI Decisions,BAC,0,2,11,0.0
+OpenAI Decisions,BAC,1,0,60,0.35
+OpenAI Decisions,BAC,1,1,97,0.4742268041237113
+OpenAI Decisions,BAC,1,2,70,0.2
+OpenAI Decisions,BAC,2,0,127,0.14960629921259844
+OpenAI Decisions,BAC,2,1,192,0.65625
+OpenAI Decisions,BAC,2,2,155,0.22580645161290322
+OpenAI Decisions,DIA,0,0,5,0.0
+OpenAI Decisions,DIA,0,1,18,1.0
+OpenAI Decisions,DIA,0,2,7,0.0
+OpenAI Decisions,DIA,1,0,46,0.41304347826086957
+OpenAI Decisions,DIA,1,1,101,0.48514851485148514
+OpenAI Decisions,DIA,1,2,80,0.2375
+OpenAI Decisions,DIA,2,0,132,0.15151515151515152
+OpenAI Decisions,DIA,2,1,190,0.6263157894736842
+OpenAI Decisions,DIA,2,2,152,0.19736842105263158
+OpenAI Decisions,GLD,0,0,7,0.0
+OpenAI Decisions,GLD,0,1,12,1.0
+OpenAI Decisions,GLD,0,2,11,0.0
+OpenAI Decisions,GLD,1,0,39,0.4358974358974359
+OpenAI Decisions,GLD,1,1,106,0.49056603773584906
+OpenAI Decisions,GLD,1,2,82,0.21951219512195122
+OpenAI Decisions,GLD,2,0,112,0.16071428571428573
+OpenAI Decisions,GLD,2,1,210,0.6714285714285714
+OpenAI Decisions,GLD,2,2,152,0.2565789473684211
+OpenAI Decisions,GOOGL,0,0,7,0.0
+OpenAI Decisions,GOOGL,0,1,14,1.0
+OpenAI Decisions,GOOGL,0,2,9,0.0
+OpenAI Decisions,GOOGL,1,0,55,0.23636363636363636
+OpenAI Decisions,GOOGL,1,1,111,0.3783783783783784
+OpenAI Decisions,GOOGL,1,2,61,0.21311475409836064
+OpenAI Decisions,GOOGL,2,0,118,0.1016949152542373
+OpenAI Decisions,GOOGL,2,1,193,0.6269430051813472
+OpenAI Decisions,GOOGL,2,2,163,0.2147239263803681
+OpenAI Decisions,GS,0,0,4,0.0
+OpenAI Decisions,GS,0,1,14,1.0
+OpenAI Decisions,GS,0,2,12,0.0
+OpenAI Decisions,GS,1,0,46,0.43478260869565216
+OpenAI Decisions,GS,1,1,106,0.41509433962264153
+OpenAI Decisions,GS,1,2,75,0.21333333333333335
+OpenAI Decisions,GS,2,0,134,0.16417910447761194
+OpenAI Decisions,GS,2,1,186,0.6666666666666666
+OpenAI Decisions,GS,2,2,154,0.19480519480519481
+OpenAI Decisions,IWM,0,0,5,0.0
+OpenAI Decisions,IWM,0,1,19,1.0
+OpenAI Decisions,IWM,0,2,6,0.0
+OpenAI Decisions,IWM,1,0,53,0.32075471698113206
+OpenAI Decisions,IWM,1,1,101,0.43564356435643564
+OpenAI Decisions,IWM,1,2,73,0.2191780821917808
+OpenAI Decisions,IWM,2,0,134,0.1417910447761194
+OpenAI Decisions,IWM,2,1,203,0.645320197044335
+OpenAI Decisions,IWM,2,2,137,0.1897810218978102
+OpenAI Decisions,JPM,0,0,4,0.0
+OpenAI Decisions,JPM,0,1,18,1.0
+OpenAI Decisions,JPM,0,2,8,0.0
+OpenAI Decisions,JPM,1,0,47,0.44680851063829785
+OpenAI Decisions,JPM,1,1,103,0.47572815533980584
+OpenAI Decisions,JPM,1,2,77,0.23376623376623376
+OpenAI Decisions,JPM,2,0,114,0.14912280701754385
+OpenAI Decisions,JPM,2,1,182,0.5879120879120879
+OpenAI Decisions,JPM,2,2,178,0.1797752808988764
+OpenAI Decisions,META,0,0,8,0.0
+OpenAI Decisions,META,0,1,12,1.0
+OpenAI Decisions,META,0,2,10,0.0
+OpenAI Decisions,META,1,0,45,0.2
+OpenAI Decisions,META,1,1,115,0.45217391304347826
+OpenAI Decisions,META,1,2,67,0.2537313432835821
+OpenAI Decisions,META,2,0,125,0.072
+OpenAI Decisions,META,2,1,192,0.5989583333333334
+OpenAI Decisions,META,2,2,157,0.1910828025477707
+OpenAI Decisions,MSFT,0,0,5,0.0
+OpenAI Decisions,MSFT,0,1,19,1.0
+OpenAI Decisions,MSFT,0,2,6,0.0
+OpenAI Decisions,MSFT,1,0,58,0.3103448275862069
+OpenAI Decisions,MSFT,1,1,94,0.5531914893617021
+OpenAI Decisions,MSFT,1,2,75,0.24
+OpenAI Decisions,MSFT,2,0,130,0.1
+OpenAI Decisions,MSFT,2,1,196,0.6122448979591837
+OpenAI Decisions,MSFT,2,2,148,0.20945945945945946
+OpenAI Decisions,NVDA,0,0,6,0.0
+OpenAI Decisions,NVDA,0,1,14,1.0
+OpenAI Decisions,NVDA,0,2,10,0.0
+OpenAI Decisions,NVDA,1,0,55,0.21818181818181817
+OpenAI Decisions,NVDA,1,1,91,0.4725274725274725
+OpenAI Decisions,NVDA,1,2,81,0.2716049382716049
+OpenAI Decisions,NVDA,2,0,119,0.08403361344537816
+OpenAI Decisions,NVDA,2,1,189,0.6402116402116402
+OpenAI Decisions,NVDA,2,2,166,0.20481927710843373
+OpenAI Decisions,QQQ,0,0,6,0.0
+OpenAI Decisions,QQQ,0,1,16,1.0
+OpenAI Decisions,QQQ,0,2,8,0.0
+OpenAI Decisions,QQQ,1,0,43,0.4186046511627907
+OpenAI Decisions,QQQ,1,1,105,0.4857142857142857
+OpenAI Decisions,QQQ,1,2,79,0.22784810126582278
+OpenAI Decisions,QQQ,2,0,122,0.08196721311475409
+OpenAI Decisions,QQQ,2,1,179,0.6201117318435754
+OpenAI Decisions,QQQ,2,2,173,0.2254335260115607
+OpenAI Decisions,SPY,0,0,3,0.0
+OpenAI Decisions,SPY,0,1,18,1.0
+OpenAI Decisions,SPY,0,2,9,0.0
+OpenAI Decisions,SPY,1,0,49,0.4489795918367347
+OpenAI Decisions,SPY,1,1,94,0.5
+OpenAI Decisions,SPY,1,2,84,0.2619047619047619
+OpenAI Decisions,SPY,2,0,118,0.11864406779661017
+OpenAI Decisions,SPY,2,1,188,0.6276595744680851
+OpenAI Decisions,SPY,2,2,168,0.19047619047619047
+OpenAI Decisions,TLT,0,0,11,0.0
+OpenAI Decisions,TLT,0,1,11,1.0
+OpenAI Decisions,TLT,0,2,8,0.0
+OpenAI Decisions,TLT,1,0,65,0.38461538461538464
+OpenAI Decisions,TLT,1,1,81,0.43209876543209874
+OpenAI Decisions,TLT,1,2,81,0.20987654320987653
+OpenAI Decisions,TLT,2,0,152,0.14473684210526316
+OpenAI Decisions,TLT,2,1,183,0.6994535519125683
+OpenAI Decisions,TLT,2,2,139,0.2158273381294964
+OpenAI Decisions,TSLA,0,0,5,0.0
+OpenAI Decisions,TSLA,0,1,17,1.0
+OpenAI Decisions,TSLA,0,2,8,0.0
+OpenAI Decisions,TSLA,1,0,59,0.3559322033898305
+OpenAI Decisions,TSLA,1,1,102,0.4411764705882353
+OpenAI Decisions,TSLA,1,2,66,0.18181818181818182
+OpenAI Decisions,TSLA,2,0,137,0.11678832116788321
+OpenAI Decisions,TSLA,2,1,192,0.609375
+OpenAI Decisions,TSLA,2,2,145,0.21379310344827587
+OpenAI Decisions,XLE,0,0,7,0.0
+OpenAI Decisions,XLE,0,1,15,1.0
+OpenAI Decisions,XLE,0,2,8,0.0
+OpenAI Decisions,XLE,1,0,64,0.390625
+OpenAI Decisions,XLE,1,1,94,0.44680851063829785
+OpenAI Decisions,XLE,1,2,69,0.2463768115942029
+OpenAI Decisions,XLE,2,0,133,0.16541353383458646
+OpenAI Decisions,XLE,2,1,182,0.6208791208791209
+OpenAI Decisions,XLE,2,2,159,0.16352201257861634
+OpenAI Decisions,XLF,0,0,4,0.0
+OpenAI Decisions,XLF,0,1,19,1.0
+OpenAI Decisions,XLF,0,2,7,0.0
+OpenAI Decisions,XLF,1,0,47,0.46808510638297873
+OpenAI Decisions,XLF,1,1,112,0.4642857142857143
+OpenAI Decisions,XLF,1,2,68,0.19117647058823528
+OpenAI Decisions,XLF,2,0,122,0.1721311475409836
+OpenAI Decisions,XLF,2,1,185,0.6324324324324324
+OpenAI Decisions,XLF,2,2,167,0.19760479041916168
+OpenAI Decisions,XLI,0,0,2,0.0
+OpenAI Decisions,XLI,0,1,19,1.0
+OpenAI Decisions,XLI,0,2,9,0.0
+OpenAI Decisions,XLI,1,0,50,0.36
+OpenAI Decisions,XLI,1,1,103,0.49514563106796117
+OpenAI Decisions,XLI,1,2,74,0.25675675675675674
+OpenAI Decisions,XLI,2,0,129,0.13953488372093023
+OpenAI Decisions,XLI,2,1,188,0.6595744680851063
+OpenAI Decisions,XLI,2,2,157,0.1910828025477707
+OpenAI Decisions,XLK,0,0,5,0.0
+OpenAI Decisions,XLK,0,1,15,1.0
+OpenAI Decisions,XLK,0,2,10,0.0
+OpenAI Decisions,XLK,1,0,45,0.4
+OpenAI Decisions,XLK,1,1,105,0.4666666666666667
+OpenAI Decisions,XLK,1,2,77,0.22077922077922077
+OpenAI Decisions,XLK,2,0,127,0.10236220472440945
+OpenAI Decisions,XLK,2,1,171,0.6198830409356725
+OpenAI Decisions,XLK,2,2,176,0.1875
+OpenAI Decisions,XLP,0,0,6,0.0
+OpenAI Decisions,XLP,0,1,15,1.0
+OpenAI Decisions,XLP,0,2,9,0.0
+OpenAI Decisions,XLP,1,0,57,0.3157894736842105
+OpenAI Decisions,XLP,1,1,92,0.4782608695652174
+OpenAI Decisions,XLP,1,2,78,0.2564102564102564
+OpenAI Decisions,XLP,2,0,143,0.15384615384615385
+OpenAI Decisions,XLP,2,1,183,0.639344262295082
+OpenAI Decisions,XLP,2,2,148,0.20945945945945946
+OpenAI Decisions,XLV,0,0,9,0.0
+OpenAI Decisions,XLV,0,1,13,1.0
+OpenAI Decisions,XLV,0,2,8,0.0
+OpenAI Decisions,XLV,1,0,62,0.4032258064516129
+OpenAI Decisions,XLV,1,1,95,0.5578947368421052
+OpenAI Decisions,XLV,1,2,70,0.2714285714285714
+OpenAI Decisions,XLV,2,0,136,0.15441176470588236
+OpenAI Decisions,XLV,2,1,194,0.634020618556701
+OpenAI Decisions,XLV,2,2,144,0.19444444444444445
+OpenAI asset digest,AAPL,0,0,4,0.0
+OpenAI asset digest,AAPL,0,1,21,0.5714285714285714
+OpenAI asset digest,AAPL,0,2,5,0.2
+OpenAI asset digest,AAPL,1,0,54,0.5370370370370371
+OpenAI asset digest,AAPL,1,1,93,0.20430107526881722
+OpenAI asset digest,AAPL,1,2,80,0.3125
+OpenAI asset digest,AAPL,2,0,122,0.29508196721311475
+OpenAI asset digest,AAPL,2,1,208,0.125
+OpenAI asset digest,AAPL,2,2,144,0.5902777777777778
+OpenAI asset digest,AMZN,0,0,10,0.7
+OpenAI asset digest,AMZN,0,1,12,0.0
+OpenAI asset digest,AMZN,0,2,8,0.25
+OpenAI asset digest,AMZN,1,0,53,0.37735849056603776
+OpenAI asset digest,AMZN,1,1,105,0.0
+OpenAI asset digest,AMZN,1,2,69,0.6086956521739131
+OpenAI asset digest,AMZN,2,0,121,0.2727272727272727
+OpenAI asset digest,AMZN,2,1,214,0.04205607476635514
+OpenAI asset digest,AMZN,2,2,139,0.5611510791366906
+OpenAI asset digest,BAC,0,0,2,1.0
+OpenAI asset digest,BAC,0,1,17,0.0
+OpenAI asset digest,BAC,0,2,11,0.36363636363636365
+OpenAI asset digest,BAC,1,0,60,0.11666666666666667
+OpenAI asset digest,BAC,1,1,97,0.1958762886597938
+OpenAI asset digest,BAC,1,2,70,0.5571428571428572
+OpenAI asset digest,BAC,2,0,127,0.3228346456692913
+OpenAI asset digest,BAC,2,1,192,0.13541666666666666
+OpenAI asset digest,BAC,2,2,155,0.5612903225806452
+OpenAI asset digest,DIA,0,0,5,0.0
+OpenAI asset digest,DIA,0,1,18,0.5555555555555556
+OpenAI asset digest,DIA,0,2,7,0.2857142857142857
+OpenAI asset digest,DIA,1,0,46,0.17391304347826086
+OpenAI asset digest,DIA,1,1,101,0.46534653465346537
+OpenAI asset digest,DIA,1,2,80,0.275
+OpenAI asset digest,DIA,2,0,132,0.09848484848484848
+OpenAI asset digest,DIA,2,1,190,0.49473684210526314
+OpenAI asset digest,DIA,2,2,152,0.4407894736842105
+OpenAI asset digest,GLD,0,0,7,0.2857142857142857
+OpenAI asset digest,GLD,0,1,12,0.0
+OpenAI asset digest,GLD,0,2,11,0.7272727272727273
+OpenAI asset digest,GLD,1,0,39,0.02564102564102564
+OpenAI asset digest,GLD,1,1,106,0.41509433962264153
+OpenAI asset digest,GLD,1,2,82,0.47560975609756095
+OpenAI asset digest,GLD,2,0,112,0.10714285714285714
+OpenAI asset digest,GLD,2,1,210,0.4666666666666667
+OpenAI asset digest,GLD,2,2,152,0.5
+OpenAI asset digest,GOOGL,0,0,7,0.7142857142857143
+OpenAI asset digest,GOOGL,0,1,14,0.0
+OpenAI asset digest,GOOGL,0,2,9,0.2222222222222222
+OpenAI asset digest,GOOGL,1,0,55,0.5818181818181818
+OpenAI asset digest,GOOGL,1,1,111,0.0
+OpenAI asset digest,GOOGL,1,2,61,0.3114754098360656
+OpenAI asset digest,GOOGL,2,0,118,0.2033898305084746
+OpenAI asset digest,GOOGL,2,1,193,0.0
+OpenAI asset digest,GOOGL,2,2,163,0.6932515337423313
+OpenAI asset digest,GS,0,0,4,0.75
+OpenAI asset digest,GS,0,1,14,0.0
+OpenAI asset digest,GS,0,2,12,0.4166666666666667
+OpenAI asset digest,GS,1,0,46,0.391304347826087
+OpenAI asset digest,GS,1,1,106,0.11320754716981132
+OpenAI asset digest,GS,1,2,75,0.5333333333333333
+OpenAI asset digest,GS,2,0,134,0.23880597014925373
+OpenAI asset digest,GS,2,1,186,0.16129032258064516
+OpenAI asset digest,GS,2,2,154,0.4935064935064935
+OpenAI asset digest,IWM,0,0,5,0.6
+OpenAI asset digest,IWM,0,1,19,0.0
+OpenAI asset digest,IWM,0,2,6,0.3333333333333333
+OpenAI asset digest,IWM,1,0,53,0.33962264150943394
+OpenAI asset digest,IWM,1,1,101,0.31683168316831684
+OpenAI asset digest,IWM,1,2,73,0.3287671232876712
+OpenAI asset digest,IWM,2,0,134,0.1417910447761194
+OpenAI asset digest,IWM,2,1,203,0.30049261083743845
+OpenAI asset digest,IWM,2,2,137,0.49635036496350365
+OpenAI asset digest,JPM,0,0,4,0.75
+OpenAI asset digest,JPM,0,1,18,0.0
+OpenAI asset digest,JPM,0,2,8,0.25
+OpenAI asset digest,JPM,1,0,47,0.10638297872340426
+OpenAI asset digest,JPM,1,1,103,0.23300970873786409
+OpenAI asset digest,JPM,1,2,77,0.4935064935064935
+OpenAI asset digest,JPM,2,0,114,0.3157894736842105
+OpenAI asset digest,JPM,2,1,182,0.12087912087912088
+OpenAI asset digest,JPM,2,2,178,0.6910112359550562
+OpenAI asset digest,META,0,0,8,0.75
+OpenAI asset digest,META,0,1,12,0.0
+OpenAI asset digest,META,0,2,10,0.4
+OpenAI asset digest,META,1,0,45,0.4888888888888889
+OpenAI asset digest,META,1,1,115,0.0
+OpenAI asset digest,META,1,2,67,0.5522388059701493
+OpenAI asset digest,META,2,0,125,0.28
+OpenAI asset digest,META,2,1,192,0.0
+OpenAI asset digest,META,2,2,157,0.6305732484076433
+OpenAI asset digest,MSFT,0,0,5,1.0
+OpenAI asset digest,MSFT,0,1,19,0.0
+OpenAI asset digest,MSFT,0,2,6,0.0
+OpenAI asset digest,MSFT,1,0,58,0.4827586206896552
+OpenAI asset digest,MSFT,1,1,94,0.07446808510638298
+OpenAI asset digest,MSFT,1,2,75,0.38666666666666666
+OpenAI asset digest,MSFT,2,0,130,0.3769230769230769
+OpenAI asset digest,MSFT,2,1,196,0.10204081632653061
+OpenAI asset digest,MSFT,2,2,148,0.5405405405405406
+OpenAI asset digest,NVDA,0,0,6,0.8333333333333334
+OpenAI asset digest,NVDA,0,1,14,0.0
+OpenAI asset digest,NVDA,0,2,10,0.4
+OpenAI asset digest,NVDA,1,0,55,0.6727272727272727
+OpenAI asset digest,NVDA,1,1,91,0.0
+OpenAI asset digest,NVDA,1,2,81,0.3333333333333333
+OpenAI asset digest,NVDA,2,0,119,0.3445378151260504
+OpenAI asset digest,NVDA,2,1,189,0.0
+OpenAI asset digest,NVDA,2,2,166,0.5903614457831325
+OpenAI asset digest,QQQ,0,0,6,0.8333333333333334
+OpenAI asset digest,QQQ,0,1,16,0.0
+OpenAI asset digest,QQQ,0,2,8,0.25
+OpenAI asset digest,QQQ,1,0,43,0.3488372093023256
+OpenAI asset digest,QQQ,1,1,105,0.3238095238095238
+OpenAI asset digest,QQQ,1,2,79,0.3037974683544304
+OpenAI asset digest,QQQ,2,0,122,0.21311475409836064
+OpenAI asset digest,QQQ,2,1,179,0.24022346368715083
+OpenAI asset digest,QQQ,2,2,173,0.5260115606936416
+OpenAI asset digest,SPY,0,0,3,1.0
+OpenAI asset digest,SPY,0,1,18,0.0
+OpenAI asset digest,SPY,0,2,9,0.3333333333333333
+OpenAI asset digest,SPY,1,0,49,0.2653061224489796
+OpenAI asset digest,SPY,1,1,94,0.3617021276595745
+OpenAI asset digest,SPY,1,2,84,0.2857142857142857
+OpenAI asset digest,SPY,2,0,118,0.15254237288135594
+OpenAI asset digest,SPY,2,1,188,0.34574468085106386
+OpenAI asset digest,SPY,2,2,168,0.4880952380952381
+OpenAI asset digest,TLT,0,0,11,0.0
+OpenAI asset digest,TLT,0,1,11,0.45454545454545453
+OpenAI asset digest,TLT,0,2,8,0.75
+OpenAI asset digest,TLT,1,0,65,0.23076923076923078
+OpenAI asset digest,TLT,1,1,81,0.2345679012345679
+OpenAI asset digest,TLT,1,2,81,0.3333333333333333
+OpenAI asset digest,TLT,2,0,152,0.2565789473684211
+OpenAI asset digest,TLT,2,1,183,0.4808743169398907
+OpenAI asset digest,TLT,2,2,139,0.302158273381295
+OpenAI asset digest,TSLA,0,0,5,0.6
+OpenAI asset digest,TSLA,0,1,17,0.0
+OpenAI asset digest,TSLA,0,2,8,0.375
+OpenAI asset digest,TSLA,1,0,59,0.4915254237288136
+OpenAI asset digest,TSLA,1,1,102,0.0392156862745098
+OpenAI asset digest,TSLA,1,2,66,0.36363636363636365
+OpenAI asset digest,TSLA,2,0,137,0.41605839416058393
+OpenAI asset digest,TSLA,2,1,192,0.026041666666666668
+OpenAI asset digest,TSLA,2,2,145,0.5724137931034483
+OpenAI asset digest,XLE,0,0,7,0.2857142857142857
+OpenAI asset digest,XLE,0,1,15,0.0
+OpenAI asset digest,XLE,0,2,8,0.625
+OpenAI asset digest,XLE,1,0,64,0.765625
+OpenAI asset digest,XLE,1,1,94,0.2127659574468085
+OpenAI asset digest,XLE,1,2,69,0.0
+OpenAI asset digest,XLE,2,0,133,0.3458646616541353
+OpenAI asset digest,XLE,2,1,182,0.3241758241758242
+OpenAI asset digest,XLE,2,2,159,0.44025157232704404
+OpenAI asset digest,XLF,0,0,4,0.0
+OpenAI asset digest,XLF,0,1,19,0.5263157894736842
+OpenAI asset digest,XLF,0,2,7,0.2857142857142857
+OpenAI asset digest,XLF,1,0,47,0.06382978723404255
+OpenAI asset digest,XLF,1,1,112,0.2767857142857143
+OpenAI asset digest,XLF,1,2,68,0.4852941176470588
+OpenAI asset digest,XLF,2,0,122,0.20491803278688525
+OpenAI asset digest,XLF,2,1,185,0.41081081081081083
+OpenAI asset digest,XLF,2,2,167,0.3652694610778443
+OpenAI asset digest,XLI,0,0,2,0.0
+OpenAI asset digest,XLI,0,1,19,1.0
+OpenAI asset digest,XLI,0,2,9,0.0
+OpenAI asset digest,XLI,1,0,50,0.16
+OpenAI asset digest,XLI,1,1,103,0.6893203883495146
+OpenAI asset digest,XLI,1,2,74,0.16216216216216217
+OpenAI asset digest,XLI,2,0,129,0.2558139534883721
+OpenAI asset digest,XLI,2,1,188,0.2978723404255319
+OpenAI asset digest,XLI,2,2,157,0.4140127388535032
+OpenAI asset digest,XLK,0,0,5,0.8
+OpenAI asset digest,XLK,0,1,15,0.0
+OpenAI asset digest,XLK,0,2,10,0.4
+OpenAI asset digest,XLK,1,0,45,0.4444444444444444
+OpenAI asset digest,XLK,1,1,105,0.13333333333333333
+OpenAI asset digest,XLK,1,2,77,0.3246753246753247
+OpenAI asset digest,XLK,2,0,127,0.2440944881889764
+OpenAI asset digest,XLK,2,1,171,0.22807017543859648
+OpenAI asset digest,XLK,2,2,176,0.5397727272727273
+OpenAI asset digest,XLP,0,0,6,0.0
+OpenAI asset digest,XLP,0,1,15,0.4666666666666667
+OpenAI asset digest,XLP,0,2,9,0.7777777777777778
+OpenAI asset digest,XLP,1,0,57,0.17543859649122806
+OpenAI asset digest,XLP,1,1,92,0.40217391304347827
+OpenAI asset digest,XLP,1,2,78,0.3333333333333333
+OpenAI asset digest,XLP,2,0,143,0.23076923076923078
+OpenAI asset digest,XLP,2,1,183,0.46994535519125685
+OpenAI asset digest,XLP,2,2,148,0.22297297297297297
+OpenAI asset digest,XLV,0,0,9,0.0
+OpenAI asset digest,XLV,0,1,13,1.0
+OpenAI asset digest,XLV,0,2,8,0.0
+OpenAI asset digest,XLV,1,0,62,0.16129032258064516
+OpenAI asset digest,XLV,1,1,95,0.5263157894736842
+OpenAI asset digest,XLV,1,2,70,0.24285714285714285
+OpenAI asset digest,XLV,2,0,136,0.10294117647058823
+OpenAI asset digest,XLV,2,1,194,0.5103092783505154
+OpenAI asset digest,XLV,2,2,144,0.3333333333333333
+Patch Transformer,AAPL,0,0,4,0.25
+Patch Transformer,AAPL,0,1,21,1.0
+Patch Transformer,AAPL,0,2,5,0.0
+Patch Transformer,AAPL,1,0,54,0.07407407407407407
+Patch Transformer,AAPL,1,1,93,0.8279569892473119
+Patch Transformer,AAPL,1,2,80,0.1
+Patch Transformer,AAPL,2,0,122,0.06557377049180328
+Patch Transformer,AAPL,2,1,208,0.7451923076923077
+Patch Transformer,AAPL,2,2,144,0.18055555555555555
+Patch Transformer,AMZN,0,0,10,0.0
+Patch Transformer,AMZN,0,1,12,1.0
+Patch Transformer,AMZN,0,2,8,0.0
+Patch Transformer,AMZN,1,0,53,0.03773584905660377
+Patch Transformer,AMZN,1,1,105,0.9333333333333333
+Patch Transformer,AMZN,1,2,69,0.028985507246376812
+Patch Transformer,AMZN,2,0,121,0.024793388429752067
+Patch Transformer,AMZN,2,1,214,0.8177570093457944
+Patch Transformer,AMZN,2,2,139,0.17266187050359713
+Patch Transformer,BAC,0,0,2,0.0
+Patch Transformer,BAC,0,1,17,1.0
+Patch Transformer,BAC,0,2,11,0.0
+Patch Transformer,BAC,1,0,60,0.05
+Patch Transformer,BAC,1,1,97,0.8762886597938144
+Patch Transformer,BAC,1,2,70,0.12857142857142856
+Patch Transformer,BAC,2,0,127,0.09448818897637795
+Patch Transformer,BAC,2,1,192,0.71875
+Patch Transformer,BAC,2,2,155,0.25806451612903225
+Patch Transformer,DIA,0,0,5,0.0
+Patch Transformer,DIA,0,1,18,1.0
+Patch Transformer,DIA,0,2,7,0.0
+Patch Transformer,DIA,1,0,46,0.043478260869565216
+Patch Transformer,DIA,1,1,101,0.8811881188118812
+Patch Transformer,DIA,1,2,80,0.1375
+Patch Transformer,DIA,2,0,132,0.030303030303030304
+Patch Transformer,DIA,2,1,190,0.631578947368421
+Patch Transformer,DIA,2,2,152,0.3684210526315789
+Patch Transformer,GLD,0,0,7,0.0
+Patch Transformer,GLD,0,1,12,1.0
+Patch Transformer,GLD,0,2,11,0.09090909090909091
+Patch Transformer,GLD,1,0,39,0.05128205128205128
+Patch Transformer,GLD,1,1,106,0.7547169811320755
+Patch Transformer,GLD,1,2,82,0.13414634146341464
+Patch Transformer,GLD,2,0,112,0.03571428571428571
+Patch Transformer,GLD,2,1,210,0.7857142857142857
+Patch Transformer,GLD,2,2,152,0.19736842105263158
+Patch Transformer,GOOGL,0,0,7,0.0
+Patch Transformer,GOOGL,0,1,14,1.0
+Patch Transformer,GOOGL,0,2,9,0.0
+Patch Transformer,GOOGL,1,0,55,0.01818181818181818
+Patch Transformer,GOOGL,1,1,111,0.918918918918919
+Patch Transformer,GOOGL,1,2,61,0.01639344262295082
+Patch Transformer,GOOGL,2,0,118,0.0847457627118644
+Patch Transformer,GOOGL,2,1,193,0.7512953367875648
+Patch Transformer,GOOGL,2,2,163,0.20245398773006135
+Patch Transformer,GS,0,0,4,0.0
+Patch Transformer,GS,0,1,14,1.0
+Patch Transformer,GS,0,2,12,0.0
+Patch Transformer,GS,1,0,46,0.13043478260869565
+Patch Transformer,GS,1,1,106,0.9339622641509434
+Patch Transformer,GS,1,2,75,0.09333333333333334
+Patch Transformer,GS,2,0,134,0.1417910447761194
+Patch Transformer,GS,2,1,186,0.7150537634408602
+Patch Transformer,GS,2,2,154,0.24675324675324675
+Patch Transformer,IWM,0,0,5,0.2
+Patch Transformer,IWM,0,1,19,1.0
+Patch Transformer,IWM,0,2,6,0.0
+Patch Transformer,IWM,1,0,53,0.09433962264150944
+Patch Transformer,IWM,1,1,101,0.8613861386138614
+Patch Transformer,IWM,1,2,73,0.0821917808219178
+Patch Transformer,IWM,2,0,134,0.04477611940298507
+Patch Transformer,IWM,2,1,203,0.8078817733990148
+Patch Transformer,IWM,2,2,137,0.0948905109489051
+Patch Transformer,JPM,0,0,4,0.0
+Patch Transformer,JPM,0,1,18,1.0
+Patch Transformer,JPM,0,2,8,0.0
+Patch Transformer,JPM,1,0,47,0.14893617021276595
+Patch Transformer,JPM,1,1,103,0.8155339805825242
+Patch Transformer,JPM,1,2,77,0.11688311688311688
+Patch Transformer,JPM,2,0,114,0.14912280701754385
+Patch Transformer,JPM,2,1,182,0.6703296703296703
+Patch Transformer,JPM,2,2,178,0.3707865168539326
+Patch Transformer,META,0,0,8,0.0
+Patch Transformer,META,0,1,12,1.0
+Patch Transformer,META,0,2,10,0.0
+Patch Transformer,META,1,0,45,0.06666666666666667
+Patch Transformer,META,1,1,115,0.9217391304347826
+Patch Transformer,META,1,2,67,0.04477611940298507
+Patch Transformer,META,2,0,125,0.072
+Patch Transformer,META,2,1,192,0.78125
+Patch Transformer,META,2,2,157,0.19745222929936307
+Patch Transformer,MSFT,0,0,5,0.2
+Patch Transformer,MSFT,0,1,19,1.0
+Patch Transformer,MSFT,0,2,6,0.0
+Patch Transformer,MSFT,1,0,58,0.06896551724137931
+Patch Transformer,MSFT,1,1,94,0.8617021276595744
+Patch Transformer,MSFT,1,2,75,0.05333333333333334
+Patch Transformer,MSFT,2,0,130,0.023076923076923078
+Patch Transformer,MSFT,2,1,196,0.7551020408163265
+Patch Transformer,MSFT,2,2,148,0.28378378378378377
+Patch Transformer,NVDA,0,0,6,0.0
+Patch Transformer,NVDA,0,1,14,1.0
+Patch Transformer,NVDA,0,2,10,0.0
+Patch Transformer,NVDA,1,0,55,0.01818181818181818
+Patch Transformer,NVDA,1,1,91,0.9120879120879121
+Patch Transformer,NVDA,1,2,81,0.04938271604938271
+Patch Transformer,NVDA,2,0,119,0.04201680672268908
+Patch Transformer,NVDA,2,1,189,0.8518518518518519
+Patch Transformer,NVDA,2,2,166,0.1566265060240964
+Patch Transformer,QQQ,0,0,6,0.0
+Patch Transformer,QQQ,0,1,16,1.0
+Patch Transformer,QQQ,0,2,8,0.0
+Patch Transformer,QQQ,1,0,43,0.06976744186046512
+Patch Transformer,QQQ,1,1,105,0.8761904761904762
+Patch Transformer,QQQ,1,2,79,0.06329113924050633
+Patch Transformer,QQQ,2,0,122,0.03278688524590164
+Patch Transformer,QQQ,2,1,179,0.6536312849162011
+Patch Transformer,QQQ,2,2,173,0.3468208092485549
+Patch Transformer,SPY,0,0,3,0.0
+Patch Transformer,SPY,0,1,18,1.0
+Patch Transformer,SPY,0,2,9,0.0
+Patch Transformer,SPY,1,0,49,0.061224489795918366
+Patch Transformer,SPY,1,1,94,0.8404255319148937
+Patch Transformer,SPY,1,2,84,0.10714285714285714
+Patch Transformer,SPY,2,0,118,0.01694915254237288
+Patch Transformer,SPY,2,1,188,0.5904255319148937
+Patch Transformer,SPY,2,2,168,0.4107142857142857
+Patch Transformer,TLT,0,0,11,0.09090909090909091
+Patch Transformer,TLT,0,1,11,1.0
+Patch Transformer,TLT,0,2,8,0.125
+Patch Transformer,TLT,1,0,65,0.046153846153846156
+Patch Transformer,TLT,1,1,81,0.8395061728395061
+Patch Transformer,TLT,1,2,81,0.12345679012345678
+Patch Transformer,TLT,2,0,152,0.046052631578947366
+Patch Transformer,TLT,2,1,183,0.825136612021858
+Patch Transformer,TLT,2,2,139,0.16546762589928057
+Patch Transformer,TSLA,0,0,5,0.0
+Patch Transformer,TSLA,0,1,17,1.0
+Patch Transformer,TSLA,0,2,8,0.0
+Patch Transformer,TSLA,1,0,59,0.0
+Patch Transformer,TSLA,1,1,102,0.9411764705882353
+Patch Transformer,TSLA,1,2,66,0.09090909090909091
+Patch Transformer,TSLA,2,0,137,0.021897810218978103
+Patch Transformer,TSLA,2,1,192,0.9270833333333334
+Patch Transformer,TSLA,2,2,145,0.09655172413793103
+Patch Transformer,XLE,0,0,7,0.14285714285714285
+Patch Transformer,XLE,0,1,15,1.0
+Patch Transformer,XLE,0,2,8,0.125
+Patch Transformer,XLE,1,0,64,0.03125
+Patch Transformer,XLE,1,1,94,0.9042553191489362
+Patch Transformer,XLE,1,2,69,0.08695652173913043
+Patch Transformer,XLE,2,0,133,0.11278195488721804
+Patch Transformer,XLE,2,1,182,0.7362637362637363
+Patch Transformer,XLE,2,2,159,0.22012578616352202
+Patch Transformer,XLF,0,0,4,0.25
+Patch Transformer,XLF,0,1,19,1.0
+Patch Transformer,XLF,0,2,7,0.14285714285714285
+Patch Transformer,XLF,1,0,47,0.10638297872340426
+Patch Transformer,XLF,1,1,112,0.8839285714285714
+Patch Transformer,XLF,1,2,68,0.20588235294117646
+Patch Transformer,XLF,2,0,122,0.04918032786885246
+Patch Transformer,XLF,2,1,185,0.6810810810810811
+Patch Transformer,XLF,2,2,167,0.38922155688622756
+Patch Transformer,XLI,0,0,2,0.5
+Patch Transformer,XLI,0,1,19,1.0
+Patch Transformer,XLI,0,2,9,0.1111111111111111
+Patch Transformer,XLI,1,0,50,0.08
+Patch Transformer,XLI,1,1,103,0.9223300970873787
+Patch Transformer,XLI,1,2,74,0.16216216216216217
+Patch Transformer,XLI,2,0,129,0.007751937984496124
+Patch Transformer,XLI,2,1,188,0.6542553191489362
+Patch Transformer,XLI,2,2,157,0.3375796178343949
+Patch Transformer,XLK,0,0,5,0.0
+Patch Transformer,XLK,0,1,15,1.0
+Patch Transformer,XLK,0,2,10,0.0
+Patch Transformer,XLK,1,0,45,0.044444444444444446
+Patch Transformer,XLK,1,1,105,0.9142857142857143
+Patch Transformer,XLK,1,2,77,0.05194805194805195
+Patch Transformer,XLK,2,0,127,0.047244094488188976
+Patch Transformer,XLK,2,1,171,0.7485380116959064
+Patch Transformer,XLK,2,2,176,0.23863636363636365
+Patch Transformer,XLP,0,0,6,0.16666666666666666
+Patch Transformer,XLP,0,1,15,1.0
+Patch Transformer,XLP,0,2,9,0.1111111111111111
+Patch Transformer,XLP,1,0,57,0.03508771929824561
+Patch Transformer,XLP,1,1,92,0.8586956521739131
+Patch Transformer,XLP,1,2,78,0.20512820512820512
+Patch Transformer,XLP,2,0,143,0.02097902097902098
+Patch Transformer,XLP,2,1,183,0.6229508196721312
+Patch Transformer,XLP,2,2,148,0.30405405405405406
+Patch Transformer,XLV,0,0,9,0.1111111111111111
+Patch Transformer,XLV,0,1,13,1.0
+Patch Transformer,XLV,0,2,8,0.125
+Patch Transformer,XLV,1,0,62,0.12903225806451613
+Patch Transformer,XLV,1,1,95,0.8210526315789474
+Patch Transformer,XLV,1,2,70,0.17142857142857143
+Patch Transformer,XLV,2,0,136,0.03676470588235294
+Patch Transformer,XLV,2,1,194,0.6494845360824743
+Patch Transformer,XLV,2,2,144,0.3680555555555556
+Qwen statement,AAPL,0,0,4,0.0
+Qwen statement,AAPL,0,1,21,1.0
+Qwen statement,AAPL,0,2,5,0.0
+Qwen statement,AAPL,1,0,54,0.0
+Qwen statement,AAPL,1,1,93,1.0
+Qwen statement,AAPL,1,2,80,0.0
+Qwen statement,AAPL,2,0,122,0.0
+Qwen statement,AAPL,2,1,208,1.0
+Qwen statement,AAPL,2,2,144,0.0
+Qwen statement,AMZN,0,0,10,0.0
+Qwen statement,AMZN,0,1,12,1.0
+Qwen statement,AMZN,0,2,8,0.0
+Qwen statement,AMZN,1,0,53,0.0
+Qwen statement,AMZN,1,1,105,1.0
+Qwen statement,AMZN,1,2,69,0.0
+Qwen statement,AMZN,2,0,121,0.0
+Qwen statement,AMZN,2,1,214,1.0
+Qwen statement,AMZN,2,2,139,0.0
+Qwen statement,BAC,0,0,2,0.0
+Qwen statement,BAC,0,1,17,1.0
+Qwen statement,BAC,0,2,11,0.0
+Qwen statement,BAC,1,0,60,0.0
+Qwen statement,BAC,1,1,97,1.0
+Qwen statement,BAC,1,2,70,0.0
+Qwen statement,BAC,2,0,127,0.0
+Qwen statement,BAC,2,1,192,1.0
+Qwen statement,BAC,2,2,155,0.0
+Qwen statement,DIA,0,0,5,0.0
+Qwen statement,DIA,0,1,18,1.0
+Qwen statement,DIA,0,2,7,0.0
+Qwen statement,DIA,1,0,46,0.0
+Qwen statement,DIA,1,1,101,1.0
+Qwen statement,DIA,1,2,80,0.0
+Qwen statement,DIA,2,0,132,0.0
+Qwen statement,DIA,2,1,190,1.0
+Qwen statement,DIA,2,2,152,0.0
+Qwen statement,GLD,0,0,7,0.0
+Qwen statement,GLD,0,1,12,1.0
+Qwen statement,GLD,0,2,11,0.0
+Qwen statement,GLD,1,0,39,0.0
+Qwen statement,GLD,1,1,106,1.0
+Qwen statement,GLD,1,2,82,0.0
+Qwen statement,GLD,2,0,112,0.0
+Qwen statement,GLD,2,1,210,1.0
+Qwen statement,GLD,2,2,152,0.0
+Qwen statement,GOOGL,0,0,7,0.0
+Qwen statement,GOOGL,0,1,14,1.0
+Qwen statement,GOOGL,0,2,9,0.0
+Qwen statement,GOOGL,1,0,55,0.0
+Qwen statement,GOOGL,1,1,111,1.0
+Qwen statement,GOOGL,1,2,61,0.0
+Qwen statement,GOOGL,2,0,118,0.0
+Qwen statement,GOOGL,2,1,193,1.0
+Qwen statement,GOOGL,2,2,163,0.0
+Qwen statement,GS,0,0,4,0.0
+Qwen statement,GS,0,1,14,1.0
+Qwen statement,GS,0,2,12,0.0
+Qwen statement,GS,1,0,46,0.0
+Qwen statement,GS,1,1,106,1.0
+Qwen statement,GS,1,2,75,0.0
+Qwen statement,GS,2,0,134,0.0
+Qwen statement,GS,2,1,186,1.0
+Qwen statement,GS,2,2,154,0.0
+Qwen statement,IWM,0,0,5,0.0
+Qwen statement,IWM,0,1,19,1.0
+Qwen statement,IWM,0,2,6,0.0
+Qwen statement,IWM,1,0,53,0.0
+Qwen statement,IWM,1,1,101,1.0
+Qwen statement,IWM,1,2,73,0.0
+Qwen statement,IWM,2,0,134,0.0
+Qwen statement,IWM,2,1,203,1.0
+Qwen statement,IWM,2,2,137,0.0
+Qwen statement,JPM,0,0,4,0.0
+Qwen statement,JPM,0,1,18,1.0
+Qwen statement,JPM,0,2,8,0.0
+Qwen statement,JPM,1,0,47,0.0
+Qwen statement,JPM,1,1,103,1.0
+Qwen statement,JPM,1,2,77,0.0
+Qwen statement,JPM,2,0,114,0.0
+Qwen statement,JPM,2,1,182,1.0
+Qwen statement,JPM,2,2,178,0.0
+Qwen statement,META,0,0,8,0.0
+Qwen statement,META,0,1,12,1.0
+Qwen statement,META,0,2,10,0.0
+Qwen statement,META,1,0,45,0.0
+Qwen statement,META,1,1,115,1.0
+Qwen statement,META,1,2,67,0.0
+Qwen statement,META,2,0,125,0.0
+Qwen statement,META,2,1,192,1.0
+Qwen statement,META,2,2,157,0.0
+Qwen statement,MSFT,0,0,5,0.0
+Qwen statement,MSFT,0,1,19,1.0
+Qwen statement,MSFT,0,2,6,0.0
+Qwen statement,MSFT,1,0,58,0.0
+Qwen statement,MSFT,1,1,94,1.0
+Qwen statement,MSFT,1,2,75,0.0
+Qwen statement,MSFT,2,0,130,0.0
+Qwen statement,MSFT,2,1,196,1.0
+Qwen statement,MSFT,2,2,148,0.0
+Qwen statement,NVDA,0,0,6,0.0
+Qwen statement,NVDA,0,1,14,1.0
+Qwen statement,NVDA,0,2,10,0.0
+Qwen statement,NVDA,1,0,55,0.0
+Qwen statement,NVDA,1,1,91,1.0
+Qwen statement,NVDA,1,2,81,0.0
+Qwen statement,NVDA,2,0,119,0.0
+Qwen statement,NVDA,2,1,189,1.0
+Qwen statement,NVDA,2,2,166,0.0
+Qwen statement,QQQ,0,0,6,0.0
+Qwen statement,QQQ,0,1,16,1.0
+Qwen statement,QQQ,0,2,8,0.0
+Qwen statement,QQQ,1,0,43,0.0
+Qwen statement,QQQ,1,1,105,1.0
+Qwen statement,QQQ,1,2,79,0.0
+Qwen statement,QQQ,2,0,122,0.0
+Qwen statement,QQQ,2,1,179,1.0
+Qwen statement,QQQ,2,2,173,0.0
+Qwen statement,SPY,0,0,3,0.0
+Qwen statement,SPY,0,1,18,1.0
+Qwen statement,SPY,0,2,9,0.0
+Qwen statement,SPY,1,0,49,0.0
+Qwen statement,SPY,1,1,94,1.0
+Qwen statement,SPY,1,2,84,0.0
+Qwen statement,SPY,2,0,118,0.0
+Qwen statement,SPY,2,1,188,1.0
+Qwen statement,SPY,2,2,168,0.0
+Qwen statement,TLT,0,0,11,0.0
+Qwen statement,TLT,0,1,11,1.0
+Qwen statement,TLT,0,2,8,0.0
+Qwen statement,TLT,1,0,65,0.0
+Qwen statement,TLT,1,1,81,1.0
+Qwen statement,TLT,1,2,81,0.0
+Qwen statement,TLT,2,0,152,0.0
+Qwen statement,TLT,2,1,183,1.0
+Qwen statement,TLT,2,2,139,0.0
+Qwen statement,TSLA,0,0,5,0.0
+Qwen statement,TSLA,0,1,17,1.0
+Qwen statement,TSLA,0,2,8,0.0
+Qwen statement,TSLA,1,0,59,0.0
+Qwen statement,TSLA,1,1,102,1.0
+Qwen statement,TSLA,1,2,66,0.0
+Qwen statement,TSLA,2,0,137,0.0
+Qwen statement,TSLA,2,1,192,1.0
+Qwen statement,TSLA,2,2,145,0.0
+Qwen statement,XLE,0,0,7,0.0
+Qwen statement,XLE,0,1,15,1.0
+Qwen statement,XLE,0,2,8,0.0
+Qwen statement,XLE,1,0,64,0.0
+Qwen statement,XLE,1,1,94,1.0
+Qwen statement,XLE,1,2,69,0.0
+Qwen statement,XLE,2,0,133,0.0
+Qwen statement,XLE,2,1,182,1.0
+Qwen statement,XLE,2,2,159,0.0
+Qwen statement,XLF,0,0,4,0.0
+Qwen statement,XLF,0,1,19,1.0
+Qwen statement,XLF,0,2,7,0.0
+Qwen statement,XLF,1,0,47,0.0
+Qwen statement,XLF,1,1,112,1.0
+Qwen statement,XLF,1,2,68,0.0
+Qwen statement,XLF,2,0,122,0.0
+Qwen statement,XLF,2,1,185,1.0
+Qwen statement,XLF,2,2,167,0.0
+Qwen statement,XLI,0,0,2,0.0
+Qwen statement,XLI,0,1,19,1.0
+Qwen statement,XLI,0,2,9,0.0
+Qwen statement,XLI,1,0,50,0.0
+Qwen statement,XLI,1,1,103,1.0
+Qwen statement,XLI,1,2,74,0.0
+Qwen statement,XLI,2,0,129,0.0
+Qwen statement,XLI,2,1,188,1.0
+Qwen statement,XLI,2,2,157,0.0
+Qwen statement,XLK,0,0,5,0.0
+Qwen statement,XLK,0,1,15,1.0
+Qwen statement,XLK,0,2,10,0.0
+Qwen statement,XLK,1,0,45,0.0
+Qwen statement,XLK,1,1,105,1.0
+Qwen statement,XLK,1,2,77,0.0
+Qwen statement,XLK,2,0,127,0.0
+Qwen statement,XLK,2,1,171,1.0
+Qwen statement,XLK,2,2,176,0.0
+Qwen statement,XLP,0,0,6,0.0
+Qwen statement,XLP,0,1,15,1.0
+Qwen statement,XLP,0,2,9,0.0
+Qwen statement,XLP,1,0,57,0.0
+Qwen statement,XLP,1,1,92,1.0
+Qwen statement,XLP,1,2,78,0.0
+Qwen statement,XLP,2,0,143,0.0
+Qwen statement,XLP,2,1,183,1.0
+Qwen statement,XLP,2,2,148,0.0
+Qwen statement,XLV,0,0,9,0.0
+Qwen statement,XLV,0,1,13,1.0
+Qwen statement,XLV,0,2,8,0.0
+Qwen statement,XLV,1,0,62,0.0
+Qwen statement,XLV,1,1,95,1.0
+Qwen statement,XLV,1,2,70,0.0
+Qwen statement,XLV,2,0,136,0.0
+Qwen statement,XLV,2,1,194,1.0
+Qwen statement,XLV,2,2,144,0.0
+Random review,AAPL,0,0,4,0.0
+Random review,AAPL,0,1,21,1.0
+Random review,AAPL,0,2,5,0.2
+Random review,AAPL,1,0,54,0.0
+Random review,AAPL,1,1,93,0.9247311827956989
+Random review,AAPL,1,2,80,0.05
+Random review,AAPL,2,0,122,0.0
+Random review,AAPL,2,1,208,0.9375
+Random review,AAPL,2,2,144,0.13194444444444445
+Random review,AMZN,0,0,10,0.1
+Random review,AMZN,0,1,12,1.0
+Random review,AMZN,0,2,8,0.25
+Random review,AMZN,1,0,53,0.0
+Random review,AMZN,1,1,105,0.9142857142857143
+Random review,AMZN,1,2,69,0.10144927536231885
+Random review,AMZN,2,0,121,0.0
+Random review,AMZN,2,1,214,0.9065420560747663
+Random review,AMZN,2,2,139,0.1223021582733813
+Random review,BAC,0,0,2,0.0
+Random review,BAC,0,1,17,0.9411764705882353
+Random review,BAC,0,2,11,0.09090909090909091
+Random review,BAC,1,0,60,0.0
+Random review,BAC,1,1,97,0.9175257731958762
+Random review,BAC,1,2,70,0.11428571428571428
+Random review,BAC,2,0,127,0.023622047244094488
+Random review,BAC,2,1,192,0.84375
+Random review,BAC,2,2,155,0.18064516129032257
+Random review,DIA,0,0,5,0.0
+Random review,DIA,0,1,18,1.0
+Random review,DIA,0,2,7,0.14285714285714285
+Random review,DIA,1,0,46,0.0
+Random review,DIA,1,1,101,0.9900990099009901
+Random review,DIA,1,2,80,0.0375
+Random review,DIA,2,0,132,0.0
+Random review,DIA,2,1,190,0.8947368421052632
+Random review,DIA,2,2,152,0.06578947368421052
+Random review,GLD,0,0,7,0.14285714285714285
+Random review,GLD,0,1,12,0.9166666666666666
+Random review,GLD,0,2,11,0.18181818181818182
+Random review,GLD,1,0,39,0.0
+Random review,GLD,1,1,106,0.9528301886792453
+Random review,GLD,1,2,82,0.024390243902439025
+Random review,GLD,2,0,112,0.0
+Random review,GLD,2,1,210,0.9476190476190476
+Random review,GLD,2,2,152,0.07236842105263158
+Random review,GOOGL,0,0,7,0.0
+Random review,GOOGL,0,1,14,1.0
+Random review,GOOGL,0,2,9,0.1111111111111111
+Random review,GOOGL,1,0,55,0.01818181818181818
+Random review,GOOGL,1,1,111,0.9459459459459459
+Random review,GOOGL,1,2,61,0.01639344262295082
+Random review,GOOGL,2,0,118,0.0
+Random review,GOOGL,2,1,193,0.9067357512953368
+Random review,GOOGL,2,2,163,0.18404907975460122
+Random review,GS,0,0,4,0.25
+Random review,GS,0,1,14,1.0
+Random review,GS,0,2,12,0.08333333333333333
+Random review,GS,1,0,46,0.0
+Random review,GS,1,1,106,0.9433962264150944
+Random review,GS,1,2,75,0.13333333333333333
+Random review,GS,2,0,134,0.014925373134328358
+Random review,GS,2,1,186,0.8709677419354839
+Random review,GS,2,2,154,0.1038961038961039
+Random review,IWM,0,0,5,0.0
+Random review,IWM,0,1,19,1.0
+Random review,IWM,0,2,6,0.16666666666666666
+Random review,IWM,1,0,53,0.0
+Random review,IWM,1,1,101,0.9702970297029703
+Random review,IWM,1,2,73,0.0821917808219178
+Random review,IWM,2,0,134,0.007462686567164179
+Random review,IWM,2,1,203,0.896551724137931
+Random review,IWM,2,2,137,0.08759124087591241
+Random review,JPM,0,0,4,0.0
+Random review,JPM,0,1,18,1.0
+Random review,JPM,0,2,8,0.0
+Random review,JPM,1,0,47,0.0
+Random review,JPM,1,1,103,0.9611650485436893
+Random review,JPM,1,2,77,0.05194805194805195
+Random review,JPM,2,0,114,0.0
+Random review,JPM,2,1,182,0.8956043956043956
+Random review,JPM,2,2,178,0.08426966292134831
+Random review,META,0,0,8,0.125
+Random review,META,0,1,12,1.0
+Random review,META,0,2,10,0.1
+Random review,META,1,0,45,0.0
+Random review,META,1,1,115,0.9565217391304348
+Random review,META,1,2,67,0.05970149253731343
+Random review,META,2,0,125,0.0
+Random review,META,2,1,192,0.84375
+Random review,META,2,2,157,0.19745222929936307
+Random review,MSFT,0,0,5,0.0
+Random review,MSFT,0,1,19,1.0
+Random review,MSFT,0,2,6,0.16666666666666666
+Random review,MSFT,1,0,58,0.0
+Random review,MSFT,1,1,94,0.9787234042553191
+Random review,MSFT,1,2,75,0.05333333333333334
+Random review,MSFT,2,0,130,0.0
+Random review,MSFT,2,1,196,0.923469387755102
+Random review,MSFT,2,2,148,0.13513513513513514
+Random review,NVDA,0,0,6,0.0
+Random review,NVDA,0,1,14,1.0
+Random review,NVDA,0,2,10,0.2
+Random review,NVDA,1,0,55,0.0
+Random review,NVDA,1,1,91,0.967032967032967
+Random review,NVDA,1,2,81,0.04938271604938271
+Random review,NVDA,2,0,119,0.0
+Random review,NVDA,2,1,189,0.8941798941798942
+Random review,NVDA,2,2,166,0.1144578313253012
+Random review,QQQ,0,0,6,0.0
+Random review,QQQ,0,1,16,1.0
+Random review,QQQ,0,2,8,0.125
+Random review,QQQ,1,0,43,0.0
+Random review,QQQ,1,1,105,0.9523809523809523
+Random review,QQQ,1,2,79,0.06329113924050633
+Random review,QQQ,2,0,122,0.0
+Random review,QQQ,2,1,179,0.888268156424581
+Random review,QQQ,2,2,173,0.1329479768786127
+Random review,SPY,0,0,3,0.0
+Random review,SPY,0,1,18,1.0
+Random review,SPY,0,2,9,0.1111111111111111
+Random review,SPY,1,0,49,0.0
+Random review,SPY,1,1,94,0.9893617021276596
+Random review,SPY,1,2,84,0.05952380952380952
+Random review,SPY,2,0,118,0.0
+Random review,SPY,2,1,188,0.8936170212765957
+Random review,SPY,2,2,168,0.08928571428571429
+Random review,TLT,0,0,11,0.09090909090909091
+Random review,TLT,0,1,11,1.0
+Random review,TLT,0,2,8,0.125
+Random review,TLT,1,0,65,0.0
+Random review,TLT,1,1,81,0.8888888888888888
+Random review,TLT,1,2,81,0.024691358024691357
+Random review,TLT,2,0,152,0.0
+Random review,TLT,2,1,183,0.9617486338797814
+Random review,TLT,2,2,139,0.014388489208633094
+Random review,TSLA,0,0,5,0.0
+Random review,TSLA,0,1,17,1.0
+Random review,TSLA,0,2,8,0.125
+Random review,TSLA,1,0,59,0.0
+Random review,TSLA,1,1,102,0.9509803921568627
+Random review,TSLA,1,2,66,0.06060606060606061
+Random review,TSLA,2,0,137,0.0
+Random review,TSLA,2,1,192,0.8541666666666666
+Random review,TSLA,2,2,145,0.19310344827586207
+Random review,XLE,0,0,7,0.14285714285714285
+Random review,XLE,0,1,15,1.0
+Random review,XLE,0,2,8,0.125
+Random review,XLE,1,0,64,0.0
+Random review,XLE,1,1,94,1.0
+Random review,XLE,1,2,69,0.057971014492753624
+Random review,XLE,2,0,133,0.0
+Random review,XLE,2,1,182,0.8956043956043956
+Random review,XLE,2,2,159,0.12578616352201258
+Random review,XLF,0,0,4,0.0
+Random review,XLF,0,1,19,1.0
+Random review,XLF,0,2,7,0.14285714285714285
+Random review,XLF,1,0,47,0.0
+Random review,XLF,1,1,112,0.9642857142857143
+Random review,XLF,1,2,68,0.04411764705882353
+Random review,XLF,2,0,122,0.0
+Random review,XLF,2,1,185,0.9351351351351351
+Random review,XLF,2,2,167,0.10778443113772455
+Random review,XLI,0,0,2,0.0
+Random review,XLI,0,1,19,1.0
+Random review,XLI,0,2,9,0.1111111111111111
+Random review,XLI,1,0,50,0.0
+Random review,XLI,1,1,103,0.9902912621359223
+Random review,XLI,1,2,74,0.04054054054054054
+Random review,XLI,2,0,129,0.0
+Random review,XLI,2,1,188,0.8882978723404256
+Random review,XLI,2,2,157,0.07643312101910828
+Random review,XLK,0,0,5,0.0
+Random review,XLK,0,1,15,1.0
+Random review,XLK,0,2,10,0.1
+Random review,XLK,1,0,45,0.0
+Random review,XLK,1,1,105,0.9619047619047619
+Random review,XLK,1,2,77,0.025974025974025976
+Random review,XLK,2,0,127,0.0
+Random review,XLK,2,1,171,0.9064327485380117
+Random review,XLK,2,2,176,0.11363636363636363
+Random review,XLP,0,0,6,0.0
+Random review,XLP,0,1,15,1.0
+Random review,XLP,0,2,9,0.1111111111111111
+Random review,XLP,1,0,57,0.0
+Random review,XLP,1,1,92,0.9565217391304348
+Random review,XLP,1,2,78,0.08974358974358974
+Random review,XLP,2,0,143,0.0
+Random review,XLP,2,1,183,0.9289617486338798
+Random review,XLP,2,2,148,0.05405405405405406
+Random review,XLV,0,0,9,0.0
+Random review,XLV,0,1,13,1.0
+Random review,XLV,0,2,8,0.125
+Random review,XLV,1,0,62,0.0
+Random review,XLV,1,1,95,0.9368421052631579
+Random review,XLV,1,2,70,0.1
+Random review,XLV,2,0,136,0.0
+Random review,XLV,2,1,194,0.9639175257731959
+Random review,XLV,2,2,144,0.05555555555555555
+TCN,AAPL,0,0,4,0.25
+TCN,AAPL,0,1,21,1.0
+TCN,AAPL,0,2,5,0.4
+TCN,AAPL,1,0,54,0.0
+TCN,AAPL,1,1,93,0.7741935483870968
+TCN,AAPL,1,2,80,0.1875
+TCN,AAPL,2,0,122,0.0
+TCN,AAPL,2,1,208,0.7644230769230769
+TCN,AAPL,2,2,144,0.25
+TCN,AMZN,0,0,10,0.0
+TCN,AMZN,0,1,12,1.0
+TCN,AMZN,0,2,8,0.25
+TCN,AMZN,1,0,53,0.0
+TCN,AMZN,1,1,105,0.9142857142857143
+TCN,AMZN,1,2,69,0.07246376811594203
+TCN,AMZN,2,0,121,0.0
+TCN,AMZN,2,1,214,0.8925233644859814
+TCN,AMZN,2,2,139,0.17985611510791366
+TCN,BAC,0,0,2,0.0
+TCN,BAC,0,1,17,1.0
+TCN,BAC,0,2,11,0.18181818181818182
+TCN,BAC,1,0,60,0.03333333333333333
+TCN,BAC,1,1,97,0.9072164948453608
+TCN,BAC,1,2,70,0.14285714285714285
+TCN,BAC,2,0,127,0.007874015748031496
+TCN,BAC,2,1,192,0.8177083333333334
+TCN,BAC,2,2,155,0.18064516129032257
+TCN,DIA,0,0,5,0.0
+TCN,DIA,0,1,18,1.0
+TCN,DIA,0,2,7,0.2857142857142857
+TCN,DIA,1,0,46,0.0
+TCN,DIA,1,1,101,0.9207920792079208
+TCN,DIA,1,2,80,0.125
+TCN,DIA,2,0,132,0.0
+TCN,DIA,2,1,190,0.7368421052631579
+TCN,DIA,2,2,152,0.2565789473684211
+TCN,GLD,0,0,7,0.0
+TCN,GLD,0,1,12,0.9166666666666666
+TCN,GLD,0,2,11,0.18181818181818182
+TCN,GLD,1,0,39,0.0
+TCN,GLD,1,1,106,0.8584905660377359
+TCN,GLD,1,2,82,0.12195121951219512
+TCN,GLD,2,0,112,0.0
+TCN,GLD,2,1,210,0.8904761904761904
+TCN,GLD,2,2,152,0.13157894736842105
+TCN,GOOGL,0,0,7,0.0
+TCN,GOOGL,0,1,14,1.0
+TCN,GOOGL,0,2,9,0.1111111111111111
+TCN,GOOGL,1,0,55,0.0
+TCN,GOOGL,1,1,111,0.972972972972973
+TCN,GOOGL,1,2,61,0.08196721311475409
+TCN,GOOGL,2,0,118,0.0
+TCN,GOOGL,2,1,193,0.7927461139896373
+TCN,GOOGL,2,2,163,0.24539877300613497
+TCN,GS,0,0,4,0.0
+TCN,GS,0,1,14,0.8571428571428571
+TCN,GS,0,2,12,0.16666666666666666
+TCN,GS,1,0,46,0.0
+TCN,GS,1,1,106,0.9433962264150944
+TCN,GS,1,2,75,0.2
+TCN,GS,2,0,134,0.007462686567164179
+TCN,GS,2,1,186,0.7903225806451613
+TCN,GS,2,2,154,0.18181818181818182
+TCN,IWM,0,0,5,0.0
+TCN,IWM,0,1,19,0.8947368421052632
+TCN,IWM,0,2,6,0.3333333333333333
+TCN,IWM,1,0,53,0.0
+TCN,IWM,1,1,101,0.8811881188118812
+TCN,IWM,1,2,73,0.0958904109589041
+TCN,IWM,2,0,134,0.0
+TCN,IWM,2,1,203,0.8522167487684729
+TCN,IWM,2,2,137,0.16058394160583941
+TCN,JPM,0,0,4,0.0
+TCN,JPM,0,1,18,1.0
+TCN,JPM,0,2,8,0.125
+TCN,JPM,1,0,47,0.06382978723404255
+TCN,JPM,1,1,103,0.8058252427184466
+TCN,JPM,1,2,77,0.23376623376623376
+TCN,JPM,2,0,114,0.008771929824561403
+TCN,JPM,2,1,182,0.8076923076923077
+TCN,JPM,2,2,178,0.3089887640449438
+TCN,META,0,0,8,0.0
+TCN,META,0,1,12,1.0
+TCN,META,0,2,10,0.1
+TCN,META,1,0,45,0.022222222222222223
+TCN,META,1,1,115,0.8260869565217391
+TCN,META,1,2,67,0.16417910447761194
+TCN,META,2,0,125,0.0
+TCN,META,2,1,192,0.8125
+TCN,META,2,2,157,0.29936305732484075
+TCN,MSFT,0,0,5,0.0
+TCN,MSFT,0,1,19,1.0
+TCN,MSFT,0,2,6,0.16666666666666666
+TCN,MSFT,1,0,58,0.0
+TCN,MSFT,1,1,94,0.8829787234042553
+TCN,MSFT,1,2,75,0.10666666666666667
+TCN,MSFT,2,0,130,0.0
+TCN,MSFT,2,1,196,0.8163265306122449
+TCN,MSFT,2,2,148,0.23648648648648649
+TCN,NVDA,0,0,6,0.16666666666666666
+TCN,NVDA,0,1,14,0.9285714285714286
+TCN,NVDA,0,2,10,0.1
+TCN,NVDA,1,0,55,0.01818181818181818
+TCN,NVDA,1,1,91,0.8241758241758241
+TCN,NVDA,1,2,81,0.09876543209876543
+TCN,NVDA,2,0,119,0.0
+TCN,NVDA,2,1,189,0.8518518518518519
+TCN,NVDA,2,2,166,0.14457831325301204
+TCN,QQQ,0,0,6,0.0
+TCN,QQQ,0,1,16,1.0
+TCN,QQQ,0,2,8,0.125
+TCN,QQQ,1,0,43,0.0
+TCN,QQQ,1,1,105,0.9238095238095239
+TCN,QQQ,1,2,79,0.12658227848101267
+TCN,QQQ,2,0,122,0.00819672131147541
+TCN,QQQ,2,1,179,0.7262569832402235
+TCN,QQQ,2,2,173,0.3352601156069364
+TCN,SPY,0,0,3,0.0
+TCN,SPY,0,1,18,1.0
+TCN,SPY,0,2,9,0.1111111111111111
+TCN,SPY,1,0,49,0.02040816326530612
+TCN,SPY,1,1,94,0.8936170212765957
+TCN,SPY,1,2,84,0.15476190476190477
+TCN,SPY,2,0,118,0.0
+TCN,SPY,2,1,188,0.6861702127659575
+TCN,SPY,2,2,168,0.34523809523809523
+TCN,TLT,0,0,11,0.09090909090909091
+TCN,TLT,0,1,11,1.0
+TCN,TLT,0,2,8,0.125
+TCN,TLT,1,0,65,0.0
+TCN,TLT,1,1,81,0.8518518518518519
+TCN,TLT,1,2,81,0.06172839506172839
+TCN,TLT,2,0,152,0.0
+TCN,TLT,2,1,183,0.9344262295081968
+TCN,TLT,2,2,139,0.08633093525179857
+TCN,TSLA,0,0,5,0.0
+TCN,TSLA,0,1,17,1.0
+TCN,TSLA,0,2,8,0.0
+TCN,TSLA,1,0,59,0.1016949152542373
+TCN,TSLA,1,1,102,0.8627450980392157
+TCN,TSLA,1,2,66,0.045454545454545456
+TCN,TSLA,2,0,137,0.029197080291970802
+TCN,TSLA,2,1,192,0.8958333333333334
+TCN,TSLA,2,2,145,0.13793103448275862
+TCN,XLE,0,0,7,0.2857142857142857
+TCN,XLE,0,1,15,0.9333333333333333
+TCN,XLE,0,2,8,0.25
+TCN,XLE,1,0,64,0.0
+TCN,XLE,1,1,94,0.9042553191489362
+TCN,XLE,1,2,69,0.11594202898550725
+TCN,XLE,2,0,133,0.0
+TCN,XLE,2,1,182,0.7967032967032966
+TCN,XLE,2,2,159,0.3081761006289308
+TCN,XLF,0,0,4,0.25
+TCN,XLF,0,1,19,0.9473684210526315
+TCN,XLF,0,2,7,0.2857142857142857
+TCN,XLF,1,0,47,0.0425531914893617
+TCN,XLF,1,1,112,0.8839285714285714
+TCN,XLF,1,2,68,0.19117647058823528
+TCN,XLF,2,0,122,0.0
+TCN,XLF,2,1,185,0.7945945945945946
+TCN,XLF,2,2,167,0.3592814371257485
+TCN,XLI,0,0,2,0.0
+TCN,XLI,0,1,19,0.9473684210526315
+TCN,XLI,0,2,9,0.2222222222222222
+TCN,XLI,1,0,50,0.02
+TCN,XLI,1,1,103,0.8932038834951457
+TCN,XLI,1,2,74,0.22972972972972974
+TCN,XLI,2,0,129,0.0
+TCN,XLI,2,1,188,0.6968085106382979
+TCN,XLI,2,2,157,0.3184713375796178
+TCN,XLK,0,0,5,0.0
+TCN,XLK,0,1,15,1.0
+TCN,XLK,0,2,10,0.1
+TCN,XLK,1,0,45,0.0
+TCN,XLK,1,1,105,0.9142857142857143
+TCN,XLK,1,2,77,0.12987012987012986
+TCN,XLK,2,0,127,0.0
+TCN,XLK,2,1,171,0.7953216374269005
+TCN,XLK,2,2,176,0.2215909090909091
+TCN,XLP,0,0,6,0.0
+TCN,XLP,0,1,15,1.0
+TCN,XLP,0,2,9,0.2222222222222222
+TCN,XLP,1,0,57,0.0
+TCN,XLP,1,1,92,0.8913043478260869
+TCN,XLP,1,2,78,0.1794871794871795
+TCN,XLP,2,0,143,0.0
+TCN,XLP,2,1,183,0.7158469945355191
+TCN,XLP,2,2,148,0.27702702702702703
+TCN,XLV,0,0,9,0.1111111111111111
+TCN,XLV,0,1,13,0.9230769230769231
+TCN,XLV,0,2,8,0.25
+TCN,XLV,1,0,62,0.0
+TCN,XLV,1,1,95,0.8631578947368421
+TCN,XLV,1,2,70,0.14285714285714285
+TCN,XLV,2,0,136,0.0
+TCN,XLV,2,1,194,0.7731958762886598
+TCN,XLV,2,2,144,0.2222222222222222
+Training prior,AAPL,0,0,4,0.0
+Training prior,AAPL,0,1,21,1.0
+Training prior,AAPL,0,2,5,0.0
+Training prior,AAPL,1,0,54,0.0
+Training prior,AAPL,1,1,93,1.0
+Training prior,AAPL,1,2,80,0.0
+Training prior,AAPL,2,0,122,0.0
+Training prior,AAPL,2,1,208,1.0
+Training prior,AAPL,2,2,144,0.0
+Training prior,AMZN,0,0,10,0.0
+Training prior,AMZN,0,1,12,1.0
+Training prior,AMZN,0,2,8,0.0
+Training prior,AMZN,1,0,53,0.0
+Training prior,AMZN,1,1,105,1.0
+Training prior,AMZN,1,2,69,0.0
+Training prior,AMZN,2,0,121,0.0
+Training prior,AMZN,2,1,214,1.0
+Training prior,AMZN,2,2,139,0.0
+Training prior,BAC,0,0,2,0.0
+Training prior,BAC,0,1,17,1.0
+Training prior,BAC,0,2,11,0.0
+Training prior,BAC,1,0,60,0.0
+Training prior,BAC,1,1,97,1.0
+Training prior,BAC,1,2,70,0.0
+Training prior,BAC,2,0,127,0.0
+Training prior,BAC,2,1,192,1.0
+Training prior,BAC,2,2,155,0.0
+Training prior,DIA,0,0,5,0.0
+Training prior,DIA,0,1,18,1.0
+Training prior,DIA,0,2,7,0.0
+Training prior,DIA,1,0,46,0.0
+Training prior,DIA,1,1,101,1.0
+Training prior,DIA,1,2,80,0.0
+Training prior,DIA,2,0,132,0.0
+Training prior,DIA,2,1,190,1.0
+Training prior,DIA,2,2,152,0.0
+Training prior,GLD,0,0,7,0.0
+Training prior,GLD,0,1,12,1.0
+Training prior,GLD,0,2,11,0.0
+Training prior,GLD,1,0,39,0.0
+Training prior,GLD,1,1,106,1.0
+Training prior,GLD,1,2,82,0.0
+Training prior,GLD,2,0,112,0.0
+Training prior,GLD,2,1,210,1.0
+Training prior,GLD,2,2,152,0.0
+Training prior,GOOGL,0,0,7,0.0
+Training prior,GOOGL,0,1,14,1.0
+Training prior,GOOGL,0,2,9,0.0
+Training prior,GOOGL,1,0,55,0.0
+Training prior,GOOGL,1,1,111,1.0
+Training prior,GOOGL,1,2,61,0.0
+Training prior,GOOGL,2,0,118,0.0
+Training prior,GOOGL,2,1,193,1.0
+Training prior,GOOGL,2,2,163,0.0
+Training prior,GS,0,0,4,0.0
+Training prior,GS,0,1,14,1.0
+Training prior,GS,0,2,12,0.0
+Training prior,GS,1,0,46,0.0
+Training prior,GS,1,1,106,1.0
+Training prior,GS,1,2,75,0.0
+Training prior,GS,2,0,134,0.0
+Training prior,GS,2,1,186,1.0
+Training prior,GS,2,2,154,0.0
+Training prior,IWM,0,0,5,0.0
+Training prior,IWM,0,1,19,1.0
+Training prior,IWM,0,2,6,0.0
+Training prior,IWM,1,0,53,0.0
+Training prior,IWM,1,1,101,1.0
+Training prior,IWM,1,2,73,0.0
+Training prior,IWM,2,0,134,0.0
+Training prior,IWM,2,1,203,1.0
+Training prior,IWM,2,2,137,0.0
+Training prior,JPM,0,0,4,0.0
+Training prior,JPM,0,1,18,1.0
+Training prior,JPM,0,2,8,0.0
+Training prior,JPM,1,0,47,0.0
+Training prior,JPM,1,1,103,1.0
+Training prior,JPM,1,2,77,0.0
+Training prior,JPM,2,0,114,0.0
+Training prior,JPM,2,1,182,1.0
+Training prior,JPM,2,2,178,0.0
+Training prior,META,0,0,8,0.0
+Training prior,META,0,1,12,1.0
+Training prior,META,0,2,10,0.0
+Training prior,META,1,0,45,0.0
+Training prior,META,1,1,115,1.0
+Training prior,META,1,2,67,0.0
+Training prior,META,2,0,125,0.0
+Training prior,META,2,1,192,1.0
+Training prior,META,2,2,157,0.0
+Training prior,MSFT,0,0,5,0.0
+Training prior,MSFT,0,1,19,1.0
+Training prior,MSFT,0,2,6,0.0
+Training prior,MSFT,1,0,58,0.0
+Training prior,MSFT,1,1,94,1.0
+Training prior,MSFT,1,2,75,0.0
+Training prior,MSFT,2,0,130,0.0
+Training prior,MSFT,2,1,196,1.0
+Training prior,MSFT,2,2,148,0.0
+Training prior,NVDA,0,0,6,0.0
+Training prior,NVDA,0,1,14,1.0
+Training prior,NVDA,0,2,10,0.0
+Training prior,NVDA,1,0,55,0.0
+Training prior,NVDA,1,1,91,1.0
+Training prior,NVDA,1,2,81,0.0
+Training prior,NVDA,2,0,119,0.0
+Training prior,NVDA,2,1,189,1.0
+Training prior,NVDA,2,2,166,0.0
+Training prior,QQQ,0,0,6,0.0
+Training prior,QQQ,0,1,16,1.0
+Training prior,QQQ,0,2,8,0.0
+Training prior,QQQ,1,0,43,0.0
+Training prior,QQQ,1,1,105,1.0
+Training prior,QQQ,1,2,79,0.0
+Training prior,QQQ,2,0,122,0.0
+Training prior,QQQ,2,1,179,1.0
+Training prior,QQQ,2,2,173,0.0
+Training prior,SPY,0,0,3,0.0
+Training prior,SPY,0,1,18,1.0
+Training prior,SPY,0,2,9,0.0
+Training prior,SPY,1,0,49,0.0
+Training prior,SPY,1,1,94,1.0
+Training prior,SPY,1,2,84,0.0
+Training prior,SPY,2,0,118,0.0
+Training prior,SPY,2,1,188,1.0
+Training prior,SPY,2,2,168,0.0
+Training prior,TLT,0,0,11,0.0
+Training prior,TLT,0,1,11,1.0
+Training prior,TLT,0,2,8,0.0
+Training prior,TLT,1,0,65,0.0
+Training prior,TLT,1,1,81,1.0
+Training prior,TLT,1,2,81,0.0
+Training prior,TLT,2,0,152,0.0
+Training prior,TLT,2,1,183,1.0
+Training prior,TLT,2,2,139,0.0
+Training prior,TSLA,0,0,5,0.0
+Training prior,TSLA,0,1,17,1.0
+Training prior,TSLA,0,2,8,0.0
+Training prior,TSLA,1,0,59,0.0
+Training prior,TSLA,1,1,102,1.0
+Training prior,TSLA,1,2,66,0.0
+Training prior,TSLA,2,0,137,0.0
+Training prior,TSLA,2,1,192,1.0
+Training prior,TSLA,2,2,145,0.0
+Training prior,XLE,0,0,7,0.0
+Training prior,XLE,0,1,15,1.0
+Training prior,XLE,0,2,8,0.0
+Training prior,XLE,1,0,64,0.0
+Training prior,XLE,1,1,94,1.0
+Training prior,XLE,1,2,69,0.0
+Training prior,XLE,2,0,133,0.0
+Training prior,XLE,2,1,182,1.0
+Training prior,XLE,2,2,159,0.0
+Training prior,XLF,0,0,4,0.0
+Training prior,XLF,0,1,19,1.0
+Training prior,XLF,0,2,7,0.0
+Training prior,XLF,1,0,47,0.0
+Training prior,XLF,1,1,112,1.0
+Training prior,XLF,1,2,68,0.0
+Training prior,XLF,2,0,122,0.0
+Training prior,XLF,2,1,185,1.0
+Training prior,XLF,2,2,167,0.0
+Training prior,XLI,0,0,2,0.0
+Training prior,XLI,0,1,19,1.0
+Training prior,XLI,0,2,9,0.0
+Training prior,XLI,1,0,50,0.0
+Training prior,XLI,1,1,103,1.0
+Training prior,XLI,1,2,74,0.0
+Training prior,XLI,2,0,129,0.0
+Training prior,XLI,2,1,188,1.0
+Training prior,XLI,2,2,157,0.0
+Training prior,XLK,0,0,5,0.0
+Training prior,XLK,0,1,15,1.0
+Training prior,XLK,0,2,10,0.0
+Training prior,XLK,1,0,45,0.0
+Training prior,XLK,1,1,105,1.0
+Training prior,XLK,1,2,77,0.0
+Training prior,XLK,2,0,127,0.0
+Training prior,XLK,2,1,171,1.0
+Training prior,XLK,2,2,176,0.0
+Training prior,XLP,0,0,6,0.0
+Training prior,XLP,0,1,15,1.0
+Training prior,XLP,0,2,9,0.0
+Training prior,XLP,1,0,57,0.0
+Training prior,XLP,1,1,92,1.0
+Training prior,XLP,1,2,78,0.0
+Training prior,XLP,2,0,143,0.0
+Training prior,XLP,2,1,183,1.0
+Training prior,XLP,2,2,148,0.0
+Training prior,XLV,0,0,9,0.0
+Training prior,XLV,0,1,13,1.0
+Training prior,XLV,0,2,8,0.0
+Training prior,XLV,1,0,62,0.0
+Training prior,XLV,1,1,95,1.0
+Training prior,XLV,1,2,70,0.0
+Training prior,XLV,2,0,136,0.0
+Training prior,XLV,2,1,194,1.0
+Training prior,XLV,2,2,144,0.0
+Uniform vote,AAPL,0,0,4,0.0
+Uniform vote,AAPL,0,1,21,1.0
+Uniform vote,AAPL,0,2,5,0.2
+Uniform vote,AAPL,1,0,54,0.0
+Uniform vote,AAPL,1,1,93,0.9354838709677419
+Uniform vote,AAPL,1,2,80,0.05
+Uniform vote,AAPL,2,0,122,0.0
+Uniform vote,AAPL,2,1,208,0.9615384615384616
+Uniform vote,AAPL,2,2,144,0.09027777777777778
+Uniform vote,AMZN,0,0,10,0.2
+Uniform vote,AMZN,0,1,12,1.0
+Uniform vote,AMZN,0,2,8,0.125
+Uniform vote,AMZN,1,0,53,0.0
+Uniform vote,AMZN,1,1,105,0.8666666666666667
+Uniform vote,AMZN,1,2,69,0.15942028985507245
+Uniform vote,AMZN,2,0,121,0.0
+Uniform vote,AMZN,2,1,214,0.9345794392523364
+Uniform vote,AMZN,2,2,139,0.08633093525179857
+Uniform vote,BAC,0,0,2,0.0
+Uniform vote,BAC,0,1,17,0.9411764705882353
+Uniform vote,BAC,0,2,11,0.09090909090909091
+Uniform vote,BAC,1,0,60,0.0
+Uniform vote,BAC,1,1,97,0.9381443298969072
+Uniform vote,BAC,1,2,70,0.1
+Uniform vote,BAC,2,0,127,0.0
+Uniform vote,BAC,2,1,192,0.90625
+Uniform vote,BAC,2,2,155,0.16774193548387098
+Uniform vote,DIA,0,0,5,0.0
+Uniform vote,DIA,0,1,18,1.0
+Uniform vote,DIA,0,2,7,0.14285714285714285
+Uniform vote,DIA,1,0,46,0.0
+Uniform vote,DIA,1,1,101,0.9900990099009901
+Uniform vote,DIA,1,2,80,0.025
+Uniform vote,DIA,2,0,132,0.0
+Uniform vote,DIA,2,1,190,0.9631578947368421
+Uniform vote,DIA,2,2,152,0.03289473684210526
+Uniform vote,GLD,0,0,7,0.0
+Uniform vote,GLD,0,1,12,0.9166666666666666
+Uniform vote,GLD,0,2,11,0.18181818181818182
+Uniform vote,GLD,1,0,39,0.0
+Uniform vote,GLD,1,1,106,0.9811320754716981
+Uniform vote,GLD,1,2,82,0.0
+Uniform vote,GLD,2,0,112,0.0
+Uniform vote,GLD,2,1,210,0.9428571428571428
+Uniform vote,GLD,2,2,152,0.06578947368421052
+Uniform vote,GOOGL,0,0,7,0.0
+Uniform vote,GOOGL,0,1,14,1.0
+Uniform vote,GOOGL,0,2,9,0.0
+Uniform vote,GOOGL,1,0,55,0.0
+Uniform vote,GOOGL,1,1,111,0.954954954954955
+Uniform vote,GOOGL,1,2,61,0.03278688524590164
+Uniform vote,GOOGL,2,0,118,0.0
+Uniform vote,GOOGL,2,1,193,0.8860103626943006
+Uniform vote,GOOGL,2,2,163,0.1165644171779141
+Uniform vote,GS,0,0,4,0.25
+Uniform vote,GS,0,1,14,1.0
+Uniform vote,GS,0,2,12,0.08333333333333333
+Uniform vote,GS,1,0,46,0.021739130434782608
+Uniform vote,GS,1,1,106,0.9811320754716981
+Uniform vote,GS,1,2,75,0.08
+Uniform vote,GS,2,0,134,0.0
+Uniform vote,GS,2,1,186,0.9086021505376344
+Uniform vote,GS,2,2,154,0.05844155844155844
+Uniform vote,IWM,0,0,5,0.0
+Uniform vote,IWM,0,1,19,1.0
+Uniform vote,IWM,0,2,6,0.16666666666666666
+Uniform vote,IWM,1,0,53,0.0
+Uniform vote,IWM,1,1,101,0.9801980198019802
+Uniform vote,IWM,1,2,73,0.0684931506849315
+Uniform vote,IWM,2,0,134,0.0
+Uniform vote,IWM,2,1,203,0.9458128078817734
+Uniform vote,IWM,2,2,137,0.043795620437956206
+Uniform vote,JPM,0,0,4,0.0
+Uniform vote,JPM,0,1,18,1.0
+Uniform vote,JPM,0,2,8,0.0
+Uniform vote,JPM,1,0,47,0.0
+Uniform vote,JPM,1,1,103,0.970873786407767
+Uniform vote,JPM,1,2,77,0.05194805194805195
+Uniform vote,JPM,2,0,114,0.0
+Uniform vote,JPM,2,1,182,0.9395604395604396
+Uniform vote,JPM,2,2,178,0.06741573033707865
+Uniform vote,META,0,0,8,0.125
+Uniform vote,META,0,1,12,1.0
+Uniform vote,META,0,2,10,0.0
+Uniform vote,META,1,0,45,0.0
+Uniform vote,META,1,1,115,0.9652173913043478
+Uniform vote,META,1,2,67,0.014925373134328358
+Uniform vote,META,2,0,125,0.0
+Uniform vote,META,2,1,192,0.8854166666666666
+Uniform vote,META,2,2,157,0.1337579617834395
+Uniform vote,MSFT,0,0,5,0.0
+Uniform vote,MSFT,0,1,19,1.0
+Uniform vote,MSFT,0,2,6,0.16666666666666666
+Uniform vote,MSFT,1,0,58,0.0
+Uniform vote,MSFT,1,1,94,0.9787234042553191
+Uniform vote,MSFT,1,2,75,0.06666666666666667
+Uniform vote,MSFT,2,0,130,0.0
+Uniform vote,MSFT,2,1,196,0.9489795918367347
+Uniform vote,MSFT,2,2,148,0.06756756756756757
+Uniform vote,NVDA,0,0,6,0.0
+Uniform vote,NVDA,0,1,14,1.0
+Uniform vote,NVDA,0,2,10,0.1
+Uniform vote,NVDA,1,0,55,0.0
+Uniform vote,NVDA,1,1,91,0.9560439560439561
+Uniform vote,NVDA,1,2,81,0.037037037037037035
+Uniform vote,NVDA,2,0,119,0.0
+Uniform vote,NVDA,2,1,189,0.91005291005291
+Uniform vote,NVDA,2,2,166,0.13253012048192772
+Uniform vote,QQQ,0,0,6,0.0
+Uniform vote,QQQ,0,1,16,1.0
+Uniform vote,QQQ,0,2,8,0.125
+Uniform vote,QQQ,1,0,43,0.0
+Uniform vote,QQQ,1,1,105,0.9333333333333333
+Uniform vote,QQQ,1,2,79,0.06329113924050633
+Uniform vote,QQQ,2,0,122,0.0
+Uniform vote,QQQ,2,1,179,0.9441340782122905
+Uniform vote,QQQ,2,2,173,0.057803468208092484
+Uniform vote,SPY,0,0,3,0.0
+Uniform vote,SPY,0,1,18,1.0
+Uniform vote,SPY,0,2,9,0.1111111111111111
+Uniform vote,SPY,1,0,49,0.0
+Uniform vote,SPY,1,1,94,0.9893617021276596
+Uniform vote,SPY,1,2,84,0.03571428571428571
+Uniform vote,SPY,2,0,118,0.0
+Uniform vote,SPY,2,1,188,0.9468085106382979
+Uniform vote,SPY,2,2,168,0.041666666666666664
+Uniform vote,TLT,0,0,11,0.09090909090909091
+Uniform vote,TLT,0,1,11,1.0
+Uniform vote,TLT,0,2,8,0.125
+Uniform vote,TLT,1,0,65,0.0
+Uniform vote,TLT,1,1,81,0.9629629629629629
+Uniform vote,TLT,1,2,81,0.012345679012345678
+Uniform vote,TLT,2,0,152,0.0
+Uniform vote,TLT,2,1,183,0.9890710382513661
+Uniform vote,TLT,2,2,139,0.0
+Uniform vote,TSLA,0,0,5,0.0
+Uniform vote,TSLA,0,1,17,1.0
+Uniform vote,TSLA,0,2,8,0.125
+Uniform vote,TSLA,1,0,59,0.0
+Uniform vote,TSLA,1,1,102,0.9117647058823529
+Uniform vote,TSLA,1,2,66,0.045454545454545456
+Uniform vote,TSLA,2,0,137,0.0
+Uniform vote,TSLA,2,1,192,0.8802083333333334
+Uniform vote,TSLA,2,2,145,0.14482758620689656
+Uniform vote,XLE,0,0,7,0.0
+Uniform vote,XLE,0,1,15,1.0
+Uniform vote,XLE,0,2,8,0.25
+Uniform vote,XLE,1,0,64,0.0
+Uniform vote,XLE,1,1,94,1.0
+Uniform vote,XLE,1,2,69,0.028985507246376812
+Uniform vote,XLE,2,0,133,0.0
+Uniform vote,XLE,2,1,182,0.9230769230769231
+Uniform vote,XLE,2,2,159,0.08176100628930817
+Uniform vote,XLF,0,0,4,0.0
+Uniform vote,XLF,0,1,19,1.0
+Uniform vote,XLF,0,2,7,0.14285714285714285
+Uniform vote,XLF,1,0,47,0.0
+Uniform vote,XLF,1,1,112,0.9642857142857143
+Uniform vote,XLF,1,2,68,0.058823529411764705
+Uniform vote,XLF,2,0,122,0.0
+Uniform vote,XLF,2,1,185,0.9837837837837838
+Uniform vote,XLF,2,2,167,0.041916167664670656
+Uniform vote,XLI,0,0,2,0.0
+Uniform vote,XLI,0,1,19,1.0
+Uniform vote,XLI,0,2,9,0.1111111111111111
+Uniform vote,XLI,1,0,50,0.0
+Uniform vote,XLI,1,1,103,1.0
+Uniform vote,XLI,1,2,74,0.04054054054054054
+Uniform vote,XLI,2,0,129,0.0
+Uniform vote,XLI,2,1,188,0.9521276595744681
+Uniform vote,XLI,2,2,157,0.05732484076433121
+Uniform vote,XLK,0,0,5,0.0
+Uniform vote,XLK,0,1,15,1.0
+Uniform vote,XLK,0,2,10,0.1
+Uniform vote,XLK,1,0,45,0.0
+Uniform vote,XLK,1,1,105,0.9619047619047619
+Uniform vote,XLK,1,2,77,0.03896103896103896
+Uniform vote,XLK,2,0,127,0.0
+Uniform vote,XLK,2,1,171,0.9649122807017544
+Uniform vote,XLK,2,2,176,0.05113636363636364
+Uniform vote,XLP,0,0,6,0.0
+Uniform vote,XLP,0,1,15,1.0
+Uniform vote,XLP,0,2,9,0.1111111111111111
+Uniform vote,XLP,1,0,57,0.0
+Uniform vote,XLP,1,1,92,0.9565217391304348
+Uniform vote,XLP,1,2,78,0.07692307692307693
+Uniform vote,XLP,2,0,143,0.0
+Uniform vote,XLP,2,1,183,0.994535519125683
+Uniform vote,XLP,2,2,148,0.006756756756756757
+Uniform vote,XLV,0,0,9,0.0
+Uniform vote,XLV,0,1,13,1.0
+Uniform vote,XLV,0,2,8,0.125
+Uniform vote,XLV,1,0,62,0.0
+Uniform vote,XLV,1,1,95,0.9473684210526315
+Uniform vote,XLV,1,2,70,0.05714285714285714
+Uniform vote,XLV,2,0,136,0.0
+Uniform vote,XLV,2,1,194,0.9896907216494846
+Uniform vote,XLV,2,2,144,0.013888888888888888
+XGBoost,AAPL,0,0,4,0.25
+XGBoost,AAPL,0,1,21,1.0
+XGBoost,AAPL,0,2,5,0.4
+XGBoost,AAPL,1,0,54,0.0
+XGBoost,AAPL,1,1,93,0.8387096774193549
+XGBoost,AAPL,1,2,80,0.2
+XGBoost,AAPL,2,0,122,0.0
+XGBoost,AAPL,2,1,208,0.8653846153846154
+XGBoost,AAPL,2,2,144,0.19444444444444445
+XGBoost,AMZN,0,0,10,0.1
+XGBoost,AMZN,0,1,12,1.0
+XGBoost,AMZN,0,2,8,0.125
+XGBoost,AMZN,1,0,53,0.0
+XGBoost,AMZN,1,1,105,0.8952380952380953
+XGBoost,AMZN,1,2,69,0.17391304347826086
+XGBoost,AMZN,2,0,121,0.0
+XGBoost,AMZN,2,1,214,0.8364485981308412
+XGBoost,AMZN,2,2,139,0.2158273381294964
+XGBoost,BAC,0,0,2,0.0
+XGBoost,BAC,0,1,17,0.9411764705882353
+XGBoost,BAC,0,2,11,0.18181818181818182
+XGBoost,BAC,1,0,60,0.0
+XGBoost,BAC,1,1,97,0.8556701030927835
+XGBoost,BAC,1,2,70,0.21428571428571427
+XGBoost,BAC,2,0,127,0.0
+XGBoost,BAC,2,1,192,0.8333333333333334
+XGBoost,BAC,2,2,155,0.21935483870967742
+XGBoost,DIA,0,0,5,0.2
+XGBoost,DIA,0,1,18,1.0
+XGBoost,DIA,0,2,7,0.14285714285714285
+XGBoost,DIA,1,0,46,0.06521739130434782
+XGBoost,DIA,1,1,101,0.8910891089108911
+XGBoost,DIA,1,2,80,0.225
+XGBoost,DIA,2,0,132,0.0
+XGBoost,DIA,2,1,190,0.6473684210526316
+XGBoost,DIA,2,2,152,0.39473684210526316
+XGBoost,GLD,0,0,7,0.14285714285714285
+XGBoost,GLD,0,1,12,0.9166666666666666
+XGBoost,GLD,0,2,11,0.18181818181818182
+XGBoost,GLD,1,0,39,0.0
+XGBoost,GLD,1,1,106,0.8962264150943396
+XGBoost,GLD,1,2,82,0.0975609756097561
+XGBoost,GLD,2,0,112,0.0
+XGBoost,GLD,2,1,210,0.8571428571428571
+XGBoost,GLD,2,2,152,0.20394736842105263
+XGBoost,GOOGL,0,0,7,0.0
+XGBoost,GOOGL,0,1,14,0.8571428571428571
+XGBoost,GOOGL,0,2,9,0.2222222222222222
+XGBoost,GOOGL,1,0,55,0.0
+XGBoost,GOOGL,1,1,111,0.8288288288288288
+XGBoost,GOOGL,1,2,61,0.08196721311475409
+XGBoost,GOOGL,2,0,118,0.0
+XGBoost,GOOGL,2,1,193,0.8704663212435233
+XGBoost,GOOGL,2,2,163,0.2147239263803681
+XGBoost,GS,0,0,4,0.25
+XGBoost,GS,0,1,14,1.0
+XGBoost,GS,0,2,12,0.16666666666666666
+XGBoost,GS,1,0,46,0.043478260869565216
+XGBoost,GS,1,1,106,0.8962264150943396
+XGBoost,GS,1,2,75,0.18666666666666668
+XGBoost,GS,2,0,134,0.0
+XGBoost,GS,2,1,186,0.7795698924731183
+XGBoost,GS,2,2,154,0.16233766233766234
+XGBoost,IWM,0,0,5,0.2
+XGBoost,IWM,0,1,19,1.0
+XGBoost,IWM,0,2,6,0.3333333333333333
+XGBoost,IWM,1,0,53,0.03773584905660377
+XGBoost,IWM,1,1,101,0.8613861386138614
+XGBoost,IWM,1,2,73,0.273972602739726
+XGBoost,IWM,2,0,134,0.0
+XGBoost,IWM,2,1,203,0.7635467980295566
+XGBoost,IWM,2,2,137,0.24087591240875914
+XGBoost,JPM,0,0,4,0.0
+XGBoost,JPM,0,1,18,1.0
+XGBoost,JPM,0,2,8,0.125
+XGBoost,JPM,1,0,47,0.0425531914893617
+XGBoost,JPM,1,1,103,0.8737864077669902
+XGBoost,JPM,1,2,77,0.16883116883116883
+XGBoost,JPM,2,0,114,0.0
+XGBoost,JPM,2,1,182,0.7802197802197802
+XGBoost,JPM,2,2,178,0.1797752808988764
+XGBoost,META,0,0,8,0.125
+XGBoost,META,0,1,12,1.0
+XGBoost,META,0,2,10,0.1
+XGBoost,META,1,0,45,0.0
+XGBoost,META,1,1,115,0.8956521739130435
+XGBoost,META,1,2,67,0.1044776119402985
+XGBoost,META,2,0,125,0.0
+XGBoost,META,2,1,192,0.8177083333333334
+XGBoost,META,2,2,157,0.1910828025477707
+XGBoost,MSFT,0,0,5,0.0
+XGBoost,MSFT,0,1,19,1.0
+XGBoost,MSFT,0,2,6,0.16666666666666666
+XGBoost,MSFT,1,0,58,0.0
+XGBoost,MSFT,1,1,94,0.9042553191489362
+XGBoost,MSFT,1,2,75,0.17333333333333334
+XGBoost,MSFT,2,0,130,0.007692307692307693
+XGBoost,MSFT,2,1,196,0.8571428571428571
+XGBoost,MSFT,2,2,148,0.25
+XGBoost,NVDA,0,0,6,0.16666666666666666
+XGBoost,NVDA,0,1,14,1.0
+XGBoost,NVDA,0,2,10,0.1
+XGBoost,NVDA,1,0,55,0.01818181818181818
+XGBoost,NVDA,1,1,91,0.8791208791208791
+XGBoost,NVDA,1,2,81,0.20987654320987653
+XGBoost,NVDA,2,0,119,0.0
+XGBoost,NVDA,2,1,189,0.8835978835978836
+XGBoost,NVDA,2,2,166,0.18072289156626506
+XGBoost,QQQ,0,0,6,0.16666666666666666
+XGBoost,QQQ,0,1,16,1.0
+XGBoost,QQQ,0,2,8,0.125
+XGBoost,QQQ,1,0,43,0.046511627906976744
+XGBoost,QQQ,1,1,105,0.8761904761904762
+XGBoost,QQQ,1,2,79,0.22784810126582278
+XGBoost,QQQ,2,0,122,0.0
+XGBoost,QQQ,2,1,179,0.776536312849162
+XGBoost,QQQ,2,2,173,0.30057803468208094
+XGBoost,SPY,0,0,3,0.3333333333333333
+XGBoost,SPY,0,1,18,1.0
+XGBoost,SPY,0,2,9,0.1111111111111111
+XGBoost,SPY,1,0,49,0.061224489795918366
+XGBoost,SPY,1,1,94,0.8829787234042553
+XGBoost,SPY,1,2,84,0.2261904761904762
+XGBoost,SPY,2,0,118,0.00847457627118644
+XGBoost,SPY,2,1,188,0.7340425531914894
+XGBoost,SPY,2,2,168,0.3392857142857143
+XGBoost,TLT,0,0,11,0.36363636363636365
+XGBoost,TLT,0,1,11,0.8181818181818182
+XGBoost,TLT,0,2,8,0.375
+XGBoost,TLT,1,0,65,0.015384615384615385
+XGBoost,TLT,1,1,81,0.8641975308641975
+XGBoost,TLT,1,2,81,0.08641975308641975
+XGBoost,TLT,2,0,152,0.0
+XGBoost,TLT,2,1,183,0.7650273224043715
+XGBoost,TLT,2,2,139,0.2302158273381295
+XGBoost,TSLA,0,0,5,0.0
+XGBoost,TSLA,0,1,17,0.9411764705882353
+XGBoost,TSLA,0,2,8,0.125
+XGBoost,TSLA,1,0,59,0.0
+XGBoost,TSLA,1,1,102,0.8921568627450981
+XGBoost,TSLA,1,2,66,0.13636363636363635
+XGBoost,TSLA,2,0,137,0.0
+XGBoost,TSLA,2,1,192,0.84375
+XGBoost,TSLA,2,2,145,0.2413793103448276
+XGBoost,XLE,0,0,7,0.14285714285714285
+XGBoost,XLE,0,1,15,1.0
+XGBoost,XLE,0,2,8,0.25
+XGBoost,XLE,1,0,64,0.03125
+XGBoost,XLE,1,1,94,0.8404255319148937
+XGBoost,XLE,1,2,69,0.30434782608695654
+XGBoost,XLE,2,0,133,0.0
+XGBoost,XLE,2,1,182,0.7747252747252747
+XGBoost,XLE,2,2,159,0.2578616352201258
+XGBoost,XLF,0,0,4,0.25
+XGBoost,XLF,0,1,19,1.0
+XGBoost,XLF,0,2,7,0.2857142857142857
+XGBoost,XLF,1,0,47,0.02127659574468085
+XGBoost,XLF,1,1,112,0.875
+XGBoost,XLF,1,2,68,0.27941176470588236
+XGBoost,XLF,2,0,122,0.00819672131147541
+XGBoost,XLF,2,1,185,0.7351351351351352
+XGBoost,XLF,2,2,167,0.3413173652694611
+XGBoost,XLI,0,0,2,0.5
+XGBoost,XLI,0,1,19,1.0
+XGBoost,XLI,0,2,9,0.1111111111111111
+XGBoost,XLI,1,0,50,0.06
+XGBoost,XLI,1,1,103,0.8932038834951457
+XGBoost,XLI,1,2,74,0.25675675675675674
+XGBoost,XLI,2,0,129,0.0
+XGBoost,XLI,2,1,188,0.7021276595744681
+XGBoost,XLI,2,2,157,0.39490445859872614
+XGBoost,XLK,0,0,5,0.2
+XGBoost,XLK,0,1,15,1.0
+XGBoost,XLK,0,2,10,0.1
+XGBoost,XLK,1,0,45,0.022222222222222223
+XGBoost,XLK,1,1,105,0.8476190476190476
+XGBoost,XLK,1,2,77,0.2077922077922078
+XGBoost,XLK,2,0,127,0.0
+XGBoost,XLK,2,1,171,0.8128654970760234
+XGBoost,XLK,2,2,176,0.2556818181818182
+XGBoost,XLP,0,0,6,0.3333333333333333
+XGBoost,XLP,0,1,15,1.0
+XGBoost,XLP,0,2,9,0.2222222222222222
+XGBoost,XLP,1,0,57,0.03508771929824561
+XGBoost,XLP,1,1,92,0.75
+XGBoost,XLP,1,2,78,0.3717948717948718
+XGBoost,XLP,2,0,143,0.0
+XGBoost,XLP,2,1,183,0.639344262295082
+XGBoost,XLP,2,2,148,0.38513513513513514
+XGBoost,XLV,0,0,9,0.1111111111111111
+XGBoost,XLV,0,1,13,0.9230769230769231
+XGBoost,XLV,0,2,8,0.375
+XGBoost,XLV,1,0,62,0.016129032258064516
+XGBoost,XLV,1,1,95,0.7263157894736842
+XGBoost,XLV,1,2,70,0.4142857142857143
+XGBoost,XLV,2,0,136,0.0
+XGBoost,XLV,2,1,194,0.7268041237113402
+XGBoost,XLV,2,2,144,0.4305555555555556

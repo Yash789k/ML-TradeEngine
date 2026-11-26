@@ -1,0 +1,228 @@
+{
+  "classifier_statistics": {
+    "endpoints": {
+      "primary": "log_loss",
+      "secondary": [
+        "accuracy",
+        "balanced_accuracy",
+        "macro_f1",
+        "brier"
+      ]
+    },
+    "inference": "daily cross-sectional mean difference; 2000 circular date blocks of length 10; Holm over the two regime contrasts",
+    "inputs": "saved out-of-fold forecasts in the sealed adaptive release; no model is fitted",
+    "models": [
+      "linear",
+      "tree",
+      "raw_mix",
+      "hybrid",
+      "prior"
+    ],
+    "regime_contrasts": [
+      {
+        "comparator": "prior",
+        "model": "hybrid",
+        "regime": "calm"
+      },
+      {
+        "comparator": "prior",
+        "model": "hybrid",
+        "regime": "turbulent"
+      }
+    ],
+    "status": "exploratory: every date was inspected before this registration"
+  },
+  "exposure": {
+    "history": {
+      "dates": [
+        "2024-01-02",
+        "2026-09-25"
+      ],
+      "note": "Used by the sealed adaptive release, research-v2 and the 30 October controller screen. The trend rule was the selected shadow on this history.",
+      "status": "previously inspected; exploratory only"
+    },
+    "post_release": {
+      "end": "latest completed XNYS session when the build runs",
+      "note": "Five decision dates in this window (US 1, 2, 14, 15, 22 October) and outcomes for four of them were already reported for the trend shadow and the hybrid forecast. Before this registration no HMM value, sandbox arm or continuous replay had been computed on it, and no price after 28 October had been inspected.",
+      "start": "2026-09-29",
+      "status": "short and partly seen; descriptive only; not an untouched holdout"
+    }
+  },
+  "id": "REVIEW-V1-20261125",
+  "inputs": {
+    "adaptive_release_manifest_sha256": "34558a0a091dfb9bef0afed8c71d8881eb370e080ced4c2f6e9f424a3d432fc2",
+    "outcome_recovery_protocol_sha256": "63620c82e0ce0db491252c17dfbe36e986ab8c7c91ac52dc3e8e30d1200d6d3b",
+    "source_sha256": {
+      "runtime_v2/account.py": "73c5aa89826c5ad5a0b04721344a0fa067f4cf4a13c480bdfb8165d6d5a1acc9",
+      "runtime_v2/model.py": "d82a10584dcfb614e79f04af6255b238d74ea66ff961f07b2919bb2663fa1b2d",
+      "runtime_v2/policy.py": "f4357f04fa0a270265b10802ed4ac84cee4117e62c694496eb088707de56e79d",
+      "runtime_v2/risk.py": "b784c8b972dd4fde1eef760085b63e83bef892794bdfa19af07453f4585ff2e9"
+    }
+  },
+  "label_contract": {
+    "classes": {
+      "DOWN": "return < -1%",
+      "FLAT": "-1% <= return <= +1%",
+      "UP": "return > +1%"
+    },
+    "decision": "information cutoff at the XNYS close of session t",
+    "entry": "close of session t+1 (first permissible execution)",
+    "exit": "close of session t+6",
+    "forward_return": "close[t+6] / close[t+1] - 1 on dividend/split-adjusted prices",
+    "note": "This is the repository's verified contract, not the proposal's next-open, cost-and-volatility label."
+  },
+  "regime": {
+    "config": {
+      "anchor": "2019-01-02",
+      "min_fit": 504,
+      "n_iter": 200,
+      "n_states": 2,
+      "refit_every": 21,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "version": 1,
+      "vol_window": 21,
+      "window": 1008
+    },
+    "label_rule": "turbulent when the filtered P(turbulent) >= 0.5 at the decision close, otherwise calm",
+    "observation": "daily log return and log 21-session realised volatility",
+    "role": "Diagnostic for every recorded decision (it did not exist then). A decision input only in the two sandbox overlay arms below.",
+    "series": "SPY adjusted close"
+  },
+  "registered_at": "2026-11-25T13:13:19.755192+00:00",
+  "replay": {
+    "classification": "hybrid and training-frequency prior scored on matured labels only; descriptive; block length 5",
+    "kind": "simulated continuous replay of the pilot contract; never a pilot observation",
+    "method": "runtime_v2.policy.replay, revealed one session at a time, fresh isolated accounts",
+    "models": "carried 25 September models; scheduled refits every 21 sessions from the 29 September anchor",
+    "start": "2026-09-29"
+  },
+  "role": "Progress-review diagnostics plus one bounded sandbox portfolio comparison. No model is tuned, no winner is promoted to the pilot, and nothing here is prospective evidence.",
+  "sandbox": {
+    "arms": {
+      "cash": "hold cash",
+      "equal_weight": "0.8/22 per instrument, then the shared risk constraints (benchmark)",
+      "equal_weight_regime": "equal-weight target multiplied by (1 - P(turbulent)) at the decision close",
+      "trend": "0.8/22 per instrument whose price is above its 200-session average with positive 12-1 momentum, then the shared risk constraints (the registered pilot shadow)",
+      "trend_regime": "trend target multiplied by (1 - P(turbulent)) at the decision close"
+    },
+    "budget": "five arms, two periods, no parameter search; any further variant needs a new registration",
+    "contrasts": [
+      {
+        "arm": "trend_regime",
+        "parent": "trend"
+      },
+      {
+        "arm": "equal_weight_regime",
+        "parent": "equal_weight"
+      }
+    ],
+    "decision_rule": "An overlay is 'supported on this history' only if its Sharpe difference is positive with Holm p < 0.05. Otherwise it is 'not established'. Neither outcome changes the pilot.",
+    "deflated_sharpe": {
+      "note": "Counts only strategies whose continuous daily returns on the history period are available here. Earlier prototype backtests and the research-v2 block-reset policies are not counted, so the true number of trials is larger and the deflated value is an upper bound on confidence.",
+      "trials": [
+        "trend",
+        "ml",
+        "adaptive_hybrid",
+        "equal_weight",
+        "trend_regime",
+        "equal_weight_regime"
+      ]
+    },
+    "execution": {
+      "capital": 10000,
+      "cash_return": "zero",
+      "costs": "10 bp commission plus 5 bp slippage on traded notional, both sides",
+      "fills": "next observed close after the decision",
+      "ledger": "runtime_v2.account.Account through ExecutionSession.on_close (the pilot ledger)",
+      "limits": "80% gross, 10% per instrument, 35% growth group, 40% turnover per rebalance, 3% cash reservation buffer, 20% drawdown stop",
+      "rebalance": "first session and the last XNYS session of each ISO week"
+    },
+    "inference": "paired circular date-block bootstrap, block 10, 2000 replicates, two-sided; Holm over the two contrasts",
+    "periods": {
+      "history": [
+        "2024-01-02",
+        "2026-09-25"
+      ],
+      "post_release": [
+        "2026-09-29",
+        "latest completed session"
+      ],
+      "subperiods": {
+        "audit": [
+          "2026-07-13",
+          "2026-09-25"
+        ],
+        "development": [
+          "2024-01-02",
+          "2025-12-31"
+        ],
+        "selection": [
+          "2026-01-02",
+          "2026-07-10"
+        ]
+      }
+    },
+    "post_release_rule": "report every arm descriptively; no inference and no Sharpe interpretation for fewer than 63 sessions",
+    "primary_endpoint": "difference in annualised Sharpe ratio (zero risk-free rate), overlay arm minus its parent, on the history period",
+    "question": "Does scaling the weekly targets by one minus the HMM turbulence probability improve the risk-adjusted result of its parent portfolio after costs?",
+    "secondary": [
+      "net return",
+      "CAGR",
+      "Sharpe with block interval",
+      "maximum drawdown",
+      "mean daily return difference",
+      "turnover",
+      "fees",
+      "fills",
+      "mean gross exposure",
+      "probabilistic and deflated Sharpe ratio"
+    ],
+    "targets": {
+      "history": "sealed trend_targets.parquet and equal_weight_targets.parquet from the adaptive release, reused unchanged",
+      "post_release": "recomputed with runtime_v2.policy and runtime_v2.risk from a fresh public snapshot"
+    }
+  },
+  "sentiment": {
+    "decision_dates": "FinBERT features for the 22 instruments at the five recorded decision dates, from Alpaca headlines available before each cutoff",
+    "history": "AAPL, NVDA and SPY cached headlines joined to saved forecasts from 2 January 2024 to the end of each cache",
+    "kind": "diagnostic join; no model is retrained and no decision used sentiment",
+    "optional_ablation": {
+      "description": "price-only versus price-plus-sentiment hybrid for NVDA and SPY, runtime configuration, refit every 21 sessions",
+      "endpoint": "paired daily log-loss difference; block 10",
+      "status_if_skipped": "recorded as not run"
+    },
+    "statistics": "Spearman rank correlation with the model score P(UP) - P(DOWN), the trend flag and the realised forward return; descriptive"
+  },
+  "symbols": [
+    "AAPL",
+    "AMZN",
+    "BAC",
+    "DIA",
+    "GLD",
+    "GOOGL",
+    "GS",
+    "IWM",
+    "JPM",
+    "META",
+    "MSFT",
+    "NVDA",
+    "QQQ",
+    "SPY",
+    "TLT",
+    "TSLA",
+    "XLE",
+    "XLF",
+    "XLI",
+    "XLK",
+    "XLP",
+    "XLV"
+  ],
+  "walkthrough": {
+    "case_rule": "earliest recorded decision whose orders were filled at the next close by the scheduled collector: segment r2, US session 1 October 2026",
+    "symbol_rule": "NVDA, chosen from decision-time inputs only: it has cached news history, the trend rule bought it, and the classifier's most likely class was DOWN. Chosen before its outcome was looked at."
+  }
+}

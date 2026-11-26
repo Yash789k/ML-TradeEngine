@@ -1,0 +1,160 @@
+{
+  "checked_at_utc": "2026-09-27T15:19:51.032195+00:00",
+  "read_only_provider_probes": [
+    {
+      "name": "yahoo",
+      "http": 200,
+      "bars": 5
+    },
+    {
+      "name": "kraken",
+      "http": 200,
+      "api_errors": [],
+      "bars": {
+        "XBTUSDT": 721
+      }
+    },
+    {
+      "name": "fred",
+      "http": 200,
+      "last_row": "2026-09-22,14.21"
+    },
+    {
+      "name": "alpaca_news",
+      "http": 200,
+      "news_count": 1,
+      "latest_created_at": [
+        "2026-09-27T11:00:21Z"
+      ]
+    },
+    {
+      "name": "alpaca_paper_account",
+      "http": 200,
+      "status": "ACTIVE",
+      "currency": "USD",
+      "equity": "100000",
+      "cash": "100000",
+      "last_equity": "100000",
+      "trading_blocked": false
+    },
+    {
+      "name": "alpaca_paper_orders",
+      "http": 200,
+      "count": 0,
+      "status_counts": {},
+      "latest_order_at": null
+    },
+    {
+      "name": "alpaca_paper_positions",
+      "http": 200,
+      "count": 0
+    }
+  ],
+  "benchmark_check": {
+    "source": "Fresh Yahoo 10y snapshot, adjusted close, legacy business-day calendar; no zero-padding of missing history",
+    "same_period_spy": {
+      "n_days": 1303,
+      "start": "2021-05-19 00:00:00+00:00",
+      "end": "2026-05-15 00:00:00+00:00",
+      "total_return": 0.9262450612030699,
+      "cagr": 0.13517591410837104,
+      "sharpe_ratio": 0.5496596277102073,
+      "max_drawdown": -0.24496393992794596,
+      "ending_nav_per_10000": 19262.450612030698
+    }
+  },
+  "tests": {
+    "offline": "260 passed, 10 warnings in 53.68s",
+    "data_integration": "23 passed, 9 warnings in 15.46s",
+    "interpreter": "/Users/a/miniconda3/bin/python",
+    "version": "3.13.11"
+  },
+  "github": {
+    "run_count": 67,
+    "failed_run_count": 67,
+    "workflow_state": "disabled_inactivity",
+    "latest_run": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/33571092654",
+    "latest_run_created_at": "2026-09-01T23:27:19Z",
+    "observed_root_cause": "Alerts.__init__: int(\"\") when SMTP_PORT secret is absent"
+  },
+  "cached_inference": {
+    "AAPL": "ValueError: X has 24 features, but RobustScaler is expecting 25 features as input.",
+    "SPY": "ValueError: X has 23 features, but RobustScaler is expecting 25 features as input."
+  },
+  "crypto_default_fetch": {
+    "requested_bars": 1825,
+    "returned_bars": 720,
+    "duplicates": 0,
+    "start": "2024-10-08",
+    "end": "2026-09-27",
+    "gap_fill": "passed"
+  },
+  "checks": {
+    "accounting_sensitivity": "Matched independent cash/share ledger on 100 randomized bars, rtol=1e-12",
+    "hmm_append_probe": "MSFT: appending future data changed 0 of first 800 already-clean labels in this probe; this does not establish causal fitting. Full-sample fitting is confirmed in code. Row misalignment reproduced independently."
+  },
+  "source_hashes": {
+    "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/backtest/__init__.py": "1641627c4d39c3da9613a6e2cd4a06f48eb4c546ead2b13ae30d6f5a36b52f2d",
+    "src/backtest/metrics.py": "c3d2dee6716ef693c22a6aa223ae0f0afd633e2227f6d61cf4f1158e3ee714cf",
+    "src/backtest/montecarlo.py": "b7678cd1fc124321305ca4378a8d36d995ca4fea6e9d174786f46487bb3f88ab",
+    "src/backtest/runner.py": "7bae9a2f1c0a56493a5d63481304f5f0836f315391f1d2d8ad15807b583247d3",
+    "src/backtest/signals.py": "bb44dd36f254d5d5cd73235207560c9a2edc9cd6d4f4a708226971f6b77cb552",
+    "src/backtest/simulator.py": "11e4eb67bd044e7eeedf7d3149236c902c7c1678f2e06baabbaf20e5830aa5d5",
+    "src/data/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/data/loader.py": "9b5d081b41d1b8d79c3825615b369e7177eadb99384591f7871972afb9164b83",
+    "src/data/sources.py": "b6b33ec02e88aaa6186a3db651f4a83de28d49a003e079484f1417c1363610d9",
+    "src/features/__init__.py": "b19ce1ad8e148557d72842c5d7b7e505949e27b8dc69cce86f23aadfffd2e860",
+    "src/features/cross_asset.py": "9fda0ed189d46b025324a45f3e44f5e965856b09e507ab4cf19929a509d1cf81",
+    "src/features/pipeline.py": "865f10a29b2c67856ef91e85da05a7918219bdc1efc7caa478c5cd64d727b7b3",
+    "src/features/regime.py": "3becc47d2561afd2165b1a0ddef39f7031c79bdde67bdf8e9f6f1ebc9accf77b",
+    "src/features/sentiment.py": "f4ed0652d233b093d12a0370e3db6952660fa7e1c1b1af715c4313d8f98cc5a6",
+    "src/features/statistical.py": "f58c8d032a4be98cd04c2ca921097f0c6aa11b98f0ccf99897e9ff8dc9e70074",
+    "src/features/technical.py": "48f7a5e661366b960e3458c9701e1d54f65952bd0b6bfe5d4c0dbd8862ee9437",
+    "src/live/__init__.py": "b13187aff22f6df1a7f6f5080bccab62ad91104c069e56045df6b01c94b23278",
+    "src/live/alerts.py": "ac866f07828f3e0039320ed1cc1bd9e2b66e009b6a302c0d7a1e9007d46b2f96",
+    "src/live/broker.py": "0a1b887fb9b0f835ead1c2850fee72c7cf21dac433a6552eecfd3b1adc07795f",
+    "src/live/engine.py": "633d9d46c715c21b769c35bc0bc5e81342a1e5a6943231b5c1d736c8d7942fa7",
+    "src/live/logger.py": "dec7a88a5918be9b7a4f58d0c9f109fd19335f3cc8a07f91d00ed35a382ab3b9",
+    "src/live/meta_signal_generator.py": "eca6920850e92494905b308a6edbfdd6bc1f42c2592aec44a7aedd1d2b948a93",
+    "src/live/signal_generator.py": "c0e8a8ae61b0163c25cdf30c0d1aacb285cdd6c5d97bab8d8bc1b9a4f12222c2",
+    "src/models/__init__.py": "0929625aad2554cb5c3f5118b987c866d5bcfc69921815aede83dcbae524cd22",
+    "src/models/ensemble.py": "93dbc378cb5cffc29bbe5c1f33898c3f7a0a1b467d18abe69d966c5219daed8d",
+    "src/models/gating.py": "7824a4f18bfee1d77b2cfecfb22cbb6a70801021bd24008525633fa1b8a9d949",
+    "src/models/labels.py": "baaf2467594fe53486a35a11f76a31ffed35b13de4d0feacd9bb85a282ab9c83",
+    "src/models/lgbm_model.py": "29924bb23711e2184b52121f2336b0d39d227c92cd746edff1e7281b436959e5",
+    "src/models/lstm_model.py": "c77aa35bfc2a9e9306dffb93e4cc5da9de63a313b097a4524abaff7449bb4466",
+    "src/models/splitter.py": "798c2b3168682fd6500b69ac208be87cab5ca95d6b9776c0de799f57f11f4d9f",
+    "src/models/trainer.py": "c276045b618e39a050f2ce449c5d7046b4c1ed76fd7de241efda88fe54078dca",
+    "src/models/xgb_model.py": "807f6257b9866394e44cdf9465965451ae85e9a31f061bc164a4a1e1f6354aff",
+    "src/research/__init__.py": "1b62ed64e3680c3d35966b71349b77f82ee7d03e7ca3e74661af99760c29773e",
+    "src/research/env_analyzer.py": "a3427eb326e01d79488a4c96d0d08d4847a5ff86afffc1eb78c5be7aebb450ee",
+    "src/research/meta_strategy.py": "d0a9d890e438eac55732c8ead2d21c6f86c31ef141123054f652eedf41a51c49",
+    "src/research/ranker.py": "54707dba14c1e5a6e336c9d6dcf8a8a8e7015dc81effef979c23c46ec71f01b2",
+    "src/research/strategies/__init__.py": "421af9c3561c3ead3aafd2f5ef8393e765c4234a67d7e0d997c7c402ea6b04f2",
+    "src/research/strategies/alpha_trends.py": "09ff6764cb88777ad28d317c3ecff1c460dcccfabbcc6f4b363e29df4d4451af",
+    "src/research/strategies/base.py": "36d0d9eb688b267239ced61f3d2e6f09684d95aeeafdc570af02411f2059a668",
+    "src/research/strategies/carry_proxy.py": "81829a0e50b9bba98897152397ac1502175be37ac6a534b4e285dee05215df1d",
+    "src/research/strategies/ema_crossover.py": "3c60671924214abf35ad67ecd7782dd895f54a4bdb942ae89ae8444a180d6d4c",
+    "src/research/strategies/mean_reversion.py": "d2aa1b587b989c56b0431df3bd18b6715ca6b4a4e3941ea51f00f8137096a53b",
+    "src/research/strategies/momentum.py": "c7efaa3b4e9441ecadd7e641fd3206515e02969f0b6b26dbf5d83a13c3e74012",
+    "src/research/strategies/pairs_arb.py": "4ea6361069080b615c315ef963bde89c4fed66c1d90c08666a8bfce8d564d4bc",
+    "src/research/strategies/turtle.py": "9b3b7f25b5b27e29ac6969cb86651657d6d3d0cb03fd2abf3f2bfc196f1df882",
+    "src/research/strategies/vol_breakout.py": "67cfac59454d87261f1ff900c5112c718a30e837f26d929fd41a9d1669fc3d08",
+    "src/research/zoo_runner.py": "1ffb22a6cdbc5922d55be8fb11df2263518df3db64798e842c3dc65c013f8f4b",
+    "src/risk/__init__.py": "d65de90f6c1cada2d60bca12f91fd1a1f87d6b0e626cd8051949080bcafb894a",
+    "src/risk/engine.py": "d9f6e9018353449b3a45687b5ad4f6f830c9e71b34619919bb733ca044eda735",
+    "src/risk/policy_engine.py": "708a3a0e5c27722c0ce6c0362be9a5461c2ece2db4131d5f452ccca659c502a3",
+    "src/risk/portfolio.py": "048aea3f623ea9bbcd115bef9ef9eb7b72e23699ef7f7db606c4cf349a919ad8",
+    "src/risk/sizing.py": "b95a7c50eecc2d212c2519265570346e24611e0fafca34783e6a3e398953ec95",
+    "src/risk/stops.py": "ba6a9bdebf9e55b9a5066ba00b6c8464bba81c089541cde6909a8dcb63983178",
+    "src/risk/var.py": "1aa57206bbc3e5d4aefb058fd5c114e9eefad13bd458f07280bbd1dbe555be32"
+  },
+  "scope_limits": [
+    "No retraining or full leakage-free backtest performed",
+    "No orders, account changes, alert messages, Supabase writes or workflow re-enablement",
+    "Provider HTTP success is a point-in-time connectivity check, not continuous delivery validation",
+    "Paper orders query returned zero rows; not a certified lifetime account-history audit",
+    "Dashboard code reviewed; interactive UI not exercised"
+  ]
+}

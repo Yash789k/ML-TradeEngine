@@ -1,0 +1,110 @@
+{
+  "amendments": [
+    "A1-history-rebalance-calendar"
+  ],
+  "arms": {
+    "cash": "Cash (no positions)",
+    "equal_weight": "Equal weight, all 22 instruments (benchmark)",
+    "equal_weight_regime": "Equal weight \u00d7 (1 \u2212 P(turbulent))",
+    "trend": "Trend rule (pilot shadow)",
+    "trend_regime": "Trend rule \u00d7 (1 \u2212 P(turbulent))"
+  },
+  "assumptions": {
+    "benchmark": "equal weight of the same 22 instruments through the same ledger and costs; cash; SPY buy-and-hold as an unmatched reference",
+    "capital_usd": 10000.0,
+    "cash_return": "zero (no interest on idle cash)",
+    "costs": "10 bp commission + 5 bp slippage on traded notional, both sides (15 bp per side)",
+    "data": "Yahoo Finance public chart v8 daily bars; dividend/split-adjusted OHLC (current vintage at download)",
+    "fills": "at the next observed close after the decision; fractional units; long only",
+    "limits": "80% gross, 10% per instrument, 35% growth group, 12% annualised volatility target, 40% turnover per rebalance, 3% cash buffer, 20% drawdown stop",
+    "sharpe": "annualised, zero risk-free rate, 252 sessions"
+  },
+  "decision_rule": "An overlay is 'supported on this history' only if its Sharpe difference is positive with Holm p < 0.05. Otherwise it is 'not established'. Neither outcome changes the pilot.",
+  "history": {
+    "deflated": {
+      "deflated_sharpe_ratio": {
+        "adaptive_hybrid": 0.9650991573705191,
+        "equal_weight": 0.9698607929194131,
+        "equal_weight_regime": 0.9450010538823825,
+        "ml": 0.8839708894983203,
+        "trend": 0.955822785782224,
+        "trend_regime": 0.8827334049939104
+      },
+      "expected_best_sharpe_with_no_skill_annualised": 0.24903219487215994,
+      "n_trials": 6,
+      "note": "Probability that the true Sharpe ratio exceeds the best value expected by luck among the counted trials. Earlier prototype backtests and the block-reset study portfolios are not counted, so these values are upper bounds.",
+      "trials": [
+        "adaptive_hybrid",
+        "equal_weight",
+        "equal_weight_regime",
+        "ml",
+        "trend",
+        "trend_regime"
+      ],
+      "variance_of_per_period_sharpes": 0.00014558937630461342
+    },
+    "first": "2024-01-02",
+    "last": "2026-09-25",
+    "parity": {
+      "arms": {
+        "cash": {
+          "max_abs_equity_difference_usd": 0.0,
+          "max_abs_fee_difference_usd": 0.0,
+          "sealed_terminal_equity": 10000.0
+        },
+        "equal_weight": {
+          "max_abs_equity_difference_usd": 0.0,
+          "max_abs_fee_difference_usd": 0.0,
+          "sealed_terminal_equity": 15522.269890079462
+        },
+        "trend": {
+          "max_abs_equity_difference_usd": 0.0,
+          "max_abs_fee_difference_usd": 0.0,
+          "sealed_terminal_equity": 13497.135186343794
+        }
+      },
+      "note": "Same targets, prices, calendar and ledger as the sealed adaptive release.",
+      "passed": true
+    },
+    "rebalances": 138,
+    "sessions": 686,
+    "spy_reference": {
+      "annualised_volatility": 0.15574680081444942,
+      "max_drawdown": -0.1875522083543727,
+      "net_return": 0.6853746734601027,
+      "note": "100% invested and uncosted, so not matched to the 80%-capped, costed arms.",
+      "sharpe_ci_high": 2.5593473302321383,
+      "sharpe_ci_low": 0.30616749973225277,
+      "sharpe_zero_rf": 1.3089321484880259
+    },
+    "status": "exploratory: previously inspected",
+    "turbulent_share": 0.21428571428571427
+  },
+  "post_release": {
+    "first": "2026-09-29",
+    "last": "2026-11-24",
+    "parity": {
+      "max_abs_equity_difference_usd": 0.0,
+      "note": "runtime_v2.policy.replay shadow account versus this harness on the same sessions.",
+      "passed": true
+    },
+    "provenance": "simulated",
+    "rebalances": 9,
+    "retrieved_at": "2026-11-25T13:15:02.645993+00:00",
+    "sessions": 41,
+    "snapshot": "data/paper/review-v1/market/2026-11-24-20261125T131502645854",
+    "spy_reference": {
+      "annualised_volatility": 0.23103599687613452,
+      "max_drawdown": -0.11459526655375596,
+      "net_return": -0.05943467964490423,
+      "note": "100% invested and uncosted, so not matched to the 80%-capped, costed arms.",
+      "sharpe_ci_high": 1.1048159455171114,
+      "sharpe_ci_low": -3.5725483222369827,
+      "sharpe_zero_rf": -1.5159735647390054
+    },
+    "status": "simulated replay on a fresh download; descriptive only; not an untouched holdout",
+    "turbulent_share": 0.34146341463414637
+  },
+  "question": "Does scaling the weekly targets by one minus the HMM turbulence probability improve the risk-adjusted result of its parent portfolio after costs?",
+  "registration_sha256": "abc146e5bffdae819a5245e1fdec89813e4cf9e7a5d5a9f6e1de2b5c902b011b"
+}

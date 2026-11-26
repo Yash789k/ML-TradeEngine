@@ -1,0 +1,11 @@
+Replay validation_selected
+Replay momentum_12_1
+Replay static_ensemble
+Replay dynamic_size_policy
+Replay causal_meta
+           strategy  final_equity  sharpe_ratio  max_drawdown  fill_count  max_reconciliation_error
+validation_selected  11704.146681         0.634       -0.1243        5679              3.092282e-11
+      momentum_12_1  11975.011802         0.684       -0.1491        6511              9.094947e-12
+    static_ensemble  10270.469662        -0.463       -0.0423        1398              9.094947e-12
+dynamic_size_policy   9937.962037        -2.089       -0.0323        1204              2.364686e-11
+        causal_meta  11108.888571         0.393       -0.0853        4206              1.818989e-11

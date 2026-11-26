@@ -1,0 +1,28 @@
+{
+  "id": "R11-PROVIDER-OHLC-RETRY-20261022",
+  "registered_at": "2026-10-22T04:35:29.368973+00:00",
+  "question": "Can the collector reject an inconsistent latest provider bar while permitting only the existing bounded retries, without weakening validation or admitting backfill?",
+  "trigger": "r5 JPM OHLC failure at US 21 October close+30; provider now returned corrected high/open and volume",
+  "diagnostic_path": "data/diagnostics/provider-ohlc-20261022/diagnosis.json",
+  "diagnostic_sha256": "7459111855b842e2889ffa57459a41ccb1c0e771af06ecad632163b62237a437",
+  "selection": "Operational correction only; no model, cost, symbol, target, timing or performance-based selection change",
+  "retry_rule": "Only invalid OHLC ranges confined to the expected newly completed session in close+30 through close+65 may be classified transient during fresh download. Other validity checks still apply. Two existing retries at close+45/+60, no new windows. Persistent errors fail the close+90 watchdog. Saved snapshot validation remains deterministic.",
+  "validation": [
+    "saved failed JPM and corrected provider body reproduction",
+    "latest-only invalid bar rejected with raw response hashes and no valid receipt/account changes",
+    "corrected later response can pass strict validation within registered window",
+    "persistent invalid response exhausted after three attempts and watchdog halts",
+    "historical range errors, missing history, nonfinite prices, mutated stored snapshots stay deterministic",
+    "source-bound critical operational regressions and one-decision/six-tail replay",
+    "real launchd commissioning with all 22 symbols before new decision"
+  ],
+  "budget": {
+    "new_model_fits": 0,
+    "live_diagnostic_requests_max": 1,
+    "automatic_attempts_per_session_max": 3,
+    "qualification_note": "existing isolated tests may train fixture models only; frozen pilot models unchanged"
+  },
+  "prospective_registration": "One new US 22 October decision, fresh accounts, four prior r2/r4 observations separate. Failed r5 retained with zero observations. Six subsequent sessions for outcome-only tail.",
+  "readiness_approved": false,
+  "external_orders": false
+}

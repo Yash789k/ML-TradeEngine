@@ -1,0 +1,10 @@
+{
+  "trial": "base-QQQ-F0-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "b6de4edbad4f2a6e83e821e26dba7a8bf6b04dab1e9b2336952b84b72ec0de40",
+  "expected_prediction_sha256": "e81d873e5fa4bb2f8d113d057b24bd9e24e9c7ab16b93b05a8d7e2f3509881c5",
+  "model_sha256": "02e53bc5c6cd3870b7baab691360d9026e4b63bb59bd9ba1fcf3fa2f7da92be1"
+}

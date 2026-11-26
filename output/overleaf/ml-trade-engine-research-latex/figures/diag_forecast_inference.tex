@@ -1,0 +1,36 @@
+% Native editable figure; frozen statistics 0d291b4aebf8c524dc6705d872c070feb990e86a1cebbd59a758f400b240c952
+\begin{minipage}[t]{.32\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=.94\linewidth,height=4.8cm,title={development},ytick={0,1,2,3},yticklabels={Linear,Tree,Raw,Hybrid},xlabel={Loss minus prior},xmin=-.02,xmax=.15,xtick={0,.05,.10,.15},scaled x ticks=false,x tick label style={/pgf/number format/fixed,/pgf/number format/precision=2},extra x ticks={0},extra x tick style={grid=major}]
+\addplot+[teal,only marks,mark=*,error bars/.cd,x dir=both,x explicit] table[x=x,y=y,x error minus=lo,x error plus=hi,row sep=\\]{x y lo hi\\0.0307945818317 0 0.0133978723424 0.0138576511937\\
+0.0870756476825 1 0.0175279184931 0.0174131845911\\
+0.0318687091039 2 0.0126557943824 0.0125213618115\\
+0.013947459402 3 0.00878659866028 0.00885623096892\\};
+
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.32\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=.94\linewidth,height=4.8cm,title={selection},ytick={0,1,2,3},yticklabels={Linear,Tree,Raw,Hybrid},xlabel={Loss minus prior},xmin=-.02,xmax=.15,xtick={0,.05,.10,.15},scaled x ticks=false,x tick label style={/pgf/number format/fixed,/pgf/number format/precision=2},extra x ticks={0},extra x tick style={grid=major}]
+\addplot+[teal,only marks,mark=*,error bars/.cd,x dir=both,x explicit] table[x=x,y=y,x error minus=lo,x error plus=hi,row sep=\\]{x y lo hi\\0.0366086965343 0 0.0255516950915 0.0246095487994\\
+0.0812901260331 1 0.0371062104379 0.0344655441593\\
+0.030095155111 2 0.0201815717422 0.0184559397131\\
+0.0050018252014 3 0.0178401338044 0.0180481599458\\};
+
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.32\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=.94\linewidth,height=4.8cm,title={audit},ytick={0,1,2,3},yticklabels={Linear,Tree,Raw,Hybrid},xlabel={Loss minus prior},xmin=-.02,xmax=.15,xtick={0,.05,.10,.15},scaled x ticks=false,x tick label style={/pgf/number format/fixed,/pgf/number format/precision=2},extra x ticks={0},extra x tick style={grid=major}]
+\addplot+[teal,only marks,mark=*,error bars/.cd,x dir=both,x explicit] table[x=x,y=y,x error minus=lo,x error plus=hi,row sep=\\]{x y lo hi\\0.0534971109377 0 0.0225075059482 0.0232500211536\\
+0.0923489707796 1 0.0408988275295 0.0429054660783\\
+0.0415131268524 2 0.0186156550241 0.0193978388432\\
+0.0126044345825 3 0.0150693518368 0.0143454615776\\};
+
+\end{axis}
+\end{tikzpicture}
+\end{minipage}

@@ -1,0 +1,10 @@
+{
+  "trial": "fraction_0.5-AAPL-F1-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "895a428aa4b03dcf647df78c62229f40af316635fdf9fded127eab128f76eea0",
+  "expected_prediction_sha256": "cb4b87bf15b1fa9fc014b9707f2b0df129c6c21d9d28ba8bd8ebd95d168068da",
+  "model_sha256": "1c9390d724583c7a50ff2d31023e9b91f3ac4c4b03f6f58ed069bdd8c2210c5b"
+}

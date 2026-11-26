@@ -1,471 +1,81 @@
-# Regime-Gated Alpha Trends: A Unified Framework for Strategy Selection Under Non-Stationary Market States
-
-**Draft version 0.2 — for internal review**  
-**Authors:** [Yash Kataria]  
-**Target:** *Quantitative Finance* or *Journal of Portfolio Management*  
-**Status:** Meta-strategy results populated (Phase 06D); env-characterisation numbers pending
-
----
-
-## Abstract
-
-We present a unified quantitative framework that uses a Hidden Markov Model (HMM)
-regime classifier as a meta-strategy gating layer, dynamically allocating capital
-to the historically best-performing strategy in each detected market state.
-Applied to a 22-asset universe of US equities, ETFs, and macro instruments
-over a five-year period (May 2021 – May 2026), the regime-gated meta-strategy
-achieves a Sharpe ratio of 0.70 (t = 3.41), CAGR of 9.4%, and maximum drawdown
-of −4.5%, outperforming all eight constituent strategies and the SPY benchmark
-(Sharpe 0.65, max drawdown −18.8%) on a risk-adjusted basis, with roughly
-one-quarter of the benchmark's drawdown and a market beta of 0.33.
-We further characterise the trading environment through cost-sensitivity analysis,
-rolling signal-decay diagnostics, and Fama–French three-factor decomposition,
-demonstrating that the ensemble alpha is robust to realistic transaction costs
-and is not fully explained by common risk factors.
-
-**Keywords:** regime switching, hidden Markov model, strategy selection,
-ensemble methods, algorithmic trading, factor attribution
-
----
-
-## 1. Introduction
-
-### 1.1 Motivation
-
-Algorithmic trading strategies exhibit regime-dependent performance: momentum
-strategies thrive in trending markets, mean-reversion strategies excel in
-ranging regimes, and volatility breakout strategies capitalise on compression
-events preceding large moves. A strategy deployed uniformly across all market
-states will underperform one that adapts its allocation to the prevailing regime.
-
-This paper formalises this intuition into a testable framework and validates it
-on a broad universe using rigorous out-of-sample methodology.
-
-### 1.2 Research Questions
-
-1. **Does HMM regime detection reliably partition market states with distinct
-   return characteristics for individual trading strategies?**
-
-2. **Can a meta-strategy that dynamically gates capital allocation by regime
-   outperform any static single strategy and a passive benchmark on a
-   risk-adjusted basis?**
-
-3. **Is the observed edge robust to realistic transaction costs, AUM scaling,
-   and the passage of time (signal decay)?**
-
-4. **How much of the meta-strategy return constitutes true alpha beyond
-   Fama–French three-factor (market, size, value) exposure?**
-
-### 1.3 Contributions
-
-- A reproducible open-source implementation of eight canonical quantitative
-  strategies benchmarked on a 20–30 asset universe.
-- A three-state Gaussian HMM regime detector trained on daily OHLCV and macro
-  features, evaluated for stability and out-of-sample regime consistency.
-- A regime-gated meta-strategy with half-Kelly position sizing showing
-  statistically significant (t > 2) risk-adjusted excess return over SPY.
-- A comprehensive environment characterisation covering cost sensitivity,
-  signal decay, and Fama–French factor decomposition — enabling replication
-  and robustness assessment by practitioners.
-
----
-
-## 2. Related Work
-
-### 2.1 HMM Regime Detection in Finance
-
-Hidden Markov Models were introduced to financial time series by
-Ryden, Terasvirta, and Asbrink (1998) and Hamilton (1989) in the context
-of GDP recession detection. Subsequent work applied HMMs to equity volatility
-regimes (Ang and Timmermann, 2012), identifying bull, bear, and high-volatility
-states that align with economic turning points.
-
-More recently, [CITE] demonstrated that HMM-detected regimes improve
-out-of-sample Sharpe ratios for trend-following strategies by avoiding
-adverse regime deployment. Our approach extends this by using regime state
-as a dynamic allocation gate across a heterogeneous strategy zoo, rather
-than as a filter for a single strategy.
-
-### 2.2 Regime-Switching Strategy Allocation
-
-Bulla et al. (2011) proposed regime-switching portfolio allocation using
-hidden Markov chains, showing superior performance over static allocation.
-Nystrup et al. (2017) demonstrated adaptive allocation using online HMM
-estimation. We extend this literature by:
-(1) comparing eight strategies rather than two, (2) using a modern
-ML-enhanced feature set for HMM inputs, and (3) providing a comprehensive
-environment characterisation beyond pure performance statistics.
-
-### 2.3 Ensemble Methods and Meta-Strategies
-
-[CITE relevant papers on ensemble trading strategies / strategy combination]
-
-### 2.4 Transaction Cost Modelling
-
-Almgren and Chriss (2001) established the standard model for market impact.
-We adopt a simpler commissions + slippage model appropriate for daily rebalancing
-at retail scale, and characterise the edge-survival threshold across a range of
-cost assumptions and AUM levels.
-
----
-
-## 3. Data and Methodology
-
-### 3.1 Universe Construction
-
-**Equity universe (20–30 assets):**
-
-| Category | Assets |
-|----------|--------|
-| Large-cap technology | AAPL, MSFT, GOOGL, AMZN, NVDA, META, TSLA |
-| Financials | JPM, BAC, GS |
-| Sector ETFs | XLK, XLF, XLE, XLV, XLI, XLP |
-| Broad market | SPY, QQQ, DIA, IWM |
-| Macro / alternatives | GLD, TLT |
-
-**Time period:** [START DATE] — [END DATE] (five-year out-of-sample window)  
-**Data source:** Yahoo Finance daily OHLCV (split-adjusted), FRED macro  
-**Frequency:** Daily close  
-**Transaction cost model:** 10 bps commission + 5 bps slippage per side
-
-### 3.2 Feature Pipeline
-
-We compute 32+ features across four categories for each asset:
-
-| Category | Features |
-|----------|---------|
-| Technical (14) | RSI-14, MACD, Bollinger Bands (width, %B), ATR-14, ADX-14, OBV, volume ratio |
-| Price structure (7) | Log return, 5d/21d return, gap return, EMA-20/50/200 ratios |
-| Statistical (8) | Rolling z-score (20d, 60d), realised vol (5d, 21d), Hurst exponent, skewness, kurtosis |
-| Cross-asset (7) | SPY correlation (21d, 63d), relative strength, BTC proxy returns, VIX, yield spread |
-| Regime (1) | HMM state (bull=2, ranging=1, bear=0) |
-
-All features are computed strictly causally — no future information is used at
-any computation step. The HMM is fitted on the training window only and decoded
-forward on the test window.
-
-### 3.3 HMM Regime Classifier
-
-We fit a three-state Gaussian HMM on daily log returns, realised volatility,
-and VIX-proxy using the hmmlearn library (Gaussian emissions with full
-covariance). States are post-hoc labelled bull / ranging / bear by sorting
-states on mean log return.
-
-**HMM hyperparameters:**
-- n_states = 3
-- covariance_type = full
-- n_iter = 100 (EM convergence)
-- random_state = 42 (reproducible)
-
-Regime stability is assessed via the average dwell time in each state and
-the transition matrix.
-
-### 3.4 Strategy Zoo (Phase 06A)
-
-Eight strategies are implemented as independent signal generators operating
-on the same OHLCV + feature matrix:
-
-| Strategy | Signal Logic | Position Sizing | Regime Hypothesis |
-|----------|-------------|-----------------|-------------------|
-| Momentum (12-1) | 12-month return minus last month; rank top quintile | Equal-weight | Trending regime |
-| Mean Reversion | BB squeeze + RSI extremes | Equal-weight | High-vol ranging |
-| EMA Crossover | Fast/slow EMA + ADX filter | Equal-weight | Trending / low-noise |
-| Turtle Trading | Donchian channel breakout | ATR units | Breakout regime |
-| Pairs / Stat Arb | Cointegrated pair z-score entry/exit | Equal-weight | Low-correlation |
-| Carry Proxy | Yield spread as carry signal | Equal-weight | Rate environment |
-| Volatility Breakout | ATR expansion + volume surge | Equal-weight | Vol compression |
-| Alpha Trends | Regime-aware multi-factor composite | Kelly | All regimes (HMM-gated) |
-
-Each strategy runs a fully walk-forward out-of-sample backtest on every asset
-in the universe. Transaction costs are modelled uniformly.
-
-### 3.5 Phase 03 ML Ensemble
-
-A three-model ensemble (XGBoost + LightGBM + LSTM) is trained to predict
-three-class directional labels (up/flat/down) using PurgedGroupTimeSeriesSplit
-walk-forward cross-validation. The ensemble serves as the signal source for
-the Alpha Trends strategy and as a standalone benchmark.
-
-**Label construction:** Forward return thresholded at ±0.5% over 5 bars
-(production configuration; a redesigned ±1.5% / 10-bar labelling scheme is
-under evaluation to reduce label noise and directional class imbalance).
-
-### 3.6 Meta-Strategy (Regime-Gated Allocation)
-
-Per ticker, the meta-strategy holds the constituent strategy with the highest
-*historical* Sharpe ratio in the *current* HMM regime state, computed on an
-expanding walk-forward window (only data strictly before day *t* is used by
-the allocator):
-
-```
-state(t)  = HMM regime confirmed over the last `confirm_bars`=3 known bars
-candidate = argmax_s Sharpe( returns_s | regime == state(t), d < t )
-```
-
-Anti-whipsaw controls:
-- **Burn-in:** the ranking requires ≥ 60 in-regime observations; until then
-  the allocator holds the equal-weight average of all eight strategies.
-- **Regime confirmation:** a regime change must persist 3 consecutive bars
-  before a re-selection is triggered.
-- **Minimum hold:** a selection is held ≥ 10 bars before switching again;
-  rankings are re-evaluated at most every 21 bars otherwise.
-- **Switch cost:** every strategy switch is charged 15 bps to model the
-  liquidate/re-enter round trip (constituent equity curves already embed
-  their own per-trade costs).
-
-The portfolio is the equal-weight daily average of the 22 per-ticker
-meta-strategies.
-
-### 3.7 Statistical Testing
-
-We report the following statistics for each strategy and the meta-strategy:
-- Annualised Sharpe ratio (daily returns, 252-day year, 5% risk-free rate)
-- CAGR and Sortino ratio
-- Maximum drawdown and Calmar ratio
-- **t-statistic on mean daily return** (H₀: mean = 0; t > 2.0 required for publication)
-- Jensen's alpha and beta vs SPY
-- Information Ratio (active return / tracking error vs SPY)
-- Win rate and expectancy
-
-All metrics are computed on the **out-of-sample** period only.
-
----
-
-## 4. Strategy Zoo Results (Phase 06A)
-
-> [TABLE PLACEHOLDER] — insert `data/research/scorecard.parquet` results
-
-### 4.1 Individual Strategy Scorecards
-
-[INSERT: Sharpe, CAGR, MaxDD, Calmar, Win Rate, t-stat per strategy × ticker]
-
-Key findings:
-- [FILL: which strategy dominates in trending markets]
-- [FILL: which strategy dominates in ranging markets]
-- [FILL: underperforming strategies and why]
-
-### 4.2 Regime Decomposition (Phase 06C.1)
-
-Each strategy's Sharpe ratio is computed separately for HMM bull / ranging / bear states.
-
-[INSERT: `data/research/env/regime_breakdown.parquet` table]
-
-Key findings:
-- [FILL: does Momentum only work in bull regimes?]
-- [FILL: does Mean Reversion only work in ranging regimes?]
-- This validates the regime-gating hypothesis.
-
----
-
-## 5. Regime-Gated Meta-Strategy
-
-### 5.1 Allocation Mechanism
-
-See §3.6. Over the full sample the allocator selected Mean Reversion 28.0% of
-bars, Turtle Breakout 19.3%, Momentum 12-1 15.0%, Alpha Trends 11.4%,
-equal-weight burn-in 9.2%, EMA Crossover 7.2%, Pairs StatArb 4.9%,
-Vol Breakout 3.9% and Carry Proxy 1.1% — i.e. no single constituent dominates,
-and the mix shifts materially across regimes.
-
-### 5.2 Backtested Performance
-
-Full period May 2021 – May 2026 (1,304 trading days), 22-ticker equal-weight
-portfolio; results from `data/research/meta/meta_summary.json`:
-
-| Metric | Meta-Strategy | Best Individual (Momentum 12-1) | SPY (B&H) |
-|--------|:-------------:|:---------------:|:---------:|
-| Sharpe | **0.70** | 0.56 | 0.65 |
-| CAGR | 9.4% | 11.1% | 14.0% |
-| Max DD | **−4.5%** | −18.9% | −18.8% |
-| Calmar | **2.08** | 0.59 | 0.75 |
-| Sortino | 1.05 | 0.64 | 0.79 |
-| t-stat | **3.41** | 2.25 | — |
-| Alpha (vs SPY) | +4.6%/yr | — | 0% |
-| Beta (vs SPY) | 0.33 | — | 1.00 |
-| Volatility | 6.2% | 11.3% | 14.2% |
-
-The meta-strategy underperforms SPY on raw CAGR (9.4% vs 14.0% in a strongly
-bullish sample) but dominates on every risk-adjusted measure: 4× better Calmar,
-one-quarter of the drawdown, less than half the volatility, and a mean daily
-return that is statistically distinguishable from zero at the 0.1% level
-(t = 3.41). It also beats every one of its eight constituents on Sharpe.
-
-### 5.3 Equity Curve
-
-[INSERT: equity curve chart — meta-strategy vs best single strategy vs SPY;
-data in `data/research/meta/meta_returns.parquet`]
-
----
-
-## 6. Environment Characterisation (Phase 06C)
-
-### 6.1 Transaction Cost Sensitivity
-
-We sweep commission rates from 0 bps to 50 bps per side across five
-representative assets (AAPL, NVDA, SPY, TSLA, GLD) to identify the
-edge-survival threshold — the cost level at which Sharpe falls below 1.0.
-
-[INSERT: `data/research/env/cost_sensitivity.parquet` chart and table]
-
-Key finding: [FILL — e.g. "Edge survives up to X bps; most strategies break
-even at ~Y bps, consistent with current retail broker pricing."]
-
-### 6.2 Signal Decay
-
-Rolling 90-day Sharpe and alpha windows detect strategy degradation over time.
-
-[INSERT: `data/research/env/signal_decay_summary.parquet` chart]
-
-Key finding: [FILL — e.g. "Momentum shows no evidence of decay over the
-sample period; Mean Reversion shows mild degradation post-2022."]
-
-### 6.3 Fama–French Three-Factor Attribution
-
-OLS regression of daily excess returns on the Fama–French SMB, HML, and
-MKT-RF factors isolates true alpha from factor exposure.
-
-[INSERT: `data/research/env/factor_attribution.parquet` table]
-
-Model:
-```
-R_strategy − R_f = α + β_mkt(R_mkt − R_f) + β_smb × SMB + β_hml × HML + ε
-```
-
-Key finding: [FILL — e.g. "The meta-strategy alpha is X% annualised
-(t = Y), with low market beta (β = Z), indicating genuine skill beyond
-passive factor exposure."]
-
-### 6.4 Cross-Strategy Correlation
-
-The correlation matrix across strategy equity curves identifies diversifying
-pairs for portfolio construction and validates that the meta-strategy is
-not dominated by a single constituent.
-
-[INSERT: correlation heatmap]
-
----
-
-## 7. Discussion
-
-### 7.1 Practical Limitations
-
-- **Universe bias:** Results are for a US-centric, large-cap-biased universe.
-  Results may not generalise to small-caps, international markets, or
-  illiquid instruments where slippage is materially higher.
-
-- **HMM regime instability:** The HMM transition matrix is estimated
-  in-sample and may exhibit non-stationarity in live deployment. We mitigate
-  this by using rolling re-estimation every [N] months.
-
-- **Parameter sensitivity:** [FILL — discuss sensitivity of Kelly fraction,
-  confidence threshold, ATR multiplier]
-
-- **Look-ahead in regime labels:** The allocator itself is strictly
-  walk-forward (rankings use only data before day *t*; a no-lookahead
-  property verified by unit test). However, the HMM regime sequence was
-  decoded from a model fitted on the full sample (Phase 02), so the regime
-  labels themselves carry mild look-ahead. Live deployment requires rolling
-  HMM re-estimation, which may degrade regime quality at state boundaries.
-
-### 7.2 Overfitting Risk
-
-Walk-forward validation with PurgedGroupTimeSeriesSplit ensures that no
-future data contaminates any OOS prediction. The strategy zoo is
-intentionally designed with minimal hyperparameter tuning to limit
-in-sample overfitting. All parameters were set a priori based on
-literature conventions (e.g. 2×ATR stops, half-Kelly sizing).
-
-### 7.3 Generalisability
-
-The framework is asset-class agnostic; preliminary tests on crypto
-(BTC/USDT) show comparable regime structure. Cross-asset generalisation
-is left for future work.
-
----
-
-## 8. Conclusion
-
-We have presented and validated a regime-gated meta-strategy framework that
-dynamically allocates to the historically best-performing constituent strategy
-in each HMM-detected market state. The framework achieves a Sharpe ratio of
-0.70 (t = 3.41) with a −4.5% maximum drawdown, outperforming both the best
-constituent strategy (Momentum 12-1: Sharpe 0.56, −18.9% drawdown) and the
-passive benchmark (SPY: Sharpe 0.65, −18.8% drawdown) on a risk-adjusted basis.
-
-The edge is robust to realistic transaction costs up to [FILL] bps, shows no
-significant decay over the sample period, and produces a statistically
-significant alpha of [FILL]% annualised after Fama–French factor attribution.
-
-These results suggest that regime-aware dynamic allocation is a viable approach
-for practitioners seeking to combine multiple systematic strategies into a
-coherent, risk-managed portfolio.
-
-### Future Directions
-
-- **Online HMM estimation** for real-time regime updates without batch re-fitting.
-- **Reinforcement learning** meta-agent (Stable-Baselines3) for end-to-end
-  joint strategy and position sizing optimisation.
-- **Options flow and NLP sentiment** as additional regime indicators.
-- **International and crypto universe** expansion.
-
----
-
-## References
-
-- Hamilton, J. D. (1989). A new approach to the economic analysis of
-  nonstationary time series and the business cycle. *Econometrica*, 57(2), 357–384.
-
-- Ang, A., & Timmermann, A. (2012). Regime changes and financial markets.
-  *Annual Review of Financial Economics*, 4, 313–337.
-
-- Ryden, T., Terasvirta, T., & Asbrink, S. (1998). Stylised facts of daily
-  return series and the hidden Markov model. *Journal of Applied Econometrics*,
-  13(3), 217–244.
-
-- Nystrup, P., Hansen, B. W., Larsen, H. O., Madsen, H., & Lindström, E. (2017).
-  Dynamic allocation or diversification: A regime-based approach to multiple assets.
-  *Journal of Portfolio Management*, 44(2), 62–73.
-
-- Bulla, J., Mergner, S., Bulla, I., Sesboüé, A., & Chesneau, C. (2011).
-  Markov-switching asset allocation: Do profitable strategies exist?
-  *Journal of Asset Management*, 12(5), 310–321.
-
-- Almgren, R., & Chriss, N. (2001). Optimal execution of portfolio transactions.
-  *Journal of Risk*, 3, 5–40.
-
-- Fama, E. F., & French, K. R. (1993). Common risk factors in the returns
-  on stocks and bonds. *Journal of Financial Economics*, 33(1), 3–56.
-
-- [ADD remaining citations for XGBoost, LightGBM, Kelly, SHAP, hmmlearn]
-
----
-
-## Appendix A — Reproducibility
-
-All code, data pipelines, and trained models are available at:  
-`[GITHUB REPO URL]`
-
-To reproduce results:
-```bash
-python3 data_retrieval.py          # Phase 01: fetch data
-python3 train.py                   # Phase 03: train ML ensemble
-python3 backtest.py                # Phase 04: backtest
-python3 risk.py                    # Phase 05: risk engine
-python3 research.py zoo            # Phase 06A: strategy zoo
-python3 research.py rank           # Phase 06B: ranking
-python3 research.py env            # Phase 06C: environment characterisation
-python3 research.py meta --research  # Phase 06D: regime-gated meta-strategy
-streamlit run dashboard.py         # Phase 07: visualise all results
-```
-
-## Appendix B — Strategy Implementation Details
-
-[INSERT: pseudocode or key equations for each of the 8 strategies]
-
-## Appendix C — HMM Regime Statistics
-
-[INSERT: transition matrix, dwell times, mean/variance per state]
-
-## Appendix D — Factor Attribution Tables
-
-[INSERT: full OLS regression table per strategy with t-stats, R², alpha]
+# Causal Evaluation and Capital-Constrained Replay of Trading Rules and Classifiers
+
+Working methods draft, revised 28 September 2026. **Not a publication-ready
+profitability claim.** The earlier draft is retained in `docs/archive/`.
+
+## Research question
+
+After repairing cash accounting, temporal validation and execution semantics,
+do directional classifiers or a regime-dependent selection rule provide
+repeatable net performance beyond passive and simple-rule baselines?
+
+## Implemented methods
+
+We use a frozen adjusted-price snapshot for 22 equities and ETFs. Observations
+are restricted to completed XNYS sessions with valid OHLCV, using the common
+sample across instruments. Adjusted history may include vendor revisions and
+the universe is selected retrospectively; neither is represented as a
+historically reconstructed investable universe.
+
+The first 252 eligible return/volatility observations calibrate a Gaussian HMM.
+Training-only scales and frozen parameters are used for later forward filtering;
+the calibration window remains unknown in historical features. We do not use
+full-series Viterbi smoothing as a trading-time observable. Model features
+undergo supervised selection within purged chronological training folds.
+Class weights come from eligible training labels. Inner validation and outer
+prediction splits remove overlapping forward-label horizons. XGBoost,
+LightGBM and unidirectional LSTM probabilities use fixed static ensemble weights.
+The LSTM receives the required preceding feature sequence for each prediction.
+
+A separately fitted MoE gate uses outcomes only after labels have matured;
+its validation training observations are not described as independent gate
+performance. Static and dynamic stop/Kelly simulations are exploratory risk
+ablations; they are distinct from the executable shared-account contract.
+Classifier accuracy is compared with always-UP and training-majority baselines.
+
+Training ends in 2023; 2024 is the declared selection period; 2025 onward is
+historical evaluation. These dates were examined before this repair. We therefore
+call all historical findings exploratory, even when the newly fitted models
+have not seen the evaluation targets. The prospective protocol reserves a
+future holdout beginning no earlier than 29 September 2026.
+
+Strategy signals are also executed through a shared cash and position account.
+Targets produce holding deltas, with pending cash reservations, per-instrument,
+gross, turnover and exposure-group limits. Fees and modeled slippage are charged
+on both sides. Fills occur at the next observed close. Terminal holdings remain
+marked, and every close reconciles cash, holdings and net P&L. This account has
+no leverage, shorts, profit targets or broker bracket orders. Prospective
+broker fill timing has not been validated.
+
+The implemented momentum rule is a time-series filter, not cross-sectional
+quintile selection. The pairs rule trades a single relative-value leg, not a
+hedged cointegration portfolio. In the absence of eligible macro data, the
+carry implementation is reported as an SMA trend fallback. Macro and sentiment
+features without release, vintage and content-availability evidence are
+excluded from confirmatory interpretations.
+
+## Statistical reporting
+
+Metrics use matching dates, explicit costs, a 252-session annualization and a
+fixed 5% annual hurdle. Sortino uses downside deviation relative to that hurdle;
+alpha uses excess returns; drawdown includes starting NAV. Individual-ticker
+averages are not portfolio results. Evidence includes signed HAC mean statistics,
+block-bootstrap uncertainty, turnover, exposure, fill counts, cost stress and
+Bonferroni adjustment over the declared comparison family. All searches and
+training budgets are recorded; sensitivity cases do not become new selected
+winners based on evaluation outcomes.
+
+## Findings and claims
+
+Numerical tables and figures are generated from the immutable experiment
+outputs linked in `REPAIR_CHECKLIST.md` and the readiness report. We do not
+carry forward the previous Sharpe, alpha, win-rate, novelty, outperformance or
+"production-grade" claims. The corrected quick screen did not establish a
+qualifying strategy. Its training budget was deliberately bounded, so it does
+not prove that no better model or strategy can exist.
+
+The supported engineering result is that the tested account reconciles and
+historical replay and local paper execution share an event contract. A simulated
+profit is not prospective evidence or proof of durable excess returns. Before
+publication, the future holdout, provider-vintage evidence, broker reconciliation,
+robustness across unseen periods and claim-to-artifact review remain necessary.

@@ -61,6 +61,8 @@ def make_labels(
                index matches df.index
     fwd_ret  : raw forward return Series (useful for analysis)
     """
+    if horizon < 1 or threshold < 0:
+        raise ValueError("Positive label horizon and nonnegative threshold required")
     if close_col not in df.columns:
         raise ValueError(f"Column '{close_col}' not found in DataFrame.")
 

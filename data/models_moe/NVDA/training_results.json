@@ -1,0 +1,69 @@
+{
+  "ticker": "NVDA",
+  "horizon": 5,
+  "threshold": 0.005,
+  "n_folds": 5,
+  "oos_metrics": {
+    "accuracy": 0.4594724220623501,
+    "f1_macro": 0.33790394420390396,
+    "f1_down": 0.34877384196185285,
+    "f1_flat": 0.08459214501510574,
+    "f1_up": 0.5803458456347532
+  },
+  "best_params_xgb": {
+    "n_estimators": 210,
+    "max_depth": 4,
+    "learning_rate": 0.022096526145513846,
+    "subsample": 0.5704621124873813,
+    "colsample_bytree": 0.8813181884524238,
+    "min_child_weight": 2,
+    "gamma": 4.9344346830025865,
+    "reg_alpha": 0.08916674715636552,
+    "reg_lambda": 6.143857495033091e-07
+  },
+  "best_params_lgbm": {
+    "n_estimators": 403,
+    "max_depth": 6,
+    "learning_rate": 0.009275850420738339,
+    "num_leaves": 67,
+    "subsample": 0.6599652767012881,
+    "colsample_bytree": 0.9748943589738017,
+    "min_child_samples": 41,
+    "reg_alpha": 0.00015527584009850318,
+    "reg_lambda": 3.3404874375484034e-08
+  },
+  "feature_cols": [
+    "hl_range_pct",
+    "macd_hist",
+    "kurtosis_60",
+    "skew_60",
+    "bb_width",
+    "spy_corr_21",
+    "realized_vol_5",
+    "hmm_regime",
+    "macd_signal",
+    "rs_vs_spy_21",
+    "rs_vs_spy_63",
+    "return_5d",
+    "macd_line",
+    "macro_rate_10y",
+    "close_ema200_ratio",
+    "volume_ratio_20",
+    "adx_14",
+    "macro_rate_2y",
+    "zscore_60",
+    "spy_corr_63",
+    "macro_VIX",
+    "close_ema50_ratio",
+    "gap_return",
+    "return_21d",
+    "atr_14"
+  ],
+  "model_paths": {
+    "xgb": "/Users/a/Downloads/ml-trade-engine/data/models_moe/NVDA/xgb_final.json",
+    "lgbm": "/Users/a/Downloads/ml-trade-engine/data/models_moe/NVDA/lgbm_final.txt",
+    "lstm": "/Users/a/Downloads/ml-trade-engine/data/models_moe/NVDA/lstm_final.pt",
+    "feature_cols": "/Users/a/Downloads/ml-trade-engine/data/models_moe/NVDA/feature_cols.json"
+  },
+  "elapsed_s": 171.47546696662903
+}

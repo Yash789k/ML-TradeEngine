@@ -1,0 +1,69 @@
+{
+  "created_at": "2026-10-01T14:13:19.522246+00:00",
+  "status": "interim",
+  "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261001-week1-r2",
+  "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2",
+  "release_sha256": "12eefa88386aaa2929866554e51b0b818c113489ab12ddc4813a1591cc34906d",
+  "protocol_sha256": "92cc11fcfb182193585a3a05f705d36b634ec594c687dd87eda95a9c7224fed9",
+  "status_snapshot": {
+    "trial_id": "PILOT-TREND-WEEK1-R2-20261001",
+    "external_orders": false,
+    "deployment": "cash",
+    "shadow": "trend",
+    "state_consistency_errors": [],
+    "ledger_consistent": true,
+    "valid_observed_sessions": 0,
+    "expected_elapsed_sessions": 0,
+    "missing_sessions": [],
+    "label_complete_decisions": 0,
+    "required_sessions": 5,
+    "next_event": {
+      "id": "2026-10-01:daily",
+      "session": "2026-10-01",
+      "kind": "daily",
+      "due": "2026-10-01T20:30:00+00:00",
+      "ordinal": 1,
+      "hong_kong": "2026-10-02T04:30:00+08:00"
+    },
+    "terminal_observed_sessions": 0,
+    "terminal_required_sessions": 6,
+    "halted": false,
+    "prospective_status": "incomplete",
+    "limitations": [
+      "Local launch agent requires logged-in awake host; no wake guarantee",
+      "No external broker execution",
+      "Commissioning/replays never count as prospective",
+      "Missed sessions halt; no fabricated backfill"
+    ]
+  },
+  "predictive": {
+    "status": "unobserved",
+    "labeled_rows": 0,
+    "decision_dates": 0,
+    "metrics": [],
+    "paired_inference": [],
+    "multiplicity": "No inferential testing in this five-date operational study"
+  },
+  "economic": {
+    "status": "unobserved",
+    "observed_sessions": 0,
+    "comparisons": []
+  },
+  "readiness": {
+    "engineering": "See source-bound release qualification",
+    "historical_edge": "not_approved",
+    "prospective": "pending",
+    "broker": "disabled"
+  },
+  "source": {
+    "research_week1_r2/report.py": "c3e2bd55dca9c45b6c62b2265bf623024b3f3c723ec63310281b920364bb8b7e",
+    "research_v2/diagnostics.py": "6dd72acb64ed9b6944314ba2015b93c096cf32f36927a582b1ebfbe1d598e8ef"
+  },
+  "operational_complete": false,
+  "inference_scope": "Descriptive only; five dates are insufficient for the registered dependence-aware inference; no p-values or economic approval",
+  "limitations": [
+    "No outcome imputation or backfill",
+    "Current-vintage adjusted-return proxy units",
+    "Five decision dates cannot establish durable returns or sustained operational reliability"
+  ]
+}

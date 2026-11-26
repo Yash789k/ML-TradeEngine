@@ -1,0 +1,10 @@
+{
+  "trial": "transfer-JPM-F1-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "9f709ade988edb8a2e331a03c266b3a59c36f6da332357befd6409c3fe62d86d",
+  "expected_prediction_sha256": "b6e5f62e586b1bfc9b7d6837aad0dfabc610632656a0f83afe0e69443c2d3517",
+  "model_sha256": "5c9429c11f8ee8f5f322a1132ec54f74fdd0c611ffdee95ababd53c7198b431f"
+}

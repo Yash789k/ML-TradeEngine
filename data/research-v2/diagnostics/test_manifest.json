@@ -1,0 +1,33 @@
+{
+  "created_at": "2026-09-28T08:30:20.768290+00:00",
+  "command": "/Users/a/miniconda3/bin/python -m pytest tests/test_research_v2_diagnostics.py -q --junitxml=data/research-v2/diagnostics/test-results.xml",
+  "passed": 12,
+  "failures": 0,
+  "skipped": 0,
+  "test_ids": [
+    "tests.test_research_v2_diagnostics::test_multiclass_probability_oracle_and_maturity_guard",
+    "tests.test_research_v2_diagnostics::test_block_resampling_retains_temporal_runs_and_is_reproducible",
+    "tests.test_research_v2_diagnostics::test_block_inference_known_constant_positive_null_negative[0.1]",
+    "tests.test_research_v2_diagnostics::test_block_inference_known_constant_positive_null_negative[0]",
+    "tests.test_research_v2_diagnostics::test_block_inference_known_constant_positive_null_negative[-0.1]",
+    "tests.test_research_v2_diagnostics::test_holm_actual_family_hand_calculation",
+    "tests.test_research_v2_diagnostics::test_drawdown_includes_initial_capital_and_counts_sessions",
+    "tests.test_research_v2_diagnostics::test_flat_price_roundtrip_gross_net_and_both_side_fee_oracle",
+    "tests.test_research_v2_diagnostics::test_missing_price_halts_without_account_or_fill",
+    "tests.test_research_v2_diagnostics::test_cash_has_undefined_risk_ratios_instead_of_spurious_values",
+    "tests.test_research_v2_diagnostics::test_benchmark_mismatch_and_nonfinite_values_are_rejected",
+    "tests.test_research_v2_diagnostics::test_trade_episodes_separate_partial_sales_and_open_inventory"
+  ],
+  "source_sha256": "6dd72acb64ed9b6944314ba2015b93c096cf32f36927a582b1ebfbe1d598e8ef",
+  "test_source_sha256": "947d896e49d41a379ceabd2be5b70a59cb87cd6d6882b8e54b05bd3c724a38b3",
+  "protocol_sha256": "97d597a5c44a88a16ff444eb7e61786701907b2cb10b68b89faed8b62dcbae79",
+  "registration_sha256": "452cc7fda0be3a4d7dab743eb8ee0b3691bb6c475419b737cf993004248b7a0c",
+  "junit_sha256": "c189ae15d270f7b26c35dd24c83175a66eef15695b9cc982d5338fde01442686",
+  "market_manifest_sha256": "8c2441c940ff7eebdbab505517e531f28e15a01d8e640fd069c7fc475142c218",
+  "sealed_execution_source_sha256": "d73a212efb178285df90ba0dc46d8ded44719692b8fe2767f9af28d2fe2fee2f",
+  "environment": {
+    "python": "3.13.11",
+    "platform": "macOS-26.3-arm64-arm-64bit-Mach-O"
+  },
+  "scope": "scientific/accounting diagnostics oracles; no provider access; no broker orders; no prospective certification"
+}

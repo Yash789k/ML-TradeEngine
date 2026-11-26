@@ -1,0 +1,10 @@
+{
+  "trial": "base-TSLA-F2-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "d227d1e110b72922bc9760b5aa4093510c3b2b04c4d81951e5d8286039831f15",
+  "expected_prediction_sha256": "507ae45cb603b362af34d968db88a56d5e87ed9e97116b6c0d15488d5399c57a",
+  "model_sha256": "c4999d705d1968f5da4401e4dab430a80f53498e009e832662e88adf6ed7e699"
+}

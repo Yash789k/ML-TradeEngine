@@ -36,6 +36,12 @@ statsmodels
 # Phase 06E — Live Signal Engine
 alpaca-trade-api
 
+# Sentiment Feature Pipeline (FinBERT news sentiment)
+transformers
+
 # Phase 07 — Dashboard
 streamlit
 plotly
+
+# Session-aware daily equity validation
+exchange-calendars>=4.5,<5

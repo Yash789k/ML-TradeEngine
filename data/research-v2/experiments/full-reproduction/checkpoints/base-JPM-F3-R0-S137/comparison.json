@@ -1,0 +1,10 @@
+{
+  "trial": "base-JPM-F3-R0-S137",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "9b3ba157931e011bae49a0e1c9b95fbfe797b5343ed1c2f6dfec62e783b07a2b",
+  "expected_prediction_sha256": "5391fee8598fcd3bdd3007baec256e04a87536326bd2651d03a5265fc837b144",
+  "model_sha256": "2904a39b31b85f4ce0098848f85319a3eadbcf8582fffa39c2a0c2d8e3b5fed9"
+}

@@ -1,0 +1,400 @@
+{
+  "schema_version": 1,
+  "automation_id": "trading-pilot-evidence-watch",
+  "observer_only": true,
+  "trial_id": "PILOT-TREND-WEEK1-R6-20261022",
+  "last_checked_at": "2026-10-22T21:43:35.707167+00:00",
+  "status": {
+    "trial_id": "PILOT-TREND-WEEK1-R6-20261022",
+    "external_orders": false,
+    "deployment": "cash",
+    "shadow": "trend",
+    "state_consistency_errors": [],
+    "ledger_consistent": true,
+    "valid_observed_sessions": 1,
+    "expected_elapsed_sessions": 1,
+    "missing_sessions": [],
+    "label_complete_decisions": 0,
+    "required_sessions": 1,
+    "next_event": {
+      "id": "2026-10-22:preopen",
+      "session": "2026-10-22",
+      "kind": "preopen",
+      "ordinal": 1,
+      "due": "2026-10-23T13:00:00+00:00",
+      "hong_kong": "2026-10-23T21:00:00+08:00"
+    },
+    "terminal_observed_sessions": 0,
+    "terminal_required_sessions": 6,
+    "halted": false,
+    "prospective_status": "incomplete",
+    "limitations": [
+      "Local launch agent requires logged-in awake host; no wake guarantee",
+      "No external broker execution",
+      "Commissioning/replays never count as prospective",
+      "Missed sessions halt; no fabricated backfill"
+    ]
+  },
+  "preserved_prior_valid_decisions": 4,
+  "total_valid_observations": 5,
+  "heartbeat": {
+    "at": "2026-10-22T21:42:50.054457+00:00",
+    "parent_pid": 1,
+    "pid": 81550,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "f82d9574358e753fbcb22802d73e07106fc1c26dcf5d36c66b765504741d8245",
+    "status": "awake"
+  },
+  "heartbeat_age_seconds": 45.65271,
+  "heartbeat_stale_threshold_seconds": 300,
+  "halt": null,
+  "notified_event_ids": [
+    "PILOT-TREND-WEEK1-R6-20261022:ac-power-required:2026-10-22",
+    "PILOT-TREND-WEEK1-R6-20261022:one-new-decision-milestone:2026-10-22"
+  ],
+  "notification_records": [
+    {
+      "id": "PILOT-TREND-WEEK1-R6-20261022:ac-power-required:2026-10-22",
+      "at": "2026-10-22T04:42:38.017210+00:00",
+      "kind": "required_user_action",
+      "message": "Mac on battery at activation. User told to plug in and keep lid open, logged in and online tonight.",
+      "resolved": true,
+      "resolved_at": "2026-10-22T21:38:20.351388+00:00",
+      "resolution": "AC power, 70 percent and charging at post-close check"
+    },
+    {
+      "id": "PILOT-TREND-WEEK1-R6-20261022:one-new-decision-milestone:2026-10-22",
+      "reported_at": "2026-10-22T21:43:35.707167+00:00",
+      "kind": "valid_operational_milestone",
+      "total_valid_decisions": 5,
+      "active_valid_decisions": 1,
+      "mature_decision_dates": 3,
+      "labeled_rows": 66,
+      "active_terminal_receipts": 0,
+      "report": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r6/reports/week-close-20261023T0538HKT",
+      "report_sha256": "f917360807714bb57223ae2617cca07c50a6fe582e9b431d40a7fa1a528bb714",
+      "manuscript_update": "/Users/a/Downloads/ml-trade-engine/output/overleaf/week1-r6-update-20261023/operational-update.tex",
+      "latex_manifest_sha256": "d22de558132221719f8723e884e50a12b913431c05d85c82874ecd5fab4e39e2",
+      "final_freeze": false,
+      "profitability_approved": false,
+      "external_orders": false,
+      "observed_dates": [
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22"
+      ],
+      "interrupted_design": true
+    }
+  ],
+  "actionable_event_ids": [],
+  "observed_events": [
+    {
+      "path": "events/2026-10-22-daily.json",
+      "status": "complete",
+      "sha256": "55d73e66d21c0614760f8c966d40990c14078b0ed7ee47a88c85da822aa56ab9"
+    },
+    {
+      "path": "events/2026-10-22-retry45.json",
+      "status": "covered_by_valid_receipt",
+      "sha256": "cd1ff64401006b45af98e939ebe5f9e0e3b72c33a8c16d3285eff02fad6126c9"
+    },
+    {
+      "path": "events/2026-10-22-retry60.json",
+      "status": "covered_by_valid_receipt",
+      "sha256": "7d88a0b2d5898efdbdb7ee343f00d13445bb5c0aa3e3a36ee3f0a41ef60d8eef"
+    },
+    {
+      "path": "events/2026-10-22-watchdog.json",
+      "status": "valid_receipt",
+      "sha256": "8604fa517c0f8b2d72723a02166cc392804d14afdc40c5fc7cf41955db729159"
+    }
+  ],
+  "durable_records": {
+    "days": [
+      {
+        "path": "days/2026-10-22/result.json",
+        "sha256": "df57e2185cbc7ca31aaf2ca8db882f735b90d94f12b293c9e1fedd35d3b09a87"
+      }
+    ],
+    "attempts": [
+      {
+        "path": "attempts/2026-10-22-20261022T203048128896-3ae44c2e.json",
+        "sha256": "33737f587270ac9c4eb5aeb54a57a3b49d9db929cd6a1cd390c719fff77b779d"
+      }
+    ],
+    "events": [
+      {
+        "path": "events/2026-10-22-daily.json",
+        "sha256": "55d73e66d21c0614760f8c966d40990c14078b0ed7ee47a88c85da822aa56ab9"
+      },
+      {
+        "path": "events/2026-10-22-retry45.json",
+        "sha256": "cd1ff64401006b45af98e939ebe5f9e0e3b72c33a8c16d3285eff02fad6126c9"
+      },
+      {
+        "path": "events/2026-10-22-retry60.json",
+        "sha256": "7d88a0b2d5898efdbdb7ee343f00d13445bb5c0aa3e3a36ee3f0a41ef60d8eef"
+      },
+      {
+        "path": "events/2026-10-22-watchdog.json",
+        "sha256": "8604fa517c0f8b2d72723a02166cc392804d14afdc40c5fc7cf41955db729159"
+      }
+    ],
+    "milestones": [
+      {
+        "path": "milestones/1.json",
+        "sha256": "a8d6d9f89a3a6dedfa6c9eb28d75236407d314a573c92da185fe9762fcc0bb2b"
+      }
+    ],
+    "outages": [
+      {
+        "path": "outages/20261022T070714.json",
+        "sha256": "92c2b2d02b176c08a4161912f071664ea81719fbf15c3be8aad882dcd5f514fb"
+      },
+      {
+        "path": "outages/20261022T071908.json",
+        "sha256": "416d829815b2bb91e13daa6a6a6fbcc4e8dc7a94a1603b44641b658790af25f2"
+      },
+      {
+        "path": "outages/20261022T080902.json",
+        "sha256": "09a3b6a7546ce9812430d4ff2257782c013142d44e0158642828935808dbf090"
+      }
+    ],
+    "outcomes": [],
+    "terminal": [],
+    "outcome-runs": [],
+    "outcome-attempts": []
+  },
+  "superseded_workspaces": [
+    "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r5",
+    "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r4",
+    "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r3",
+    "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2",
+    "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1",
+    "/Users/a/Downloads/ml-trade-engine/data/paper/research-v2"
+  ],
+  "commissioning": {
+    "trigger": {
+      "at": "2026-10-22T04:39:04.617950+00:00",
+      "parent_pid": 1,
+      "pid": 84066,
+      "scheduler": "launchd",
+      "service": "local.ml-trade-engine.collector-v2",
+      "source_sha256": "f82d9574358e753fbcb22802d73e07106fc1c26dcf5d36c66b765504741d8245",
+      "status": "awake",
+      "content_sha256": "5c2070fa5a53c999eb6ae0cf10254cf504ee27d5b20dac45eaa2c3a2d8101f3d"
+    },
+    "completed_at": "2026-10-22T04:39:34.172323+00:00",
+    "mode": "commissioning_preview",
+    "session": "2026-10-21",
+    "symbol_count": 22,
+    "result_sha256": "ce43233ad0a9ce12dd5178e81e300a041462680b4cf5810d67f660b29686b0c1",
+    "snapshot_sha256": "83c5c4395f50d1fa2bb6d072aaf01ee050230089e0ecfcb58c5df356b70f06f0",
+    "timings_seconds": {
+      "data_read": 27.753712125006132,
+      "features": 0.20298103929962963,
+      "inference": 0.12162958597764373,
+      "ledger": 0.013295542099513113,
+      "training": 0.0,
+      "whole_batch": 28.918660124996677
+    },
+    "accounts": {
+      "deployment": {
+        "equity": 10000.0,
+        "cash": 10000.0,
+        "reconciliation_error": 0.0,
+        "fees": 0.0,
+        "reserved_cash": 0
+      },
+      "shadow": {
+        "equity": 10000.0,
+        "cash": 10000.0,
+        "reconciliation_error": 0.0,
+        "fees": 0.0,
+        "reserved_cash": 4126.177826729273
+      }
+    },
+    "counts_as_prospective": false
+  },
+  "last_check_disposition": "post_close_valid_one_new_decision_milestone_reported_outcomes_pending",
+  "verification": {
+    "release_integrity_verified": true,
+    "ledger_consistent": true,
+    "launchd_targets_active_release": true,
+    "sleep_guard_running": true,
+    "dashboard_health": "ok"
+  },
+  "reported_installation": true,
+  "notification_gates": {
+    "new_actionable_failure": false,
+    "required_user_action": false,
+    "one_new_session_milestone": true,
+    "final_maturity": false
+  },
+  "skipped_invocations": [
+    {
+      "trigger_at": "2026-10-23T14:18:10.113000+00:00",
+      "processed_at": "2026-10-23T14:18:48.022624+00:00",
+      "exchange_session": "2026-10-23",
+      "reason": "outside_registered_boundary_windows",
+      "allowed_windows_utc": [
+        [
+          "2026-10-23T13:30:00+00:00",
+          "2026-10-23T13:45:00+00:00"
+        ],
+        [
+          "2026-10-23T21:30:00+00:00",
+          "2026-10-23T21:45:00+00:00"
+        ]
+      ],
+      "collector_inspected": false,
+      "new_notifications": []
+    },
+    {
+      "trigger_at": "2026-10-24T13:38:41.022000+00:00",
+      "processed_at": "2026-10-24T13:39:04.525994+00:00",
+      "exchange_session": "2026-10-24",
+      "reason": "non_session_date",
+      "allowed_windows_utc": [],
+      "collector_inspected": false,
+      "new_notifications": []
+    }
+  ],
+  "known_scheduler_stderr": {
+    "sha256": "7844fb4afca2c90f1a382d1d9b7f3d8a118d05b421ce3683c7bb9504ac922abc",
+    "bytes": 1518,
+    "disposition": "resolved_non_actionable",
+    "reason": "Recovered idle timer lock contention during read-only installation report, outside all collection windows",
+    "resolution_evidence": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r6/activation-check-resolution.json"
+  },
+  "provider_incident": {
+    "superseded_trial": "PILOT-TREND-WEEK1-R5-20261021",
+    "preserved": true,
+    "diagnostic": "/Users/a/Downloads/ml-trade-engine/docs/research-week1-r6/PROVIDER_INCIDENT.md",
+    "new_release_repair_qualified": true,
+    "missed_decision_backfilled": false
+  },
+  "last_boundary_check": {
+    "trigger_at": "2026-10-22T21:37:52.418000+00:00",
+    "session": "2026-10-22",
+    "window": "post_close",
+    "checked_at": "2026-10-22T21:43:35.707167+00:00",
+    "new_required_events": 4,
+    "future_decision_pending": false,
+    "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=24445027)\t70%; charging; 4:24 remaining present: true",
+    "collector_last_exit": 0,
+    "sole_owner": true,
+    "sleep_guard_pid": 84060,
+    "stderr_unchanged": true,
+    "additional_tests_run": "14 targeted report checks for future active segment tag correction; frozen runtime unchanged",
+    "reports_generated": true
+  },
+  "power_at_last_check": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=24445027)\t70%; charging; 4:24 remaining present: true",
+  "non_actionable_outages": [
+    {
+      "path": "outages/20261022T070714.json",
+      "sha256": "92c2b2d02b176c08a4161912f071664ea81719fbf15c3be8aad882dcd5f514fb",
+      "gap_seconds": 4377.921225,
+      "previous": "2026-10-22T05:54:16.802834+00:00",
+      "resumed": "2026-10-22T07:07:14.724059+00:00",
+      "disposition": "recovered_before_any_required_event"
+    },
+    {
+      "path": "outages/20261022T071908.json",
+      "sha256": "416d829815b2bb91e13daa6a6a6fbcc4e8dc7a94a1603b44641b658790af25f2",
+      "gap_seconds": 714.021642,
+      "previous": "2026-10-22T07:07:14.724059+00:00",
+      "resumed": "2026-10-22T07:19:08.745701+00:00",
+      "disposition": "recovered_before_any_required_event"
+    },
+    {
+      "path": "outages/20261022T080902.json",
+      "sha256": "09a3b6a7546ce9812430d4ff2257782c013142d44e0158642828935808dbf090",
+      "gap_seconds": 409.750922,
+      "previous": "2026-10-22T08:02:12.570680+00:00",
+      "resumed": "2026-10-22T08:09:02.321602+00:00",
+      "disposition": "recovered_before_any_required_event"
+    }
+  ],
+  "observations": [
+    {
+      "at": "2026-10-22T13:38:11.256674+00:00",
+      "session": "2026-10-22",
+      "window": "market_open",
+      "new_observed_sessions": 0,
+      "halted": false,
+      "new_notification_ids": [],
+      "disposition": "quiet_unchanged_or_non_actionable"
+    },
+    {
+      "at": "2026-10-22T21:43:35.707167+00:00",
+      "session": "2026-10-22",
+      "window": "post_close",
+      "new_observed_sessions": 1,
+      "halted": false,
+      "new_notification_ids": [
+        "PILOT-TREND-WEEK1-R6-20261022:one-new-decision-milestone:2026-10-22"
+      ],
+      "disposition": "milestone_reported"
+    }
+  ],
+  "total_mature_decision_dates": 3,
+  "interim_report": {
+    "id": "PILOT-TREND-WEEK1-R6-20261022:one-new-decision-milestone:2026-10-22",
+    "reported_at": "2026-10-22T21:43:35.707167+00:00",
+    "kind": "valid_operational_milestone",
+    "total_valid_decisions": 5,
+    "active_valid_decisions": 1,
+    "mature_decision_dates": 3,
+    "labeled_rows": 66,
+    "active_terminal_receipts": 0,
+    "report": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r6/reports/week-close-20261023T0538HKT",
+    "report_sha256": "f917360807714bb57223ae2617cca07c50a6fe582e9b431d40a7fa1a528bb714",
+    "manuscript_update": "/Users/a/Downloads/ml-trade-engine/output/overleaf/week1-r6-update-20261023/operational-update.tex",
+    "latex_manifest_sha256": "d22de558132221719f8723e884e50a12b913431c05d85c82874ecd5fab4e39e2",
+    "final_freeze": false,
+    "profitability_approved": false,
+    "external_orders": false,
+    "observed_dates": [
+      "2026-10-01",
+      "2026-10-02",
+      "2026-10-14",
+      "2026-10-15",
+      "2026-10-22"
+    ],
+    "interrupted_design": true
+  },
+  "future_report_module": "research_week1_r6.report_20261023",
+  "report_label_revision": {
+    "qualification": "data/research-week1-r6/report-20261023-source-evidence.json",
+    "original_source_preserved": true,
+    "current_interim_unaffected": true,
+    "runtime_unchanged": true
+  },
+  "final_gates": {
+    "all_five_decisions": true,
+    "all_five_mature_outcomes": false,
+    "six_active_terminal_receipts": false,
+    "active_accounts_reconciled": true,
+    "no_active_halt": true,
+    "freeze_allowed": false,
+    "final_collection_hkt": "2026-10-31T04:30:00+08:00"
+  },
+  "last_invocation_disposition": "skipped_non_session_date",
+  "shutdown_after_completion": {
+    "requested_at": "2026-10-23T19:47:54.037192+00:00",
+    "authorization": "If the collection is complete, stop the daily collections and scheduled tasks",
+    "condition": "Verified final evidence: all five mature outcomes, six active terminal receipts, reconciled accounts and no active halt",
+    "collection_complete_at_request": false,
+    "active_terminal_receipts_at_request": 0,
+    "action_taken": "Existing observer updated with completion shutdown procedure; necessary outcome collection retained",
+    "collector_service": "local.ml-trade-engine.collector-v2",
+    "guard_service": "local.ml-trade-engine.awake-week1-r6",
+    "observer_id": "trading-pilot-evidence-watch",
+    "preserve_dashboard": true,
+    "preserve_evidence": true
+  }
+}

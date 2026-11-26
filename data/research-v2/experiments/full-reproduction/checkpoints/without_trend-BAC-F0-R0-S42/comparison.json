@@ -1,0 +1,10 @@
+{
+  "trial": "without_trend-BAC-F0-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "5b1e3ed4b2bd60b809a5445f45b84081032560c9402f545e42435a16b1343992",
+  "expected_prediction_sha256": "22f9c6705c23fc1c1b93cfe934c0676e835d4df8b9b4d5c6ab221f6b236d092f",
+  "model_sha256": "59dd65c07ec437376458bc68a05ce72726356fe6a4d63e60d8c432486908ff24"
+}

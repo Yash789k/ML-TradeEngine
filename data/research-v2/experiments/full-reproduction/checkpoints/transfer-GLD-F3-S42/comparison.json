@@ -1,0 +1,10 @@
+{
+  "trial": "transfer-GLD-F3-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "2f83b447e5e98adb2e832c0d7994666cd73f8e9629d830f174be348fc7529253",
+  "expected_prediction_sha256": "4fe74ba43b58f159906237f5e90468fd73a9eb4c7c15daced5d7f9a5745f5d6e",
+  "model_sha256": "69787b05a3a9ef5592c62c60c769052d0f7e3e5e8599a2a840dcbdfd5ca12d20"
+}

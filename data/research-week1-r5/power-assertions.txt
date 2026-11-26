@@ -1,0 +1,27 @@
+2026-10-21 12:41:05 +0800 
+Assertion status system-wide:
+   BackgroundTask                 0
+   ApplePushServiceTask           0
+   UserIsActive                   1
+   PreventUserIdleDisplaySleep    0
+   SoftwareUpdateTask             0
+   PreventSystemSleep             0
+   ExternalMedia                  0
+   PreventUserIdleSystemSleep     1
+   NetworkClientActive            0
+Listed by owning process:
+   pid 14160(caffeinate): [0x000bb55c00019441] 00:05:12 PreventUserIdleSystemSleep named: "caffeinate command-line tool"  
+	Details: caffeinate asserting for 753847 secs
+	Localized=THE CAFFEINATE TOOL IS PREVENTING SLEEP.
+	Timeout will fire in 753535 secs Action=TimeoutActionRelease
+   pid 14160(caffeinate): [0x000bb55c00079442] 00:05:12 PreventSystemSleep named: "caffeinate command-line tool"  
+	Details: caffeinate asserting for 753847 secs
+	Localized=THE CAFFEINATE TOOL IS PREVENTING SLEEP.
+	Timeout will fire in 753535 secs Action=TimeoutActionRelease
+   pid 13582(WhatsApp): [0x000bb182000192e9] 00:21:37 PreventUserIdleSystemSleep named: "cameracaptured-idleSleepPreventionForBWFigCaptureDevice"  
+   pid 373(powerd): [0x000bb09d000192a0] 00:25:26 PreventUserIdleSystemSleep named: "Powerd - Prevent sleep while display is on"  
+   pid 373(powerd): [0x000003eb000987ed] 05:01:28 UserIsActive named: "com.apple.powermanagement.lidopen"  
+   pid 373(powerd): [0x0001c37500099c97] 38:57:16 UserIsActive named: "com.apple.powermanagement.kernel.useractive IOPMrootDomain:hibernate user wake"  
+   pid 373(powerd): [0x000000cc00098007] 382:28:51 UserIsActive named: "com.apple.powerd.ws.initialize"  
+   pid 433(WindowServer): [0x000000d00009808b] 00:08:43 UserIsActive named: "com.apple.iohideventsystem.queue.tickle serviceID:100050cbc service:AppleMultitouchDevice product:Apple Internal Keyboard / Trackpad eventType:11"  
+No kernel assertions.

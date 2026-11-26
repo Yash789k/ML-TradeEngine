@@ -1,0 +1,46 @@
+{
+  "exceptions": [],
+  "metrics": [
+    {
+      "label": "Total verified observations",
+      "value": "4"
+    },
+    {
+      "label": "New segment progress",
+      "value": "0/1"
+    },
+    {
+      "label": "New segment mature dates",
+      "value": "0"
+    },
+    {
+      "label": "Missed decisions in archived r2/r3/r4",
+      "value": "6"
+    },
+    {
+      "label": "Deployment equity",
+      "value": "$10,000.00"
+    },
+    {
+      "label": "Cash",
+      "value": "$10,000.00"
+    },
+    {
+      "label": "Reconciliation residual",
+      "value": "$0.00e+00"
+    },
+    {
+      "label": "Shadow equity",
+      "value": "$10,000.00"
+    },
+    {
+      "label": "Cash",
+      "value": "$10,000.00"
+    },
+    {
+      "label": "Reconciliation residual",
+      "value": "$0.00e+00"
+    }
+  ],
+  "health": "ok"
+}

@@ -1,0 +1,88 @@
+{
+  "role": "Independent post-run qualification; synthetic behavior fits only, no additional research selection or actual-estimator retraining",
+  "started_at": "2026-10-30T08:51:47.839583+00:00",
+  "completed_at": "2026-10-30T08:51:54.221684+00:00",
+  "command": [
+    "/Users/a/Downloads/ml-trade-engine/data/research-v2/clean-env/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/controller_v1_review/test_independent.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=/Users/a/Downloads/ml-trade-engine/data/research-controller-v1/review-v1/tests.xml"
+  ],
+  "exit_status": 0,
+  "seconds": 6.381599958054721,
+  "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]",
+  "executable": "/Users/a/Downloads/ml-trade-engine/data/research-v2/clean-env/bin/python",
+  "platform": "macOS-26.3-arm64-arm-64bit-Mach-O",
+  "packages": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "21.0.0",
+    "pytest": "9.0.3",
+    "threadpoolctl": "3.6.0"
+  },
+  "test_ids": [
+    {
+      "id": "tests.controller_v1_review.test_independent::test_full_stack_future_label_mutation_including_july_refit",
+      "seconds": 2.121,
+      "failed": false,
+      "error": false,
+      "skipped": false
+    },
+    {
+      "id": "tests.controller_v1_review.test_independent::test_full_stack_future_probability_mutation_including_july_refit",
+      "seconds": 0.945,
+      "failed": false,
+      "error": false,
+      "skipped": false
+    },
+    {
+      "id": "tests.controller_v1_review.test_independent::test_actual_stack_fit_excludes_same_day_endpoints",
+      "seconds": 0.402,
+      "failed": false,
+      "error": false,
+      "skipped": false
+    },
+    {
+      "id": "tests.controller_v1_review.test_independent::test_actual_hedge_feedback_counts_unique_strictly_mature_dates",
+      "seconds": 0.047,
+      "failed": false,
+      "error": false,
+      "skipped": false
+    },
+    {
+      "id": "tests.controller_v1_review.test_independent::test_actual_baselines_match_distinct_registered_expert_sets",
+      "seconds": 0.021,
+      "failed": false,
+      "error": false,
+      "skipped": false
+    },
+    {
+      "id": "tests.controller_v1_review.test_independent::test_completed_manifest_and_registered_source_inputs_unchanged",
+      "seconds": 0.017,
+      "failed": false,
+      "error": false,
+      "skipped": false
+    }
+  ],
+  "scope": [
+    "full-stack future-label mutation through July refit",
+    "full-stack future-probability mutation through July refit",
+    "actual stack fitting excludes endpoints on decision date",
+    "actual Hedge updates count mature unique dates",
+    "actual fixed2/prior/uniform3 baseline oracles",
+    "completed manifest and source/input hash verification"
+  ],
+  "synthetic_behavior_fits": 6,
+  "research_fits": 0,
+  "test_source_sha256": "d02141f0f9ea03ee09eda8ac181ec3d7a4fafa7118d4682f580f14f99166b8e7",
+  "screen_manifest_sha256": "165f599244614e49adddf93db7d14f18755dab83c5b9697d7eb1ba2224c50f99",
+  "screen_protocol_sha256": "d9a9c6d484c7191a7a6dd741fae8bc1a1bda52cf0aa88b6426dd866aae54e281",
+  "screen_source_sha256": "e423b2d46f26be527dec7fcb3f323e7790b1cd006b73796770508f5fa93f2a69"
+}

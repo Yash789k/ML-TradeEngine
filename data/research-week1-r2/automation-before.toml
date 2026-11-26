@@ -1,0 +1,10 @@
+version = 1
+id = "trading-pilot-evidence-watch"
+kind = "heartbeat"
+name = "Trading pilot evidence watch"
+prompt = "In /Users/a/Downloads/ml-trade-engine, follow the boundary-check procedure in docs/research-week1/OPERATIONS.md. Check only the market-open or post-close window for an eligible XNYS session. Use sealed status and inspect new receipts, heartbeat, halt, reconciliation and milestones; retain notification state in docs/research-week1/observer-state.json. Launchd is the sole collector and performs data collection and validation. Do not run daily/tick/commission, clear halts, backfill, refit, retune, enable broker orders or publish. Reuse existing qualifications; run additional targeted tests only for changed code or a new failure. Stay quiet on unchanged state, including the known missed-session halt; notify only new actionable failures or valid milestones. Generate the registered week-close/final reports only when their evidence gates pass, then pause after reporting final maturity. Keep commissioning separate and make no profitability approval."
+status = "ACTIVE"
+rrule = "FREQ=WEEKLY;WKST=MO;BYDAY=MO,TU,WE,TH,FR,SA;BYHOUR=5,21;BYMINUTE=30;BYSECOND=0;BYSETPOS=2,3,4,5,6,7,8,9,10,11"
+target_thread_id = "01a0e70e-ccdd-7b91-b17e-9af2b3eca477"
+created_at = 1790584270625
+updated_at = 1790748369672

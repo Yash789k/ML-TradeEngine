@@ -1,0 +1,101 @@
+{
+  "commissioning": {
+    "deployment_equity": 10000.0,
+    "deployment_reconciliation": 0.0,
+    "mode": "commissioning_preview",
+    "peak_rss_bytes": 220839936,
+    "provider_request_count": 22,
+    "result_sha256": "548a2b3951269e82e54a8b7aea4de54a9c5298e78a27d0861c30296805080087",
+    "session": "2026-09-25",
+    "shadow_equity": 10000.0,
+    "shadow_reconciliation": 0.0,
+    "snapshot_sha256": "51dd9291a4501427f04b15d99f8e968d64c1c24a33152889e1b745733d22b6b9",
+    "symbols": 22,
+    "timings_seconds": {
+      "data_read": 30.10800612499588,
+      "features": 0.4423881710099522,
+      "inference": 0.22674458396795671,
+      "ledger": 0.02576575000421144,
+      "training": 0.0,
+      "whole_batch": 33.27402058400912
+    }
+  },
+  "external_orders": false,
+  "host_must_remain_awake": true,
+  "latest_heartbeat": {
+    "at": "2026-09-28T08:53:04.805766+00:00",
+    "parent_pid": 1,
+    "pid": 16041,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+    "status": "awake"
+  },
+  "original_trigger": {
+    "at": "2026-09-28T08:50:56.358915+00:00",
+    "content_sha256": "e89b708f7c0d9037f3ef233c6521be3f0fa6f2a77150845d4afd9051b39d4a62",
+    "parent_pid": 1,
+    "pid": 15806,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+    "status": "awake"
+  },
+  "os_report": [
+    "state = not running",
+    "runs = 2",
+    "last exit code = 0",
+    "state = active",
+    "state = active",
+    "run interval = 60 seconds"
+  ],
+  "physical_sleep_restart_tested": false,
+  "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-r2",
+  "release_sha256": "570372e203c6ef943deb37c2856a4ca7f0c3d34a168ac247d5b1cb2232916f43",
+  "remote_workflow_tested": false,
+  "restore": {
+    "at": "2026-09-28T08:52:18.054344+00:00",
+    "backup_receipt_sha256": "bd6cff494a11962c069dc7814b720cbb71fcf08ff59798997ca1ba89824965a2",
+    "ledger_consistent": true,
+    "preserved_original": "/Users/a/Downloads/ml-trade-engine/data/paper/research-v2/commissioning-before-restore-r2",
+    "receipt_sha256": "548a2b3951269e82e54a8b7aea4de54a9c5298e78a27d0861c30296805080087",
+    "release_sha256": "570372e203c6ef943deb37c2856a4ca7f0c3d34a168ac247d5b1cb2232916f43",
+    "status": "restored_at_original_path",
+    "symbols": 22,
+    "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-v2/commissioning"
+  },
+  "scheduler_label": "local.ml-trade-engine.collector-v2",
+  "status": {
+    "deployment": "cash",
+    "expected_elapsed_sessions": 0,
+    "external_orders": false,
+    "halted": false,
+    "label_complete_decisions": 0,
+    "ledger_consistent": true,
+    "limitations": [
+      "Local launch agent requires logged-in awake host; no wake guarantee",
+      "No external broker execution",
+      "Commissioning/replays never count as prospective",
+      "Missed sessions halt; no fabricated backfill"
+    ],
+    "missing_sessions": [],
+    "next_event": {
+      "due": "2026-09-29T20:30:00+00:00",
+      "hong_kong": "2026-09-30T04:30:00+08:00",
+      "id": "2026-09-29:daily",
+      "kind": "daily",
+      "ordinal": 1,
+      "session": "2026-09-29"
+    },
+    "prospective_status": "incomplete",
+    "required_sessions": 63,
+    "shadow": "trend",
+    "state_consistency_errors": [],
+    "terminal_observed_sessions": 0,
+    "terminal_required_sessions": 6,
+    "trial_id": "PILOT-TREND-V2-20260929",
+    "valid_observed_sessions": 0
+  },
+  "trial_id": "PILOT-TREND-V2-20260929",
+  "verified_at": "2026-09-28T08:53:16.709797+00:00"
+}

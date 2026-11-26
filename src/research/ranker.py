@@ -45,6 +45,7 @@ _TRADING_DAYS  = 252
 def alpha_beta(
     strategy_returns: pd.Series,
     benchmark_returns: pd.Series,
+    risk_free: float = 0.05,
 ) -> tuple[float, float]:
     """
     Compute annualised Jensen's alpha and beta via OLS regression.
@@ -62,6 +63,8 @@ def alpha_beta(
     if len(aligned) < 30:
         return 0.0, 1.0
 
+    daily_rf = (1 + risk_free) ** (1 / _TRADING_DAYS) - 1
+    aligned -= daily_rf
     X = sm.add_constant(aligned["b"])
     model = sm.OLS(aligned["s"], X).fit()
     daily_alpha = float(model.params.get("const", 0.0))
@@ -75,8 +78,9 @@ def t_stat_returns(daily_returns: pd.Series) -> float:
     clean = daily_returns.dropna().replace([np.inf, -np.inf], 0)
     if len(clean) < 10 or clean.std() == 0:
         return 0.0
-    t, _ = stats.ttest_1samp(clean, 0)
-    return round(float(t), 4)
+    fit = sm.OLS(clean.to_numpy(), np.ones((len(clean), 1))).fit(
+        cov_type="HAC", cov_kwds={"maxlags": min(10, len(clean) // 4)})
+    return round(float(fit.tvalues[0]), 4)
 
 
 def information_ratio(
@@ -107,13 +111,13 @@ def composite_score(row: pd.Series) -> float:
       Calmar ratio     0.25
       CAGR             0.20
       Alpha (annual)   0.15
-      t-stat (|t|)     0.05
+      signed HAC t-stat     0.05
     """
     sharpe = row.get("sharpe_ratio", 0) or 0
     calmar = row.get("calmar_ratio", 0) or 0
     cagr_v = row.get("cagr", 0) or 0
     alpha  = row.get("alpha", 0) or 0
-    tstat  = abs(row.get("t_stat", 0) or 0)
+    tstat  = row.get("t_stat", 0) or 0
 
     # Normalise Calmar to same scale as Sharpe (cap at 3)
     calmar_norm = min(calmar, 3.0) / 3.0

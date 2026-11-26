@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-27T09:24:20.478989+00:00",
+  "counts_as_decision": false,
+  "counts_as_scheduled_outcome_read": false,
+  "mode": "manual_provider_preflight",
+  "session": "2026-10-26",
+  "snapshot": "/Users/a/Downloads/ml-trade-engine/data/research-outcomes-r7/preflight-20261027",
+  "snapshot_sha256": "872aa645b0ec19c19671c6f1ad6bbd479225d6d0d4ebc0765ea9ad3cfddc0bb7",
+  "symbols": 22
+}

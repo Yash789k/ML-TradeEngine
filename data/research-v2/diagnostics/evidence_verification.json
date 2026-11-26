@@ -1,0 +1,21 @@
+{
+  "sealed_files_checked": 722,
+  "sealed_files_changed": [],
+  "release_artifact_hashes": 167,
+  "archived_source_hashes": 82,
+  "reproduced_files_checked": 66,
+  "reproduction": "exact numeric/text-object comparison repeated against both saved sets; no new model training",
+  "saved_junit": {
+    "total": 310,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "saved_test_log_selection": [
+    "310 passed, 17 deselected, 10 warnings in 57.87s"
+  ],
+  "provider_integrations_unrun_saved": 17,
+  "provider_exclusions_scope": "17 recorded in historical verification and test log; not newly executed",
+  "engineering_scope": "Saved JUnit is historical evidence and does not certify current source",
+  "market_manifest_sha256": "8c2441c940ff7eebdbab505517e531f28e15a01d8e640fd069c7fc475142c218"
+}

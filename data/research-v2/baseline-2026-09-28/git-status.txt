@@ -1,0 +1,110 @@
+ M .github/workflows/daily_signals.yml
+ M .gitignore
+ M README.md
+ M dashboard.py
+ M data/live/signal_log.db
+ M docs/PHASE_06D_PAPER_DRAFT.md
+ M docs/ml-trade-engine-mvp.md
+ M extract_paper_numbers.py
+ M live.py
+ M requirements.txt
+ M src/backtest/metrics.py
+ M src/backtest/runner.py
+ M src/backtest/signals.py
+ M src/backtest/simulator.py
+ M src/data/loader.py
+ M src/data/sources.py
+ M src/features/cross_asset.py
+ M src/features/pipeline.py
+ M src/features/regime.py
+ M src/live/alerts.py
+ M src/live/broker.py
+ M src/live/engine.py
+ M src/live/logger.py
+ M src/live/signal_generator.py
+ M src/models/ensemble.py
+ M src/models/labels.py
+ M src/models/lgbm_model.py
+ M src/models/lstm_model.py
+ M src/models/trainer.py
+ M src/models/xgb_model.py
+ M src/research/env_analyzer.py
+ M src/research/meta_strategy.py
+ M src/research/ranker.py
+ M src/research/strategies/alpha_trends.py
+ M src/research/strategies/carry_proxy.py
+ M src/research/zoo_runner.py
+ M src/risk/engine.py
+ M src/risk/stops.py
+ M tests/test_data_pipeline.py
+ M tests/test_env_analyzer.py
+ M tests/test_feature_pipeline.py
+ M tests/test_live.py
+ M tests/test_ml_pipeline.py
+ M train.py
+?? app.py
+?? data/models_moe/
+?? data/research-v2/
+?? data/research/moe/
+?? data/research/policy/
+?? data/research/sentiment/
+?? docs/ADAPTIVE_PROTOCOL_2026-09-28.md
+?? docs/ADAPTIVE_RELEASE_READINESS.md
+?? docs/ADAPTIVE_RESEARCH_PAPER.md
+?? docs/MOE_RESULTS.md
+?? docs/POLICY_RESULTS.md
+?? docs/PROSPECTIVE_PAPER_PROTOCOL.md
+?? docs/REPAIR_CHECKLIST.md
+?? docs/REPAIR_REPORT_2026-09-28.md
+?? docs/REPOSITORY_AUDIT_2026-09-27.md
+?? docs/SENTIMENT_RESULTS.md
+?? docs/archive/
+?? docs/audit-2026-09-27.json
+?? docs/audit-runtime-2026-09-27.json
+?? docs/more-finalized-deck.pptx
+?? docs/repair-evidence/
+?? docs/research-brief/
+?? output/
+?? pytest.ini
+?? scripts/_score_sentiment_worker.py
+?? scripts/bootstrap_models.py
+?? scripts/build_adaptive_paper.py
+?? scripts/build_repair_report.py
+?? scripts/compare_moe.py
+?? scripts/compare_policy.py
+?? scripts/fetch_release_data.py
+?? scripts/local_sandbox.py
+?? scripts/operational_status.py
+?? scripts/release_figures.py
+?? scripts/replay_portfolio.py
+?? scripts/repository_audit.py
+?? scripts/reproduce_adaptive.py
+?? scripts/reproduce_run.py
+?? scripts/seal_adaptive_release.py
+?? scripts/sentiment_shap_report.py
+?? scripts/train_adaptive_release.py
+?? scripts/validated_research.py
+?? src/backtest/portfolio.py
+?? src/data/snapshot.py
+?? src/data/validation.py
+?? src/execution/
+?? src/features/sentiment.py
+?? src/live/adaptive.py
+?? src/live/meta_signal_generator.py
+?? src/models/adaptive.py
+?? src/models/bundle.py
+?? src/models/gating.py
+?? src/research/adaptive_portfolio.py
+?? src/research/protocol.py
+?? src/risk/policy_engine.py
+?? tests/test_accounting_regressions.py
+?? tests/test_adaptive_release.py
+?? tests/test_causality_regressions.py
+?? tests/test_gating.py
+?? tests/test_meta_signal_generator.py
+?? tests/test_operational_regressions.py
+?? tests/test_policy_engine.py
+?? tests/test_portfolio_execution.py
+?? tests/test_research_protocol.py
+?? tests/test_sentiment.py
+?? trader.py

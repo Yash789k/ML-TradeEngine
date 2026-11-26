@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "config": {
+      "history": 1008,
+      "fraction": 0.75,
+      "remove": "",
+      "seed": 42,
+      "calibration": 63,
+      "gate": 63,
+      "cadence": 63
+    },
+    "decision": "2024-07-01 00:00:00+00:00",
+    "fitting_symbols": [
+      "MSFT"
+    ],
+    "boundaries": [
+      {
+        "symbol": "MSFT",
+        "fit_start": "2021-04-30 00:00:00+00:00",
+        "fit_end": "2023-11-30 00:00:00+00:00",
+        "fit_endpoint": "2023-12-08 00:00:00+00:00",
+        "calibration_start": "2023-12-11 00:00:00+00:00",
+        "calibration_end": "2024-03-12 00:00:00+00:00",
+        "calibration_endpoint": "2024-03-20 00:00:00+00:00",
+        "gate_start": "2024-03-21 00:00:00+00:00",
+        "gate_end": "2024-06-20 00:00:00+00:00",
+        "gate_endpoint": "2024-06-28 00:00:00+00:00",
+        "n_fit": 652,
+        "n_cal": 63,
+        "n_gate": 63
+      }
+    ],
+    "n_fit": 652,
+    "n_cal": 63,
+    "n_gate": 63,
+    "temperature": 3.0,
+    "gate_same": false,
+    "gate_separate": false,
+    "calibration_loss": 1.0904188132668216,
+    "calibration_prior_loss": 1.0527613832557916,
+    "gate_loss": 1.041989629086955,
+    "gate_prior_loss": 1.0485506192034377,
+    "train_log_loss": 0.9610367143595415,
+    "train_accuracy": 0.7530674846625767,
+    "fit_seconds": 0.18245583400130272,
+    "training_hash": "b39d1f63c73e3bf4ecb3244187369a9a73d71762778685c1cd3d702fa3a1d5f7"
+  },
+  "sha256": "ad86a630d9d44de63120279404da4a6f7f2cda9481832f1379363c1abd9dd7d1"
+}

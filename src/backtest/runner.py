@@ -250,8 +250,7 @@ class BacktestRunner:
                                   "close"]], "signals")
 
         # Trade log
-        if len(sim.trade_log) > 0:
-            _write_parquet(sim.trade_log, "trade_log")
+        _write_parquet(sim.trade_log, "trade_log")
 
         # Metrics comparison
         _write_parquet(metrics_cmp.reset_index(), "metrics_comparison")

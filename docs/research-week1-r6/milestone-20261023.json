@@ -1,0 +1,25 @@
+{
+  "id": "PILOT-TREND-WEEK1-R6-20261022:one-new-decision-milestone:2026-10-22",
+  "reported_at": "2026-10-22T21:43:35.707167+00:00",
+  "kind": "valid_operational_milestone",
+  "total_valid_decisions": 5,
+  "active_valid_decisions": 1,
+  "mature_decision_dates": 3,
+  "labeled_rows": 66,
+  "active_terminal_receipts": 0,
+  "report": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r6/reports/week-close-20261023T0538HKT",
+  "report_sha256": "f917360807714bb57223ae2617cca07c50a6fe582e9b431d40a7fa1a528bb714",
+  "manuscript_update": "/Users/a/Downloads/ml-trade-engine/output/overleaf/week1-r6-update-20261023/operational-update.tex",
+  "latex_manifest_sha256": "d22de558132221719f8723e884e50a12b913431c05d85c82874ecd5fab4e39e2",
+  "final_freeze": false,
+  "profitability_approved": false,
+  "external_orders": false,
+  "observed_dates": [
+    "2026-10-01",
+    "2026-10-02",
+    "2026-10-14",
+    "2026-10-15",
+    "2026-10-22"
+  ],
+  "interrupted_design": true
+}

@@ -1,0 +1,10 @@
+{
+  "trial": "fraction_0.5-AMZN-F2-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "dcd4376898c3c4b8ac5fbaea7684f47832d669ad0c7d00077d2db29feada817d",
+  "expected_prediction_sha256": "dbded9036f3b78f3db495d544a86561c3c6acecfa1ab520de6945cfbc22b4140",
+  "model_sha256": "c292c013b1aa3c44c2f801d3bb462c213b766916e91a3925e10ecc0fdc81ac42"
+}

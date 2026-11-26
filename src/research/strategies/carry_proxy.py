@@ -71,17 +71,14 @@ class CarryProxyStrategy(BaseStrategy):
         ma200 = close.rolling(self.ma_period).mean()
 
         if macro is None or self.spread_col not in macro.columns:
-            # Fall back to pure trend filter when macro is unavailable
-            signal = (close > ma200).astype(int).fillna(0)
-            return signal
-
-        # Align macro to equity index
-        spread = (
-            macro[self.spread_col]
-            .reindex(close.index)
-            .ffill()
-            .fillna(0)
-        )
+            # Reported by the repaired evaluator as SMA_200_Trend_Fallback.
+            return (close > ma200).astype(int).fillna(0)
+        from src.features.cross_asset import add_macro_features
+        merged = add_macro_features(pd.DataFrame(index=close.index), macro, cols=[self.spread_col])
+        key = f"macro_{self.spread_col}"
+        if key not in merged:
+            return (close > ma200).astype(int).fillna(0)
+        spread = merged[key]
 
         entry_cond = (spread > 0) & (close > ma200)
         exit_cond  = (spread <= 0) | (close < ma200 * (1 - self.ma_buffer))

@@ -1,0 +1,1312 @@
+Causal Forecasts, Constrained Portfolios, and
+Prospective Operation
+An auditable empirical study of ML-TradeEngine
+Yash Kataria
+28 September 2026
+Historical evidence through 25 September 2026.
+Prospective sections remain interim; external broker orders are disabled.
+Abstract
+We evaluate causal probabilistic forecasts and capital-constrained local execution using
+22 equities and ETFs, preserved historical snapshots, controlled chronological refits and a
+separately frozen prospective collector. The saved experiment supplies 15,092 instrument-
+date decisions from 726 rolling refits. In its consumed recent audit, the calibrated mixture
+has 37.59% accuracy and 1.0882 log loss, compared with 40.62% and 1.0756 for the trailing
+prior. Its paired log-loss disadvantage is 0.0126, with a date-block 95% interval [-0.0025,
+0.0269]. Fresh-capital audit accounts return -0.46% for the adaptive hybrid and 2.55%
+for the matched equal-weight control after costs. The follow-up executes 848 registered
+training trials, with feature, calibration, adaptation and held-instrument comparisons. The
+product includes a sealed local collector, persistent ledgers and a session-aware schedule;
+engineering evidence is scoped separately from trading superiority. These experiments do
+not establish a defensible deployable edge. Historical analyses are exploratory, prospective
+sections remain interim, and external broker orders remain disabled.
+Keywords:quantitative trading; probability calibration; walk-forward evaluation;
+dependent-sample inference; paper trading; reproducibility.
+Research report. Journal-specific formatting can be applied when a publication venue is selected.
+ML-TradeEngine research Historical study; prospective interim
+Contents
+1 Motivation and research questions 1
+2 Related work and the scope of comparison 1
+3 Data, availability and evidence accounting 2
+3.1 Universe and provider snapshots . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+3.2 Admission, missingness and labels . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3.3 Exposure log and optional information . . . . . . . . . . . . . . . . . . . . . . . . 4
+4 Methods and the shared execution contract 4
+4.1 Features and forecasting models . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4.2 Chronology, folds and refitting . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+4.3 From probabilities to constrained targets . . . . . . . . . . . . . . . . . . . . . . . 7
+4.4 Persisted decisions and operational stages . . . . . . . . . . . . . . . . . . . . . . 7
+5 Experimental design, inference and computational budget 8
+6 Prediction quality and error structure 9
+7 Controlled ablations, adaptation and transfer 11
+8 Economic performance, costs and failure mechanisms 14
+9 Operational evaluation and prospective collection 18
+10 Reproducibility and claim integrity 20
+11 Discussion and limitations 21
+12 Conclusions 21
+References 22
+A Complete instrument diagnostics 23
+B F old, trial and evidence inventory 23
+C Reproduction commands and interpretation 25
+ii
+ML-TradeEngine research Historical study; prospective interim
+1 Motivation and research questions
+A trading research system must answer two questions that are easy to confuse: whether its
+calculations represent the stated strategy, and whether that strategy has useful economic
+performance. Correct accounting is necessary for the second question, but it cannot answer it.
+Likewise, a profitable curve cannot validate data that were unavailable at the simulated decision
+time. This study follows the entire chain from public observations to predictions, constrained
+targets, simulated fills, persisted account state and research claims. The output is an executable
+local paper-trading product and a versioned empirical record. No external broker execution is
+part of the experiment.
+The starting repository contained classifiers, a strategy zoo, an ensemble, a dashboard and
+saved backtests. Earlier audits identified accounting and timing defects. Subsequent repairs
+produced a sealed adaptive experiment and a short technical report. We preserve that experiment
+and examine its full prediction and ledger records instead of inferring behavior from headline
+accuracy or isolated screenshots. This follow-up adds class and instrument diagnostics, controlled
+refits, transfer tests, execution sensitivities and operational evidence. Previously inspected
+historical observations are explicitly exploratory. A new analysis of an old holdout does not
+restore its independence.
+Our first question is whether causal forecasts improve probability quality and directional
+classification over a trailing class-frequency estimate and simple forecasting controls. The primary
+predictive endpoint is the paired, date-averaged log-loss difference against the prior. Accuracy,
+balanced accuracy, class F1 and multiclass Brier score explain different aspects of the result. A
+correct class prediction and a profitable trade are separate events, so no accuracy threshold is
+used as a proof of alpha.
+The second question is whether a hybrid adds net economic value over its components and
+comparable simple policies when every strategy must finance its holdings through one account.
+The primary economic endpoint is the daily net-return difference from a costed, risk-constrained
+equal-weightaccountonmatchingdates. Wedistinguishthisaccountfromadescriptivefrictionless
+SPY reference. The third question concerns where errors occur: classes, instruments, calendar
+blocks, observed volatility conditions, disagreement between experts and confident mistakes.
+Such conditional descriptions identify hypotheses; they do not by themselves establish a causal
+mechanism.
+The fourth question is sensitivity to features, calibration, gate construction, training history,
+refit cadence and execution assumptions. Controlled comparisons change a specified factor while
+preserving the eligible information set and outcome definition. The fifth question concerns
+operation: whether the same policy can run from fresh inputs with persistent capital, restart
+after faults, refuse invalid state and produce durable evidence on its registered schedule. These
+questions define separate engineering, historical-evidence, prospective-operation and manuscript
+decisions. Broker readiness is a further decision outside the authorized scope.
+2 Related work and the scope of comparison
+Machine learning can model nonlinear conditional relationships in asset returns. Gu, Kelly and
+Xiu compare a broad range of methods for risk-premium prediction and examine the importance
+of interactions [1]. Their result motivates careful predictive comparisons; it does not supply
+a performance target for this project. Their universe, prediction horizon, information set and
+portfolio construction differ from our small daily classification study. We do not copy their
+reported economic gains into a benchmark table or interpret a different task as a replication.
+A simple trend rule is a demanding control for a more elaborate trading architecture because
+it can capture persistent price behavior without learning a high-dimensional decision boundary.
+1
+ML-TradeEngine research Historical study; prospective interim
+Time-series momentum has been studied across futures markets [2]. Our rule combines a
+trailing price-average condition with intermediate-horizon momentum on the existing equity/ETF
+universe. It is long-only and financed through the same constrained local ledger as the ML policy.
+It is therefore a project control inspired by trend-following, not a reproduction of the published
+futures strategy.
+Gradient boosting provides a flexible additive model built through successive loss reduction [3].
+We pair a shallow histogram boosting classifier with regularized multinomial logistic regression
+to contrast nonlinear and linear decision surfaces. The logistic model is both a component
+and a useful simplicity control. Fixed capacity and chronological fitting make the comparison
+interpretable. Increasing model count or training duration after seeing poor outer-period results
+would change the scientific question and enlarge the search history; it would not repair a failed
+hypothesis.
+Probability forecasts require more than class ranking. Proper scoring rules reward distributions
+that represent the forecaster’s uncertainty [4]. Log loss penalizes confident wrong answers strongly,
+whereas accuracy only considers the largest probability. The Brier score measures squared error
+across the complete class distribution. Temperature scaling is a low-dimensional way to alter
+sharpness while preserving each row’s ordering [5]. Evidence from other application domains
+does not imply that temperature scaling must improve financial forecasts. We therefore compare
+raw and calibrated mixtures on identical outer observations and disclose the samples used to fit
+the temperature.
+Dependent observations complicate uncertainty. Adjacent forward-return labels overlap, and
+symbols respond to common market shocks. Resampling instrument-date rows independently
+would overstate the effective sample size. Block resampling follows the general motivation of
+dependent-data bootstrap methods [6], while HAC estimators provide a complementary approach
+for autocorrelated averages [7]. Our implementation preserves the entire cross section within a
+sampled date and examines several block lengths. The assumptions remain approximate when
+the return-generating process shifts over time.
+Multiple testing is especially consequential in strategy research. Financial factor evidence
+illustrates how an extensive search can make conventional single-test thresholds misleading
+[8]. Holm adjustment controls a declared family of comparisons [9], but no adjustment can
+recover undocumented researcher choices. The Deflated Sharpe Ratio and probability-of-backtest-
+overfitting literature address aspects of selection risk [10, 11]. We do not report those estimators
+here because a complete comparable trial history and their required assumptions are not available.
+The current registry makes the new comparison family explicit; it does not erase earlier exposure.
+Covariance shrinkage is motivated by the instability of estimated risk matrices [12]. Our risk
+rule uses a fixed blend of sample covariance and its diagonal. This is a transparent regularization
+assumption, not an implementation of the cited paper’s optimal shrinkage estimator. Exchange
+timing follows the official NYSE calendar [13]. The operational design also recognizes that a
+scheduled workflow file does not guarantee execution; workflow failures require direct evidence
+[14]. These references establish methods and constraints. All empirical performance claims below
+come from this project’s saved or newly executed experiments.
+3 Data, availability and evidence accounting
+3.1 Universe and provider snapshots
+The verified market panel contains 55,242 instrument-session observations on 2,511 common
+market dates. There are 686 recorded decision dates, 680 with mature outcomes, and 132
+instrument-date predictions whose outcomes are unavailable at the historical cutoff. The inherited
+release reports 726 refits. The inventory rechecked 722 preserved files and directly compared 66
+2
+ML-TradeEngine research Historical study; prospective interim
+saved reproduction outputs. These are new integrity checks of saved records, not a claim that all
+old models were trained again.
+The universe was inherited from the project rather than sampled from historical index
+constituents. It mixes individual surviving companies, broad-market funds, sector funds and
+alternative-asset funds. Economic exposures overlap: holding a growth stock and a fund that
+contains it does not create two independent bets. The declared growth-group limit captures only
+one part of that overlap. We cannot estimate delisting bias from this universe, and we do not
+interpret the results as a market-wide stock-selection claim.
+Raw provider OHLCV and adjusted series are separate artifacts. The term raw refers to
+the provider’s returned fields before this pipeline’s adjustment transformation; it does not
+certify an archival, unadjusted exchange tape. Adjusted prices incorporate the vendor’s present
+interpretation of splits and distributions. Each snapshot records retrieval time and hashes.
+Historical availability uses an explicit completed-session convention because the provider does not
+supply an immutable historical arrival timestamp for every bar. A current-vintage reconstruction
+is not equivalent to a point-in-time archive.
+For the local simulation, quantities are total-return proxy units. Future provider revisions
+can rescale historical adjusted prices, so daily marks chain the newly observed adjusted return
+onto stored marks. That convention avoids treating a uniform rescaling as a windfall or loss in
+existing holdings. It does not implement broker shares, dividend cash payments, fractional-share
+restrictions or corporate-action entitlements. Raw responses and available action events are
+retained for provenance, while broker accounting remains a separate unimplemented contract.
+Table 1 reports dataset flow; counts are instrument-dates unless the stage explicitly says dates.
+T able 1:Dataset flow; counts are instrument-dates unless the stage explicitly says dates
+Stage Count
+raw_symbol_sessions 55,242
+common_market_dates 2,511
+feature_complete_symbol_sessions 49,698
+warmup_symbol_sessions 5,544
+pre_evaluation_feature_complete_symbol_sessions 34,606
+decision_symbol_sessions 15,092
+mature_labeled_symbol_sessions 14,960
+unmatured_symbol_sessions 132
+Source:data/research-v2/tables/diag_dataset_flow.csv.
+Figure 1 shows coverage, retained observations and class support from the saved panel.
+Development Selection Audit
+0.5
+1
+·104
+Instrument-date rows
+DOWN FLAT
+UP UNMATURED
+0 20 40 60
+Raw rows
+Feature complete
+Forecasts
+Mature forecasts
+Rows (thousands)
+Figure 1:Coverage, retained observations and class support from the saved panel.
+3
+ML-TradeEngine research Historical study; prospective interim
+3.2 Admission, missingness and labels
+Every admitted price panel must have unique, monotonically ordered session keys, finite positive
+OHLC values, valid high/low ranges and positive observed volume. The exchange calendar,
+rather than a generic weekday index, defines expected sessions. There is no holiday padding,
+synthetic zero-volume bar, stale-price forward fill or silent fallback to the last successful forecast.
+An unavailable bar stops the applicable batch before account decisions. Dropping a record,
+skipping an event and predicting FLAT are different states and remain distinguishable in the
+evidence.
+For information observed at the end of session t, the first modeled fill is the next completed
+close. The target return is therefore:
+rtarget
+t = Ct+6
+Ct+1
+−1.(1)
+A return below -1% is DOWN, above +1% is UP, and an observed return between those
+thresholds is FLAT. A target whose ending close has not occurred is unobserved, not FLAT. Strict
+fitting eligibility requires its endpoint to precede the refit decision. The distinction matters twice:
+at the tail of the study, where decisions outnumber mature labels, and at partition boundaries,
+where adjacent labels can otherwise reveal later evaluation prices.
+Dataset accounting is performed separately for price rows, usable feature rows, decision rows,
+label-complete instrument-dates and account sessions. A portfolio needs marks even when an
+outcome label is not yet mature. Thus the last account sessions legitimately contribute to equity
+measurement while being excluded from classification. The tables and claim map preserve those
+denominators instead of calling every row a sample with independent statistical information.
+3.3 Exposure log and optional information
+Allhistoricaldatesinspectedinthepriortasksorsavedreleasearelistedintheevaluation-exposure
+log. The old development, selection and audit labels are retained as names for reproducible
+date ranges, not as a claim that the current analyst is blind to them. The new controlled
+experiments use development-era chronological blocks and do not replace the previously selected
+prospective shadow. Historical results are useful for diagnosing a design and measuring its
+behavior; independent confirmation must come from later observations under a frozen rule.
+Macro, news and crypto are excluded from the primary information set. A working public
+endpoint does not establish historical vintage eligibility. Revised macro observations need
+release/vintage timestamps; news requires retained content, version and availability times; a
+bounded recent crypto endpoint does not supply the requested long archive. Legacy XGB,
+LGBM, LSTM, MoE and zoo outputs remain preserved. Their different targets, information sets
+and splits prevent treating their old headline scores as controlled architectural comparisons. The
+registry records scope exclusions rather than silently dropping weak models.
+4 Methods and the shared execution contract
+4.1 Features and forecasting models
+Table 2 reports feature definitions and information availability.
+Table 3 reports fixed model configurations and distinct chronological contracts.
+The scale-free feature set combines trailing returns, volatility, prices relative to moving
+averages, market-relative returns, intraday range, overnight gap, volume ratio and intermediate-
+horizon momentum. Rolling operations use only the observed prefix. There is no full-sample
+normalization or learned feature screening outside the fitting partition. The logistic scaler is
+4
+ML-TradeEngine research Historical study; prospective interim
+T able 2:Feature definitions and information availability
+Family Definition Availability
+Returns Close / lagged close - 1 Trailing 1, 5, 21, 63, 126, 252 sessions
+Volatility Sample standard deviation of daily return Trailing 21 / 63 sessions
+Relative return Instrument return minus SPY return Trailing 21 / 63 sessions
+Trend Close / moving mean - 1 Trailing 20 / 50 / 200 sessions
+Gap / range Open / previous close - 1; (High-Low)/Close Completed current session
+Volume Volume / trailing mean - 1 Trailing 20 sessions
+Momentum Close lag21 / Close lag252 - 1 Previous completed observations
+Source:src/models/adaptive.py::features;research_v2/experiments.py::FAMILIES.
+T able 3:Fixed model configurations and distinct chronological contracts
+Contract Component Configuration
+Controlled HistGradientBoosting
+Classifier
+max_iter=100; max_leaf_nodes=7; l2_
+regularization=10; learning_rate=0.05; min_samples_
+leaf=40; early_stopping=False; random_state=cfg.seed
+Controlled LogisticRegression C=0.1; max_iter=500; random_state=cfg.seed
+Historical / carried pilot HistGradientBoosting
+Classifier
+max_iter=100; max_leaf_nodes=7; l2_
+regularization=10; learning_rate=0.05; min_samples_
+leaf=40; early_stopping=False; random_state=cfg.seed
+Historical / carried pilot LogisticRegression C=0.1; max_iter=500; random_state=cfg.seed
+Controlled base Chronology history=1008; calibration=63; gate=63; cadence=63
+Historical / pilot Chronology window=1008; calibration=126; min_fit=504; retrain_
+every=21
+Both Temperature candidates [0.75, 1, 1.5, 2, 3]
+Source:data/research-v2/tables/model_configurations.csv;evidence/configuration-sources.json.
+fitted on eligible fitting rows and then applied unchanged to calibration and evaluation. Feature
+order is part of the inference schema; matching names in a different order is insufficient.
+The logistic expert minimizes regularized multinomial cross-entropy. The tree expert fits
+shallow histogram-based boosting with fixed iteration count, leaf budget and regularization.
+Their raw mixture is the arithmetic mean of their probability vectors. Temperature scaling
+applies:
+pT (c|x) = exp{logpraw(c|x)/T}∑︁
+k exp{logpraw(k|x)/T}.(2)
+The temperature is selected only from its registered candidate set using eligible past calibration
+labels. Because this transformation preserves class ordering, its direct purpose is probability
+quality rather than creating a different argmax classification. The training-frequency control
+uses Laplace-smoothed class counts from the fitting sample. Always-UP is a directional control;
+its near-deterministic probabilities make it a poor probability benchmark when another class
+occurs, which is why the prior is primary for log loss.
+The sealed release calibrated temperature and estimated gate benefit on the same trailing
+block. That is chronologically causal but permits internal optimism from evaluating a selected
+temperature on its fitting block. The follow-up separates fitting, temperature selection and gate
+evaluation with endpoint-based purges. This experiment asks whether the gate’s apparent past
+advantage survives a distinct eligible block. It does not assume that separating the blocks must
+improve returns; fewer calibration or gate observations may increase estimation variance.
+5
+ML-TradeEngine research Historical study; prospective interim
+4.2 Chronology, folds and refitting
+Figure 2 shows architecture of the isolated collection and research paths.
+Completed public bars
+Raw response
+and adjustments
+Session/freshness checks
+Frozen causal model
+Past-only
+fit/calibration/gate
+Registered refit anchor
+Immutable daily plan
+Probabilities
+and target deltas
+Input/model/source hashes
+Versioned his-
+torical evidence
+Registered tri-
+als and forecasts
+Exploratory diagnostics
+Shared execution contract
+Cash, reserva-
+tions, fills and fees
+Deployment cash;
+trend shadow
+Durable state and receipts
+Lock/recovery/backup
+Calendar sched-
+uler and watchdog
+Figure 2:Architecture of the isolated collection and research paths.
+Figure 3 shows information, fill and label availability under the execution-aligned target.
+t t+ 1 t+ 6
+Completed close;
+features available
+First permitted fill;
+target denominator
+Outcome endpoint;
+label becomes observed
+Five-session target return; adjacent labels overlap
+Model fitting uses labels whose endpoints strictly precede the decision.
+Figure 3:Information, fill and label availability under the execution-aligned target.
+At a refit decision, eligible labels are determined by their actual session endpoints. Fitting,
+calibration and gate partitions are chronological. Purging removes any earlier-partition target
+whose outcome reaches the next partition’s first decision. This rule is derived from execution
+timing rather than a conveniently chosen gap. A transform learned from a preceding partition
+is applied to later partitions without refitting. All fold records retain first/last dates, label
+endpoints, sample counts and source/configuration hashes.
+The controlled outer dates comprise four disjoint blocks, each containing the first 63 sessions
+of a development half-year. Date-block resampling stays within each outer block. The bounded
+experiment design varies one registered factor at a time. There is no Cartesian hyperparameter
+search. If an inner choice is fitted, that choice is made entirely before its outer block; outer
+results never select a replacement pilot policy. Training-history and refit-cadence experiments
+align features, targets and evaluation dates, preventing a model trained on a different information
+set from masquerading as evidence about architecture. Additional seeds cover six representative
+instruments; they do not cover every instrument. Registered seeds characterize estimator
+variability separately from uncertainty across dates. Seeds and correlated instruments are not
+independent replications of the market.
+The operational contract has an explicit exchange-session refit anchor and an explicit startup
+model. Research replay and the daily runner use the same anchor. Weekly target changes
+occur on the last eligible exchange session of the week, including holiday weeks, with an initial
+allocation decision. Other sessions process pending fills, marks and drawdown controls without
+routine rebalancing. These v2 rules are versioned changes; they do not retroactively alter the
+sealed experiment’s dates or Friday-only results.
+6
+ML-TradeEngine research Historical study; prospective interim
+4.3 From probabilities to constrained targets
+Expected target return is the probability-weighted mean of the fitting sample’s class-conditional
+target returns. A positive prediction only requests an allocation when this estimate exceeds
+the registered round-trip cost hurdle. The trend intent requires a positive price/long-average
+ratio and positive intermediate-horizon momentum. A fixed hybrid combines the two intents;
+the adaptive hybrid allows the ML contribution only when the past-data gate accepts it. The
+forecasting mixture and the trading hybrid are distinct objects and are named separately in the
+result tables.
+Before account submission, target weights pass long-only, per-instrument, gross and group
+caps. Trailing covariance is estimated from eligible observed returns, annualized, and shrunk
+halfway toward its diagonal. If estimated target volatility exceeds the registered cap, all risky
+target weights are scaled down proportionally. This rule does not guarantee future volatility or
+drawdown, and estimation error remains visible in sensitivity tests. Idle cash earns zero under
+the simulated account contract.
+Orders represent changes from current holdings toward target holdings, not repeated purchases
+for repeated UP signals. Pending buys reserve cash; pending sales are not spendable buying
+power. Orders can be rejected when a price gap exceeds the reserved budget or projected exposure
+violates limits. A drawdown halt requests reductions and persists through restart. Marked
+market drift can temporarily breach a target cap between decisions, so the system records a
+breach and blocks risk-increasing orders rather than pretending a target limit is a pathwise
+guarantee.
+The balance identity is:
+Et =B t +
+∑︂
+s
+qs,tMs,t,(3)
+whereE t is equity,Bt is cash,q s,tis the held quantity andMs,tis the mark for instruments.
+Net realized trade profit includes both entry and exit costs. The simulator applies proportional
+commission and slippage on each fill. Partial exits allocate the corresponding cost basis; terminal
+holdings remain marked rather than receiving an invented liquidation. This is one account per
+policy with fixed initial capital, shared constraints and explicit rejection behavior. Summing
+independent ticker return curves would describe a different, potentially unfundable strategy.
+4.4 Persisted decisions and operational stages
+The collector validates release, dependencies and state before inference. A decision plan records
+session, information cutoff, data manifest, model versions, probabilities, targets and marks before
+account processing. The plan is immutable for that session. Account commits and final receipts
+are recoverable stages: a restart resumes the same plan and uses event IDs to avoid duplicate
+fills. Concurrent CLI, dashboard and scheduler requests share the same lock and state owner.
+Release/model storage is separate from mutable account state. Backups retain original
+receipts and database state, and restoration is checked at the recorded original path after moving
+the original state out of the way. Relocating embedded absolute artifact paths is outside the
+supported recovery contract. A stale writer, truncated file, missing model or changed source
+must cause a visible halt; a success-shaped fallback would contaminate both the account and the
+research dataset. Changes to the collector after qualification require a new release and evidence.
+The old source and sealed releases are preserved as rollback and historical reproduction assets.
+7
+ML-TradeEngine research Historical study; prospective interim
+5 Experimental design, inference and computational budget
+The controlled study completed 848 registered trials and 1,696 estimator fits, in addition to 4
+development runtime-pilot fits. Its base evaluation spans 252 outer dates and 5,544 unique base
+instrument-date decisions. The registered families contain 17 predictive contrasts and 8 economic
+contrasts. Repeated model views and seed runs are retained, but never counted as additional
+independent market observations.
+Table 4 reports frozen controlled training design.
+T able 4:Frozen controlled training design
+Variant Trials Targets Outer folds Seeds
+base 136 22 4 42,137,2026
+without_momentum 88 22 4 42
+without_trend 88 22 4 42
+without_risk 88 22 4 42
+without_context_volume 88 22 4 42
+fraction_0.5 88 22 4 42
+fraction_0.75 88 22 4 42
+history_504 88 22 4 42
+cadence_21 72 6 4 42
+transfer 24 6 4 42
+Source:data/research-v2/experiments/design.json.
+The primary predictive comparison averages each day’s candidate-minus-prior log-loss differ-
+ence across symbols, then resamples contiguous date blocks. Keeping the cross section intact
+avoids treating a market-wide error as many independent surprises. Circular wrapping allows
+every date to start a block, but short samples provide limited distinct market episodes. Block-
+length sensitivity examines a label-horizon-scale block, the registered primary block and a longer
+block. Confidence intervals describe the behavior of this historical sample under the resampling
+assumptions; they do not make the consumed audit confirmatory.
+Economic comparisons use identically indexed daily net returns. Rebased charts make date-
+range returns visually comparable but do not reset account holdings. Where a fresh-capital replay
+is reported, it explicitly begins a new account and is separately labeled. CAGR compounds the
+observed return over its annualized duration. The new portfolio diagnostics use a zero risk-free
+rate for Sharpe and a zero minimum acceptable return for Sortino, consistent with zero-yield cash.
+The sealed release separately reports Sharpe relative to a fixed annual hurdle; those differently
+defined values are never interchanged. Sortino uses downside deviation relative to its disclosed
+target. Undefined zero-variance statistics remain undefined rather than being converted into
+evidence for a strategy.
+Hypothesis families come from registered contrasts. Holm-adjusted values apply separately to
+the specified predictive and economic families. Additional class, symbol and regime slices are
+descriptive unless entered into a distinct family before computation. This avoids presenting a
+favorable post hoc slice as a new independent experiment. Effect sizes and intervals take prece-
+dence over binary significance language. Approximate minimum-detectable-effect calculations
+use the estimated sampling variability; they are design aids, not guarantees of future power.
+Execution robustness perturbs clearly named assumptions. Cost changes can retain decisions
+while changing financing and fills. Delaying execution or restricting fill size may alter exposure
+and subsequent account behavior. Missing-bar tests are admission/recovery tests and must fail
+before decisions rather than interpolate a fictional observation. Risk-parameter changes create a
+different target policy and are classified accordingly. The table records which components remain
+frozen in each experiment so that a changed return is not assigned to the wrong cause.
+8
+ML-TradeEngine research Historical study; prospective interim
+Runtime evidence is separate from correctness evidence. Measurements disclose hardware,
+interpreter, thread limits, sample counts and cold/warm conditions. Quantiles from small samples
+are descriptive order statistics, not reliable tail service-level estimates. Compute budgets are
+frozen after a development-only pilot, attempted trials retain status and errors, and cache keys
+include data, source, configuration and fold boundaries. Exact repetition from saved source is
+a numerical reproduction claim; operation across a genuinely new market period is a different
+claim.
+6 Prediction quality and error structure
+The recent audit has 1,056 labeled instrument-dates across 48 sessions. Hybrid accuracy is
+37.59%, while prior accuracy is 40.62%. Hybrid balanced accuracy is 37.24% and macro F1 is
+0.372. The prior’s stronger aggregate accuracy does not imply equal recall across classes; the
+class report makes that tradeoff visible. Log loss also favors the prior in this sample, so there is
+no probability-quality improvement to hide behind a change in class balance.
+Table 5 reports consumed recent-audit forecasts; identical mature observations.
+T able 5:Consumed recent-audit forecasts; identical mature observations
+Model Rows Accuracy Balanced Macro F1 Log loss Brier
+linear 1,056 38.35% 37.89% 0.378 1.1291 0.6858
+tree 1,056 36.93% 36.63% 0.366 1.1679 0.7049
+raw_mix 1,056 37.59% 37.24% 0.372 1.1171 0.6796
+hybrid 1,056 37.59% 37.24% 0.372 1.0882 0.6594
+prior 1,056 40.62% 39.26% 0.307 1.0756 0.6540
+always_up 1,056 35.89% 33.33% 0.176 17.7142 1.2822
+Source:data/research-v2/tables/diag_forecast_summary.csv.
+Figure 4 shows audit confusion matrices with class support; row normalization does not create
+independent observations.
+105 74 172
+66 111 149
+131 67 181
+DOWN
+DOWN
+FLAT
+FLAT
+UP
+UP
+hybrid,n= 1056
+Predicted class
+0 57 294
+0 107 219
+0 57 322
+DOWN
+DOWN
+FLAT
+FLAT
+UP
+UP
+prior,n= 1056
+Predicted class
+0 0 351
+0 0 326
+0 0 379
+DOWN
+DOWN
+FLAT
+FLAT
+UP
+UP
+always_up,n= 1056
+Predicted class
+Figure 4:Audit confusion matrices with class support; row normalization does not create independent
+observations.
+Table 6 reports audit class report for calibrated mixture and prior.
+Per-class reporting prevents a common majority class from concealing weak recall elsewhere.
+Precision asks what fraction of a model’s class assignments were right; recall asks how many
+observed examples of that class it recovered. F1 combines these two rates, and support states
+the denominator. Row-normalized confusion matrices emphasize which true classes are confused,
+while raw counts identify where most mistakes occur. The dominant transition can change when
+class prevalence changes even if the conditional error rates remain stable.
+9
+ML-TradeEngine research Historical study; prospective interim
+T able 6:Audit class report for calibrated mixture and prior
+Model Class Precision Recall F1 Support
+hybrid DOWN 0.348 0.299 0.322 351
+hybrid FLAT 0.440 0.340 0.384 326
+hybrid UP 0.361 0.478 0.411 379
+prior DOWN 0.000 0.000 0.000 351
+prior FLAT 0.484 0.328 0.391 326
+prior UP 0.386 0.850 0.530 379
+Source:data/research-v2/tables/diag_class_report.csv.
+The most frequent off-diagonal transition in the audit is DOWN to UP, with 172 errors, or
+49.00% of that true class. Temperature scaling changes raw-mixture log loss by -0.0289 with
+interval [-0.0476, -0.0065]. The argmax labels are unchanged, as expected for positive temperature
+scaling. Better calibrated confidence can coexist with unchanged directional accuracy and still
+fail to beat the prior.
+Figure 5 shows probability reliability and confidence coverage, including bin support and uncer-
+tainty.
+0 0.2 0.4 0.6 0.8 1
+0
+0.2
+0.4
+0.6
+0.8
+1
+Mean top probability
+Observed accuracy
+raw_mix
+hybrid
+prior
+0 0.2 0.4 0.6 0.8 1
+0
+0.2
+0.4
+0.6
+0.8
+1
+Retained fraction
+Accuracy
+raw_mix
+hybrid
+prior
+Figure 5:Probability reliability and confidence coverage, including bin support and uncertainty.
+Table 7 reports audit mixture confidence coverage; thresholds fixed for description.
+T able 7:Audit mixture confidence coverage; thresholds fixed for description
+Threshold Retained Dates Coverage Accuracy
+0.34 1,051 48 99.53% 37.77%
+0.40 605 48 57.29% 40.00%
+0.45 351 48 33.24% 44.73%
+0.50 165 48 15.62% 47.88%
+0.60 20 15 1.89% 45.00%
+0.70 0 0 0.00% -
+0.80 0 0 0.00% -
+0.90 0 0 0.00% -
+Source:data/research-v2/tables/diag_coverage.csv.
+Confidence-coverage curves retain only predictions above fixed confidence cutoffs and report
+both accuracy and remaining observations. A higher accuracy at low coverage can be practically
+irrelevant when almost no decisions remain. These curves are diagnostics, not an opportunity
+to choose the best threshold after viewing outcomes. Reliability-bin uncertainty is also limited
+by correlated dates; bins with little support cannot justify a confident calibration claim. For
+10
+ML-TradeEngine research Historical study; prospective interim
+trading, an apparently well-calibrated probability still needs useful class-return estimates and
+enough expected advantage to pay costs.
+Figure 6 shows paired audit forecast effects and date-block uncertainty. Lower log loss is better.
+0 0.05 0.1 0.15
+Linear
+Tree
+Raw
+Hybrid
+0
+Loss minus prior
+development
+0 0.05 0.1 0.15
+Linear
+Tree
+Raw
+Hybrid
+0
+Loss minus prior
+selection
+0 0.05 0.1 0.15
+Linear
+Tree
+Raw
+Hybrid
+0
+Loss minus prior
+audit
+Figure 6:Paired audit forecast effects and date-block uncertainty. Lower log loss is better.
+For the primary audit hybrid-minus-prior comparison, the estimated loss difference is 0.0126,
+the bootstrap standard error is 0.0076, and the approximate 80%-power detectable magnitude is
+0.0213. With 48 dates and primary blocks of 10 dates, the effective information is much smaller
+than the number of stock rows suggests. This approximation ignores additional uncertainty
+about structural change and is not a prospective power guarantee.
+7 Controlled ablations, adaptation and transfer
+R5-momentum: candidate-minus-reference log loss -0.0022 (lower loss), 95% interval [-0.0099,
+0.0057], Holm p=1.000. R5-trend: candidate-minus-reference log loss 0.0027 (higher loss), 95%
+interval [-0.0020, 0.0075], Holm p=1.000. R5-risk: candidate-minus-reference log loss -0.0021
+(lower loss), 95% interval [-0.0097, 0.0054], Holm p=1.000. R5-context_volume: candidate-minus-
+reference log loss 0.0053 (higher loss), 95% interval [0.0005, 0.0100], Holm p=0.243.
+Table 8 reports controlled feature ablations.
+T able 8:Controlled feature ablations
+Contrast Rows Loss delta CI low CI high Holm p
+R5-momentum 5,544 -0.0022 -0.0099 0.0057 1.000
+R5-trend 5,544 0.0027 -0.0020 0.0075 1.000
+R5-risk 5,544 -0.0021 -0.0097 0.0054 1.000
+R5-context_volume 5,544 0.0053 0.0005 0.0100 0.243
+Source:data/research-v2/tables/exp_contrasts.csv.
+Figure 7 shows registered controlled contrasts on development outer blocks; intervals preserve
+date dependence.
+A feature-importance ranking is not a feature ablation. The experiments remove a registered
+feature family, refit the eligible model and compare outer predictions on matching dates. This
+evaluates the value of allowing that family under the stated model and budget. Correlated
+families can substitute for one another; removing one does not estimate an isolated economic
+causal effect. The sign of an ablation also depends on regularization and sampling variance. We
+retain unfavorable and near-zero changes alongside any improvement.
+R3-calibration: candidate-minus-reference log loss -0.0146 (lower loss), 95% interval [-0.0223,
+-0.0060], Holm p=0.018. R3-gate-separation: candidate-minus-reference log loss -0.0046 (lower
+11
+ML-TradeEngine research Historical study; prospective interim
+−0.04 0 0.04 0.08
+R7-transfer
+R6-cadence_21
+R6-history_504
+R6-fraction_0.75
+R6-fraction_0.5
+R5-context_volume
+R5-risk
+R5-trend
+R5-momentum
+R4-gate_separate
+R4-calibrated
+R4-raw
+R4-tree
+R4-linear
+R3-gate-off
+R3-gate-separation
+R3-calibration
+0
+Daily log-loss difference
+Figure 7:Registered controlled contrasts on development outer blocks; intervals preserve date dependence.
+loss), 95% interval [-0.0124, 0.0029], Holm p=1.000. R3-gate-off: candidate-minus-reference log
+loss -0.0094 (lower loss), 95% interval [-0.0190, 0.0010], Holm p=0.458. The forecast gate here
+chooses between calibrated predictions and the prior as a diagnostic view. The portfolio gate
+separately controls the trend/ML weight. Neither is silently substituted for the frozen trend
+shadow.
+Table 9 reports controlled base forecast views on development outer blocks.
+T able 9:Controlled base forecast views on development outer blocks
+View Rows Accuracy Log loss Brier Separate gate
+calibrated 5,544 40.13% 1.0773 0.6549 27.27%
+gate_same 5,544 42.14% 1.0725 0.6516 27.27%
+gate_separate 5,544 41.94% 1.0679 0.6482 27.27%
+linear 5,544 39.30% 1.0871 0.6628 27.27%
+prior 5,544 42.19% 1.0638 0.6453 27.27%
+raw 5,544 40.13% 1.0919 0.6657 27.27%
+tree 5,544 40.22% 1.1466 0.6971 27.27%
+Source:data/research-v2/tables/exp_predictive.csv.
+R6-fraction_0.5: candidate-minus-reference log loss 0.0365 (higher loss), 95% interval [0.0232,
+0.0503], Holm p=0.008. R6-fraction_0.75: candidate-minus-reference log loss 0.0183 (higher
+loss), 95% interval [0.0044, 0.0324], Holm p=0.082. R6-history_504: candidate-minus-reference
+log loss 0.0442 (higher loss), 95% interval [0.0299, 0.0600], Holm p=0.008. R6-cadence_21:
+candidate-minus-reference log loss 0.0004 (higher loss), 95% interval [-0.0075, 0.0091], Holm
+p=1.000.
+Table 10 reports controlled history, fraction and cadence contrasts.
+Figure 8 shows fitting versus outer validation log loss under training-design changes.
+Across the registered seed comparisons, the largest probability difference is 0.0e+00. The
+tested deterministic estimator settings therefore produced identical probabilities across seeds.
+Zero seed variation is not zero research uncertainty: the calendar path, data vintage, history
+12
+ML-TradeEngine research Historical study; prospective interim
+T able 10:Controlled history, fraction and cadence contrasts
+Contrast Rows Loss delta CI low CI high Holm p
+R6-fraction_0.5 5,544 0.0365 0.0232 0.0503 0.008
+R6-fraction_0.75 5,544 0.0183 0.0044 0.0324 0.082
+R6-history_504 5,544 0.0442 0.0299 0.0600 0.008
+R6-cadence_21 1,512 0.0004 -0.0075 0.0091 1.000
+Source:data/research-v2/tables/exp_contrasts.csv.
+50% fitting rows 75% fitting rows Full 1008 window 504 window
+0
+0.5
+1
+Chronological training design
+Log loss
+Training Outer validation
+Figure 8:Fitting versus outer validation log loss under training-design changes.
+span and target instrument remain sources of variation. Shorter recent-history fractions change
+both row count and temporal span, so the learning curves do not identify a pure sample-size
+effect. Separating the gate also changes its recency as well as its information overlap.
+Learning curves report fitting and outer-period loss together. A widening gap can be consistent
+with variance or time shift, while high loss on both partitions can indicate limited representation
+or model capacity. A smaller history can adapt faster but discard rare conditions; a larger history
+can stabilize estimation while retaining outdated relationships. Refit-cadence tests ask whether
+refreshing a fixed model matters under aligned information. No cadence is promoted merely
+because it is best on these consumed development blocks.
+R7-transfer: candidate-minus-reference log loss -0.0222 (lower loss), 95% interval [-0.0466,
+0.0002], Holm p=0.458. The held-target comparison reports the aligned target subset only.
+Training on other instruments increases the number of fitting rows but does not increase the
+number of independent outer dates.
+Table 11 reports controlled held-instrument transfer contrast.
+T able 11:Controlled held-instrument transfer contrast
+Contrast Rows Loss delta CI low CI high Holm p
+R7-transfer 1,512 -0.0222 -0.0466 0.0002 0.458
+Source:data/research-v2/tables/exp_contrasts.csv.
+Figure 9 shows historical instrument/period heterogeneity. Consumed-period slices are descriptive.
+The instrument-transfer experiment withholds target instruments from pooled fitting and
+respects the temporal outer boundary. That is stronger than reporting each single-instrument
+model on its own later observations, but it is still limited by overlapping economic exposures and
+a shared market feature. Excluding an instrument’s labels does not remove all information about
+13
+ML-TradeEngine research Historical study; prospective interim
+AAPL
+AMZN
+BAC
+DIA
+GLD
+GOOGL
+GS
+IWM
+JPM
+META
+MSFT
+NVDA
+QQQ
+SPY
+TLT
+TSLA
+XLE
+XLF
+XLI
+XLK
+XLP
+XLV
+development selection audit
+-0.2 0 0.2
+Hybrid minus prior log loss
+Figure 9:Historical instrument/period heterogeneity. Consumed-period slices are descriptive.
+the market in which it trades. Transfer results therefore describe the declared source/target
+grouping, not universal generalization to unseen exchanges or delisted securities.
+Regime slices use conditions observable at the decision time. Realized future volatility is not
+used to assign a model’s historical input state. Support counts accompany every slice, because
+a dramatic result from few dates is less stable than an aggregate over many market episodes.
+Instrument, period and regime analyses describe heterogeneity; they do not license a selector
+trained retrospectively to keep only the favorable cells.
+8 Economic performance, costs and failure mechanisms
+The controlled portfolio comparisons do not establish an economic advantage: every primary-
+block interval below crosses zero after matching the same outer dates and execution rules. Each
+fold starts a fresh account; the study averages daily active returns across those blocks, not a
+fictitious continuously invested equity path across the intervening gaps. Approximate detectable
+daily active effects range from 0.0420% to 0.0736%. These are large relative to the registered
+practical threshold. The bootstrap conditions on the observed outer blocks and cannot establish
+robustness to an unseen market regime.
+Table 12 reports controlled daily active returns versus equal weight; primary date-block inference.
+For the newly matched audit accounts, each policy begins with 10,000.00 dollars. The adaptive
+hybrid ends at 9,954.29 dollars and the equal-weight control at 10,254.73 dollars. Hybrid net
+return is -0.46%, maximum drawdown -2.21%, and average gross exposure 55.63%. These
+fresh-capital results differ from the sealed continuous-account audit because startup holdings
+and entry financing differ. The continuous curves below retain their original account history and
+are labeled accordingly.
+Table 13 reports fresh-capital audit accounts; zero-rate Sharpe and modeled per-side costs.
+Figure 10 shows continuous accounts from their original common start; these are not fresh audit
+allocations.
+Figure 11 shows recorded exposure, turnover and cost diagnostics under the shared ledger
+contract.
+14
+ML-TradeEngine research Historical study; prospective interim
+T able 12:Controlled daily active returns versus equal weight; primary date-block inference
+Policy Dates Daily effect CI low CI high Holm p
+linear 252 -0.04% -0.08% 0.01% 0.972
+tree 252 -0.00% -0.05% 0.04% 1.000
+raw 252 -0.02% -0.06% 0.02% 1.000
+calibrated 252 -0.03% -0.08% 0.02% 1.000
+fixed_mix 252 -0.01% -0.05% 0.02% 1.000
+same_gate 252 -0.01% -0.04% 0.02% 1.000
+separate_gate 252 -0.00% -0.03% 0.03% 1.000
+trend 252 -0.00% -0.03% 0.03% 1.000
+Source:data/research-v2/tables/exp_economic_contrasts.csv.
+T able 13:Fresh-capital audit accounts; zero-rate Sharpe and modeled per-side costs
+Policy Net return Sharpe Max DD Exposure Costs ($) Fills
+trend -0.48% -0.328 -2.34% 56.67% 15.24 184
+ml -0.48% -0.360 -2.13% 32.22% 29.57 119
+adaptive_hybrid -0.46% -0.309 -2.21% 55.63% 20.51 217
+equal_weight 2.55% 1.297 -2.66% 74.45% 13.58 205
+cash 0.00% - 0.00% 0.00% 0.00 0
+Source:data/research-v2/tables/diag_portfolio.csv.
+10,000
+12,000
+14,000
+Equity (USD)
+trend ml adaptive_hybrid
+equal_weight cash
+−0.15
+−0.1
+−0.05
+0
+Drawdown (fraction)
+Jan24 Jul24 Jan25 Jul25 Jan26 Jul26 Sep26
+0
+0.2
+0.4
+0.6
+0.8
+Gross exposure
+Figure 10:Continuous accounts from their original common start; these are not fresh audit allocations.
+15
+ML-TradeEngine research Historical study; prospective interim
+Trend ML Hybrid Equal weight
+100
+200
+300
+Cost (USD)
+Commission
+Slippage proxy
+Trend ML Hybrid Equal weight
+5
+10
+15
+20
+Executed notional / initial capital
+Figure 11:Recorded exposure, turnover and cost diagnostics under the shared ledger contract.
+Prediction loss and portfolio return need not rank models identically. The trading rule uses
+estimated payoff magnitude, abstention, weekly decisions and constrained capital. A prediction
+can be directionally wrong while its account is in cash; a correct signal can still lose after a
+delayed fill or costs. The decomposition therefore examines exposure, turnover, fill rejections,
+realized net outcomes and open holdings rather than attributing every equity change to classifier
+accuracy.
+Over the full continuous hybrid account, modeled combined costs are 234.81 dollars across
+2,541 fills. There are 1,367 sell fills, which include partial reductions rather than necessarily
+completed flat-to-flat episodes. Their net realized profit is 2,929.53 dollars; open holdings and
+unclosed costs still matter for total equity. The 86 completed position episodes have a 46.51%
+win rate, materially different from the sell-fill statistic. Neither is a strategy’s independent
+trade success probability. The completed-position episode table reconciles closed net profit and
+terminal open-position profit to total account profit, preventing partial sales from being counted
+as independent completed trades.
+Table 14 reports hybrid closed-position episodes versus still-open positions.
+T able 14:Hybrid closed-position episodes versus still-open positions
+Period Closed Open Closed wins Closed P&L ($) Open P&L
+($)
+Total P&L ($)
+full 86 18 46.51% 1605.17 1902.90 3508.07
+audit 14 16 14.29% -141.85 96.14 -45.71
+Source:data/research-v2/tables/diag_round_trip_summary.csv.
+Table 15 reports largest audit hybrid forecast losses, selected by registered loss ranking.
+T able 15:Largest audit hybrid forecast losses, selected by registered loss ranking
+Symbol Decision Observed Predicted Confidence Loss
+TSLA 2026-09-09 00:00:00+00:00 FLAT UP 0.547 2.612
+TSLA 2026-09-10 00:00:00+00:00 FLAT UP 0.487 2.528
+GOOGL 2026-07-30 00:00:00+00:00 FLAT UP 0.468 2.321
+XLI 2026-08-20 00:00:00+00:00 DOWN UP 0.638 2.154
+DIA 2026-08-12 00:00:00+00:00 DOWN FLAT 0.514 2.113
+Source:data/research-v2/tables/diag_failures.csv.
+The reported failure cases follow registered selection rules: representative observations, the
+largest confident forecast errors and the largest adverse account contributions. They are not
+16
+ML-TradeEngine research Historical study; prospective interim
+handpicked success stories. A loss concentration can reveal concentrated exposure or a difficult
+period, but explaining why a model produced a probability requires tracing its actual inputs
+and fitted state. Descriptive associations between a gate and losses are not causal gate benefits.
+Component and gate interventions provide the relevant controlled evidence.
+Across the registered completed hybrid sensitivity scenarios, the lowest terminal return is
+-1.17% in delay_1; the highest is 0.93% in reserve_zero. These extrema are descriptive stress
+outcomes, not candidates selected for deployment. A rejected-order scenario can improve a
+realized sample by avoiding losing exposure, and a temporary gap can worsen drawdown without
+changing the terminal price. Both effects require examining the full path, fills and rejections, not
+just ending wealth.
+Table 16 reports hybrid execution and risk sensitivities; fresh-capital audit.
+T able 16:Hybrid execution and risk sensitivities; fresh-capital audit
+Scenario Status Net return Max DD Fills Rejected
+base completed -0.46% -2.21% 217 6
+cost_zero completed -0.25% -2.17% 217 6
+cost_2x completed -0.66% -2.26% 217 6
+cost_4x completed -1.07% -2.35% 217 6
+delay_1 completed -1.17% -2.29% 219 4
+liquidity_50pct completed -0.35% -2.22% 1,043 25
+gap_down_10pct completed -0.46% -6.45% 217 6
+risk_gross_60pct completed -0.47% -2.09% 213 7
+reserve_zero completed 0.93% -2.09% 151 70
+missing_bar expected_validation_halt - - - -
+Source:data/research-v2/tables/diag_stress.csv.
+Figure 12 shows registered execution sensitivities; terminal return and path risk answer different
+questions.
+base 0.00 0.00 0.00 0.00
+cost_2x -0.20 -0.14 -0.29 -0.15
+cost_4x -0.61 -0.42 -0.88 -0.45
+cost_zero 0.20 0.14 0.30 0.15
+delay_1 -0.71 -0.47 -0.41 -0.73
+gap_down_10pct 0.00 0.00 0.00 0.00
+liquidity_50pct 0.11 0.07 -0.02 0.16
+reserve_zero 1.38 0.16 0.67 1.36
+risk_gross_60pct -0.01 -0.80 0.00 0.22
+adaptive
+hybrid
+equal
+weight
+ml trend
+-5 0 5
+Return change (percentage points)
+Figure 12:Registered execution sensitivities; terminal return and path risk answer different questions.
+The simulator’s costs are assumptions rather than measured execution. Fixed proportional
+slippage cannot represent all auction impact, spreads, illiquidity or market halts. Bounded fill
+scenarios explore one aspect of capacity without certifying real fill quality. A small simulated
+account may reduce some capacity concerns, but that does not make every close executable at
+the modeled price. Broker deployment would require timing, corporate-action and reconciliation
+evidence that this study deliberately does not claim.
+17
+ML-TradeEngine research Historical study; prospective interim
+9 Operational evaluation and prospective collection
+The predecessor r2 runtime passed 27 source-bound tests. All 8 actual process-kill checkpoints
+recovered with equivalent state, and 5 altered-release evidence cases were refused. The operating
+system invoked the frozen command at 2026-09-28T08:50:56.358915+00:00; its parent PID was
+1. That commissioning run validated 22 instruments, prepared signals and targets, persisted
+both accounts and reconciled them. Its receipt was then restored at the registered original
+path while preserving the prior directory. Commissioning is isolated from the pilot: the verified
+observed decision count is 0, mature count 0, and terminal mark count 0. The schedule’s next
+event is 2026-09-30T04:30:00+08:00 Hong Kong. No remote trading workflow was executed; the
+inspected GitHub workflow was disabled by inactivity. Physical sleep/power-loss and sustained
+session-close availability remain unobserved.
+Before the first prospective observation, the study owner requested a shorter observation
+period to prepare an early manuscript release. The amendment registered on 28 September
+2026 supersedes the 63-session commitment with five fixed XNYS decision sessions, from 29
+September through 5 October. The old protocol and sealed artifacts are preserved. The
+strategy, models, capital, costs, forecast horizon and risk rules are unchanged. The active trial
+is PILOT-TREND-WEEK1-20260929. Its new release passed 29 source-bound cases, including the
+exact amended calendar and an isolated historical replay through five decisions and six terminal
+receipts. These test observations do not count as prospective market evidence.
+The fifth-session operational review is due on 6 October at 05:30 Hong Kong time. An interim
+paper can report that week’s observed account activity and failures while forecast outcomes
+remain pending. No scheduled model refit occurs within this shortened window. Five dates cannot
+support the original dependence-aware inferential plan: the prospective report is descriptive,
+with no p-values, claims of durable profitability or approval of sustained operational reliability.
+The registered amendment and complete calendar are retained indata/research-week1/proto
+col.jsonanddata/research-week1/schedule.json.
+The actual cold provider-to-ledger commissioning took 33.27 seconds, including 30.11 seconds
+of public-data reads. It made 22 requests with 0 observed provider failures. Across 20 warm
+batches, median batch time was 1.798 seconds and empirical P95 was 4.159 seconds. A separate
+5-fit SPY timing sample had median 0.424 seconds. Cold-run and small training samples do not
+support tail-latency estimates; warm P95 is descriptive. The collector ran on the recorded arm64
+macOS host under concurrent research load.
+Table 17 reports warm pipeline stage timings, seconds; P99 intentionally unreported.
+T able 17:Warm pipeline stage timings, seconds; P99 intentionally unreported
+Stage Samples P50 (s) P95 (s) P99 (s)
+features 20 0.372 1.083 -
+inference 20 0.191 0.354 -
+whole_batch 20 1.798 4.159 -
+Source:data/research-v2/operations/latency-r2.json.
+Table 18 reports actual verification jobs; overlapping suites are separate records.
+Figure 13 shows measured fitting latency by registered variant under differing run order and
+concurrent host load; these are operational timings, not controlled speedup estimates.
+Thelocalschedulerusesexchange-sessioneventsratherthanafixedHongKongclock. Standard
+close+30 occurs at different local times across US daylight-saving changes, and early-close sessions
+advance the event. Only an eligible transient failure permits the registered retries; deterministic
+integrity or risk failures halt. The watchdog checks for an absent receipt as well as an explicitly
+failed one. Pre-open checks do not create replacement strategy decisions. Weekly archival and
+18
+ML-TradeEngine research Historical study; prospective interim
+T able 18:Actual verification jobs; overlapping suites are separate records
+Saved report Cases Failed Errors Skipped
+data/research-v2/tests/baseline-offline.xml 310 0 0 0
+data/research-v2/tests/final-offline/results.xml 370 0 0 0
+data/research-v2/tests/final-qualified/results.xml 370 0 0 0
+data/research-v2/tests/final-stable/results.xml 370 0 0 0
+data/research-v2/tests/provider-integration.xml 17 0 0 0
+data/research-v2/tests/ui-integration.xml 1 0 0 0
+data/research-v2/tests/ui-r2/results.xml 1 0 0 0
+data/research-v2/tests/ui-r2-qualified/results.xml 1 0 0 0
+Source:data/research-v2/tests/*.xml;XMLtestcasecounts.
+base
+cadence_21fraction_0.5fraction_0.75history_504
+transfer
+without_context_volume
+without_momentum
+without_riskwithout_trend
+0
+0.5
+1
+1.5
+Fit seconds
+Figure 13:Measured fitting latency by registered variant under differing run order and concurrent host
+load; these are operational timings, not controlled speedup estimates.
+milestone reviews assess coverage, latency, risk and protocol deviations without choosing winners
+from pilot returns.
+The collector cannot execute while its host is asleep or unavailable. On recovery it must
+distinguish an overdue event from a legitimate current event, record missed coverage and refuse
+backfilled prospective decisions. A real launchd trigger receipt demonstrates that the operating
+system invoked the current runner and it reached its persistent state. It does not demonstrate a
+future session-close invocation, sustained host availability or an always-on service. Those are
+observations that must accumulate.
+Table 19 reports registered XNYS events and Hong Kong display times.
+T able 19:Registered XNYS events and Hong Kong display times
+Event US session Hong Kong trigger
+First decision 2026-09-29 2026-09-30 04:30 HKT
+Fifth and final decision 2026-10-05 2026-10-06 04:30 HKT
+Five-session watchdog review 2026-10-05 2026-10-06 05:30 HKT
+Final target-label endpoint 2026-10-13 2026-10-14 04:30 HKT
+Final outcome watchdog 2026-10-13 2026-10-14 05:30 HKT
+Source:data/research-week1/schedule.json.
+19
+ML-TradeEngine research Historical study; prospective interim
+The latest validated prospective analysis contains 0 decision receipts and 0 mature decision
+dates. It is recorded as interim. Commissioning, controlled replay and historical predictions are
+excluded from these counts. No prospective forecast or economic result is available; unobserved
+quantities are not zero returns or successful sessions.
+Mature outcomes attach to earlier immutable decisions only after the execution-aligned
+endpoint is observed. After the final decision, six terminal sessions process outstanding fills and
+marks without generating new allocation targets. A halted account can still retain valid matured
+labels, but missing terminal accounting prevents a complete economic freeze. The read-only
+final-report command reconstructs the costed equal-weight comparator from those same observed
+snapshots and retains descriptive results at both week close and final maturity; no inferential
+test is released for five decision dates. The last decision date and the last label-maturity date are
+different. A missing expected session remains a recorded outage and does not shift the registered
+end until results become favorable. Six outcome sessions follow the fifth decision, with final
+maturity on 14 October 2026 at 04:30 Hong Kong time. This follow-up does not extend the
+five-session decision window or prevent an interim manuscript release. The shortened observation
+period cannot establish adequate power for a small economic effect. A strategy can complete the
+operational pilot and still fail the statistical or economic gate.
+10 Reproducibility and claim integrity
+The recorded test jobs are listed individually below; counts from separate or overlapping runs
+are not added into a fictional distinct-test total. Clean-environment reproduction evidence is
+retained in the source manifest and appendix. The complete clean replay retrained 848 trials
+(1,696 estimator fits), compared 352,800 forecast-view rows with maximum probability error
+0.0e+00, and reproduced 40 portfolio histories covering 2,520 account sessions. Ledger states,
+targets, event lists, economic metrics and block-bootstrap/Holm outputs agreed. The comparison
+tolerances were rtol=1e-10 and atol=1e-12; actual probability error was zero. The sealed historical
+artifact comparison is distinct from the new clean-environment refits. Provider checks and UI
+commissioning are separate integration jobs with actual saved results.
+The evidence package contains the protocol, exposure log, registry, per-trial configurations,
+saved predictions, fold boundaries, portfolio records, source tables and plot data. Original repaired
+experiments and sealed releases remain available. New results occupy versioned directories. The
+historical manuscript builder reads a single compiled statistics source and checks its inputs’
+hashes; generated empirical sentences and table cells carry source selectors in the claim map.
+A changed metric must update the dependent prose or fail validation. A missing figure source
+prevents a complete build. The later five-session schedule amendment is generated from its
+separately versioned protocol and calendar; its provenance is retained alongside the amended
+native LaTeX source.
+Tests are recorded with command, runtime, collected test IDs, pass/fail/skip status and source
+hashes before and after execution. A passing JUnit file by itself cannot qualify unrelated source
+or an empty suite. Critical behavior includes mathematical accounting examples, future-data
+mutation, model serialization, release tampering, full-policy replay, concurrent execution, fault
+recovery and the dashboard-to-ledger path. Provider integration runs are explicitly separated
+from the default offline suite. Successful optional-provider checks do not admit those feeds into
+the primary model without historical eligibility evidence.
+Clean-environment reproduction tests use the pinned core runtime and preserved artifacts.
+Byte-identical artifact checks, exact numeric comparisons and tolerance-based comparisons
+are separately named. This matters because serialized files may embed metadata even when
+numerical outputs agree. The package states what was actually rerun; it does not transform a
+20
+ML-TradeEngine research Historical study; prospective interim
+saved verification claim into a new training run. Source inspection and local tests likewise do not
+certify a remote Actions deployment.
+11 Discussion and limitations
+The audit probability comparison has Holm-adjusted p=0.980 in its registered diagnostic family.
+The interval crosses zero, and the point estimate favors the prior. This combination supports a
+bounded statement: the current hybrid has not established better probability forecasts on the
+consumed audit. It does not prove exact equivalence, nor does it justify selecting a favorable
+instrument after inspecting the heatmap. The full registry retains the controlled follow-ups
+so that any narrower improvement is interpreted within its own dates, information set and
+uncertainty.
+The most useful scientific distinction is between a weak forecasting result and an invalid
+experiment. Weak predictive or economic results remain publishable evidence when their
+design, uncertainty and limits are explicit. Conversely, stronger reported performance would not
+compensate for unavailable labels, inconsistent capital accounting or a search procedure hidden
+from the reader. This investigation makes those dependencies visible and creates a path for
+prospective replication without requiring the model to win.
+Several limitations remain structural. The inherited universe has selection and survivorship
+bias. Current-vintage vendor adjustments do not reconstruct exactly what a historical participant
+saw. Overlapping ETFs and common market returns limit the independence of the cross section.
+Execution-aligned labels overlap in time. The short recent audit and finite development folds
+provide limited evidence across distinct regimes. Bootstrap intervals rely on local dependence
+assumptions and do not establish robustness to every structural break.
+The controlled training budget is intentionally bounded. It evaluates a family of fixed,
+interpretable models rather than exhaustively searching all architectures. Excluding larger
+legacy models from a controlled table avoids an invalid comparison; it does not prove those
+models cannot work. A later architecture study would need its own registered information set,
+chronological partitions, compute budget and independent confirmation. Adding news or macro
+data would require actual availability evidence before any claim of incremental benefit.
+Operational qualification also has a narrow scope. A local scheduler, persistent account and
+successful recovery test make collection feasible, but the user’s host remains an availability
+dependency. Synthetic fault injection does not reproduce every filesystem or power-loss condition.
+The total-return proxy ledger omits real broker entitlements and market microstructure. No
+external orders are enabled, and no result here should be read as authorization for them. The
+deployment account remains cash unless independent evidence and separate execution gates
+eventually support a change.
+12 Conclusions
+The project now has a reproducible historical investigation and a separately versioned path
+for collecting prospective local evidence. On the recent audit, the calibrated mixture’s 1.0882
+log loss does not beat the prior’s 1.0756; the capital-matched hybrid account also trails its
+simple investable control. Engineering tests and a real scheduler trigger support the tested
+collection contract, while sustained unattended sessions and final outcome maturity remain
+unobserved. The historical manuscript reports the available negative and mixed findings; the
+complete prospective study remains interim. No profitable-trader or broker-readiness approval
+follows from this work.
+21
+ML-TradeEngine research Historical study; prospective interim
+References
+[1] Shihao Gu, Bryan Kelly, and Dacheng Xiu. Empirical asset pricing via machine learning.
+The Review of Financial Studies, 33(5):2223–2273, 2020. URLhttps://doi.org/10.1093/
+rfs/hhaa009.
+[2] Tobias J. Moskowitz, Yao Hua Ooi, and Lasse Heje Pedersen. Time series momentum.
+Journal of Financial Economics, 104(2):228–250, 2012. URLhttps://doi.org/10.1016/
+j.jfineco.2011.11.003.
+[3] Jerome H. Friedman. Greedy function approximation: A gradient boosting machine.The
+Annals of Statistics, 29(5):1189–1232, 2001. URLhttps://doi.org/10.1214/aos/101320
+3451.
+[4] Tilmann Gneiting and Adrian E. Raftery. Strictly proper scoring rules, prediction, and
+estimation.Journal of the American Statistical Association, 102(477):359–378, 2007. URL
+https://sites.stat.washington.edu/people/raftery/Research/PDF/Gneiting2007
+jasa.pdf.
+[5] Chuan Guo, Geoff Pleiss, Yu Sun, and Kilian Q. Weinberger. On calibration of modern
+neural networks. Proceedings of ICML, PMLR 70, 1321-1330, 2017. URLhttps://procee
+dings.mlr.press/v70/guo17a.html.
+[6] Hans R. Kunsch. The jackknife and the bootstrap for general stationary observations.The
+Annals of Statistics, 17(3):1217–1241, 1989. URLhttps://doi.org/10.1214/aos/117634
+7265.
+[7] Whitney K. Newey and Kenneth D. West. A simple, positive semi-definite, heteroskedasticity
+and autocorrelation consistent covariance matrix.Econometrica, 55(3):703–708, 1987. URL
+https://www.nber.org/papers/t0055.
+[8] Campbell R. Harvey, Yan Liu, and Heqing Zhu. ... and the cross-section of expected returns.
+The Review of Financial Studies, 29(1):5–68, 2016. URLhttps://www.nber.org/papers/
+w20592.
+[9] Sture Holm. A simple sequentially rejective multiple test procedure.Scandinavian Journal
+of Statistics, 6(2):65–70, 1979. URLhttps://www.jstor.org/stable/4615733.
+[10] David H. Bailey and Marcos Lopez de Prado. The deflated sharpe ratio: Correcting for
+selection bias, backtest overfitting and non-normality.Journal of Portfolio Management, 40
+(5):94–107, 2014. URLhttps://doi.org/10.2139/ssrn.2460551.
+[11] David H. Bailey, Jonathan M. Borwein, Marcos Lopez de Prado, and Qiji Jim Zhu. The
+probability of backtest overfitting. Author manuscript, revised February 2015, 2015. URL
+https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf.
+[12] Olivier Ledoit and Michael Wolf. A well-conditioned estimator for large-dimensional
+covariance matrices.Journal of Multivariate Analysis, 88(2):365–411, 2004. URL
+https://www.ledoit.net/Well-conditioned2004.pdf.
+[13] New York Stock Exchange. Holidays and trading hours. Official exchange calendar, accessed
+28 September 2026, 2026. URLhttps://www.nyse.com/trade/hours-calendars.
+[14] GitHub. Troubleshooting workflows. Official documentation, accessed 28 September 2026,
+2026. URLhttps://docs.github.com/en/actions/how-tos/troubleshoot-workflows.
+22
+ML-TradeEngine research Historical study; prospective interim
+A Complete instrument diagnostics
+Table 20 reports complete audit instrument diagnostic for calibrated mixture.
+T able 20:Complete audit instrument diagnostic for calibrated mixture
+Symbol Rows Accuracy Balanced Log loss Brier
+AAPL 48 25.00% 33.33% 1.1004 0.6698
+AMZN 48 54.17% 48.26% 1.0083 0.6010
+BAC 48 37.50% 36.29% 1.0731 0.6505
+DIA 48 47.92% 45.19% 1.0716 0.6453
+GLD 48 33.33% 26.46% 1.1061 0.6716
+GOOGL 48 50.00% 45.24% 1.0188 0.6137
+GS 48 20.83% 33.33% 1.2844 0.7943
+IWM 48 33.33% 29.63% 1.1020 0.6687
+JPM 48 25.00% 28.25% 1.1186 0.6817
+META 48 20.83% 16.83% 1.0474 0.6437
+MSFT 48 37.50% 27.95% 1.0823 0.6691
+NVDA 48 45.83% 32.96% 0.9877 0.6019
+QQQ 48 43.75% 41.11% 1.0465 0.6301
+SPY 48 35.42% 30.77% 1.0920 0.6642
+TLT 48 52.08% 33.33% 1.0961 0.6459
+TSLA 48 45.83% 26.63% 0.9251 0.5583
+XLE 48 27.08% 27.47% 1.1033 0.6704
+XLF 48 35.42% 31.44% 1.1115 0.6748
+XLI 48 27.08% 37.04% 1.2959 0.7746
+XLK 48 47.92% 36.95% 1.0659 0.6434
+XLP 48 50.00% 37.33% 1.0604 0.6406
+XLV 48 31.25% 35.43% 1.1420 0.6942
+Source:data/research-v2/tables/diag_instrument.csv.
+These rows use the same mature-label definition as the main analysis. Instrument rankings
+are descriptive and do not define a new selection policy. Machine-readable tables retain full
+precision, all registered variants and additional class/period slices omitted from the main text
+for readability.
+B Fold, trial and evidence inventory
+Table 21 reports question-to-evidence completion map.
+T able 21:Question-to-evidence completion map
+ID Status Evidence Remaining limitation
+R1 verified with
+limitations
+diag_data_coverage / dataset_flow;
+snapshot hashes
+Current-vintage prices; historical
+constituent/action tape unavailable
+R2 completed
+exploratory
+diag_forecast_summary / paired_
+inference; exp_predictive
+No independent historical confirmation; no
+edge approval
+R3 completed
+exploratory
+diag_calibration_contrast; exp_contrasts
+R3
+Separated gate benefit inconclusive
+R4 completed
+exploratory
+exp_predictive / portfolios / economic_
+contrasts
+Legacy larger models excluded from
+controlled comparisons
+R5 completed
+exploratory
+exp_contrasts R5; saved refit predictions Family ablations are model-conditional,
+not causal mechanisms
+Continued on the next page
+23
+ML-TradeEngine research Historical study; prospective interim
+Table 21 (continued)
+ID Status Evidence Remaining limitation
+R6 completed
+exploratory
+exp_learning / model_age / seeds Bounded development-only budget; no
+pilot tuning
+R7 completed
+exploratory
+diag_instrument / regime; exp_transfer Held targets retain overlapping ETF
+economic exposures
+R8 completed
+exploratory
+diag_portfolio / round_trip_summary /
+total_pnl_attribution
+Proxy fills and fixed proportional costs
+R9 completed
+exploratory
+diag_stress and replay ledgers No closing-auction or empirical
+market-impact model
+R10 completed
+exploratory
+diag_failures / closed episodes / worst sell
+fills
+Descriptive conditional evidence
+R11 tested local scope Sealed runtime tests; scheduler-verification;
+UI and clean-env reports
+Physical sleep/power-loss cycle and
+sustained availability unobserved
+R12 time-dependent Registered five-session amendment; active
+launchd; commissioning receipt
+Five decision dates and final labels remain
+unobserved
+Source:data/research-v2/tables/evidence_matrix.csv.
+Table 22 reports research-family registry status.
+T able 22:Research-family registry status
+ID Question Recorded status
+R1 data provenance and accounting completed_exploratory
+R2 baselines and predictive value completed_exploratory
+R3 raw/calibrated and separated gating completed_exploratory
+R4 components/fixed mixture/adaptive gate completed_exploratory
+R5 feature family refits completed_exploratory
+R6 training fraction/history/cadence completed_exploratory
+R7 temporal and genuinely held-instrument transfer completed_exploratory
+R8 matched-capital economic performance completed_exploratory
+R9 cost/delay/missing-bar/gap/liquidity/risk sensitivity completed_exploratory
+R10 registered worst/confident-error and representative cases completed_exploratory
+R11 runtime/recovery/scheduler/full-policy parity tested_local_scope
+R12 prospective replication active_awaiting_evidence
+Source:data/research-v2/registry/R*.json.
+R12 cannot be completed today: prospective decisions, operational coverage and execution-
+aligned outcome endpoints must occur in real time. The frozen first decision, final decision and
+final maturity events are listed in the schedule table. Missing sessions create deviations and
+a visible halt. Rebuilding this manuscript after observation requires a new week-one evidence
+snapshot, a versioned LaTeX update and repeated consistency checks. The original R12 registry
+remains preserved; the five-session amendment is authoritative for the active pilot.
+24
+ML-TradeEngine research Historical study; prospective interim
+C Reproduction commands and interpretation
+# From /Users/a/Downloads/ml-trade-engine
+# Verify / inspect the frozen collector (read-only)
+data/research-v2/clean-env/bin/python
+data/releases/research-v2-runtime-20260928-week1/scripts/collector_v2.py status --release
+data/releases/research-v2-runtime-20260928-week1 --workspace data/paper/research-week1
+↪→
+↪→
+# Launch the product console
+/Users/a/miniconda3/bin/python -m streamlit run app_week1.py --server.port 8504
+# Recompute saved-data diagnostics under their recorded protocol
+/Users/a/miniconda3/bin/python -B -m research_v2.diagnostics
+# Resume registered controlled trials; completed checkpoints are verified
+/Users/a/miniconda3/bin/python -B -m research_v2.experiments run
+# Interim observed evidence (new output directory; never starts collection)
+data/research-v2/clean-env/bin/python -B -m research_week1.report --output
+data/research-week1/reports/NEW-DATED-RUN↪→
+# After five valid decisions, use --week-close for the operational report
+# Only after five mature outcomes and six terminal receipts, add --freeze
+# Current native LaTeX manuscript source: output/overleaf/week1/main.tex
+# Historical builders reproduce the preserved pre-amendment edition.
+# Keep future paper updates versioned and validate every empirical claim.
+Every command writes new evidence or reads a sealed artifact. Do not overwrite the existing
+release to conceal a changed method. Historical diagnostics can be regenerated immediately
+from the saved data. Prospective receipts and outcomes require the actual passage of exchange
+sessions, host availability and completed label endpoints. The historical manuscript can be
+substantively complete while the full prospective study remains interim.
+25

@@ -1,0 +1,10 @@
+{
+  "trial": "base-AAPL-F3-R0-S2026",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "77cdfe0203759ad23aa587ab39874aeda240f24c18d910fd86cfcc97408439cc",
+  "expected_prediction_sha256": "dc0c68f0a998625a0be1e2b5bd54a25f586447718e6246150b1de7a638881da9",
+  "model_sha256": "8cdc38dfa70a4cb847673a4e45a9364b82854ee33c417b5ba810d42734131306"
+}

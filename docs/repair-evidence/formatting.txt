@@ -1,0 +1,19 @@
+reformatted /Users/a/Downloads/ml-trade-engine/src/execution/__init__.py
+reformatted scripts/bootstrap_models.py
+reformatted scripts/operational_status.py
+reformatted src/backtest/portfolio.py
+reformatted src/data/validation.py
+reformatted src/models/bundle.py
+reformatted src/research/protocol.py
+reformatted scripts/local_sandbox.py
+reformatted src/live/engine.py
+reformatted tests/test_accounting_regressions.py
+reformatted tests/test_causality_regressions.py
+reformatted tests/test_operational_regressions.py
+reformatted scripts/replay_portfolio.py
+reformatted tests/test_portfolio_execution.py
+reformatted scripts/validated_research.py
+reformatted /Users/a/Downloads/ml-trade-engine/src/execution/account.py
+
+All done! ✨ 🍰 ✨
+16 files reformatted.

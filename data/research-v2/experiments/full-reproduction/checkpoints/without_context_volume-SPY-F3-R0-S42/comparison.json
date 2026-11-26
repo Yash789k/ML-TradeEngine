@@ -1,0 +1,10 @@
+{
+  "trial": "without_context_volume-SPY-F3-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "401e2993ca9b1815af3e203083ad873c0eb221786dd969ca6fd9debae24186e5",
+  "expected_prediction_sha256": "e4b3f09069d4a94ce18c4fa052ff2aab3317aa6698f6262c2e848205f6a46783",
+  "model_sha256": "b5a5613110d50cba085d1152ad3bc52cc6eecd3b969d29e02f2ccedba66a818a"
+}

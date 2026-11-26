@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-14T13:39:17.823979+00:00",
+  "command": "PYTHONPATH=r4-release:r4-validation:. clean-env/python -B -m pytest tests/test_week1_r4_report.py -q --junitxml=data/research-week1-r4/report-qualified-tests.xml",
+  "test_count": 11,
+  "source": {
+    "research_week1_r4/report.py": "152e08699a9116d98a8b0ce403b0f49940b68c68426831c6499401c3c28010ce",
+    "tests/test_week1_r4_report.py": "7d99c72e24a18882d1564ac8d8963a26d26fc1718e31257a63b5dc77bfeb8550",
+    "research_v2/diagnostics.py": "6dd72acb64ed9b6944314ba2015b93c096cf32f36927a582b1ebfbe1d598e8ef"
+  },
+  "junit_sha256": "49e0f1dc1c6cbd1a4bb95fc20cd3a82cebc1e74945ea36a8779b244dac2db2e6"
+}

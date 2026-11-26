@@ -1,0 +1,85 @@
+% Compiler: pdfLaTeX. BibTeX is run automatically by Overleaf/latexmk.
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype}
+\usepackage[margin=25mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,longtable,array,ragged2e}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf,justification=justified,singlelinecheck=false}
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepgfplotslibrary{groupplots,statistics,colormaps}
+\pgfplotsset{compat=1.18,every axis/.append style={font=\footnotesize,label style={font=\footnotesize},tick label style={font=\scriptsize},legend style={font=\scriptsize,draw=none},axis lines=left,grid=major,grid style={gray!18},legend cell align=left},colormap={diverging}{rgb255(0cm)=(33,102,172);rgb255(1cm)=(247,247,247);rgb255(2cm)=(178,24,43)}}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xurl}
+\usepackage[hidelinks,bookmarksnumbered]{hyperref}
+\usepackage{bookmark}
+\usepackage[section]{placeins}
+\usepackage{fancyvrb,fvextra}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small ML-TradeEngine research}
+\fancyhead[R]{\small Historical study; prospective interim}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\parindent}{1.3em}\setlength{\parskip}{2pt}
+\setlength{\emergencystretch}{2em}
+\raggedbottom
+\renewcommand{\topfraction}{.9}
+\renewcommand{\bottomfraction}{.85}
+\renewcommand{\textfraction}{.08}
+\renewcommand{\floatpagefraction}{.65}
+\clubpenalty=10000\widowpenalty=10000
+\setcounter{tocdepth}{2}
+\hypersetup{pdftitle={Causal Forecasts, Constrained Portfolios, and Prospective Operation},pdfauthor={Yash Kataria}}
+\begin{document}
+\pagenumbering{roman}
+\begin{titlepage}
+\centering
+\vspace*{8mm}
+{\LARGE\bfseries Causal Forecasts, Constrained Portfolios, and Prospective Operation\par}
+\vspace{5mm}
+{\large An auditable empirical study of ML-TradeEngine\par}
+\vspace{8mm}
+{\Large Yash Kataria\par}
+\vspace{6mm}
+{28 September 2026\par}
+\vspace{6mm}
+{\small Historical evidence through 25 September 2026.\\Prospective sections remain interim; external broker orders are disabled.\par}
+\vspace{10mm}
+\begin{minipage}{.94\textwidth}
+\section*{Abstract}
+\input{sections/abstract}
+\par\medskip
+\noindent\textbf{Keywords:} quantitative trading; probability calibration; walk-forward evaluation; dependent-sample inference; paper trading; reproducibility.
+\end{minipage}
+\vfill
+{\small Research report. Journal-specific formatting can be applied when a publication venue is selected.\par}
+\end{titlepage}
+\setcounter{page}{2}
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+\input{sections/section-01}
+\input{sections/section-02}
+\input{sections/section-03}
+\input{sections/section-04}
+\input{sections/section-05}
+\input{sections/section-06}
+\input{sections/section-07}
+\input{sections/section-08}
+\input{sections/section-09}
+\input{sections/section-10}
+\input{sections/section-11}
+\input{sections/section-12}
+\clearpage\phantomsection\addcontentsline{toc}{section}{References}
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+\clearpage\appendix
+\input{sections/appendix-a}
+\input{sections/appendix-b}
+\input{sections/appendix-c}
+\end{document}

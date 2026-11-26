@@ -1,0 +1,10 @@
+{
+  "trial": "without_trend-AAPL-F0-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "24602b228eaadb7acc829907599c2c4c347c7d0e636f13663ccf78acb4f542b6",
+  "expected_prediction_sha256": "d3828b042024a9ac609e70534d2184e754ae710563b7b76896b0e8096848459c",
+  "model_sha256": "f5702b215d0fa1ae57e7bad25d107ea9cca5ef8f5f7d4d85aab2c5800676d2cd"
+}

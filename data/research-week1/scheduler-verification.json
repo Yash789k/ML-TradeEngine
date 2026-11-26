@@ -1,0 +1,79 @@
+{
+  "verified_at": "2026-09-28T10:22:41.045199+00:00",
+  "release_manifest_sha256": "198b36b8abcfcabd5520fd9b50fccd3a3b0c0cf68c732e7269b850677d66df93",
+  "active_status": {
+    "trial_id": "PILOT-TREND-WEEK1-20260929",
+    "external_orders": false,
+    "deployment": "cash",
+    "shadow": "trend",
+    "state_consistency_errors": [],
+    "ledger_consistent": true,
+    "valid_observed_sessions": 0,
+    "expected_elapsed_sessions": 0,
+    "missing_sessions": [],
+    "label_complete_decisions": 0,
+    "required_sessions": 5,
+    "next_event": {
+      "id": "2026-09-29:daily",
+      "session": "2026-09-29",
+      "kind": "daily",
+      "due": "2026-09-29T20:30:00+00:00",
+      "ordinal": 1,
+      "hong_kong": "2026-09-30T04:30:00+08:00"
+    },
+    "terminal_observed_sessions": 0,
+    "terminal_required_sessions": 6,
+    "halted": false,
+    "prospective_status": "incomplete",
+    "limitations": [
+      "Local launch agent requires logged-in awake host; no wake guarantee",
+      "No external broker execution",
+      "Commissioning/replays never count as prospective",
+      "Missed sessions halt; no fabricated backfill"
+    ]
+  },
+  "commissioning_ledger_consistent": true,
+  "commissioning_complete": {
+    "completed_at": "2026-09-28T10:15:55.279372+00:00",
+    "mode": "commissioning_preview",
+    "result_sha256": "a1f1657dcc00711b6adfcfb4b3f41f1a160f640357be32e885725ab259133ed3",
+    "trigger": {
+      "at": "2026-09-28T10:15:25.047465+00:00",
+      "parent_pid": 1,
+      "pid": 22635,
+      "scheduler": "launchd",
+      "service": "local.ml-trade-engine.collector-v2",
+      "source_sha256": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+      "status": "awake"
+    },
+    "content_sha256": "b9c2105d0bfd0e535800168d5ee3c0e003f9e4147a9005a1c07ba4d9afd0a481"
+  },
+  "os_trigger": {
+    "at": "2026-09-28T10:15:25.047465+00:00",
+    "parent_pid": 1,
+    "pid": 22635,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+    "status": "awake",
+    "content_sha256": "4a403ab0d99c4ecfc2803d9dd62a0df76f7ebddebfdfc277fb67b2ad669f71a3"
+  },
+  "heartbeat": {
+    "at": "2026-09-28T10:21:52.092679+00:00",
+    "parent_pid": 1,
+    "pid": 22927,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "5ea5cf8e476cd2a2a0b522736744843455f5674a83ee8980f93aae9df85145f0",
+    "status": "awake"
+  },
+  "heartbeat_age_seconds": 48.936749,
+  "os_summary": [
+    "state = not running",
+    "runs = 6",
+    "last exit code = 0",
+    "state = active",
+    "state = active",
+    "run interval = 60 seconds"
+  ]
+}

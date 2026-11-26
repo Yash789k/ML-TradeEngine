@@ -1,0 +1,87 @@
+{
+  "at": "2026-10-14T13:41:46.794666+00:00",
+  "daily_events": [
+    {
+      "id": "2026-10-14:daily",
+      "session": "2026-10-14",
+      "kind": "daily",
+      "due": "2026-10-14T20:30:00+00:00",
+      "ordinal": 1,
+      "hong_kong": "2026-10-15T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-15:daily",
+      "session": "2026-10-15",
+      "kind": "daily",
+      "due": "2026-10-15T20:30:00+00:00",
+      "ordinal": 2,
+      "hong_kong": "2026-10-16T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-16:daily",
+      "session": "2026-10-16",
+      "kind": "daily",
+      "due": "2026-10-16T20:30:00+00:00",
+      "ordinal": 3,
+      "hong_kong": "2026-10-17T04:30:00+08:00"
+    }
+  ],
+  "terminal_events": [
+    {
+      "id": "2026-10-19:outcomes",
+      "session": "2026-10-19",
+      "kind": "outcomes",
+      "ordinal": 4,
+      "due": "2026-10-19T20:30:00+00:00",
+      "hong_kong": "2026-10-20T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-20:outcomes",
+      "session": "2026-10-20",
+      "kind": "outcomes",
+      "ordinal": 5,
+      "due": "2026-10-20T20:30:00+00:00",
+      "hong_kong": "2026-10-21T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-21:outcomes",
+      "session": "2026-10-21",
+      "kind": "outcomes",
+      "ordinal": 6,
+      "due": "2026-10-21T20:30:00+00:00",
+      "hong_kong": "2026-10-22T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-22:outcomes",
+      "session": "2026-10-22",
+      "kind": "outcomes",
+      "ordinal": 7,
+      "due": "2026-10-22T20:30:00+00:00",
+      "hong_kong": "2026-10-23T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-23:outcomes",
+      "session": "2026-10-23",
+      "kind": "outcomes",
+      "ordinal": 8,
+      "due": "2026-10-23T20:30:00+00:00",
+      "hong_kong": "2026-10-24T04:30:00+08:00"
+    },
+    {
+      "id": "2026-10-26:outcomes",
+      "session": "2026-10-26",
+      "kind": "outcomes",
+      "ordinal": 9,
+      "due": "2026-10-26T20:30:00+00:00",
+      "hong_kong": "2026-10-27T04:30:00+08:00"
+    }
+  ],
+  "report_total": 2,
+  "report_failed_r3_disclosed": true,
+  "automation": {
+    "id": "trading-pilot-evidence-watch",
+    "status": "ACTIVE",
+    "rrule": "FREQ=WEEKLY;WKST=MO;BYDAY=MO,TU,WE,TH,FR,SA;BYHOUR=5,21;BYMINUTE=30;BYSECOND=0;BYSETPOS=2,3,4,5,6,7,8,9,10,11",
+    "prompt": "In /Users/a/Downloads/ml-trade-engine, follow docs/research-week1-r4/OPERATIONS.md and STATUS.md. The active r4 continuation collects three new US sessions, 14\u201316 October, in fresh accounts. Retain two verified archived r2 decisions separately, for five interrupted observations total; preserve r3 with zero decisions and missed US 12\u201313 October, its last planned date superseded before its window. Check only eligible XNYS market-open/post-close windows using sealed r4 status, new receipts, heartbeat, halt, reconciliation, sleep guard and milestones. Keep observer-only state in docs/research-week1-r4/observer-state.json. Earlier workspaces are superseded: do not alert on their stopped heartbeats, halts or cancelled future dates. Launchd alone collects. Do not run daily/tick/commission, clear halts, backfill, refit, retune, enable orders or publish. Reuse qualifications. Stay quiet on unchanged state; notify only new actionable failures, required action, valid three-new-session milestone or final maturity. Generate dated research_week1_r4.report --week-close only with three valid new decisions, two verified prior decisions and reconciled new accounts without a new halt. Freeze only with all five mature outcomes and six new terminal receipts. Keep segment returns separate and disclose all missed sessions and failed trials. Commissioning is not prospective evidence; no profitability approval. Pause this observer after reporting the completed final package."
+  }
+}

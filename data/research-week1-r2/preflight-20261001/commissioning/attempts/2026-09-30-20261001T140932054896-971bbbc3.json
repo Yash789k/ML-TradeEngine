@@ -1,0 +1,19 @@
+{
+  "binding": {
+    "config_sha256": "a9d230c85993ca7e5dcd63277efcc9ea5c2fd45d3306c7c1bfece4ae71a55683",
+    "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261001-week1-r2",
+    "release_sha256": "12eefa88386aaa2929866554e51b0b818c113489ab12ddc4813a1591cc34906d",
+    "trial_id": "PILOT-TREND-WEEK1-R2-20261001"
+  },
+  "elapsed_seconds": 17.676720375020523,
+  "host": "Yash-Katarias-Macbook-Pro-638.local",
+  "mode": "commissioning",
+  "parent_pid": 50608,
+  "pid": 41903,
+  "result_sha256": "4af1b50ef65c6ae0b22c9b6f912144e334f354e2a640e8ea98f2529aeb82afc2",
+  "service": "0",
+  "session": "2026-09-30",
+  "started_at": "2026-10-01T14:09:32.054896+00:00",
+  "status": "complete",
+  "trial_id": "PILOT-TREND-WEEK1-R2-20261001"
+}

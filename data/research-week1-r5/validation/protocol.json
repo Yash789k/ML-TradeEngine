@@ -1,0 +1,365 @@
+{
+  "version": "research-week1-r5-20261021",
+  "registered_at": "2026-10-21T04:34:11.307409+00:00",
+  "kind": "exploratory_historical_followup_and_independent_prospective_operation",
+  "historical_cutoff": "2026-09-25",
+  "dataset": {
+    "path": "data/releases/2026-09-28-adaptive/market",
+    "manifest_sha256": "8c2441c940ff7eebdbab505517e531f28e15a01d8e640fd069c7fc475142c218",
+    "universe_rule": "Existing 22 symbols, fixed before follow-up; selected survivors and overlapping ETFs; no market-wide inference",
+    "availability": "historical current-vintage adjusted prices; prospective retrieval times retained"
+  },
+  "labels": {
+    "return": "close[t+6]/close[t+1]-1",
+    "down": "return < -0.01",
+    "up": "return > 0.01",
+    "flat": "otherwise only if mature",
+    "eligibility": "label endpoint strictly before fitting decision",
+    "purge": "endpoint of earlier partition must precede first decision of next partition"
+  },
+  "splits": {
+    "development": "2024-01-02 through 2025-12-31",
+    "selection_consumed": "2026-01-02 through 2026-07-10",
+    "audit_consumed": "2026-07-13 through 2026-09-25",
+    "outer_design": "chronological development validation blocks, expanding eligibility; all inspected history exploratory",
+    "inner_design": "past model fit, endpoint-purged temperature calibration, distinct endpoint-purged gate validation; no outer outcomes used to choose hyperparameters"
+  },
+  "primary_endpoints": {
+    "predictive": "paired daily mean log-loss difference candidate minus trailing prior; negative better",
+    "economic": "paired daily net-return difference candidate minus matched costed equal-weight; positive better"
+  },
+  "inference": {
+    "unit": "session, retaining every symbol within date",
+    "bootstrap": "2000 circular date-block replicates; seed 20260928",
+    "block_lengths": [
+      6,
+      10,
+      21
+    ],
+    "primary_block": 10,
+    "multiplicity": "Holm family-wise adjustment on actual registered predictive contrasts separately from economic contrasts; exploratory slices descriptive",
+    "alpha": 0.05,
+    "practical_predictive_gain": 0.01,
+    "practical_annual_active_return": 0.02,
+    "power": "report block-bootstrap standard-error based detectable effect for 80% power, approximate and descriptive",
+    "dsr_pbo": "excluded: complete independent historical search universe is not recoverable",
+    "prospective": "Descriptive only; five interrupted dates do not support dependence-aware inference or profitability approval"
+  },
+  "compute": {
+    "pilot": "first development fold, 2 representative symbols, <=120 seconds",
+    "maximum_new_fits": 1800,
+    "maximum_elapsed_minutes": 60,
+    "seeds": [
+      42,
+      137,
+      2026
+    ],
+    "search": "bounded one-factor designs; no Cartesian grid and no winner substitution into pilot",
+    "failed_trials": "retain status/error/runtime and partial artifacts; never overwrite completed trials"
+  },
+  "families": {
+    "R1": "data provenance and accounting",
+    "R2": "baselines and predictive value",
+    "R3": "raw/calibrated and separated gating",
+    "R4": "components/fixed mixture/adaptive gate",
+    "R5": "feature family refits",
+    "R6": "training fraction/history/cadence",
+    "R7": "temporal and genuinely held-instrument transfer",
+    "R8": "matched-capital economic performance",
+    "R9": "cost/delay/missing-bar/gap/liquidity/risk sensitivity",
+    "R10": "registered worst/confident-error and representative cases",
+    "R11": "runtime/recovery/scheduler/full-policy parity",
+    "R12": "prospective replication"
+  },
+  "pilot": {
+    "trial_id": "PILOT-TREND-WEEK1-R5-20261021",
+    "first_session": "2026-10-21",
+    "sessions": 1,
+    "cutoff_rule": "One fixed future decision in fresh accounts; four archived observations retained as two separate failed segments; no backfill or return splicing",
+    "shadow": "historically selected trend",
+    "deployment": "cash",
+    "capital": 10000,
+    "external_orders": false,
+    "refit_anchor": "explicit XNYS anchor shared by historical replay and daily path; register runtime before first decision",
+    "weekly": "last XNYS session of ISO week (Thursday when Friday is holiday); explicit v2 correction tested before first decision",
+    "price_units": "adjusted total-return proxy units",
+    "cadence": "21 exchange sessions",
+    "schedule": "XNYS close+30, transient retries +45/+60, watchdog +90; segment milestone 1; six hold-only tail sessions",
+    "outcome_maturity": "six further sessions after last decision",
+    "last_session": "2026-10-21",
+    "operational_review_sessions": [
+      1
+    ],
+    "final_outcome_session": "2026-10-29",
+    "refit_scope": "No scheduled refit within the single-decision continuation; carried models remain fixed",
+    "ship_scope": "Interrupted five-observation report across three separate account segments; labels may remain pending"
+  },
+  "promotion": {
+    "engineering": "exact tested source/config, full critical test IDs and pipeline receipts",
+    "historical_edge": "never approved solely by these exploratory follow-ups",
+    "prospective": "Separate one-decision operational completion from six-session outcome maturity; no economic qualification",
+    "manuscript": "historical manuscript plus explicitly interim prospective section; full study pending maturity",
+    "broker": "disabled"
+  },
+  "amendment": {
+    "reason": "User explicitly requested registering and activating the fifth collection tonight",
+    "authorization": "Then register and activate the fifth collection for tonight and make sure everything is ready to run.",
+    "timing": "Before US 21 October market open; previously inspected observations, failed trials and follow-up prices are disclosed",
+    "parent_protocol_sha256": "010f33cc1d56e5939fcbd4ebb99f15d24ea6635f78e7ad91443be206a0bf16d9",
+    "parent_release_sha256": "9f23d72fc0b892ad9af70efd2fbcdb71e2d3469f5d9f796ff40f76f52c3ec810",
+    "parent_trial": "PILOT-TREND-WEEK1-R4-20261014",
+    "superseded_status": {
+      "trial_id": "PILOT-TREND-WEEK1-R4-20261014",
+      "external_orders": false,
+      "deployment": "cash",
+      "shadow": "trend",
+      "state_consistency_errors": [],
+      "ledger_consistent": true,
+      "valid_observed_sessions": 2,
+      "expected_elapsed_sessions": 3,
+      "missing_sessions": [
+        "2026-10-16"
+      ],
+      "label_complete_decisions": 0,
+      "required_sessions": 3,
+      "next_event": {
+        "id": "2026-10-21:outcomes",
+        "session": "2026-10-21",
+        "kind": "outcomes",
+        "ordinal": 6,
+        "due": "2026-10-21T20:30:00+00:00",
+        "hong_kong": "2026-10-22T04:30:00+08:00"
+      },
+      "terminal_observed_sessions": 0,
+      "terminal_required_sessions": 6,
+      "halted": true,
+      "prospective_status": "incomplete",
+      "limitations": [
+        "Local launch agent requires logged-in awake host; no wake guarantee",
+        "No external broker execution",
+        "Commissioning/replays never count as prospective",
+        "Missed sessions halt; no fabricated backfill"
+      ]
+    },
+    "supersedes": "Future collection ownership only; preserve prior receipts, snapshots, accounts, releases and halts",
+    "selection": "Same frozen models, symbols, costs, cash deployment and trend shadow; no performance-based reselection"
+  },
+  "prior_amendment": {
+    "reason": "User requested: can we continue tonight, after disclosure of the r3 missed-session halt",
+    "timing": "Registered during US 14 October session, before its close and decision cutoff; earlier observations and missed sessions already inspected",
+    "parent_protocol_sha256": "3383450ad87a6a31002c67089fe92cb5d86db5f9c2ebd0c77cd384a9c01465de",
+    "parent_release_sha256": "7bfc89e8f58a97d61a3ec800aa4819480f1bb66dd653f3fcce9493dc4d501946",
+    "parent_observations": 0,
+    "archived_observations": 2,
+    "parent_trial": "PILOT-TREND-WEEK1-R3-20261012",
+    "parent_status": "r3 has zero valid decisions, missed US 12 and 13 October, and a preserved halt; US 14 October cancelled before its close",
+    "archived_observed_segment": "r2 retains two valid decisions on 1 and 2 October; missed 5, 6 and 7 October; halted account preserved",
+    "supersedes": "Only future collection ownership; preserve all original dates, halt, receipts and releases",
+    "selection": "Same frozen models, symbols, costs, cash deployment and trend shadow; no performance-based reselection",
+    "authorization": "can we continue tonight",
+    "superseded_status": {
+      "trial_id": "PILOT-TREND-WEEK1-R3-20261012",
+      "external_orders": false,
+      "deployment": "cash",
+      "shadow": "trend",
+      "state_consistency_errors": [],
+      "ledger_consistent": true,
+      "valid_observed_sessions": 0,
+      "expected_elapsed_sessions": 2,
+      "missing_sessions": [
+        "2026-10-12",
+        "2026-10-13"
+      ],
+      "label_complete_decisions": 0,
+      "required_sessions": 3,
+      "next_event": {
+        "id": "2026-10-14:daily",
+        "session": "2026-10-14",
+        "kind": "daily",
+        "due": "2026-10-14T20:30:00+00:00",
+        "ordinal": 3,
+        "hong_kong": "2026-10-15T04:30:00+08:00"
+      },
+      "terminal_observed_sessions": 0,
+      "terminal_required_sessions": 6,
+      "halted": true,
+      "prospective_status": "incomplete",
+      "limitations": [
+        "Local launch agent requires logged-in awake host; no wake guarantee",
+        "No external broker execution",
+        "Commissioning/replays never count as prospective",
+        "Missed sessions halt; no fabricated backfill"
+      ]
+    },
+    "unattempted_after_supersession": [
+      "2026-10-14"
+    ]
+  },
+  "continuation": {
+    "design": "Five interrupted observed dates across three separate account segments",
+    "prior_segments": [
+      {
+        "segment": "r2",
+        "prior_release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261001-week1-r2",
+        "prior_release_sha256": "12eefa88386aaa2929866554e51b0b818c113489ab12ddc4813a1591cc34906d",
+        "prior_workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2",
+        "prior_decision_dates": [
+          "2026-10-01",
+          "2026-10-02"
+        ],
+        "status_at_supersession": {
+          "trial_id": "PILOT-TREND-WEEK1-R2-20261001",
+          "external_orders": false,
+          "deployment": "cash",
+          "shadow": "trend",
+          "state_consistency_errors": [],
+          "ledger_consistent": true,
+          "valid_observed_sessions": 2,
+          "expected_elapsed_sessions": 5,
+          "missing_sessions": [
+            "2026-10-05",
+            "2026-10-06",
+            "2026-10-07"
+          ],
+          "label_complete_decisions": 0,
+          "required_sessions": 5,
+          "next_event": null,
+          "terminal_observed_sessions": 0,
+          "terminal_required_sessions": 6,
+          "halted": true,
+          "prospective_status": "incomplete",
+          "limitations": [
+            "Local launch agent requires logged-in awake host; no wake guarantee",
+            "No external broker execution",
+            "Commissioning/replays never count as prospective",
+            "Missed sessions halt; no fabricated backfill"
+          ]
+        },
+        "prior_receipt_sha256": {
+          "2026-10-01": "e334ec1cdde0dc31408b5172cbf3ebb0e7d55aea589c97604d5e33ef65cee17a",
+          "2026-10-02": "4416ac3300c06a9a354c06ce7f371199ebb00152a4d3d450b8f32268009b0467"
+        },
+        "missed_dates": [
+          "2026-10-05",
+          "2026-10-06",
+          "2026-10-07"
+        ],
+        "halt_preserved": true
+      },
+      {
+        "segment": "r4",
+        "prior_release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261014-week1-r4",
+        "prior_release_sha256": "9f23d72fc0b892ad9af70efd2fbcdb71e2d3469f5d9f796ff40f76f52c3ec810",
+        "prior_workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r4",
+        "prior_decision_dates": [
+          "2026-10-14",
+          "2026-10-15"
+        ],
+        "status_at_supersession": {
+          "trial_id": "PILOT-TREND-WEEK1-R4-20261014",
+          "external_orders": false,
+          "deployment": "cash",
+          "shadow": "trend",
+          "state_consistency_errors": [],
+          "ledger_consistent": true,
+          "valid_observed_sessions": 2,
+          "expected_elapsed_sessions": 3,
+          "missing_sessions": [
+            "2026-10-16"
+          ],
+          "label_complete_decisions": 0,
+          "required_sessions": 3,
+          "next_event": {
+            "id": "2026-10-21:outcomes",
+            "session": "2026-10-21",
+            "kind": "outcomes",
+            "ordinal": 6,
+            "due": "2026-10-21T20:30:00+00:00",
+            "hong_kong": "2026-10-22T04:30:00+08:00"
+          },
+          "terminal_observed_sessions": 0,
+          "terminal_required_sessions": 6,
+          "halted": true,
+          "prospective_status": "incomplete",
+          "limitations": [
+            "Local launch agent requires logged-in awake host; no wake guarantee",
+            "No external broker execution",
+            "Commissioning/replays never count as prospective",
+            "Missed sessions halt; no fabricated backfill"
+          ]
+        },
+        "prior_receipt_sha256": {
+          "2026-10-14": "5f02761b1f1877b91716ee4581a758a53c928233db869c0360e8f1d554e008f7",
+          "2026-10-15": "0e2e5f5b44010ab529946eb1b1d7cd70ac91e607ff0319305bcf3e6b18b6449d"
+        },
+        "missed_dates": [
+          "2026-10-16"
+        ],
+        "halt_preserved": true
+      }
+    ],
+    "failed_continuations": [
+      {
+        "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261011-week1-r3",
+        "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r3",
+        "release_sha256": "7bfc89e8f58a97d61a3ec800aa4819480f1bb66dd653f3fcce9493dc4d501946",
+        "status_at_supersession": {
+          "trial_id": "PILOT-TREND-WEEK1-R3-20261012",
+          "external_orders": false,
+          "deployment": "cash",
+          "shadow": "trend",
+          "state_consistency_errors": [],
+          "ledger_consistent": true,
+          "valid_observed_sessions": 0,
+          "expected_elapsed_sessions": 2,
+          "missing_sessions": [
+            "2026-10-12",
+            "2026-10-13"
+          ],
+          "label_complete_decisions": 0,
+          "required_sessions": 3,
+          "next_event": {
+            "id": "2026-10-14:daily",
+            "session": "2026-10-14",
+            "kind": "daily",
+            "due": "2026-10-14T20:30:00+00:00",
+            "ordinal": 3,
+            "hong_kong": "2026-10-15T04:30:00+08:00"
+          },
+          "terminal_observed_sessions": 0,
+          "terminal_required_sessions": 6,
+          "halted": true,
+          "prospective_status": "incomplete",
+          "limitations": [
+            "Local launch agent requires logged-in awake host; no wake guarantee",
+            "No external broker execution",
+            "Commissioning/replays never count as prospective",
+            "Missed sessions halt; no fabricated backfill"
+          ]
+        },
+        "unattempted_after_supersession": [
+          "2026-10-14"
+        ]
+      }
+    ],
+    "earlier_failed_trials": [
+      {
+        "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-week1",
+        "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1",
+        "note": "Original five-session trial failed; superseded before r2; retain original evidence"
+      }
+    ],
+    "new_account": "Fresh 10000 cash per account; no positions, pending orders or fills cross the gap",
+    "analysis": "Retain date and segment identifiers; separate account returns and reliability; every failed trial remains failed",
+    "total_observed_target": 5,
+    "archived_observed_target": 4,
+    "future_observed_target": 1,
+    "prior_label_source": "Derive labels from validated new snapshots in report artifacts only; never mutate archived accounts",
+    "cancelled_r4_future_tail_dates": [
+      "2026-10-21",
+      "2026-10-22",
+      "2026-10-23",
+      "2026-10-26"
+    ]
+  }
+}

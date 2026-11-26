@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>MKL_NUM_THREADS</key>
+		<string>1</string>
+		<key>OMP_NUM_THREADS</key>
+		<string>1</string>
+		<key>OPENBLAS_NUM_THREADS</key>
+		<string>1</string>
+		<key>PYTHONDONTWRITEBYTECODE</key>
+		<string>1</string>
+		<key>PYTHONUNBUFFERED</key>
+		<string>1</string>
+		<key>XPC_SERVICE_NAME</key>
+		<string>local.ml-trade-engine.collector-v2</string>
+	</dict>
+	<key>Label</key>
+	<string>local.ml-trade-engine.collector-v2</string>
+	<key>ProcessType</key>
+	<string>Background</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Users/a/miniconda3/bin/python3.13</string>
+		<string>-B</string>
+		<string>/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-week1/scripts/collector_v2.py</string>
+		<string>tick</string>
+		<string>--release</string>
+		<string>/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-week1</string>
+		<string>--workspace</string>
+		<string>/Users/a/Downloads/ml-trade-engine/data/paper/research-week1</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/Users/a/Downloads/ml-trade-engine/data/paper/research-week1/scheduler/stderr.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/a/Downloads/ml-trade-engine/data/paper/research-week1/scheduler/stdout.log</string>
+	<key>StartInterval</key>
+	<integer>60</integer>
+	<key>ThrottleInterval</key>
+	<integer>30</integer>
+	<key>WorkingDirectory</key>
+	<string>/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-week1</string>
+</dict>
+</plist>

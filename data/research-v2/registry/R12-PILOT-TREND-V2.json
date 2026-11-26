@@ -1,0 +1,39 @@
+{
+  "id": "R12-PILOT-TREND-V2",
+  "parent": "R12",
+  "registered_at": "2026-09-28T08:19:39.007448+00:00",
+  "status": "active_awaiting_evidence",
+  "budget": "45-session two-symbol full-policy replay; six crash points; one public 22-symbol commissioning; 63 future XNYS decision sessions",
+  "anchor": "2026-09-29",
+  "initial_model": "carried frozen 2026-09-25 fit",
+  "refit": "anchor+21,+42,+63 exchange sessions",
+  "selection": "cash deployment; fixed trend shadow; no winner substitution",
+  "acceptance": "full policy target/probability/account parity; stale/missing/integrity halt; no double commits; actual OS trigger; no forward observations fabricated",
+  "protocol_pilot_id": "PILOT-TREND-V2-20260929",
+  "runtime_trial_id": "PILOT-TREND-V2-20260929",
+  "first_session": "2026-09-29",
+  "last_decision": "2026-12-28",
+  "final_label_endpoint": "2027-01-06",
+  "expected_first_run_hkt": "2026-09-30T04:30:00+08:00",
+  "observed_prospective": 0,
+  "release_sha256": "2a53ac1b6f91e93b949b4c6f35754225e7a0b1fab9174cde114c5e7c5e485751",
+  "evidence": [
+    "operations/scheduler-verification-r2.json"
+  ],
+  "canonical_pilot_trial_id": "PILOT-TREND-V2-20260929",
+  "active_release_sha256": "570372e203c6ef943deb37c2856a4ca7f0c3d34a168ac247d5b1cb2232916f43",
+  "release_revisions": [
+    {
+      "release": "research-v2-runtime-20260928",
+      "trial_alias": "R12-PILOT-TREND-V2",
+      "status": "superseded_before_pilot",
+      "archive": "data/paper/research-v2-r1-commissioning"
+    },
+    {
+      "release": "research-v2-runtime-20260928-r2",
+      "trial_id": "PILOT-TREND-V2-20260929",
+      "status": "active",
+      "reason": "Independent source/outcome/restore integrity review corrections before first prospective decision"
+    }
+  ]
+}

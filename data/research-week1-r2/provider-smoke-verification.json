@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-10-01T14:10:12.014510+00:00",
+  "mode": "commissioning_preview",
+  "trigger_mode": "commissioning",
+  "counts_as_prospective": false,
+  "session": "2026-09-30",
+  "symbols": 22,
+  "provider_status": "complete",
+  "provider_retrieved_at": "2026-10-01T14:09:32.054896+00:00",
+  "snapshot": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r2/preflight-20261001/commissioning/days/2026-09-30/market-20261001T140932054896-971bbbc3",
+  "snapshot_sha256": "d9aeb9b82a6b0f9b1fac8ce6a32a7b84523ba0b36ba5357cd960f42f7290da3e",
+  "release_sha256": "12eefa88386aaa2929866554e51b0b818c113489ab12ddc4813a1591cc34906d",
+  "refit": false,
+  "accounts": {
+    "deployment": {
+      "equity": 10000.0,
+      "cash": 10000.0,
+      "reconciliation_error": 0.0
+    },
+    "shadow": {
+      "equity": 10000.0,
+      "cash": 10000.0,
+      "reconciliation_error": 0.0
+    }
+  },
+  "external_orders": false
+}

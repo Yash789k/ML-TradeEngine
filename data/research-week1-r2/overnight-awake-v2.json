@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-01T14:13:15.357434+00:00",
+  "label": "local.ml-trade-engine.awake-20261001",
+  "expires_hkt": "2026-10-02T06:00:00+08:00",
+  "absolute_expiry_survives_relogin": true,
+  "expired_invocation_exits_without_sleep_assertion": true,
+  "script_sha256": "07aff1eb801b874bdc593eeadf174332168035e77b4584cd7067313d5a609b7a",
+  "plist_sha256": "a43568e694d386e02defc301161515f674a74f6b46d721071057badf34c06ab3"
+}

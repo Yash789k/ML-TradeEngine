@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-10T18:42:11.205274+00:00",
+  "label": "local.ml-trade-engine.dashboard-week1-r3",
+  "url": "http://127.0.0.1:8504",
+  "program": [
+    "/Users/a/miniconda3/bin/python",
+    "-B",
+    "-m",
+    "streamlit",
+    "run",
+    "/Users/a/Downloads/ml-trade-engine/app_week1_r3.py",
+    "--server.port",
+    "8504",
+    "--server.address",
+    "127.0.0.1",
+    "--server.headless",
+    "true",
+    "--browser.gatherUsageStats",
+    "false"
+  ]
+}

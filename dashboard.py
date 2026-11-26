@@ -65,6 +65,8 @@ st.set_page_config(
     initial_sidebar_state = "expanded",
 )
 
+st.warning("Legacy saved research is exploratory and invalid for strategy promotion. Use the September 2026 repair report and versioned shared-account replay; no prospective broker track record is established.")
+
 # ---------------------------------------------------------------------------
 # Minimal CSS
 # ---------------------------------------------------------------------------

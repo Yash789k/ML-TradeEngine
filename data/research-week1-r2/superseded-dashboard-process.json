@@ -1,0 +1,10 @@
+{
+  "old": {
+    "pid": 22741,
+    "url": "http://127.0.0.1:8504",
+    "source": "app_week1.py",
+    "scope": "local dashboard; launchd owns collection"
+  },
+  "verified_command": "/Users/a/miniconda3/bin/python -B -m streamlit run app_week1.py --server.port 8504 --server.address 127.0.0.1 --server.headless true",
+  "replaced_at": "2026-10-01T14:13:15.446128+00:00"
+}

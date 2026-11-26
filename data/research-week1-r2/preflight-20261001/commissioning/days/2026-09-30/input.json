@@ -1,0 +1,12 @@
+{
+  "binding": {
+    "config_sha256": "a9d230c85993ca7e5dcd63277efcc9ea5c2fd45d3306c7c1bfece4ae71a55683",
+    "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261001-week1-r2",
+    "release_sha256": "12eefa88386aaa2929866554e51b0b818c113489ab12ddc4813a1591cc34906d",
+    "trial_id": "PILOT-TREND-WEEK1-R2-20261001"
+  },
+  "content_sha256": "1c85b9af143a8a8915c14a98b882f0e9f77492552c7a66234bdde23231a4d405",
+  "session": "2026-09-30",
+  "snapshot": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r2/preflight-20261001/commissioning/days/2026-09-30/market-20261001T140932054896-971bbbc3",
+  "snapshot_sha256": "d9aeb9b82a6b0f9b1fac8ce6a32a7b84523ba0b36ba5357cd960f42f7290da3e"
+}

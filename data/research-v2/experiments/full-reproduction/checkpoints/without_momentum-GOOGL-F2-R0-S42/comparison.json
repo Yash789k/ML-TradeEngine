@@ -1,0 +1,10 @@
+{
+  "trial": "without_momentum-GOOGL-F2-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "ee8e1c8f4c41e73eac1507d9a74afee97e9c106474645656bb30007136b3945a",
+  "expected_prediction_sha256": "a75fe55ff5d3d1c15e0a7fc9cbe72a7073ca3d2ea5048acf5f2ce7f40d5b91e1",
+  "model_sha256": "de8eebf5dbbb0b8bfd8b42a39a2c9e97b91432d6e8d38c198fde8765fbe9f068"
+}

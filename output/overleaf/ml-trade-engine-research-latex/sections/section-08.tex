@@ -1,0 +1,56 @@
+\section{Economic performance, costs and failure mechanisms}\label{sec:section-08}
+
+The controlled portfolio comparisons do not establish an economic advantage: every primary-block interval below crosses zero after matching the same outer dates and execution rules. Each fold starts a fresh account; the study averages daily active returns across those blocks, not a fictitious continuously invested equity path across the intervening gaps. Approximate detectable daily active effects range from 0.0420\% to 0.0736\%. These are large relative to the registered practical threshold. The bootstrap conditions on the observed outer blocks and cannot establish robustness to an unseen market regime.
+
+\noindent Table~\ref{tab:12} reports controlled daily active returns versus equal weight; primary date-block inference.
+
+\input{tables/table-12}
+
+For the newly matched audit accounts, each policy begins with 10,000.00 dollars. The adaptive hybrid ends at 9,954.29 dollars and the equal-weight control at 10,254.73 dollars. Hybrid net return is -0.46\%, maximum drawdown -2.21\%, and average gross exposure 55.63\%. These fresh-capital results differ from the sealed continuous-account audit because startup holdings and entry financing differ. The continuous curves below retain their original account history and are labeled accordingly.
+
+\noindent Table~\ref{tab:13} reports fresh-capital audit accounts; zero-rate Sharpe and modeled per-side costs.
+
+\input{tables/table-13}
+
+\noindent Figure~\ref{fig:10} shows continuous accounts from their original common start; these are not fresh audit allocations.
+
+\begin{figure}[htbp]\centering
+\input{figures/diag_portfolio}
+\caption{Continuous accounts from their original common start; these are not fresh audit allocations.}\label{fig:10}
+\end{figure}
+
+\noindent Figure~\ref{fig:11} shows recorded exposure, turnover and cost diagnostics under the shared ledger contract.
+
+\begin{figure}[htbp]\centering
+\input{figures/diag_costs}
+\caption{Recorded exposure, turnover and cost diagnostics under the shared ledger contract.}\label{fig:11}
+\end{figure}
+
+Prediction loss and portfolio return need not rank models identically. The trading rule uses estimated payoff magnitude, abstention, weekly decisions and constrained capital. A prediction can be directionally wrong while its account is in cash; a correct signal can still lose after a delayed fill or costs. The decomposition therefore examines exposure, turnover, fill rejections, realized net outcomes and open holdings rather than attributing every equity change to classifier accuracy.
+
+Over the full continuous hybrid account, modeled combined costs are 234.81 dollars across 2,541 fills. There are 1,367 sell fills, which include partial reductions rather than necessarily completed flat-to-flat episodes. Their net realized profit is 2,929.53 dollars; open holdings and unclosed costs still matter for total equity. The 86 completed position episodes have a 46.51\% win rate, materially different from the sell-fill statistic. Neither is a strategy's independent trade success probability. The completed-position episode table reconciles closed net profit and terminal open-position profit to total account profit, preventing partial sales from being counted as independent completed trades.
+
+\noindent Table~\ref{tab:14} reports hybrid closed-position episodes versus still-open positions.
+
+\input{tables/table-14}
+
+\noindent Table~\ref{tab:15} reports largest audit hybrid forecast losses, selected by registered loss ranking.
+
+\input{tables/table-15}
+
+The reported failure cases follow registered selection rules: representative observations, the largest confident forecast errors and the largest adverse account contributions. They are not handpicked success stories. A loss concentration can reveal concentrated exposure or a difficult period, but explaining why a model produced a probability requires tracing its actual inputs and fitted state. Descriptive associations between a gate and losses are not causal gate benefits. Component and gate interventions provide the relevant controlled evidence.
+
+Across the registered completed hybrid sensitivity scenarios, the lowest terminal return is -1.17\% in delay\_1; the highest is 0.93\% in reserve\_zero. These extrema are descriptive stress outcomes, not candidates selected for deployment. A rejected-order scenario can improve a realized sample by avoiding losing exposure, and a temporary gap can worsen drawdown without changing the terminal price. Both effects require examining the full path, fills and rejections, not just ending wealth.
+
+\noindent Table~\ref{tab:16} reports hybrid execution and risk sensitivities; fresh-capital audit.
+
+\input{tables/table-16}
+
+\noindent Figure~\ref{fig:12} shows registered execution sensitivities; terminal return and path risk answer different questions.
+
+\begin{figure}[htbp]\centering
+\input{figures/diag_stress}
+\caption{Registered execution sensitivities; terminal return and path risk answer different questions.}\label{fig:12}
+\end{figure}
+
+The simulator's costs are assumptions rather than measured execution. Fixed proportional slippage cannot represent all auction impact, spreads, illiquidity or market halts. Bounded fill scenarios explore one aspect of capacity without certifying real fill quality. A small simulated account may reduce some capacity concerns, but that does not make every close executable at the modeled price. Broker deployment would require timing, corporate-action and reconciliation evidence that this study deliberately does not claim.

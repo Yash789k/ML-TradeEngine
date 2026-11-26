@@ -1,0 +1,10 @@
+{
+  "trial": "without_context_volume-DIA-F2-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "197ee15f66a84ce0e8639cc30ab8b6da0ca851f859d51e2d238fc6fcbbc3e1de",
+  "expected_prediction_sha256": "0b9ac28debeb2dd68cd85fa4e0a05a2ab8ce80e355986252f0f3b4d6fdb7a2ab",
+  "model_sha256": "70adccb3fa04a59b0193d5347cb8f2b4dd95796515054489bcf4a0243d487694"
+}

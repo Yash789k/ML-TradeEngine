@@ -1,0 +1,10 @@
+{
+  "trial": "transfer-IWM-F3-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "5ba28f2258efcc0825752bd9bf5b15d3b8b848713e4363b0338c0d65d36ef762",
+  "expected_prediction_sha256": "4361e5154e16bd805b4ebecb06171c4993501b5f86b1489e8b2bd6dc64b3c383",
+  "model_sha256": "ec6468fc72aab1953dcdded54b74f5149c8c3ce0c7a9a8cb96f61fe58c354c47"
+}

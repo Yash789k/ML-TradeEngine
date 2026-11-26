@@ -1,0 +1,10 @@
+{
+  "files": {
+    "account_comparison.csv": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "benchmark_events.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "prediction_rows.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "report.json": "21337d7a690aff3b5661086373ca01341bcb11b35cf85f534419f8afa4473e66"
+  },
+  "final": false,
+  "restore_note": "Archive retains original receipt paths; operational restoration uses the tested exact-original-path procedure"
+}

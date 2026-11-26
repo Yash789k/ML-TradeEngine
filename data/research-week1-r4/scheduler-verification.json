@@ -1,0 +1,160 @@
+{
+  "verified_at": "2026-10-14T13:41:46.794666+00:00",
+  "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261014-week1-r4",
+  "manifest_sha256": "9f23d72fc0b892ad9af70efd2fbcdb71e2d3469f5d9f796ff40f76f52c3ec810",
+  "status": {
+    "trial_id": "PILOT-TREND-WEEK1-R4-20261014",
+    "external_orders": false,
+    "deployment": "cash",
+    "shadow": "trend",
+    "state_consistency_errors": [],
+    "ledger_consistent": true,
+    "valid_observed_sessions": 0,
+    "expected_elapsed_sessions": 0,
+    "missing_sessions": [],
+    "label_complete_decisions": 0,
+    "required_sessions": 3,
+    "next_event": {
+      "id": "2026-10-14:daily",
+      "session": "2026-10-14",
+      "kind": "daily",
+      "due": "2026-10-14T20:30:00+00:00",
+      "ordinal": 1,
+      "hong_kong": "2026-10-15T04:30:00+08:00"
+    },
+    "terminal_observed_sessions": 0,
+    "terminal_required_sessions": 6,
+    "halted": false,
+    "prospective_status": "incomplete",
+    "limitations": [
+      "Local launch agent requires logged-in awake host; no wake guarantee",
+      "No external broker execution",
+      "Commissioning/replays never count as prospective",
+      "Missed sessions halt; no fabricated backfill"
+    ]
+  },
+  "actual_os_trigger": {
+    "at": "2026-10-14T13:39:27.349956+00:00",
+    "parent_pid": 1,
+    "pid": 75629,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "f82d9574358e753fbcb22802d73e07106fc1c26dcf5d36c66b765504741d8245",
+    "status": "awake",
+    "content_sha256": "bb46cc407a2ee5816544cb0cc1aa719ed4122dc60934c396555eb8b1b91cc2a4"
+  },
+  "heartbeat": {
+    "at": "2026-10-14T13:40:52.136069+00:00",
+    "parent_pid": 1,
+    "pid": 75735,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "f82d9574358e753fbcb22802d73e07106fc1c26dcf5d36c66b765504741d8245",
+    "status": "awake"
+  },
+  "heartbeat_age_seconds": 54.658597,
+  "commissioning": {
+    "completed_at": "2026-10-14T13:39:47.047756+00:00",
+    "mode": "commissioning_preview",
+    "session": "2026-10-13",
+    "symbol_count": 22,
+    "result_sha256": "6fac58e0fbfb623d29917bbe75d0702382049c6812f2415c740262e28c26b3d9",
+    "snapshot_sha256": "ccb5aaafe916e53479e32d4419d4f65198ef818cbaced724da582c51783ec90f",
+    "timings_seconds": {
+      "data_read": 17.313566333963536,
+      "features": 0.2427699170075357,
+      "inference": 0.14301725197583437,
+      "ledger": 0.023839791014324874,
+      "training": 0.0,
+      "whole_batch": 18.957378041988704
+    },
+    "accounts": {
+      "deployment": {
+        "cash": 10000.0,
+        "drawdown": 0.0,
+        "equity": 10000.0,
+        "fees": 0.0,
+        "gross_exposure": 0.0,
+        "positions": {
+          "AAPL": 0.0,
+          "AMZN": 0.0,
+          "BAC": 0.0,
+          "DIA": 0.0,
+          "GLD": 0.0,
+          "GOOGL": 0.0,
+          "GS": 0.0,
+          "IWM": 0.0,
+          "JPM": 0.0,
+          "META": 0.0,
+          "MSFT": 0.0,
+          "NVDA": 0.0,
+          "QQQ": 0.0,
+          "SPY": 0.0,
+          "TLT": 0.0,
+          "TSLA": 0.0,
+          "XLE": 0.0,
+          "XLF": 0.0,
+          "XLI": 0.0,
+          "XLK": 0.0,
+          "XLP": 0.0,
+          "XLV": 0.0
+        },
+        "realized_pnl": 0.0,
+        "reconciliation_error": 0.0,
+        "reserved_cash": 0,
+        "unrealized_pnl": 0.0
+      },
+      "shadow": {
+        "cash": 10000.0,
+        "drawdown": 0.0,
+        "equity": 10000.0,
+        "fees": 0.0,
+        "gross_exposure": 0.0,
+        "positions": {
+          "AAPL": 0.0,
+          "AMZN": 0.0,
+          "BAC": 0.0,
+          "DIA": 0.0,
+          "GLD": 0.0,
+          "GOOGL": 0.0,
+          "GS": 0.0,
+          "IWM": 0.0,
+          "JPM": 0.0,
+          "META": 0.0,
+          "MSFT": 0.0,
+          "NVDA": 0.0,
+          "QQQ": 0.0,
+          "SPY": 0.0,
+          "TLT": 0.0,
+          "TSLA": 0.0,
+          "XLE": 0.0,
+          "XLF": 0.0,
+          "XLI": 0.0,
+          "XLK": 0.0,
+          "XLP": 0.0,
+          "XLV": 0.0
+        },
+        "realized_pnl": 0.0,
+        "reconciliation_error": 0.0,
+        "reserved_cash": 4126.177639973659,
+        "unrealized_pnl": 0.0
+      }
+    },
+    "counts_as_prospective": false
+  },
+  "sole_collector_jobs": [
+    "-\t0\tlocal.ml-trade-engine.collector-v2"
+  ],
+  "sleep_guard": {
+    "running": true,
+    "pid": "75622",
+    "until": "2026-10-27T06:00:00+08:00",
+    "idle_assertion_verified": true,
+    "physical_sleep_wake_tested": false
+  },
+  "power_source": "Now drawing from 'Battery Power'\n -InternalBattery-0 (id=24445027)\t36%; discharging; 6:16 remaining present: true\n",
+  "preserved_r3_files": 216,
+  "preserved_r2_files": 490,
+  "models_unchanged": true,
+  "external_orders": false
+}

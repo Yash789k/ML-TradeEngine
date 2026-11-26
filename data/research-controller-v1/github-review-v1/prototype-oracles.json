@@ -1,0 +1,55 @@
+{
+  "checked_at": "2026-10-30T09:38:17.091107+00:00",
+  "head": "f194283bb6104e3feb980a67bc05a06459677909",
+  "source_sha256": {
+    "README.md": "643433def84fad507d5b0d8798065746ef411b8db9327c1aafe48f15d5586c18",
+    "src/features/regime.py": "3becc47d2561afd2165b1a0ddef39f7031c79bdde67bdf8e9f6f1ebc9accf77b",
+    "src/features/pipeline.py": "4ad7727fd22dc320eff3bf89159cb01dbc6fef5bc8f88982600462a39b3f8b56",
+    "src/models/trainer.py": "d68e52ce8c209608d84318851b403ccf4e064465af141b7d521ad3f61064cf07",
+    "src/backtest/simulator.py": "11e4eb67bd044e7eeedf7d3149236c902c7c1678f2e06baabbaf20e5830aa5d5",
+    "src/live/engine.py": "6e676b3a83bca3081e9bb5a13a977ce97ce39576091ebd0966e889cd6fe0db0a",
+    "src/live/alerts.py": "ac866f07828f3e0039320ed1cc1bd9e2b66e009b6a302c0d7a1e9007d46b2f96",
+    ".github/workflows/daily_signals.yml": "1829ce5ba74a4d4c34d7e879871df2d8d25dccdeef11d46abe53285a4ba85ed1"
+  },
+  "simulator_exit_oracle": {
+    "prices": [
+      100.0,
+      100.0,
+      110.0
+    ],
+    "signals": [
+      2,
+      1,
+      1
+    ],
+    "commission": 0,
+    "slippage": 0,
+    "expected_equity": [
+      10000,
+      10000,
+      11000
+    ],
+    "actual_equity": [
+      10000.0,
+      10000.0,
+      10000.0
+    ],
+    "actual_trade_pnl": [
+      1000.0
+    ]
+  },
+  "hmm_nan_alignment_oracle": {
+    "expected_states": [
+      -1,
+      2,
+      1
+    ],
+    "actual_states": [
+      2,
+      1,
+      -1
+    ],
+    "qualification": "isolated exact published function with deterministic decoder stub, no fitted model/no market data"
+  },
+  "test_scope": "Two targeted deterministic oracles only; no full repository suite, downloads, refits, orders or live execution"
+}

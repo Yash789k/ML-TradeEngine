@@ -1,0 +1,19 @@
+{
+  "id": "R11-OPS-V2",
+  "parent": "R11",
+  "registered_at": "2026-09-28T08:19:39.007448+00:00",
+  "status": "completed",
+  "budget": "45-session two-symbol full-policy replay; six crash points; one public 22-symbol commissioning; 63 future XNYS decision sessions",
+  "anchor": "2026-09-29",
+  "initial_model": "carried frozen 2026-09-25 fit",
+  "refit": "anchor+21,+42,+63 exchange sessions",
+  "selection": "cash deployment; fixed trend shadow; no winner substitution",
+  "acceptance": "full policy target/probability/account parity; stale/missing/integrity halt; no double commits; actual OS trigger; no forward observations fabricated",
+  "completed_at": "2026-09-28T08:32:36.966085+00:00",
+  "evidence": [
+    "operations/final-tests.xml",
+    "operations/parity-replay.json",
+    "operations/scheduler-verification.json"
+  ],
+  "release_sha256": "2a53ac1b6f91e93b949b4c6f35754225e7a0b1fab9174cde114c5e7c5e485751"
+}

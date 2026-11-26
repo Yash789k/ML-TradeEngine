@@ -1,0 +1,2378 @@
+[
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 336.6400146484375,
+    "entry": "2026-10-02",
+    "entry_price": 333.69000244140625,
+    "hybrid": [
+      0.36621126543128085,
+      0.307704409093914,
+      0.3260843254748051
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3435722411831627,
+      0.21274175199089876,
+      0.44368600682593856
+    ],
+    "realized_return": 0.008840577138804928,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "AAPL"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 262.42999267578125,
+    "entry": "2026-10-02",
+    "entry_price": 251.52000427246094,
+    "hybrid": [
+      0.12098458812814071,
+      0.1418602394581587,
+      0.7371551724137005
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.34584755403868034,
+      0.21387940841865757,
+      0.4402730375426621
+    ],
+    "realized_return": 0.04337622542142605,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "AMZN"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 54.31999969482422,
+    "entry": "2026-10-02",
+    "entry_price": 53.75,
+    "hybrid": [
+      0.4259177145806161,
+      0.17161582859835162,
+      0.4024664568210323
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.34584755403868034,
+      0.2025028441410694,
+      0.45164960182025027
+    ],
+    "realized_return": 0.01060464548510165,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "BAC"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 515.9970703125,
+    "entry": "2026-10-02",
+    "entry_price": 510.9881896972656,
+    "hybrid": [
+      0.1178163424626237,
+      0.4229568400805524,
+      0.459226817456824
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.22184300341296928,
+      0.42662116040955633,
+      0.3515358361774744
+    ],
+    "realized_return": 0.009802341259984582,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "DIA"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 384.5799865722656,
+    "entry": "2026-10-02",
+    "entry_price": 380.1400146484375,
+    "hybrid": [
+      0.28005858902397396,
+      0.37226387896370194,
+      0.34767753201232404
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.23094425483503983,
+      0.3515358361774744,
+      0.41751990898748575
+    ],
+    "realized_return": 0.011679833095009196,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "GLD"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 351.6600036621094,
+    "entry": "2026-10-02",
+    "entry_price": 343.5,
+    "hybrid": [
+      0.3137365621793345,
+      0.1577853319275577,
+      0.5284781058931078
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3265073947667804,
+      0.19681456200227532,
+      0.47667804323094426
+    ],
+    "realized_return": 0.023755469176446553,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "GOOGL"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 895.3200073242188,
+    "entry": "2026-10-02",
+    "entry_price": 902.5599975585938,
+    "hybrid": [
+      0.2574257091335579,
+      0.278409059514101,
+      0.464165231352341
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.31399317406143346,
+      0.2366325369738339,
+      0.44937428896473264
+    ],
+    "realized_return": -0.008021616572813972,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "GS"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 278.94000244140625,
+    "entry": "2026-10-02",
+    "entry_price": 281.5199890136719,
+    "hybrid": [
+      0.3414383279374651,
+      0.3353760692629511,
+      0.32318560279958386
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.32195676905574516,
+      0.285551763367463,
+      0.3924914675767918
+    ],
+    "realized_return": -0.009164488039747454,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "IWM"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 332.989990234375,
+    "entry": "2026-10-02",
+    "entry_price": 330.7300109863281,
+    "hybrid": [
+      0.268274438629131,
+      0.28749704851963886,
+      0.4442285128512303
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.2821387940841866,
+      0.23777019340159272,
+      0.4800910125142207
+    ],
+    "realized_return": 0.006833305635938425,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "JPM"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 718.6699829101562,
+    "entry": "2026-10-02",
+    "entry_price": 728.0800170898438,
+    "hybrid": [
+      0.24551445289877752,
+      0.1422443519494487,
+      0.6122411951517738
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3310580204778157,
+      0.18088737201365188,
+      0.4880546075085324
+    ],
+    "realized_return": -0.012924450553250533,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "META"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 535.0700073242188,
+    "entry": "2026-10-02",
+    "entry_price": 517.530029296875,
+    "hybrid": [
+      0.15342164752399856,
+      0.27967049590199605,
+      0.5669078565740053
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3242320819112628,
+      0.2514220705346985,
+      0.4243458475540387
+    ],
+    "realized_return": 0.033891710691984045,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "MSFT"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 229.27999877929688,
+    "entry": "2026-10-02",
+    "entry_price": 233.9499969482422,
+    "hybrid": [
+      0.4016168256856584,
+      0.21048306783611598,
+      0.3879001064782257
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3310580204778157,
+      0.13651877133105803,
+      0.5324232081911263
+    ],
+    "realized_return": -0.019961522675200016,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "NVDA"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 751.27001953125,
+    "entry": "2026-10-02",
+    "entry_price": 749.5800170898438,
+    "hybrid": [
+      0.26241326578577534,
+      0.2297228571138103,
+      0.5078638771004144
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.27303754266211605,
+      0.30489192263936293,
+      0.42207053469852107
+    ],
+    "realized_return": 0.0022545991126703413,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "QQQ"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 778.5700073242188,
+    "entry": "2026-10-02",
+    "entry_price": 769.6400146484375,
+    "hybrid": [
+      0.23293716786024946,
+      0.3589675536791114,
+      0.40809527846063914
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.22070534698521047,
+      0.40386803185437997,
+      0.37542662116040953
+    ],
+    "realized_return": 0.011602817558622247,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "SPY"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 77.9800033569336,
+    "entry": "2026-10-02",
+    "entry_price": 77.4800033569336,
+    "hybrid": [
+      0.2802524486725846,
+      0.3524641427997421,
+      0.3672834085276733
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.32195676905574516,
+      0.3856655290102389,
+      0.2923777019340159
+    ],
+    "realized_return": 0.006453277985761119,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "TLT"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 382.70001220703125,
+    "entry": "2026-10-02",
+    "entry_price": 370.5899963378906,
+    "hybrid": [
+      0.2549157186157266,
+      0.11327775773737536,
+      0.631806523646898
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.4482366325369738,
+      0.10466439135381114,
+      0.447098976109215
+    ],
+    "realized_return": 0.03267766531425509,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "TSLA"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 65.08000183105469,
+    "entry": "2026-10-02",
+    "entry_price": 62.81999969482422,
+    "hybrid": [
+      0.3377856295712106,
+      0.3267612038402798,
+      0.3354531665885096
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.30489192263936293,
+      0.26507394766780434,
+      0.4300341296928328
+    ],
+    "realized_return": 0.03597583806446081,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLE"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 54.72999954223633,
+    "entry": "2026-10-02",
+    "entry_price": 53.4900016784668,
+    "hybrid": [
+      0.20119319802327224,
+      0.41109019526155466,
+      0.38771660671517316
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.25483503981797495,
+      0.3492605233219568,
+      0.39590443686006827
+    ],
+    "realized_return": 0.023181862495037286,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLF"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 169.25,
+    "entry": "2026-10-02",
+    "entry_price": 169.9499969482422,
+    "hybrid": [
+      0.27912195731682304,
+      0.30159693586445935,
+      0.4192811068187176
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.24687144482366324,
+      0.36063708759954494,
+      0.3924914675767918
+    ],
+    "realized_return": -0.004118840604953711,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLI"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 198.77999877929688,
+    "entry": "2026-10-02",
+    "entry_price": 199.80999755859375,
+    "hybrid": [
+      0.27085594856672524,
+      0.35063006229382954,
+      0.3785139891394452
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.29692832764505117,
+      0.2764505119453925,
+      0.42662116040955633
+    ],
+    "realized_return": -0.0051548911059609015,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLK"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 83.43000030517578,
+    "entry": "2026-10-02",
+    "entry_price": 80.52999877929688,
+    "hybrid": [
+      0.2723173064279028,
+      0.389900434185618,
+      0.3377822593864793
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.24118316268486917,
+      0.472127417519909,
+      0.28668941979522183
+    ],
+    "realized_return": 0.03601144380775101,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLP"
+  },
+  {
+    "decision_session": "2026-10-01",
+    "decision_sha256": "0a153ebf078e64549876915d614b473e1649b06bc938081aa69a66e3596e84ca",
+    "endpoint": "2026-10-09",
+    "endpoint_price": 170.80999755859375,
+    "entry": "2026-10-02",
+    "entry_price": 166.17999267578125,
+    "hybrid": [
+      0.3883130039813146,
+      0.3547789934145681,
+      0.2569080026041174
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.2616609783845279,
+      0.40386803185437997,
+      0.33447098976109213
+    ],
+    "realized_return": 0.027861385767693925,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLV"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 340.9700012207031,
+    "entry": "2026-10-05",
+    "entry_price": 332.8900146484375,
+    "hybrid": [
+      0.36734863917476296,
+      0.31324158155864823,
+      0.31940977926658876
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3435722411831627,
+      0.21274175199089876,
+      0.44368600682593856
+    ],
+    "realized_return": 0.024272240730317085,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "AAPL"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 259.5299987792969,
+    "entry": "2026-10-05",
+    "entry_price": 251.39999389648438,
+    "hybrid": [
+      0.14555497588982658,
+      0.17757190590225239,
+      0.6768731182079211
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.34584755403868034,
+      0.21387940841865757,
+      0.4402730375426621
+    ],
+    "realized_return": 0.03233892235558322,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "AMZN"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 54.58000183105469,
+    "entry": "2026-10-05",
+    "entry_price": 54.0,
+    "hybrid": [
+      0.35521810728428194,
+      0.14680860919892155,
+      0.49797328351679665
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.34584755403868034,
+      0.2025028441410694,
+      0.45164960182025027
+    ],
+    "realized_return": 0.01074077464916079,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "BAC"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 517.7966918945312,
+    "entry": "2026-10-05",
+    "entry_price": 511.9979553222656,
+    "hybrid": [
+      0.07929771296417558,
+      0.3555906161986638,
+      0.5651116708371607
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.22184300341296928,
+      0.42662116040955633,
+      0.3515358361774744
+    ],
+    "realized_return": 0.011325702597026366,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "DIA"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 382.1499938964844,
+    "entry": "2026-10-05",
+    "entry_price": 379.54998779296875,
+    "hybrid": [
+      0.27614219425064107,
+      0.36722334934430145,
+      0.3566344564050576
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.23094425483503983,
+      0.3515358361774744,
+      0.41751990898748575
+    ],
+    "realized_return": 0.006850233663908911,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "GLD"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 352.7200012207031,
+    "entry": "2026-10-05",
+    "entry_price": 346.4700012207031,
+    "hybrid": [
+      0.34719783930466297,
+      0.23865191971904773,
+      0.4141502409762893
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3265073947667804,
+      0.19681456200227532,
+      0.47667804323094426
+    ],
+    "realized_return": 0.018039079799057944,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "GOOGL"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 893.9500122070312,
+    "entry": "2026-10-05",
+    "entry_price": 893.4600219726562,
+    "hybrid": [
+      0.2655137295313945,
+      0.2670749619570387,
+      0.46741130851156676
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.31399317406143346,
+      0.2366325369738339,
+      0.44937428896473264
+    ],
+    "realized_return": 0.0005484187566593413,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "GS"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 277.8999938964844,
+    "entry": "2026-10-05",
+    "entry_price": 283.3800048828125,
+    "hybrid": [
+      0.3768671959267636,
+      0.310243251191416,
+      0.31288955288182047
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.32195676905574516,
+      0.285551763367463,
+      0.3924914675767918
+    ],
+    "realized_return": -0.0193380298253375,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "IWM"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 334.29998779296875,
+    "entry": "2026-10-05",
+    "entry_price": 330.7300109863281,
+    "hybrid": [
+      0.2660447406684768,
+      0.26544852189752655,
+      0.4685067374339967
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.2821387940841866,
+      0.23777019340159272,
+      0.4800910125142207
+    ],
+    "realized_return": 0.010794233024072897,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "JPM"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 742.9600219726562,
+    "entry": "2026-10-05",
+    "entry_price": 741.9000244140625,
+    "hybrid": [
+      0.2192677224425481,
+      0.20290887417500403,
+      0.5778234033824479
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3310580204778157,
+      0.18088737201365188,
+      0.4880546075085324
+    ],
+    "realized_return": 0.0014287606465990255,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "META"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 541.1500244140625,
+    "entry": "2026-10-05",
+    "entry_price": 525.1799926757812,
+    "hybrid": [
+      0.13134260895631347,
+      0.23587726784262134,
+      0.6327801232010651
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3242320819112628,
+      0.2514220705346985,
+      0.4243458475540387
+    ],
+    "realized_return": 0.030408682663088937,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "MSFT"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 226.32000732421875,
+    "entry": "2026-10-05",
+    "entry_price": 238.89999389648438,
+    "hybrid": [
+      0.3209643673677698,
+      0.25796444522774464,
+      0.4210711874044855
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3310580204778157,
+      0.13651877133105803,
+      0.5324232081911263
+    ],
+    "realized_return": -0.05265796104505782,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "NVDA"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 746.0399780273438,
+    "entry": "2026-10-05",
+    "entry_price": 756.2000122070312,
+    "hybrid": [
+      0.1980551137248915,
+      0.3609460694326158,
+      0.44099881684249265
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.27303754266211605,
+      0.30489192263936293,
+      0.42207053469852107
+    ],
+    "realized_return": -0.013435644030254101,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "QQQ"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 778.0999755859375,
+    "entry": "2026-10-05",
+    "entry_price": 774.8300170898438,
+    "hybrid": [
+      0.1942408271220149,
+      0.39926736182466555,
+      0.4064918110533196
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.22070534698521047,
+      0.40386803185437997,
+      0.37542662116040953
+    ],
+    "realized_return": 0.004220226919415593,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "SPY"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 78.05000305175781,
+    "entry": "2026-10-05",
+    "entry_price": 77.11000061035156,
+    "hybrid": [
+      0.25070738767961176,
+      0.343353009045613,
+      0.4059396032747753
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.32195676905574516,
+      0.3856655290102389,
+      0.2923777019340159
+    ],
+    "realized_return": 0.012190408947812426,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "TLT"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 378.0299987792969,
+    "entry": "2026-10-05",
+    "entry_price": 378.7300109863281,
+    "hybrid": [
+      0.3057857916217576,
+      0.08531882630152776,
+      0.6088953820767147
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.4482366325369738,
+      0.10466439135381114,
+      0.447098976109215
+    ],
+    "realized_return": -0.0018483145954243385,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "TSLA"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 66.01000213623047,
+    "entry": "2026-10-05",
+    "entry_price": 63.45000076293945,
+    "hybrid": [
+      0.35959946849640706,
+      0.3283554020340415,
+      0.3120451294695514
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.30489192263936293,
+      0.26507394766780434,
+      0.4300341296928328
+    ],
+    "realized_return": 0.040346750866964376,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLE"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 55.04999923706055,
+    "entry": "2026-10-05",
+    "entry_price": 53.880001068115234,
+    "hybrid": [
+      0.17404329868795768,
+      0.3120680996678459,
+      0.5138886016441965
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.25483503981797495,
+      0.3492605233219568,
+      0.39590443686006827
+    ],
+    "realized_return": 0.021714887634582514,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLF"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 169.14999389648438,
+    "entry": "2026-10-05",
+    "entry_price": 170.10000610351562,
+    "hybrid": [
+      0.2836327756564806,
+      0.31494905846888754,
+      0.40141816587463175
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.24687144482366324,
+      0.36063708759954494,
+      0.3924914675767918
+    ],
+    "realized_return": -0.005585021592845241,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLI"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 196.36000061035156,
+    "entry": "2026-10-05",
+    "entry_price": 200.92999267578125,
+    "hybrid": [
+      0.2870707577106154,
+      0.3598008887699677,
+      0.3531283535194169
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.29692832764505117,
+      0.2764505119453925,
+      0.42662116040955633
+    ],
+    "realized_return": -0.022744200627149658,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLK"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 84.41000366210938,
+    "entry": "2026-10-05",
+    "entry_price": 81.04000091552734,
+    "hybrid": [
+      0.24849353849896758,
+      0.40052048050618266,
+      0.3509859809948498
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.24118316268486917,
+      0.472127417519909,
+      0.28668941979522183
+    ],
+    "realized_return": 0.04158443618596186,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLP"
+  },
+  {
+    "decision_session": "2026-10-02",
+    "decision_sha256": "236b6f9df024ad31b86de12c86ea8f3cb461577798bb6a033ffbe9976cb5bea3",
+    "endpoint": "2026-10-12",
+    "endpoint_price": 171.99000549316406,
+    "entry": "2026-10-05",
+    "entry_price": 167.3699951171875,
+    "hybrid": [
+      0.37703279256545674,
+      0.36908501509130087,
+      0.2538821923432423
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.2616609783845279,
+      0.40386803185437997,
+      0.33447098976109213
+    ],
+    "realized_return": 0.027603575973947914,
+    "segment": "r2",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLV"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 348.2200012207031,
+    "entry": "2026-10-15",
+    "entry_price": 342.0,
+    "hybrid": [
+      0.3265456641513079,
+      0.34221136936682883,
+      0.3312429664818632
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3435722411831627,
+      0.21274175199089876,
+      0.44368600682593856
+    ],
+    "realized_return": 0.01818713807223138,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "AAPL"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 250.3800048828125,
+    "entry": "2026-10-15",
+    "entry_price": 254.75999450683594,
+    "hybrid": [
+      0.18594401954468812,
+      0.19506528759975178,
+      0.6189906928555601
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.34584755403868034,
+      0.21387940841865757,
+      0.4402730375426621
+    ],
+    "realized_return": -0.01719261154995,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "AMZN"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 51.08000183105469,
+    "entry": "2026-10-15",
+    "entry_price": 51.70000076293945,
+    "hybrid": [
+      0.3864459526925683,
+      0.2083984286405481,
+      0.4051556186668835
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.34584755403868034,
+      0.2025028441410694,
+      0.45164960182025027
+    ],
+    "realized_return": -0.011992242219253546,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "BAC"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 527.8900146484375,
+    "entry": "2026-10-15",
+    "entry_price": 521.0659790039062,
+    "hybrid": [
+      0.12006460981767897,
+      0.4957465249651479,
+      0.38418886521717316
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.22184300341296928,
+      0.42662116040955633,
+      0.3515358361774744
+    ],
+    "realized_return": 0.013096298586939836,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "DIA"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 369.0,
+    "entry": "2026-10-15",
+    "entry_price": 382.7099914550781,
+    "hybrid": [
+      0.2917868731315084,
+      0.40211071683510674,
+      0.3061024100333848
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.23094425483503983,
+      0.3515358361774744,
+      0.41751990898748575
+    ],
+    "realized_return": -0.035823447940181,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "GLD"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 324.2200012207031,
+    "entry": "2026-10-15",
+    "entry_price": 349.2200012207031,
+    "hybrid": [
+      0.25982820766052306,
+      0.1403144964614485,
+      0.5998572958780285
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3265073947667804,
+      0.19681456200227532,
+      0.47667804323094426
+    ],
+    "realized_return": -0.0715881103963466,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "GOOGL"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 891.2999877929688,
+    "entry": "2026-10-15",
+    "entry_price": 891.280029296875,
+    "hybrid": [
+      0.2836908316028835,
+      0.27888920140093276,
+      0.43741996699618385
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.31399317406143346,
+      0.2366325369738339,
+      0.44937428896473264
+    ],
+    "realized_return": 2.2393070009174565e-05,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "GS"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 276.6700134277344,
+    "entry": "2026-10-15",
+    "entry_price": 275.0799865722656,
+    "hybrid": [
+      0.3478429825555523,
+      0.3311182409024136,
+      0.3210387765420341
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.32195676905574516,
+      0.285551763367463,
+      0.3924914675767918
+    ],
+    "realized_return": 0.0057802345975142,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "IWM"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 336.5400085449219,
+    "entry": "2026-10-15",
+    "entry_price": 335.5299987792969,
+    "hybrid": [
+      0.2889118140438316,
+      0.3072959606169394,
+      0.403792225339229
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.2821387940841866,
+      0.23777019340159272,
+      0.4800910125142207
+    ],
+    "realized_return": 0.003010192141684964,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "JPM"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 648.8499755859375,
+    "entry": "2026-10-15",
+    "entry_price": 736.719970703125,
+    "hybrid": [
+      0.24755072385613464,
+      0.19578901875439003,
+      0.5566602573894753
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3310580204778157,
+      0.18088737201365188,
+      0.4880546075085324
+    ],
+    "realized_return": -0.11927190603143889,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "META"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 521.0800170898438,
+    "entry": "2026-10-15",
+    "entry_price": 539.4400024414062,
+    "hybrid": [
+      0.1503592159857262,
+      0.2523427963190571,
+      0.5972979876952167
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3242320819112628,
+      0.2514220705346985,
+      0.4243458475540387
+    ],
+    "realized_return": -0.03403526855344163,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "MSFT"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 212.2100067138672,
+    "entry": "2026-10-15",
+    "entry_price": 217.22999572753906,
+    "hybrid": [
+      0.3172358207150349,
+      0.1266425826965685,
+      0.5561215965883965
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3310580204778157,
+      0.13651877133105803,
+      0.5324232081911263
+    ],
+    "realized_return": -0.023109096866936407,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "NVDA"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 704.469970703125,
+    "entry": "2026-10-15",
+    "entry_price": 728.0,
+    "hybrid": [
+      0.2988710470139702,
+      0.21884490689658026,
+      0.4822840460894494
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.27303754266211605,
+      0.30489192263936293,
+      0.42207053469852107
+    ],
+    "realized_return": -0.03232146881438869,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "QQQ"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 763.9600219726562,
+    "entry": "2026-10-15",
+    "entry_price": 771.7899780273438,
+    "hybrid": [
+      0.20696118004378725,
+      0.3293444590943292,
+      0.4636943608618837
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.22070534698521047,
+      0.40386803185437997,
+      0.37542662116040953
+    ],
+    "realized_return": -0.010145190113378333,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "SPY"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 81.73999786376953,
+    "entry": "2026-10-15",
+    "entry_price": 79.97000122070312,
+    "hybrid": [
+      0.21193018739449448,
+      0.3452049395443731,
+      0.44286487306113237
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.32195676905574516,
+      0.3856655290102389,
+      0.2923777019340159
+    ],
+    "realized_return": 0.0221332576722304,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "TLT"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 374.5799865722656,
+    "entry": "2026-10-15",
+    "entry_price": 362.44000244140625,
+    "hybrid": [
+      0.30553411138257425,
+      0.14945599393663367,
+      0.5450098946807921
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.4482366325369738,
+      0.10466439135381114,
+      0.447098976109215
+    ],
+    "realized_return": 0.033495155195574666,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "TSLA"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 67.56999969482422,
+    "entry": "2026-10-15",
+    "entry_price": 66.55999755859375,
+    "hybrid": [
+      0.33444271006850873,
+      0.29960294609005733,
+      0.36595434384143394
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.30489192263936293,
+      0.26507394766780434,
+      0.4300341296928328
+    ],
+    "realized_return": 0.015174311497553106,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLE"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 56.650001525878906,
+    "entry": "2026-10-15",
+    "entry_price": 55.27000045776367,
+    "hybrid": [
+      0.27068002793276946,
+      0.4162352172902717,
+      0.31308475477695896
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.25483503981797495,
+      0.3492605233219568,
+      0.39590443686006827
+    ],
+    "realized_return": 0.024968356372093936,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLF"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 166.72999572753906,
+    "entry": "2026-10-15",
+    "entry_price": 167.88999938964844,
+    "hybrid": [
+      0.27411758714419815,
+      0.2874374860048797,
+      0.438444926850922
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.24687144482366324,
+      0.36063708759954494,
+      0.3924914675767918
+    ],
+    "realized_return": -0.006909307679590748,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLI"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 182.33999633789062,
+    "entry": "2026-10-15",
+    "entry_price": 189.19000244140625,
+    "hybrid": [
+      0.29063243148660367,
+      0.30498726453257835,
+      0.404380303980818
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.29692832764505117,
+      0.2764505119453925,
+      0.42662116040955633
+    ],
+    "realized_return": -0.036207019478405766,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLK"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 89.98999786376953,
+    "entry": "2026-10-15",
+    "entry_price": 86.68000030517578,
+    "hybrid": [
+      0.2578396524531031,
+      0.4709449571642015,
+      0.2712153903826954
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.24118316268486917,
+      0.472127417519909,
+      0.28668941979522183
+    ],
+    "realized_return": 0.03818640455630118,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLP"
+  },
+  {
+    "decision_session": "2026-10-14",
+    "decision_sha256": "2e58d4793475487752c7b61e9e9a4ed657ede94b4e000539a531b2810d00584e",
+    "endpoint": "2026-10-22",
+    "endpoint_price": 181.3000030517578,
+    "entry": "2026-10-15",
+    "entry_price": 177.19000244140625,
+    "hybrid": [
+      0.3736267458043143,
+      0.4017335067652746,
+      0.22463974743041104
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.2616609783845279,
+      0.40386803185437997,
+      0.33447098976109213
+    ],
+    "realized_return": 0.02319544304826482,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLV"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 347.7300109863281,
+    "entry": "2026-10-16",
+    "entry_price": 343.4599914550781,
+    "hybrid": [
+      0.34474901144744297,
+      0.3024946365946221,
+      0.35275635195793487
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3435722411831627,
+      0.21274175199089876,
+      0.44368600682593856
+    ],
+    "realized_return": 0.012432363703149152,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "AAPL"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 248.0,
+    "entry": "2026-10-16",
+    "entry_price": 250.0,
+    "hybrid": [
+      0.1847849743842761,
+      0.13583422345033797,
+      0.679380802165386
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.34584755403868034,
+      0.21387940841865757,
+      0.4402730375426621
+    ],
+    "realized_return": -0.008000000000000007,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "AMZN"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 50.560001373291016,
+    "entry": "2026-10-16",
+    "entry_price": 51.22999954223633,
+    "hybrid": [
+      0.2696751049085302,
+      0.18997151097179577,
+      0.540353384119674
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.34584755403868034,
+      0.2025028441410694,
+      0.45164960182025027
+    ],
+    "realized_return": -0.013078238823581056,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "BAC"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 521.3699951171875,
+    "entry": "2026-10-16",
+    "entry_price": 519.0999755859375,
+    "hybrid": [
+      0.10278058128984842,
+      0.49552634918023974,
+      0.40169306952991185
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.22184300341296928,
+      0.42662116040955633,
+      0.3515358361774744
+    ],
+    "realized_return": 0.004372991019095496,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "DIA"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 366.6099853515625,
+    "entry": "2026-10-16",
+    "entry_price": 382.010009765625,
+    "hybrid": [
+      0.3042354634332078,
+      0.40112353507953363,
+      0.29464100148725864
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.23094425483503983,
+      0.3515358361774744,
+      0.41751990898748575
+    ],
+    "realized_return": -0.04031314368833139,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "GLD"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 320.2099914550781,
+    "entry": "2026-10-16",
+    "entry_price": 340.5899963378906,
+    "hybrid": [
+      0.28155323071145644,
+      0.14447613245719507,
+      0.5739706368313484
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3265073947667804,
+      0.19681456200227532,
+      0.47667804323094426
+    ],
+    "realized_return": -0.05983735606431029,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "GOOGL"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 875.6799926757812,
+    "entry": "2026-10-16",
+    "entry_price": 881.260009765625,
+    "hybrid": [
+      0.308692623046589,
+      0.30322164360567955,
+      0.38808573334773144
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.31399317406143346,
+      0.2366325369738339,
+      0.44937428896473264
+    ],
+    "realized_return": -0.006331862365260177,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "GS"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 275.75,
+    "entry": "2026-10-16",
+    "entry_price": 270.44000244140625,
+    "hybrid": [
+      0.35337656958591657,
+      0.3206315470770414,
+      0.325991883337042
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.32195676905574516,
+      0.285551763367463,
+      0.3924914675767918
+    ],
+    "realized_return": 0.019634660222813016,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "IWM"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 331.5799865722656,
+    "entry": "2026-10-16",
+    "entry_price": 339.7200012207031,
+    "hybrid": [
+      0.2761149156944324,
+      0.32046390533879426,
+      0.4034211789667734
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.2821387940841866,
+      0.23777019340159272,
+      0.4800910125142207
+    ],
+    "realized_return": -0.023960952016920722,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "JPM"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 642.6199951171875,
+    "entry": "2026-10-16",
+    "entry_price": 709.3300170898438,
+    "hybrid": [
+      0.22148540920072177,
+      0.1651242542478722,
+      0.6133903365514061
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3310580204778157,
+      0.18088737201365188,
+      0.4880546075085324
+    ],
+    "realized_return": -0.09404652329016938,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "META"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 524.510009765625,
+    "entry": "2026-10-16",
+    "entry_price": 529.0499877929688,
+    "hybrid": [
+      0.15451630614873332,
+      0.3098807104558491,
+      0.5356029833954176
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3242320819112628,
+      0.2514220705346985,
+      0.4243458475540387
+    ],
+    "realized_return": -0.008581378191280464,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "MSFT"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 210.9600067138672,
+    "entry": "2026-10-16",
+    "entry_price": 214.1300048828125,
+    "hybrid": [
+      0.28941178720619976,
+      0.18854372661790228,
+      0.5220444861758979
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.3310580204778157,
+      0.13651877133105803,
+      0.5324232081911263
+    ],
+    "realized_return": -0.014804082084059922,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "NVDA"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 704.4000244140625,
+    "entry": "2026-10-16",
+    "entry_price": 709.7999877929688,
+    "hybrid": [
+      0.2843589977650338,
+      0.27569122512609845,
+      0.43994977710886773
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.27303754266211605,
+      0.30489192263936293,
+      0.42207053469852107
+    ],
+    "realized_return": -0.007607725375843866,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "QQQ"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 759.969970703125,
+    "entry": "2026-10-16",
+    "entry_price": 763.25,
+    "hybrid": [
+      0.2187382565989744,
+      0.35846007026514487,
+      0.4228016731358807
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.22070534698521047,
+      0.40386803185437997,
+      0.37542662116040953
+    ],
+    "realized_return": -0.004297450765640365,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "SPY"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 81.33999633789062,
+    "entry": "2026-10-16",
+    "entry_price": 80.05000305175781,
+    "hybrid": [
+      0.22326102012060592,
+      0.42801573647722485,
+      0.3487232434021692
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.32195676905574516,
+      0.3856655290102389,
+      0.2923777019340159
+    ],
+    "realized_return": 0.01611484368462479,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "TLT"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 372.2200012207031,
+    "entry": "2026-10-16",
+    "entry_price": 354.7200012207031,
+    "hybrid": [
+      0.2853502920342263,
+      0.14209175347536993,
+      0.5725579544904037
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.4482366325369738,
+      0.10466439135381114,
+      0.447098976109215
+    ],
+    "realized_return": 0.04933468634353,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "TSLA"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 69.33000183105469,
+    "entry": "2026-10-16",
+    "entry_price": 68.23999786376953,
+    "hybrid": [
+      0.3291122876882304,
+      0.3206930789993356,
+      0.35019463331243406
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.30489192263936293,
+      0.26507394766780434,
+      0.4300341296928328
+    ],
+    "realized_return": 0.015973094979592206,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLE"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 55.900001525878906,
+    "entry": "2026-10-16",
+    "entry_price": 55.52000045776367,
+    "hybrid": [
+      0.2720766143498412,
+      0.3464483795865401,
+      0.3814750060636187
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.25483503981797495,
+      0.3492605233219568,
+      0.39590443686006827
+    ],
+    "realized_return": 0.00684439958541283,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLF"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 164.6199951171875,
+    "entry": "2026-10-16",
+    "entry_price": 167.75999450683594,
+    "hybrid": [
+      0.2875586429934521,
+      0.2809679739332577,
+      0.4314733830732903
+    ],
+    "label": 0,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.24687144482366324,
+      0.36063708759954494,
+      0.3924914675767918
+    ],
+    "realized_return": -0.018717212043783737,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLI"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 183.22999572753906,
+    "entry": "2026-10-16",
+    "entry_price": 183.47000122070312,
+    "hybrid": [
+      0.2796731240673586,
+      0.29348401692978643,
+      0.42684285900285507
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.29692832764505117,
+      0.2764505119453925,
+      0.42662116040955633
+    ],
+    "realized_return": -0.0013081456999357588,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLK"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 88.26000213623047,
+    "entry": "2026-10-16",
+    "entry_price": 87.62000274658203,
+    "hybrid": [
+      0.20823743954324447,
+      0.4098244554527469,
+      0.3819381050040086
+    ],
+    "label": 1,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.24118316268486917,
+      0.472127417519909,
+      0.28668941979522183
+    ],
+    "realized_return": 0.007304261237008447,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLP"
+  },
+  {
+    "decision_session": "2026-10-15",
+    "decision_sha256": "6eae208ed1a9f30018fa90b1c5d303a83b4455d9eb3e0d93f6018b56cfc7f891",
+    "endpoint": "2026-10-23",
+    "endpoint_price": 179.27999877929688,
+    "entry": "2026-10-16",
+    "entry_price": 176.7100067138672,
+    "hybrid": [
+      0.38355072999695283,
+      0.4107742514974809,
+      0.20567501850556638
+    ],
+    "label": 2,
+    "measurement": "original fixed horizon, later retrieved adjusted prices",
+    "observed_at": "2026-10-27T20:30:37.485929+00:00",
+    "prior": [
+      0.2616609783845279,
+      0.40386803185437997,
+      0.33447098976109213
+    ],
+    "realized_return": 0.014543557058379175,
+    "segment": "r4",
+    "source_session": "2026-10-27",
+    "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-outcomes-r7/snapshots/2026-10-27-initial-0fe7a9b4",
+    "source_snapshot_sha256": "3d1af0dc829a728e17c1c52d14305fb167b5a5994f26ce9135e5d8d7435c44f8",
+    "symbol": "XLV"
+  }
+]

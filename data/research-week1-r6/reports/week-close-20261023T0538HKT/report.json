@@ -1,0 +1,2334 @@
+{
+  "created_at": "2026-10-22T21:39:05.845065+00:00",
+  "status": "week_complete_outcomes_pending",
+  "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261022-week1-r6",
+  "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6",
+  "release_sha256": "24e4cdf4ec6eb6553bb8229457154d973957615263e092c373a5e33cbe41faba",
+  "protocol_sha256": "8e9d183bcb2b7291fc8c0202d3de0c3be1e7760d8f1ac06fcb8b81092c80eab7",
+  "status_snapshot": {
+    "trial_id": "PILOT-TREND-WEEK1-R6-20261022",
+    "external_orders": false,
+    "deployment": "cash",
+    "shadow": "trend",
+    "state_consistency_errors": [],
+    "ledger_consistent": true,
+    "valid_observed_sessions": 1,
+    "expected_elapsed_sessions": 1,
+    "missing_sessions": [],
+    "label_complete_decisions": 0,
+    "required_sessions": 1,
+    "next_event": {
+      "id": "2026-10-22:preopen",
+      "session": "2026-10-22",
+      "kind": "preopen",
+      "ordinal": 1,
+      "due": "2026-10-23T13:00:00+00:00",
+      "hong_kong": "2026-10-23T21:00:00+08:00"
+    },
+    "terminal_observed_sessions": 0,
+    "terminal_required_sessions": 6,
+    "halted": false,
+    "prospective_status": "incomplete",
+    "limitations": [
+      "Local launch agent requires logged-in awake host; no wake guarantee",
+      "No external broker execution",
+      "Commissioning/replays never count as prospective",
+      "Missed sessions halt; no fabricated backfill"
+    ]
+  },
+  "predictive": {
+    "status": "observed_interim",
+    "labeled_rows": 66,
+    "decision_dates": 3,
+    "metrics": [
+      {
+        "model": "hybrid",
+        "n": 66,
+        "accuracy": 0.2878787878787879,
+        "balanced_accuracy": 0.23125353706847762,
+        "macro_f1": 0.21503223653761286,
+        "log_loss": 1.097803215248167,
+        "brier": 0.6675877650725794,
+        "predicted_down": 11,
+        "predicted_flat": 12,
+        "predicted_up": 43
+      },
+      {
+        "model": "prior",
+        "n": 66,
+        "accuracy": 0.3181818181818182,
+        "balanced_accuracy": 0.2461799660441426,
+        "macro_f1": 0.2107222635889799,
+        "log_loss": 1.1012584392938822,
+        "brier": 0.6723963651941846,
+        "predicted_down": 3,
+        "predicted_flat": 15,
+        "predicted_up": 48
+      }
+    ],
+    "paired_inference": [],
+    "multiplicity": "No inferential testing in this interrupted five-observation study"
+  },
+  "economic": {
+    "status": "observed_interim",
+    "observed_sessions": 1,
+    "decision_sessions": 1,
+    "terminal_mark_sessions": 0,
+    "net_returns": {
+      "shadow": 0.0,
+      "cash": 0.0,
+      "equal_weight": 0.0
+    },
+    "comparisons": [],
+    "benchmark_contract": "0.8/N target, same per-side costs and portfolio limits, same first/weekly decision timing, same observed snapshot covariance scaling and adjusted proxy marks; terminal sessions hold without new targets",
+    "multiplicity": "Descriptive trend-shadow-minus-costed-equal-weight endpoint; no p-values or automatic promotion"
+  },
+  "prior_segments": [
+    {
+      "trial_id": "PILOT-TREND-WEEK1-R2-20261001",
+      "status": "preserved_failed_segment",
+      "valid_decisions": 2,
+      "mature_decisions": 2,
+      "missing_sessions": [
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07"
+      ],
+      "halt_preserved": true,
+      "receipts": [
+        {
+          "session": "2026-10-01",
+          "receipt": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2/days/2026-10-01/result.json",
+          "sha256": "e334ec1cdde0dc31408b5172cbf3ebb0e7d55aea589c97604d5e33ef65cee17a",
+          "shadow": {
+            "cash": 10000.0,
+            "drawdown": 0.0,
+            "equity": 10000.0,
+            "fees": 0.0,
+            "gross_exposure": 0.0,
+            "positions": {
+              "AAPL": 0.0,
+              "AMZN": 0.0,
+              "BAC": 0.0,
+              "DIA": 0.0,
+              "GLD": 0.0,
+              "GOOGL": 0.0,
+              "GS": 0.0,
+              "IWM": 0.0,
+              "JPM": 0.0,
+              "META": 0.0,
+              "MSFT": 0.0,
+              "NVDA": 0.0,
+              "QQQ": 0.0,
+              "SPY": 0.0,
+              "TLT": 0.0,
+              "TSLA": 0.0,
+              "XLE": 0.0,
+              "XLF": 0.0,
+              "XLI": 0.0,
+              "XLK": 0.0,
+              "XLP": 0.0,
+              "XLV": 0.0
+            },
+            "realized_pnl": 0.0,
+            "reconciliation_error": 0.0,
+            "reserved_cash": 4126.178147577563,
+            "unrealized_pnl": 0.0
+          },
+          "deployment": {
+            "cash": 10000.0,
+            "drawdown": 0.0,
+            "equity": 10000.0,
+            "fees": 0.0,
+            "gross_exposure": 0.0,
+            "positions": {
+              "AAPL": 0.0,
+              "AMZN": 0.0,
+              "BAC": 0.0,
+              "DIA": 0.0,
+              "GLD": 0.0,
+              "GOOGL": 0.0,
+              "GS": 0.0,
+              "IWM": 0.0,
+              "JPM": 0.0,
+              "META": 0.0,
+              "MSFT": 0.0,
+              "NVDA": 0.0,
+              "QQQ": 0.0,
+              "SPY": 0.0,
+              "TLT": 0.0,
+              "TSLA": 0.0,
+              "XLE": 0.0,
+              "XLF": 0.0,
+              "XLI": 0.0,
+              "XLK": 0.0,
+              "XLP": 0.0,
+              "XLV": 0.0
+            },
+            "realized_pnl": 0.0,
+            "reconciliation_error": 0.0,
+            "reserved_cash": 0,
+            "unrealized_pnl": 0.0
+          }
+        },
+        {
+          "session": "2026-10-02",
+          "receipt": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2/days/2026-10-02/result.json",
+          "sha256": "4416ac3300c06a9a354c06ce7f371199ebb00152a4d3d450b8f32268009b0467",
+          "shadow": {
+            "cash": 5967.85890928074,
+            "drawdown": -0.0006039152906718304,
+            "equity": 9993.960847093282,
+            "fees": 6.039152906718812,
+            "gross_exposure": 0.40285348315963465,
+            "positions": {
+              "AAPL": 1.0091219999999999,
+              "AMZN": 1.34284,
+              "BAC": 0.0,
+              "DIA": 0.655368,
+              "GLD": 0.0,
+              "GOOGL": 0.0,
+              "GS": 0.0,
+              "IWM": 1.1946569999999999,
+              "JPM": 1.00046,
+              "META": 0.0,
+              "MSFT": 0.0,
+              "NVDA": 1.443876,
+              "QQQ": 0.449218,
+              "SPY": 0.436305,
+              "TLT": 0.0,
+              "TSLA": 0.0,
+              "XLE": 5.316320999999999,
+              "XLF": 6.2351909999999995,
+              "XLI": 0.0,
+              "XLK": 1.685118,
+              "XLP": 0.0,
+              "XLV": 2.0056149999999997
+            },
+            "realized_pnl": 0.0,
+            "reconciliation_error": 0.0,
+            "reserved_cash": 720.3424834763583,
+            "unrealized_pnl": -6.039152906718812
+          },
+          "deployment": {
+            "cash": 10000.0,
+            "drawdown": 0.0,
+            "equity": 10000.0,
+            "fees": 0.0,
+            "gross_exposure": 0.0,
+            "positions": {
+              "AAPL": 0.0,
+              "AMZN": 0.0,
+              "BAC": 0.0,
+              "DIA": 0.0,
+              "GLD": 0.0,
+              "GOOGL": 0.0,
+              "GS": 0.0,
+              "IWM": 0.0,
+              "JPM": 0.0,
+              "META": 0.0,
+              "MSFT": 0.0,
+              "NVDA": 0.0,
+              "QQQ": 0.0,
+              "SPY": 0.0,
+              "TLT": 0.0,
+              "TSLA": 0.0,
+              "XLE": 0.0,
+              "XLF": 0.0,
+              "XLI": 0.0,
+              "XLK": 0.0,
+              "XLP": 0.0,
+              "XLV": 0.0
+            },
+            "realized_pnl": 0.0,
+            "reconciliation_error": 0.0,
+            "reserved_cash": 0,
+            "unrealized_pnl": 0.0
+          }
+        }
+      ],
+      "outcomes": [
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "AAPL",
+          "realized_return": 0.008840577138804928,
+          "label": 1,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "AMZN",
+          "realized_return": 0.04337622542142605,
+          "label": 2,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "BAC",
+          "realized_return": 0.01060464548510165,
+          "label": 2,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "DIA",
+          "realized_return": 0.009802341259984582,
+          "label": 1,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "GLD",
+          "realized_return": 0.011679833095009196,
+          "label": 2,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "GOOGL",
+          "realized_return": 0.023755469176446553,
+          "label": 2,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "GS",
+          "realized_return": -0.008021616572813972,
+          "label": 1,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "IWM",
+          "realized_return": -0.009164488039747454,
+          "label": 1,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "JPM",
+          "realized_return": 0.006833305635938425,
+          "label": 1,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "META",
+          "realized_return": -0.012924450553250533,
+          "label": 0,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "MSFT",
+          "realized_return": 0.033891710691984045,
+          "label": 2,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "NVDA",
+          "realized_return": -0.019961522675200016,
+          "label": 0,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "QQQ",
+          "realized_return": 0.0022545991126703413,
+          "label": 1,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "SPY",
+          "realized_return": 0.011602817558622247,
+          "label": 2,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "TLT",
+          "realized_return": 0.006453277985761119,
+          "label": 1,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "TSLA",
+          "realized_return": 0.03267766531425509,
+          "label": 2,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "XLE",
+          "realized_return": 0.03597583806446081,
+          "label": 2,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "XLF",
+          "realized_return": 0.023181862495037286,
+          "label": 2,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "XLI",
+          "realized_return": -0.004118840604953711,
+          "label": 1,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "XLK",
+          "realized_return": -0.0051548911059609015,
+          "label": 1,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "XLP",
+          "realized_return": 0.03601144380775101,
+          "label": 2,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-01",
+          "symbol": "XLV",
+          "realized_return": 0.027861385767693925,
+          "label": 2,
+          "endpoint": "2026-10-09",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "AAPL",
+          "realized_return": 0.024272240730317085,
+          "label": 2,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "AMZN",
+          "realized_return": 0.03233892235558322,
+          "label": 2,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "BAC",
+          "realized_return": 0.01074077464916079,
+          "label": 2,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "DIA",
+          "realized_return": 0.011325702597026366,
+          "label": 2,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "GLD",
+          "realized_return": 0.006850233663908911,
+          "label": 1,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "GOOGL",
+          "realized_return": 0.018039079799057944,
+          "label": 2,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "GS",
+          "realized_return": 0.0005484187566593413,
+          "label": 1,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "IWM",
+          "realized_return": -0.0193380298253375,
+          "label": 0,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "JPM",
+          "realized_return": 0.010794233024072897,
+          "label": 2,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "META",
+          "realized_return": 0.0014287606465990255,
+          "label": 1,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "MSFT",
+          "realized_return": 0.030408682663088937,
+          "label": 2,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "NVDA",
+          "realized_return": -0.05265796104505782,
+          "label": 0,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "QQQ",
+          "realized_return": -0.013435644030254101,
+          "label": 0,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "SPY",
+          "realized_return": 0.004220226919415593,
+          "label": 1,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "TLT",
+          "realized_return": 0.012190408947812426,
+          "label": 2,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "TSLA",
+          "realized_return": -0.0018483145954243385,
+          "label": 1,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "XLE",
+          "realized_return": 0.040346750866964376,
+          "label": 2,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "XLF",
+          "realized_return": 0.021714887634582514,
+          "label": 2,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "XLI",
+          "realized_return": -0.005585021592845241,
+          "label": 1,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "XLK",
+          "realized_return": -0.022744200627149658,
+          "label": 0,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "XLP",
+          "realized_return": 0.04158443618596186,
+          "label": 2,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-02",
+          "symbol": "XLV",
+          "realized_return": 0.027603575973947914,
+          "label": 2,
+          "endpoint": "2026-10-12",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        }
+      ],
+      "prediction_rows": [
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "AAPL",
+          "label": 1,
+          "realized_return": 0.008840577138804928,
+          "hybrid": [
+            0.36621126543128085,
+            0.307704409093914,
+            0.3260843254748051
+          ],
+          "prior": [
+            0.3435722411831627,
+            0.21274175199089876,
+            0.44368600682593856
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "AMZN",
+          "label": 2,
+          "realized_return": 0.04337622542142605,
+          "hybrid": [
+            0.12098458812814071,
+            0.1418602394581587,
+            0.7371551724137005
+          ],
+          "prior": [
+            0.34584755403868034,
+            0.21387940841865757,
+            0.4402730375426621
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "BAC",
+          "label": 2,
+          "realized_return": 0.01060464548510165,
+          "hybrid": [
+            0.4259177145806161,
+            0.17161582859835162,
+            0.4024664568210323
+          ],
+          "prior": [
+            0.34584755403868034,
+            0.2025028441410694,
+            0.45164960182025027
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "DIA",
+          "label": 1,
+          "realized_return": 0.009802341259984582,
+          "hybrid": [
+            0.1178163424626237,
+            0.4229568400805524,
+            0.459226817456824
+          ],
+          "prior": [
+            0.22184300341296928,
+            0.42662116040955633,
+            0.3515358361774744
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "GLD",
+          "label": 2,
+          "realized_return": 0.011679833095009196,
+          "hybrid": [
+            0.28005858902397396,
+            0.37226387896370194,
+            0.34767753201232404
+          ],
+          "prior": [
+            0.23094425483503983,
+            0.3515358361774744,
+            0.41751990898748575
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "GOOGL",
+          "label": 2,
+          "realized_return": 0.023755469176446553,
+          "hybrid": [
+            0.3137365621793345,
+            0.1577853319275577,
+            0.5284781058931078
+          ],
+          "prior": [
+            0.3265073947667804,
+            0.19681456200227532,
+            0.47667804323094426
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "GS",
+          "label": 1,
+          "realized_return": -0.008021616572813972,
+          "hybrid": [
+            0.2574257091335579,
+            0.278409059514101,
+            0.464165231352341
+          ],
+          "prior": [
+            0.31399317406143346,
+            0.2366325369738339,
+            0.44937428896473264
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "IWM",
+          "label": 1,
+          "realized_return": -0.009164488039747454,
+          "hybrid": [
+            0.3414383279374651,
+            0.3353760692629511,
+            0.32318560279958386
+          ],
+          "prior": [
+            0.32195676905574516,
+            0.285551763367463,
+            0.3924914675767918
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "JPM",
+          "label": 1,
+          "realized_return": 0.006833305635938425,
+          "hybrid": [
+            0.268274438629131,
+            0.28749704851963886,
+            0.4442285128512303
+          ],
+          "prior": [
+            0.2821387940841866,
+            0.23777019340159272,
+            0.4800910125142207
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "META",
+          "label": 0,
+          "realized_return": -0.012924450553250533,
+          "hybrid": [
+            0.24551445289877752,
+            0.1422443519494487,
+            0.6122411951517738
+          ],
+          "prior": [
+            0.3310580204778157,
+            0.18088737201365188,
+            0.4880546075085324
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "MSFT",
+          "label": 2,
+          "realized_return": 0.033891710691984045,
+          "hybrid": [
+            0.15342164752399856,
+            0.27967049590199605,
+            0.5669078565740053
+          ],
+          "prior": [
+            0.3242320819112628,
+            0.2514220705346985,
+            0.4243458475540387
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "NVDA",
+          "label": 0,
+          "realized_return": -0.019961522675200016,
+          "hybrid": [
+            0.4016168256856584,
+            0.21048306783611598,
+            0.3879001064782257
+          ],
+          "prior": [
+            0.3310580204778157,
+            0.13651877133105803,
+            0.5324232081911263
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "QQQ",
+          "label": 1,
+          "realized_return": 0.0022545991126703413,
+          "hybrid": [
+            0.26241326578577534,
+            0.2297228571138103,
+            0.5078638771004144
+          ],
+          "prior": [
+            0.27303754266211605,
+            0.30489192263936293,
+            0.42207053469852107
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "SPY",
+          "label": 2,
+          "realized_return": 0.011602817558622247,
+          "hybrid": [
+            0.23293716786024946,
+            0.3589675536791114,
+            0.40809527846063914
+          ],
+          "prior": [
+            0.22070534698521047,
+            0.40386803185437997,
+            0.37542662116040953
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "TLT",
+          "label": 1,
+          "realized_return": 0.006453277985761119,
+          "hybrid": [
+            0.2802524486725846,
+            0.3524641427997421,
+            0.3672834085276733
+          ],
+          "prior": [
+            0.32195676905574516,
+            0.3856655290102389,
+            0.2923777019340159
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "TSLA",
+          "label": 2,
+          "realized_return": 0.03267766531425509,
+          "hybrid": [
+            0.2549157186157266,
+            0.11327775773737536,
+            0.631806523646898
+          ],
+          "prior": [
+            0.4482366325369738,
+            0.10466439135381114,
+            0.447098976109215
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "XLE",
+          "label": 2,
+          "realized_return": 0.03597583806446081,
+          "hybrid": [
+            0.3377856295712106,
+            0.3267612038402798,
+            0.3354531665885096
+          ],
+          "prior": [
+            0.30489192263936293,
+            0.26507394766780434,
+            0.4300341296928328
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "XLF",
+          "label": 2,
+          "realized_return": 0.023181862495037286,
+          "hybrid": [
+            0.20119319802327224,
+            0.41109019526155466,
+            0.38771660671517316
+          ],
+          "prior": [
+            0.25483503981797495,
+            0.3492605233219568,
+            0.39590443686006827
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "XLI",
+          "label": 1,
+          "realized_return": -0.004118840604953711,
+          "hybrid": [
+            0.27912195731682304,
+            0.30159693586445935,
+            0.4192811068187176
+          ],
+          "prior": [
+            0.24687144482366324,
+            0.36063708759954494,
+            0.3924914675767918
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "XLK",
+          "label": 1,
+          "realized_return": -0.0051548911059609015,
+          "hybrid": [
+            0.27085594856672524,
+            0.35063006229382954,
+            0.3785139891394452
+          ],
+          "prior": [
+            0.29692832764505117,
+            0.2764505119453925,
+            0.42662116040955633
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "XLP",
+          "label": 2,
+          "realized_return": 0.03601144380775101,
+          "hybrid": [
+            0.2723173064279028,
+            0.389900434185618,
+            0.3377822593864793
+          ],
+          "prior": [
+            0.24118316268486917,
+            0.472127417519909,
+            0.28668941979522183
+          ]
+        },
+        {
+          "session": "2026-10-01",
+          "segment": "r2",
+          "symbol": "XLV",
+          "label": 2,
+          "realized_return": 0.027861385767693925,
+          "hybrid": [
+            0.3883130039813146,
+            0.3547789934145681,
+            0.2569080026041174
+          ],
+          "prior": [
+            0.2616609783845279,
+            0.40386803185437997,
+            0.33447098976109213
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "AAPL",
+          "label": 2,
+          "realized_return": 0.024272240730317085,
+          "hybrid": [
+            0.36734863917476296,
+            0.31324158155864823,
+            0.31940977926658876
+          ],
+          "prior": [
+            0.3435722411831627,
+            0.21274175199089876,
+            0.44368600682593856
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "AMZN",
+          "label": 2,
+          "realized_return": 0.03233892235558322,
+          "hybrid": [
+            0.14555497588982658,
+            0.17757190590225239,
+            0.6768731182079211
+          ],
+          "prior": [
+            0.34584755403868034,
+            0.21387940841865757,
+            0.4402730375426621
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "BAC",
+          "label": 2,
+          "realized_return": 0.01074077464916079,
+          "hybrid": [
+            0.35521810728428194,
+            0.14680860919892155,
+            0.49797328351679665
+          ],
+          "prior": [
+            0.34584755403868034,
+            0.2025028441410694,
+            0.45164960182025027
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "DIA",
+          "label": 2,
+          "realized_return": 0.011325702597026366,
+          "hybrid": [
+            0.07929771296417558,
+            0.3555906161986638,
+            0.5651116708371607
+          ],
+          "prior": [
+            0.22184300341296928,
+            0.42662116040955633,
+            0.3515358361774744
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "GLD",
+          "label": 1,
+          "realized_return": 0.006850233663908911,
+          "hybrid": [
+            0.27614219425064107,
+            0.36722334934430145,
+            0.3566344564050576
+          ],
+          "prior": [
+            0.23094425483503983,
+            0.3515358361774744,
+            0.41751990898748575
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "GOOGL",
+          "label": 2,
+          "realized_return": 0.018039079799057944,
+          "hybrid": [
+            0.34719783930466297,
+            0.23865191971904773,
+            0.4141502409762893
+          ],
+          "prior": [
+            0.3265073947667804,
+            0.19681456200227532,
+            0.47667804323094426
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "GS",
+          "label": 1,
+          "realized_return": 0.0005484187566593413,
+          "hybrid": [
+            0.2655137295313945,
+            0.2670749619570387,
+            0.46741130851156676
+          ],
+          "prior": [
+            0.31399317406143346,
+            0.2366325369738339,
+            0.44937428896473264
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "IWM",
+          "label": 0,
+          "realized_return": -0.0193380298253375,
+          "hybrid": [
+            0.3768671959267636,
+            0.310243251191416,
+            0.31288955288182047
+          ],
+          "prior": [
+            0.32195676905574516,
+            0.285551763367463,
+            0.3924914675767918
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "JPM",
+          "label": 2,
+          "realized_return": 0.010794233024072897,
+          "hybrid": [
+            0.2660447406684768,
+            0.26544852189752655,
+            0.4685067374339967
+          ],
+          "prior": [
+            0.2821387940841866,
+            0.23777019340159272,
+            0.4800910125142207
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "META",
+          "label": 1,
+          "realized_return": 0.0014287606465990255,
+          "hybrid": [
+            0.2192677224425481,
+            0.20290887417500403,
+            0.5778234033824479
+          ],
+          "prior": [
+            0.3310580204778157,
+            0.18088737201365188,
+            0.4880546075085324
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "MSFT",
+          "label": 2,
+          "realized_return": 0.030408682663088937,
+          "hybrid": [
+            0.13134260895631347,
+            0.23587726784262134,
+            0.6327801232010651
+          ],
+          "prior": [
+            0.3242320819112628,
+            0.2514220705346985,
+            0.4243458475540387
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "NVDA",
+          "label": 0,
+          "realized_return": -0.05265796104505782,
+          "hybrid": [
+            0.3209643673677698,
+            0.25796444522774464,
+            0.4210711874044855
+          ],
+          "prior": [
+            0.3310580204778157,
+            0.13651877133105803,
+            0.5324232081911263
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "QQQ",
+          "label": 0,
+          "realized_return": -0.013435644030254101,
+          "hybrid": [
+            0.1980551137248915,
+            0.3609460694326158,
+            0.44099881684249265
+          ],
+          "prior": [
+            0.27303754266211605,
+            0.30489192263936293,
+            0.42207053469852107
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "SPY",
+          "label": 1,
+          "realized_return": 0.004220226919415593,
+          "hybrid": [
+            0.1942408271220149,
+            0.39926736182466555,
+            0.4064918110533196
+          ],
+          "prior": [
+            0.22070534698521047,
+            0.40386803185437997,
+            0.37542662116040953
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "TLT",
+          "label": 2,
+          "realized_return": 0.012190408947812426,
+          "hybrid": [
+            0.25070738767961176,
+            0.343353009045613,
+            0.4059396032747753
+          ],
+          "prior": [
+            0.32195676905574516,
+            0.3856655290102389,
+            0.2923777019340159
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "TSLA",
+          "label": 1,
+          "realized_return": -0.0018483145954243385,
+          "hybrid": [
+            0.3057857916217576,
+            0.08531882630152776,
+            0.6088953820767147
+          ],
+          "prior": [
+            0.4482366325369738,
+            0.10466439135381114,
+            0.447098976109215
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "XLE",
+          "label": 2,
+          "realized_return": 0.040346750866964376,
+          "hybrid": [
+            0.35959946849640706,
+            0.3283554020340415,
+            0.3120451294695514
+          ],
+          "prior": [
+            0.30489192263936293,
+            0.26507394766780434,
+            0.4300341296928328
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "XLF",
+          "label": 2,
+          "realized_return": 0.021714887634582514,
+          "hybrid": [
+            0.17404329868795768,
+            0.3120680996678459,
+            0.5138886016441965
+          ],
+          "prior": [
+            0.25483503981797495,
+            0.3492605233219568,
+            0.39590443686006827
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "XLI",
+          "label": 1,
+          "realized_return": -0.005585021592845241,
+          "hybrid": [
+            0.2836327756564806,
+            0.31494905846888754,
+            0.40141816587463175
+          ],
+          "prior": [
+            0.24687144482366324,
+            0.36063708759954494,
+            0.3924914675767918
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "XLK",
+          "label": 0,
+          "realized_return": -0.022744200627149658,
+          "hybrid": [
+            0.2870707577106154,
+            0.3598008887699677,
+            0.3531283535194169
+          ],
+          "prior": [
+            0.29692832764505117,
+            0.2764505119453925,
+            0.42662116040955633
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "XLP",
+          "label": 2,
+          "realized_return": 0.04158443618596186,
+          "hybrid": [
+            0.24849353849896758,
+            0.40052048050618266,
+            0.3509859809948498
+          ],
+          "prior": [
+            0.24118316268486917,
+            0.472127417519909,
+            0.28668941979522183
+          ]
+        },
+        {
+          "session": "2026-10-02",
+          "segment": "r2",
+          "symbol": "XLV",
+          "label": 2,
+          "realized_return": 0.027603575973947914,
+          "hybrid": [
+            0.37703279256545674,
+            0.36908501509130087,
+            0.2538821923432423
+          ],
+          "prior": [
+            0.2616609783845279,
+            0.40386803185437997,
+            0.33447098976109213
+          ]
+        }
+      ],
+      "segment": "r2",
+      "net_returns_at_last_actual_receipt": {
+        "shadow": -0.0006039152906718304,
+        "deployment": 0.0
+      },
+      "limitation": "Two earlier forecasts remain prospective; later label derivation is analysis only. Missed trades are never fabricated; old portfolio accounting stops at its last actual receipt."
+    },
+    {
+      "trial_id": "PILOT-TREND-WEEK1-R4-20261014",
+      "status": "preserved_failed_segment",
+      "valid_decisions": 2,
+      "mature_decisions": 1,
+      "missing_sessions": [
+        "2026-10-16"
+      ],
+      "halt_preserved": true,
+      "receipts": [
+        {
+          "session": "2026-10-14",
+          "receipt": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r4/days/2026-10-14/result.json",
+          "sha256": "5f02761b1f1877b91716ee4581a758a53c928233db869c0360e8f1d554e008f7",
+          "shadow": {
+            "cash": 10000.0,
+            "drawdown": 0.0,
+            "equity": 10000.0,
+            "fees": 0.0,
+            "gross_exposure": 0.0,
+            "positions": {
+              "AAPL": 0.0,
+              "AMZN": 0.0,
+              "BAC": 0.0,
+              "DIA": 0.0,
+              "GLD": 0.0,
+              "GOOGL": 0.0,
+              "GS": 0.0,
+              "IWM": 0.0,
+              "JPM": 0.0,
+              "META": 0.0,
+              "MSFT": 0.0,
+              "NVDA": 0.0,
+              "QQQ": 0.0,
+              "SPY": 0.0,
+              "TLT": 0.0,
+              "TSLA": 0.0,
+              "XLE": 0.0,
+              "XLF": 0.0,
+              "XLI": 0.0,
+              "XLK": 0.0,
+              "XLP": 0.0,
+              "XLV": 0.0
+            },
+            "realized_pnl": 0.0,
+            "reconciliation_error": 0.0,
+            "reserved_cash": 4126.177956833448,
+            "unrealized_pnl": 0.0
+          },
+          "deployment": {
+            "cash": 10000.0,
+            "drawdown": 0.0,
+            "equity": 10000.0,
+            "fees": 0.0,
+            "gross_exposure": 0.0,
+            "positions": {
+              "AAPL": 0.0,
+              "AMZN": 0.0,
+              "BAC": 0.0,
+              "DIA": 0.0,
+              "GLD": 0.0,
+              "GOOGL": 0.0,
+              "GS": 0.0,
+              "IWM": 0.0,
+              "JPM": 0.0,
+              "META": 0.0,
+              "MSFT": 0.0,
+              "NVDA": 0.0,
+              "QQQ": 0.0,
+              "SPY": 0.0,
+              "TLT": 0.0,
+              "TSLA": 0.0,
+              "XLE": 0.0,
+              "XLF": 0.0,
+              "XLI": 0.0,
+              "XLK": 0.0,
+              "XLP": 0.0,
+              "XLV": 0.0
+            },
+            "realized_pnl": 0.0,
+            "reconciliation_error": 0.0,
+            "reserved_cash": 0,
+            "unrealized_pnl": 0.0
+          }
+        },
+        {
+          "session": "2026-10-15",
+          "receipt": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r4/days/2026-10-15/result.json",
+          "sha256": "0e2e5f5b44010ab529946eb1b1d7cd70ac91e607ff0319305bcf3e6b18b6449d",
+          "shadow": {
+            "cash": 5988.986010197701,
+            "drawdown": -0.0006007509720118431,
+            "equity": 9993.992490279881,
+            "fees": 6.00750972012327,
+            "gross_exposure": 0.40074139379006274,
+            "positions": {
+              "AAPL": 0.8971659999999999,
+              "AMZN": 1.2110049999999999,
+              "BAC": 0.0,
+              "DIA": 0.59673,
+              "GLD": 0.0,
+              "GOOGL": 0.885088,
+              "GS": 0.0,
+              "IWM": 0.0,
+              "JPM": 0.917717,
+              "META": 0.0,
+              "MSFT": 0.0,
+              "NVDA": 1.390385,
+              "QQQ": 0.422103,
+              "SPY": 0.399808,
+              "TLT": 0.0,
+              "TSLA": 0.0,
+              "XLE": 4.5496419999999995,
+              "XLF": 5.6436589999999995,
+              "XLI": 0.0,
+              "XLK": 1.6157759999999999,
+              "XLP": 3.575323,
+              "XLV": 1.768753
+            },
+            "realized_pnl": 0.0,
+            "reconciliation_error": 3.637978807091713e-12,
+            "reserved_cash": 0,
+            "unrealized_pnl": -6.007509720123267
+          },
+          "deployment": {
+            "cash": 10000.0,
+            "drawdown": 0.0,
+            "equity": 10000.0,
+            "fees": 0.0,
+            "gross_exposure": 0.0,
+            "positions": {
+              "AAPL": 0.0,
+              "AMZN": 0.0,
+              "BAC": 0.0,
+              "DIA": 0.0,
+              "GLD": 0.0,
+              "GOOGL": 0.0,
+              "GS": 0.0,
+              "IWM": 0.0,
+              "JPM": 0.0,
+              "META": 0.0,
+              "MSFT": 0.0,
+              "NVDA": 0.0,
+              "QQQ": 0.0,
+              "SPY": 0.0,
+              "TLT": 0.0,
+              "TSLA": 0.0,
+              "XLE": 0.0,
+              "XLF": 0.0,
+              "XLI": 0.0,
+              "XLK": 0.0,
+              "XLP": 0.0,
+              "XLV": 0.0
+            },
+            "realized_pnl": 0.0,
+            "reconciliation_error": 0.0,
+            "reserved_cash": 0,
+            "unrealized_pnl": 0.0
+          }
+        }
+      ],
+      "outcomes": [
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "AAPL",
+          "realized_return": 0.01818713807223138,
+          "label": 2,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "AMZN",
+          "realized_return": -0.01719261154995,
+          "label": 0,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "BAC",
+          "realized_return": -0.011992242219253546,
+          "label": 0,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "DIA",
+          "realized_return": 0.013096298586939836,
+          "label": 2,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "GLD",
+          "realized_return": -0.035823447940181,
+          "label": 0,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "GOOGL",
+          "realized_return": -0.0715881103963466,
+          "label": 0,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "GS",
+          "realized_return": 2.2393070009174565e-05,
+          "label": 1,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "IWM",
+          "realized_return": 0.0057802345975142,
+          "label": 1,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "JPM",
+          "realized_return": 0.003010192141684964,
+          "label": 1,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "META",
+          "realized_return": -0.11927190603143889,
+          "label": 0,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "MSFT",
+          "realized_return": -0.03403526855344163,
+          "label": 0,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "NVDA",
+          "realized_return": -0.023109096866936407,
+          "label": 0,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "QQQ",
+          "realized_return": -0.03232146881438869,
+          "label": 0,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "SPY",
+          "realized_return": -0.010145190113378333,
+          "label": 0,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "TLT",
+          "realized_return": 0.0221332576722304,
+          "label": 2,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "TSLA",
+          "realized_return": 0.033495155195574666,
+          "label": 2,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "XLE",
+          "realized_return": 0.015174311497553106,
+          "label": 2,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "XLF",
+          "realized_return": 0.024968356372093936,
+          "label": 2,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "XLI",
+          "realized_return": -0.006909307679590748,
+          "label": 1,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "XLK",
+          "realized_return": -0.036207019478405766,
+          "label": 0,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "XLP",
+          "realized_return": 0.03818640455630118,
+          "label": 2,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        },
+        {
+          "decision_session": "2026-10-14",
+          "symbol": "XLV",
+          "realized_return": 0.02319544304826482,
+          "label": 2,
+          "endpoint": "2026-10-22",
+          "source_snapshot": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6/days/2026-10-22/market-20261022T203048128896-3ae44c2e",
+          "source_snapshot_sha256": "4fc3b60eac888b3f36214bdc3ce9cc829d58ee99cecd6903c184d79f0e07fc1e"
+        }
+      ],
+      "prediction_rows": [
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "AAPL",
+          "label": 2,
+          "realized_return": 0.01818713807223138,
+          "hybrid": [
+            0.3265456641513079,
+            0.34221136936682883,
+            0.3312429664818632
+          ],
+          "prior": [
+            0.3435722411831627,
+            0.21274175199089876,
+            0.44368600682593856
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "AMZN",
+          "label": 0,
+          "realized_return": -0.01719261154995,
+          "hybrid": [
+            0.18594401954468812,
+            0.19506528759975178,
+            0.6189906928555601
+          ],
+          "prior": [
+            0.34584755403868034,
+            0.21387940841865757,
+            0.4402730375426621
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "BAC",
+          "label": 0,
+          "realized_return": -0.011992242219253546,
+          "hybrid": [
+            0.3864459526925683,
+            0.2083984286405481,
+            0.4051556186668835
+          ],
+          "prior": [
+            0.34584755403868034,
+            0.2025028441410694,
+            0.45164960182025027
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "DIA",
+          "label": 2,
+          "realized_return": 0.013096298586939836,
+          "hybrid": [
+            0.12006460981767897,
+            0.4957465249651479,
+            0.38418886521717316
+          ],
+          "prior": [
+            0.22184300341296928,
+            0.42662116040955633,
+            0.3515358361774744
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "GLD",
+          "label": 0,
+          "realized_return": -0.035823447940181,
+          "hybrid": [
+            0.2917868731315084,
+            0.40211071683510674,
+            0.3061024100333848
+          ],
+          "prior": [
+            0.23094425483503983,
+            0.3515358361774744,
+            0.41751990898748575
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "GOOGL",
+          "label": 0,
+          "realized_return": -0.0715881103963466,
+          "hybrid": [
+            0.25982820766052306,
+            0.1403144964614485,
+            0.5998572958780285
+          ],
+          "prior": [
+            0.3265073947667804,
+            0.19681456200227532,
+            0.47667804323094426
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "GS",
+          "label": 1,
+          "realized_return": 2.2393070009174565e-05,
+          "hybrid": [
+            0.2836908316028835,
+            0.27888920140093276,
+            0.43741996699618385
+          ],
+          "prior": [
+            0.31399317406143346,
+            0.2366325369738339,
+            0.44937428896473264
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "IWM",
+          "label": 1,
+          "realized_return": 0.0057802345975142,
+          "hybrid": [
+            0.3478429825555523,
+            0.3311182409024136,
+            0.3210387765420341
+          ],
+          "prior": [
+            0.32195676905574516,
+            0.285551763367463,
+            0.3924914675767918
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "JPM",
+          "label": 1,
+          "realized_return": 0.003010192141684964,
+          "hybrid": [
+            0.2889118140438316,
+            0.3072959606169394,
+            0.403792225339229
+          ],
+          "prior": [
+            0.2821387940841866,
+            0.23777019340159272,
+            0.4800910125142207
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "META",
+          "label": 0,
+          "realized_return": -0.11927190603143889,
+          "hybrid": [
+            0.24755072385613464,
+            0.19578901875439003,
+            0.5566602573894753
+          ],
+          "prior": [
+            0.3310580204778157,
+            0.18088737201365188,
+            0.4880546075085324
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "MSFT",
+          "label": 0,
+          "realized_return": -0.03403526855344163,
+          "hybrid": [
+            0.1503592159857262,
+            0.2523427963190571,
+            0.5972979876952167
+          ],
+          "prior": [
+            0.3242320819112628,
+            0.2514220705346985,
+            0.4243458475540387
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "NVDA",
+          "label": 0,
+          "realized_return": -0.023109096866936407,
+          "hybrid": [
+            0.3172358207150349,
+            0.1266425826965685,
+            0.5561215965883965
+          ],
+          "prior": [
+            0.3310580204778157,
+            0.13651877133105803,
+            0.5324232081911263
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "QQQ",
+          "label": 0,
+          "realized_return": -0.03232146881438869,
+          "hybrid": [
+            0.2988710470139702,
+            0.21884490689658026,
+            0.4822840460894494
+          ],
+          "prior": [
+            0.27303754266211605,
+            0.30489192263936293,
+            0.42207053469852107
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "SPY",
+          "label": 0,
+          "realized_return": -0.010145190113378333,
+          "hybrid": [
+            0.20696118004378725,
+            0.3293444590943292,
+            0.4636943608618837
+          ],
+          "prior": [
+            0.22070534698521047,
+            0.40386803185437997,
+            0.37542662116040953
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "TLT",
+          "label": 2,
+          "realized_return": 0.0221332576722304,
+          "hybrid": [
+            0.21193018739449448,
+            0.3452049395443731,
+            0.44286487306113237
+          ],
+          "prior": [
+            0.32195676905574516,
+            0.3856655290102389,
+            0.2923777019340159
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "TSLA",
+          "label": 2,
+          "realized_return": 0.033495155195574666,
+          "hybrid": [
+            0.30553411138257425,
+            0.14945599393663367,
+            0.5450098946807921
+          ],
+          "prior": [
+            0.4482366325369738,
+            0.10466439135381114,
+            0.447098976109215
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "XLE",
+          "label": 2,
+          "realized_return": 0.015174311497553106,
+          "hybrid": [
+            0.33444271006850873,
+            0.29960294609005733,
+            0.36595434384143394
+          ],
+          "prior": [
+            0.30489192263936293,
+            0.26507394766780434,
+            0.4300341296928328
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "XLF",
+          "label": 2,
+          "realized_return": 0.024968356372093936,
+          "hybrid": [
+            0.27068002793276946,
+            0.4162352172902717,
+            0.31308475477695896
+          ],
+          "prior": [
+            0.25483503981797495,
+            0.3492605233219568,
+            0.39590443686006827
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "XLI",
+          "label": 1,
+          "realized_return": -0.006909307679590748,
+          "hybrid": [
+            0.27411758714419815,
+            0.2874374860048797,
+            0.438444926850922
+          ],
+          "prior": [
+            0.24687144482366324,
+            0.36063708759954494,
+            0.3924914675767918
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "XLK",
+          "label": 0,
+          "realized_return": -0.036207019478405766,
+          "hybrid": [
+            0.29063243148660367,
+            0.30498726453257835,
+            0.404380303980818
+          ],
+          "prior": [
+            0.29692832764505117,
+            0.2764505119453925,
+            0.42662116040955633
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "XLP",
+          "label": 2,
+          "realized_return": 0.03818640455630118,
+          "hybrid": [
+            0.2578396524531031,
+            0.4709449571642015,
+            0.2712153903826954
+          ],
+          "prior": [
+            0.24118316268486917,
+            0.472127417519909,
+            0.28668941979522183
+          ]
+        },
+        {
+          "session": "2026-10-14",
+          "segment": "r4",
+          "symbol": "XLV",
+          "label": 2,
+          "realized_return": 0.02319544304826482,
+          "hybrid": [
+            0.3736267458043143,
+            0.4017335067652746,
+            0.22463974743041104
+          ],
+          "prior": [
+            0.2616609783845279,
+            0.40386803185437997,
+            0.33447098976109213
+          ]
+        }
+      ],
+      "segment": "r4",
+      "net_returns_at_last_actual_receipt": {
+        "shadow": -0.0006007509720118431,
+        "deployment": 0.0
+      },
+      "limitation": "Two earlier forecasts remain prospective; later label derivation is analysis only. Missed trades are never fabricated; old portfolio accounting stops at its last actual receipt."
+    }
+  ],
+  "failed_continuations": [
+    {
+      "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261011-week1-r3",
+      "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r3",
+      "release_sha256": "7bfc89e8f58a97d61a3ec800aa4819480f1bb66dd653f3fcce9493dc4d501946",
+      "status_at_supersession": {
+        "trial_id": "PILOT-TREND-WEEK1-R3-20261012",
+        "external_orders": false,
+        "deployment": "cash",
+        "shadow": "trend",
+        "state_consistency_errors": [],
+        "ledger_consistent": true,
+        "valid_observed_sessions": 0,
+        "expected_elapsed_sessions": 2,
+        "missing_sessions": [
+          "2026-10-12",
+          "2026-10-13"
+        ],
+        "label_complete_decisions": 0,
+        "required_sessions": 3,
+        "next_event": {
+          "id": "2026-10-14:daily",
+          "session": "2026-10-14",
+          "kind": "daily",
+          "due": "2026-10-14T20:30:00+00:00",
+          "ordinal": 3,
+          "hong_kong": "2026-10-15T04:30:00+08:00"
+        },
+        "terminal_observed_sessions": 0,
+        "terminal_required_sessions": 6,
+        "halted": true,
+        "prospective_status": "incomplete",
+        "limitations": [
+          "Local launch agent requires logged-in awake host; no wake guarantee",
+          "No external broker execution",
+          "Commissioning/replays never count as prospective",
+          "Missed sessions halt; no fabricated backfill"
+        ]
+      },
+      "unattempted_after_supersession": [
+        "2026-10-14"
+      ],
+      "verification_status": {
+        "trial_id": "PILOT-TREND-WEEK1-R3-20261012",
+        "external_orders": false,
+        "deployment": "cash",
+        "shadow": "trend",
+        "state_consistency_errors": [],
+        "ledger_consistent": true,
+        "valid_observed_sessions": 0,
+        "expected_elapsed_sessions": 3,
+        "missing_sessions": [
+          "2026-10-12",
+          "2026-10-13",
+          "2026-10-14"
+        ],
+        "label_complete_decisions": 0,
+        "required_sessions": 3,
+        "next_event": null,
+        "terminal_observed_sessions": 0,
+        "terminal_required_sessions": 6,
+        "halted": true,
+        "prospective_status": "incomplete",
+        "limitations": [
+          "Local launch agent requires logged-in awake host; no wake guarantee",
+          "No external broker execution",
+          "Commissioning/replays never count as prospective",
+          "Missed sessions halt; no fabricated backfill"
+        ]
+      },
+      "counts_as_prospective": 0,
+      "note": "Missing at supersession: use status_at_supersession; later planned dates were cancelled before their decision windows."
+    },
+    {
+      "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261021-week1-r5",
+      "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r5",
+      "release_sha256": "67b1bba3337831b9e66cdd4f684a28ec25a63e693dcd254bbc6299d673a03fc0",
+      "status_at_supersession": {
+        "trial_id": "PILOT-TREND-WEEK1-R5-20261021",
+        "external_orders": false,
+        "deployment": "cash",
+        "shadow": "trend",
+        "state_consistency_errors": [],
+        "ledger_consistent": true,
+        "valid_observed_sessions": 0,
+        "expected_elapsed_sessions": 1,
+        "missing_sessions": [
+          "2026-10-21"
+        ],
+        "label_complete_decisions": 0,
+        "required_sessions": 1,
+        "next_event": {
+          "id": "2026-10-21:preopen",
+          "session": "2026-10-21",
+          "kind": "preopen",
+          "ordinal": 1,
+          "due": "2026-10-22T13:00:00+00:00",
+          "hong_kong": "2026-10-22T21:00:00+08:00"
+        },
+        "terminal_observed_sessions": 0,
+        "terminal_required_sessions": 6,
+        "halted": true,
+        "prospective_status": "incomplete",
+        "limitations": [
+          "Local launch agent requires logged-in awake host; no wake guarantee",
+          "No external broker execution",
+          "Commissioning/replays never count as prospective",
+          "Missed sessions halt; no fabricated backfill"
+        ]
+      },
+      "reason": "Invalid JPM OHLC rejected on US 21 October; no valid decision; original halt retained",
+      "cancelled_tail_dates": [
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29"
+      ],
+      "verification_status": {
+        "trial_id": "PILOT-TREND-WEEK1-R5-20261021",
+        "external_orders": false,
+        "deployment": "cash",
+        "shadow": "trend",
+        "state_consistency_errors": [],
+        "ledger_consistent": true,
+        "valid_observed_sessions": 0,
+        "expected_elapsed_sessions": 1,
+        "missing_sessions": [
+          "2026-10-21"
+        ],
+        "label_complete_decisions": 0,
+        "required_sessions": 1,
+        "next_event": {
+          "id": "2026-10-23:outcomes",
+          "session": "2026-10-23",
+          "kind": "outcomes",
+          "ordinal": 3,
+          "due": "2026-10-23T20:30:00+00:00",
+          "hong_kong": "2026-10-24T04:30:00+08:00"
+        },
+        "terminal_observed_sessions": 0,
+        "terminal_required_sessions": 6,
+        "halted": true,
+        "prospective_status": "incomplete",
+        "limitations": [
+          "Local launch agent requires logged-in awake host; no wake guarantee",
+          "No external broker execution",
+          "Commissioning/replays never count as prospective",
+          "Missed sessions halt; no fabricated backfill"
+        ]
+      },
+      "counts_as_prospective": 0,
+      "note": "Missing at supersession: use status_at_supersession; later planned dates were cancelled before their decision windows."
+    }
+  ],
+  "earlier_failed_trials": [
+    {
+      "release": "/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20260928-week1",
+      "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1",
+      "note": "Original five-session trial failed; superseded before r2; retain original evidence"
+    }
+  ],
+  "total_valid_observed_decisions": 5,
+  "interrupted_design": true,
+  "continuous_five_session_success": false,
+  "return_series_policy": "Separate segment accounts; never compound or splice old and new account returns",
+  "readiness": {
+    "engineering": "See source-bound release qualification",
+    "historical_edge": "not_approved",
+    "prospective": "pending",
+    "broker": "disabled"
+  },
+  "source": {
+    "research_week1_r6/report.py": "1c88335c06a979ac6c22b20cdb12359c92dd58caae33c67e66b0155ca1062f96",
+    "research_v2/diagnostics.py": "6dd72acb64ed9b6944314ba2015b93c096cf32f36927a582b1ebfbe1d598e8ef"
+  },
+  "operational_complete": true,
+  "inference_scope": "Descriptive only; five dates are insufficient for the registered dependence-aware inference; no p-values or economic approval",
+  "limitations": [
+    "No outcome imputation or backfill",
+    "Current-vintage adjusted-return proxy units",
+    "Five observations in three segments cannot establish durable returns or sustained operational reliability"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "trial": "without_trend-TLT-F2-R0-S42",
+  "probability_view_rows": 441,
+  "maximum_probability_error": 0.0,
+  "all_forecast_columns_equal": true,
+  "all_nonruntime_fit_metadata_equal": true,
+  "actual_prediction_sha256": "ed7a5f71ec48f4e91ce85a98b124e684fb2d48dc6dc7b2316dc1823f67ff6edd",
+  "expected_prediction_sha256": "7cc55b9e0d4fc4fb10c1bc524f5802a9b31398c2d4eddb6ec6bce06476dea4f8",
+  "model_sha256": "249449c44cf3de190b7a616397dc612fd38764c1044218b0966ee8b430ea80b0"
+}

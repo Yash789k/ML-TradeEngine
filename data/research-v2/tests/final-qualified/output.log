@@ -1,0 +1,25 @@
+........................................................................ [ 19%]
+........................................................................ [ 38%]
+........................................................................ [ 58%]
+........................................................................ [ 77%]
+........................................................................ [ 97%]
+..........                                                               [100%]
+=============================== warnings summary ===============================
+tests/test_ml_pipeline.py::test_lgbm_fit_predict_shape
+tests/test_ml_pipeline.py::test_lgbm_fit_predict_shape
+tests/test_ml_pipeline.py::test_lgbm_fit_predict_shape
+tests/test_ml_pipeline.py::test_lgbm_proba_sums_to_one
+tests/test_ml_pipeline.py::test_lgbm_proba_sums_to_one
+tests/test_ml_pipeline.py::test_lgbm_proba_sums_to_one
+tests/test_ml_pipeline.py::test_lgbm_predict_labels_valid
+tests/test_ml_pipeline.py::test_lgbm_predict_labels_valid
+tests/test_ml_pipeline.py::test_lgbm_predict_labels_valid
+  /Users/a/miniconda3/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+    warnings.warn(
+
+tests/test_ml_pipeline.py::test_trainer_prepare_data_alignment
+  /Users/a/miniconda3/lib/python3.13/site-packages/mlflow/tracking/_tracking_service/utils.py:184: FutureWarning: The filesystem tracking backend (e.g., './mlruns') is deprecated as of February 2026. Consider transitioning to a database backend (e.g., 'sqlite:///mlflow.db') to take advantage of the latest MLflow features. See https://mlflow.org/docs/latest/self-hosting/migrate-from-file-store for migration guidance.
+    return FileStore(store_uri, store_uri)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+370 passed, 18 deselected, 10 warnings in 98.12s (0:01:38)

@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "config": {
+      "history": 1008,
+      "fraction": 1.0,
+      "remove": "momentum",
+      "seed": 42,
+      "calibration": 63,
+      "gate": 63,
+      "cadence": 63
+    },
+    "decision": "2025-07-01 00:00:00+00:00",
+    "fitting_symbols": [
+      "AAPL"
+    ],
+    "boundaries": [
+      {
+        "symbol": "AAPL",
+        "fit_start": "2021-06-16 00:00:00+00:00",
+        "fit_end": "2024-11-27 00:00:00+00:00",
+        "fit_endpoint": "2024-12-06 00:00:00+00:00",
+        "calibration_start": "2024-12-09 00:00:00+00:00",
+        "calibration_end": "2025-03-12 00:00:00+00:00",
+        "calibration_endpoint": "2025-03-20 00:00:00+00:00",
+        "gate_start": "2025-03-21 00:00:00+00:00",
+        "gate_end": "2025-06-20 00:00:00+00:00",
+        "gate_endpoint": "2025-06-30 00:00:00+00:00",
+        "n_fit": 870,
+        "n_cal": 63,
+        "n_gate": 63
+      }
+    ],
+    "n_fit": 870,
+    "n_cal": 63,
+    "n_gate": 63,
+    "temperature": 3.0,
+    "gate_same": false,
+    "gate_separate": true,
+    "calibration_loss": 1.0959294648082334,
+    "calibration_prior_loss": 1.0576297957548324,
+    "gate_loss": 1.0411495937858504,
+    "gate_prior_loss": 1.0514775810518528,
+    "train_log_loss": 0.9788706906198819,
+    "train_accuracy": 0.6896551724137931,
+    "fit_seconds": 0.2897565410094103,
+    "training_hash": "1d4371a8d1f950c14b5ef8b78d4f2917de4bdb27b7566565f9be7b2245e5ca23"
+  },
+  "sha256": "a9c482f22878b3eae58e720bcbbc571e21205d9aba2aedc7a43d9e8c22cadb81"
+}

@@ -1,0 +1,654 @@
+{
+  "recorded_at": "2026-10-30 09:38:15 UTC",
+  "repository": {
+    "id": "1255096612",
+    "name": "ML-TradeEngine",
+    "owner": {
+      "login": "Yash789k",
+      "id": 131536579,
+      "type": "User",
+      "avatar_url": "https://avatars.githubusercontent.com/u/131536579?v=4",
+      "url": "https://api.github.com/users/Yash789k"
+    },
+    "repository_full_name": "Yash789k/ML-TradeEngine",
+    "permissions": {
+      "admin": false,
+      "maintain": false,
+      "pull": true,
+      "push": false,
+      "triage": false
+    },
+    "allow_auto_merge": null,
+    "allow_merge_commit": null,
+    "allow_rebase_merge": null,
+    "allow_squash_merge": null,
+    "allow_update_branch": null,
+    "clone_url": "https://github.com/Yash789k/ML-TradeEngine.git",
+    "size": 41443,
+    "default_branch": "main",
+    "git_commits_url": "https://api.github.com/repos/Yash789k/ML-TradeEngine/git/commits{/sha}",
+    "git_refs_url": "https://api.github.com/repos/Yash789k/ML-TradeEngine/git/refs{/sha}",
+    "git_url": "git://github.com/Yash789k/ML-TradeEngine.git",
+    "master_branch": null,
+    "visibility": "public",
+    "archived": false,
+    "is_code_search_indexed": null
+  },
+  "open_pulls": {
+    "url": "https://api.github.com/repos/Yash789k/ML-TradeEngine/pulls?state=open&per_page=100",
+    "data": []
+  },
+  "all_pulls": {
+    "url": "https://api.github.com/repos/Yash789k/ML-TradeEngine/pulls?state=all&per_page=100",
+    "data": []
+  },
+  "open_search": {
+    "issues": []
+  },
+  "branches": {
+    "url": "https://api.github.com/repos/Yash789k/ML-TradeEngine/branches?per_page=100",
+    "data": [
+      {
+        "name": "main",
+        "commit": {
+          "sha": "f194283bb6104e3feb980a67bc05a06459677909",
+          "url": "https://api.github.com/repos/Yash789k/ML-TradeEngine/commits/f194283bb6104e3feb980a67bc05a06459677909"
+        },
+        "protected": false
+      }
+    ]
+  },
+  "commit_status": {
+    "statuses": []
+  },
+  "checks": {
+    "total_count": 43,
+    "returned": 43,
+    "check_runs": [
+      {
+        "id": 100064990569,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-09-01T23:27:22Z",
+        "completed_at": "2026-09-01T23:29:21Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/33571092654/job/100064990569"
+      },
+      {
+        "id": 99695501680,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-09-01T00:42:31Z",
+        "completed_at": "2026-09-01T00:44:25Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/33455842448/job/99695501680"
+      },
+      {
+        "id": 99043329367,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-29T03:13:38Z",
+        "completed_at": "2026-08-29T03:15:24Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/33230858174/job/99043329367"
+      },
+      {
+        "id": 98764041693,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-28T05:31:37Z",
+        "completed_at": "2026-08-28T05:33:20Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/33145026906/job/98764041693"
+      },
+      {
+        "id": 98375299523,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-27T00:56:42Z",
+        "completed_at": "2026-08-27T00:58:45Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/33028492533/job/98375299523"
+      },
+      {
+        "id": 97981760057,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-25T21:52:41Z",
+        "completed_at": "2026-08-25T21:54:33Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/32903313220/job/97981760057"
+      },
+      {
+        "id": 97605304627,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-24T21:52:44Z",
+        "completed_at": "2026-08-24T21:54:39Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/32781809528/job/97605304627"
+      },
+      {
+        "id": 96920430998,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-21T21:47:57Z",
+        "completed_at": "2026-08-21T21:49:53Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/32530162803/job/96920430998"
+      },
+      {
+        "id": 96594617263,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-20T21:52:58Z",
+        "completed_at": "2026-08-20T21:54:45Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/32421599140/job/96594617263"
+      },
+      {
+        "id": 96238310465,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-19T21:49:44Z",
+        "completed_at": "2026-08-19T21:51:31Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/32305846251/job/96238310465"
+      },
+      {
+        "id": 95880418180,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-18T21:46:33Z",
+        "completed_at": "2026-08-18T21:48:26Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/32189461642/job/95880418180"
+      },
+      {
+        "id": 95520294698,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-17T21:49:31Z",
+        "completed_at": "2026-08-17T21:53:00Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/32073063654/job/95520294698"
+      },
+      {
+        "id": 94906697889,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-14T21:48:43Z",
+        "completed_at": "2026-08-14T21:50:36Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/31844027609/job/94906697889"
+      },
+      {
+        "id": 94609427460,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-13T22:09:15Z",
+        "completed_at": "2026-08-13T22:11:03Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/31748758489/job/94609427460"
+      },
+      {
+        "id": 94278795225,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-12T22:09:40Z",
+        "completed_at": "2026-08-12T22:11:35Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/31645759305/job/94278795225"
+      },
+      {
+        "id": 93943966603,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-11T22:10:57Z",
+        "completed_at": "2026-08-11T22:12:48Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/31541274379/job/93943966603"
+      },
+      {
+        "id": 93612653158,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-10T22:05:50Z",
+        "completed_at": "2026-08-10T22:07:47Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/31436816948/job/93612653158"
+      },
+      {
+        "id": 93009901219,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-07T22:05:06Z",
+        "completed_at": "2026-08-07T22:07:00Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/31222516549/job/93009901219"
+      },
+      {
+        "id": 92737644287,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-07T01:02:58Z",
+        "completed_at": "2026-08-07T01:04:37Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/31136735381/job/92737644287"
+      },
+      {
+        "id": 92464917934,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-05T22:33:36Z",
+        "completed_at": "2026-08-05T22:35:37Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/31053203928/job/92464917934"
+      },
+      {
+        "id": 92152014063,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-04T22:34:38Z",
+        "completed_at": "2026-08-04T22:36:28Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/30956912068/job/92152014063"
+      },
+      {
+        "id": 91836734676,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-08-03T22:32:45Z",
+        "completed_at": "2026-08-03T22:34:47Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/30859048695/job/91836734676"
+      },
+      {
+        "id": 91286222007,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-31T22:32:01Z",
+        "completed_at": "2026-07-31T22:34:02Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/30670239796/job/91286222007"
+      },
+      {
+        "id": 91022638977,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-30T22:34:42Z",
+        "completed_at": "2026-07-30T22:36:32Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/30587631218/job/91022638977"
+      },
+      {
+        "id": 90725578155,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-29T22:27:50Z",
+        "completed_at": "2026-07-29T22:29:45Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/30496218914/job/90725578155"
+      },
+      {
+        "id": 90428209818,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-28T22:33:08Z",
+        "completed_at": "2026-07-28T22:35:12Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/30404951395/job/90428209818"
+      },
+      {
+        "id": 90126695579,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-27T22:32:58Z",
+        "completed_at": "2026-07-27T22:34:45Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/30311113023/job/90126695579"
+      },
+      {
+        "id": 89606167086,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-24T22:33:32Z",
+        "completed_at": "2026-07-24T22:35:40Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/30131296982/job/89606167086"
+      },
+      {
+        "id": 89350075328,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-23T22:29:58Z",
+        "completed_at": "2026-07-23T22:32:10Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/30050078686/job/89350075328"
+      },
+      {
+        "id": 89068823009,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-22T22:32:21Z",
+        "completed_at": "2026-07-22T22:34:14Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/29963202218/job/89068823009"
+      },
+      {
+        "id": 88779553341,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-21T22:25:53Z",
+        "completed_at": "2026-07-21T22:27:43Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/29873738521/job/88779553341"
+      },
+      {
+        "id": 88491764009,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-20T22:29:54Z",
+        "completed_at": "2026-07-20T22:31:43Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/29784107826/job/88491764009"
+      },
+      {
+        "id": 88004762953,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-17T22:13:23Z",
+        "completed_at": "2026-07-17T22:15:21Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/29617215839/job/88004762953"
+      },
+      {
+        "id": 87758866498,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-16T22:28:00Z",
+        "completed_at": "2026-07-16T22:29:44Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/29539618327/job/87758866498"
+      },
+      {
+        "id": 87487695657,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-15T22:28:20Z",
+        "completed_at": "2026-07-15T22:30:09Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/29455509561/job/87487695657"
+      },
+      {
+        "id": 87220721712,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-14T22:28:45Z",
+        "completed_at": "2026-07-14T22:30:46Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/29373116621/job/87220721712"
+      },
+      {
+        "id": 86950838285,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-13T22:26:16Z",
+        "completed_at": "2026-07-13T22:28:02Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/29289866587/job/86950838285"
+      },
+      {
+        "id": 86477446170,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-10T22:31:15Z",
+        "completed_at": "2026-07-10T22:32:59Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/29127951470/job/86477446170"
+      },
+      {
+        "id": 86246252047,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-09T22:48:52Z",
+        "completed_at": "2026-07-09T22:50:38Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/29055605458/job/86246252047"
+      },
+      {
+        "id": 85997325602,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-08T22:31:53Z",
+        "completed_at": "2026-07-08T22:33:54Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/28980315593/job/85997325602"
+      },
+      {
+        "id": 85745396036,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-07T22:36:28Z",
+        "completed_at": "2026-07-07T22:38:13Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/28903478884/job/85745396036"
+      },
+      {
+        "id": 85496569501,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-06T22:44:21Z",
+        "completed_at": "2026-07-06T22:46:08Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/28828362438/job/85496569501"
+      },
+      {
+        "id": 85079105912,
+        "name": "Generate Signals & Submit Orders",
+        "head_sha": "f194283bb6104e3feb980a67bc05a06459677909",
+        "status": "completed",
+        "conclusion": "failure",
+        "started_at": "2026-07-03T22:32:07Z",
+        "completed_at": "2026-07-03T22:33:54Z",
+        "html_url": "https://github.com/Yash789k/ML-TradeEngine/actions/runs/28686135797/job/85079105912"
+      }
+    ]
+  },
+  "latest_job_steps": {
+    "steps": [
+      {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1
+      },
+      {
+        "name": "Checkout repository",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2
+      },
+      {
+        "name": "Set up Python 3.12",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3
+      },
+      {
+        "name": "Install CPU-only PyTorch",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4
+      },
+      {
+        "name": "Install dependencies",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5
+      },
+      {
+        "name": "Restore data cache",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 6
+      },
+      {
+        "name": "Build ticker argument",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 7
+      },
+      {
+        "name": "Build dry-run flag",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 8
+      },
+      {
+        "name": "Run live signal engine",
+        "status": "completed",
+        "conclusion": "failure",
+        "number": 9
+      },
+      {
+        "name": "Print signal log",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 10
+      },
+      {
+        "name": "Print order log",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 11
+      },
+      {
+        "name": "Sync signal log to Supabase",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 12
+      },
+      {
+        "name": "Save data cache",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 13
+      },
+      {
+        "name": "Upload signal log artifact",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 14
+      },
+      {
+        "name": "Post Set up Python 3.12",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 27
+      },
+      {
+        "name": "Post Checkout repository",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 28
+      },
+      {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 29
+      }
+    ]
+  },
+  "latest_failure_excerpt": [
+    "2026-09-01T23:29:14.1175661Z 23:29:14  INFO      Tickers: ['AAPL', 'MSFT', 'GOOGL', 'SPY', 'QQQ']",
+    "2026-09-01T23:29:14.1176691Z 23:29:14  INFO      ══════════════════════════════════════",
+    "2026-09-01T23:29:14.1177224Z 23:29:14  INFO        Live Engine  dry_run=False",
+    "2026-09-01T23:29:14.1178131Z 23:29:14  INFO        Tickers: ['AAPL', 'MSFT', 'GOOGL', 'SPY', 'QQQ']",
+    "2026-09-01T23:29:14.1178850Z 23:29:14  INFO      ══════════════════════════════════════",
+    "2026-09-01T23:29:14.1195888Z Traceback (most recent call last):",
+    "2026-09-01T23:29:14.1204025Z   File \"/home/runner/work/ML-TradeEngine/ML-TradeEngine/live.py\", line 276, in <module>",
+    "2026-09-01T23:29:14.1205006Z     main()",
+    "2026-09-01T23:29:14.1205637Z   File \"/home/runner/work/ML-TradeEngine/ML-TradeEngine/live.py\", line 272, in main",
+    "2026-09-01T23:29:14.1206286Z     fn(args)",
+    "2026-09-01T23:29:14.1206904Z   File \"/home/runner/work/ML-TradeEngine/ML-TradeEngine/live.py\", line 127, in cmd_run",
+    "2026-09-01T23:29:14.1207496Z     result = engine.run(force_refresh=not args.no_refresh)",
+    "2026-09-01T23:29:14.1207852Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "2026-09-01T23:29:14.1208331Z   File \"/home/runner/work/ML-TradeEngine/ML-TradeEngine/src/live/engine.py\", line 136, in run",
+    "2026-09-01T23:29:14.1208915Z     alerts = Alerts()",
+    "2026-09-01T23:29:14.1209243Z              ^^^^^^^^",
+    "2026-09-01T23:29:14.1209915Z   File \"/home/runner/work/ML-TradeEngine/ML-TradeEngine/src/live/alerts.py\", line 61, in __init__",
+    "2026-09-01T23:29:14.1210787Z     self.smtp_port   = smtp_port   or int(os.environ.get(\"SMTP_PORT\", \"587\"))",
+    "2026-09-01T23:29:14.1211203Z                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "2026-09-01T23:29:14.1211585Z ValueError: invalid literal for int() with base 10: ''",
+    "2026-09-01T23:29:14.1770078Z ##[error]Process completed with exit code 1.",
+    "2026-09-01T23:29:14.1819654Z ##[group]Run python3 live.py status --n 10"
+  ],
+  "plugin_limitations": [
+    {
+      "error": "HTTPError: 400: GitHub Fetch URL is not an allowed public GitHub repository or search endpoint. (Response: None)",
+      "error_code": "INVALID_ARGUMENT"
+    },
+    {
+      "error": "HTTPError: 400: GitHub Fetch URL is not an allowed public GitHub repository or search endpoint. (Response: None)",
+      "error_code": "INVALID_ARGUMENT"
+    }
+  ],
+  "local_baseline": {
+    "chunk_id": "221e98",
+    "wall_time_seconds": 0.0000105,
+    "exit_code": 0,
+    "original_token_count": 92,
+    "output": "origin\thttps://github.com/Yash789k/ML-TradeEngine.git (fetch)\norigin\thttps://github.com/Yash789k/ML-TradeEngine.git (push)\nf194283bb6104e3feb980a67bc05a06459677909\n M .github/workflows/daily_signals.yml\n M .gitignore\n M README.md\n M dashboard.py\n M data/live/signal_log.db\n M docs/PHASE_06D_PAPER_DRAFT.md\n M docs/ml-trade-engine-mvp.md\n M extract_paper_numbers.py\n"
+  },
+  "local_diff_stat": {
+    "chunk_id": "273533",
+    "wall_time_seconds": 0.047156167,
+    "exit_code": 0,
+    "original_token_count": 1562,
+    "output": ".github/workflows/daily_signals.yml\n.gitignore\nLICENSE\nREADME.md\nbacktest.py\ndashboard.py\ndata/audit_flags.json\ndata/backtest/AAPL/backtest_summary.json\ndata/backtest/AMZN/backtest_summary.json\ndata/backtest/BAC/backtest_summary.json\ndata/backtest/DIA/backtest_summary.json\ndata/backtest/GLD/backtest_summary.json\ndata/backtest/GOOGL/backtest_summary.json\ndata/backtest/GS/backtest_summary.json\ndata/backtest/IWM/backtest_summary.json\ndata/backtest/JPM/backtest_summary.json\ndata/backtest/META/backtest_summary.json\ndata/backtest/MSFT/backtest_summary.json\ndata/backtest/NVDA/backtest_summary.json\ndata/backtest/QQQ/backtest_summary.json\ndata/backtest/SPY/backtest_summary.json\ndata/backtest/TLT/backtest_summary.json\ndata/backtest/TSLA/backtest_summary.json\ndata/backtest/XLE/backtest_summary.json\ndata/backtest/XLF/backtest_summary.json\ndata/backtest/XLI/backtest_summary.json\ndata/backtest/XLK/backtest_summary.json\ndata/backtest/XLP/backtest_summary.json\ndata/backtest/XLV/backtest_summary.json\ndata/live/signal_log.db\ndata/models/AAPL/feature_cols.json\ndata/models/AAPL/lgbm_final.txt\ndata/models/AAPL/training_results.json\ndata/models/AAPL/xgb_final.json\ndata/models/AMZN/feature_cols.json\ndata/models/AMZN/lgbm_final.txt\ndata/models/AMZN/training_results.json\ndata/models/AMZN/xgb_final.json\ndata/models/BAC/feature_cols.json\ndata/models/BAC/lgbm_final.txt\ndata/models/BAC/training_results.json\ndata/models/BAC/xgb_final.json\ndata/models/DIA/feature_cols.json\ndata/models/DIA/lgbm_final.txt\ndata/models/DIA/training_results.json\ndata/models/DIA/xgb_final.json\ndata/models/GLD/feature_cols.json\ndata/models/GLD/lgbm_final.txt\ndata/models/GLD/training_results.json\ndata/models/GLD/xgb_final.json\ndata/models/GOOGL/feature_cols.json\ndata/models/GOOGL/lgbm_final.txt\ndata/models/GOOGL/training_results.json\ndata/models/GOOGL/xgb_final.json\ndata/models/GS/feature_cols.json\ndata/models/GS/lgbm_final.txt\ndata/models/GS/training_results.json\ndata/models/GS/xgb_final.json\ndata/models/IWM/feature_cols.json\ndata/models/IWM/lgbm_final.txt\ndata/models/IWM/training_results.json\ndata/models/IWM/xgb_final.json\ndata/models/JPM/feature_cols.json\ndata/models/JPM/lgbm_final.txt\ndata/models/JPM/training_results.json\ndata/models/JPM/xgb_final.json\ndata/models/META/feature_cols.json\ndata/models/META/lgbm_final.txt\ndata/models/META/training_results.json\ndata/models/META/xgb_final.json\ndata/models/MSFT/feature_cols.json\ndata/models/MSFT/lgbm_final.txt\ndata/models/MSFT/training_results.json\ndata/models/MSFT/xgb_final.json\ndata/models/NVDA/feature_cols.json\ndata/models/NVDA/lgbm_final.txt\ndata/models/NVDA/training_results.json\ndata/models/NVDA/xgb_final.json\ndata/models/QQQ/feature_cols.json\ndata/models/QQQ/lgbm_final.txt\ndata/models/QQQ/training_results.json\ndata/models/QQQ/xgb_final.json\ndata/models/SPY/feature_cols.json\ndata/models/SPY/lgbm_final.txt\ndata/models/SPY/training_results.json\ndata/models/SPY/xgb_final.json\ndata/models/TLT/feature_cols.json\ndata/models/TLT/lgbm_final.txt\ndata/models/TLT/training_results.json\ndata/models/TLT/xgb_final.json\ndata/models/TSLA/feature_cols.json\ndata/models/TSLA/lgbm_final.txt\ndata/models/TSLA/training_results.json\ndata/models/TSLA/xgb_final.json\ndata/models/XLE/feature_cols.json\ndata/models/XLE/lgbm_final.txt\ndata/models/XLE/training_results.json\ndata/models/XLE/xgb_final.json\ndata/models/XLF/feature_cols.json\ndata/models/XLF/lgbm_final.txt\ndata/models/XLF/training_results.json\ndata/models/XLF/xgb_final.json\ndata/models/XLI/feature_cols.json\ndata/models/XLI/lgbm_final.txt\ndata/models/XLI/training_results.json\ndata/models/XLI/xgb_final.json\ndata/models/XLK/feature_cols.json\ndata/models/XLK/lgbm_final.txt\ndata/models/XLK/training_results.json\ndata/models/XLK/xgb_final.json\n .github/workflows/daily_signals.yml     | 147 ++-------\n .gitignore                              |  11 +\n README.md                               | 483 +++++++++-------------------\n dashboard.py                            |   2 +\n data/live/signal_log.db                 | Bin 28672 -> 28672 bytes\n docs/PHASE_06D_PAPER_DRAFT.md           | 552 +++++---------------------------\n docs/ml-trade-engine-mvp.md             |   8 +\n extract_paper_numbers.py                |   3 +-\n live.py                                 |  32 +-\n requirements.txt                        |   6 +\n src/backtest/metrics.py                 |  31 +-\n src/backtest/runner.py                  |   3 +-\n src/backtest/signals.py                 |  51 +--\n src/backtest/simulator.py               | 141 +++-----\n src/data/loader.py                      |  31 +-\n src/data/sources.py                     |  22 +-\n src/features/cross_asset.py             |  16 +-\n src/features/pipeline.py                |  50 ++-\n src/features/regime.py                  |  58 +++-\n src/live/alerts.py                      |   2 +-\n src/live/broker.py                      |   2 +-\n src/live/engine.py                      | 438 ++++++++-----------------\n src/live/logger.py                      |  25 +-\n src/live/signal_generator.py            |  92 ++++--\n src/models/ensemble.py                  |  76 ++++-\n src/models/labels.py                    |   2 +\n src/models/lgbm_model.py                |  16 +-\n src/models/lstm_model.py                |  32 +-\n src/models/trainer.py                   | 105 ++++--\n src/models/xgb_model.py                 |  16 +-\n src/research/env_analyzer.py            |   4 +-\n src/research/meta_strategy.py           |  19 +-\n src/research/ranker.py                  |  12 +-\n src/research/strategies/alpha_trends.py |  22 +-\n src/research/strategies/carry_proxy.py  |  19 +-\n src/research/zoo_runner.py              |   3 +-\n src/risk/engine.py                      | 112 ++++---\n src/risk/stops.py                       |  12 +-\n tests/test_data_pipeline.py             |  36 ++-\n tests/test_env_analyzer.py              |   4 +-\n tests/test_feature_pipeline.py          |   2 +-\n tests/test_live.py                      |   7 +-\n tests/test_ml_pipeline.py               |   7 +-\n train.py                                |   8 +-\n 44 files changed, 1106 insertions(+), 1614 deletions(-)\nf194283 changes via fabl\n401bbb7 New changes to README.md\ne17c12e Merge remote-tracking branch 'origin/main'\n25ed9fe Initial commit\n"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "source_sha256": "40e0f8e554e50ba91b4e9546ac4e0ffcf013ee958fc2ac7359af84799b9ccd6b",
+  "valid_sessions": 0,
+  "required_sessions": 5,
+  "manual_collection_buttons": 0,
+  "download_labels": [
+    "Current manuscript PDF",
+    "Editable LaTeX manuscript",
+    "Historical claim map"
+  ],
+  "actual_sealed_status": true
+}

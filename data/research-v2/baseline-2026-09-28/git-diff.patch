@@ -1,0 +1,4209 @@
+diff --git a/.github/workflows/daily_signals.yml b/.github/workflows/daily_signals.yml
+index 2683546..32246be 100644
+--- a/.github/workflows/daily_signals.yml
++++ b/.github/workflows/daily_signals.yml
+@@ -1,143 +1,54 @@
+-name: Daily Signal Engine
+-
++name: Daily local signal validation
+ on:
+-  # Fires at 21:30 UTC Monday–Friday — ~30 min after US market close (21:00 UTC)
+   schedule:
+-    - cron: "30 21 * * 1-5"
+-
+-  # Allow manual trigger from the Actions tab for testing
++    - cron: '30 21 * * 1-5'
+   workflow_dispatch:
+-    inputs:
+-      tickers:
+-        description: "Space-separated ticker list (leave blank for defaults)"
+-        required: false
+-        default: ""
+-      dry_run:
+-        description: "Dry run (no orders submitted)"
+-        required: false
+-        default: "false"
+-        type: choice
+-        options: ["true", "false"]
+-
+-# Least privilege: the job only needs to read the repo contents.
+ permissions:
+   contents: read
+-
+-# Never let two signal runs overlap (e.g. a retried run + the next day's run)
+ concurrency:
+   group: daily-signals
+   cancel-in-progress: false
+-
+ jobs:
+   signals:
+-    name: Generate Signals & Submit Orders
+     runs-on: ubuntu-latest
+     timeout-minutes: 45
+-
+-    env:
+-      ALPACA_API_KEY:    ${{ secrets.ALPACA_API_KEY }}
+-      ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+-      ALPACA_BASE_URL:   ${{ secrets.ALPACA_BASE_URL || 'https://paper-api.alpaca.markets' }}
+-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+-      ALERT_EMAIL:       ${{ secrets.ALERT_EMAIL }}
+-      SMTP_HOST:         ${{ secrets.SMTP_HOST }}
+-      SMTP_PORT:         ${{ secrets.SMTP_PORT }}
+-      SMTP_USER:         ${{ secrets.SMTP_USER }}
+-      SMTP_PASS:         ${{ secrets.SMTP_PASS }}
+-      SUPABASE_URL:      ${{ secrets.SUPABASE_URL }}
+-      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+-
+     steps:
+-      - name: Checkout repository
+-        uses: actions/checkout@v4
+-
+-      # pandas-ta ≥0.4 (the only versions left on PyPI) requires Python ≥3.12.
+-      # Do NOT downgrade below 3.12 — the install will fail with
+-      # "No matching distribution found for pandas-ta".
+-      - name: Set up Python 3.12
+-        uses: actions/setup-python@v5
++      - uses: actions/checkout@v4
++      - uses: actions/setup-python@v5
+         with:
+-          python-version: "3.12"
+-          cache: "pip"
+-
+-      # CPU-only torch first: the default PyPI torch wheel drags in ~2 GB of
+-      # CUDA libraries that are useless on a GitHub runner. This cuts install
+-      # time from ~8 min to ~2 min and avoids disk-space failures.
+-      - name: Install CPU-only PyTorch
+-        run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+-
+-      - name: Install dependencies
+-        run: pip install -r requirements.txt
+-
+-      # Restore cached Parquet data store and trained models from previous runs.
+-      # This avoids re-fetching 5 years of OHLCV and retraining models every day.
+-      - name: Restore data cache
+-        uses: actions/cache/restore@v4
++          python-version: '3.13'
++          cache: pip
++      - run: pip install -r requirements.txt
++      - name: Offline regression suite
++        run: python -m pytest tests/ -q
++      - name: Bootstrap from clean artifacts and exercise local fills
++        run: python scripts/local_sandbox.py --output data/ci-sandbox --capital 10000
++      - uses: actions/cache/restore@v4
+         with:
+           path: |
+             data/parquet/
+-            data/features/
+             data/models/
+-            data/backtest/
+-            data/live/signal_log.db
+-          key: ml-data-${{ runner.os }}-${{ github.run_id }}
+-          restore-keys: |
+-            ml-data-${{ runner.os }}-
+-
+-      - name: Build ticker argument
+-        id: tickers
+-        run: |
+-          INPUT="${{ github.event.inputs.tickers }}"
+-          if [ -n "$INPUT" ]; then
+-            echo "args=--tickers $INPUT" >> $GITHUB_OUTPUT
+-          else
+-            echo "args=" >> $GITHUB_OUTPUT
+-          fi
+-
+-      - name: Build dry-run flag
+-        id: dryrun
+-        run: |
+-          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+-            echo "flag=--dry-run" >> $GITHUB_OUTPUT
+-          else
+-            echo "flag=" >> $GITHUB_OUTPUT
+-          fi
+-
+-      - name: Run live signal engine
+-        run: |
+-          python3 live.py run ${{ steps.tickers.outputs.args }} ${{ steps.dryrun.outputs.flag }}
+-
+-      - name: Print signal log
++          key: causal-models-v2-${{ runner.os }}-${{ github.run_id }}
++          restore-keys: causal-models-v2-${{ runner.os }}-
++      - name: Bootstrap missing versioned market model bundles
++        run: python scripts/bootstrap_models.py
++      - name: Validate fresh signals (no orders or alerts)
++        run: python live.py run --dry-run
++      - name: Local operational inventory
+         if: always()
+-        run: python3 live.py status --n 10
+-
+-      - name: Print order log
+-        if: always()
+-        run: python3 live.py orders --n 10
+-
+-      # Durable persistence: mirror the SQLite signal log to Supabase Postgres.
+-      # Best-effort — skipped silently when SUPABASE_* secrets are not set.
+-      - name: Sync signal log to Supabase
+-        if: always()
+-        run: python3 scripts/sync_supabase.py
+-
+-      # Save the updated SQLite log and any newly cached Parquet files
+-      - name: Save data cache
+-        if: always()
+-        uses: actions/cache/save@v4
++        run: python scripts/operational_status.py > operational-status.json
++      - uses: actions/cache/save@v4
++        if: success()
+         with:
+           path: |
+             data/parquet/
+-            data/features/
+             data/models/
+-            data/backtest/
+-            data/live/signal_log.db
+-          key: ml-data-${{ runner.os }}-${{ github.run_id }}
+-
+-      - name: Upload signal log artifact
++          key: causal-models-v2-${{ runner.os }}-${{ github.run_id }}
++      - uses: actions/upload-artifact@v4
+         if: always()
+-        uses: actions/upload-artifact@v4
+         with:
+-          name: signal-log-${{ github.run_id }}
+-          path: data/live/signal_log.db
++          name: local-validation-${{ github.run_id }}
++          path: |
++            data/ci-sandbox/
++            operational-status.json
+           retention-days: 90
+diff --git a/.gitignore b/.gitignore
+index aa32f86..0b3c1e4 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -33,3 +33,14 @@ Thumbs.db
+ .idea/
+ .vscode/
+ *.swp
++
++# Isolated repair experiments and temporary test stores
++data/repairs/
++data/releases/
++data/paper/
++tmp/pdfs/
++.playwright-mcp/
++data/local-paper/
++data/ci-sandbox/
++tests/.test_feature_cache/
++tests/.test_data_cache/
+diff --git a/README.md b/README.md
+index 51d2e65..a51317e 100644
+--- a/README.md
++++ b/README.md
+@@ -1,369 +1,161 @@
+-# ML Trade Engine
++# ML-TradeEngine
+ 
+-A production-grade Python algorithmic trading system — ML ensemble signals, rigorous out-of-sample backtesting, full risk management, and a systematic quant-strategy research programme aimed at an academic publication.
++An experimental quantitative research and **local paper-trading** system. It
++compares directional classifiers and trading rules, records reproducible
++experiments, and replays a portfolio with shared simulated capital.
+ 
+-**5 Phases Complete · 3 ML Models · 30+ Engineered Features · 1000× Monte Carlo Paths · 5 Tickers · Research Paper In Progress**
++**No durable trading edge or prospective broker-paper track record is established.**
++Historical results before the September 2026 repairs are invalid for strategy
++promotion. See the [completed repair report](docs/REPAIR_REPORT_2026-09-28.md),
++[repair evidence and limitations](docs/REPAIR_CHECKLIST.md),
++[research protocol](docs/PROSPECTIVE_PAPER_PROTOCOL.md), and the
++[original audit](docs/REPOSITORY_AUDIT_2026-09-27.md).
+ 
+----
++## Run locally
+ 
+-## Architecture
++### Current rolling release and console
+ 
+-```
+-[01 Data] → [02 Features] → [03 ML Models] → [04 Backtest] → [05 Risk]
+- Parquet      pandas-ta       XGB+LGBM+LSTM    Vectorized      Kelly+ATR
+- store        + HMM regime    Ensemble          simulator       + VaR
+-
+-        ↓ Research Branch (Phase 06 — in progress)
+-
+-[06A Strategy Zoo] → [06B Ranking] → [06C Env Analysis] → [06D Paper]
+- 8 classic strats     CAGR/Sharpe/    HMM regime × cost    "Regime-Gated
+- benchmarked OOS      Alpha/IR table  sensitivity           Alpha Trends"
+-
+-[06E Live Execution]  ← runs in parallel
+- Alpaca paper trading
+-```
+-
+----
+-
+-## Quickstart
+-
+-### 1. Install dependencies
++The current release uses fresh public observations through **25 September
++2026**, a registered rolling logistic/tree hybrid, and the shared account.
++See [current readiness](docs/ADAPTIVE_RELEASE_READINESS.md) and the
++[complete research manuscript](docs/ADAPTIVE_RESEARCH_PAPER.md).
++The selected trend shadow and hybrid failed the recent historical edge gate;
++the eligible deployment account therefore holds cash.
+ 
+ ```bash
+-pip install -r requirements.txt
++python trader.py verify
++python trader.py daily
++python -m streamlit run app.py
+ ```
+ 
+-> **Apple Silicon:** PyTorch uses MPS automatically. No CUDA required.
+-
+-### 2. Fetch data
++`daily` downloads into a new session snapshot, checks all instruments, loads
++sealed models, retrains every 21 observed sessions, records probabilities and
++targets, and advances local deployment/shadow ledgers from the reserved pilot
++start. Before 29 September it runs a commissioning preview. Run it after each
++completed US session and before the following close; it rejects missing daily
++events instead of backfilling. This command submits no external orders. A
++verified snapshot can be supplied with `--snapshot PATH` for an offline rerun
++on the same session. No unattended local scheduler was installed.
+ 
+-```bash
+-python3 data_retrieval.py
+-```
++The current UI is `app.py`; `dashboard.py` remains the legacy research viewer.
++Snapshots, models, account state, source and evidence are under
++`data/releases/2026-09-28-adaptive` and `data/paper/adaptive-v1`. They are local,
++gitignored artifacts; copying code alone does not copy a ready release.
+ 
+-Downloads 5 years of OHLCV for AAPL, MSFT, GOOGL, SPY, QQQ plus FRED macro data (VIX, yield spread, CPI). Caches to `data/raw/` as Parquet.
+-
+-### 3. Train models
++To repeat the frozen study without fresh downloads or changed parameters:
+ 
+ ```bash
+-python3 train.py --all-tickers --n-trials 50 --threshold 0.01
++python scripts/reproduce_adaptive.py --release data/releases/2026-09-28-adaptive --output data/releases/my-reproduction
+ ```
+ 
+-Runs walk-forward cross-validation for all tickers. Saves models to `data/models/{ticker}/` and OOS predictions to `data/models/{ticker}/oos_predictions.parquet`. Tracks experiments via MLflow.
++Do not overwrite a release or reuse the audit to optimize a new winner. New
++research needs a new recorded protocol and independent evaluation period.
+ 
+-> **Note:** Training takes 30–90 minutes per ticker (XGBoost + LightGBM + LSTM with Optuna tuning).
++### Earlier repaired research tools
+ 
+-To train a single ticker with custom settings:
+-```bash
+-python3 train.py --ticker AAPL --n-trials 100 --horizon 5 --threshold 0.01
+-```
+-
+-### 4. Run backtest
++Python 3.13 is the verified local interpreter; Python >=3.12 is required by
++pandas-ta. In this workspace the working interpreter is
++`/Users/a/miniconda3/bin/python`.
+ 
+ ```bash
+-python3 backtest.py --all-tickers
++python -m pip install -r requirements.txt
++python -m pytest tests/ -q
++python scripts/local_sandbox.py --output data/repairs/my-bootstrap --capital 10000
+ ```
+ 
+-Uses the saved OOS predictions for a fully honest (look-ahead-free) backtest. Outputs equity curves, trade logs, Monte Carlo paths, and a confidence-threshold sweep to `data/backtest/{ticker}/`.
++The sandbox creates new model artifacts, performs three-model sequence
++inference, exercises local orders/fills, and verifies persistence and account
++reconciliation. It uses synthetic prices and is an operational test. It makes
++no broker or alert calls. Each experiment output directory must be new.
+ 
+-### 5. Run risk analysis
++To rerun corrected historical research from the repository's frozen local bars:
+ 
+ ```bash
+-python3 risk.py --all-tickers
++python scripts/validated_research.py --output data/repairs/my-research --ml --trials 3 --epochs 10
++python scripts/replay_portfolio.py --research data/repairs/my-research --output data/repairs/my-portfolio --capital 10000
++python scripts/operational_status.py
+ ```
+ 
+-Applies Kelly filter, ATR hard stop, and circuit breaker on top of the Phase 04 signals. Reports VaR (95%) and CVaR (99%). Saves results to `data/risk/{ticker}/`.
++The research runner preserves input snapshots, code, package versions, protocol,
++model bundles, signals, ledgers, metrics, cost stress tests and hashes. It trains
++through 2023, selects on 2024, and measures exploratory historical outcomes from
++2025 on matching observed sessions. That history has already been inspected;
++it is **not an untouched final holdout**. Macro, sentiment and crypto features
++without sufficient historical evidence are excluded and recorded.
+ 
+-### Run the test suite
++For fresh market-data signal validation (public provider reads, still no orders):
+ 
+ ```bash
+-python3 -m pytest tests/ -v
+-```
+-
+----
+-
+-## Project Structure
+-
++python scripts/bootstrap_models.py
++python live.py run --dry-run
+ ```
+-ml-trade-engine/
+-├── data_retrieval.py      Phase 01 CLI — fetch + cache OHLCV and macro data
+-├── train.py               Phase 03 CLI — walk-forward ML training pipeline
+-├── backtest.py            Phase 04 CLI — OOS backtest + Monte Carlo
+-├── risk.py                Phase 05 CLI — risk-managed simulation + VaR
+-│
+-├── src/
+-│   ├── data/              DataLoader: OHLCV (yfinance + ccxt), macro (FRED)
+-│   ├── features/          FeatureEngineer: TA indicators, stats, HMM regime
+-│   ├── models/            XGBModel, LGBMModel, LSTMModel, EnsembleClassifier
+-│   ├── backtest/          Simulator, SignalBuilder, Metrics, MonteCarlo, Runner
+-│   ├── risk/              RiskEngine, Kelly sizing, ATR stops, VaR/CVaR
+-│   └── research/          [Phase 06] Strategy Zoo, Ranker, EnvAnalyzer (coming)
+-│
+-├── tests/                 pytest suite — data, features, ML, backtest, risk
+-├── docs/                  PHASE_0x_LOG.md per-phase build logs + research notes
+-└── requirements.txt
+-```
+-
+----
+-
+-## What Each Phase Does
+-
+-### Phase 01 — Data Layer
+-Fetches and caches multi-asset OHLCV and macro data:
+-- **Equities** via `yfinance` (daily OHLCV, split-adjusted)
+-- **Crypto** via `ccxt` (Kraken — used as a cross-asset feature proxy)
+-- **Macro** via `pandas-datareader` + FRED: VIX, 10Y-2Y yield spread, CPI
+-- Parquet storage with gap-filling and stale-cache detection
+-
+-### Phase 02 — Feature Engineering
+-Generates 30+ features per asset, cached to `data/features/`:
+-
+-| Group | Features |
+-|-------|----------|
+-| Technical | RSI, MACD, Bollinger Bands, ATR, ADX, OBV, EMA ratio, log returns |
+-| Statistical | Rolling z-score, Hurst exponent (R/S), realized vol, skew/kurtosis |
+-| Cross-asset | SPY correlation, relative strength, BTC return proxy |
+-| Macro | VIX, yield spread, CPI (lagged, merged) |
+-| Regime | 3-state HMM market state (bull / bear / ranging) via `hmmlearn` |
+-
+-Feature selection via XGBoost SHAP values — drops low-importance columns automatically.
+-
+-### Phase 03 — ML Modeling
+-Trains a 3-class directional classifier (UP / FLAT / DOWN) on each ticker:
+-
+-- **Labels:** forward 5-day return thresholded at ±1% → UP / FLAT / DOWN
+-- **CV:** Walk-forward split (PurgedGroupTimeSeriesSplit, embargo=5 days) — no data leakage
+-- **XGBoost:** Bayesian tuning via Optuna (50–100 trials), `RobustScaler`
+-- **LightGBM:** Same setup, provides ensemble diversity
+-- **LSTM:** PyTorch, 60-bar sequences, 2-layer unidirectional, MPS / CPU auto-detect
+-- **Ensemble:** Soft-vote probability average, weights ∝ OOF F1-macro score
+-- **Tracking:** MLflow logs all params, metrics, and model artifacts
+-- **Output:** `oos_predictions.parquet` — honest OOS probabilities for backtesting
+-
+-### Phase 04 — Backtesting
+-Vectorized simulation on OOS predictions (no look-ahead bias):
+-
+-- **Signals:** Confidence-filtered (`p_up > 0.38` default) UP / FLAT / DOWN
+-- **Simulator:** NumPy/Pandas vectorized engine — commission + slippage model
+-- **Metrics:** Sharpe, Sortino, Max Drawdown, CAGR, Calmar, win rate
+-- **Benchmark:** Buy-and-hold comparison
+-- **Monte Carlo:** 1000 block-bootstrap paths, 3-year horizon, confidence intervals
+-- **Sweep:** Grid over confidence thresholds and commission rates
+-
+-**Phase 04 OOS results (5 years, 10K capital, long-only):**
+-
+-| Ticker | Sharpe | CAGR   | Max DD | Win Rate |
+-|--------|--------|--------|--------|----------|
+-| AAPL   | +0.374 | +9.7%  | -8.8%  | 64%      |
+-| MSFT   | +0.084 | +5.0%  | -17.7% | 53%      |
+-| GOOGL  | +0.257 | +7.9%  | -20.2% | 63%      |
+-| SPY    | -0.645 | -1.3%  | -12.4% | 63%      |
+-| QQQ    | +0.202 | +6.9%  | -14.1% | 61%      |
+-
+-### Phase 05 — Risk Management
+-Layered risk controls applied on top of Phase 04 signals:
+-
+-1. **Kelly filter** — skip UP signals where `half-Kelly ≤ 0` (negative expected edge)
+-2. **ATR hard stop** — exit if close < entry price − 2×ATR (caps per-trade downside)
+-3. **Circuit breaker** — pause entries after 15% drawdown from peak; auto-reset after 63 bars (~3 months)
+-4. **Portfolio heat** — max 20% of capital at risk simultaneously (for multi-asset deployment)
+-5. **VaR / CVaR** — rolling 252-day historical simulation, 95% VaR and 99% CVaR
+-
+-**Highlight:** SPY's Kelly filter correctly identifies avg_loss ($247) > avg_win ($188) as negative edge — blocks 98% of trades, cutting Max DD from −12.4% → −2.4% and turning CAGR positive (+2.5% vs −1.3%).
+-
+----
+-
+-## Research Programme — Phase 06
+-
+-The project has expanded from a single ML strategy into a full quantitative research programme with four parallel workstreams and a target academic publication.
+-
+-### Research Question
+-
+-> *Which classic quant strategies outperform in which market regimes, and can a regime-gating meta-strategy built on HMM state detection + Kelly allocation systematically capture that edge?*
+-
+-**Target paper:** *"Regime-Gated Alpha Trends: A Unified Framework for Strategy Selection Under Non-Stationary Market States"*
+-
+----
+ 
+-### Phase 06A — Strategy Zoo
+-
+-Implement and backtest 8 classic quant strategies on a 20–30 ticker universe (equities + crypto) over 5+ years OOS. Each strategy is self-contained: its own signal generation, position sizing, and backtest run.
+-
+-| Strategy | Signal Logic | Regime Hypothesis |
+-|----------|-------------|-------------------|
+-| Momentum (12-1) | 12-month return minus most recent month; long top quintile | Trend-following regime |
+-| Mean Reversion | Bollinger Band squeeze + RSI extremes | High-vol ranging regime |
+-| EMA Crossover | Fast/slow EMA crossover + ADX filter | Trending / low-noise regime |
+-| Turtle Trading | Donchian channel breakout, ATR-sized units | Breakout regime |
+-| Pairs / Stat Arb | Cointegrated pair z-score entry/exit | Low-correlation regime |
+-| Carry Proxy | Yield spread as equity carry signal | Rate environment dependent |
+-| Volatility Breakout | ATR expansion + volume surge | Volatility compression → expansion |
+-| Alpha Trends | TBD — to be defined from literature + research | TBD |
+-
+-**Asset universe:** 20–30 tickers (S&P500 large-caps, sector ETFs, crypto) to ensure statistically credible results for publication.
+-
+-### Phase 06B — Strategy Ranking System
+-
+-Rank all strategies against each other and against the Phase 03–05 ML ensemble using a unified scorecard:
+-
+-| Metric | Description |
+-|--------|-------------|
+-| CAGR | Compound annual growth rate (OOS) |
+-| Sharpe | Risk-adjusted return (annualised) |
+-| Sortino | Downside-deviation-adjusted return |
+-| Max Drawdown | Worst peak-to-trough decline |
+-| Calmar | CAGR / Max DD |
+-| Alpha (vs SPY) | Jensen's alpha, regression against benchmark |
+-| Beta | Market exposure coefficient |
+-| t-stat on returns | Statistical significance of mean daily return ≠ 0 |
+-| Information Ratio | Active return / tracking error |
+-| Regime breakdown | Sharpe / CAGR decomposed per HMM state |
+-
+-### Phase 06C — Environment Characterisation
+-
+-Characterise the algorithmic trading environment this engine operates in:
+-
+-- **Regime analysis** — how strategy performance varies across the 3 HMM states (bull / bear / ranging)
+-- **Transaction cost sensitivity** — how much edge survives realistic friction (commission, slippage, market impact) at different AUM levels
+-- **Signal stability** — rolling Sharpe and rolling Alpha windows; detect strategy decay over time
+-- **Factor attribution** — Fama-French 3-factor decomposition; isolate alpha from size/value/market exposure
+-- **Cross-strategy correlation** — identify diversifying pairs for eventual portfolio construction
+-
+-### Phase 06D — Research Paper
+-
+-Synthesise findings from 06A–06C into a publishable paper:
+-
+-**Title:** *Regime-Gated Alpha Trends: A Unified Framework for Strategy Selection Under Non-Stationary Market States*
+-
+-**Core thesis:** The HMM regime classifier built in Phase 02 can act as a meta-strategy gating layer — dynamically allocating capital to the strategy that historically performs best in the current regime state, sized by Kelly Criterion. This outperforms any single strategy and the passive benchmark on a risk-adjusted basis.
+-
+-**Outline:**
+-1. Introduction — motivation, research question, contributions
+-2. Related work — HMM in finance, regime-switching models, strategy selection literature
+-3. Data and methodology — universe, feature construction, HMM calibration, strategy implementations
+-4. Strategy Zoo results — individual strategy scorecards, regime decomposition
+-5. Regime-Gated Meta-Strategy — allocation mechanism, Kelly sizing, backtested performance
+-6. Environment characterisation — cost sensitivity, signal decay, factor attribution
+-7. Discussion — practical limitations, transaction costs, overfitting risks
+-8. Conclusion — key findings, future directions
+-
+-**Target:** Academic journal (Journal of Financial Economics, Quantitative Finance, or similar)
+-
+-### Phase 06E — Live Execution *(runs in parallel)*
+-
+-Paper trading on Alpaca while 06A–06D are in progress — generates real data for the paper's "live validation" section:
+-
+-- Daily cron (GitHub Actions) — fetch data → features → model inference → signal output
+-- Alpaca paper trading API — bracket orders with ATR stop + limit
+-- Signal log in SQLite / Supabase
+-- Email / Slack alert on signal fire or circuit breaker trip
+-
+----
+-
+-## Performance Targets (MVP)
+-
+-| Metric | Target | Status |
+-|--------|:------:|--------|
+-| Sharpe Ratio | > 1.0 | ⏳ Phase 06 portfolio required |
+-| Max Drawdown | < 20% | ⚠️ Met per-ticker for AAPL; wider on others |
+-| Win Rate | > 55% | ✅ 61–64% on AAPL, MSFT, GOOGL, QQQ |
+-| CAGR | > 15% | ⏳ Currently 7–10% single-asset |
+-| Calmar Ratio | > 0.5 | ✅ AAPL: 1.11 |
+-| t-stat on returns | > 2.0 | ⏳ Phase 06B ranking |
+-
+-Sharpe ≥ 1.0 is a **portfolio-level gate**. A 20–30 ticker deployment with per-strategy allocation provides the diversification needed:
+-- Portfolio Sharpe ∝ √N for N uncorrelated assets
+-- Regime gating removes allocation to strategies with negative edge in current state
+-
+----
+-
+-## Technology Stack
+-
+-| Layer | Libraries |
+-|-------|-----------|
+-| Data | `yfinance`, `ccxt`, `pandas-datareader`, `pyarrow` |
+-| Features | `pandas-ta`, `hmmlearn`, `scipy`, `numpy` |
+-| ML | `xgboost`, `lightgbm`, `torch`, `scikit-learn` |
+-| Tuning | `optuna` |
+-| Tracking | `mlflow` |
+-| Backtest | custom NumPy/Pandas simulator, `quantstats` |
+-| Risk | `numpy`, `scipy` |
+-| Research | `statsmodels` (factor attribution), `pandas` |
+-| Live execution | `alpaca-trade-api`, `schedule` |
+-| Testing | `pytest` |
+-
+----
+-
+-## CLI Reference
++`python live.py run --capital 10000 --state data/local-paper/account.sqlite`
++advances the **local simulated account**, including fills of earlier pending
++orders. It does not submit to Alpaca. A missing signal, stale input or invalid
++model bundle fails the batch. The scheduled workflow performs tests, artifact
++bootstrap and signal dry runs; running that workflow remotely remains unverified.
++
++## Execution and accounting
++
++- Decisions use completed close information; fills use the next observed close.
++- One cash/position account governs all symbols and strategy allocations.
++- UP moves toward a target weight. FLAT and DOWN target zero in long-only mode.
++- Pending buys reserve cash. Pending sells are not spendable cash until filled.
++- Gross, per-symbol, turnover and configured exposure-group caps govern orders.
++- Fees and modeled slippage are cash charges on reference-price notional.
++- Daily equity equals cash plus marked holdings. Closed P&L includes entry and
++  exit costs. Terminal positions remain marked; no hidden liquidation occurs.
++- Shared execution supports fractional long-only equities/ETFs, no leverage and
++  no bracket orders. The legacy short and stop/Kelly simulators are separate
++  exploratory tools, not a description of prospective broker behavior.
++- SQLite stores decisions, orders, partial fills, cancellations, rejections and
++  account state atomically. Duplicate IDs validate identical content; competing
++  stale writers fail closed.
++
++Research replay and local paper execution use the same event handler in
++`src/execution/account.py`. External broker timing, recovery and reconciliation
++must be validated separately before an authorized prospective trial.
++
++## Research conventions
++
++Daily metrics use 252 sessions and a fixed 5% annual excess-return hurdle; idle
++cash earns zero. Sortino uses target-relative downside deviation. Drawdown
++includes initial capital. Alpha regresses excess returns. The fixed hurdle is
++not a historical Treasury series. Constant-return Sharpe is reported as zero by
++convention. Trade win rates refer to closed net outcomes, not open holdings.
++
++HMM parameters fit a fixed initial window; later states use forward filtering.
++Supervised selection and weights fit training folds only. Labels become usable
++after their full forward horizon. LSTM warm-up is unavailable rather than a
++fabricated uniform forecast. Confidence thresholds and cost stress cases are
++predeclared. Signed HAC evidence, block-bootstrap uncertainty and Bonferroni
++adjustments prevent a reliably negative or multiply searched result from being
++promoted as a discovery. Mean per-ticker metrics are never account performance.
++
++## Status and architecture
++
++`observed data → causal features → purged training → sealed model bundle → target
++weights → shared account → local fills → reconciliation → reproducible report`
++
++Accounting, causal transformations, local target execution and restart recovery
++have regression evidence. Strategy eligibility, fresh production inputs, remote
++CI, a broker adapter, sustained prospective evidence and publication claims have
++separate gates. A positive simulation or a passing test suite is insufficient.
++
++The eight existing zoo classes remain available. Reports name the momentum rule
++as time-series momentum, the pairs implementation as a single relative-value
++long leg, and macro-unavailable carry as an SMA trend fallback. These are not
++cross-sectional selection, a hedged pair, or measured carry returns.
++
++The historical README and paper are preserved under `docs/archive/`. Original
++build logs remain historical records; the repair checklist supersedes their
++readiness claims. Network-provider tests are explicitly separated:
+ 
+ ```bash
+-# Data
+-python3 data_retrieval.py [--ticker AAPL MSFT ...] [--start 2018-01-01]
+-
+-# Training
+-python3 train.py --ticker AAPL                   # single ticker
+-python3 train.py --all-tickers --n-trials 50 --lstm-epochs 50 --lstm-seq-len 60   # all default tickers
+-python3 train.py --ticker AAPL --skip-lstm        # skip LSTM (faster)
+-
+-# Backtesting
+-python3 backtest.py --ticker AAPL                # single ticker
+-"--capital 10000 --commission 0.001 --slippage 0.0005 \
+-  --confidence 0.38 --mode long_only --mc-paths 1000" # Reference params
+-python3 backtest.py --all-tickers --no-mc        # skip Monte Carlo
+-python3 backtest.py --all-tickers --confidence 0.45 --mode long_short
+-
+-# Risk
+-python3 risk.py --ticker AAPL                    # single ticker
+-python3 risk.py --all-tickers                    # all tickers
+-python3 risk.py --all-tickers --atr-mult 3.0     # wider stop (3×ATR)
+-python3 risk.py --all-tickers --kelly 0.25       # quarter-Kelly filter
+-"--kelly 0.5 --atr-mult 2.0 --cb-threshold 0.85" # Reference params
+-
+-# Tests
+-python3 -m pytest tests/ -v
+-python3 -m pytest tests/test_risk.py -v          # risk tests only
+-
+-# Extract paper numbers
+-python3 extract_paper_numbers.py 2>&1 | tee docs/paper_numbers.txt
+-
+-# Launch Dashboard
+-pip install streamlit plotly   # if not already installed
+-cd /ml-trade-engine # go into the repo
+-
+-- streamlit run dashboard.py --server.port 8501
+-- mlflow ui --port 8501 --backend-store-uri ./mlruns
+-# Open http://localhost:8501
+-
+-kill $(lsof -ti :8501) # Kill dashboard / Ctrl C - Pending vercel deployment
+-
++python -m pytest tests/test_data_pipeline.py -m integration -q
+ ```
+ 
+----
+-
+-## Roadmap
+-
+-| Phase | Status | Description |
+-|-------|--------|-------------|
+-| 01 Data | ✅ Done | Parquet store, gap-fill, split-adjust |
+-| 02 Features | ✅ Done | 30+ TA + stat + regime features, SHAP selection |
+-| 03 ML Models | ✅ Done | XGB + LGBM + LSTM ensemble, walk-forward CV, MLflow |
+-| 04 Backtest | ✅ Done | Vectorized OOS sim, Monte Carlo, param sweep |
+-| 05 Risk | ✅ Done | Kelly filter, ATR stop, circuit breaker, VaR/CVaR |
+-| 06A Strategy Zoo | 🔜 Next | 8 classic quant strategies benchmarked on 20–30 tickers |
+-| 06B Ranking | 🔜 Next | Unified scorecard: Sharpe, Alpha, IR, t-stat, regime breakdown |
+-| 06C Env Analysis | 🔜 Next | Cost sensitivity, signal decay, factor attribution |
+-| 06D Research Paper | 🔜 Next | "Regime-Gated Alpha Trends" — target academic journal |
+-| 06E Live Execution | 🔁 Parallel | Alpaca paper trading, daily cron, bracket orders |
+-| 07 Dashboard | 🔜 Planned | Streamlit + Plotly, equity curves, live signals |
+-
+----
+-
+-## Build Logs
+-
+-Detailed implementation notes, design decisions, and bug postmortems for each phase:
+-
+-- [`docs/PHASE_01_LOG.md`](docs/PHASE_01_LOG.md) — Data Layer
+-- [`docs/PHASE_02_LOG.md`](docs/PHASE_02_LOG.md) — Feature Engineering
+-- [`docs/PHASE_03_LOG.md`](docs/PHASE_03_LOG.md) — ML Modeling
+-- [`docs/PHASE_04_LOG.md`](docs/PHASE_04_LOG.md) — Backtesting
+-- [`docs/PHASE_05_LOG.md`](docs/PHASE_05_LOG.md) — Risk Management
++Provider integration and prospective broker execution were not performed during
++these repairs. Supplementary-data admission and later trial gates are documented
++in [the prospective protocol](docs/PROSPECTIVE_PAPER_PROTOCOL.md).
+diff --git a/dashboard.py b/dashboard.py
+index b7a268e..873b7d7 100644
+--- a/dashboard.py
++++ b/dashboard.py
+@@ -65,6 +65,8 @@ st.set_page_config(
+     initial_sidebar_state = "expanded",
+ )
+ 
++st.warning("Legacy saved research is exploratory and invalid for strategy promotion. Use the September 2026 repair report and versioned shared-account replay; no prospective broker track record is established.")
++
+ # ---------------------------------------------------------------------------
+ # Minimal CSS
+ # ---------------------------------------------------------------------------
+diff --git a/data/live/signal_log.db b/data/live/signal_log.db
+index afd58cfb994231aa82d558e29c5a95ee71264d41..d27e7ae958500501d1eb3a18e70fd1a4ce1dbcc1 100644
+GIT binary patch
+delta 573
+zcmZp8z}WDBae}m<FarYvI}pPF+e95>eqjc^-XFZ&I~dqF)-!Od-<apf!PT72$Sy7|
+z&DgHH*@JI8qpprZaY<2PNosm!d~SY9szQisL<mqUH77N>BsC=-CJ7eT+&q^{nvsdm
+zZu2hg7A6)32F61h8}~6za$u3;<&<OKFXem97tec@*PG`6j~VwWZUwGsToRl!IpsDs
+z{^6*v<P~HPwr3RN<mBMsWM^mh6;%%oh%_=VGSf9M*EKW<F)*+KBW*Cr6dK^56lr_2
+zK54r{JInd|)+tdA?bBxh!7R8Q;}8R5D<cCdV`Du-V*?`#bBNa5)RIKs{M^*MlG5CG
+zL!)@ZS{^}$dQp2$QBDq^<zTzD{lZ)v;Rc~w?&jkd;viEu;s11%5{Haw=N&%@U3bWe
+z+Y$J>RUWPh*>)pKV*@jU?IEQ_B{`|_PDQDS+4-d<HQX5XYdSgx_`r?AYQMq})pgGd
+ze>xPcxD%V)k>*gmRSx6;xF!_)Ees4S5%&A0Cg#NlrIw`@6=&w>HL`Q@GfWPU&7LeH
+QBd}Ra`lSdX?;-;S0P5kJn*aa+
+
+delta 139
+zcmZp8z}WDBae}lU9|HpeI}pPF%S0Vxem(}h-XFZ&I~drw<}&cvZOn7z*f`-G<L0?s
+z(u_<D44Zdxw=i)v+cUC@OG`7hg>K%-v7J#?lNV?P7uPff{!+fzeDS<jdA)fK@R)J0
+l;#T0Awpmc2ii^3Coolk6Z0=+k8G+4W(l13AxfU5X005ZaAxHoK
+
+diff --git a/docs/PHASE_06D_PAPER_DRAFT.md b/docs/PHASE_06D_PAPER_DRAFT.md
+index 8ef475e..88f9f9c 100644
+--- a/docs/PHASE_06D_PAPER_DRAFT.md
++++ b/docs/PHASE_06D_PAPER_DRAFT.md
+@@ -1,471 +1,81 @@
+-# Regime-Gated Alpha Trends: A Unified Framework for Strategy Selection Under Non-Stationary Market States
+-
+-**Draft version 0.2 — for internal review**  
+-**Authors:** [Yash Kataria]  
+-**Target:** *Quantitative Finance* or *Journal of Portfolio Management*  
+-**Status:** Meta-strategy results populated (Phase 06D); env-characterisation numbers pending
+-
+----
+-
+-## Abstract
+-
+-We present a unified quantitative framework that uses a Hidden Markov Model (HMM)
+-regime classifier as a meta-strategy gating layer, dynamically allocating capital
+-to the historically best-performing strategy in each detected market state.
+-Applied to a 22-asset universe of US equities, ETFs, and macro instruments
+-over a five-year period (May 2021 – May 2026), the regime-gated meta-strategy
+-achieves a Sharpe ratio of 0.70 (t = 3.41), CAGR of 9.4%, and maximum drawdown
+-of −4.5%, outperforming all eight constituent strategies and the SPY benchmark
+-(Sharpe 0.65, max drawdown −18.8%) on a risk-adjusted basis, with roughly
+-one-quarter of the benchmark's drawdown and a market beta of 0.33.
+-We further characterise the trading environment through cost-sensitivity analysis,
+-rolling signal-decay diagnostics, and Fama–French three-factor decomposition,
+-demonstrating that the ensemble alpha is robust to realistic transaction costs
+-and is not fully explained by common risk factors.
+-
+-**Keywords:** regime switching, hidden Markov model, strategy selection,
+-ensemble methods, algorithmic trading, factor attribution
+-
+----
+-
+-## 1. Introduction
+-
+-### 1.1 Motivation
+-
+-Algorithmic trading strategies exhibit regime-dependent performance: momentum
+-strategies thrive in trending markets, mean-reversion strategies excel in
+-ranging regimes, and volatility breakout strategies capitalise on compression
+-events preceding large moves. A strategy deployed uniformly across all market
+-states will underperform one that adapts its allocation to the prevailing regime.
+-
+-This paper formalises this intuition into a testable framework and validates it
+-on a broad universe using rigorous out-of-sample methodology.
+-
+-### 1.2 Research Questions
+-
+-1. **Does HMM regime detection reliably partition market states with distinct
+-   return characteristics for individual trading strategies?**
+-
+-2. **Can a meta-strategy that dynamically gates capital allocation by regime
+-   outperform any static single strategy and a passive benchmark on a
+-   risk-adjusted basis?**
+-
+-3. **Is the observed edge robust to realistic transaction costs, AUM scaling,
+-   and the passage of time (signal decay)?**
+-
+-4. **How much of the meta-strategy return constitutes true alpha beyond
+-   Fama–French three-factor (market, size, value) exposure?**
+-
+-### 1.3 Contributions
+-
+-- A reproducible open-source implementation of eight canonical quantitative
+-  strategies benchmarked on a 20–30 asset universe.
+-- A three-state Gaussian HMM regime detector trained on daily OHLCV and macro
+-  features, evaluated for stability and out-of-sample regime consistency.
+-- A regime-gated meta-strategy with half-Kelly position sizing showing
+-  statistically significant (t > 2) risk-adjusted excess return over SPY.
+-- A comprehensive environment characterisation covering cost sensitivity,
+-  signal decay, and Fama–French factor decomposition — enabling replication
+-  and robustness assessment by practitioners.
+-
+----
+-
+-## 2. Related Work
+-
+-### 2.1 HMM Regime Detection in Finance
+-
+-Hidden Markov Models were introduced to financial time series by
+-Ryden, Terasvirta, and Asbrink (1998) and Hamilton (1989) in the context
+-of GDP recession detection. Subsequent work applied HMMs to equity volatility
+-regimes (Ang and Timmermann, 2012), identifying bull, bear, and high-volatility
+-states that align with economic turning points.
+-
+-More recently, [CITE] demonstrated that HMM-detected regimes improve
+-out-of-sample Sharpe ratios for trend-following strategies by avoiding
+-adverse regime deployment. Our approach extends this by using regime state
+-as a dynamic allocation gate across a heterogeneous strategy zoo, rather
+-than as a filter for a single strategy.
+-
+-### 2.2 Regime-Switching Strategy Allocation
+-
+-Bulla et al. (2011) proposed regime-switching portfolio allocation using
+-hidden Markov chains, showing superior performance over static allocation.
+-Nystrup et al. (2017) demonstrated adaptive allocation using online HMM
+-estimation. We extend this literature by:
+-(1) comparing eight strategies rather than two, (2) using a modern
+-ML-enhanced feature set for HMM inputs, and (3) providing a comprehensive
+-environment characterisation beyond pure performance statistics.
+-
+-### 2.3 Ensemble Methods and Meta-Strategies
+-
+-[CITE relevant papers on ensemble trading strategies / strategy combination]
+-
+-### 2.4 Transaction Cost Modelling
+-
+-Almgren and Chriss (2001) established the standard model for market impact.
+-We adopt a simpler commissions + slippage model appropriate for daily rebalancing
+-at retail scale, and characterise the edge-survival threshold across a range of
+-cost assumptions and AUM levels.
+-
+----
+-
+-## 3. Data and Methodology
+-
+-### 3.1 Universe Construction
+-
+-**Equity universe (20–30 assets):**
+-
+-| Category | Assets |
+-|----------|--------|
+-| Large-cap technology | AAPL, MSFT, GOOGL, AMZN, NVDA, META, TSLA |
+-| Financials | JPM, BAC, GS |
+-| Sector ETFs | XLK, XLF, XLE, XLV, XLI, XLP |
+-| Broad market | SPY, QQQ, DIA, IWM |
+-| Macro / alternatives | GLD, TLT |
+-
+-**Time period:** [START DATE] — [END DATE] (five-year out-of-sample window)  
+-**Data source:** Yahoo Finance daily OHLCV (split-adjusted), FRED macro  
+-**Frequency:** Daily close  
+-**Transaction cost model:** 10 bps commission + 5 bps slippage per side
+-
+-### 3.2 Feature Pipeline
+-
+-We compute 32+ features across four categories for each asset:
+-
+-| Category | Features |
+-|----------|---------|
+-| Technical (14) | RSI-14, MACD, Bollinger Bands (width, %B), ATR-14, ADX-14, OBV, volume ratio |
+-| Price structure (7) | Log return, 5d/21d return, gap return, EMA-20/50/200 ratios |
+-| Statistical (8) | Rolling z-score (20d, 60d), realised vol (5d, 21d), Hurst exponent, skewness, kurtosis |
+-| Cross-asset (7) | SPY correlation (21d, 63d), relative strength, BTC proxy returns, VIX, yield spread |
+-| Regime (1) | HMM state (bull=2, ranging=1, bear=0) |
+-
+-All features are computed strictly causally — no future information is used at
+-any computation step. The HMM is fitted on the training window only and decoded
+-forward on the test window.
+-
+-### 3.3 HMM Regime Classifier
+-
+-We fit a three-state Gaussian HMM on daily log returns, realised volatility,
+-and VIX-proxy using the hmmlearn library (Gaussian emissions with full
+-covariance). States are post-hoc labelled bull / ranging / bear by sorting
+-states on mean log return.
+-
+-**HMM hyperparameters:**
+-- n_states = 3
+-- covariance_type = full
+-- n_iter = 100 (EM convergence)
+-- random_state = 42 (reproducible)
+-
+-Regime stability is assessed via the average dwell time in each state and
+-the transition matrix.
+-
+-### 3.4 Strategy Zoo (Phase 06A)
+-
+-Eight strategies are implemented as independent signal generators operating
+-on the same OHLCV + feature matrix:
+-
+-| Strategy | Signal Logic | Position Sizing | Regime Hypothesis |
+-|----------|-------------|-----------------|-------------------|
+-| Momentum (12-1) | 12-month return minus last month; rank top quintile | Equal-weight | Trending regime |
+-| Mean Reversion | BB squeeze + RSI extremes | Equal-weight | High-vol ranging |
+-| EMA Crossover | Fast/slow EMA + ADX filter | Equal-weight | Trending / low-noise |
+-| Turtle Trading | Donchian channel breakout | ATR units | Breakout regime |
+-| Pairs / Stat Arb | Cointegrated pair z-score entry/exit | Equal-weight | Low-correlation |
+-| Carry Proxy | Yield spread as carry signal | Equal-weight | Rate environment |
+-| Volatility Breakout | ATR expansion + volume surge | Equal-weight | Vol compression |
+-| Alpha Trends | Regime-aware multi-factor composite | Kelly | All regimes (HMM-gated) |
+-
+-Each strategy runs a fully walk-forward out-of-sample backtest on every asset
+-in the universe. Transaction costs are modelled uniformly.
+-
+-### 3.5 Phase 03 ML Ensemble
+-
+-A three-model ensemble (XGBoost + LightGBM + LSTM) is trained to predict
+-three-class directional labels (up/flat/down) using PurgedGroupTimeSeriesSplit
+-walk-forward cross-validation. The ensemble serves as the signal source for
+-the Alpha Trends strategy and as a standalone benchmark.
+-
+-**Label construction:** Forward return thresholded at ±0.5% over 5 bars
+-(production configuration; a redesigned ±1.5% / 10-bar labelling scheme is
+-under evaluation to reduce label noise and directional class imbalance).
+-
+-### 3.6 Meta-Strategy (Regime-Gated Allocation)
+-
+-Per ticker, the meta-strategy holds the constituent strategy with the highest
+-*historical* Sharpe ratio in the *current* HMM regime state, computed on an
+-expanding walk-forward window (only data strictly before day *t* is used by
+-the allocator):
+-
+-```
+-state(t)  = HMM regime confirmed over the last `confirm_bars`=3 known bars
+-candidate = argmax_s Sharpe( returns_s | regime == state(t), d < t )
+-```
+-
+-Anti-whipsaw controls:
+-- **Burn-in:** the ranking requires ≥ 60 in-regime observations; until then
+-  the allocator holds the equal-weight average of all eight strategies.
+-- **Regime confirmation:** a regime change must persist 3 consecutive bars
+-  before a re-selection is triggered.
+-- **Minimum hold:** a selection is held ≥ 10 bars before switching again;
+-  rankings are re-evaluated at most every 21 bars otherwise.
+-- **Switch cost:** every strategy switch is charged 15 bps to model the
+-  liquidate/re-enter round trip (constituent equity curves already embed
+-  their own per-trade costs).
+-
+-The portfolio is the equal-weight daily average of the 22 per-ticker
+-meta-strategies.
+-
+-### 3.7 Statistical Testing
+-
+-We report the following statistics for each strategy and the meta-strategy:
+-- Annualised Sharpe ratio (daily returns, 252-day year, 5% risk-free rate)
+-- CAGR and Sortino ratio
+-- Maximum drawdown and Calmar ratio
+-- **t-statistic on mean daily return** (H₀: mean = 0; t > 2.0 required for publication)
+-- Jensen's alpha and beta vs SPY
+-- Information Ratio (active return / tracking error vs SPY)
+-- Win rate and expectancy
+-
+-All metrics are computed on the **out-of-sample** period only.
+-
+----
+-
+-## 4. Strategy Zoo Results (Phase 06A)
+-
+-> [TABLE PLACEHOLDER] — insert `data/research/scorecard.parquet` results
+-
+-### 4.1 Individual Strategy Scorecards
+-
+-[INSERT: Sharpe, CAGR, MaxDD, Calmar, Win Rate, t-stat per strategy × ticker]
+-
+-Key findings:
+-- [FILL: which strategy dominates in trending markets]
+-- [FILL: which strategy dominates in ranging markets]
+-- [FILL: underperforming strategies and why]
+-
+-### 4.2 Regime Decomposition (Phase 06C.1)
+-
+-Each strategy's Sharpe ratio is computed separately for HMM bull / ranging / bear states.
+-
+-[INSERT: `data/research/env/regime_breakdown.parquet` table]
+-
+-Key findings:
+-- [FILL: does Momentum only work in bull regimes?]
+-- [FILL: does Mean Reversion only work in ranging regimes?]
+-- This validates the regime-gating hypothesis.
+-
+----
+-
+-## 5. Regime-Gated Meta-Strategy
+-
+-### 5.1 Allocation Mechanism
+-
+-See §3.6. Over the full sample the allocator selected Mean Reversion 28.0% of
+-bars, Turtle Breakout 19.3%, Momentum 12-1 15.0%, Alpha Trends 11.4%,
+-equal-weight burn-in 9.2%, EMA Crossover 7.2%, Pairs StatArb 4.9%,
+-Vol Breakout 3.9% and Carry Proxy 1.1% — i.e. no single constituent dominates,
+-and the mix shifts materially across regimes.
+-
+-### 5.2 Backtested Performance
+-
+-Full period May 2021 – May 2026 (1,304 trading days), 22-ticker equal-weight
+-portfolio; results from `data/research/meta/meta_summary.json`:
+-
+-| Metric | Meta-Strategy | Best Individual (Momentum 12-1) | SPY (B&H) |
+-|--------|:-------------:|:---------------:|:---------:|
+-| Sharpe | **0.70** | 0.56 | 0.65 |
+-| CAGR | 9.4% | 11.1% | 14.0% |
+-| Max DD | **−4.5%** | −18.9% | −18.8% |
+-| Calmar | **2.08** | 0.59 | 0.75 |
+-| Sortino | 1.05 | 0.64 | 0.79 |
+-| t-stat | **3.41** | 2.25 | — |
+-| Alpha (vs SPY) | +4.6%/yr | — | 0% |
+-| Beta (vs SPY) | 0.33 | — | 1.00 |
+-| Volatility | 6.2% | 11.3% | 14.2% |
+-
+-The meta-strategy underperforms SPY on raw CAGR (9.4% vs 14.0% in a strongly
+-bullish sample) but dominates on every risk-adjusted measure: 4× better Calmar,
+-one-quarter of the drawdown, less than half the volatility, and a mean daily
+-return that is statistically distinguishable from zero at the 0.1% level
+-(t = 3.41). It also beats every one of its eight constituents on Sharpe.
+-
+-### 5.3 Equity Curve
+-
+-[INSERT: equity curve chart — meta-strategy vs best single strategy vs SPY;
+-data in `data/research/meta/meta_returns.parquet`]
+-
+----
+-
+-## 6. Environment Characterisation (Phase 06C)
+-
+-### 6.1 Transaction Cost Sensitivity
+-
+-We sweep commission rates from 0 bps to 50 bps per side across five
+-representative assets (AAPL, NVDA, SPY, TSLA, GLD) to identify the
+-edge-survival threshold — the cost level at which Sharpe falls below 1.0.
+-
+-[INSERT: `data/research/env/cost_sensitivity.parquet` chart and table]
+-
+-Key finding: [FILL — e.g. "Edge survives up to X bps; most strategies break
+-even at ~Y bps, consistent with current retail broker pricing."]
+-
+-### 6.2 Signal Decay
+-
+-Rolling 90-day Sharpe and alpha windows detect strategy degradation over time.
+-
+-[INSERT: `data/research/env/signal_decay_summary.parquet` chart]
+-
+-Key finding: [FILL — e.g. "Momentum shows no evidence of decay over the
+-sample period; Mean Reversion shows mild degradation post-2022."]
+-
+-### 6.3 Fama–French Three-Factor Attribution
+-
+-OLS regression of daily excess returns on the Fama–French SMB, HML, and
+-MKT-RF factors isolates true alpha from factor exposure.
+-
+-[INSERT: `data/research/env/factor_attribution.parquet` table]
+-
+-Model:
+-```
+-R_strategy − R_f = α + β_mkt(R_mkt − R_f) + β_smb × SMB + β_hml × HML + ε
+-```
+-
+-Key finding: [FILL — e.g. "The meta-strategy alpha is X% annualised
+-(t = Y), with low market beta (β = Z), indicating genuine skill beyond
+-passive factor exposure."]
+-
+-### 6.4 Cross-Strategy Correlation
+-
+-The correlation matrix across strategy equity curves identifies diversifying
+-pairs for portfolio construction and validates that the meta-strategy is
+-not dominated by a single constituent.
+-
+-[INSERT: correlation heatmap]
+-
+----
+-
+-## 7. Discussion
+-
+-### 7.1 Practical Limitations
+-
+-- **Universe bias:** Results are for a US-centric, large-cap-biased universe.
+-  Results may not generalise to small-caps, international markets, or
+-  illiquid instruments where slippage is materially higher.
+-
+-- **HMM regime instability:** The HMM transition matrix is estimated
+-  in-sample and may exhibit non-stationarity in live deployment. We mitigate
+-  this by using rolling re-estimation every [N] months.
+-
+-- **Parameter sensitivity:** [FILL — discuss sensitivity of Kelly fraction,
+-  confidence threshold, ATR multiplier]
+-
+-- **Look-ahead in regime labels:** The allocator itself is strictly
+-  walk-forward (rankings use only data before day *t*; a no-lookahead
+-  property verified by unit test). However, the HMM regime sequence was
+-  decoded from a model fitted on the full sample (Phase 02), so the regime
+-  labels themselves carry mild look-ahead. Live deployment requires rolling
+-  HMM re-estimation, which may degrade regime quality at state boundaries.
+-
+-### 7.2 Overfitting Risk
+-
+-Walk-forward validation with PurgedGroupTimeSeriesSplit ensures that no
+-future data contaminates any OOS prediction. The strategy zoo is
+-intentionally designed with minimal hyperparameter tuning to limit
+-in-sample overfitting. All parameters were set a priori based on
+-literature conventions (e.g. 2×ATR stops, half-Kelly sizing).
+-
+-### 7.3 Generalisability
+-
+-The framework is asset-class agnostic; preliminary tests on crypto
+-(BTC/USDT) show comparable regime structure. Cross-asset generalisation
+-is left for future work.
+-
+----
+-
+-## 8. Conclusion
+-
+-We have presented and validated a regime-gated meta-strategy framework that
+-dynamically allocates to the historically best-performing constituent strategy
+-in each HMM-detected market state. The framework achieves a Sharpe ratio of
+-0.70 (t = 3.41) with a −4.5% maximum drawdown, outperforming both the best
+-constituent strategy (Momentum 12-1: Sharpe 0.56, −18.9% drawdown) and the
+-passive benchmark (SPY: Sharpe 0.65, −18.8% drawdown) on a risk-adjusted basis.
+-
+-The edge is robust to realistic transaction costs up to [FILL] bps, shows no
+-significant decay over the sample period, and produces a statistically
+-significant alpha of [FILL]% annualised after Fama–French factor attribution.
+-
+-These results suggest that regime-aware dynamic allocation is a viable approach
+-for practitioners seeking to combine multiple systematic strategies into a
+-coherent, risk-managed portfolio.
+-
+-### Future Directions
+-
+-- **Online HMM estimation** for real-time regime updates without batch re-fitting.
+-- **Reinforcement learning** meta-agent (Stable-Baselines3) for end-to-end
+-  joint strategy and position sizing optimisation.
+-- **Options flow and NLP sentiment** as additional regime indicators.
+-- **International and crypto universe** expansion.
+-
+----
+-
+-## References
+-
+-- Hamilton, J. D. (1989). A new approach to the economic analysis of
+-  nonstationary time series and the business cycle. *Econometrica*, 57(2), 357–384.
+-
+-- Ang, A., & Timmermann, A. (2012). Regime changes and financial markets.
+-  *Annual Review of Financial Economics*, 4, 313–337.
+-
+-- Ryden, T., Terasvirta, T., & Asbrink, S. (1998). Stylised facts of daily
+-  return series and the hidden Markov model. *Journal of Applied Econometrics*,
+-  13(3), 217–244.
+-
+-- Nystrup, P., Hansen, B. W., Larsen, H. O., Madsen, H., & Lindström, E. (2017).
+-  Dynamic allocation or diversification: A regime-based approach to multiple assets.
+-  *Journal of Portfolio Management*, 44(2), 62–73.
+-
+-- Bulla, J., Mergner, S., Bulla, I., Sesboüé, A., & Chesneau, C. (2011).
+-  Markov-switching asset allocation: Do profitable strategies exist?
+-  *Journal of Asset Management*, 12(5), 310–321.
+-
+-- Almgren, R., & Chriss, N. (2001). Optimal execution of portfolio transactions.
+-  *Journal of Risk*, 3, 5–40.
+-
+-- Fama, E. F., & French, K. R. (1993). Common risk factors in the returns
+-  on stocks and bonds. *Journal of Financial Economics*, 33(1), 3–56.
+-
+-- [ADD remaining citations for XGBoost, LightGBM, Kelly, SHAP, hmmlearn]
+-
+----
+-
+-## Appendix A — Reproducibility
+-
+-All code, data pipelines, and trained models are available at:  
+-`[GITHUB REPO URL]`
+-
+-To reproduce results:
+-```bash
+-python3 data_retrieval.py          # Phase 01: fetch data
+-python3 train.py                   # Phase 03: train ML ensemble
+-python3 backtest.py                # Phase 04: backtest
+-python3 risk.py                    # Phase 05: risk engine
+-python3 research.py zoo            # Phase 06A: strategy zoo
+-python3 research.py rank           # Phase 06B: ranking
+-python3 research.py env            # Phase 06C: environment characterisation
+-python3 research.py meta --research  # Phase 06D: regime-gated meta-strategy
+-streamlit run dashboard.py         # Phase 07: visualise all results
+-```
+-
+-## Appendix B — Strategy Implementation Details
+-
+-[INSERT: pseudocode or key equations for each of the 8 strategies]
+-
+-## Appendix C — HMM Regime Statistics
+-
+-[INSERT: transition matrix, dwell times, mean/variance per state]
+-
+-## Appendix D — Factor Attribution Tables
+-
+-[INSERT: full OLS regression table per strategy with t-stats, R², alpha]
++# Causal Evaluation and Capital-Constrained Replay of Trading Rules and Classifiers
++
++Working methods draft, revised 28 September 2026. **Not a publication-ready
++profitability claim.** The earlier draft is retained in `docs/archive/`.
++
++## Research question
++
++After repairing cash accounting, temporal validation and execution semantics,
++do directional classifiers or a regime-dependent selection rule provide
++repeatable net performance beyond passive and simple-rule baselines?
++
++## Implemented methods
++
++We use a frozen adjusted-price snapshot for 22 equities and ETFs. Observations
++are restricted to completed XNYS sessions with valid OHLCV, using the common
++sample across instruments. Adjusted history may include vendor revisions and
++the universe is selected retrospectively; neither is represented as a
++historically reconstructed investable universe.
++
++The first 252 eligible return/volatility observations calibrate a Gaussian HMM.
++Training-only scales and frozen parameters are used for later forward filtering;
++the calibration window remains unknown in historical features. We do not use
++full-series Viterbi smoothing as a trading-time observable. Model features
++undergo supervised selection within purged chronological training folds.
++Class weights come from eligible training labels. Inner validation and outer
++prediction splits remove overlapping forward-label horizons. XGBoost,
++LightGBM and unidirectional LSTM probabilities use fixed static ensemble weights.
++The LSTM receives the required preceding feature sequence for each prediction.
++
++A separately fitted MoE gate uses outcomes only after labels have matured;
++its validation training observations are not described as independent gate
++performance. Static and dynamic stop/Kelly simulations are exploratory risk
++ablations; they are distinct from the executable shared-account contract.
++Classifier accuracy is compared with always-UP and training-majority baselines.
++
++Training ends in 2023; 2024 is the declared selection period; 2025 onward is
++historical evaluation. These dates were examined before this repair. We therefore
++call all historical findings exploratory, even when the newly fitted models
++have not seen the evaluation targets. The prospective protocol reserves a
++future holdout beginning no earlier than 29 September 2026.
++
++Strategy signals are also executed through a shared cash and position account.
++Targets produce holding deltas, with pending cash reservations, per-instrument,
++gross, turnover and exposure-group limits. Fees and modeled slippage are charged
++on both sides. Fills occur at the next observed close. Terminal holdings remain
++marked, and every close reconciles cash, holdings and net P&L. This account has
++no leverage, shorts, profit targets or broker bracket orders. Prospective
++broker fill timing has not been validated.
++
++The implemented momentum rule is a time-series filter, not cross-sectional
++quintile selection. The pairs rule trades a single relative-value leg, not a
++hedged cointegration portfolio. In the absence of eligible macro data, the
++carry implementation is reported as an SMA trend fallback. Macro and sentiment
++features without release, vintage and content-availability evidence are
++excluded from confirmatory interpretations.
++
++## Statistical reporting
++
++Metrics use matching dates, explicit costs, a 252-session annualization and a
++fixed 5% annual hurdle. Sortino uses downside deviation relative to that hurdle;
++alpha uses excess returns; drawdown includes starting NAV. Individual-ticker
++averages are not portfolio results. Evidence includes signed HAC mean statistics,
++block-bootstrap uncertainty, turnover, exposure, fill counts, cost stress and
++Bonferroni adjustment over the declared comparison family. All searches and
++training budgets are recorded; sensitivity cases do not become new selected
++winners based on evaluation outcomes.
++
++## Findings and claims
++
++Numerical tables and figures are generated from the immutable experiment
++outputs linked in `REPAIR_CHECKLIST.md` and the readiness report. We do not
++carry forward the previous Sharpe, alpha, win-rate, novelty, outperformance or
++"production-grade" claims. The corrected quick screen did not establish a
++qualifying strategy. Its training budget was deliberately bounded, so it does
++not prove that no better model or strategy can exist.
++
++The supported engineering result is that the tested account reconciles and
++historical replay and local paper execution share an event contract. A simulated
++profit is not prospective evidence or proof of durable excess returns. Before
++publication, the future holdout, provider-vintage evidence, broker reconciliation,
++robustness across unseen periods and claim-to-artifact review remain necessary.
+diff --git a/docs/ml-trade-engine-mvp.md b/docs/ml-trade-engine-mvp.md
+index a91e2fb..243174e 100644
+--- a/docs/ml-trade-engine-mvp.md
++++ b/docs/ml-trade-engine-mvp.md
+@@ -1,5 +1,7 @@
+ # ML Trade Engine — MVP Blueprint
+ 
++> **28 September 2026 repair status:** the phase statuses below are historical. Current implementation, evidence, reopened gates and limitations are recorded in [REPAIR_CHECKLIST.md](REPAIR_CHECKLIST.md). Local account execution is implemented; no strategy or external prospective trial is approved.
++
+ A production-grade, Python-native algorithmic trading system using ML ensembles, multi-strategy signals, rigorous backtesting, a full risk management layer, and a systematic quantitative research programme targeting academic publication. No Pine Script. No TradingView lock-in.
+ 
+ **5 Phases Complete · 4 Research Phases In Progress · 3 ML Models (Ensemble) · 30+ Engineered Features · 1000× Monte Carlo Paths · 20–30 Ticker Universe**
+@@ -294,6 +296,10 @@ May 2021 – May 2026. See `docs/PHASE_06D_LOG.md`.*
+ | 06B | Ranking System | Unified scorecard: Sharpe, Alpha, IR, t-stat, composite rank |
+ | 06C | Env Characterisation | Cost sensitivity, signal decay, factor attribution |
+ | 06D | Meta-Strategy | Regime-gated allocator: Sharpe 0.70, MaxDD −4.5%, t 3.41 |
++| 08A | MoE Gating Model | Context-gated ensemble (`src/models/gating.py`); improves 2/3 pilot tickers, see `docs/MOE_RESULTS.md` |
++| 08B | Dynamic Policy Layer | Regime/vol-adaptive threshold, ATR stop, size cap, eligibility (`src/risk/policy_engine.py`); −28% mean MaxDD across 22 tickers, see `docs/POLICY_RESULTS.md` |
++| 08C | Sentiment Feature Pipeline | FinBERT news sentiment (`src/features/sentiment.py`); `sent_neg_5d` clears SHAP selection on AAPL/NVDA/SPY, see `docs/SENTIMENT_RESULTS.md` |
++| 08D | Meta-Strategy → Live Wiring | `src/live/meta_signal_generator.py` recomputes the Phase 06D walk-forward allocator live and drives `LiveEngine` (`--strategy-mode meta`); closes the gap where paper trading ran the (thin-edge) raw ensemble instead of the validated meta-strategy. Manual-dispatch only until it earns its own paper track record — see "Sandbox Validation" below. |
+ 
+ ### In Progress
+ 
+@@ -302,6 +308,8 @@ May 2021 – May 2026. See `docs/PHASE_06D_LOG.md`.*
+ | 06D | Research Paper | Draft v0.2 — §5 populated; §4/§6 numbers pending | Results reproducible; novelty confirmed |
+ | 06E | Live Execution | Alpaca paper orders daily *(parallel)* — dry-runs verified, scheduled runs pending | Orders execute cleanly; logs clean |
+ | 07 | Dashboard | Streamlit app built and running locally | Public URL, all charts functional |
++| 08 | MoE / Policy / Sentiment → Live | MoE gate + sentiment features still not in the trained/live models; policy layer opt-in via `--policy`; meta-strategy now reachable live via `--strategy-mode meta` (08D) but running in shadow/manual mode only | Retrain ensemble with sentiment features; enable `--policy` by default; roll MoE gate context forward daily; promote `--strategy-mode meta` to the scheduled cron default after a 3–6 month paper track record |
++| 09 | Sandbox Validation | Realized-vs-backtest reconciliation report: compare live paper fills/slippage/latency against Phase 06D backtest assumptions before any real-money discussion | Realized Sharpe/MaxDD tracking error small and understood; no unexplained divergence |
+ 
+ ---
+ 
+diff --git a/extract_paper_numbers.py b/extract_paper_numbers.py
+index 43645cd..8f5f69a 100644
+--- a/extract_paper_numbers.py
++++ b/extract_paper_numbers.py
+@@ -514,6 +514,7 @@ def print_targets() -> None:
+ # ===========================================================================
+ 
+ if __name__ == "__main__":
++    print("HISTORICAL EXTRACTION ONLY: legacy accounting and leakage invalidate these publication claims. Use the repair report and immutable corrected runs.")
+     print_inventory()
+     print_oos_metrics()
+     print_abstract()
+@@ -526,5 +527,5 @@ if __name__ == "__main__":
+ 
+     print("\n" + "═" * 70)
+     print("  EXTRACTION COMPLETE")
+-    print("  Copy values above into docs/PHASE_06D_PAPER_DRAFT.md")
++    print("  Do not use these legacy values as validated paper findings.")
+     print("═" * 70)
+diff --git a/live.py b/live.py
+index b1842c0..85ddfde 100644
+--- a/live.py
++++ b/live.py
+@@ -72,6 +72,8 @@ def parse_args() -> argparse.Namespace:
+         "--tickers", nargs="+", default=None, metavar="TICK",
+         help="Ticker list (default: AAPL MSFT GOOGL SPY QQQ).",
+     )
++    run_p.add_argument("--capital", type=float, default=10000., help="Local simulated initial capital")
++    run_p.add_argument("--state", default="data/local-paper/account.sqlite", help="Durable local account state")
+     run_p.add_argument(
+         "--dry-run", action="store_true",
+         help="Generate signals but do NOT submit any orders.",
+@@ -88,6 +90,17 @@ def parse_args() -> argparse.Namespace:
+         "--max-heat", type=float, default=0.80,
+         help="Max portfolio heat fraction (default 0.80).",
+     )
++    run_p.add_argument(
++        "--policy", action="store_true",
++        help="Enable the dynamic policy layer (regime/vol-adaptive "
++             "confidence threshold, ATR stop, and eligibility).",
++    )
++    run_p.add_argument(
++        "--strategy-mode", choices=["ensemble", "meta"], default="ensemble",
++        help="'ensemble' = raw per-ticker ML ensemble (default, thin/negative "
++             "standalone edge per Phase 06D). 'meta' = regime-gated "
++             "meta-strategy. Both modes remain exploratory; execution is local only.",
++    )
+ 
+     # ── status ────────────────────────────────────────────────────────────
+     status_p = sub.add_parser("status", help="Show recent signals from log.")
+@@ -122,6 +135,10 @@ def cmd_run(args: argparse.Namespace) -> None:
+         confidence_threshold = args.confidence,
+         max_portfolio_heat   = args.max_heat,
+         dry_run              = args.dry_run,
++        use_policy           = args.policy,
++        strategy_mode        = args.strategy_mode,
++        initial_capital      = args.capital,
++        state_path           = args.state,
+     )
+ 
+     result = engine.run(force_refresh=not args.no_refresh)
+@@ -133,9 +150,14 @@ def cmd_run(args: argparse.Namespace) -> None:
+ 
+     print(f"\n  Signals ({len(result.signals)}):")
+     for ticker, sig in result.signals.items():
++        extra = ""
++        if getattr(sig, "strategy_mode", "ensemble") == "meta":
++            extra = f"  selected={sig.selected_strategy}"
++        else:
++            extra = f"  kelly={sig.kelly_frac:.3f}"
+         print(
+             f"    {ticker:<8}  {sig.label:<5}  conf={sig.confidence:.3f}"
+-            f"  kelly={sig.kelly_frac:.3f}  close=${sig.close:.2f}"
++            f"{extra}  close=${sig.close:.2f}"
+         )
+ 
+     if result.orders:
+@@ -144,6 +166,9 @@ def cmd_run(args: argparse.Namespace) -> None:
+             if order is None:
+                 print(f"    {ticker:<8}  [dry_run — no order]")
+             else:
++                if isinstance(order, dict):
++                    print(f"    {ticker}  {order['side']}  qty={order['qty']:.4f}  {order['status']}")
++                    continue
+                 status_str = order.status if order.ok else f"ERROR: {order.error}"
+                 print(
+                     f"    {ticker:<8}  {order.side:<5}  qty={order.qty:.4f}"
+@@ -155,6 +180,11 @@ def cmd_run(args: argparse.Namespace) -> None:
+         for ticker, reason in result.skipped:
+             print(f"    {ticker:<8}  {reason}")
+ 
++    if result.errors:
++        for ticker, error in result.errors:
++            log.error("%s: %s", ticker, error)
++        raise SystemExit(1)
++
+     if result.account_equity:
+         print(f"\n  Account equity: ${result.account_equity:,.2f}")
+ 
+diff --git a/requirements.txt b/requirements.txt
+index 4e46731..6bec892 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -36,6 +36,12 @@ statsmodels
+ # Phase 06E — Live Signal Engine
+ alpaca-trade-api
+ 
++# Sentiment Feature Pipeline (FinBERT news sentiment)
++transformers
++
+ # Phase 07 — Dashboard
+ streamlit
+ plotly
++
++# Session-aware daily equity validation
++exchange-calendars>=4.5,<5
+diff --git a/src/backtest/metrics.py b/src/backtest/metrics.py
+index a7d81f9..e88230e 100644
+--- a/src/backtest/metrics.py
++++ b/src/backtest/metrics.py
+@@ -26,7 +26,7 @@ def sharpe_ratio(returns: pd.Series, risk_free: float = 0.05) -> float:
+     """Annualised Sharpe ratio.  risk_free is annual; converted to daily."""
+     daily_rf = (1 + risk_free) ** (1 / _TRADING_DAYS) - 1
+     excess   = returns - daily_rf
+-    if returns.std(ddof=1) == 0:
++    if len(returns) < 2 or returns.std(ddof=1) == 0:
+         return 0.0
+     return float(excess.mean() / returns.std(ddof=1) * _SQRT_252)
+ 
+@@ -35,18 +35,18 @@ def sortino_ratio(returns: pd.Series, risk_free: float = 0.05) -> float:
+     """Annualised Sortino ratio (downside deviation denominator)."""
+     daily_rf  = (1 + risk_free) ** (1 / _TRADING_DAYS) - 1
+     excess    = returns - daily_rf
+-    downside  = returns[returns < 0]
+-    if len(downside) == 0 or downside.std(ddof=1) == 0:
++    downside = np.sqrt(np.mean(np.minimum(excess, 0.0) ** 2))
++    if not np.isfinite(downside) or downside == 0:
+         return 0.0
+-    return float(excess.mean() / downside.std(ddof=1) * _SQRT_252)
++    return float(excess.mean() / downside * _SQRT_252)
+ 
+ 
+ def max_drawdown(returns: pd.Series) -> float:
+-    """Maximum peak-to-trough drawdown as a positive fraction."""
++    """Maximum peak-to-trough drawdown as a non-positive fraction, including initial NAV."""
+     equity = (1 + returns).cumprod()
+-    peak   = equity.cummax()
++    peak   = equity.cummax().clip(lower=1.0)
+     dd     = (equity - peak) / peak
+-    return float(dd.min())   # negative value — the caller negates if needed
++    return float(dd.min()) if len(dd) else 0.0   # negative value — the caller negates if needed
+ 
+ 
+ def cagr(returns: pd.Series) -> float:
+@@ -68,7 +68,7 @@ def calmar_ratio(returns: pd.Series) -> float:
+ 
+ def win_rate(trade_log: pd.DataFrame) -> float:
+     """Fraction of CLOSED trades with positive P&L."""
+-    exits = trade_log[trade_log["type"] == "exit"]
++    exits = trade_log[trade_log.get("type", pd.Series(index=trade_log.index, dtype=str)) == "exit"]
+     if len(exits) == 0:
+         return 0.0
+     return float((exits["pnl"] > 0).mean())
+@@ -76,7 +76,7 @@ def win_rate(trade_log: pd.DataFrame) -> float:
+ 
+ def avg_trade_pnl(trade_log: pd.DataFrame) -> dict[str, float]:
+     """Average winning and losing P&L per trade."""
+-    exits = trade_log[trade_log["type"] == "exit"]
++    exits = trade_log[trade_log.get("type", pd.Series(index=trade_log.index, dtype=str)) == "exit"]
+     if len(exits) == 0:
+         return {"avg_win": 0.0, "avg_loss": 0.0, "expectancy": 0.0}
+     wins  = exits[exits["pnl"] > 0]["pnl"]
+@@ -112,9 +112,11 @@ def compute_metrics(
+       total_return, cagr, sharpe_ratio, sortino_ratio, max_drawdown,
+       calmar_ratio, volatility, win_rate (if trade_log supplied)
+     """
+-    clean = returns.dropna().replace([np.inf, -np.inf], 0)
++    if not np.isfinite(returns.to_numpy(dtype=float)).all():
++        raise ValueError("Returns contain missing or non-finite observations")
++    clean = returns.astype(float)
+     total_ret = float((1 + clean).prod() - 1)
+-    vol       = float(clean.std(ddof=1) * _SQRT_252)
++    vol       = float(clean.std(ddof=1) * _SQRT_252) if len(clean) > 1 else 0.0
+ 
+     result = {
+         "total_return":  round(total_ret, 4),
+@@ -127,9 +129,10 @@ def compute_metrics(
+         "n_days":        len(clean),
+     }
+ 
+-    if trade_log is not None and len(trade_log) > 0:
++    if trade_log is not None:
+         result["win_rate"] = round(win_rate(trade_log), 4)
+-        result["n_trades"] = int((trade_log["type"] == "entry").sum())
++        result["n_closed_trades"] = int((trade_log.get("type", pd.Series(dtype=str)) == "exit").sum())
++        result["n_trades"] = int((trade_log.get("type", pd.Series(dtype=str)) == "entry").sum())
+         pnl_stats = avg_trade_pnl(trade_log)
+         result.update({k: round(v, 4) for k, v in pnl_stats.items()})
+ 
+@@ -151,6 +154,8 @@ def compare_to_benchmark(
+     """
+     Return a formatted comparison DataFrame of key metrics.
+     """
++    if not strategy_returns.index.equals(benchmark_returns.index) or benchmark_returns.isna().any():
++        raise ValueError("Benchmark must cover exactly the strategy observation period")
+     s_m = compute_metrics(strategy_returns,  trade_log, risk_free)
+     b_m = compute_metrics(benchmark_returns, None,      risk_free)
+ 
+diff --git a/src/backtest/runner.py b/src/backtest/runner.py
+index a7c008f..9b1e05a 100644
+--- a/src/backtest/runner.py
++++ b/src/backtest/runner.py
+@@ -250,8 +250,7 @@ class BacktestRunner:
+                                   "close"]], "signals")
+ 
+         # Trade log
+-        if len(sim.trade_log) > 0:
+-            _write_parquet(sim.trade_log, "trade_log")
++        _write_parquet(sim.trade_log, "trade_log")
+ 
+         # Metrics comparison
+         _write_parquet(metrics_cmp.reset_index(), "metrics_comparison")
+diff --git a/src/backtest/signals.py b/src/backtest/signals.py
+index 5ac5c6c..7496868 100644
+--- a/src/backtest/signals.py
++++ b/src/backtest/signals.py
+@@ -10,16 +10,10 @@ Signal encoding
+   1 = FLAT → cash  (no position)
+  -1 = insufficient confidence → carry previous signal
+ 
+-Signal sources (in priority order)
+-------------------------------------
+-1. OOS predictions saved by trainer  (data/models/{ticker}/oos_predictions.parquet)
+-   These are the fully honest walk-forward predictions — each test row was scored
+-   by a model that had NOT seen that row during training.
+-
+-2. Final-model inference fallback
+-   If no OOS file exists (e.g. trained before Phase 04 upgrade), the final saved
+-   models are applied to the full feature history.  This introduces mild look-ahead
+-   bias (model trained on full history evaluates earlier periods) — noted in log.
++Signal source
++-------------
++Versioned, sealed out-of-sample predictions from causal training only.
++Historical final-model backfill is prohibited. Legacy caches require rebuilding.
+ 
+ Confidence filtering
+ ---------------------
+@@ -114,6 +108,7 @@ def build_signal_df(
+     ticker: str,
+     feat_df: pd.DataFrame,
+     confidence_threshold: float = 0.38,
++    policy_engine=None,
+ ) -> pd.DataFrame:
+     """
+     Build a time-indexed signal DataFrame for backtesting.
+@@ -123,6 +118,7 @@ def build_signal_df(
+       signal                 : {0=DOWN, 1=FLAT, 2=UP}
+       confidence             : max(p_down, p_flat, p_up)
+       filtered_signal        : signal if confidence >= threshold, else 1 (FLAT)
++      conf_threshold         : the threshold applied per bar (scalar or dynamic)
+       true_label             : actual class (only from OOS; NaN for fallback)
+ 
+     Parameters
+@@ -130,6 +126,11 @@ def build_signal_df(
+     ticker               : asset symbol, must match data/models/{ticker}/ path
+     feat_df              : Phase 02 feature matrix (provides close prices + dates)
+     confidence_threshold : min max-probability to emit a non-FLAT signal
++                           (ignored when policy_engine is supplied)
++    policy_engine        : optional src.risk.policy_engine.PolicyEngine — when
++                           given, the confidence threshold becomes dynamic
++                           per bar (tightened while the HMM regime is
++                           transitioning) and ineligible bars are forced FLAT.
+     """
+     import json
+     feat_path = _MODELS_ROOT / ticker / "feature_cols.json"
+@@ -137,6 +138,10 @@ def build_signal_df(
+         raise FileNotFoundError(
+             f"No trained models found for {ticker}. Run train.py first."
+         )
++    from src.models.bundle import validate_bundle
++    validate_bundle(_MODELS_ROOT / ticker)
++    if feat_df.attrs.get("causality_version") != 2:
++        raise ValueError("Legacy features are not eligible for validated backtesting")
+     feat_cols = json.loads(feat_path.read_text())
+ 
+     # ── Try OOS file first ─────────────────────────────────────────────
+@@ -144,13 +149,7 @@ def build_signal_df(
+     source   = "oos"
+ 
+     if proba_df is None:
+-        log.warning(
+-            "%s: no OOS predictions file found — falling back to final-model "
+-            "inference (mild look-ahead bias).  Re-run train.py to generate "
+-            "honest OOS predictions.", ticker,
+-        )
+-        proba_df = _infer_with_final_models(ticker, feat_df, feat_cols)
+-        source   = "final_model_fallback"
++        raise FileNotFoundError(f"{ticker}: missing OOS predictions; final-model backfill is prohibited")
+ 
+     # Align with feat_df close prices (inner join on index)
+     close    = feat_df["Close"].rename("close")
+@@ -159,8 +158,20 @@ def build_signal_df(
+ 
+     df["signal"]    = np.argmax(df[["p_down", "p_flat", "p_up"]].values, axis=1)
+     df["confidence"]= df[["p_down", "p_flat", "p_up"]].max(axis=1)
++
++    if policy_engine is not None:
++        # Note: only the dynamic threshold is applied here.  The policy's
++        # eligibility gate is enforced by RiskEngine (blocks NEW entries
++        # only) — flattening the signal here would force-close open
++        # positions and churn re-entries.
++        policy = policy_engine.compute_policy(feat_df).reindex(df.index).ffill()
++        thresholds = policy["conf_threshold"].fillna(confidence_threshold).values
++    else:
++        thresholds = np.full(len(df), confidence_threshold)
++
++    df["conf_threshold"] = thresholds
+     df["filtered_signal"] = np.where(
+-        df["confidence"] >= confidence_threshold,
++        df["confidence"].values >= thresholds,
+         df["signal"],
+         1,   # fall back to FLAT when model is unsure
+     )
+@@ -174,7 +185,7 @@ def build_signal_df(
+         (df["filtered_signal"] == 0).mean() * 100,
+         (df["filtered_signal"] == 1).mean() * 100,
+         (df["filtered_signal"] == 2).mean() * 100,
+-        confidence_threshold,
+-        (df["confidence"] >= confidence_threshold).mean() * 100,
++        float(np.mean(thresholds)),
++        (df["confidence"].values >= thresholds).mean() * 100,
+     )
+     return df
+diff --git a/src/backtest/simulator.py b/src/backtest/simulator.py
+index 400ff6d..d73007e 100644
+--- a/src/backtest/simulator.py
++++ b/src/backtest/simulator.py
+@@ -44,6 +44,7 @@ class SimResult:
+     daily_returns: pd.Series
+     trade_log:     pd.DataFrame
+     params:        dict = field(default_factory=dict)
++    ledger:        pd.DataFrame = field(default_factory=pd.DataFrame)
+ 
+ 
+ # ---------------------------------------------------------------------------
+@@ -74,100 +75,60 @@ def run_simulation(
+     -------
+     SimResult with equity_curve, daily_returns, trade_log
+     """
++    if mode not in ("long_only", "long_short"):
++        raise ValueError("Unsupported position mode")
++    if not np.isfinite([initial_capital, commission, slippage]).all() or initial_capital <= 0 or min(commission, slippage) < 0:
++        raise ValueError("Capital must be positive and costs nonnegative")
++    if signal_df.empty or not signal_df.index.is_monotonic_increasing or not signal_df.index.is_unique:
++        raise ValueError("Signals require nonempty, unique, ordered observations")
++    prices = signal_df["close"].to_numpy(dtype=float)
++    signals = signal_df["filtered_signal"].to_numpy()
++    if not np.isfinite(prices).all() or (prices <= 0).any() or not np.isin(signals, [0, 1, 2]).all():
++        raise ValueError("Invalid prices or signals")
+     cost_per_side = commission + slippage
+-
+-    prices   = signal_df["close"].values
+-    signals  = signal_df["filtered_signal"].values
+-    n        = len(prices)
+-
+-    equity       = np.empty(n)
+-    equity[0]    = initial_capital
+-    positions    = np.empty(n, dtype=int)   # -1=short, 0=cash, 1=long
+-    positions[0] = 0
+-
+-    trades: list[dict] = []
+-    current_pos  = 0
+-    cash         = initial_capital
+-    shares       = 0.0
+-    entry_price  = 0.0
+-    entry_idx    = 0
+-
+-    for i in range(1, n):
+-        price = prices[i]
+-
+-        # Map signal to target position
+-        sig = int(signals[i - 1])       # signal is set at close of i-1, filled at i
+-        if mode == "long_only":
+-            target = 1 if sig == 2 else 0
+-        else:
+-            target = 1 if sig == 2 else (-1 if sig == 0 else 0)
+-
+-        # ── Execute position change ────────────────────────────────────
++    cash, shares, entry_price, entry_fee = float(initial_capital), 0.0, 0.0, 0.0
++    entry_idx, current_pos, realized = 0, 0, 0.0
++    trades, history = [], []
++    for i, price in enumerate(prices):
++        sig = int(signals[i - 1]) if i else 1
++        target = 1 if sig == 2 else (-1 if mode == "long_short" and sig == 0 else 0)
+         if target != current_pos:
+-            # Close existing position
+-            if current_pos != 0:
+-                proceeds = abs(shares) * price * (1 - cost_per_side)
+-                pnl      = (proceeds - abs(shares) * entry_price) * np.sign(current_pos)
+-                trades.append({
+-                    "type":        "exit",
+-                    "date":        signal_df.index[i],
+-                    "price":       price,
+-                    "shares":      shares,
+-                    "direction":   current_pos,
+-                    "pnl":         pnl,
+-                    "entry_price": entry_price,
+-                    "hold_bars":   i - entry_idx,
+-                })
+-                cash = equity[i - 1] * (1 - cost_per_side)
+-
+-            # Open new position
+-            if target != 0:
+-                cost_fill = cash * cost_per_side
+-                cash     -= cost_fill
+-                shares    = cash / price * target    # signed shares
+-                entry_price = price
+-                entry_idx   = i
+-                trades.append({
+-                    "type":        "entry",
+-                    "date":        signal_df.index[i],
+-                    "price":       price,
+-                    "shares":      shares,
+-                    "direction":   target,
+-                    "pnl":         np.nan,
+-                    "entry_price": entry_price,
+-                    "hold_bars":   0,
+-                })
+-            else:
++            if current_pos:
++                exit_fee = abs(shares) * price * cost_per_side
++                pnl = shares * (price - entry_price) - entry_fee - exit_fee
++                cash += shares * price - exit_fee
++                realized += pnl
++                trades.append(dict(type="exit", date=signal_df.index[i], price=price,
++                    shares=shares, direction=current_pos, pnl=pnl, entry_price=entry_price,
++                    hold_bars=i-entry_idx, fee=exit_fee, entry_fee=entry_fee))
+                 shares = 0.0
+-
++            if target:
++                if cash <= 0:
++                    raise ValueError("Account insolvent; margin liquidation required")
++                # Signed cash/share ledger. Short proceeds remain in cash, with a
++                # matching marked liability. Budget includes entry friction.
++                shares = target * cash / (price * (1 + cost_per_side))
++                entry_fee = abs(shares) * price * cost_per_side
++                cash -= shares * price + entry_fee
++                entry_price, entry_idx = price, i
++                trades.append(dict(type="entry", date=signal_df.index[i], price=price,
++                    shares=shares, direction=target, pnl=np.nan, entry_price=price,
++                    hold_bars=0, fee=entry_fee, entry_fee=entry_fee))
+             current_pos = target
+-
+-        # ── Mark-to-market ─────────────────────────────────────────────
+-        if current_pos == 0:
+-            equity[i] = cash
+-        elif current_pos == 1:
+-            equity[i] = abs(shares) * price
+-        else:  # short
+-            equity[i] = 2 * equity[i - 1] - abs(shares) * price
+-
+-        positions[i] = current_pos
+-
+-    equity_s  = pd.Series(equity,  index=signal_df.index, name="equity")
+-    returns_s = equity_s.pct_change().fillna(0.0).rename("returns")
+-
+-    trade_df = pd.DataFrame(trades)
+-
+-    return SimResult(
+-        equity_curve  = equity_s,
+-        daily_returns = returns_s,
+-        trade_log     = trade_df,
+-        params        = {
+-            "initial_capital": initial_capital,
+-            "commission":      commission,
+-            "slippage":        slippage,
+-            "mode":            mode,
+-        },
+-    )
++        nav = cash + shares * price
++        if nav < 0:
++            raise ValueError("Account insolvent; leveraged short loss exceeds capital")
++        unrealized = shares * (price - entry_price) - entry_fee if shares else 0.0
++        history.append(dict(cash=cash, shares=shares, price=price, equity=nav,
++                            realized_pnl=realized, unrealized_pnl=unrealized))
++    ledger = pd.DataFrame(history, index=signal_df.index)
++    equity = ledger["equity"]
++    return SimResult(equity, equity.pct_change(fill_method=None).fillna(0).rename("returns"),
++        pd.DataFrame(trades, columns=["type", "date", "price", "shares", "direction", "pnl",
++                                     "entry_price", "hold_bars", "fee", "entry_fee"]),
++        dict(initial_capital=initial_capital, commission=commission, slippage=slippage,
++             mode=mode, accounting_version=2, execution="next_close",
++             terminal_policy="mark_open_positions", cost_model="notional_cash_charge"), ledger)
+ 
+ 
+ # ---------------------------------------------------------------------------
+diff --git a/src/data/loader.py b/src/data/loader.py
+index d2298ee..09135d3 100644
+--- a/src/data/loader.py
++++ b/src/data/loader.py
+@@ -82,23 +82,10 @@ def _gap_fill(df: pd.DataFrame, freq: str = "B") -> pd.DataFrame:
+     `freq='B'` = business day (equities/macro), `freq='h'` = hourly (crypto intraday).
+     Crypto daily data uses 'D' because exchanges trade 24/7.
+     """
+-    start, end = df.index.min(), df.index.max()
+-    if freq == "D":
+-        full_idx = pd.date_range(start=start, end=end, freq="D", tz="UTC")
+-    elif freq == "h":
+-        full_idx = pd.date_range(start=start, end=end, freq="h", tz="UTC")
+-    else:
+-        full_idx = pd.bdate_range(start=start, end=end, tz="UTC")
+-
+-    df = df.reindex(full_idx)
+-    price_present = [c for c in _PRICE_COLS if c in df.columns]
+-    df[price_present] = df[price_present].ffill()
+-    if _VOL_COL in df.columns:
+-        df[_VOL_COL] = df[_VOL_COL].fillna(0)
+-    if "ticker" in df.columns:
+-        df["ticker"] = df["ticker"].ffill().bfill()
+-    df.index.name = "Date"
+-    return df
++    # Retain observed bars only. Holidays, weekends and missing provider
++    # observations are never converted into tradable synthetic bars.
++    return df.sort_index().copy()
++
+ 
+ 
+ def _split_adjust(df: pd.DataFrame) -> pd.DataFrame:
+@@ -174,8 +161,10 @@ class DataLoader:
+         slug = ticker.upper().replace(".", "-")
+         path = self.cache_dir / f"{slug}_{timeframe}.parquet"
+ 
++        from src.data.validation import observed_equity_bars
+         if not force_refresh and not _is_stale(path, self.max_age_hours):
+-            return _read_parquet(path)
++            cached = _read_parquet(path)
++            return observed_equity_bars(cached, require_fresh=True) if timeframe == "daily" else cached
+ 
+         if timeframe == "hourly":
+             df = fetch_equity_hourly(ticker, period=period)
+@@ -184,6 +173,12 @@ class DataLoader:
+             df = fetch_equity_daily(ticker, period=period)
+             df = _gap_fill(df, freq="B")
+             df = _split_adjust(df)
++            if path.exists():
++                historical = _read_parquet(path)
++                # Retain the original feature calibration window as the live
++                # history expands. Fresh vendor bars replace matching dates.
++                df = pd.concat([historical.loc[historical.index < df.index[0]], df]).sort_index()
++            df = observed_equity_bars(df, require_fresh=True)
+ 
+         _write_parquet(df, path)
+         return df
+diff --git a/src/data/sources.py b/src/data/sources.py
+index 2904bd4..627bb96 100644
+--- a/src/data/sources.py
++++ b/src/data/sources.py
+@@ -8,7 +8,7 @@ Macro   : FRED via pandas-datareader (VIX proxy, yield spread, CPI)
+ from __future__ import annotations
+ 
+ import time
+-from datetime import datetime, timedelta
++from datetime import datetime, timedelta, timezone
+ from typing import Optional
+ 
+ import ccxt
+@@ -21,7 +21,7 @@ import requests
+ # ---------------------------------------------------------------------------
+ 
+ _PERIOD_DAYS: dict[str, int] = {
+-    "1d": 1, "5d": 5, "1mo": 30, "3mo": 90,
++    "1d": 1, "5d": 5, "60d": 60, "1mo": 30, "3mo": 90,
+     "6mo": 180, "1y": 365, "2y": 730, "5y": 1825, "10y": 3650,
+ }
+ 
+@@ -29,9 +29,11 @@ _YF_HEADERS = {"User-Agent": "Mozilla/5.0"}
+ 
+ 
+ def _to_timestamps(period: str) -> tuple[int, int]:
+-    days = _PERIOD_DAYS.get(period, 365)
+-    end = int(datetime.utcnow().timestamp())
+-    start = int((datetime.utcnow() - timedelta(days=days)).timestamp())
++    if period not in _PERIOD_DAYS:
++        raise ValueError(f"Unsupported history period: {period}")
++    days = _PERIOD_DAYS[period]
++    end = int(datetime.now(timezone.utc).timestamp())
++    start = int((datetime.now(timezone.utc) - timedelta(days=days)).timestamp())
+     return start, end
+ 
+ 
+@@ -94,6 +96,8 @@ def fetch_equity_hourly(
+     """
+     Pull hourly OHLCV (Yahoo limits hourly history to ~60 days).
+     """
++    if _PERIOD_DAYS.get(period, 9999) > 730:
++        raise ValueError("Hourly equity history exceeds provider limit; request <=2y")
+     start, end = _to_timestamps(period)
+     url = (
+         f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}"
+@@ -125,6 +129,7 @@ def fetch_equity_hourly(
+     )
+     df.index.name = "Date"
+     df["ticker"] = ticker
++    df = df.loc[df.index + pd.Timedelta(hours=1) <= pd.Timestamp.now(tz="UTC")]
+     return df.dropna(subset=["Open", "Close"])
+ 
+ 
+@@ -156,6 +161,8 @@ def fetch_crypto_ohlcv(
+     timeframe: '1d', '1h', '4h'
+     limit   : total number of bars to return
+     """
++    if limit > 719:
++        raise ValueError("Kraken OHLC exposes only 719 completed bars; use an archived historical snapshot")
+     tf = _CCXT_TIMEFRAME.get(timeframe, timeframe)
+     bars: list = []
+     since = None
+@@ -168,7 +175,8 @@ def fetch_crypto_ohlcv(
+         if len(batch) < _KRAKEN_PAGE:
+             break
+ 
+-    bars = bars[-limit:]
++    duration_ms = _KRAKEN.parse_timeframe(tf) * 1000
++    bars = [bar for bar in bars if bar[0] + duration_ms <= _KRAKEN.milliseconds()][-limit:]
+     df = pd.DataFrame(bars, columns=["ts", "Open", "High", "Low", "Close", "Volume"])
+     df.index = (
+         pd.to_datetime(df["ts"], unit="ms", utc=True).dt.normalize()
+@@ -213,7 +221,7 @@ def fetch_macro_fred(
+     Columns: VIX  yield_spread_10_2  CPI  rate_10y  rate_2y
+     """
+     if end is None:
+-        end = datetime.utcnow().strftime("%Y-%m-%d")
++        end = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+ 
+     frames = {}
+     for col, series_id in _FRED_SERIES.items():
+diff --git a/src/features/cross_asset.py b/src/features/cross_asset.py
+index 684e980..f5a2455 100644
+--- a/src/features/cross_asset.py
++++ b/src/features/cross_asset.py
+@@ -101,6 +101,7 @@ def add_macro_features(
+     df: pd.DataFrame,
+     macro_df: pd.DataFrame,
+     cols: list[str] | None = None,
++    exploratory: bool = False,
+ ) -> pd.DataFrame:
+     """
+     Left-join macro columns onto the asset DataFrame.
+@@ -113,10 +114,15 @@ def add_macro_features(
+         cols = [c for c in ["VIX", "yield_spread_10_2", "CPI", "rate_10y", "rate_2y"]
+                 if c in macro_df.columns]
+ 
++    # A date-indexed latest-vintage FRED series does not establish historical
++    # availability. Validated data must carry actual release/vintage timestamps.
++    if not exploratory and ("available_at" not in macro_df or not macro_df.attrs.get("point_in_time")):
++        return df
++    source = macro_df.copy()
++    if "available_at" in source:
++        source.index = pd.to_datetime(source["available_at"], utc=True)
++        source = source.sort_index().groupby(level=0).last()
+     for col in cols:
+-        series = macro_df[col].reindex(df.index).ffill()
+-        # Fill any remaining NaN (e.g. macro starts after asset history) with
+-        # the column's first available value so no rows are dropped
+-        df[f"macro_{col}"] = series.fillna(series.bfill())
+-
++        series = source[col].reindex(source.index.union(df.index)).sort_index().ffill().reindex(df.index)
++        df[f"macro_{col}"] = series
+     return df
+diff --git a/src/features/pipeline.py b/src/features/pipeline.py
+index a56ee70..9ca9b29 100644
+--- a/src/features/pipeline.py
++++ b/src/features/pipeline.py
+@@ -23,6 +23,9 @@ Statistical (8)  : zscore_20, zscore_60, realized_vol_5, realized_vol_21,
+ Cross-asset (7)  : spy_corr_21, spy_corr_63, rs_vs_spy_21, rs_vs_spy_63,
+                    btc_return_5d, btc_return_21d, macro_VIX ...
+ Regime      (1)  : hmm_regime
++Sentiment   (5)  : sent_pos_1d, sent_neg_5d, event_count, guidance_tag,
++                   has_news  (optional — FeatureEngineer(sentiment=True);
++                   requires Alpaca News API credentials or a news cache)
+ """
+ 
+ from __future__ import annotations
+@@ -119,6 +122,9 @@ class FeatureEngineer:
+     cache_dir      : override default features store location
+     max_age_hours  : stale threshold; default matches DataLoader (12 h)
+     n_hmm_states   : number of hidden market regimes (default 3)
++    sentiment      : append FinBERT news-sentiment columns (default False;
++                     requires Alpaca News credentials or a populated
++                     data/news/ cache — fails soft with a warning)
+     """
+ 
+     def __init__(
+@@ -126,11 +132,13 @@ class FeatureEngineer:
+         cache_dir: Optional[Path] = None,
+         max_age_hours: float = 12.0,
+         n_hmm_states: int = 3,
++        sentiment: bool = False,
+     ) -> None:
+         self.cache_dir      = Path(cache_dir) if cache_dir else _FEATURE_ROOT
+         self.cache_dir.mkdir(parents=True, exist_ok=True)
+         self.max_age_hours  = max_age_hours
+         self.n_hmm_states   = n_hmm_states
++        self.sentiment      = sentiment
+         self._hmm_models: dict[str, object] = {}
+ 
+     # ------------------------------------------------------------------
+@@ -158,9 +166,20 @@ class FeatureEngineer:
+         macro_df   : FRED macro DataFrame (enables VIX, yield-curve features)
+         """
+         path = self.cache_dir / f"{asset_slug}_features.parquet"
+-
+-        if not force_refresh and not _is_stale(path, self.max_age_hours):
+-            return _read_parquet(path)
++        import hashlib, json
++        digest = hashlib.sha256(f"causal-v3:{self.n_hmm_states}:{self.sentiment}".encode())
++        for frame in [df, spy_df, btc_df, macro_df]:
++            if frame is not None:
++                digest.update(str(list(frame.columns)).encode())
++                digest.update(str(frame.attrs).encode())
++                digest.update(pd.util.hash_pandas_object(frame, index=True).values.tobytes())
++            else:
++                digest.update(b"missing-input")
++        fingerprint = digest.hexdigest()
++        meta_path = path.with_suffix(".manifest.json")
++        if not force_refresh and not _is_stale(path, self.max_age_hours) and meta_path.exists():
++            if json.loads(meta_path.read_text()).get("fingerprint") == fingerprint:
++                return _read_parquet(path)
+ 
+         feat = df.copy()
+ 
+@@ -185,7 +204,28 @@ class FeatureEngineer:
+         feat, hmm = add_hmm_regime(feat, n_states=self.n_hmm_states)
+         self._hmm_models[asset_slug] = hmm
+ 
++        # ── sentiment (optional, appended last — existing columns are
++        #    never modified, so SHAP selection picks the new ones up
++        #    automatically) ───────────────────────────────────────────
++        if self.sentiment:
++            try:
++                from src.features.sentiment import SentimentPipeline
++                sp   = SentimentPipeline()
++                sent = sp.build_features(asset_slug, trading_index=feat.index)
++                feat = feat.join(sent)
++            except Exception as exc:
++                import logging
++                logging.getLogger(__name__).warning(
++                    "%s: sentiment features skipped (%s)", asset_slug, exc
++                )
++
++        feat.attrs["causality_version"] = 2
++        feat.attrs["feature_history_start"] = str(df.index[0])
++        feat.attrs["hmm_calibration_sha256"] = hashlib.sha256(pd.util.hash_pandas_object(
++            feat[["log_return", "realized_vol_21"]].dropna().iloc[:252], index=True).values.tobytes()).hexdigest() if "log_return" in feat else None
+         _write_parquet(feat, path)
++        meta_path.write_text(json.dumps(dict(fingerprint=fingerprint, causality_version=2,
++            last_observation=str(feat.index[-1]), columns=list(feat.columns))))
+         return feat
+ 
+     # ------------------------------------------------------------------
+@@ -205,7 +245,7 @@ class FeatureEngineer:
+         """
+         path = self.cache_dir / f"{asset_slug}_features.parquet"
+ 
+-        if not force_refresh and not _is_stale(path, self.max_age_hours):
++        if not kwargs and not force_refresh and not _is_stale(path, self.max_age_hours) and path.with_suffix(".manifest.json").exists():
+             return _read_parquet(path)
+ 
+         if "df" not in kwargs:
+@@ -213,7 +253,7 @@ class FeatureEngineer:
+                 "Cache is stale or missing — supply df= (and optional spy_df, "
+                 "btc_df, macro_df) to recompute."
+             )
+-        return self.compute_features(asset_slug=asset_slug, **kwargs)
++        return self.compute_features(asset_slug=asset_slug, force_refresh=force_refresh, **kwargs)
+ 
+     # ------------------------------------------------------------------
+     # SHAP-based feature selection  (optional, requires xgboost + shap)
+diff --git a/src/features/regime.py b/src/features/regime.py
+index c19fbfb..7d0193d 100644
+--- a/src/features/regime.py
++++ b/src/features/regime.py
+@@ -11,15 +11,11 @@ mapped to human-readable labels by ranking on mean return:
+   middle state(s)    → 1 (ranging)  [for n_states > 2]
+   highest-mean state → 2 (bull)
+ 
+-Design decision — lookahead note
+----------------------------------
+-hmmlearn's Viterbi decoder (predict) operates on the FULL training series at
+-once.  In a live setting you would use online filtering (forward pass only).
+-For the backtesting feature store we use the full-series Viterbi, which gives
+-slightly smoother labels and is the standard practise in academic quant research.
+-The ML model is trained on these labels in Phase 03, so any Viterbi smoothing
+-is consistent across train and test sets — as long as the HMM is fit only on
+-the training split and the test labels are decoded using that frozen model.
++Causal convention
++-----------------
++Fit once on the first 252 eligible observations. Warm-up rows remain unknown.
++Thereafter use only forward-filter probabilities with frozen parameters. The
++initial fitting window is deliberately never relabeled as historical features.
+ """
+ 
+ from __future__ import annotations
+@@ -69,14 +65,21 @@ def fit_hmm(
+ 
+     obs = df[feat_cols].dropna().values
+ 
++    scale = np.maximum(np.std(obs, axis=0), 1e-6)
++    obs = obs / scale
+     model = GaussianHMM(
+         n_components=n_states,
+         covariance_type=covariance_type,
+-        n_iter=500,
++        n_iter=200,
++        startprob_prior=1.1,
++        transmat_prior=1.1,
+         tol=1e-4,
+         random_state=random_state,
+     )
+     model.fit(obs)
++    model.feature_scale_ = scale
++    if not np.isfinite(model.means_).all() or not np.isfinite(model.transmat_).all():
++        raise ValueError("HMM calibration failed; no regime feature may be emitted")
+     return model
+ 
+ 
+@@ -85,7 +88,7 @@ def decode_hmm(
+     df: pd.DataFrame,
+ ) -> np.ndarray:
+     """
+-    Run Viterbi decoding on the full DataFrame.
++    Forward-filter a sequence using a previously fitted, frozen model.
+     Returns an integer array of raw state indices (length = len(df)).
+     Rows with NaN features receive state -1.
+     """
+@@ -95,8 +98,18 @@ def decode_hmm(
+     states    = np.full(len(df), -1, dtype=int)
+ 
+     if len(valid) > 0:
+-        raw = model.predict(valid.values)
+-        states[valid.index.get_indexer(valid.index)] = raw  # type: ignore[call-arg]
++        from scipy.special import logsumexp
++        emissions = model._compute_log_likelihood(valid.to_numpy() / getattr(model, "feature_scale_", 1.0))
++        with np.errstate(divide="ignore"):
++            transition = np.log(model.transmat_)
++            posterior = np.log(model.startprob_)
++        raw = []
++        for i, emission in enumerate(emissions):
++            prior = posterior if i == 0 else logsumexp(posterior[:, None] + transition, axis=0)
++            posterior = prior + emission
++            posterior -= logsumexp(posterior)
++            raw.append(int(np.argmax(posterior)))
++        states[np.flatnonzero(obs_full.notna().all(axis=1).to_numpy())] = raw
+ 
+     return states
+ 
+@@ -130,6 +143,7 @@ def add_hmm_regime(
+     random_state: int = 42,
+     col_name: str = "hmm_regime",
+     covariance_type: str = "full",
++    train_size: int = 252,
+ ) -> tuple[pd.DataFrame, GaussianHMM]:
+     """
+     Fit a Gaussian HMM and add a regime column to `df`.
+@@ -152,9 +166,19 @@ def add_hmm_regime(
+     1 → ranging (middle state)
+     2 → bull    (highest mean return state)
+     """
+-    model       = fit_hmm(df, n_states=n_states, random_state=random_state,
+-                          covariance_type=covariance_type)
+-    raw_states  = decode_hmm(model, df)
+-    regime      = _map_states_to_regime(model, raw_states, n_states)
++    feat_cols = [c for c in ["log_return", "realized_vol_21"] if c in df.columns]
++    valid = df[feat_cols].dropna()
++    df[col_name] = -1
++    if len(valid) <= train_size:
++        return df, None
++    calibration = valid.iloc[:train_size]
++    model = fit_hmm(calibration, n_states=n_states, random_state=random_state,
++                    covariance_type=covariance_type)
++    cutoff = df.index.get_loc(calibration.index[-1]) + 1
++    # Filtering the training prefix initializes state probabilities; it is not
++    # published as causal history. Only observations after the cutoff are emitted.
++    raw_states = decode_hmm(model, df)
++    regime = _map_states_to_regime(model, raw_states, n_states)
++    regime[:cutoff] = -1
+     df[col_name] = regime
+     return df, model
+diff --git a/src/live/alerts.py b/src/live/alerts.py
+index 1e0daba..1c8c63c 100644
+--- a/src/live/alerts.py
++++ b/src/live/alerts.py
+@@ -58,7 +58,7 @@ class Alerts:
+         self.slack_url   = slack_url   or os.environ.get("SLACK_WEBHOOK_URL")
+         self.alert_email = alert_email or os.environ.get("ALERT_EMAIL")
+         self.smtp_host   = smtp_host   or os.environ.get("SMTP_HOST", "smtp.gmail.com")
+-        self.smtp_port   = smtp_port   or int(os.environ.get("SMTP_PORT", "587"))
++        self.smtp_port   = smtp_port   or int(os.environ.get("SMTP_PORT", "").strip() or "587")
+         self.smtp_user   = smtp_user   or os.environ.get("SMTP_USER")
+         self.smtp_pass   = smtp_pass   or os.environ.get("SMTP_PASS")
+ 
+diff --git a/src/live/broker.py b/src/live/broker.py
+index ac744e6..561e97b 100644
+--- a/src/live/broker.py
++++ b/src/live/broker.py
+@@ -50,7 +50,7 @@ class OrderResult:
+ 
+     @property
+     def ok(self) -> bool:
+-        return self.error is None
++        return self.error is None and self.status not in {"error", "rejected", "canceled", "expired"}
+ 
+ 
+ @dataclass
+diff --git a/src/live/engine.py b/src/live/engine.py
+index 537458a..df93305 100644
+--- a/src/live/engine.py
++++ b/src/live/engine.py
+@@ -1,330 +1,160 @@
+-"""
+-Phase 06E — Live Engine
+-
+-Orchestrates the full daily live-trading pipeline:
+-
+-  1. Fetch fresh data + run ensemble inference → LiveSignal per ticker
+-  2. Apply risk gates (confidence, Kelly, circuit breaker, portfolio heat)
+-  3. Submit bracket orders to Alpaca paper trading
+-  4. Log signals + orders + account equity to SQLite
+-  5. Send Slack / email alerts
+-
+-Designed to be idempotent — running twice on the same day for the same
+-ticker will skip order submission if a position or order already exists.
++"""Daily local paper execution using the same target account as research replay.
+ 
+-Usage (from live.py CLI or GitHub Actions)
+--------------------------------------------
+-  engine = LiveEngine()
+-  results = engine.run(tickers=["AAPL", "MSFT", "GOOGL", "SPY", "QQQ"])
+-
+-Configuration via environment variables (see broker.py and alerts.py).
+-
+-Risk gates applied in order
+----------------------------
+-  1. direction == FLAT → skip (no action)
+-  2. kelly_frac <= 0   → skip (model has no statistical edge)
+-  3. confidence < threshold → already filtered in SignalGenerator
+-  4. circuit_breaker   → skip new entries; close existing if circuit broken
+-  5. already_ordered   → skip (idempotency guard)
+-  6. portfolio heat    → skip if total deployed capital > max_heat
++External brokers and alert transports are deliberately not invoked. Authorizing a
++prospective broker trial is a separate operation after adapter reconciliation.
+ """
+ 
+-from __future__ import annotations
+-
+-import logging
+-import os
+ from dataclasses import dataclass, field
++from pathlib import Path
+ from typing import Optional
++import pandas as pd
++from src.live.signal_generator import SignalGenerator
++from src.live.logger import SignalLogger
++from src.live.broker import AlpacaBroker  # legacy adapter; never instantiated here
++from src.live.alerts import Alerts  # opt-in transport; never instantiated here
++from src.execution.account import Account, Limits, ExecutionSession
+ 
+-from src.live.signal_generator import SignalGenerator  # noqa: F401  (imported for patchability)
+-from src.live.broker import AlpacaBroker               # noqa: F401
+-from src.live.logger import SignalLogger               # noqa: F401
+-from src.live.alerts import Alerts                     # noqa: F401
+-
+-log = logging.getLogger(__name__)
+-
+-_DEFAULT_TICKERS = ["AAPL", "MSFT", "GOOGL", "SPY", "QQQ"]
+-
+-_MAX_PORTFOLIO_HEAT   = 0.80   # max fraction of account equity deployed at once
+-_CIRCUIT_BREAKER_DD   = 0.15   # trip at 15% drawdown (matches Phase 05)
+-_ATR_TP_MULTIPLIER    = 3.0    # take-profit at entry + 3×ATR (R:R ≈ 1.5:1)
+-_MAX_POSITION_FRAC    = 0.05   # max 5% of equity per single position
+-
+-
+-# ---------------------------------------------------------------------------
+-# RunResult
+-# ---------------------------------------------------------------------------
+ 
+ @dataclass
+ class RunResult:
+-    signals:       dict = field(default_factory=dict)    # ticker → LiveSignal
+-    orders:        dict = field(default_factory=dict)    # ticker → OrderResult | None
+-    skipped:       list = field(default_factory=list)    # [(ticker, reason)]
+-    errors:        list = field(default_factory=list)    # [(ticker, error_str)]
++    signals: dict = field(default_factory=dict)
++    orders: dict = field(default_factory=dict)
++    skipped: list = field(default_factory=list)
++    errors: list = field(default_factory=list)
+     account_equity: Optional[float] = None
++    targets: dict = field(default_factory=dict)
++    snapshot: dict = field(default_factory=dict)
+ 
+ 
+-# ---------------------------------------------------------------------------
+-# LiveEngine
+-# ---------------------------------------------------------------------------
+-
+ class LiveEngine:
+-    """
+-    End-to-end live signal and execution engine.
+-
+-    Parameters
+-    ----------
+-    tickers               : default ticker list (overridable at run() time)
+-    confidence_threshold  : minimum ensemble confidence to act  (default 0.38)
+-    max_portfolio_heat    : max fraction of equity deployed      (default 80%)
+-    max_position_frac     : max fraction per position            (default  5%)
+-    circuit_breaker_dd    : circuit breaker drawdown threshold   (default 15%)
+-    atr_tp_multiplier     : take-profit = entry + N × ATR        (default 3×)
+-    dry_run               : log signals but do NOT submit orders (default False)
+-    """
+-
+     def __init__(
+         self,
+-        tickers:              Optional[list[str]] = None,
+-        confidence_threshold: float = 0.38,
+-        max_portfolio_heat:   float = _MAX_PORTFOLIO_HEAT,
+-        max_position_frac:    float = _MAX_POSITION_FRAC,
+-        circuit_breaker_dd:   float = _CIRCUIT_BREAKER_DD,
+-        atr_tp_multiplier:    float = _ATR_TP_MULTIPLIER,
+-        dry_run:              bool  = False,
+-    ) -> None:
+-        self.tickers              = tickers or _DEFAULT_TICKERS
++        tickers=None,
++        confidence_threshold=0.38,
++        max_portfolio_heat=0.8,
++        max_position_frac=0.05,
++        circuit_breaker_dd=0.15,
++        atr_tp_multiplier=3.0,
++        dry_run=True,
++        use_policy=False,
++        strategy_mode="ensemble",
++        initial_capital=10000.0,
++        state_path=None,
++    ):
++        if strategy_mode not in ("ensemble", "meta"):
++            raise ValueError("strategy_mode must be ensemble or meta")
++        self.tickers = tickers or ["AAPL", "MSFT", "GOOGL", "SPY", "QQQ"]
+         self.confidence_threshold = confidence_threshold
+-        self.max_portfolio_heat   = max_portfolio_heat
+-        self.max_position_frac    = max_position_frac
+-        self.circuit_breaker_dd   = circuit_breaker_dd
+-        self.atr_tp_multiplier    = atr_tp_multiplier
+-        self.dry_run              = dry_run
+-
+-    # ------------------------------------------------------------------
+-    # Main entry point
+-    # ------------------------------------------------------------------
+-
+-    def run(
+-        self,
+-        tickers: Optional[list[str]] = None,
+-        force_refresh: bool = True,
+-    ) -> RunResult:
+-        """
+-        Run the full daily pipeline.
+-
+-        Parameters
+-        ----------
+-        tickers       : override the engine's default ticker list
+-        force_refresh : bypass DataLoader/FeatureEngineer caches
++        self.max_position_frac = max_position_frac
++        self.max_portfolio_heat = max_portfolio_heat
++        self.dry_run = dry_run
++        self.use_policy = use_policy
++        self.strategy_mode = strategy_mode
++        self.initial_capital = initial_capital
++        self.limits = Limits(
++            max_gross=max_portfolio_heat,
++            max_position=max_position_frac,
++            drawdown_limit=circuit_breaker_dd,
++        )
++        self.state_path = (
++            Path(state_path)
++            if state_path
++            else Path(__file__).resolve().parents[2] / "data/local-paper/account.sqlite"
++        )
++
++    def target_weights(self, signals):
++        weights = {}
++        for ticker, signal in signals.items():
++            frac = (
++                min(1 / len(signals), self.max_position_frac)
++                if signal.strategy_mode == "meta"
++                else min(max(signal.kelly_frac, 0.0), self.max_position_frac)
++            )
++            weights[ticker] = (
++                frac * signal.size_cap
++                if signal.direction == 2 and signal.eligible
++                else 0.0
++            )
++        if sum(weights.values()) > self.max_portfolio_heat:
++            scale = self.max_portfolio_heat / sum(weights.values())
++            weights = {s: w * scale for s, w in weights.items()}
++        return weights
+ 
+-        Returns
+-        -------
+-        RunResult with signals, orders, skipped list, and errors
+-        """
++    def run(self, tickers=None, force_refresh=True):
+         ticker_list = tickers or self.tickers
+-        result      = RunResult()
+-
+-        log.info("══════════════════════════════════════")
+-        log.info("  Live Engine  dry_run=%s", self.dry_run)
+-        log.info("  Tickers: %s", ticker_list)
+-        log.info("══════════════════════════════════════")
+-
+-        # ── Instantiate components ──────────────────────────────────────
+-        gen    = SignalGenerator(confidence_threshold=self.confidence_threshold)
+-        logger = SignalLogger()
+-        alerts = Alerts()
+-
+-        broker: Optional[AlpacaBroker] = None
+-        if not self.dry_run:
+-            try:
+-                broker = AlpacaBroker()
+-            except EnvironmentError as exc:
+-                log.warning(
+-                    "Alpaca credentials not found (%s). Switching to dry_run=True.", exc
+-                )
+-                self.dry_run = True
+-
+-        # ── Account snapshot ────────────────────────────────────────────
+-        equity = buying_power = 0.0
+-        if broker:
+-            try:
+-                equity        = broker.account_equity()
+-                buying_power  = broker.buying_power()
+-                result.account_equity = equity
+-                logger.log_equity(equity, buying_power)
+-                log.info("  Account equity: $%.2f  buying_power: $%.2f", equity, buying_power)
+-            except Exception as exc:
+-                log.warning("Could not fetch account data: %s", exc)
+-
+-        # ── Open positions (for heat check) ─────────────────────────────
+-        open_positions: dict[str, object] = {}
+-        if broker:
+-            try:
+-                for pos in broker.get_all_positions():
+-                    open_positions[pos.ticker] = pos
+-                total_market_val = sum(p.market_val for p in open_positions.values())
+-                if equity > 0:
+-                    current_heat = total_market_val / equity
+-                    log.info(
+-                        "  Portfolio heat: %.1f%%  (%d open positions)",
+-                        current_heat * 100, len(open_positions),
+-                    )
+-            except Exception as exc:
+-                log.warning("Could not fetch positions: %s", exc)
+-
+-        # ── Generate signals ─────────────────────────────────────────────
+-        log.info("\n── Generating signals …")
++        result = RunResult()
++        from src.risk.policy_engine import PolicyEngine
++
++        policy = (
++            PolicyEngine(base_confidence=self.confidence_threshold)
++            if self.use_policy
++            else None
++        )
++        if self.strategy_mode == "meta":
++            from src.live.meta_signal_generator import MetaSignalGenerator
++
++            gen = MetaSignalGenerator(policy_engine=policy)
++        else:
++            gen = SignalGenerator(
++                confidence_threshold=self.confidence_threshold, policy_engine=policy
++            )
+         signals = gen.generate_batch(ticker_list, force_refresh=force_refresh)
+         result.signals = signals
+-
+-        # ── Process each signal ──────────────────────────────────────────
+-        for ticker, signal in signals.items():
+-            logger.log_signal(signal)
+-
+-            log.info(
+-                "  %s → %s  conf=%.3f  kelly=%.3f",
+-                ticker, signal.label, signal.confidence, signal.kelly_frac,
++        for ticker in set(ticker_list) - set(signals):
++            errors = getattr(gen, "errors", {})
++            message = (
++                errors.get(ticker, "No usable signal")
++                if isinstance(errors, dict)
++                else "No usable signal"
+             )
+-
+-            # ── Risk gate 1: FLAT signal ─────────────────────────────────
+-            if signal.direction == 1:
+-                result.skipped.append((ticker, "flat_signal"))
+-                log.info("    → SKIP (%s is FLAT)", ticker)
+-                continue
+-
+-            # ── Risk gate 2: No Kelly edge ───────────────────────────────
+-            if signal.direction == 2 and signal.kelly_frac <= 0.0:
+-                result.skipped.append((ticker, "no_kelly_edge"))
+-                log.info("    → SKIP (%s has no Kelly edge)", ticker)
+-                continue
+-
+-            # ── Risk gate 3: Circuit breaker check ──────────────────────
+-            if broker and signal.direction == 2:
+-                try:
+-                    acct_eq = broker.account_equity()
+-                    logger.update_circuit_breaker(ticker, acct_eq)
+-                    if logger.is_circuit_broken(ticker, self.circuit_breaker_dd):
+-                        result.skipped.append((ticker, "circuit_breaker"))
+-                        alerts.circuit_breaker_tripped(ticker, self.circuit_breaker_dd)
+-                        log.warning("    → SKIP (%s circuit breaker active)", ticker)
+-                        continue
+-                except Exception as exc:
+-                    log.warning("    Circuit breaker check failed: %s", exc)
+-
+-            # ── Risk gate 4: Idempotency — already ordered today ─────────
+-            if broker and not self.dry_run:
+-                try:
+-                    if broker.already_ordered_today(ticker):
+-                        result.skipped.append((ticker, "already_ordered_today"))
+-                        log.info("    → SKIP (%s already ordered today)", ticker)
+-                        continue
+-                except Exception as exc:
+-                    log.warning("    Could not check today's orders: %s", exc)
+-
+-            # ── Risk gate 5: Portfolio heat ──────────────────────────────
+-            if broker and equity > 0 and signal.direction == 2:
+-                try:
+-                    positions = broker.get_all_positions()
+-                    total_val = sum(p.market_val for p in positions)
+-                    heat = total_val / equity
+-                    if heat >= self.max_portfolio_heat:
+-                        result.skipped.append((ticker, "portfolio_heat_limit"))
+-                        log.info(
+-                            "    → SKIP (%s: heat %.1f%% >= limit %.1f%%)",
+-                            ticker, heat * 100, self.max_portfolio_heat * 100,
+-                        )
+-                        continue
+-                except Exception as exc:
+-                    log.warning("    Heat check failed: %s", exc)
+-
+-            # ── Execute ──────────────────────────────────────────────────
+-            order = self._execute(ticker, signal, broker, equity)
+-            result.orders[ticker] = order
+-
+-            if order is not None:
+-                logger.log_order(order)
+-                if order.ok:
+-                    alerts.signal_fired(signal, order)
+-                else:
+-                    alerts.order_error(ticker, order.error or "unknown error")
+-
+-        # ── Daily summary alert ──────────────────────────────────────────
+-        if result.signals:
+-            alerts.daily_summary(list(result.signals.values()), equity)
+-
+-        log.info("\n── Run complete.")
+-        log.info("  Signals: %d  |  Orders: %d  |  Skipped: %d  |  Errors: %d",
+-                 len(result.signals), len(result.orders),
+-                 len(result.skipped), len(result.errors))
+-        return result
+-
+-    # ------------------------------------------------------------------
+-    # Execution logic
+-    # ------------------------------------------------------------------
+-
+-    def _execute(
+-        self,
+-        ticker:  str,
+-        signal,
+-        broker:  Optional[object],
+-        equity:  float,
+-    ):
+-        """
+-        Decide and submit the appropriate order based on the signal direction.
+-        Returns OrderResult or None in dry_run mode.
+-        """
+-        from src.live.broker import OrderResult
+-
+-        if self.dry_run or broker is None:
+-            log.info("    [dry_run] would %s %s", signal.label, ticker)
+-            return None
+-
++            result.errors.append((ticker, message))
++        # Batch atomicity: do not advance an account with missing instruments.
++        if result.errors or not signals:
++            return result
++        dates = {pd.Timestamp(s.date).isoformat() for s in signals.values()}
++        if len(dates) != 1:
++            result.errors.append(
++                ("batch", "Signals refer to different information cutoffs")
++            )
++            return result
++        result.targets = self.target_weights(signals)
++        prices = {t: s.close for t, s in signals.items()}
++        if self.dry_run:
++            result.orders = {t: None for t in signals}
++            return result
+         try:
+-            if signal.direction == 2:   # UP → enter long
+-                qty         = self._compute_qty(signal, equity, broker)
+-                take_profit = round(signal.close + self.atr_tp_multiplier * signal.atr, 2)
+-                order = broker.submit_bracket_buy(
+-                    ticker      = ticker,
+-                    qty         = qty,
+-                    stop_price  = signal.stop_loss,
+-                    take_profit = take_profit,
+-                )
+-
+-            elif signal.direction == 0:   # DOWN → exit long if held
+-                pos = broker.get_position(ticker)
+-                if pos is None:
+-                    log.info("    %s: DOWN signal but no open position — skip", ticker)
+-                    return None
+-                order = broker.close_position(ticker)
+-
+-            else:
+-                return None
+-
+-            return order
+-
+-        except Exception as exc:
+-            log.error("[Engine] order execution failed for %s: %s", ticker, exc)
+-            return OrderResult(
+-                order_id="", ticker=ticker, side="?", qty=0,
+-                order_type="?", status="error", error=str(exc),
++            account = Account(
++                ticker_list, self.initial_capital, self.limits, self.state_path
++            )
++            before = set(account.orders)
++            result.snapshot = ExecutionSession(account).on_close(
++                next(iter(dates)), prices, result.targets
+             )
++            result.account_equity = result.snapshot["equity"]
++            result.orders = {
++                oid: account.orders[oid] for oid in set(account.orders) - before
++            }
++        except Exception as exc:
++            result.errors.append(("execution", str(exc)))
++        return result
+ 
+-    def _compute_qty(self, signal, equity: float, broker) -> float:
+-        """
+-        Position size = min(kelly_frac, max_position_frac) × equity / close.
+-        Clips to available buying power.
+-        """
++    def _compute_qty(self, signal, equity, broker, n_tickers=1):
++        """Legacy sizing query only. Actual orders use target deltas and reservations."""
+         if equity <= 0 or signal.close <= 0:
+             return 0.0
+-
+-        frac        = min(signal.kelly_frac, self.max_position_frac)
+-        dollar_size = frac * equity
+-        try:
+-            bp          = broker.buying_power()
+-            dollar_size = min(dollar_size, bp * 0.95)   # leave 5% buffer
+-        except Exception:
+-            pass
+-
+-        qty = dollar_size / signal.close
+-        return round(max(qty, 0.0), 4)
++        frac = (
++            min(1 / max(n_tickers, 1), self.max_position_frac)
++            if signal.strategy_mode == "meta"
++            else min(signal.kelly_frac, self.max_position_frac)
++        )
++        return round(
++            max(
++                0,
++                min(
++                    equity * frac * signal.size_cap,
++                    broker.buying_power() * 0.95 if broker is not None else equity,
++                )
++                / signal.close,
++            ),
++            4,
++        )
+diff --git a/src/live/logger.py b/src/live/logger.py
+index db1913f..a450615 100644
+--- a/src/live/logger.py
++++ b/src/live/logger.py
+@@ -50,6 +50,8 @@ CREATE TABLE IF NOT EXISTS signals (
+     atr         REAL,
+     stop_loss   REAL,
+     close       REAL,
++    strategy_mode      TEXT,
++    selected_strategy  TEXT,
+     run_ts      TEXT    NOT NULL
+ );
+ 
+@@ -104,6 +106,22 @@ class SignalLogger:
+     def _init_db(self) -> None:
+         with self._conn() as conn:
+             conn.executescript(_DDL)
++            self._migrate(conn)
++
++    @staticmethod
++    def _migrate(conn: sqlite3.Connection) -> None:
++        """
++        Add columns introduced after the original schema to any pre-existing
++        database file (fresh databases already get them from _DDL above).
++        SQLite has no "ADD COLUMN IF NOT EXISTS" — probe and ignore duplicates.
++        """
++        existing = {row[1] for row in conn.execute("PRAGMA table_info(signals)")}
++        for col, decl in [
++            ("strategy_mode",     "TEXT"),
++            ("selected_strategy", "TEXT"),
++        ]:
++            if col not in existing:
++                conn.execute(f"ALTER TABLE signals ADD COLUMN {col} {decl}")
+ 
+     def _conn(self) -> sqlite3.Connection:
+         return sqlite3.connect(self.db_path)
+@@ -121,8 +139,9 @@ class SignalLogger:
+         sql = """
+             INSERT INTO signals
+               (ticker, date, direction, label, confidence,
+-               p_up, p_flat, p_down, kelly_frac, atr, stop_loss, close, run_ts)
+-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
++               p_up, p_flat, p_down, kelly_frac, atr, stop_loss, close,
++               strategy_mode, selected_strategy, run_ts)
++            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+         """
+         with self._conn() as conn:
+             conn.execute(sql, (
+@@ -138,6 +157,8 @@ class SignalLogger:
+                 signal.atr,
+                 signal.stop_loss,
+                 signal.close,
++                getattr(signal, "strategy_mode", "ensemble"),
++                getattr(signal, "selected_strategy", None),
+                 self._now(),
+             ))
+         log.debug("[Logger] signal logged: %s → %s", signal.ticker, signal.label)
+diff --git a/src/live/signal_generator.py b/src/live/signal_generator.py
+index 2350368..fb37509 100644
+--- a/src/live/signal_generator.py
++++ b/src/live/signal_generator.py
+@@ -56,6 +56,14 @@ class LiveSignal:
+     stop_loss:    float           # entry_price - 2×ATR (set after fill price known)
+     close:        float           # last close price used for sizing estimate
+ 
++    # Set by MetaSignalGenerator (src/live/meta_signal_generator.py); default
++    # values keep this dataclass fully backward-compatible with the static
++    # ensemble path and with existing SignalLogger rows.
++    size_cap:          float = 1.0
++    eligible:          bool = True
++    strategy_mode:     str           = "ensemble"   # "ensemble" | "meta"
++    selected_strategy: Optional[str] = None         # zoo strategy name, or "EW"
++
+     # Human-readable label
+     @property
+     def label(self) -> str:
+@@ -121,27 +129,37 @@ def _infer_latest_bar(
+ 
+     out_dir = _MODELS_ROOT / ticker
+ 
++    from src.models.bundle import validate_bundle
++    metadata = validate_bundle(out_dir)
++    for key in ["feature_history_start", "hmm_calibration_sha256"]:
++        if metadata.get(key) is not None and metadata[key] != feat_df.attrs.get(key):
++            raise ValueError(f"{ticker}: feature calibration differs from model bundle ({key}); rebuild bundle")
++    trained_through = pd.Timestamp(metadata["trained_through"])
++    if pd.Timestamp(feat_df.index[-1]) <= trained_through:
++        raise ValueError(f"{ticker}: inference date must follow model training cutoff")
+     xgb  = XGBModel.load(str(out_dir / "xgb_final.json"))
+     lgbm = LGBMModel.load(str(out_dir / "lgbm_final.txt"))
+     lstm_path = out_dir / "lstm_final.pt"
+-    lstm = LSTMModel.load(str(lstm_path)) if lstm_path.exists() else None
+-
+-    available = [c for c in feat_cols if c in feat_df.columns]
+-    X = feat_df[available].dropna()
+-    if len(X) == 0:
+-        raise ValueError(f"{ticker}: feature matrix has no clean rows.")
+-
+-    # Use only the last row for live inference
+-    x_arr = X.iloc[[-1]].values.astype(np.float32)
+-
+-    xgb_p  = xgb.predict_proba(x_arr)
+-    lgbm_p = lgbm.predict_proba(x_arr)
+-    lstm_p = lstm.predict_proba(x_arr) if lstm else np.full((1, 3), 1 / 3)
++    lstm = None if metadata["skip_lstm"] else LSTMModel.load(str(lstm_path))
++
++    missing = set(feat_cols) - set(feat_df.columns)
++    if missing:
++        raise ValueError(f"{ticker}: required model features missing: {sorted(missing)}; rebuild matching feature bundle")
++    needed = lstm.seq_len if lstm else 1
++    X = feat_df[feat_cols].tail(needed)
++    if len(X) < needed or not np.isfinite(X.to_numpy(dtype=float)).all():
++        raise ValueError(f"{ticker}: need {needed} consecutive complete latest feature rows")
++    x_arr = X.to_numpy(dtype=np.float32)
++    xgb_p = xgb.predict_proba(x_arr[-1:])
++    lgbm_p = lgbm.predict_proba(x_arr[-1:])
++    lstm_p = lstm.predict_proba(x_arr)[-1:] if lstm else np.full((1,3), 1/3)
+ 
+     weights = [1 / 3, 1 / 3, 1 / 3] if lstm else [0.5, 0.5, 0.0]
+     ens     = EnsembleClassifier(weights=weights)
+     proba   = ens.predict_proba(xgb_p, lgbm_p, lstm_p)[0]   # shape (3,)
+ 
++    if not np.isfinite(proba).all() or (proba < 0).any() or not np.isclose(proba.sum(), 1):
++        raise ValueError(f"{ticker}: invalid model probabilities")
+     return {"p_down": float(proba[0]), "p_flat": float(proba[1]), "p_up": float(proba[2])}
+ 
+ 
+@@ -163,9 +181,17 @@ class SignalGenerator:
+         self,
+         confidence_threshold: float = _CONFIDENCE_THRESHOLD,
+         atr_multiplier:       float = 2.0,
++        policy_engine=None,
+     ) -> None:
++        """
++        policy_engine : optional src.risk.policy_engine.PolicyEngine — when
++                        given, confidence threshold and ATR stop multiplier
++                        are computed per ticker from the latest market state
++                        (dynamic policy layer) instead of the static values.
++        """
+         self.confidence_threshold = confidence_threshold
+         self.atr_multiplier       = atr_multiplier
++        self.policy_engine        = policy_engine
+ 
+     # ------------------------------------------------------------------
+     # Public API
+@@ -199,12 +225,17 @@ class SignalGenerator:
+         # ── 1. Load OHLCV + supporting series ──────────────────────────
+         ohlcv = loader.load_equity(ticker, force_refresh=force_refresh)
+ 
++        required_columns = _load_feature_cols(ticker)
+         spy_df = macro = btc_df = None
+         for name, fn in [
+-            ("SPY",      lambda: loader.load_equity("SPY", force_refresh=False)),
+-            ("macro",    lambda: loader.load_macro(force_refresh=False)),
+-            ("BTC/USDT", lambda: loader.load_crypto("BTC/USDT", force_refresh=False)),
++            ("SPY",      lambda: loader.load_equity("SPY", force_refresh=force_refresh)),
++            ("macro",    lambda: loader.load_macro(force_refresh=force_refresh)),
++            ("BTC/USDT", lambda: loader.load_crypto("BTC/USDT", force_refresh=force_refresh)),
+         ]:
++            if name == "macro" and not any(c.startswith("macro_") for c in required_columns):
++                continue
++            if name == "BTC/USDT" and not any(c.startswith("btc_") for c in required_columns):
++                continue
+             try:
+                 if name == "SPY":
+                     spy_df = fn()
+@@ -222,6 +253,7 @@ class SignalGenerator:
+             spy_df     = spy_df,
+             btc_df     = btc_df,
+             macro_df   = macro,
++            force_refresh = force_refresh,
+         )
+ 
+         # ── 3. Load feature columns expected by models ──────────────────
+@@ -235,23 +267,39 @@ class SignalGenerator:
+         raw_signal  = int(np.argmax([p_down, p_flat, p_up]))
+         confidence  = max(p_down, p_flat, p_up)
+ 
+-        # ── 5. Confidence filter ────────────────────────────────────────
+-        direction = raw_signal if confidence >= self.confidence_threshold else 1
++        # ── 5. Resolve operating policy (static or dynamic) ─────────────
++        conf_threshold = self.confidence_threshold
++        atr_multiplier = self.atr_multiplier
++        policy_eligible = True
++        size_cap = 1.0
++        if self.policy_engine is not None:
++            decision = self.policy_engine.decide_latest(feat_df)
++            conf_threshold  = decision.confidence_threshold
++            atr_multiplier  = decision.atr_multiplier
++            policy_eligible = decision.eligible
++            size_cap = decision.size_cap
++
++        # ── 5b. Confidence filter + eligibility gate ─────────────────────
++        direction = raw_signal if (confidence >= conf_threshold and policy_eligible) else 1
+ 
+         # ── 6. Kelly sizing (uses calibrated win/loss ratio) ─────────────
+-        wl_ratio   = _load_win_loss_ratio(ticker)
++        wl_ratio   = 1.5  # fixed exploratory assumption; no full-history outcome calibration
+         kelly_frac = _kelly_fraction(p_up, wl_ratio) if direction == 2 else 0.0
+ 
+         # ── 7. ATR stop level (estimated from last close) ────────────────
+-        last_row  = feat_df.dropna(subset=["atr_14"]).iloc[-1]
++        last_row  = feat_df.iloc[-1]
++        if not np.isfinite(last_row.get("atr_14", np.nan)):
++            raise ValueError(f"{ticker}: latest ATR missing")
+         atr_val   = float(last_row.get("atr_14", 0.0))
+         last_close = float(feat_df["Close"].iloc[-1])
+-        stop_loss  = last_close - self.atr_multiplier * atr_val  # for long positions
++        stop_loss  = last_close - atr_multiplier * atr_val  # for long positions
+ 
+         signal_date = feat_df.index[-1].to_pydatetime().replace(tzinfo=timezone.utc)
+ 
+         signal = LiveSignal(
+             ticker      = ticker,
++            size_cap    = size_cap,
++            eligible    = policy_eligible,
+             date        = signal_date,
+             direction   = direction,
+             confidence  = round(confidence, 4),
+@@ -277,9 +325,11 @@ class SignalGenerator:
+     ) -> dict[str, LiveSignal]:
+         """Generate signals for multiple tickers. Skips tickers that fail."""
+         results: dict[str, LiveSignal] = {}
++        self.errors = {}
+         for ticker in tickers:
+             try:
+                 results[ticker] = self.generate(ticker, force_refresh=force_refresh)
+             except Exception as exc:
+                 log.error("[SignalGenerator] %s failed: %s", ticker, exc)
++                self.errors[ticker] = str(exc)
+         return results
+diff --git a/src/models/ensemble.py b/src/models/ensemble.py
+index 5c41c11..876a23a 100644
+--- a/src/models/ensemble.py
++++ b/src/models/ensemble.py
+@@ -1,10 +1,17 @@
+ """
+-Phase 03 — Ensemble Classifier (Soft-Vote)
++Phase 03 — Ensemble Classifier (Soft-Vote / Mixture-of-Experts)
+ 
+-Combines probability outputs from XGBoost, LightGBM, and LSTM via a
+-weighted soft-vote average.
++Combines probability outputs from XGBoost, LightGBM, and LSTM.
+ 
+-  P_ensemble[t, c] = Σ_m  w_m * P_m[t, c]   for class c ∈ {0,1,2}
++Two modes (select via ensemble_mode):
++
++  static : P_ensemble[t, c] = Σ_m  w_m        * P_m[t, c]
++           Fixed weight vector for every bar (original behaviour).
++
++  moe    : P_ensemble[t, c] = Σ_m  w_m(x_t)   * P_m[t, c]
++           Per-bar weights from a fitted GatingModel (src/models/gating.py)
++           conditioned on HMM regime, volatility, drawdown state, and
++           rolling per-expert accuracy.
+ 
+ Default weights are equal (1/3 each).  Weights can be overridden to reflect
+ per-model out-of-sample performance (e.g., weight by validation F1 score).
+@@ -16,28 +23,47 @@ optional confidence score (max probability).
+ 
+ from __future__ import annotations
+ 
+-from typing import Optional
++from typing import TYPE_CHECKING, Literal, Optional
+ 
+ import numpy as np
+ 
++if TYPE_CHECKING:
++    import pandas as pd
++    from src.models.gating import GatingModel
++
+ 
+ _CLASS_NAMES = {0: "DOWN", 1: "FLAT", 2: "UP"}
+ 
+ 
+ class EnsembleClassifier:
+     """
+-    Soft-vote ensemble over three model outputs.
++    Ensemble over three model outputs.
+ 
+     Parameters
+     ----------
+-    weights : optional (3,) weight vector [w_xgb, w_lgbm, w_lstm].
+-              Defaults to equal weights.  Weights are L1-normalized internally.
++    weights       : optional (3,) weight vector [w_xgb, w_lgbm, w_lstm].
++                    Defaults to equal weights.  L1-normalized internally.
++                    Used in 'static' mode and as the 'moe' fallback when no
++                    gate/context is supplied.
++    ensemble_mode : 'static' (fixed soft-vote, default) or 'moe'
++                    (context-dependent weights from a GatingModel).
++    gate          : fitted GatingModel; required for 'moe' mode.
+     """
+ 
+     def __init__(
+         self,
+         weights: Optional[list[float]] = None,
++        ensemble_mode: Literal["static", "moe"] = "static",
++        gate: Optional["GatingModel"] = None,
+     ) -> None:
++        if ensemble_mode not in ("static", "moe"):
++            raise ValueError(f"ensemble_mode must be 'static' or 'moe', got {ensemble_mode!r}")
++        if ensemble_mode == "moe" and gate is None:
++            raise ValueError("ensemble_mode='moe' requires a fitted GatingModel via gate=")
++
++        self.ensemble_mode = ensemble_mode
++        self.gate          = gate
++
+         if weights is not None:
+             w = np.array(weights, dtype=float)
+             self.weights = w / w.sum()
+@@ -53,6 +79,7 @@ class EnsembleClassifier:
+         xgb_proba:  np.ndarray,
+         lgbm_proba: np.ndarray,
+         lstm_proba: np.ndarray,
++        context: Optional["pd.DataFrame"] = None,
+     ) -> np.ndarray:
+         """
+         Weighted average of the three probability matrices.
+@@ -60,6 +87,10 @@ class EnsembleClassifier:
+         Parameters
+         ----------
+         xgb_proba, lgbm_proba, lstm_proba : ndarray of shape (n, 3)
++        context : gate context DataFrame (build_gate_context output),
++                  aligned row-for-row with the probability matrices.
++                  Only used in 'moe' mode; when omitted the ensemble
++                  falls back to its static weights.
+ 
+         Returns
+         -------
+@@ -69,11 +100,24 @@ class EnsembleClassifier:
+         self._validate(lgbm_proba, "lgbm_proba")
+         self._validate(lstm_proba, "lstm_proba")
+ 
+-        proba = (
+-            self.weights[0] * xgb_proba
+-            + self.weights[1] * lgbm_proba
+-            + self.weights[2] * lstm_proba
+-        )
++        if self.ensemble_mode == "moe" and context is not None:
++            if len(context) != len(xgb_proba):
++                raise ValueError(
++                    f"context has {len(context)} rows but probabilities have "
++                    f"{len(xgb_proba)} — they must align row-for-row"
++                )
++            W = self.gate.predict_weights(context)          # (n, 3)
++            proba = (
++                W[:, [0]] * xgb_proba
++                + W[:, [1]] * lgbm_proba
++                + W[:, [2]] * lstm_proba
++            )
++        else:
++            proba = (
++                self.weights[0] * xgb_proba
++                + self.weights[1] * lgbm_proba
++                + self.weights[2] * lstm_proba
++            )
+         # Re-normalise to handle any floating-point drift
+         row_sums = proba.sum(axis=1, keepdims=True)
+         return proba / np.where(row_sums == 0, 1.0, row_sums)
+@@ -83,9 +127,13 @@ class EnsembleClassifier:
+         xgb_proba:  np.ndarray,
+         lgbm_proba: np.ndarray,
+         lstm_proba: np.ndarray,
++        context: Optional["pd.DataFrame"] = None,
+     ) -> np.ndarray:
+         """Return argmax class labels (0=DOWN, 1=FLAT, 2=UP)."""
+-        return np.argmax(self.predict_proba(xgb_proba, lgbm_proba, lstm_proba), axis=1)
++        return np.argmax(
++            self.predict_proba(xgb_proba, lgbm_proba, lstm_proba, context=context),
++            axis=1,
++        )
+ 
+     def signal_frame(
+         self,
+diff --git a/src/models/labels.py b/src/models/labels.py
+index 842e1f2..e1c5d44 100644
+--- a/src/models/labels.py
++++ b/src/models/labels.py
+@@ -61,6 +61,8 @@ def make_labels(
+                index matches df.index
+     fwd_ret  : raw forward return Series (useful for analysis)
+     """
++    if horizon < 1 or threshold < 0:
++        raise ValueError("Positive label horizon and nonnegative threshold required")
+     if close_col not in df.columns:
+         raise ValueError(f"Column '{close_col}' not found in DataFrame.")
+ 
+diff --git a/src/models/lgbm_model.py b/src/models/lgbm_model.py
+index e1192ef..5827cfe 100644
+--- a/src/models/lgbm_model.py
++++ b/src/models/lgbm_model.py
+@@ -113,15 +113,24 @@ class LGBMModel:
+         X_train: np.ndarray,
+         y_train: np.ndarray,
+         class_weight_map: dict[int, float] | None = None,
++        label_horizon: int = 5,
+     ) -> "LGBMModel":
+-        X_train = self.scaler_.fit_transform(X_train)
++        raw_train = np.asarray(X_train)
+ 
+         cw    = class_weight_map or {0: 1.0, 1: 1.0, 2: 1.0}
+         w_arr = np.array([cw.get(int(c), 1.0) for c in y_train])
+ 
+         n_val  = max(10, int(len(X_train) * self.val_fraction))
+-        X_tr, X_val = X_train[:-n_val], X_train[-n_val:]
+-        y_tr, y_val = y_train[:-n_val], y_train[-n_val:]
++        inner_end = len(raw_train) - n_val - label_horizon
++        if inner_end < 20:
++            raise ValueError("Insufficient purged inner training history")
++        inner_scaler = RobustScaler().fit(raw_train[:inner_end])
++        X_tr = inner_scaler.transform(raw_train[:inner_end])
++        X_val = inner_scaler.transform(raw_train[-n_val:])
++        y_tr, y_val = y_train[:inner_end], y_train[-n_val:]
++        from src.models.labels import compute_class_weights
++        import pandas as pd
++        cw = compute_class_weights(pd.Series(y_tr))
+ 
+         study = optuna.create_study(
+             direction = "maximize",
+@@ -146,6 +155,7 @@ class LGBMModel:
+             verbosity    = -1,
+             n_jobs       = -1,
+         )
++        X_train = self.scaler_.fit_transform(raw_train)
+         self.model_.fit(X_train, y_train, sample_weight=w_arr)
+         return self
+ 
+diff --git a/src/models/lstm_model.py b/src/models/lstm_model.py
+index 8ee6b59..38b0f32 100644
+--- a/src/models/lstm_model.py
++++ b/src/models/lstm_model.py
+@@ -18,7 +18,7 @@ Training features
+ Predict contract
+ ----------------
+   predict_proba(X) → ndarray (n_rows, 3)
+-  The first (seq_len - 1) rows get a dummy uniform probability [1/3, 1/3, 1/3]
++  The first (seq_len - 1) rows are unavailable (NaN)
+   because there is not enough history to form a complete sequence.
+ """
+ 
+@@ -167,6 +167,7 @@ class LSTMModel:
+         X_val:   Optional[np.ndarray] = None,
+         y_val:   Optional[np.ndarray] = None,
+         class_weight_map: dict[int, float] | None = None,
++        label_horizon: int = 5,
+     ) -> "LSTMModel":
+         """
+         Train the LSTM with optional validation set for early stopping.
+@@ -177,24 +178,25 @@ class LSTMModel:
+         torch.manual_seed(self.random_state)
+         np.random.seed(self.random_state)
+ 
+-        X_train = self.scaler_.fit_transform(X_train)
+         self.n_features_ = X_train.shape[1]
+-
+-        # Validation split
+         if X_val is None:
+-            n_val  = max(self.seq_len + 1, int(len(X_train) * 0.2))
+-            X_val, X_train = X_train[-n_val:], X_train[:-n_val]
+-            y_val, y_train = y_val[-n_val:] if y_val is not None else y_train[-n_val:], y_train[:-n_val]
+-        else:
+-            X_val = self.scaler_.transform(X_val)
++            n_val = max(self.seq_len + 1, int(len(X_train) * 0.2))
++            end = len(X_train) - n_val - label_horizon
++            if end < self.seq_len:
++                raise ValueError("Insufficient purged LSTM training history")
++            X_val, y_val = X_train[-n_val:], y_train[-n_val:]
++            X_train, y_train = X_train[:end], y_train[:end]
++        X_train = self.scaler_.fit_transform(X_train)
++        X_val = self.scaler_.transform(X_val)
++        from src.models.labels import compute_class_weights
++        import pandas as pd
++        class_weight_map = compute_class_weights(pd.Series(y_train))
+ 
+         train_ds = SequenceDataset(X_train, y_train, self.seq_len)
+         val_ds   = SequenceDataset(X_val,   y_val,   self.seq_len)
+ 
+         if len(train_ds) < 1:
+-            log.warning("LSTM: too few training samples for seq_len=%d; skipping.", self.seq_len)
+-            self.net_ = _LSTMNet(self.n_features_, self.hidden_dim, self.n_layers, dropout=self.dropout)
+-            return self
++            raise ValueError("Insufficient LSTM training samples")
+ 
+         train_dl = DataLoader(train_ds, batch_size=self.batch_size, shuffle=False)
+         val_dl   = DataLoader(val_ds,   batch_size=self.batch_size, shuffle=False)
+@@ -274,17 +276,17 @@ class LSTMModel:
+         """
+         Predict class probabilities for each row.
+         Rows without a full seq_len history (the first seq_len-1 rows) receive
+-        uniform probability [1/3, 1/3, 1/3].
++        NaN probabilities; an entirely short sequence raises an error.
+         """
+         if self.net_ is None:
+             raise RuntimeError("Call fit() before predict_proba().")
+ 
+         X_scaled = self.scaler_.transform(X)
+         n        = len(X_scaled)
+-        result   = np.full((n, 3), 1.0 / 3.0, dtype=np.float32)
++        result   = np.full((n, 3), np.nan, dtype=np.float32)
+ 
+         if n < self.seq_len:
+-            return result
++            raise ValueError(f"LSTM requires {self.seq_len} consecutive feature rows; received {n}")
+ 
+         # Build sequences for all valid positions
+         seqs  = np.stack([X_scaled[i : i + self.seq_len]
+diff --git a/src/models/trainer.py b/src/models/trainer.py
+index abc74ac..c2735dd 100644
+--- a/src/models/trainer.py
++++ b/src/models/trainer.py
+@@ -169,23 +169,6 @@ class ModelTrainer:
+             (y == 2).mean() * 100,
+         )
+ 
+-        # Fast SHAP-based feature selection on a held-out 20 % slice
+-        # (uses the same FeatureEngineer.select_features helper from Phase 02)
+-        if len(X) >= 200 and top_n_features < len(feat_cols):
+-            try:
+-                from src.features.pipeline import FeatureEngineer
+-                fe = FeatureEngineer()
+-                df_sel = X.copy()
+-                df_sel["label"] = y.values
+-                selected = fe.select_features(
+-                    df_sel, target_col="label", top_n=top_n_features
+-                )
+-                feat_cols = selected
+-                X = X[feat_cols]
+-                log.info("SHAP selected %d features.", len(feat_cols))
+-            except Exception as exc:
+-                log.warning("SHAP selection failed (%s); using all features.", exc)
+-
+         return X, y, feat_cols
+ 
+     # ------------------------------------------------------------------
+@@ -243,7 +226,11 @@ class ModelTrainer:
+         X_arr = X.values.astype(np.float32)
+         y_arr = y.values.astype(np.int64)
+ 
+-        cw = compute_class_weights(y)
++        if embargo_days < horizon:
++            raise ValueError("embargo_days must be at least the forward label horizon")
++
++        if features.attrs.get("causality_version") != 2:
++            raise ValueError("Legacy or unversioned features: rebuild with the causal FeatureEngineer before training")
+ 
+         splitter = WalkForwardSplit(
+             n_splits     = n_splits,
+@@ -285,13 +272,21 @@ class ModelTrainer:
+                     te_idx[0], te_idx[-1], len(te_idx),
+                 )
+ 
+-                X_tr, y_tr = X_arr[tr_idx], y_arr[tr_idx]
+-                X_te, y_te = X_arr[te_idx], y_arr[te_idx]
++                from src.features.pipeline import FeatureEngineer
++                fold_cols = feat_cols
++                if top_n_features < len(feat_cols):
++                    selection = X.iloc[tr_idx].copy()
++                    selection["label"] = y.iloc[tr_idx].to_numpy()
++                    fold_cols = FeatureEngineer().select_features(selection, target_col="label", top_n=top_n_features)
++                col_idx = [feat_cols.index(c) for c in fold_cols]
++                X_tr, y_tr = X_arr[tr_idx][:, col_idx], y_arr[tr_idx]
++                X_te, y_te = X_arr[te_idx][:, col_idx], y_arr[te_idx]
++                cw = compute_class_weights(pd.Series(y_tr))
+ 
+                 # ── XGBoost ──────────────────────────────────────────
+                 log.info("  [XGB] tuning %d trials …", n_trials_xgb)
+                 xgb = XGBModel(n_trials=n_trials_xgb, random_state=random_state)
+-                xgb.fit(X_tr, y_tr, class_weight_map=cw)
++                xgb.fit(X_tr, y_tr, class_weight_map=cw, label_horizon=horizon)
+                 xgb_proba_te = xgb.predict_proba(X_te)
+                 oos_preds_xgb[te_idx] = xgb_proba_te
+                 best_xgb_params  = xgb.best_params_
+@@ -304,7 +299,7 @@ class ModelTrainer:
+                 # ── LightGBM ─────────────────────────────────────────
+                 log.info("  [LGBM] tuning %d trials …", n_trials_lgbm)
+                 lgbm = LGBMModel(n_trials=n_trials_lgbm, random_state=random_state)
+-                lgbm.fit(X_tr, y_tr, class_weight_map=cw)
++                lgbm.fit(X_tr, y_tr, class_weight_map=cw, label_horizon=horizon)
+                 lgbm_proba_te = lgbm.predict_proba(X_te)
+                 oos_preds_lgbm[te_idx] = lgbm_proba_te
+                 best_lgbm_params = lgbm.best_params_
+@@ -322,8 +317,9 @@ class ModelTrainer:
+                         n_epochs = lstm_epochs,
+                         random_state = random_state,
+                     )
+-                    lstm.fit(X_tr, y_tr, class_weight_map=cw)
+-                    lstm_proba_te = lstm.predict_proba(X_te)
++                    lstm.fit(X_tr, y_tr, class_weight_map=cw, label_horizon=horizon)
++                    context = X_arr[max(0, te_idx[0] - lstm_seq_len + 1):te_idx[-1] + 1][:, col_idx]
++                    lstm_proba_te = lstm.predict_proba(context)[-len(te_idx):]
+                     oos_preds_lstm[te_idx] = lstm_proba_te
+                     last_lstm = lstm
+ 
+@@ -334,8 +330,7 @@ class ModelTrainer:
+                     lstm_m = {"accuracy": 0.0, "f1_macro": 0.0}
+ 
+                 # ── Ensemble ──────────────────────────────────────────
+-                ens_weights = [xgb_m["f1_macro"], lgbm_m["f1_macro"], lstm_m["f1_macro"]] \
+-                              if not skip_lstm else [0.5, 0.5, 0.0]
++                ens_weights = self._w(skip_lstm)
+                 ens = EnsembleClassifier(weights=ens_weights)
+                 ens_proba  = ens.predict_proba(
+                     xgb_proba_te, lgbm_proba_te,
+@@ -349,6 +344,12 @@ class ModelTrainer:
+                 fold_r = {
+                     "fold":        fold,
+                     "train_rows":  len(tr_idx),
++                    "train_end": str(X.index[tr_idx[-1]]),
++                    "label_available_through": str(features.index[features.index.get_loc(X.index[tr_idx[-1]]) + horizon]),
++                    "test_end": str(X.index[te_idx[-1]]),
++                    "decision_start": str(X.index[te_idx[0]]),
++                    "feature_cols": fold_cols,
++                    "class_weights": cw,
+                     "test_rows":   len(te_idx),
+                     "elapsed_s":   elapsed,
+                     "xgb":         xgb_m,
+@@ -368,7 +369,7 @@ class ModelTrainer:
+             tested_mask = ~np.isnan(oos_preds_xgb[:, 0])
+             if tested_mask.sum() > 0:
+                 y_oos      = y_arr[tested_mask]
+-                ens_final  = EnsembleClassifier()
++                ens_final  = EnsembleClassifier(weights=self._w(skip_lstm))
+                 oos_proba  = ens_final.predict_proba(
+                     oos_preds_xgb[tested_mask],
+                     oos_preds_lgbm[tested_mask],
+@@ -406,7 +407,44 @@ class ModelTrainer:
+                            str(oos_path), compression="snappy")
+             log.info("OOS predictions saved → %s  (%d rows)", oos_path, len(oos_df))
+ 
+-        # ── Save final models (retrained on all data) ─────────────────
++            # Per-model OOS probabilities — required to train/evaluate the
++            # MoE gating model (src/models/gating.py) without retraining.
++            per_model_df = pd.DataFrame(
++                {
++                    "xgb_p_down":  oos_preds_xgb[tested_mask, 0],
++                    "xgb_p_flat":  oos_preds_xgb[tested_mask, 1],
++                    "xgb_p_up":    oos_preds_xgb[tested_mask, 2],
++                    "lgbm_p_down": oos_preds_lgbm[tested_mask, 0],
++                    "lgbm_p_flat": oos_preds_lgbm[tested_mask, 1],
++                    "lgbm_p_up":   oos_preds_lgbm[tested_mask, 2],
++                    "lstm_p_down": oos_preds_lstm[tested_mask, 0],
++                    "lstm_p_flat": oos_preds_lstm[tested_mask, 1],
++                    "lstm_p_up":   oos_preds_lstm[tested_mask, 2],
++                    "true_label":  y_arr[tested_mask],
++                },
++                index = X.index[tested_mask],
++            )
++            pm_path = self.models_dir / ticker / "oos_predictions_per_model.parquet"
++            pq.write_table(pa.Table.from_pandas(per_model_df, preserve_index=True),
++                           str(pm_path), compression="snappy")
++            log.info("Per-model OOS predictions saved → %s", pm_path)
++
++        # Refit deployable bundles using only labels matured by the snapshot end.
++        if not fold_results:
++            raise ValueError("No eligible chronological training folds")
++        if top_n_features < len(feat_cols):
++            selection = X.copy()
++            selection["label"] = y.to_numpy()
++            feat_cols = FeatureEngineer().select_features(selection, target_col="label", top_n=top_n_features)
++        final_X = X[feat_cols].to_numpy(dtype=np.float32)
++        final_cw = compute_class_weights(y)
++        last_xgb = XGBModel(n_trials=n_trials_xgb, random_state=random_state).fit(
++            final_X, y_arr, class_weight_map=final_cw, label_horizon=horizon)
++        last_lgbm = LGBMModel(n_trials=n_trials_lgbm, random_state=random_state).fit(
++            final_X, y_arr, class_weight_map=final_cw, label_horizon=horizon)
++        if not skip_lstm:
++            last_lstm = LSTMModel(seq_len=lstm_seq_len, n_epochs=lstm_epochs, random_state=random_state).fit(
++                final_X, y_arr, class_weight_map=final_cw, label_horizon=horizon)
+         model_paths = self._save_final_models(
+             ticker, feat_cols, last_xgb, last_lgbm,
+             last_lstm if not skip_lstm else None,
+@@ -415,6 +453,13 @@ class ModelTrainer:
+         elapsed_total = time.time() - t0
+         results = {
+             "ticker":           ticker,
++            "causality_version": 2,
++            "trained_through": str(features.index[-1]),
++            "feature_history_start": features.attrs.get("feature_history_start"),
++            "hmm_calibration_sha256": features.attrs.get("hmm_calibration_sha256"),
++            "ensemble_weights": self._w(skip_lstm),
++            "skip_lstm": skip_lstm,
++            "always_up_accuracy": float((y_arr[tested_mask] == 2).mean()),
+             "horizon":          horizon,
+             "threshold":        threshold,
+             "n_folds":          len(fold_results),
+@@ -432,9 +477,11 @@ class ModelTrainer:
+         out_json.parent.mkdir(parents=True, exist_ok=True)
+         with open(out_json, "w") as f:
+             json.dump(
+-                {k: v for k, v in results.items() if k != "fold_metrics"},
++                results,
+                 f, indent=2, default=str,
+             )
++        from src.models.bundle import seal_bundle
++        seal_bundle(out_json.parent)
+         log.info("=== ModelTrainer.run(%s) done in %.0fs ===", ticker, elapsed_total)
+         return results
+ 
+diff --git a/src/models/xgb_model.py b/src/models/xgb_model.py
+index c57ce29..2561ebf 100644
+--- a/src/models/xgb_model.py
++++ b/src/models/xgb_model.py
+@@ -120,6 +120,7 @@ class XGBModel:
+         X_train: np.ndarray,
+         y_train: np.ndarray,
+         class_weight_map: dict[int, float] | None = None,
++        label_horizon: int = 5,
+     ) -> "XGBModel":
+         """
+         Tune then retrain on full training data.
+@@ -130,7 +131,7 @@ class XGBModel:
+         y_train          : labels {0, 1, 2}
+         class_weight_map : {class_int: weight} from labels.compute_class_weights()
+         """
+-        X_train = self.scaler_.fit_transform(X_train)
++        raw_train = np.asarray(X_train)
+ 
+         # Build per-sample weight array
+         cw = class_weight_map or {0: 1.0, 1: 1.0, 2: 1.0}
+@@ -138,8 +139,16 @@ class XGBModel:
+ 
+         # Inner validation split for Optuna
+         n_val  = max(10, int(len(X_train) * self.val_fraction))
+-        X_tr, X_val = X_train[:-n_val], X_train[-n_val:]
+-        y_tr, y_val = y_train[:-n_val], y_train[-n_val:]
++        inner_end = len(raw_train) - n_val - label_horizon
++        if inner_end < 20:
++            raise ValueError("Insufficient purged inner training history")
++        inner_scaler = RobustScaler().fit(raw_train[:inner_end])
++        X_tr = inner_scaler.transform(raw_train[:inner_end])
++        X_val = inner_scaler.transform(raw_train[-n_val:])
++        y_tr, y_val = y_train[:inner_end], y_train[-n_val:]
++        from src.models.labels import compute_class_weights
++        import pandas as pd
++        cw = compute_class_weights(pd.Series(y_tr))
+         w_tr        = w_arr[:-n_val]
+ 
+         # Build a weight array compatible with the objective signature
+@@ -170,6 +179,7 @@ class XGBModel:
+             verbosity    = 0,
+             n_jobs       = 1,
+         )
++        X_train = self.scaler_.fit_transform(raw_train)
+         self.model_.fit(X_train, y_train, sample_weight=w_arr)
+         return self
+ 
+diff --git a/src/research/env_analyzer.py b/src/research/env_analyzer.py
+index 67e87ae..199427a 100644
+--- a/src/research/env_analyzer.py
++++ b/src/research/env_analyzer.py
+@@ -49,7 +49,7 @@ _STRATEGY_NAMES = [
+     "Pairs_StatArb", "Carry_Proxy", "Vol_Breakout", "Alpha_Trends",
+ ]
+ 
+-_REGIME_LABELS = {0: "bear", 1: "ranging", 2: "bull"}
++_REGIME_LABELS = {-1: "unknown_warmup", 0: "bear", 1: "ranging", 2: "bull"}
+ 
+ 
+ # ---------------------------------------------------------------------------
+@@ -196,7 +196,7 @@ class EnvAnalyzer:
+                     mask   = merged["regime"] == regime_val
+                     subset = merged.loc[mask, "r"]
+                     n      = len(subset)
+-                    if n < 5:
++                    if n == 0:
+                         continue
+                     rows.append({
+                         "ticker":      ticker,
+diff --git a/src/research/meta_strategy.py b/src/research/meta_strategy.py
+index 569ce78..f1ff010 100644
+--- a/src/research/meta_strategy.py
++++ b/src/research/meta_strategy.py
+@@ -283,14 +283,11 @@ class MetaStrategy:
+         portfolio = ret_df.mean(axis=1).rename("portfolio")
+ 
+         # ── Benchchmarks ────────────────────────────────────────────────
+-        spy_bh: Optional[pd.Series] = None
+-        try:
+-            spy_eq = pd.read_parquet(_PROJECT_ROOT / "data" / "backtest" / "SPY" / "equity_curves.parquet")
+-            spy_bh = spy_eq["buy_hold"].pct_change().fillna(0.0)
+-            spy_bh.index = pd.to_datetime(spy_bh.index, utc=True)
+-            spy_bh = spy_bh.reindex(portfolio.index).fillna(0.0)
+-        except Exception as exc:
+-            log.warning("Could not load SPY benchmark: %s", exc)
++        spy_raw = pd.read_parquet(_PROJECT_ROOT / "data" / "parquet" / "SPY_daily.parquet")
++        spy_raw.index = pd.to_datetime(spy_raw.index, utc=True)
++        spy_bh = spy_raw["Close"].pct_change(fill_method=None).reindex(portfolio.index)
++        if spy_bh.isna().any():
++            raise ValueError("SPY benchmark has missing observations; obtain a matching frozen snapshot")
+ 
+         # Best single zoo strategy portfolio (same strategy on all tickers, EW)
+         best_single: dict[str, pd.Series] = {}
+@@ -305,10 +302,12 @@ class MetaStrategy:
+                 except Exception:
+                     pass
+             if legs:
+-                best_single[s] = pd.concat(legs, axis=1).mean(axis=1).reindex(portfolio.index).fillna(0.0)
++                best_single[s] = pd.concat(legs, axis=1).mean(axis=1, skipna=False).reindex(portfolio.index)
+ 
+         # ── Metrics ─────────────────────────────────────────────────────
+-        results: dict = {"tickers": list(per_ticker_ret.keys())}
++        results: dict = {"tickers": list(per_ticker_ret.keys()),
++            "status": "exploratory_return_stream_blend_not_executable_portfolio",
++            "period_start": str(portfolio.index[0]), "period_end": str(portfolio.index[-1])}
+ 
+         m = compute_metrics(portfolio)
+         m["t_stat"] = t_stat_returns(portfolio)
+diff --git a/src/research/ranker.py b/src/research/ranker.py
+index aec3025..600b00a 100644
+--- a/src/research/ranker.py
++++ b/src/research/ranker.py
+@@ -45,6 +45,7 @@ _TRADING_DAYS  = 252
+ def alpha_beta(
+     strategy_returns: pd.Series,
+     benchmark_returns: pd.Series,
++    risk_free: float = 0.05,
+ ) -> tuple[float, float]:
+     """
+     Compute annualised Jensen's alpha and beta via OLS regression.
+@@ -62,6 +63,8 @@ def alpha_beta(
+     if len(aligned) < 30:
+         return 0.0, 1.0
+ 
++    daily_rf = (1 + risk_free) ** (1 / _TRADING_DAYS) - 1
++    aligned -= daily_rf
+     X = sm.add_constant(aligned["b"])
+     model = sm.OLS(aligned["s"], X).fit()
+     daily_alpha = float(model.params.get("const", 0.0))
+@@ -75,8 +78,9 @@ def t_stat_returns(daily_returns: pd.Series) -> float:
+     clean = daily_returns.dropna().replace([np.inf, -np.inf], 0)
+     if len(clean) < 10 or clean.std() == 0:
+         return 0.0
+-    t, _ = stats.ttest_1samp(clean, 0)
+-    return round(float(t), 4)
++    fit = sm.OLS(clean.to_numpy(), np.ones((len(clean), 1))).fit(
++        cov_type="HAC", cov_kwds={"maxlags": min(10, len(clean) // 4)})
++    return round(float(fit.tvalues[0]), 4)
+ 
+ 
+ def information_ratio(
+@@ -107,13 +111,13 @@ def composite_score(row: pd.Series) -> float:
+       Calmar ratio     0.25
+       CAGR             0.20
+       Alpha (annual)   0.15
+-      t-stat (|t|)     0.05
++      signed HAC t-stat     0.05
+     """
+     sharpe = row.get("sharpe_ratio", 0) or 0
+     calmar = row.get("calmar_ratio", 0) or 0
+     cagr_v = row.get("cagr", 0) or 0
+     alpha  = row.get("alpha", 0) or 0
+-    tstat  = abs(row.get("t_stat", 0) or 0)
++    tstat  = row.get("t_stat", 0) or 0
+ 
+     # Normalise Calmar to same scale as Sharpe (cap at 3)
+     calmar_norm = min(calmar, 3.0) / 3.0
+diff --git a/src/research/strategies/alpha_trends.py b/src/research/strategies/alpha_trends.py
+index e4f0ed4..695f256 100644
+--- a/src/research/strategies/alpha_trends.py
++++ b/src/research/strategies/alpha_trends.py
+@@ -1,5 +1,5 @@
+ """
+-Phase 06A — Alpha Trends Strategy (Novel — Paper Thesis Strategy)
++Phase 06A — Alpha Trends Strategy (Experimental)
+ 
+ This is the original strategy at the core of the research paper:
+ 
+@@ -23,19 +23,11 @@ Signal Logic
+   Entry : all three conditions active
+   Exit  : any one condition becomes false
+ 
+-Why This Is Novel
+------------------
+-  Most trend-following strategies use only price-based filters (1+2).
+-  The HMM regime gate (1) is explicitly non-stationary — it captures the
+-  latent market state from return/volatility dynamics — and dynamically
+-  suppresses false entries in ranging or bear states.
+-
+-  Combining regime awareness with a classical price trend + momentum filter
+-  reduces drawdown (bear state suppression) while preserving upside
+-  (bull state capture), producing a higher Calmar ratio than any individual
+-  filter in isolation.
+-
+-  This combination is the paper's primary contribution.
++Research status
++---------------
++This is a hypothesis combining a causal regime filter with trend and momentum.
++Novelty and incremental profitability have not been established. Prior saved
++results used noncausal regimes and must not support publication claims.
+ 
+ Regime Hypothesis
+ -----------------
+@@ -65,7 +57,7 @@ from src.research.strategies.base import BaseStrategy
+ 
+ class AlphaTrendsStrategy(BaseStrategy):
+     """
+-    Regime-gated trend + momentum strategy — the paper's core contribution.
++    Regime-gated trend + momentum strategy — an exploratory candidate.
+ 
+     Parameters
+     ----------
+diff --git a/src/research/strategies/carry_proxy.py b/src/research/strategies/carry_proxy.py
+index 4b62541..9f4cf3f 100644
+--- a/src/research/strategies/carry_proxy.py
++++ b/src/research/strategies/carry_proxy.py
+@@ -71,17 +71,14 @@ class CarryProxyStrategy(BaseStrategy):
+         ma200 = close.rolling(self.ma_period).mean()
+ 
+         if macro is None or self.spread_col not in macro.columns:
+-            # Fall back to pure trend filter when macro is unavailable
+-            signal = (close > ma200).astype(int).fillna(0)
+-            return signal
+-
+-        # Align macro to equity index
+-        spread = (
+-            macro[self.spread_col]
+-            .reindex(close.index)
+-            .ffill()
+-            .fillna(0)
+-        )
++            # Reported by the repaired evaluator as SMA_200_Trend_Fallback.
++            return (close > ma200).astype(int).fillna(0)
++        from src.features.cross_asset import add_macro_features
++        merged = add_macro_features(pd.DataFrame(index=close.index), macro, cols=[self.spread_col])
++        key = f"macro_{self.spread_col}"
++        if key not in merged:
++            return (close > ma200).astype(int).fillna(0)
++        spread = merged[key]
+ 
+         entry_cond = (spread > 0) & (close > ma200)
+         exit_cond  = (spread <= 0) | (close < ma200 * (1 - self.ma_buffer))
+diff --git a/src/research/zoo_runner.py b/src/research/zoo_runner.py
+index 260dd69..66869a7 100644
+--- a/src/research/zoo_runner.py
++++ b/src/research/zoo_runner.py
+@@ -178,8 +178,7 @@ class ZooRunner:
+             out_dir / "equity_curve.parquet"
+         )
+ 
+-        if result.trade_log is not None and len(result.trade_log) > 0:
+-            result.trade_log.to_parquet(out_dir / "trade_log.parquet")
++        result.trade_log.to_parquet(out_dir / "trade_log.parquet")
+ 
+         with open(out_dir / "metrics.json", "w") as f:
+             json.dump(
+diff --git a/src/risk/engine.py b/src/risk/engine.py
+index f4654bf..dd5dfda 100644
+--- a/src/risk/engine.py
++++ b/src/risk/engine.py
+@@ -1,37 +1,9 @@
+-"""
+-Phase 05 — RiskEngine
+-
+-Runs a risk-managed portfolio simulation on top of Phase 04 signal DataFrame,
+-applying three orthogonal controls:
+-
+-    1. Kelly binary filter   — skip UP signals where half-Kelly ≤ 0
+-                               (removes trades the model is structurally wrong on)
+-    2. ATR 2× trailing stop  — exit losing positions before signal flips
+-                               (cuts avg_loss; improves win/loss ratio)
+-    3. Max drawdown circuit breaker — pause all new entries after 15% peak-to-trough
+-
+-Position sizing
+----------------
+-When Kelly is positive the engine enters a FULL position (95% of cash).
+-This preserves the Phase 04 return level while removing the worst trades.
+-Half-Kelly fractional sizing would dilute returns below the 5% risk-free
+-hurdle on our current ~0.3 Sharpe strategies; that sizing mode is reserved
+-for Phase 06 multi-asset portfolios where 10-20 concurrent positions provide
+-adequate diversification.
+-
+-Expected improvement over Phase 04 (naive 100% position, no stops)
+--------------------------------------------------------------------
+-  Kelly filter removes ≈ 25-40% of lowest-quality UP signals, increasing
+-  the average edge per trade.  ATR stops cut the average losing trade by
+-  ≈ 30-40%, raising the win/loss ratio.  Circuit breaker caps maximum
+-  portfolio drawdown.  Together these should:
+-    - Raise Sharpe by 0.1–0.3 above Phase 04 baseline
+-    - Reduce MaxDD by 30–60%
+-
+-VaR / CVaR
+-----------
+-Reported on the resulting equity curve using 252-day rolling historical
+-simulation (no parametric assumption).
++"""Exploratory single-instrument risk simulation.
++
++Uses a fixed ex-ante payoff assumption, causal policy inputs, close-observed
++stops, and marked cash/holdings. It is a separate risk ablation, not the shared
++next-close portfolio execution contract. Classifier UP probabilities have not
++been calibrated to stop-managed trade outcomes; no Kelly optimality is claimed.
+ """
+ 
+ from __future__ import annotations
+@@ -67,6 +39,7 @@ class RiskResult:
+     var_series:    pd.DataFrame
+     risk_report:   dict = field(default_factory=dict)
+     params:        dict = field(default_factory=dict)
++    ledger:        pd.DataFrame = field(default_factory=pd.DataFrame)
+ 
+ 
+ # ---------------------------------------------------------------------------
+@@ -136,6 +109,7 @@ class RiskEngine:
+         cb_resume:        float = 0.90,
+         cb_cooldown_bars: int   = 63,    # also reset after N inactive bars (~3 months)
+         var_window:       int   = 252,
++        win_loss_ratio:   float = 1.5,
+     ):
+         self.initial_capital  = initial_capital
+         self.commission       = commission
+@@ -149,6 +123,7 @@ class RiskEngine:
+         self.cb_resume        = cb_resume
+         self.cb_cooldown_bars = cb_cooldown_bars
+         self.var_window       = var_window
++        self.win_loss_ratio = win_loss_ratio
+ 
+     # ------------------------------------------------------------------
+ 
+@@ -157,28 +132,45 @@ class RiskEngine:
+         ticker:    str,
+         signal_df: pd.DataFrame,
+         feat_df:   pd.DataFrame,
++        policy_engine=None,
+     ) -> RiskResult:
+         """
+         Execute the risk-managed simulation for a single ticker.
+ 
+         Parameters
+         ----------
+-        ticker    : asset symbol (used for Phase 04 win/loss calibration)
+-        signal_df : from signals.build_signal_df() — columns: p_up, filtered_signal, close
+-        feat_df   : Phase 02 feature matrix — must include 'atr_14'
++        ticker        : asset symbol (used for Phase 04 win/loss calibration)
++        signal_df     : from signals.build_signal_df() — columns: p_up,
++                        filtered_signal, close
++        feat_df       : Phase 02 feature matrix — must include 'atr_14'
++        policy_engine : optional src.risk.policy_engine.PolicyEngine — when
++                        given, the ATR stop multiplier widens with volatility,
++                        position size is capped in stress, and new entries are
++                        blocked on ineligible bars (dynamic policy layer).
+         """
+         if "atr_14" not in feat_df.columns:
+             raise KeyError("feat_df missing 'atr_14'. Re-run Phase 02 pipeline.")
+ 
+-        atr_aligned = feat_df["atr_14"].reindex(signal_df.index).ffill().bfill()
++        atr_aligned = feat_df["atr_14"].reindex(signal_df.index).ffill()
+         atr_arr     = atr_aligned.values.astype(np.float64)
+         prices      = signal_df["close"].values.astype(np.float64)
+         p_up_arr    = signal_df["p_up"].values.astype(np.float64)
+         sig_arr     = signal_df["filtered_signal"].values.astype(int)
+         n           = len(prices)
+ 
++        # ── Dynamic policy (per-bar) or static constants ────────────────
++        if policy_engine is not None:
++            pol = policy_engine.compute_policy(feat_df).reindex(signal_df.index).ffill()
++            atr_mult_arr = pol["atr_mult"].fillna(self.atr_multiplier).values
++            size_cap_arr = pol["size_cap"].fillna(1.0).values
++            eligible_arr = pol["eligible"].fillna(True).astype(bool).values
++        else:
++            atr_mult_arr = np.full(n, self.atr_multiplier)
++            size_cap_arr = np.ones(n)
++            eligible_arr = np.ones(n, dtype=bool)
++
+         # ── Kelly filter calibration ───────────────────────────────────
+-        win_loss_ratio = _estimate_win_loss_ratio(ticker)
++        win_loss_ratio = self.win_loss_ratio  # fixed ex-ante assumption, not estimated from future trades
+         half_kellys    = kelly_series(p_up_arr, win_loss_ratio, self.kelly_multiplier)
+ 
+         # ── Simulation state ───────────────────────────────────────────
+@@ -196,10 +188,11 @@ class RiskEngine:
+         circuit_broken    = False
+         cb_bars_inactive  = 0          # bars since circuit breaker tripped
+         trades: list[dict] = []
++        history = [dict(cash=cash, shares=0., price=prices[0], equity=cash)]
+ 
+         for i in range(1, n):
+             price   = prices[i]
+-            atr_val = float(atr_arr[i])
++            atr_val = float(atr_arr[i - 1])
+ 
+             # ── Update peak and circuit breaker ────────────────────────
+             peak_equity = max(peak_equity, cash + shares * price)
+@@ -231,7 +224,10 @@ class RiskEngine:
+             stop_triggered = False
+             if current_pos == 1:
+                 if self.trailing_stop:
+-                    update_trailing_stop(stop_state, price, atr_val)
++                    update_trailing_stop(
++                        stop_state, price, atr_val,
++                        atr_multiplier=float(atr_mult_arr[i - 1]),
++                    )
+                 if is_stop_hit(stop_state, price):
+                     gross  = shares * price
+                     net    = gross * (1.0 - cost_per_side)
+@@ -239,13 +235,14 @@ class RiskEngine:
+                     cash  += net
+                     shares = 0.0
+                     current_pos   = 0
++                    stopped_at = stop_state.stop_level
+                     stop_state    = StopState()
+                     stop_triggered = True
+                     trades.append({
+                         "type": "exit", "reason": "stop",
+                         "date": signal_df.index[i], "price": price,
+-                        "pnl": round(pnl, 4), "entry_price": entry_price,
+-                        "stop_level": stop_state.stop_level,
++                        "pnl": pnl, "entry_price": entry_price,
++                        "stop_level": stopped_at,
+                     })
+ 
+             # ── Signal processing ──────────────────────────────────────
+@@ -262,6 +259,12 @@ class RiskEngine:
+                 if circuit_broken and current_pos == 0:
+                     target = 0
+ 
++                # Dynamic policy: block new entries on ineligible bars
++                # (extreme volatility / unknown regime); existing positions
++                # are managed by stops, not force-closed.
++                if not eligible_arr[i - 1] and current_pos == 0:
++                    target = 0
++
+                 # ── Execute position change ────────────────────────────
+                 if target != current_pos:
+ 
+@@ -277,14 +280,14 @@ class RiskEngine:
+                         trades.append({
+                             "type": "exit", "reason": "signal",
+                             "date": signal_df.index[i], "price": price,
+-                            "pnl": round(pnl, 4), "entry_price": entry_price,
++                            "pnl": pnl, "entry_price": entry_price,
+                             "stop_level": np.nan,
+                         })
+ 
+                     # Open new long position
+-                    if target == 1 and cash > 0:
+-                        deploy_gross = cash * self.position_frac
+-                        deploy_net   = deploy_gross * (1.0 - cost_per_side)
++                    if target == 1 and cash > 0 and np.isfinite(atr_val) and atr_val > 0:
++                        deploy_gross = cash * self.position_frac * float(size_cap_arr[i - 1])
++                        deploy_net   = deploy_gross / (1.0 + cost_per_side)
+                         shares       = deploy_net / price
+                         entry_cost   = deploy_gross
+                         entry_price  = price
+@@ -292,7 +295,10 @@ class RiskEngine:
+                         current_pos  = 1
+                         stop_state   = StopState(
+                             active      = True,
+-                            stop_level  = initial_stop(price, atr_val, direction=1),
++                            stop_level  = initial_stop(
++                                price, atr_val, direction=1,
++                                atr_multiplier=float(atr_mult_arr[i - 1]),
++                            ),
+                             direction   = 1,
+                             entry_price = price,
+                             entry_atr   = atr_val,
+@@ -306,11 +312,12 @@ class RiskEngine:
+ 
+             # ── Mark-to-market  ────────────────────────────────────────
+             equity[i] = cash + shares * price
++            history.append(dict(cash=cash, shares=shares, price=price, equity=equity[i]))
+ 
+         # ── Post-simulation analytics ──────────────────────────────────
+         equity_s  = pd.Series(equity, index=signal_df.index, name="equity")
+         returns_s = equity_s.pct_change().fillna(0.0).rename("returns")
+-        trade_df  = pd.DataFrame(trades)
++        trade_df  = pd.DataFrame(trades, columns=["type", "reason", "date", "price", "pnl", "entry_price", "stop_level"])
+ 
+         var_df   = rolling_var_cvar(returns_s, window=self.var_window)
+         risk_rep = risk_summary(returns_s, initial_capital=self.initial_capital)
+@@ -334,7 +341,10 @@ class RiskEngine:
+             "cb_threshold":     self.cb_threshold,
+             "cb_cooldown_bars": self.cb_cooldown_bars,
+             "win_loss_ratio":   win_loss_ratio,
++            "calibration": "fixed_ex_ante_assumption_not_trade_probability_calibration",
++            "status": "exploratory_close_stop_simulation",
+             "n_kelly_filtered": n_kelly_filtered,
++            "dynamic_policy":   policy_engine is not None,
+         }
+ 
+         return RiskResult(
+@@ -344,6 +354,7 @@ class RiskEngine:
+             var_series    = var_df,
+             risk_report   = risk_rep,
+             params        = params,
++            ledger        = pd.DataFrame(history, index=signal_df.index),
+         )
+ 
+     # ------------------------------------------------------------------
+@@ -373,8 +384,7 @@ class RiskEngine:
+ 
+         _write(result.equity_curve.to_frame(), "equity_curve")
+         _write(result.var_series, "var_cvar")
+-        if len(result.trade_log) > 0:
+-            _write(result.trade_log, "trade_log")
++        _write(result.trade_log, "trade_log")
+ 
+         risk_metrics = compute_metrics(
+             result.daily_returns,
+diff --git a/src/risk/stops.py b/src/risk/stops.py
+index d9e97e1..374ce5c 100644
+--- a/src/risk/stops.py
++++ b/src/risk/stops.py
+@@ -39,15 +39,21 @@ class StopState:
+     entry_atr:    float = 0.0
+ 
+ 
+-def initial_stop(entry_price: float, atr: float, direction: int = 1) -> float:
++def initial_stop(
++    entry_price: float,
++    atr: float,
++    direction: int = 1,
++    atr_multiplier: float = 2.0,
++) -> float:
+     """Compute the initial stop price on entry."""
+-    return entry_price - direction * 2.0 * atr
++    return entry_price - direction * atr_multiplier * atr
+ 
+ 
+ def update_trailing_stop(
+     state: StopState,
+     current_price: float,
+     current_atr: float,
++    atr_multiplier: float = 2.0,
+ ) -> StopState:
+     """
+     Ratchet the trailing stop up (for longs) or down (for shorts).
+@@ -56,7 +62,7 @@ def update_trailing_stop(
+     if not state.active:
+         return state
+ 
+-    new_candidate = current_price - state.direction * 2.0 * current_atr
++    new_candidate = current_price - state.direction * atr_multiplier * current_atr
+     if state.direction == 1:   # long: stop can only rise
+         state.stop_level = max(state.stop_level, new_candidate)
+     else:                       # short: stop can only fall
+diff --git a/tests/test_data_pipeline.py b/tests/test_data_pipeline.py
+index 340d9bb..e6fdd91 100644
+--- a/tests/test_data_pipeline.py
++++ b/tests/test_data_pipeline.py
+@@ -58,32 +58,38 @@ def macro_df(loader):
+ # 1. Equity — basic shape & dtype checks
+ # ---------------------------------------------------------------------------
+ 
++@pytest.mark.integration
+ def test_equity_not_empty(equity_df):
+     assert len(equity_df) > 0, "equity DataFrame is empty"
+ 
+ 
++@pytest.mark.integration
+ def test_equity_required_columns(equity_df):
+     required = {"Open", "High", "Low", "Close", "Adj_Close", "Volume"}
+     missing = required - set(equity_df.columns)
+     assert not missing, f"equity DataFrame missing columns: {missing}"
+ 
+ 
++@pytest.mark.integration
+ def test_equity_index_is_datetime(equity_df):
+     assert pd.api.types.is_datetime64_any_dtype(equity_df.index), \
+         "equity index is not datetime"
+ 
+ 
++@pytest.mark.integration
+ def test_equity_no_duplicate_index(equity_df):
+     dupes = equity_df.index.duplicated().sum()
+     assert dupes == 0, f"equity DataFrame has {dupes} duplicate index entries"
+ 
+ 
++@pytest.mark.integration
+ def test_equity_prices_positive(equity_df):
+     for col in ["Open", "High", "Low", "Close", "Adj_Close"]:
+         neg = (equity_df[col] <= 0).sum()
+         assert neg == 0, f"column {col} has {neg} non-positive values"
+ 
+ 
++@pytest.mark.integration
+ def test_equity_high_gte_low(equity_df):
+     bad = (equity_df["High"] < equity_df["Low"]).sum()
+     assert bad == 0, f"{bad} rows where High < Low"
+@@ -93,25 +99,30 @@ def test_equity_high_gte_low(equity_df):
+ # 2. Crypto — basic shape & dtype checks
+ # ---------------------------------------------------------------------------
+ 
++@pytest.mark.integration
+ def test_crypto_not_empty(crypto_df):
+     assert len(crypto_df) > 0, "crypto DataFrame is empty"
+ 
+ 
++@pytest.mark.integration
+ def test_crypto_required_columns(crypto_df):
+     required = {"Open", "High", "Low", "Close", "Volume"}
+     missing = required - set(crypto_df.columns)
+     assert not missing, f"crypto DataFrame missing columns: {missing}"
+ 
+ 
++@pytest.mark.integration
+ def test_crypto_index_is_datetime(crypto_df):
+     assert pd.api.types.is_datetime64_any_dtype(crypto_df.index)
+ 
+ 
++@pytest.mark.integration
+ def test_crypto_no_duplicate_index(crypto_df):
+     dupes = crypto_df.index.duplicated().sum()
+     assert dupes == 0, f"crypto DataFrame has {dupes} duplicate index entries"
+ 
+ 
++@pytest.mark.integration
+ def test_crypto_prices_positive(crypto_df):
+     for col in ["Open", "High", "Low", "Close"]:
+         neg = (crypto_df[col] <= 0).sum()
+@@ -122,20 +133,24 @@ def test_crypto_prices_positive(crypto_df):
+ # 3. Macro — columns and coverage
+ # ---------------------------------------------------------------------------
+ 
++@pytest.mark.integration
+ def test_macro_not_empty(macro_df):
+     assert len(macro_df) > 0, "macro DataFrame is empty"
+ 
+ 
++@pytest.mark.integration
+ def test_macro_expected_columns(macro_df):
+     # At least VIX and yield_spread must be present; CPI and rates are a bonus
+     for col in ["VIX", "yield_spread_10_2"]:
+         assert col in macro_df.columns, f"macro DataFrame missing column: {col}"
+ 
+ 
++@pytest.mark.integration
+ def test_macro_index_is_datetime(macro_df):
+     assert pd.api.types.is_datetime64_any_dtype(macro_df.index)
+ 
+ 
++@pytest.mark.integration
+ def test_macro_no_future_dates(macro_df):
+     now = pd.Timestamp.utcnow()
+     future = (macro_df.index > now).sum()
+@@ -166,7 +181,7 @@ def test_parquet_roundtrip(tmp_path):
+ # 5. Gap-fill: no missing business-day entries
+ # ---------------------------------------------------------------------------
+ 
+-def test_gap_fill_no_business_day_gaps():
++def test_gap_fill_retains_observed_sessions_only():
+     from src.data.loader import _gap_fill
+ 
+     # Create a series with a deliberate weekday gap (skip 2024-01-03)
+@@ -178,10 +193,11 @@ def test_gap_fill_no_business_day_gaps():
+ 
+     bday_range = pd.bdate_range(start=idx.min(), end=idx.max(), tz="UTC")
+     missing = set(bday_range) - set(filled.index)
+-    assert len(missing) == 0, f"gap_fill left {len(missing)} missing business-day rows"
++    assert missing == {pd.Timestamp("2024-01-03", tz="UTC")}
++    pd.testing.assert_frame_equal(filled, df)
+ 
+ 
+-def test_gap_fill_volume_zero_on_inserted_rows():
++def test_gap_fill_does_not_fabricate_zero_volume():
+     from src.data.loader import _gap_fill
+ 
+     idx = pd.to_datetime(["2024-01-02", "2024-01-04"], utc=True)
+@@ -190,9 +206,8 @@ def test_gap_fill_volume_zero_on_inserted_rows():
+ 
+     filled = _gap_fill(df, freq="B")
+     inserted_date = pd.Timestamp("2024-01-03", tz="UTC")
+-    assert inserted_date in filled.index
+-    assert filled.loc[inserted_date, "Volume"] == 0.0, \
+-        "Volume on gap-filled row should be 0"
++    assert inserted_date not in filled.index
++    pd.testing.assert_frame_equal(filled, df)
+ 
+ 
+ # ---------------------------------------------------------------------------
+@@ -250,7 +265,7 @@ def test_no_lookahead_ffill_direction():
+         "Lookahead detected: NaN at row 0 was filled from a future value"
+ 
+ 
+-def test_no_lookahead_inserted_rows_use_prior_value():
++def test_no_lookahead_missing_observations_remain_missing():
+     """
+     A gap-filled row must carry the value of the PRIOR row, not a future row.
+     """
+@@ -264,15 +279,15 @@ def test_no_lookahead_inserted_rows_use_prior_value():
+     filled = _gap_fill(df, freq="B")
+     gap_date = pd.Timestamp("2024-01-03", tz="UTC")
+ 
+-    # Must be 100 (prior), NOT 200 (future)
+-    assert filled.loc[gap_date, "Close"] == 100.0, \
+-        f"Lookahead: gap row filled with future value {filled.loc[gap_date, 'Close']}"
++    assert gap_date not in filled.index
++    pd.testing.assert_frame_equal(filled, df)
+ 
+ 
+ # ---------------------------------------------------------------------------
+ # 8. DataLoader cache: second call reads from disk (mtime unchanged)
+ # ---------------------------------------------------------------------------
+ 
++@pytest.mark.integration
+ def test_loader_cache_hit(loader):
+     path = _TEST_CACHE / "AAPL_daily.parquet"
+     assert path.exists(), "Cache file was not created on first load"
+@@ -290,6 +305,7 @@ def test_loader_cache_hit(loader):
+ # 9. DataLoader force_refresh: re-fetches and updates mtime
+ # ---------------------------------------------------------------------------
+ 
++@pytest.mark.integration
+ def test_loader_force_refresh(loader):
+     path = _TEST_CACHE / "AAPL_daily.parquet"
+     mtime_before = path.stat().st_mtime
+diff --git a/tests/test_env_analyzer.py b/tests/test_env_analyzer.py
+index 8acc21f..c09a170 100644
+--- a/tests/test_env_analyzer.py
++++ b/tests/test_env_analyzer.py
+@@ -140,7 +140,7 @@ class TestHelpers:
+             "HMM returned empty regime — check that _make_ohlcv generates "
+             "distinct volatility regimes (bull/ranging/bear)."
+         )
+-        assert regime.dropna().isin([0, 1, 2]).all()
++        assert regime.dropna().isin([-1, 0, 1, 2]).all()
+ 
+     def test_compute_ticker_regime_short_data(self):
+         ohlcv  = _make_ohlcv(n=30)
+@@ -178,7 +178,7 @@ class TestRegimeBreakdown:
+ 
+         if not df.empty:
+             regime_vals = df.index.get_level_values("regime")
+-            assert set(regime_vals).issubset({"bear", "ranging", "bull"})
++            assert set(regime_vals).issubset({"unknown_warmup", "bear", "ranging", "bull"})
+ 
+     def test_pct_days_sums_to_one(self, tmp_research_dir):
+         analyzer = EnvAnalyzer(research_dir=tmp_research_dir)
+diff --git a/tests/test_feature_pipeline.py b/tests/test_feature_pipeline.py
+index 383c49e..a5c0d41 100644
+--- a/tests/test_feature_pipeline.py
++++ b/tests/test_feature_pipeline.py
+@@ -278,7 +278,7 @@ def test_btc_proxy_present(full_feat_df):
+ 
+ def test_macro_columns_attached(full_feat_df):
+     for col in ["macro_VIX", "macro_yield_spread_10_2"]:
+-        assert col in full_feat_df.columns, f"Missing {col}"
++        assert col not in full_feat_df.columns, "Latest-vintage macro must be excluded"
+ 
+ 
+ # ---------------------------------------------------------------------------
+diff --git a/tests/test_live.py b/tests/test_live.py
+index 2e8caf7..eb3da0e 100644
+--- a/tests/test_live.py
++++ b/tests/test_live.py
+@@ -352,8 +352,7 @@ class TestLiveEngine:
+         assert "AAPL" in result.signals
+         assert "MSFT" in result.signals
+         # MSFT is FLAT → should be skipped
+-        any_skip_msft = any(t == "MSFT" for t, _ in result.skipped)
+-        assert any_skip_msft
++        assert result.targets["MSFT"] == 0.0
+ 
+     def test_dry_run_no_orders(self, tmp_path):
+         from src.live.engine import LiveEngine
+@@ -390,7 +389,7 @@ class TestLiveEngine:
+             result = engine.run()
+ 
+         reasons = [r for _, r in result.skipped]
+-        assert "flat_signal" in reasons
++        assert result.targets["SPY"] == 0.0
+ 
+     def test_zero_kelly_skipped(self):
+         from src.live.engine import LiveEngine
+@@ -408,4 +407,4 @@ class TestLiveEngine:
+             result = engine.run()
+ 
+         reasons = [r for _, r in result.skipped]
+-        assert "no_kelly_edge" in reasons
++        assert result.targets["QQQ"] == 0.0
+diff --git a/tests/test_ml_pipeline.py b/tests/test_ml_pipeline.py
+index 7e4743f..e0f8d17 100644
+--- a/tests/test_ml_pipeline.py
++++ b/tests/test_ml_pipeline.py
+@@ -286,10 +286,9 @@ def test_lstm_smoke_fit_predict(tiny_xy):
+     model.fit(X, y)
+     proba = model.predict_proba(X)
+     assert proba.shape == (80, 3), f"Expected (80,3), got {proba.shape}"
+-    # First seq_len-1 rows get uniform prior
+-    assert np.allclose(proba[:4].sum(axis=1), 1.0, atol=1e-5)
+-    # All rows should be valid probabilities
+-    assert np.allclose(proba.sum(axis=1), 1.0, atol=1e-5)
++    # Unavailable sequence history must be explicit.
++    assert np.isnan(proba[:4]).all()
++    assert np.allclose(proba[4:].sum(axis=1), 1.0, atol=1e-5)
+ 
+ 
+ # ---------------------------------------------------------------------------
+diff --git a/train.py b/train.py
+index aafd0e4..42f437a 100644
+--- a/train.py
++++ b/train.py
+@@ -104,7 +104,9 @@ def _load_or_build_features(fe, ticker: str, max_age_hours: float = 8760.0):
+ 
+     # Treat any existing cache as valid for training (1-year TTL)
+     if path.exists() and not _is_stale(path, max_age_hours):
+-        return _read_parquet(path)
++        cached = _read_parquet(path)
++        if cached.attrs.get("causality_version") == 2:
++            return cached
+ 
+     # Cache missing or truly ancient — rebuild from raw data
+     log.info("Feature cache not found for %s — building now …", ticker)
+@@ -113,8 +115,8 @@ def _load_or_build_features(fe, ticker: str, max_age_hours: float = 8760.0):
+ 
+     raw   = loader.load_equity(ticker)
+     spy   = loader.load_equity("SPY")
+-    btc   = loader.load_crypto("BTC/USDT", limit=1825)
+-    macro = loader.load_macro()
++    # Optional layers require separate historical coverage/availability evidence.
++    btc = macro = None
+ 
+     return fe.compute_features(
+         df         = raw,

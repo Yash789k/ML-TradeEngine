@@ -1,0 +1,1 @@
+JSON.stringify(Array.from(document.querySelectorAll('a,[role=menuitem]')).filter(e=>/Download.*source|\.zip|Source/.test(e.innerText)).map(e=>({text:e.innerText,tag:e.tagName,href:e.getAttribute('href')})))

@@ -1,0 +1,202 @@
+{
+  "ablation": {
+    "caveat": "Cached NVDA headlines begin in November 2021, so its earliest training windows contain sessions with no news coverage (zero-filled and flagged). SPY headlines are capped at the 20,000 most recent items of the July download and end on 14 April 2026.",
+    "parity_passed": true,
+    "parity_with_sealed_price_only": {
+      "NVDA": 0.0,
+      "SPY": 0.0
+    },
+    "reading": "Negative difference would mean the sentiment columns lowered log loss. Two tickers; exploratory.",
+    "rows": [
+      {
+        "ci_high": 0.1022555539121037,
+        "ci_low": 0.007934377314029403,
+        "difference": 0.05125164821803118,
+        "n": 628,
+        "p_two_sided": 0.03498250874562719,
+        "price_only_log_loss": 1.029748574536253,
+        "prior_log_loss": 0.9900932424504356,
+        "sessions": 628,
+        "symbol": "NVDA",
+        "with_sentiment_log_loss": 1.081000222754284
+      },
+      {
+        "ci_high": 0.08935089000166457,
+        "ci_low": 0.003355327541093553,
+        "difference": 0.046432721479835064,
+        "n": 572,
+        "p_two_sided": 0.030484757621189407,
+        "price_only_log_loss": 1.066365438694914,
+        "prior_log_loss": 1.0699121015520998,
+        "sessions": 572,
+        "symbol": "SPY",
+        "with_sentiment_log_loss": 1.1127981601747488
+      },
+      {
+        "ci_high": 0.08483794418505929,
+        "ci_low": 0.010330305281136024,
+        "difference": 0.04624861622677012,
+        "n": 1200,
+        "p_two_sided": 0.015992003998001,
+        "price_only_log_loss": 1.047202613118548,
+        "prior_log_loss": 1.028140231955562,
+        "sessions": 628,
+        "symbol": "NVDA+SPY",
+        "with_sentiment_log_loss": 1.0961572395913721
+      }
+    ],
+    "status": "run"
+  },
+  "attribution": "a headline counts for the first session whose XNYS close is after the time it became available",
+  "decision_dates": {
+    "available": true,
+    "by_date": [
+      {
+        "headlines": 21,
+        "instruments_with_news": 8,
+        "mean_tone_in_portfolio": 0.1733504754762786,
+        "mean_tone_not_in_portfolio": 0.2516750071081333,
+        "session": "2026-10-01",
+        "spearman_tone_vs_model_score": 0.4761904761904762
+      },
+      {
+        "headlines": 32,
+        "instruments_with_news": 10,
+        "mean_tone_in_portfolio": 0.06650588881845275,
+        "mean_tone_not_in_portfolio": 0.17258910874703098,
+        "session": "2026-10-02",
+        "spearman_tone_vs_model_score": 0.09090909090909088
+      },
+      {
+        "headlines": 35,
+        "instruments_with_news": 9,
+        "mean_tone_in_portfolio": 0.163049604959919,
+        "mean_tone_not_in_portfolio": 0.08788813141839844,
+        "session": "2026-10-14",
+        "spearman_tone_vs_model_score": 0.8166666666666667
+      },
+      {
+        "headlines": 33,
+        "instruments_with_news": 10,
+        "mean_tone_in_portfolio": 0.05915903274102935,
+        "mean_tone_not_in_portfolio": 0.1476271181181073,
+        "session": "2026-10-15",
+        "spearman_tone_vs_model_score": 0.32121212121212117
+      },
+      {
+        "headlines": 44,
+        "instruments_with_news": 11,
+        "mean_tone_in_portfolio": 0.17426480918261064,
+        "mean_tone_not_in_portfolio": 0.1408765079511795,
+        "session": "2026-10-22",
+        "spearman_tone_vs_model_score": 0.5363636363636364
+      }
+    ],
+    "fetched_at": "2026-11-25T14:29:07.414950+00:00",
+    "headlines_fetched": 794,
+    "instruments_without_headlines": [
+      "GLD",
+      "GOOGL",
+      "IWM",
+      "SPY",
+      "XLE",
+      "XLF",
+      "XLI",
+      "XLK",
+      "XLP",
+      "XLV"
+    ],
+    "note": "Headlines were fetched for this review, not at decision time. Each is used only if it was available before that session's close. Twenty-two instruments on five dates: descriptive.",
+    "source": "Alpaca News API",
+    "window": [
+      "2026-09-21",
+      "2026-10-23"
+    ]
+  },
+  "history": {
+    "note": "Sessions with at least one headline, matured labels only. Intervals are date-block percentile intervals; exploratory.",
+    "rows": [
+      {
+        "first": "2024-01-02",
+        "last": "2026-07-06",
+        "mean_tone": 0.011173038221524255,
+        "median_headlines_per_session": 12.0,
+        "sessions_with_news": 628,
+        "symbol": "AAPL",
+        "tone_vs_forward_return_ci_high": 0.09706259459963279,
+        "tone_vs_forward_return_ci_low": -0.1120373992419209,
+        "tone_vs_forward_return_rho": -0.006551118282300866,
+        "tone_vs_model_score_ci_high": 0.14131899059181866,
+        "tone_vs_model_score_ci_low": -0.07051167216793457,
+        "tone_vs_model_score_rho": 0.03522475508829554,
+        "tone_vs_trend_flag_ci_high": 0.19730779132215726,
+        "tone_vs_trend_flag_ci_low": 0.0008024097504128408,
+        "tone_vs_trend_flag_rho": 0.09714192386778896
+      },
+      {
+        "first": "2024-01-02",
+        "last": "2026-07-06",
+        "mean_tone": 0.06644165189700768,
+        "median_headlines_per_session": 17.0,
+        "sessions_with_news": 628,
+        "symbol": "NVDA",
+        "tone_vs_forward_return_ci_high": -0.025230811799650723,
+        "tone_vs_forward_return_ci_low": -0.2141950917710693,
+        "tone_vs_forward_return_rho": -0.11974843039109175,
+        "tone_vs_model_score_ci_high": 0.11779135104166308,
+        "tone_vs_model_score_ci_low": -0.08086462167562684,
+        "tone_vs_model_score_rho": 0.020305215608009873,
+        "tone_vs_trend_flag_ci_high": 0.27822043500884563,
+        "tone_vs_trend_flag_ci_low": 0.08605860675204756,
+        "tone_vs_trend_flag_rho": 0.1905945985015334
+      },
+      {
+        "first": "2024-01-02",
+        "last": "2026-04-14",
+        "mean_tone": -0.0923487127139266,
+        "median_headlines_per_session": 33.0,
+        "sessions_with_news": 572,
+        "symbol": "SPY",
+        "tone_vs_forward_return_ci_high": 0.022101650359801123,
+        "tone_vs_forward_return_ci_low": -0.17513104166116883,
+        "tone_vs_forward_return_rho": -0.07812654790034422,
+        "tone_vs_model_score_ci_high": 0.10539605732331711,
+        "tone_vs_model_score_ci_low": -0.08708276560717106,
+        "tone_vs_model_score_rho": 0.004852548355725477,
+        "tone_vs_trend_flag_ci_high": 0.10209832734528641,
+        "tone_vs_trend_flag_ci_low": -0.01660435658825881,
+        "tone_vs_trend_flag_rho": 0.046311621603098145
+      }
+    ],
+    "source": "data/news/*.parquet (Alpaca headlines cached in July 2026)",
+    "tickers": [
+      "AAPL",
+      "NVDA",
+      "SPY"
+    ]
+  },
+  "pilot_feature_columns": [
+    "return_1",
+    "return_5",
+    "return_21",
+    "return_63",
+    "return_126",
+    "return_252",
+    "vol_21",
+    "relative_21",
+    "vol_63",
+    "relative_63",
+    "average_20",
+    "average_50",
+    "average_200",
+    "gap",
+    "range",
+    "volume_ratio",
+    "momentum_12_1"
+  ],
+  "pilot_features_contain_sentiment": false,
+  "provenance": "reconstructed",
+  "registration_sha256": "abc146e5bffdae819a5245e1fdec89813e4cf9e7a5d5a9f6e1de2b5c902b011b",
+  "role": "Diagnostic only. No recorded decision used sentiment: the pilot feature set has no news column and every recorded decision reproduces exactly from price bars alone.",
+  "scorer": "ProsusAI/finbert, run locally on CPU"
+}

@@ -1,0 +1,11 @@
+{
+  "at": "2026-09-28T08:52:18.054344+00:00",
+  "backup_receipt_sha256": "bd6cff494a11962c069dc7814b720cbb71fcf08ff59798997ca1ba89824965a2",
+  "ledger_consistent": true,
+  "preserved_original": "/Users/a/Downloads/ml-trade-engine/data/paper/research-v2/commissioning-before-restore-r2",
+  "receipt_sha256": "548a2b3951269e82e54a8b7aea4de54a9c5298e78a27d0861c30296805080087",
+  "release_sha256": "570372e203c6ef943deb37c2856a4ca7f0c3d34a168ac247d5b1cb2232916f43",
+  "status": "restored_at_original_path",
+  "symbols": 22,
+  "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-v2/commissioning"
+}

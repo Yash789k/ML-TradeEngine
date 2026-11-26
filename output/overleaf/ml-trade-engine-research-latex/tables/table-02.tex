@@ -1,0 +1,16 @@
+\begin{table}[!htbp]\centering\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.14}
+\caption{Feature definitions and information availability}\label{tab:2}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.15306\textwidth-4.000pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.43878\textwidth-4.000pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.40816\textwidth-4.000pt\relax}@{}}
+\toprule
+\textbf{Family} & \textbf{Definition} & \textbf{Availability} \\
+\midrule
+Returns & Close /\allowbreak{} lagged close - 1 & Trailing 1, 5, 21, 63, 126, 252 sessions \\
+Volatility & Sample standard deviation of daily return & Trailing 21 /\allowbreak{} 63 sessions \\
+Relative return & Instrument return minus SPY return & Trailing 21 /\allowbreak{} 63 sessions \\
+Trend & Close /\allowbreak{} moving mean - 1 & Trailing 20 /\allowbreak{} 50 /\allowbreak{} 200 sessions \\
+Gap /\allowbreak{} range & Open /\allowbreak{} previous close - 1; (High-Low)/\allowbreak{}Close & Completed current session \\
+Volume & Volume /\allowbreak{} trailing mean - 1 & Trailing 20 sessions \\
+Momentum & Close lag21 /\allowbreak{} Close lag252 - 1 & Previous completed observations \\
+\bottomrule\end{tabular}\par\smallskip
+\raggedright\textit{Source:} \path{src/models/adaptive.py::features; research_v2/experiments.py::FAMILIES}.
+\end{table}

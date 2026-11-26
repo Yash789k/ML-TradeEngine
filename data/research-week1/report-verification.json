@@ -1,0 +1,8 @@
+{
+  "source_sha256": "268466cf41a586950b2513cc604aabe61028e76ff4ca8282006f867d6350caf7",
+  "tests_sha256": "d5281c61ccf93e68b016007b2b2c2df4579b9c2de7acc1f6b30242f0005c734e",
+  "junit_sha256": "6d2bd7e7021af9cd47de48b2fd742d2d2fadf6809467dbc91ce9bf7b23c15077",
+  "premature_week_close_refused": true,
+  "premature_final_freeze_refused": true,
+  "no_refusal_output_created": true
+}

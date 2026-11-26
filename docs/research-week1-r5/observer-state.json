@@ -1,0 +1,357 @@
+{
+  "schema_version": 1,
+  "automation_id": "trading-pilot-evidence-watch",
+  "observer_only": true,
+  "trial_id": "PILOT-TREND-WEEK1-R5-20261021",
+  "last_checked_at": "2026-10-21T21:31:36.362482+00:00",
+  "status": {
+    "trial_id": "PILOT-TREND-WEEK1-R5-20261021",
+    "external_orders": false,
+    "deployment": "cash",
+    "shadow": "trend",
+    "state_consistency_errors": [],
+    "ledger_consistent": true,
+    "valid_observed_sessions": 0,
+    "expected_elapsed_sessions": 1,
+    "missing_sessions": [
+      "2026-10-21"
+    ],
+    "label_complete_decisions": 0,
+    "required_sessions": 1,
+    "next_event": {
+      "id": "2026-10-21:preopen",
+      "session": "2026-10-21",
+      "kind": "preopen",
+      "ordinal": 1,
+      "due": "2026-10-22T13:00:00+00:00",
+      "hong_kong": "2026-10-22T21:00:00+08:00"
+    },
+    "terminal_observed_sessions": 0,
+    "terminal_required_sessions": 6,
+    "halted": true,
+    "prospective_status": "incomplete",
+    "limitations": [
+      "Local launch agent requires logged-in awake host; no wake guarantee",
+      "No external broker execution",
+      "Commissioning/replays never count as prospective",
+      "Missed sessions halt; no fabricated backfill"
+    ]
+  },
+  "preserved_prior_valid_decisions": 4,
+  "total_valid_observations": 4,
+  "heartbeat": {
+    "at": "2026-10-21T21:30:52.228079+00:00",
+    "parent_pid": 1,
+    "pid": 61546,
+    "scheduler": "launchd",
+    "service": "local.ml-trade-engine.collector-v2",
+    "source_sha256": "f82d9574358e753fbcb22802d73e07106fc1c26dcf5d36c66b765504741d8245",
+    "status": "awake"
+  },
+  "heartbeat_age_seconds": 44.134403,
+  "heartbeat_stale_threshold_seconds": 300,
+  "halt": {
+    "at": "2026-10-21T21:30:52.228079+00:00",
+    "reason": "Missing expected reconciled receipt",
+    "session": "2026-10-21"
+  },
+  "notified_event_ids": [
+    "PILOT-TREND-WEEK1-R5-20261021:ac-power-required:2026-10-21",
+    "PILOT-TREND-WEEK1-R5-20261021:invalid-provider-ohlc:JPM:2026-10-21"
+  ],
+  "notification_records": [
+    {
+      "event_id": "PILOT-TREND-WEEK1-R5-20261021:ac-power-required:2026-10-21",
+      "observed_at": "2026-10-21T13:37:35.365101+00:00",
+      "kind": "required_user_action",
+      "message": "Mac now on battery at 84%, after AC power was confirmed at 20:02 HKT. Plug in for the fifth decision at 22 October 04:30 HKT; collector and guard remain healthy."
+    },
+    {
+      "event_id": "PILOT-TREND-WEEK1-R5-20261021:invalid-provider-ohlc:JPM:2026-10-21",
+      "observed_at": "2026-10-21T21:31:36.362482+00:00",
+      "kind": "new_actionable_failure",
+      "message": "The fifth collection started on time at 22 October 04:30:41 HKT but failed input validation. Yahoo's JPM bar for US 21 October has open 337.114990234375 above high 336.8900146484375. The batch was rejected and deterministic-failure halt blocked retries. Four archived observations remain valid. No new decision, reset, backfill or report was created."
+    }
+  ],
+  "actionable_event_ids": [
+    "PILOT-TREND-WEEK1-R5-20261021:invalid-provider-ohlc:JPM:2026-10-21"
+  ],
+  "observed_events": [
+    {
+      "path": "attempts/2026-10-21-20261021T203041615851-ea629ee7.json",
+      "status": "failed",
+      "disposition": "same_new_provider_integrity_incident",
+      "incident_id": "PILOT-TREND-WEEK1-R5-20261021:invalid-provider-ohlc:JPM:2026-10-21"
+    },
+    {
+      "path": "events/2026-10-21-daily.json",
+      "status": "failed",
+      "disposition": "same_new_provider_integrity_incident",
+      "incident_id": "PILOT-TREND-WEEK1-R5-20261021:invalid-provider-ohlc:JPM:2026-10-21"
+    },
+    {
+      "path": "events/2026-10-21-retry45.json",
+      "status": "halted",
+      "disposition": "same_new_provider_integrity_incident",
+      "incident_id": "PILOT-TREND-WEEK1-R5-20261021:invalid-provider-ohlc:JPM:2026-10-21"
+    },
+    {
+      "path": "events/2026-10-21-retry60.json",
+      "status": "halted",
+      "disposition": "same_new_provider_integrity_incident",
+      "incident_id": "PILOT-TREND-WEEK1-R5-20261021:invalid-provider-ohlc:JPM:2026-10-21"
+    },
+    {
+      "path": "events/2026-10-21-watchdog.json",
+      "status": "missing_expected_receipt",
+      "disposition": "same_new_provider_integrity_incident",
+      "incident_id": "PILOT-TREND-WEEK1-R5-20261021:invalid-provider-ohlc:JPM:2026-10-21"
+    }
+  ],
+  "durable_records": {
+    "days": [],
+    "attempts": [
+      {
+        "path": "attempts/2026-10-21-20261021T203041615851-ea629ee7.json",
+        "sha256": "bcaab65607e85bf5a773cf480045509f72793e5fc719618def74c201301fd883"
+      }
+    ],
+    "events": [
+      {
+        "path": "events/2026-10-21-daily.json",
+        "sha256": "8f64607274ee59cd339b3449b2976020d7b8b6f9f6c4c1a6aee794b7d887645e"
+      },
+      {
+        "path": "events/2026-10-21-retry45.json",
+        "sha256": "165eba8477f50320c6f37ee390234b681630f88ef4f1bba677b823a4664e7858"
+      },
+      {
+        "path": "events/2026-10-21-retry60.json",
+        "sha256": "51015f8befbb4813ecab1dde6175f8f0b18c101506d1128e4cd741b292228794"
+      },
+      {
+        "path": "events/2026-10-21-watchdog.json",
+        "sha256": "8e5170e7b6f1b07b50da9c37b27d06ae409d9c3b191f30a523d357d88c372978"
+      }
+    ],
+    "milestones": [],
+    "outages": [],
+    "outcomes": [],
+    "terminal": [],
+    "outcome-runs": [],
+    "outcome-attempts": []
+  },
+  "superseded_workspaces": [
+    "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r4",
+    "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r3",
+    "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2",
+    "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1",
+    "/Users/a/Downloads/ml-trade-engine/data/paper/research-v2"
+  ],
+  "commissioning": {
+    "trigger": {
+      "at": "2026-10-21T04:35:57.484664+00:00",
+      "parent_pid": 1,
+      "pid": 14168,
+      "scheduler": "launchd",
+      "service": "local.ml-trade-engine.collector-v2",
+      "source_sha256": "f82d9574358e753fbcb22802d73e07106fc1c26dcf5d36c66b765504741d8245",
+      "status": "awake",
+      "content_sha256": "ee4c1c076ce72edad30e4c74b53f5a5563d9088b57c6ced95317063172bb4218"
+    },
+    "completed_at": "2026-10-21T04:36:15.813598+00:00",
+    "mode": "commissioning_preview",
+    "session": "2026-10-20",
+    "symbol_count": 22,
+    "result_sha256": "225c95b5cf45da8b93eca9ea095abe9b84bb764ce85e402eb83a835360cea494",
+    "snapshot_sha256": "53c17d4bf616f2c0290aec2142fc2f18dac7d1c03bb30c956e409920f1507019",
+    "timings_seconds": {
+      "data_read": 16.26183395809494,
+      "features": 0.2297438340028748,
+      "inference": 0.14049083506688476,
+      "ledger": 0.01089624990709126,
+      "training": 0.0,
+      "whole_batch": 17.682833957951516
+    },
+    "accounts": {
+      "deployment": {
+        "equity": 10000.0,
+        "cash": 10000.0,
+        "reconciliation_error": 0.0,
+        "fees": 0.0,
+        "reserved_cash": 0
+      },
+      "shadow": {
+        "equity": 10000.0,
+        "cash": 10000.0,
+        "reconciliation_error": 0.0,
+        "fees": 0.0,
+        "reserved_cash": 4126.17806940435
+      }
+    },
+    "counts_as_prospective": false
+  },
+  "last_check_disposition": "scheduled_collection_failed_JPM_invalid_price_range_no_fifth_decision",
+  "verification": {
+    "release_integrity_verified": true,
+    "ledger_consistent": true,
+    "launchd_targets_active_release": true,
+    "sleep_guard_running": true
+  },
+  "reported_installation": true,
+  "notification_gates": {
+    "new_actionable_failure": true,
+    "required_user_action": false,
+    "one_new_session_milestone": false,
+    "final_maturity": false
+  },
+  "skipped_invocations": [],
+  "last_boundary_check": {
+    "trigger_at": "2026-10-21T21:30:55.439000+00:00",
+    "checked_at": "2026-10-21T21:31:15.504386+00:00",
+    "session": "2026-10-21",
+    "eligible_session": true,
+    "window": "post_close",
+    "market_open": "2026-10-21T13:30:00+00:00",
+    "market_close": "2026-10-21T20:00:00+00:00",
+    "seconds_after_open": 28855.439,
+    "seconds_after_close": 5455.439,
+    "checked_seconds_after_close": 5475.504386
+  },
+  "last_invocation": {
+    "trigger_at": "2026-10-21T21:30:55.439000+00:00",
+    "checked_at": "2026-10-21T21:31:15.504386+00:00",
+    "session": "2026-10-21",
+    "eligible_session": true,
+    "window": "post_close",
+    "market_open": "2026-10-21T13:30:00+00:00",
+    "market_close": "2026-10-21T20:00:00+00:00",
+    "seconds_after_open": 28855.439,
+    "seconds_after_close": 5455.439,
+    "checked_seconds_after_close": 5475.504386,
+    "collector_inspected": true,
+    "disposition": "new_provider_integrity_failure"
+  },
+  "last_readonly_checks": {
+    "sealed_status_succeeded": true,
+    "durable_integrity_verified": true,
+    "heartbeat_fresh": true,
+    "collector_last_exit_zero": true,
+    "sole_collector_owner": true,
+    "sleep_guard_running": true,
+    "idle_sleep_assertion_present": true,
+    "watchdog_inspected": true,
+    "watchdog_valid": false,
+    "saved_response_validation_failure_reproduced": true
+  },
+  "power": {
+    "observed_at": "2026-10-21T21:31:36.362482+00:00",
+    "raw": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=24445027)\t100%; charged; 0:00 remaining present: true",
+    "ac_connected": true
+  },
+  "scheduler_stderr": {
+    "sha256": "2399fd2e9540a909bf968ca602691d6e0012fa6e985c4e578992fcf2de6b4259",
+    "bytes": 1518,
+    "last_modified": "2026-10-21T04:37:21.253656+00:00",
+    "tail": "Traceback (most recent call last):\n  File \"/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261021-week1-r5/runtime_v2/storage.py\", line 50, in lock\n    fcntl.flock(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nBlockingIOError: [Errno 35] Resource temporarily unavailable\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261021-week1-r5/scripts/collector_v2.py\", line 35, in <module>\n    if __name__=='__main__': main()\n                             ~~~~^^\n  File \"/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261021-week1-r5/scripts/collector_v2.py\", line 22, in main\n    elif args.command=='tick': result=tick(args.release,args.workspace)\n                                      ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261021-week1-r5/runtime_v2/operations.py\", line 565, in tick\n    with lock(workspace):\n         ~~~~^^^^^^^^^^^\n  File \"/Users/a/miniconda3/lib/python3.13/contextlib.py\", line 141, in __enter__\n    return next(self.gen)\n  File \"/Users/a/Downloads/ml-trade-engine/data/releases/research-v2-runtime-20261021-week1-r5/runtime_v2/storage.py\", line 52, in lock\n    raise RuntimeError('Another collector owns the state writer lock') from exc\nRuntimeError: Another collector owns the state writer lock\n",
+    "disposition": "historical_recovered_lock_contention_during_installation_report_on_21_October_12_37_HKT_current_exit_zero_no_missing_due_event"
+  },
+  "report_gate_reason": "No valid r5 decision; active halt; zero mature r5 outcomes and terminal receipts. No week-close or freeze report generated.",
+  "latest_diagnostic": {
+    "event_id": "PILOT-TREND-WEEK1-R5-20261021:invalid-provider-ohlc:JPM:2026-10-21",
+    "snapshot": "data/paper/research-week1-r5/days/2026-10-21/market-20261021T203041615851-ea629ee7",
+    "manifest_sha256": "bcb1988b713b9b66cb672bd801fba47c7dc1879ab044843f502030fd4e37ab65",
+    "JPM_response_sha256": "08c5c92681630ef9ee687542ac8d8c9bb9c68dffcaeb7147578c1be59d82ae69",
+    "provider_requests": 22,
+    "accepted_instruments": 21,
+    "invalid_raw_rows": [
+      {
+        "session": "2026-10-21",
+        "Open": 337.114990234375,
+        "High": 336.8900146484375,
+        "Low": 332.6499938964844,
+        "Close": 335.19000244140625,
+        "high_below_open": 0.2249755859375
+      }
+    ],
+    "saved_response_failure_reproduced": {
+      "type": "ValueError",
+      "message": "Invalid OHLC price ranges"
+    },
+    "prospective_result_count": 0,
+    "account_files_present": [],
+    "recovery_performed": false,
+    "saved_file_hashes": {
+      "AAPL-raw.parquet": "21fd097b961952b601f33c1b3e1d3945be893f1cb27cb20474dfc95023e6a884",
+      "AAPL.parquet": "3fecc1eb95a07628721b0bc759eb71deac72c4fc8937a97c35f30c475e27cfdc",
+      "AMZN-raw.parquet": "6d2138bfc81bd0ac8d13e1565de889f4d6e381e7bb1227677341625669ebe796",
+      "AMZN.parquet": "9cc5aa79d3a1d0c739b6a82c19a339c86b88c9a59b84272a4df56cc82fa63d94",
+      "BAC-raw.parquet": "b6ac2f367d511553facb40cf4d0d7317449437b9a440e4aef525b33f3988037b",
+      "BAC.parquet": "6ba38a5d37616c835c96b64f23b8bb2c08af15eeec397511c9aa7845b23e48b1",
+      "DIA-raw.parquet": "43f0ace0f90c9c9dd1cc75cb97f1d1d2070695257974ebfd24b78ea89fa0f1e2",
+      "DIA.parquet": "a83474f59753251f0427a094c70e83429b83e7be4aa667bab2d0680c5f65dfce",
+      "GLD-raw.parquet": "ef7798dc6d6f56245f4f7b7a9086833d15d414c1428bc00f7081a6e0f68f11eb",
+      "GLD.parquet": "7ae65898ffbd86cda5e1c5212024c57656f263eb765c71e7d41988a173f87c7d",
+      "GOOGL-raw.parquet": "f01c0e94a5ef1ece9dd6bb9fe1f84225853ee296fd7d8c9d2d286ab70d7ab141",
+      "GOOGL.parquet": "0d8412c4e2ced4d786fab6b819cc3bb268f73dac090352afd9c3d7f9637373e3",
+      "GS-raw.parquet": "9d6860c24e934fe5face69c9359527d3b59add411c8260045f7f9bbef837ff35",
+      "GS.parquet": "2988a110a2c215c24bae5ddccf6a5c12f6d01dfb04bd5a6d420582b3cf76662d",
+      "IWM-raw.parquet": "5143b5b9c04bda2ef201d6b06167900bbbf2ac553a673028b0eb064b735068fe",
+      "IWM.parquet": "13e2736bc867f8f0bc05fdf5d25c299fa7696bc0261575680169f9de3945c2d8",
+      "JPM-raw.parquet": "8795187115b19e64bfb16b408befd2aa1c5429696f3b521118b494bca9b89a20",
+      "META-raw.parquet": "e5a8c2c8298e5e04cc7aa67d29cffe40aa772047c5cd0bf88bbb36e114b03dfb",
+      "META.parquet": "4df32e4da203a426962ac7b51fb8a90d8bb7f13dd06ed12cf0c8775eee81e305",
+      "MSFT-raw.parquet": "8530e050875c1883df1cff71eeb7b5d876be7cc5a1ff899677674537d4d9a848",
+      "MSFT.parquet": "c8856074f9ea620c8a9f92d197d5828c860d2ea7cc1456b4e4d3a98bd1814992",
+      "NVDA-raw.parquet": "2d4458d152c49cc8d58c6a12f4be492f004da9512d7750a757dd551a93859bb7",
+      "NVDA.parquet": "dbe7ee1ec71dbe69045fe5db987f067eb91977426a2a9963b010afbfc45946aa",
+      "QQQ-raw.parquet": "9a99650f3290483a5344f766c965ef283e84983f873faf60b4007a5cf22922bb",
+      "QQQ.parquet": "aa46e4441afa603110fb67cc54400fb40df0ec2c8dec9dfe8edae2dde5aac407",
+      "SPY-raw.parquet": "285d04fde2e0d5e0b60d178da1e6588335406d5dd1ca55862e89f5db30ccdc83",
+      "SPY.parquet": "76965b12510b0eb3c87fd5274657417790537bf34ba96fefb5ff68b7f6caea27",
+      "TLT-raw.parquet": "7a14f3a17984b0a99cc407dacaa45ba260f5f197b806d35b7e6fab02887eea96",
+      "TLT.parquet": "14e66974b1c0ebfa89a8c5ba179d011c739140204c106c9696a6478836f4b873",
+      "TSLA-raw.parquet": "c36f0935840988b0a34cb11b9df2d6cfa4313667dacc3df063f6af16fc70db8a",
+      "TSLA.parquet": "4fb675ab0ba53a2cc2199c3b02be366901ffa571a7e978b55af49a7ed1c1dc49",
+      "XLE-raw.parquet": "850abe6f0f19409f4a4306b6d05ce59c166e3bd89c6285b9cad6860bdb27e389",
+      "XLE.parquet": "5132295e9c52f26fa76b7e9f2c79ec916979f8fb953b9bd6f85da11d7dd3b7b6",
+      "XLF-raw.parquet": "4571e0d6cdaa0e9fbe531f975faa76e27b50a05e1abbd8610e70dbf3811884fe",
+      "XLF.parquet": "8f8770e711e48a16f3fd77e51d2c296a7457fbcdeb6e883b0d4b3361d7b28e22",
+      "XLI-raw.parquet": "a67e5fc8ab8f5c806e70c55ba84438d7113b98995c23e257944bf94563de4b36",
+      "XLI.parquet": "b6540c5c5454f4f17b852fe77bdef1b8db2f78e6a9012edf8747127dd6954d5f",
+      "XLK-raw.parquet": "acd02bf8a03fe8922340eac1d835075bbececc580cf6dfd4520e5481964a1b8a",
+      "XLK.parquet": "3ea3831d9c2141fb052be428609e540cc8932909dac9987bccffe970e38bcb3d",
+      "XLP-raw.parquet": "9ba1df1331d1b595980de711585806d1cd4b0c4de6c3af5ccc576f72518c02d2",
+      "XLP.parquet": "49f76ae16a56e55def73f5b24a29ad274cba1c3d85dd41721de1402379875ce2",
+      "XLV-raw.parquet": "d1a818b882d88a2dee607068836b5dfd4b9b5a4f0fcfb9b7ffc2cbe139ee3d4a",
+      "XLV.parquet": "adeb5c5af7fa1d8b632ab221501114ffc263943cf4a824d52803c3b415f93852",
+      "manifest.json": "bcb1988b713b9b66cb672bd801fba47c7dc1879ab044843f502030fd4e37ab65",
+      "responses/AAPL.json": "75a6b65bdc3ec04bfb9d054af48cf0f5f99400bd179aeb2e1a41f378d1d3efeb",
+      "responses/AMZN.json": "c449d5e0ed423368e7f65647a375362d73c1c15c869633fc91a814a46ea0e3c4",
+      "responses/BAC.json": "52f98bf3ad17b665207bd50d76010658a9164b91c5a261aecfa80d9bd0c2134a",
+      "responses/DIA.json": "cf9425980714160ddca14191f81bcaee5f86282abbc886b8d6fbbb3b6d281243",
+      "responses/GLD.json": "c1fb36f432ce251094ff827d9d4bd1fdb5052c57e569d4963bf0032bae6c3d0f",
+      "responses/GOOGL.json": "e04525ce7661d3c5cd786fbce97b6f9e02d60ae8e5eb84c255ee8f422445145d",
+      "responses/GS.json": "b7e8da7debe3571cc1b542a4fb8125c9dfcbb7664ccec2e20e8e04cea6c30373",
+      "responses/IWM.json": "5e31473d6ecc79f3c975a26eade3907013ff7f74f9f727d153c2a6f1fbe33a67",
+      "responses/JPM.json": "08c5c92681630ef9ee687542ac8d8c9bb9c68dffcaeb7147578c1be59d82ae69",
+      "responses/META.json": "57881a5837b627e0d155135e492b2a80ff03cb2b04d75528833322ca143f3c53",
+      "responses/MSFT.json": "6c5b0226ad2fb2936bc9db08950abf86e26f6b37ae6293938d6379deb9b2c80d",
+      "responses/NVDA.json": "2caa1f5d373a925bb85cfb060017050dfd76051021a1364cbda23d3e8f1c7c6e",
+      "responses/QQQ.json": "30567368a44c5568fe7d9e9f1cb50dda9e5469cac9222bd764a42c3176807109",
+      "responses/SPY.json": "ff41f232659eaec3337fdab2d57c6d4b7b115947b4c7c7e912393e79dd905f74",
+      "responses/TLT.json": "777a6be8f2ac3ee8ea253a2f38fd9e89195c5b75c17d79592bb46ea7b5fe2f74",
+      "responses/TSLA.json": "b7704078b94c461aeefd2d4286fd9cfe76d46669294429726be3edcd29715563",
+      "responses/XLE.json": "39a170116f2150942d41cd4411a702cdab01f6df59bc3d6e664ff118c33ab62a",
+      "responses/XLF.json": "7b6d6278c74e300b0cd7314173d27a241edfba4dadd94f03d8af17eb40ead173",
+      "responses/XLI.json": "adb948a0c176a60cb1ed32c7ba4263579e3d344f4487d882f88f8e6b4a027fab",
+      "responses/XLK.json": "cdb5def0ab1a0e405be94616fc4ab1aa093ca650200368df17ea0437f3140095",
+      "responses/XLP.json": "ba77d7dabc8711145eb26a89dbd060210d4bd9e498d23916032b42b46391a8d0",
+      "responses/XLV.json": "b2d8becc770188ddc2aca3176f9ed1df6d02e6c7ca3ef0aa2ee2c3da31e1bd41"
+    },
+    "accepted_symbol_file_hashes_verified": 21
+  },
+  "resolved_event_ids": [
+    "PILOT-TREND-WEEK1-R5-20261021:ac-power-required:2026-10-21"
+  ]
+}

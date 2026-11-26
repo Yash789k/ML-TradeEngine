@@ -1,0 +1,173 @@
+{
+  "verified_at": "2026-10-27T09:32:54.730780+00:00",
+  "status": {
+    "trial_id": "OUTCOME-RECOVERY-R7-20261027",
+    "decision_dates_preserved": 5,
+    "new_decisions": 0,
+    "completed_outcome_reads": 0,
+    "required_outcome_reads": 6,
+    "mature_decision_dates": 0,
+    "required_mature_decision_dates": 5,
+    "missing_new_sessions": [],
+    "original_missed_outcome_sessions": [
+      "2026-10-23",
+      "2026-10-26"
+    ],
+    "halted": false,
+    "external_orders": false,
+    "original_account_tail_complete": false,
+    "original_operational_gate": "incomplete; missed execution and marks remain disclosed",
+    "amended_outcome_collection_complete": false,
+    "next_event": {
+      "session": "2026-10-27",
+      "open": "2026-10-27T13:30:00+00:00",
+      "close": "2026-10-27T20:00:00+00:00",
+      "collection": "2026-10-27T20:30:00+00:00",
+      "collection_hkt": "2026-10-28T04:30:00+08:00",
+      "watchdog": "2026-10-27T21:30:00+00:00",
+      "observer_open": "2026-10-27T13:35:00+00:00",
+      "observer_close": "2026-10-27T21:35:00+00:00"
+    },
+    "archived_accounts": [
+      {
+        "segment": "r2",
+        "decisions": 2,
+        "last_mark": "2026-10-02",
+        "ledger_consistent_at_last_mark": true,
+        "net_returns_at_last_actual_receipt": {
+          "deployment": 0.0,
+          "shadow": -0.0006039152906718304
+        },
+        "full_account_tail_complete": false
+      },
+      {
+        "segment": "r4",
+        "decisions": 2,
+        "last_mark": "2026-10-15",
+        "ledger_consistent_at_last_mark": true,
+        "net_returns_at_last_actual_receipt": {
+          "deployment": 0.0,
+          "shadow": -0.0006007509720118431
+        },
+        "full_account_tail_complete": false
+      },
+      {
+        "segment": "r6",
+        "decisions": 1,
+        "last_mark": "2026-10-22",
+        "ledger_consistent_at_last_mark": true,
+        "net_returns_at_last_actual_receipt": {
+          "deployment": 0.0,
+          "shadow": 0.0
+        },
+        "full_account_tail_complete": false
+      }
+    ],
+    "heartbeat": {
+      "at": "2026-10-27T09:32:31.676311+00:00",
+      "completed_sessions": [],
+      "parent_pid": 1,
+      "phase": "idle",
+      "pid": 44914,
+      "release": "/Users/a/Downloads/ml-trade-engine/data/releases/outcomes-r7-20261027",
+      "service": "local.ml-trade-engine.collector-v2",
+      "trial_id": "OUTCOME-RECOVERY-R7-20261027"
+    },
+    "boundary_window": null
+  },
+  "heartbeat_age_seconds": 23.054469,
+  "release_manifest_sha256": "e891242d6ccb5bc84796a1b1cc4c3dc00de10327696c065e888baa9c0d3951ab",
+  "sole_owner_verified": true,
+  "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=24445027)\t97%; charging; 0:28 remaining present: true",
+  "guard_pid": 44538,
+  "guard_until": "2026-11-04T07:00:00+08:00",
+  "preservation": [
+    {
+      "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r2",
+      "files_unchanged": 490,
+      "proof": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r3/failed-trial-preservation.json",
+      "proof_sha256": "a244967833876d66dbf39e1aa8dd943da83df0e3ccfd7f683ab5a1766d9dc18d"
+    },
+    {
+      "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r3",
+      "files_unchanged": 216,
+      "proof": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r4/failed-trial-preservation.json",
+      "proof_sha256": "aba1e9f77647419051c7d0bf60b423f04ab6dbddb547dce3b4e1c996eb85ca73"
+    },
+    {
+      "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r4",
+      "files_unchanged": 501,
+      "proof": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r5/failed-trial-preservation.json",
+      "proof_sha256": "5b9af98e1818beb31ede4fb6eefee1e9203452088950836a6641020c6f6dda1e"
+    },
+    {
+      "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r5",
+      "files_unchanged": 232,
+      "proof": "/Users/a/Downloads/ml-trade-engine/data/research-week1-r6/failed-trial-preservation.json",
+      "proof_sha256": "78def8eba54bf26bab4f581ef4db0532568a2b2365ea09b55ff6a81516f3107e"
+    },
+    {
+      "workspace": "/Users/a/Downloads/ml-trade-engine/data/paper/research-week1-r6",
+      "files_unchanged": 302,
+      "proof": "/Users/a/Downloads/ml-trade-engine/data/research-outcomes-r7/r6-preservation.json",
+      "proof_sha256": "4d2eafb4d9d86bd096ad3321eaa48742490118e1a40a6f237e060a4fd61d7a80"
+    }
+  ],
+  "qualifications": {
+    "qualification-initial.xml": {
+      "passed": 26,
+      "sha256": "0913870d462745fae2c94e9899ea2e6dfd8d09876dec28045ac79c6585a1c224"
+    },
+    "activation-qualification.xml": {
+      "passed": 5,
+      "sha256": "d7c79e40510465eb6528beb723585a95c904408668779fdc7b9428ccdd612222"
+    }
+  },
+  "dashboard": {
+    "command": "/Users/a/miniconda3/bin/python -B; streamlit.testing.v1.AppTest.from_file(sealed dashboard).run()",
+    "exceptions": 0,
+    "errors": 0,
+    "observed_metrics": {
+      "Original decision dates": "5",
+      "New outcome reads": "0/6",
+      "Decision outcomes in new reads": "0/5"
+    },
+    "source_sha256": "4e6e7ab406b1d23aa1649f9263c0719bee66ffcb4a0537191eccf47ad3ec1c9d",
+    "live_http_health": "ok"
+  },
+  "automation": {
+    "id": "trading-pilot-evidence-watch",
+    "kind": "heartbeat",
+    "status": "ACTIVE",
+    "rrule": "DTSTART;TZID=America/New_York:20261027T093500\nRRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=9,17;BYMINUTE=35;BYSECOND=0",
+    "target_thread_id": "01a0e70e-ccdd-7b91-b17e-9af2b3eca477",
+    "prompt": "In /Users/a/Downloads/ml-trade-engine, follow docs/research-outcomes-r7/OPERATIONS.md and STATUS.md. The user restarted six outcome-only collection dates from US 27 October: 27\u201330 October and 2\u20133 November. The final collection is 4 November 05:30 HKT; US daylight saving ends during this schedule. Five original predictions remain fixed across r2/r4/r6. R6 missed outcome sessions 23 and 26 October; preserve these gaps and all earlier failed trials. At eligible XNYS open/post-close windows, use the sealed outcomes-r7-20261027 collector status; inspect new scheduled read receipts, snapshot integrity, heartbeat, halt, watchdog, preserved account consistency and sleep guard. Launchd alone collects; do not invoke tick, backfill, shift forecast endpoints, create targets, refit, clear halts, alter old accounts, enable orders or publish. Later downloaded historical prices are explicitly delayed outcome measurements, never reconstructed trades or on-time receipts. Retain observer-only state in docs/research-outcomes-r7/observer-state.json. Stay quiet on unchanged state; notify only new actionable failures, required action or completion. Reuse qualifications. A final amended outcome package requires six valid new read receipts, all five original-date outcomes, unchanged reconciled archived accounts and no active halt. Use the sealed collector report --final-outcomes in a new dated output directory. The original paper-account tail remains incomplete; report separate segment returns, every missed session and all failed trials, with no profitability approval. After verifying the amended final package, follow OPERATIONS.md to unload the collector and outcomes-r7 sleep guard, preserve their plists outside LaunchAgents, verify shutdown and pause this observer. Keep the dashboard and all evidence available. Ignore superseded workspaces' stopped heartbeats, preserved halts and cancelled dates. No hourly checks."
+  },
+  "observer_dates_hkt": [
+    "2026-10-27T21:35:00+08:00",
+    "2026-10-28T05:35:00+08:00",
+    "2026-10-28T21:35:00+08:00",
+    "2026-10-29T05:35:00+08:00",
+    "2026-10-29T21:35:00+08:00",
+    "2026-10-30T05:35:00+08:00",
+    "2026-10-30T21:35:00+08:00",
+    "2026-10-31T05:35:00+08:00",
+    "2026-11-02T22:35:00+08:00",
+    "2026-11-03T06:35:00+08:00",
+    "2026-11-03T22:35:00+08:00",
+    "2026-11-04T06:35:00+08:00"
+  ],
+  "preflight": {
+    "at": "2026-10-27T09:24:20.478989+00:00",
+    "counts_as_decision": false,
+    "counts_as_scheduled_outcome_read": false,
+    "mode": "manual_provider_preflight",
+    "session": "2026-10-26",
+    "snapshot": "/Users/a/Downloads/ml-trade-engine/data/research-outcomes-r7/preflight-20261027",
+    "snapshot_sha256": "872aa645b0ec19c19671c6f1ad6bbd479225d6d0d4ebc0765ea9ad3cfddc0bb7",
+    "symbols": 22
+  },
+  "prospective_reads_completed": 0,
+  "profitability_approved": false,
+  "external_orders": false
+}

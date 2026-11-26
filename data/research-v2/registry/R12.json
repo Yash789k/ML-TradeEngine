@@ -1,0 +1,20 @@
+{
+  "id": "R12",
+  "question": "prospective replication",
+  "registered_at": "2026-09-28T08:11:44.578747+00:00",
+  "status": "active_awaiting_evidence",
+  "protocol_sha256": "97d597a5c44a88a16ff444eb7e61786701907b2cb10b68b89faed8b62dcbae79",
+  "child_trials": [
+    "R12-PILOT-TREND-V2"
+  ],
+  "updated_at": "2026-09-28T08:54:12.846539+00:00",
+  "canonical_pilot_trial_id": "PILOT-TREND-V2-20260929",
+  "active_release_sha256": "570372e203c6ef943deb37c2856a4ca7f0c3d34a168ac247d5b1cb2232916f43",
+  "prospective_observed_sessions": 0,
+  "first_session": "2026-09-29",
+  "last_decision": "2026-12-28",
+  "final_label_endpoint": "2027-01-06",
+  "evidence": [
+    "operations/scheduler-verification-r2.json"
+  ]
+}

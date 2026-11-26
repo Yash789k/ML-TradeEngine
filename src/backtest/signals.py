@@ -10,16 +10,10 @@ Signal encoding
   1 = FLAT → cash  (no position)
  -1 = insufficient confidence → carry previous signal
 
-Signal sources (in priority order)
-------------------------------------
-1. OOS predictions saved by trainer  (data/models/{ticker}/oos_predictions.parquet)
-   These are the fully honest walk-forward predictions — each test row was scored
-   by a model that had NOT seen that row during training.
-
-2. Final-model inference fallback
-   If no OOS file exists (e.g. trained before Phase 04 upgrade), the final saved
-   models are applied to the full feature history.  This introduces mild look-ahead
-   bias (model trained on full history evaluates earlier periods) — noted in log.
+Signal source
+-------------
+Versioned, sealed out-of-sample predictions from causal training only.
+Historical final-model backfill is prohibited. Legacy caches require rebuilding.
 
 Confidence filtering
 ---------------------
@@ -114,6 +108,7 @@ def build_signal_df(
     ticker: str,
     feat_df: pd.DataFrame,
     confidence_threshold: float = 0.38,
+    policy_engine=None,
 ) -> pd.DataFrame:
     """
     Build a time-indexed signal DataFrame for backtesting.
@@ -123,6 +118,7 @@ def build_signal_df(
       signal                 : {0=DOWN, 1=FLAT, 2=UP}
       confidence             : max(p_down, p_flat, p_up)
       filtered_signal        : signal if confidence >= threshold, else 1 (FLAT)
+      conf_threshold         : the threshold applied per bar (scalar or dynamic)
       true_label             : actual class (only from OOS; NaN for fallback)
 
     Parameters
@@ -130,6 +126,11 @@ def build_signal_df(
     ticker               : asset symbol, must match data/models/{ticker}/ path
     feat_df              : Phase 02 feature matrix (provides close prices + dates)
     confidence_threshold : min max-probability to emit a non-FLAT signal
+                           (ignored when policy_engine is supplied)
+    policy_engine        : optional src.risk.policy_engine.PolicyEngine — when
+                           given, the confidence threshold becomes dynamic
+                           per bar (tightened while the HMM regime is
+                           transitioning) and ineligible bars are forced FLAT.
     """
     import json
     feat_path = _MODELS_ROOT / ticker / "feature_cols.json"
@@ -137,6 +138,10 @@ def build_signal_df(
         raise FileNotFoundError(
             f"No trained models found for {ticker}. Run train.py first."
         )
+    from src.models.bundle import validate_bundle
+    validate_bundle(_MODELS_ROOT / ticker)
+    if feat_df.attrs.get("causality_version") != 2:
+        raise ValueError("Legacy features are not eligible for validated backtesting")
     feat_cols = json.loads(feat_path.read_text())
 
     # ── Try OOS file first ─────────────────────────────────────────────
@@ -144,13 +149,7 @@ def build_signal_df(
     source   = "oos"
 
     if proba_df is None:
-        log.warning(
-            "%s: no OOS predictions file found — falling back to final-model "
-            "inference (mild look-ahead bias).  Re-run train.py to generate "
-            "honest OOS predictions.", ticker,
-        )
-        proba_df = _infer_with_final_models(ticker, feat_df, feat_cols)
-        source   = "final_model_fallback"
+        raise FileNotFoundError(f"{ticker}: missing OOS predictions; final-model backfill is prohibited")
 
     # Align with feat_df close prices (inner join on index)
     close    = feat_df["Close"].rename("close")
@@ -159,8 +158,20 @@ def build_signal_df(
 
     df["signal"]    = np.argmax(df[["p_down", "p_flat", "p_up"]].values, axis=1)
     df["confidence"]= df[["p_down", "p_flat", "p_up"]].max(axis=1)
+
+    if policy_engine is not None:
+        # Note: only the dynamic threshold is applied here.  The policy's
+        # eligibility gate is enforced by RiskEngine (blocks NEW entries
+        # only) — flattening the signal here would force-close open
+        # positions and churn re-entries.
+        policy = policy_engine.compute_policy(feat_df).reindex(df.index).ffill()
+        thresholds = policy["conf_threshold"].fillna(confidence_threshold).values
+    else:
+        thresholds = np.full(len(df), confidence_threshold)
+
+    df["conf_threshold"] = thresholds
     df["filtered_signal"] = np.where(
-        df["confidence"] >= confidence_threshold,
+        df["confidence"].values >= thresholds,
         df["signal"],
         1,   # fall back to FLAT when model is unsure
     )
@@ -174,7 +185,7 @@ def build_signal_df(
         (df["filtered_signal"] == 0).mean() * 100,
         (df["filtered_signal"] == 1).mean() * 100,
         (df["filtered_signal"] == 2).mean() * 100,
-        confidence_threshold,
-        (df["confidence"] >= confidence_threshold).mean() * 100,
+        float(np.mean(thresholds)),
+        (df["confidence"].values >= thresholds).mean() * 100,
     )
     return df

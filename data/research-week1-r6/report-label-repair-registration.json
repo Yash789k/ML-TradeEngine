@@ -1,0 +1,10 @@
+{
+  "registered_at": "2026-10-22T21:40:17.453546+00:00",
+  "scope": "Reporting-only correction before any r6 outcome rows exist",
+  "problem": "Original r6 report carries a literal r5 tag for future active-segment outcome rows. The current week-close has only archived r2/r4 labeled rows and is unaffected.",
+  "old_source": "research_week1_r6/report.py",
+  "old_sha256": "1c88335c06a979ac6c22b20cdb12359c92dd58caae33c67e66b0155ca1062f96",
+  "new_source": "research_week1_r6/report_20261023.py",
+  "change": "Validate the r6 trial when constructing active prediction rows and tag them r6; preserve original module and all generated reports. No collector/model/policy/state/evaluation change.",
+  "validation": "Focused active-row trial/tag regression plus existing 13 report checks; no repeated model fits or data reads"
+}

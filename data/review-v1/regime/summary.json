@@ -1,0 +1,221 @@
+{
+  "assumptions": [
+    "Two states fixed in advance; the proposal's choice among 2, 3 and 4 states on validation data has not been run.",
+    "States are ordered by fitted volatility, not by mean return as the proposal says, because that ordering is stable across refits.",
+    "Fitted on SPY only: one market-wide regime, not one per instrument.",
+    "Filtered probabilities only (information up to each close); the smoothed path is never used."
+  ],
+  "checks": {
+    "probabilities_sum_to_one": true,
+    "truncation": [
+      {
+        "cut": "2020-03-23",
+        "max_abs_difference": 0.0,
+        "rows_compared": 308,
+        "rows_expected": 308
+      },
+      {
+        "cut": "2022-06-16",
+        "max_abs_difference": 0.0,
+        "rows_compared": 872,
+        "rows_expected": 872
+      },
+      {
+        "cut": "2025-04-08",
+        "max_abs_difference": 0.0,
+        "rows_compared": 1576,
+        "rows_expected": 1576
+      }
+    ],
+    "truncation_passed": true,
+    "vintage": {
+      "label_agreement": 1.0,
+      "max_abs_probability_difference": 6.469778928386294e-05,
+      "note": "Sealed September snapshot versus fresh November snapshot on shared sessions from 2 January 2024.",
+      "sessions": 686
+    }
+  },
+  "config": {
+    "anchor": "2019-01-02",
+    "min_fit": 504,
+    "n_iter": 200,
+    "n_states": 2,
+    "refit_every": 21,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "version": 1,
+    "vol_window": 21,
+    "window": 1008
+  },
+  "episodes": [
+    {
+      "end": "2020-04-30",
+      "mean_p_turbulent": 0.9999998583240868,
+      "name": "COVID crash",
+      "sessions": 48,
+      "start": "2020-02-24",
+      "turbulent_share": 1.0
+    },
+    {
+      "end": "2022-10-31",
+      "mean_p_turbulent": 0.9963082385328224,
+      "name": "2022 rate-hike bear market",
+      "sessions": 209,
+      "start": "2022-01-03",
+      "turbulent_share": 1.0
+    },
+    {
+      "end": "2025-04-30",
+      "mean_p_turbulent": 0.9999999745602827,
+      "name": "April 2025 tariff shock",
+      "sessions": 19,
+      "start": "2025-04-03",
+      "turbulent_share": 1.0
+    },
+    {
+      "end": "2024-07-15",
+      "mean_p_turbulent": 0.0008044521230819392,
+      "name": "Calm 2024 advance",
+      "sessions": 134,
+      "start": "2024-01-02",
+      "turbulent_share": 0.0
+    }
+  ],
+  "forward_validation": {
+    "note": "Descriptive. Overlapping 21-session windows are strongly dependent, so no p-value is given. The regime separates subsequent volatility. It did not warn of lower returns on this history: the mean 21-session SPY return after turbulent closes was +1.7% against +1.2% after calm closes.",
+    "rows": [
+      {
+        "mean_next_21_session_return": 0.012023710758006342,
+        "mean_next_21_session_volatility": 0.12464981313659478,
+        "mean_next_day_abs_return": 0.005694646717591856,
+        "median_next_21_session_return": 0.01625270155162495,
+        "sessions": 1035,
+        "share_next_day_move_over_1pct": 0.16618357487922705,
+        "state": "calm"
+      },
+      {
+        "mean_next_21_session_return": 0.017055639783087304,
+        "mean_next_21_session_volatility": 0.20442951116707625,
+        "mean_next_day_abs_return": 0.010722018074333478,
+        "median_next_21_session_return": 0.030722535059422462,
+        "sessions": 888,
+        "share_next_day_move_over_1pct": 0.39414414414414417,
+        "state": "turbulent"
+      }
+    ],
+    "sessions": 1923,
+    "spearman_p_turbulent_vs_next_21_return": 0.21969611143619544,
+    "spearman_p_turbulent_vs_next_21_volatility": 0.4333170897782151
+  },
+  "observation_rows": 2490,
+  "occupancy_by_year": [
+    {
+      "sessions": 252,
+      "turbulent_share": 0.4444444444444444,
+      "year": 2019
+    },
+    {
+      "sessions": 253,
+      "turbulent_share": 0.8063241106719368,
+      "year": 2020
+    },
+    {
+      "sessions": 252,
+      "turbulent_share": 0.4007936507936508,
+      "year": 2021
+    },
+    {
+      "sessions": 251,
+      "turbulent_share": 1.0,
+      "year": 2022
+    },
+    {
+      "sessions": 250,
+      "turbulent_share": 0.292,
+      "year": 2023
+    },
+    {
+      "sessions": 252,
+      "turbulent_share": 0.12301587301587301,
+      "year": 2024
+    },
+    {
+      "sessions": 250,
+      "turbulent_share": 0.312,
+      "year": 2025
+    },
+    {
+      "sessions": 184,
+      "turbulent_share": 0.20652173913043478,
+      "year": 2026
+    }
+  ],
+  "occupancy_recent": {
+    "mean_p_turbulent": 0.33384227648476766,
+    "sessions": 42,
+    "turbulent_share": 0.3333333333333333
+  },
+  "provenance": "reconstructed",
+  "refits": {
+    "converged": 93,
+    "count": 93,
+    "first": "2019-01-02",
+    "last": "2026-09-10"
+  },
+  "registration_sha256": "abc146e5bffdae819a5245e1fdec89813e4cf9e7a5d5a9f6e1de2b5c902b011b",
+  "role": "Diagnostic. The HMM was written for this review; no recorded pilot decision used it. It enters a decision only in the two sandbox overlay arms.",
+  "series": {
+    "history": {
+      "first": "2019-01-02",
+      "last": "2026-09-25",
+      "sessions": 1944,
+      "sha256": "ab50edf63cffd5fd668becc444a21d294f4ad17bc64cc5b48cd7ac0b24a96344",
+      "source": "data/releases/2026-09-28-adaptive/market/adjusted/SPY.parquet"
+    },
+    "recent": {
+      "first_new": "2026-09-28",
+      "last": "2026-11-24",
+      "new_sessions": 42,
+      "provider": "Yahoo Finance public chart v8",
+      "retrieved_at": "2026-11-25T13:15:02.645993+00:00",
+      "source": "data/paper/review-v1/market/2026-11-24-20261125T131502645854"
+    }
+  },
+  "spells": {
+    "calm": {
+      "longest_sessions": 200,
+      "median_sessions": 28.5,
+      "spells": 20
+    },
+    "turbulent": {
+      "longest_sessions": 345,
+      "median_sessions": 20.0,
+      "spells": 20
+    }
+  },
+  "states": [
+    {
+      "max_annualised_volatility": 0.11710953777829229,
+      "median_annualised_return": 0.24829965630807113,
+      "median_annualised_volatility": 0.10471529188203638,
+      "median_expected_duration_sessions": 105.49147429798955,
+      "median_stay_probability": 0.9905205609585546,
+      "min_annualised_volatility": 0.07387050278213443,
+      "refits": 93,
+      "state": "calm"
+    },
+    {
+      "max_annualised_volatility": 0.33183796994023307,
+      "median_annualised_return": -0.02686007368689934,
+      "median_annualised_volatility": 0.28548300600351434,
+      "median_expected_duration_sessions": 82.91929081173429,
+      "median_stay_probability": 0.9879400801645727,
+      "min_annualised_volatility": 0.19470746731602617,
+      "refits": 93,
+      "state": "turbulent"
+    }
+  ]
+}

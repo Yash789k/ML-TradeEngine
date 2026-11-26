@@ -1,0 +1,1 @@
+(()=>{const e=Array.from(document.querySelectorAll('button,a')).find(e=>e.innerText==='Raw logs');if(e)e.click();return JSON.stringify({text:document.body.innerText.slice(-14000),anchors:Array.from(document.querySelectorAll('a')).filter(e=>/log|pdf/i.test(e.innerText)).map(e=>({text:e.innerText,href:e.href}))});})()
