@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "source_revision": "59853149b3fe9c19bba043e9a61965ed268c89b4",
+  "question": "Does a gate that responds to decision-time market and text signals improve forecast loss or net trading performance over a constant learned mixture of the same experts?",
+  "data": "Published five-session expert probabilities rounded to six decimals and seven decision-time context variables in the 2023, 2024 and 2025 annual detail tapes. Renormalize rounded probabilities. Join labels and opening prices on decision date and symbol. All periods previously examined.",
+  "splits": "Train 2023 and evaluate 2024. Train 2023–2024 and evaluate 2025. Purge any training label whose endpoint is on or after the first test decision. Fit feature scaling on training rows only. Annual archived underlying experts were retrained on their original, earlier schedules.",
+  "pools": {"all experts": "all thirteen reported channels", "trees and linear": ["Logistic","XGBoost","LightGBM"], "sequence networks":["LSTM","GRU","TCN","Patch Transformer"]},
+  "budget": "Six prespecified architectures per year. Zero initialize the gate. Minimize pooled three-class negative log likelihood plus 0.001 times mean squared context coefficients. Seed 28, Adam, learning rate 0.03, 80 full-batch updates. No validation selection, resampling of trials or tuning.",
+  "gate": "Fixed mixture learns constant softmax logits. Context adapter learns a linear map from seven scaled close-time inputs to logits, plus intercept. Both fit only mixture weights over the same saved base models.",
+  "execution": "Shared CECI2 baseline replay at 5 bps per side, 10000 USD initially, next open, annual liquidation. Rank at most five candidates above a 0.05 UP-minus-DOWN threshold. Inverse volatility with 15% cap per instrument. Carry account capital across years.",
+  "primary": "One primary endpoint: equal-date-weighted held-out categorical log-loss difference of context minus constant for the full pool. Circular paired moving-block bootstrap with 21-session blocks sampled within each year and 2000 draws at seed 28. Other pools, period comparisons and portfolio results descriptive. No promotion."
+}

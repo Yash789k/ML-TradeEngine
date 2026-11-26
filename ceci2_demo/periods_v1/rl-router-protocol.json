@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "source_revision": "59853149b3fe9c19bba043e9a61965ed268c89b4",
+  "question": "Can an offline reinforcement learner route each instrument to a forecasting model, using market context and only feedback available by its decision date?",
+  "history": "2023–2025 and the custom mixture comparisons already examined. Exploratory successor. No model promotion. No hyperparameter search.",
+  "pools": ["all experts", "trees and linear", "sequence networks"],
+  "action": "Choose one expert identity from the pool at each close; use that model's complete three-class probability vector. The same existing trading rule converts every method's forecast into positions.",
+  "reward": "Offline negative categorical log loss of the selected five-session forecast less 0.01 log-loss units when changing the previous day's expert. The switch preference is a model-routing penalty, distinct from trading fees. A uniform initial previous-action penalty of zero each symbol-year.",
+  "learner": "Eight steps of offline fitted Q iteration with discount 0.9 and linear ridge regularization 100. Predict the return of each candidate before applying the known previous-action penalty. Market states are exogenous to the model choice. Reset at each instrument-year end; target transitions span adjacent archived decisions for the same instrument only. Full-information fitting evaluates each expert's archived probability against the matured label.",
+  "state": "Seven decision-time market and qualitative features plus per-symbol mean expert log loss across the latest 21 published outcomes, using only endpoints strictly before the decision. Default loss log(3) with no feedback. Standardize and clip to +/-10 using training rows only.",
+  "folds": "Train 2023 through its completed endpoints, test 2024; train 2023–2024 through their completed endpoints, test 2025. Remove training rows whose endpoints reach the first test decision. Later realized outcomes enter rolling context only after maturity. No held-out model refit. Overlapping five-session outcomes produce dependent rewards. They are unavailable as contemporaneous inputs.",
+  "primary": "Paired mean daily forecast loss difference (RL model router minus fixed learned mixture) for full pool. 95% within-year 21-session circular block bootstrap, seed 28, 2,000 draws. Portfolio performance and alternative pools descriptive.",
+  "execution": "Unchanged five-session gain threshold, inverse-volatility sizing, position caps, next opening, common annual liquidations, starting USD 10000 and 5 bps per side."
+}

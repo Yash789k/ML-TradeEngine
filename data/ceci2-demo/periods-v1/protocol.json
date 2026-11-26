@@ -1,0 +1,11 @@
+{
+  "study": "CECI2 classic mixture and offline allocation, 2022 retrospective extension",
+  "parent_protocol": "ceci2_demo/moe_v2/protocol.json",
+  "data": "Unchanged five-session panel of 22 instruments, recorded text inputs and public daily factor returns. Compare only the new 2022 fold against the archived robustness original forecast streams on exactly matched dates and instruments.",
+  "scope": "2022 is the earliest year with independent incumbent and uniform forecast artifacts in the registered controller robustness study. The known bear market and the incumbent, uniform and adaptive results have already been examined. New mixture and RL outcomes have not been scored in 2022. This is retrospective.",
+  "splits": "Fit the same two dense mixtures using outcomes observed through 2019. Calibrate temperatures on purged 2020 rows. Fit the same offline Ridge Q policy on embargoed 2021 decisions and matured labels. Evaluate on embargoed 2022 rows with endpoints in 2022. Report actual date boundaries.",
+  "design": "Reuse unchanged fit_mixture, offline_policy, transition rewards, interval and shared replay functions from the registered classic MoE study. Train once per feature set. No tuning or model selection.",
+  "primary": "HMM gate minus Classic MoE categorical log loss, averaged by decision date. Report one paired 95% circular moving-block interval with 21 sessions per block, 2000 repetitions, seed 28.",
+  "secondary": "Report daily net returns, drawdown, exposure, costs and turnover for all previous economic comparators. Compare the text ablation and report RL action counts. Independent counterfactual fold portfolios begin with USD 10000 at five basis points per side.",
+  "exclusions": "No live orders, hosted inference, fresh articles, or changes to the previously inspected 2023 through 2025 ledgers."
+}

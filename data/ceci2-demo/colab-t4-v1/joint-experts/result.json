@@ -1,0 +1,104 @@
+{
+  "revision": "ffb3c92c79b9cf19b9a93c2b7d5b68e6a70ce43e",
+  "device": "cuda",
+  "hardware": "Tesla T4",
+  "torch": "2.14.1+cu130",
+  "folds": {
+    "2024": {
+      "first_decision": "2024-01-09",
+      "last_training_endpoint": "2023-12-29",
+      "training_cases": 5258,
+      "test_cases": 5302,
+      "epoch_train_loss": [
+        1.302295654887435,
+        1.2883296593734637,
+        1.280977667987732,
+        1.2760893818360854,
+        1.2718519673414581,
+        1.2688912281114006,
+        1.266001146390167,
+        1.2636180796429157,
+        1.2617003738131982,
+        1.2597980788562089,
+        1.2580178151252197,
+        1.256836353938994
+      ],
+      "parameter_change_l2": {
+        "sequence.weight_ih_l0": 1.5662912130355835,
+        "sequence.weight_hh_l0": 1.7735666036605835,
+        "sequence.bias_ih_l0": 0.590202271938324,
+        "sequence.bias_hh_l0": 0.6043840646743774,
+        "sequence_head.weight": 0.43145379424095154,
+        "sequence_head.bias": 0.12693069875240326,
+        "event.0.weight": 0.6095713376998901,
+        "event.0.bias": 0.19046153128147125,
+        "event.2.weight": 0.39243438839912415,
+        "event.2.bias": 0.13216981291770935,
+        "market.weight": 0.40192463994026184,
+        "market.bias": 0.2554139196872711,
+        "gate.0.weight": 1.3754671812057495,
+        "gate.0.bias": 0.43372035026550293,
+        "gate.2.weight": 0.8559154868125916,
+        "gate.2.bias": 0.24146954715251923
+      },
+      "mean_expert_weights": {
+        "Numerical sequence": 0.326386514538214,
+        "Event sentiment": 0.39203351318923335,
+        "Market context": 0.28157997557346054
+      }
+    },
+    "2025": {
+      "first_decision": "2025-01-10",
+      "last_training_endpoint": "2024-12-31",
+      "training_cases": 10560,
+      "test_cases": 5258,
+      "epoch_train_loss": [
+        1.2991067481763434,
+        1.2838805733305034,
+        1.2775719548716689,
+        1.2731547651868877,
+        1.2701660531939882,
+        1.268101734826059,
+        1.265814657644792,
+        1.2639641364415486,
+        1.2627552010796286,
+        1.2614004561395356,
+        1.2597232905301181,
+        1.2583495313471014
+      ],
+      "parameter_change_l2": {
+        "sequence.weight_ih_l0": 2.0765042304992676,
+        "sequence.weight_hh_l0": 2.7456326484680176,
+        "sequence.bias_ih_l0": 0.7964016199111938,
+        "sequence.bias_hh_l0": 0.8017638921737671,
+        "sequence_head.weight": 0.6485520005226135,
+        "sequence_head.bias": 0.11979801952838898,
+        "event.0.weight": 0.537590503692627,
+        "event.0.bias": 0.2779976725578308,
+        "event.2.weight": 0.3691454231739044,
+        "event.2.bias": 0.1668972223997116,
+        "market.weight": 0.6763309836387634,
+        "market.bias": 0.3852636218070984,
+        "gate.0.weight": 1.5971086025238037,
+        "gate.0.bias": 0.5410968065261841,
+        "gate.2.weight": 1.176658272743225,
+        "gate.2.bias": 0.24906711280345917
+      },
+      "mean_expert_weights": {
+        "Numerical sequence": 0.4658171731217726,
+        "Event sentiment": 0.23251068005203696,
+        "Market context": 0.3016721505884998
+      }
+    }
+  },
+  "sessions": 480,
+  "log_loss": {
+    "Joint experts uniform": 1.075481653213501,
+    "Joint neural mixture": 1.07536780834198
+  },
+  "context_minus_uniform_log_loss": -0.00011379222269169986,
+  "paired_95_interval": [
+    -0.007564049788440268,
+    0.007409920829037825
+  ]
+}

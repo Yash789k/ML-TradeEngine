@@ -1,0 +1,19 @@
+{
+  "decisions": 15818,
+  "sessions": 719,
+  "primary_difference": -0.009798230799431712,
+  "primary_95_interval": [
+    -0.021538055339331345,
+    0.0009531632858425357
+  ],
+  "log_loss": {
+    "Classic MoE": 1.089372042824741,
+    "HMM gate": 1.0795738120253093,
+    "MoE without text": 1.0865640696131316,
+    "Uniform vote": 1.0776917124130996
+  },
+  "text_coverage": {
+    "news_available": 0.07225945125806044,
+    "filing_available": 0.4542293589581489
+  }
+}

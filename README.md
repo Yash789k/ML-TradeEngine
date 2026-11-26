@@ -211,3 +211,5 @@ python -m pytest tests/test_data_pipeline.py -m integration -q
 Provider integration and prospective broker execution were not performed during
 these repairs. Supplementary-data admission and later trial gates are documented
 in [the prospective protocol](docs/PROSPECTIVE_PAPER_PROTOCOL.md).
+
+[Compare all approaches by period](https://ceci2-ensemble-lab.breezytoad67.chatgpt.site/#comparison). The comparison includes annual and quarterly results, an equity curve for each portfolio with complete data in the chosen window, and the individual expert votes behind the custom neural mixture. The Colab T4 study contains the GPU-trained models and their daily decisions. [Training notebook and artifacts](data/ceci2-demo/colab-t4-v1/README.md).

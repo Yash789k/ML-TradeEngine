@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "parent": "59853149b3fe9c19bba043e9a61965ed268c89b4",
+  "inputs": "Frozen CECI2 five-session 22-instrument adjusted tape, original qualitative receipts and JKP factors. 2023–2025 already inspected. Exploratory.",
+  "primary": "Paired daily mean categorical log loss: existing HMM gate minus traditional dense text+market MoE. One primary contrast, 95% circular moving-block interval with 21-session blocks, 2000 samples, seed 28.",
+  "model": "Three multinomial linear experts and a linear softmax gate, jointly trained on mixture likelihood; AdamW 0.003, 12 epochs, batches of 512, seed 28. No hyperparameter search.",
+  "splits": "For test year Y=2023,2024,2025, supervised and scaling through Y-3, temperature calibrated Y-2, RL trained Y-1. Purge endpoints at boundaries and discard first five eligible dates of calibration and policy blocks.",
+  "features": "Last close numeric panel, lagged JKP themes, and for text runs Fed sentiment, record age, news and SEC sentiment and coverage flags. For diagnostic ablation remove all textual features including coverage.",
+  "policy": "Daily existing long-only top five signal >0.05 inverse-volatility capped 15% per name; additionally evaluate unchanged score on five-session rebalancing. RL chooses cash, SPY or classic signal basket. Fit ridge Q regressions for 8 Bellman iterations, discount 0.9, ridge 10, state: mean and dispersion of directional scores, SPY 21-session return and volatility, previous action. All actions evaluated at historical adjusted opening prices with 5 bps per side. No tuning.",
+  "comparators": "Existing HMM gate, dense MoE with/without text, uniform vote, cash, equal-weight assets, SPY held, matched-exposure SPY, weekly MoE and weekly incumbent, RL and constant-action controls.",
+  "decision": "All economic comparisons descriptive. No promotion or live deployment from reused history; report every candidate, fee and drawdown. Coding agent operates offline and records the trial without modifying frozen results."
+}

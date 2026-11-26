@@ -1,4 +1,5 @@
 import {simulate,drawChart} from './simulator.js';
+import {comparisonView} from './comparison.js';
 import {renderArchitecture} from './architecture.js';
 const root=document.querySelector('#app'), dollars=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
 const pct=(v,n=1)=>(v*100).toFixed(n)+'%', num=(v,n=2)=>v==null?'—':Number(v).toFixed(n);
@@ -107,9 +108,13 @@ async function datasets(ticket){
  '<p class="note">The selected universe includes surviving companies and overlapping ETFs. Company news coverage varies by year. Model pretraining can include events that occurred during this retrospective evaluation.</p></section><section class="bottom"><a class="link" href="https://github.com/Yash789k/ML-TradeEngine/blob/main/ceci2_demo/README.md">Data sources and training protocol</a></section>';
  el('bars').textContent=d.bars.toLocaleString();el('symbols').textContent=d.symbols;el('themes').textContent=d.factorThemes.length;
 }
+async function comparison(ticket){
+ const [data,paths]=await Promise.all([load("periods"),load("period-paths")]);
+ if(ticket===token){comparisonView(root,data,paths,{head,saveCSV,icon,load});paint=()=>root.oncomparisonresize?.();}
+}
 async function render(){
  const ticket=++token;stop();paint=()=>{};onStep=()=>{};
- const route=location.hash.slice(1)||'simulation',views={simulation,controller,stress,architecture,data:datasets};
+ const route=location.hash.slice(1)||'simulation',views={simulation,comparison,controller,stress,architecture,data:datasets};
  document.querySelectorAll('nav a').forEach(a=>{const yes=a.hash==='#'+route;a.classList.toggle('active',yes);if(yes)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
  try{await (views[route]||simulation)(ticket)}catch(e){if(ticket===token)root.innerHTML='<h1 class="bottom">Study unavailable</h1><p class="note">'+esc(e.message)+'</p><button class="bottom" id="retry">Retry</button>';on('retry','click',render);}
 }
