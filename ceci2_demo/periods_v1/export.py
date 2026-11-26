@@ -105,6 +105,8 @@ def export():
         ("five", "robustness/daily.csv.gz"), ("five", "adapter-pools-v1/daily.csv.gz"),
         ("five", "rl-router-v1/daily.csv.gz"), ("five", "joint-v1/daily.csv.gz"),
     ]
+    sources.extend(("gpu", f"colab-t4-v1/{folder}/daily.csv.gz")
+                   for folder in ("joint-experts", "expert-selector", "custom-gates"))
     for group, source in sources:
         for scenario, model, date, row in read_ledger(DATA / source):
             target = group if scenario == "original" else scenario
@@ -113,9 +115,12 @@ def export():
     for stress in ("language_outage", "reversed_tree"):
         for benchmark in ("Cash", "SPY buy and hold", "Equal weight"):
             books[stress][benchmark] = books["five"][benchmark]
+    for model in ("SPY buy and hold","Equal weight","Cash","Classic MoE","MoE + offline RL","Adaptive router"):
+        books["gpu"][model] = {date: row for date,row in books["five"][model].items() if date >= "2024-01-01"}
     groups = [make_group(key, label, horizon, scenario, books[key]) for key, label, horizon, scenario in [
         ("five", "Five-session forecasts", 5, "Observed"),
         ("one", "One-session forecasts", 1, "Observed"),
+        ("gpu", "Colab T4 training", 5, "Observed"),
         ("language_outage", "Language outage", 5, "Language outage"),
         ("reversed_tree", "Reversed tree forecasts", 5, "Reversed tree forecasts"),
     ]]

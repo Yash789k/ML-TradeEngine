@@ -1,0 +1,24 @@
+{
+  "source": "59853149b3fe9c19bba043e9a61965ed268c89b4",
+  "device": "Tesla T4",
+  "cutoffs": {
+    "2024": {
+      "latest_training_endpoint": "2023-12-29",
+      "first_test_decision": "2024-01-09",
+      "train_cases": 5258,
+      "test_cases": 5302
+    },
+    "2025": {
+      "latest_training_endpoint": "2024-12-31",
+      "first_test_decision": "2025-01-10",
+      "train_cases": 10560,
+      "test_cases": 5258
+    }
+  },
+  "past_contexts_unchanged_after_future_label_mutation": 13156,
+  "primary_loss_change": 0.07379591581068608,
+  "paired_95_interval": [
+    0.029014935347403226,
+    0.12370656802031771
+  ]
+}
