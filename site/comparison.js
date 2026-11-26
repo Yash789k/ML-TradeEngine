@@ -1,3 +1,4 @@
+import {plotPortfolios} from './portfolio-graph.js';
 const explanations = {
   'Joint neural mixture': 'A learned gate combines three models trained alongside it from scratch: a recurrent price encoder, a neural text-sentiment expert and a linear market expert. Their weighted probabilities feed the shared portfolio rules.',
   'Joint experts uniform': 'Averages the predictions of exactly the same three jointly trained experts with a one-third weight each.',
@@ -77,7 +78,7 @@ function metricTable(headings, rows) {
   return frame;
 }
 
-export function comparisonView(root, data, {head, saveCSV, icon, load}) {
+export function comparisonView(root, data, paths, {head, saveCSV, icon, load}) {
   let studyId = 'five', chosenPeriod = 'all-2024-2025';
   let approach = 'Joint neural mixture', benchmark = 'Joint experts uniform';
   function draw() {
@@ -89,7 +90,7 @@ export function comparisonView(root, data, {head, saveCSV, icon, load}) {
     if (!names.includes(benchmark) || benchmark === approach) benchmark = names.find(n => n === 'SPY buy and hold' && n !== approach) || names.find(n => n !== approach);
     root.innerHTML = head('Performance comparison', 'Historical portfolios · Net of simulated trading costs',
       '<button id="exportPeriods">'+icon('download')+'Export</button>')+
-      '<div class="controls" id="periodControls"></div><section class="sheet"><div class="metrics"><div class="metric"><small>Approach return</small><strong id="cmpReturn"></strong></div><div class="metric"><small>Benchmark return</small><strong id="baseReturn"></strong></div><div class="metric"><small>Difference</small><strong id="cmpGap"></strong></div></div><div id="pairNotes"></div><div id="yearChart"></div></section><section class="bottom"><div class="sectionhead"><h2>All approaches</h2><span class="tagtext" id="sample"></span></div><div id="periodResults"></div><p class="note">Drawdown starts at the opening value of the selected period. Fees are scaled to $10,000 of starting capital. Each row covers the same decision dates. These periods had already been examined during development.</p><p class="note"><a class="link" href="https://colab.research.google.com/drive/1qjCtnMsCAxeps4P7_RBPiJtPpmHHSqQD?authuser=1">Open the GPU training notebook ↗</a></p></section>';
+      '<div class="controls" id="periodControls"></div><section class="sheet"><div class="metrics"><div class="metric"><small>Approach return</small><strong id="cmpReturn"></strong></div><div class="metric"><small>Benchmark return</small><strong id="baseReturn"></strong></div><div class="metric"><small>Difference</small><strong id="cmpGap"></strong></div></div><div id="allPortfolioGraph"></div><div id="pairNotes"></div><div id="yearChart"></div></section><section class="bottom"><div class="sectionhead"><h2>All approaches</h2><span class="tagtext" id="sample"></span></div><div id="periodResults"></div><p class="note">Drawdown starts at the opening value of the selected period. Fees are scaled to $10,000 of starting capital. Each row covers the same decision dates. These periods had already been examined during development.</p><p class="note"><a class="link" href="https://colab.research.google.com/drive/1qjCtnMsCAxeps4P7_RBPiJtPpmHHSqQD?authuser=1">Open the GPU training notebook ↗</a></p></section>';
     const controls = root.querySelector('#periodControls');
     const pairs = names.map(n => [n,n]);
     controls.append(picker('studyGroup','Study',data.groups.map(g => [g.id,g.label]),studyId),
@@ -127,9 +128,20 @@ export function comparisonView(root, data, {head, saveCSV, icon, load}) {
       chart.append(line);
     }
     const key=document.createElement('p');key.className='note';key.textContent='Annual columns, left to right: '+approach+' and '+benchmark+'.';chart.prepend(key);chart.prepend(title);
+    const graph=plotPortfolios(root.querySelector('#allPortfolioGraph'),paths[studyId],period,approach,benchmark);
+    root.oncomparisonresize=graph.draw;
     const headings=['Approach','Net return','Max drawdown','Average invested','Sharpe','Fees per $10k'];
     const rows = [...period.rows].sort((a,b)=>b.net_return-a.net_return);
     root.querySelector('#periodResults').append(metricTable(headings,rows.map(r=>[r.model,percent(r.net_return),percent(r.max_drawdown),percent(r.mean_exposure),r.sharpe==null?'—':r.sharpe.toFixed(2),cash(r.fees)])));
+    for (const [i,tr] of Array.from(root.querySelectorAll('#periodResults tbody tr')).entries()){
+      const name=rows[i].model;
+      tr.tabIndex=0;
+      const swatch=document.createElement('i');
+      swatch.className='lineKey';swatch.style.background=graph.colorFor(name);
+      tr.cells[0].prepend(swatch);
+      tr.onpointerenter=tr.onfocus=()=>graph.highlight(name);
+      tr.onpointerleave=tr.onblur=()=>graph.highlight(null);
+    }
     root.querySelector('#exportPeriods').onclick=()=>saveCSV('ensemble-'+studyId+'-'+period.id+'.csv',[['Study','Window','Sessions',...headings],...rows.map(r=>[group.label,period.label,r.sessions,r.model,r.net_return,r.max_drawdown,r.mean_exposure,r.sharpe,r.fees])]);
     if (approach.startsWith('Joint ') || approach.startsWith('RL model router')) {
       const panel = document.createElement('details');

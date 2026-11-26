@@ -109,8 +109,8 @@ async function datasets(ticket){
  el('bars').textContent=d.bars.toLocaleString();el('symbols').textContent=d.symbols;el('themes').textContent=d.factorThemes.length;
 }
 async function comparison(ticket){
- const data=await load("periods");
- if(ticket===token)comparisonView(root,data,{head,saveCSV,icon,load});
+ const [data,paths]=await Promise.all([load("periods"),load("period-paths")]);
+ if(ticket===token){comparisonView(root,data,paths,{head,saveCSV,icon,load});paint=()=>root.oncomparisonresize?.();}
 }
 async function render(){
  const ticket=++token;stop();paint=()=>{};onStep=()=>{};

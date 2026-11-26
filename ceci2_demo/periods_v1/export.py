@@ -126,6 +126,16 @@ def export():
                         "including starting capital. Fees scale with period equity. "
                         "Sharpe uses sample daily volatility, 252 sessions and zero risk-free rate. "
                         "The full windows chain archived evaluations across year boundaries.")
+    paths = {}
+    for group in groups:
+        models = books[group["id"]]
+        dates = sorted(models["SPY buy and hold"])
+        paths[group["id"]] = {
+            "dates": dates, "marks": [models["SPY buy and hold"][d]["mark"] for d in dates],
+            "returns": {name: [round(ledger[d]["net_return"], 11) if d in ledger else None for d in dates]
+                        for name, ledger in models.items()}
+        }
+    OUT.with_name("period-paths.json").write_text(json.dumps(paths, separators=(",", ":"), allow_nan=False))
     OUT.write_text(json.dumps(result, separators=(",", ":"), allow_nan=False) + "\n")
 
 

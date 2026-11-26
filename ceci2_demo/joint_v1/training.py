@@ -283,7 +283,7 @@ def experiment(output, device=None, checkout=None):
         {
             "sessions": len(losses),
             "log_loss": losses.mean().to_dict(),
-            "context_minus_uniform_log_loss": delta.mean(),
+            "context_minus_uniform_log_loss": float(delta.mean()),
             "paired_95_interval": paired_interval(delta),
         }
     )
