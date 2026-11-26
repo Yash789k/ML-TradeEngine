@@ -1,66 +1,234 @@
-// Each portfolio compounds from the same starting value for the selected window.
-export function plotPortfolios(host, group, period, approach, benchmark) {
-  const cols = group.dates.map((date,i)=>date>=period.start && date<=period.end ? i : -1).filter(i=>i>=0);
-  const traces = period.rows.map(({model},i) => {
-    let equity=10000;
-    const values=[equity, ...cols.map(j=>equity *= 1+group.returns[model][j])];
-    const color = model===approach?'#197257':model===benchmark?'#ac7744':`hsl(${(i*137.5)%360} 38% 42%)`;
-    return {model,values,color};
+const metrics = [
+  ['equity', 'Equity'], ['drawdown', 'Drawdown'], ['daily', 'Daily return'],
+];
+
+export function portfolioColors(names) {
+  const hues = [158, 32, 202, 74, 12, 181, 51, 218];
+  const colors = new Map([...new Set(names)].sort().map((name, i) => [
+    name, 'hsl('+hues[i % hues.length]+' '+(38 + 9 * (Math.floor(i / 8) % 3))+'% '+(32 + 6 * (Math.floor(i / 8) % 5))+'%)',
+  ]));
+  return name => colors.get(name);
+}
+
+const presets = new Map([
+  ['Four-year controllers', ['Adaptive router','Classic MoE','HMM gate','Uniform vote']],
+  ['Choosing a price model', ['RL model router / sequence networks','Context adapter / sequence networks','Fixed mixture / sequence networks']],
+  ['With and without financial text', ['Classic MoE','MoE without text','HMM gate','FinBERT logistic']],
+  ['Jointly trained experts', ['Joint neural mixture','Joint experts uniform','Classic MoE','SPY buy and hold']],
+  ['Research agent', ['LLM review','Conventional review','Random review','HMM gate']],
+  ['Trading benchmarks', ['Cash','SPY buy and hold','Equal weight']],
+]);
+
+const presetQuestions = {
+  'Four-year controllers': 'Does changing whose forecast counts improve the portfolio over equal votes? The adaptive router learns from recent outcomes, the HMM gate estimates market conditions, and the classic mixture trains its forecasters together.',
+  'Choosing a price model': 'When four models read the same price history, does it pay to pick one for each stock? The reinforcement learner picks one, the context adapter blends their votes for each stock, and the fixed mixture keeps the same blend.',
+  'With and without financial text': 'Did financial text help the classic mixture? Compare Classic MoE with its retrained version without text. FinBERT reads financial language, while the HMM gate puts text alongside other forecasts.',
+  'Jointly trained experts': 'Does learning how much to trust the price, text and market models beat giving each one a third of the vote? The classic mixture uses a different set of experts, and SPY shows what holding the S&P 500 fund earned.',
+  'Research agent': 'Did letting a language model propose a change improve on a fixed suggestion, a random suggestion or the original HMM gate? Every proposed change faced the same historical checks before the following year.',
+  'Trading benchmarks': 'How much did choosing investments matter during this period? Cash stayed in dollars, SPY held the S&P 500 fund, and equal weight split the money across all 22 instruments.',
+};
+
+function family(name) {
+  if (/^(Context adapter|Fixed mixture|RL model router)/.test(name)) return 'Expert pool experiments';
+  if (/^(Joint|Classic|MoE|Adaptive|HMM|Gate|Market experts|Uniform vote)/.test(name)) return 'Mixtures and controllers';
+  if (/^(Cash|SPY|Equal weight|Exposure-matched|21-session)/.test(name)) return 'Trading benchmarks';
+  if (/review$/.test(name)) return 'Research agent experiments';
+  if (/FinBERT|Decisions|digest|statement/.test(name)) return 'Text models';
+  return 'Market and factor models';
+}
+
+export function initialGraphSelection() { return new Set(presets.get('Jointly trained experts')); }
+
+const format = (key, value) => key === 'equity'
+  ? value.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0})
+  : (100*value).toFixed(2)+'%';
+
+export function plotPortfolios(host, group, period, approach, benchmark, state, colorFor, describe) {
+  const indices = group.dates.flatMap((date,i) => date >= period.start && date <= period.end ? [i] : []);
+  const dates = ['Start', ...indices.map(i=>group.marks[i])];
+  const models = period.rows.map(r=>r.model);
+  const allTraces = models.map(model => {
+    const equity = [10000], drawdown = [0], daily = [null];
+    let peak = 10000;
+    for (const i of indices) {
+      const r = group.returns[model][i];
+      const next = equity.at(-1)*(1+r);
+      peak = Math.max(peak,next);
+      equity.push(next); drawdown.push(next/peak-1); daily.push(r);
+    }
+    return {model,equity,drawdown,daily,color:colorFor(model)};
   });
-  const canvas = document.createElement('canvas');
-  canvas.className='chart';canvas.setAttribute('role','img');
-  canvas.setAttribute('aria-label',`Equity curves for all ${traces.length} approaches with data from ${period.start} through ${period.end}`);
-  const caption=document.createElement('p');caption.className='note';
-  const emptyCaption = `${traces.length} portfolios · $10,000 at the start of the window`;
-  caption.textContent=emptyCaption;
-  host.replaceChildren(canvas,caption);
-  const size=() => {
-    const {width:w,height:h}=canvas.getBoundingClientRect();
-    const left=w<500?46:62,top=12,bottom=h-30,right=w-12;
-    const low=Math.min(...traces.map(t=>Math.min(...t.values)))*.985;
-    const high=Math.max(...traces.map(t=>Math.max(...t.values)))*1.015;
-    return {w,h,left,right,top,bottom,x:i=>left+i*(right-left)/cols.length,
-      y:v=>bottom-(v-low)/(high-low)*(bottom-top),low,high};
-  };
-  let hover=null,hoverIndex=null;
-  function draw() {
-    if(!canvas.isConnected)return;
-    const g=size(),ratio=window.devicePixelRatio||1;
-    canvas.width=Math.round(g.w*ratio);canvas.height=Math.round(g.h*ratio);
-    const ctx=canvas.getContext('2d');ctx.scale(ratio,ratio);ctx.font='12px system-ui';
-    for(let i=0;i<=4;i++){
-      const val=g.low+(g.high-g.low)*i/4,y=g.y(val);ctx.strokeStyle='#e0e6e1';
-      ctx.beginPath();ctx.moveTo(g.left,y);ctx.lineTo(g.right,y);ctx.stroke();
-      ctx.fillStyle='#51675a';ctx.textAlign='right';ctx.fillText('$'+(val/1000).toFixed(1)+'k',g.left-5,y+4);
-    }
-    const order=t=>t.model===hover?3:t.model===approach?2:t.model===benchmark?1:0;
-    for(const t of [...traces].sort((a,b)=>order(a)-order(b))){
-      const rank=order(t);ctx.globalAlpha=hover ? (t.model===hover?1:.28) : rank ? 1 : .62;
-      ctx.strokeStyle=t.color;ctx.lineWidth=rank?2.4:1.05;ctx.beginPath();
-      t.values.forEach((v,i)=>i?ctx.lineTo(g.x(i),g.y(v)):ctx.moveTo(g.x(i),g.y(v)));
-      ctx.stroke();
-      if(t.model===hover&&hoverIndex!=null){
-        ctx.fillStyle=t.color;ctx.beginPath();ctx.arc(g.x(hoverIndex),g.y(t.values[hoverIndex]),4,0,2*Math.PI);ctx.fill();
-      }
-    }
-    ctx.globalAlpha=1;ctx.fillStyle='#51675a';ctx.textAlign='left';ctx.fillText('Start',g.left,g.h-6);
-    ctx.textAlign='right';ctx.fillText(group.marks[cols.at(-1)],g.right,g.h-6);
+  const panel = document.createElement('details');
+  panel.className = 'portfolioPicker';
+  panel.open = state.open;
+  panel.ontoggle = () => { state.open = panel.open; };
+  const summary = document.createElement('summary');
+  const shortcuts = document.createElement('div');
+  shortcuts.className = 'portfolioShortcuts';
+  const modelGrid = document.createElement('div');
+  modelGrid.className = 'portfolioOptions';
+  panel.append(summary,modelGrid);
+  shortcuts.setAttribute('role','group');shortcuts.setAttribute('aria-label','Approach presets');
+  const shortcutSelections = new Map();
+  const legend = document.createElement('div');legend.className='portfolioLegend';
+  const selections = new Map();
+  function check(label, parent, value, update) {
+    const node = document.createElement('label'), input = document.createElement('input');
+    input.type = 'checkbox'; input.checked = value;
+    input.onchange = () => update(input.checked);
+    node.append(input,document.createTextNode(label)); parent.append(node);
+    return {node,input};
   }
-  function highlight(model,index=null){
-    hover=model;hoverIndex=index;
-    if(model){
-      const t=traces.find(t=>t.model===model),k=index??cols.length;
-      caption.textContent=model+' · '+(k?group.marks[cols[k-1]]:'Start')+' · '+t.values[k].toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
-    }else caption.textContent=emptyCaption;
+  function setModels(chosen) {
+    state.models = new Set(chosen);
+    methods.open = chosen.size <= 8;
+    for (const name of models) selections.get(name).checked = chosen.has(name);
+    refresh();
+  }
+  const choices = [...presets,['Highlighted pair',[approach,benchmark]],['All',models]];
+  for (const [text,names] of choices) {
+    const btn = document.createElement('button'); btn.type = 'button'; btn.textContent = text;
+    btn.disabled = !names.every(n=>models.includes(n));
+    btn.onclick = () => setModels(new Set(text === 'All' ? state.universe : names));
+    shortcutSelections.set(btn,new Set(names));shortcuts.append(btn);
+  }
+  const families = new Map();
+  for (const name of models) {
+    const title=family(name);
+    if(!families.has(title)){
+      const frame=document.createElement('fieldset'),label=document.createElement('legend');
+      label.textContent=title;frame.append(label);modelGrid.append(frame);families.set(title,frame);
+    }
+    const {input,node} = check(name,families.get(title),state.models.has(name),on => {
+      if (on) state.models.add(name); else state.models.delete(name);
+      refresh();
+    });
+    const swatch=document.createElement('i');swatch.className='portfolioKey';swatch.style.background=colorFor(name);
+    node.insertBefore(swatch,input.nextSibling);selections.set(name,input);
+  }
+  const toggles = document.createElement('div');toggles.className='portfolioMetrics';
+  toggles.setAttribute('role','group');toggles.setAttribute('aria-label','Chart metrics');
+  for (const [key,label] of metrics) check(label,toggles,state.metrics.has(key),on=>{
+    if(on)state.metrics.add(key);else state.metrics.delete(key);
+    refresh();
+  });
+  const plots = document.createElement('div'), caption = document.createElement('p');
+  caption.className='note portfolioCaption';
+  const question=document.createElement('p');question.className='note';
+  const methods=document.createElement('details');methods.className='protocol';methods.open=true;
+  const methodsTitle=document.createElement('summary');methodsTitle.textContent='How the selected approaches work';
+  const descriptions=document.createElement('div');methods.append(methodsTitle,descriptions);
+  host.replaceChildren(shortcuts,question,panel,methods,toggles,legend,plots,caption);
+
+  let charts=[], selected=[], focused=null, index=null;
+  function highlight(name,position=null) {
+    focused = selected.find(t=>t.model===name) || null;
+    index = focused ? position : null;
+    if (focused) {
+      const i=index??indices.length;
+      const values=charts.filter(c=>focused[c.key][i]!==null)
+        .map(c=>c.label+' '+format(c.key,focused[c.key][i]));
+      caption.textContent=[dates[i],focused.model,...values].join(' · ');
+    } else caption.textContent='';
     draw();
   }
-  canvas.onpointermove=e=>{
-    const g=size(),r=canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
-    const i=Math.max(0,Math.min(cols.length,Math.round((x-g.left)/(g.right-g.left)*cols.length)));
-    const t=traces.reduce((a,b)=>Math.abs(g.y(a.values[i])-y)<=Math.abs(g.y(b.values[i])-y)?a:b);
-    highlight(t.model,i);
-  };
-  canvas.onpointerleave=()=>highlight(null);
-  draw();
-  return {highlight,draw,colorFor:name=>traces.find(t=>t.model===name).color};
+  function draw() {
+    for(const chart of charts) {
+      const {canvas,low,high,key} = chart;
+      const {width:w,height:h} = canvas.getBoundingClientRect();
+      if(!w || !h) continue;
+      const ratio = window.devicePixelRatio || 1;
+      if(canvas.width!==Math.round(w*ratio) || canvas.height!==Math.round(h*ratio)){
+        canvas.width=Math.round(w*ratio);canvas.height=Math.round(h*ratio);
+      }
+      const ctx=canvas.getContext('2d');
+      ctx.setTransform(ratio,0,0,ratio,0,0);ctx.clearRect(0,0,w,h);
+      const left=w<500?54:66,right=w-12,top=9,bottom=h-24;
+      const x=i=>left+i*(right-left)/indices.length, y=v=>bottom-(v-low)/(high-low)*(bottom-top);
+      chart.geometry={left,right,y};
+      ctx.font='12px system-ui';ctx.lineWidth=1;
+      for(let i=0;i<=3;i++){
+        const value=low+(high-low)*i/3,py=y(value);ctx.strokeStyle='#dce4df';
+        ctx.beginPath();ctx.moveTo(left,py);ctx.lineTo(right,py);ctx.stroke();
+        ctx.fillStyle='#51675a';ctx.textAlign='right';ctx.fillText(key==='equity'?'$'+(value/1000).toFixed(1)+'k':(value*100).toFixed(1)+'%',left-5,py+4);
+      }
+      const ranked = focused ? [...selected.filter(t=>t!==focused),focused] : selected;
+      for(const t of ranked){
+        ctx.globalAlpha=focused && t!==focused ? .22 : (focused || selected.length<6 || t.model===approach || t.model===benchmark ? 1 : .62);
+        ctx.strokeStyle=t.color;ctx.lineWidth=t===focused || t.model===approach || t.model===benchmark?2.1:1.12;
+        ctx.beginPath();let started=false;
+        t[key].forEach((v,i)=>{if(v!==null){if(started)ctx.lineTo(x(i),y(v));else ctx.moveTo(x(i),y(v));started=true;}});
+        ctx.stroke();
+      }
+      ctx.globalAlpha=1;
+      if(index!==null){
+        ctx.lineWidth=1;ctx.strokeStyle='#789084';ctx.beginPath();ctx.moveTo(x(index),top);ctx.lineTo(x(index),bottom);ctx.stroke();
+        const v=focused[key][index];
+        if(v!==null){ctx.fillStyle=focused.color;ctx.beginPath();ctx.arc(x(index),y(v),3.5,0,2*Math.PI);ctx.fill();}
+      }
+      ctx.fillStyle='#51675a';ctx.textAlign='left';ctx.fillText('Start',left,h-5);
+      ctx.textAlign='right';ctx.fillText(dates.at(-1),right,h-5);
+    }
+  }
+  function refresh() {
+    selected=allTraces.filter(t=>state.models.has(t.model)).sort((a,b)=>
+      Number(a.model===approach || a.model===benchmark)-Number(b.model===approach || b.model===benchmark));
+    summary.textContent='Approaches ('+selected.length+' of '+models.length+')';
+    let preset=null;
+    for (const [button,names] of shortcutSelections) {
+      if(!button.disabled && names.size===selected.length && selected.every(t=>names.has(t.model))) {
+        preset ??= button.textContent;
+      }
+      button.setAttribute('aria-pressed',String(!button.disabled && names.size===selected.length && selected.every(t=>names.has(t.model))));
+    }
+    if (preset==='Highlighted pair') question.textContent='How did '+approach+' compare with '+benchmark+' on the same dates? Equity shows how $10,000 grew after costs and drawdown shows how far it fell below its previous high.';
+    else if (presetQuestions[preset]) question.textContent=presetQuestions[preset];
+    else question.textContent=selected.length ? 'Each line starts with $10,000 on the same date. Equity shows the balance after trading costs, drawdown measures the fall from its previous high, and daily return shows the change each session.' : '';
+    descriptions.replaceChildren();methods.hidden=!selected.length;
+    for (const trace of selected) {
+      const line=document.createElement('p'),name=document.createElement('strong');
+      line.className='note';name.textContent=trace.model+'. ';line.append(name,describe(trace.model));
+      descriptions.append(line);
+    }
+    legend.replaceChildren();
+    if (selected.length<=8) for (const trace of selected) {
+      const label=document.createElement('span'),swatch=document.createElement('i');swatch.className='portfolioKey';
+      swatch.style.background=trace.color;label.append(swatch,trace.model);legend.append(label);
+    }
+    plots.replaceChildren();charts=[];focused=null;index=null;caption.textContent='';
+    if(!selected.length || !state.metrics.size) return;
+    for(const [key,label] of metrics.filter(([k])=>state.metrics.has(k))) {
+      const figure=document.createElement('figure'), title=document.createElement('figcaption'), canvas=document.createElement('canvas');
+      title.textContent=label;canvas.className='chart portfolioChart';canvas.tabIndex=0;
+      canvas.setAttribute('role','img');canvas.setAttribute('aria-label',label+' for '+selected.length+' approaches, '+period.start+' through '+period.end);
+      figure.className='portfolioFigure';figure.append(title,canvas);plots.append(figure);
+      let low=Infinity,high=-Infinity;
+      for(const t of selected) for(const v of t[key]) if(v!==null){low=Math.min(low,v);high=Math.max(high,v);}
+      const margin=(high-low)*.045 || (key==='equity'?100:.005);
+      const chart={canvas,key,label,low:low-margin,high:key==='drawdown'?0:high+margin};
+      charts.push(chart);
+      canvas.onpointermove=e=>{
+        caption.removeAttribute('aria-live');
+        const {left,right,y}=chart.geometry,rect=canvas.getBoundingClientRect();
+        const i=Math.max(key==='daily'?1:0,Math.min(indices.length,Math.round((e.clientX-rect.left-left)/(right-left)*indices.length)));
+        const py=e.clientY-rect.top;
+        const near=selected.reduce((a,b)=>Math.abs(y(a[key][i])-py)<Math.abs(y(b[key][i])-py)?a:b);
+        highlight(near.model,i);
+      };
+      canvas.onpointerleave=canvas.onblur=()=>highlight(null);
+      canvas.onkeydown=e=>{
+        if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(e.key))return;
+        e.preventDefault();
+        caption.setAttribute('aria-live','polite');
+        let i=index??indices.length,t=Math.max(0,selected.indexOf(focused));
+        if(e.key==='ArrowLeft')i--;if(e.key==='ArrowRight')i++;
+        if(e.key==='Home')i=0;if(e.key==='End')i=indices.length;
+        if(e.key==='ArrowUp')t--;if(e.key==='ArrowDown')t++;
+        highlight(selected[(t+selected.length)%selected.length].model,Math.max(key==='daily'?1:0,Math.min(indices.length,i)));
+      };
+    }
+    draw();
+  }
+  refresh();
+  return {draw,highlight,colorFor};
 }
