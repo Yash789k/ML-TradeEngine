@@ -1,0 +1,191 @@
+{
+  "protocol": {
+    "version": 1,
+    "role": "Exploratory historical replication on the fixed 22 instruments of the archived study. Includes overlapping ETFs and surviving companies.",
+    "years": [
+      2023,
+      2024,
+      2025
+    ],
+    "folds": "In each evaluation year Y, train through Y-3, calibrate in Y-2 and fit gates in Y-1. Purge all labels ending within the next block and embargo its first five sessions.",
+    "label": "Next adjusted open to the adjusted open five sessions later. FLAT within max(10 basis points, 0.5 times 21-day return volatility times sqrt(5)).",
+    "models": "Fixed single fit per fold. Logistic, XGBoost and LightGBM use current observations. LSTM, GRU, TCN and patch Transformer use 20 sessions. Financial text expert uses FinBERT scores on the preceding FOMC statement, available starting the next session.",
+    "selection": "No model or label tuning on evaluation outcomes. Fit temperature on calibration data only. Uniform soft vote and learned expert correctness with and without three-state market HMM.",
+    "policy": "Start with 10000 dollars. At next open take up to five highest scores (UP minus DOWN above 0.05), inverse volatility, maximum 15 percent per asset. Daily targets. All portfolios pay five basis points per side. Long only, fractional adjusted-price proxy units.",
+    "comparators": [
+      "SPY buy and hold",
+      "daily equal weight",
+      "cash",
+      "uniform vote",
+      "gate without HMM",
+      "individual experts"
+    ],
+    "primary": "Multiclass log loss and net account return. Paired moving block bootstrap by session, 20 sessions, 1000 replicates for predeclared full gate minus uniform vote.",
+    "seed": 28,
+    "promotion": "None. Historical comparison only.",
+    "additional_inputs": "JKP US capped-value-weighted daily factor themes, trailing 21-session return delayed 21 sessions. Annual 10-K excerpt and first timestamped FNSPID headline per issuer/ISO week, admitted starting next session. Weekly news expires after seven days, annual filings after 370 days. Qwen2.5 0.5B Instruct statement-only market direction, constrained A/B/C probabilities; FinBERT logistic and separate JKP factor logistic.",
+    "risk_comparison": "Additional dynamic-policy backtest for the full gate. Sector-bucket cap 30%, asset cap 15%, 10% drawdown circuit breaker with five-session time-out, close-observed ATR trailing stop and participation cap. Primary routing portfolios retain the same static policy.",
+    "adaptation": "Compare a fixed annually retrained gate against one random, one conventional and one bounded instruction-model proposal. Use first half of gate year to fit and three subsequent disjoint two-month windows for acceptance, five-session embargo and endpoint purge. Require positive Sharpe differences in all three windows, positive 90% bootstrap lower bound, ES and drawdown within 5% relative to baseline and 30 executions. Refit approved configuration on gate year before next evaluation year.",
+    "language_comparison": "Score the same 73 statements with Qwen, Granite MoE, and OpenAI Decisions. A separate Decisions expert scores anonymized monthly stock-specific return, volatility, company text features and the prior statement at the first eligible close. Hold this digest to the next monthly refresh.",
+    "sensitivity": "Refit conventional experts, calibration and gate with one-session open returns. Pretrained language inputs retain their five-session wording. Treat this as a label-horizon sensitivity.",
+    "matched_benchmark": "Compare against SPY with risky weight matched to the full gate at each opening rebalance. Include a 21-session price momentum rule. Apply identical cost convention."
+  },
+  "horizon": 5,
+  "python": "3.12.13",
+  "versions": {
+    "torch": "2.15.0",
+    "transformers": "5.24.1",
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.4.1",
+    "lightgbm": "4.7.0",
+    "hmmlearn": "0.3.3"
+  },
+  "market": {
+    "AAPL": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/AAPL?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "AMZN": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/AMZN?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "BAC": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/BAC?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "DIA": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/DIA?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "GLD": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/GLD?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "GOOGL": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/GOOGL?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "GS": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/GS?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "IWM": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/IWM?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "JPM": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/JPM?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "META": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/META?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "MSFT": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/MSFT?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "NVDA": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/NVDA?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "QQQ": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/QQQ?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "SPY": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/SPY?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "TLT": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/TLT?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "TSLA": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/TSLA?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "XLE": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/XLE?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "XLF": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/XLF?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "XLI": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/XLI?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "XLK": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/XLK?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "XLP": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/XLP?period1=1483228800&period2=1767225600&interval=1d"
+    },
+    "XLV": {
+      "bars": 2262,
+      "start": "2017-01-03",
+      "end": "2025-12-31",
+      "source": "https://query1.finance.yahoo.com/v8/finance/chart/XLV?period1=1483228800&period2=1767225600&interval=1d"
+    }
+  },
+  "statements": 73,
+  "sessions": 719,
+  "gate_minus_vote_95pct": {
+    "mean_log_loss_difference": [
+      -0.0021214550418814917,
+      0.00647875080297008
+    ],
+    "compounded_return_difference": [
+      -0.2119208356210519,
+      0.19988115913691404
+    ]
+  }
+}

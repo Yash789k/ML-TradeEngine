@@ -1,0 +1,10 @@
+{
+  "service": "OpenAI Agents API",
+  "model": "gpt-6-sol",
+  "prompt": "Select one L2 strength for the next logistic expert-weighting gate. The incumbent uses 1. Options: {\"A\": 0.1, \"B\": 0.3, \"C\": 1.0, \"D\": 3.0, \"E\": 10.0}. The only evidence is earlier out-of-time classification accuracy: {\"FinBERT logistic\": 0.42152, \"GRU\": 0.43247, \"Granite MoE statement\": 0.42152, \"JKP factors\": 0.40631, \"LSTM\": 0.43024, \"LightGBM\": 0.42022, \"Logistic\": 0.43006, \"OpenAI Decisions\": 0.34712, \"OpenAI asset digest\": 0.31076, \"Patch Transformer\": 0.40761, \"Qwen statement\": 0.42152, \"TCN\": 0.42616, \"XGBoost\": 0.42801}. Account for dependence and limited evidence. Supply the option and a brief reason.",
+  "option": "C",
+  "l2": 1.0,
+  "reason": "The accuracies compare experts, not L2 strengths. Several results are identical or close, so they offer limited independent evidence for changing regularization. Keep the incumbent strength of 1.0 for the next trial.",
+  "cap_usd": 0.5,
+  "usage": null
+}

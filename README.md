@@ -11,9 +11,19 @@ promotion. See the [completed repair report](docs/REPAIR_REPORT_2026-09-28.md),
 [research protocol](docs/PROSPECTIVE_PAPER_PROTOCOL.md), and the
 [original audit](docs/REPOSITORY_AUDIT_2026-09-27.md).
 
-## Run locally
+## Run the CECI2 study
 
-### Current five-session pilot and complete historical study
+[Open the Colab demo](https://colab.research.google.com/github/Yash789k/ML-TradeEngine/blob/main/ceci2_demo/experiment.ipynb) or follow the [local training instructions and data guide](ceci2_demo/README.md). The demo includes trained model weights, forecasts, daily portfolio histories and the underlying simulated orders.
+
+Across 719 evaluation sessions in 2023–2025, the regime-weighted ensemble earned 27.68% after costs. Holding SPY at the same daily equity exposure earned 35.45%. Equal weighting across the fixed 22-instrument universe earned 138.16%. The fixed ensemble earned 28.30%. The paired 95% block-bootstrap interval for the adaptive gate’s cumulative return advantage over the fixed ensemble spans −21.19 to +19.99 percentage points. [Full results and limitations](ceci2_demo/RESULTS.md)
+
+![Five-session historical portfolio comparison](data/ceci2-demo/five-session/backtest.png)
+
+## Archived prototype and pilots
+
+The sections below describe earlier studies and their original machine-specific commands. For a fresh checkout use the CECI2 study above.
+
+### Historical five-session pilot
 
 Use the isolated week-one collector and `app_week1.py` for current work. The study
 contains 848 registered training trials, a complete clean-environment reproduction,

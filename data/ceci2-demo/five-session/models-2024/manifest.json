@@ -1,0 +1,47 @@
+{
+  "experts": [
+    "Logistic",
+    "XGBoost",
+    "LightGBM",
+    "JKP factors",
+    "FinBERT logistic",
+    "LSTM",
+    "GRU",
+    "TCN",
+    "Patch Transformer",
+    "Qwen statement",
+    "OpenAI asset digest",
+    "OpenAI Decisions",
+    "Granite MoE statement"
+  ],
+  "temperature": {
+    "Logistic": 4.999994818167735,
+    "XGBoost": 4.999995829088848,
+    "LightGBM": 4.999995738582802,
+    "JKP factors": 3.2012621254160063,
+    "FinBERT logistic": 4.99999522153958,
+    "LSTM": 4.99999439852576,
+    "GRU": 4.99999397167414,
+    "TCN": 4.9999957064397735,
+    "Patch Transformer": 4.999995248055896,
+    "Qwen statement": 4.999995250207061,
+    "OpenAI asset digest": 4.999994553427027,
+    "OpenAI Decisions": 4.999994112815426,
+    "Granite MoE statement": 4.999996320657762
+  },
+  "class_order": [
+    "DOWN",
+    "FLAT",
+    "UP"
+  ],
+  "symbol": "AAPL",
+  "decision": "2024-01-09",
+  "expected": [
+    0.3235603702486567,
+    0.35953398385201546,
+    0.3169056458993278
+  ],
+  "fit_endpoint": "2021-12-31",
+  "calibration_endpoint": "2022-12-30",
+  "gate_endpoint": "2023-12-29"
+}

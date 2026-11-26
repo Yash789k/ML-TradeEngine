@@ -191,3 +191,5 @@ The compiler consumes the latest manifest-validated prospective report. Review
 and render every updated PDF page before any later publication. Historical
 point-in-time constituent/action tapes and real broker microstructure are absent;
 time passing in this pilot will not repair those missing historical archives.
+
+The separate November 2026 [CECI2 experiment](../../ceci2_demo/README.md) trains on the proposal's next-open labels. It has its own data, out-of-time forecasts and exposure-matched benchmarks. The archived release remains the source for claims about the earlier pilot.

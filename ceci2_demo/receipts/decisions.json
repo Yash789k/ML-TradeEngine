@@ -1,0 +1,1535 @@
+[
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20170201a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.56,
+      "UP": 0.44
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 659,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 659
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20170315a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.19,
+      "UP": 0.81
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 659,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 659
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20170503a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.53,
+      "UP": 0.47
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 689,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 689
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20170614a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.3,
+      "UP": 0.69
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 703,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 703
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20170726a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.27,
+      "UP": 0.73
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 674,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 674
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20170920a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.37,
+      "UP": 0.63
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 706,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 706
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20171101a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.58,
+      "UP": 0.42
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 679,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 679
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20171213a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.37,
+      "UP": 0.63
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 627,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 627
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20180131a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.35,
+      "UP": 0.65
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 573,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 573
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20180321a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.21,
+      "UP": 0.78
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 602,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 602
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20180502a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.77,
+      "UP": 0.23
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 576,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 576
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20180613a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.38,
+      "UP": 0.62
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 458,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 458
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20180801a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.44,
+      "UP": 0.56
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 445,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 445
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20180926a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.38,
+      "UP": 0.62
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 420,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 420
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20181108a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.58,
+      "UP": 0.41
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 434,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 434
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20181219a.htm",
+    "probabilities": {
+      "DOWN": 0.19,
+      "FLAT": 0.48,
+      "UP": 0.33
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 463,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 463
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20190130a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.72,
+      "UP": 0.27
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 463,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 463
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20190320a.htm",
+    "probabilities": {
+      "DOWN": 0.02,
+      "FLAT": 0.75,
+      "UP": 0.23
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 482,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 482
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20190501a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.78,
+      "UP": 0.22
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 455,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 455
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20190619a.htm",
+    "probabilities": {
+      "DOWN": 0.37,
+      "FLAT": 0.47,
+      "UP": 0.16
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 472,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 472
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20190731a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.13,
+      "UP": 0.87
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 517,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 517
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20190918a.htm",
+    "probabilities": {
+      "DOWN": 0.03,
+      "FLAT": 0.61,
+      "UP": 0.36
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 486,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 486
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20191030a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.29,
+      "UP": 0.71
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 464,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 464
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20191211a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.73,
+      "UP": 0.27
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 449,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 449
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20200129a.htm",
+    "probabilities": {
+      "DOWN": 0.02,
+      "FLAT": 0.74,
+      "UP": 0.24
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 450,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 450
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20200303a.htm",
+    "probabilities": {
+      "DOWN": 0.69,
+      "FLAT": 0.09,
+      "UP": 0.22
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 234,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 234
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20200315a.htm",
+    "probabilities": {
+      "DOWN": 0.57,
+      "FLAT": 0.04,
+      "UP": 0.39
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 715,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 715
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20200429a.htm",
+    "probabilities": {
+      "DOWN": 0.03,
+      "FLAT": 0.44,
+      "UP": 0.53
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 557,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 557
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20200610a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.47,
+      "UP": 0.52
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 561,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 561
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20200729a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.62,
+      "UP": 0.38
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 584,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 584
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20200916a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.24,
+      "UP": 0.76
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 602,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 602
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20201105a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.61,
+      "UP": 0.39
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 600,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 600
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20201216a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.27,
+      "UP": 0.73
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 629,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 629
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20210127a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.62,
+      "UP": 0.37
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 636,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 636
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20210317a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.27,
+      "UP": 0.73
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 632,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 632
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20210428a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.27,
+      "UP": 0.73
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 627,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 627
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20210616a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.29,
+      "UP": 0.71
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 624,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 624
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20210728a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.43,
+      "UP": 0.57
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 637,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 637
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20210922a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.33,
+      "UP": 0.66
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 659,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 659
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20211103a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.31,
+      "UP": 0.69
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 780,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 780
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20211215a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.2,
+      "UP": 0.8
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 670,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 670
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20220126a.htm",
+    "probabilities": {
+      "DOWN": 0.21,
+      "FLAT": 0.32,
+      "UP": 0.47
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 566,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 566
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20220316a.htm",
+    "probabilities": {
+      "DOWN": 0.66,
+      "FLAT": 0.24,
+      "UP": 0.1
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 445,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 445
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20220504a.htm",
+    "probabilities": {
+      "DOWN": 0.92,
+      "FLAT": 0.07,
+      "UP": 0.01
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 501,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 501
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20220615a.htm",
+    "probabilities": {
+      "DOWN": 0.86,
+      "FLAT": 0.13,
+      "UP": 0.01
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 468,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 468
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20220727a.htm",
+    "probabilities": {
+      "DOWN": 0.8,
+      "FLAT": 0.18,
+      "UP": 0.02
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 444,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 444
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20220921a.htm",
+    "probabilities": {
+      "DOWN": 0.95,
+      "FLAT": 0.05,
+      "UP": 0.0
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 440,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 440
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20221102a.htm",
+    "probabilities": {
+      "DOWN": 0.94,
+      "FLAT": 0.06,
+      "UP": 0.0
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 508,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 508
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20221214a.htm",
+    "probabilities": {
+      "DOWN": 0.89,
+      "FLAT": 0.11,
+      "UP": 0.0
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 512,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 512
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20230201a.htm",
+    "probabilities": {
+      "DOWN": 0.92,
+      "FLAT": 0.07,
+      "UP": 0.01
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 463,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 463
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20230322a.htm",
+    "probabilities": {
+      "DOWN": 0.76,
+      "FLAT": 0.23,
+      "UP": 0.01
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 500,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 500
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20230503a.htm",
+    "probabilities": {
+      "DOWN": 0.58,
+      "FLAT": 0.4,
+      "UP": 0.02
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 465,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 465
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20230614a.htm",
+    "probabilities": {
+      "DOWN": 0.05,
+      "FLAT": 0.85,
+      "UP": 0.1
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 475,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 475
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20230726a.htm",
+    "probabilities": {
+      "DOWN": 0.37,
+      "FLAT": 0.61,
+      "UP": 0.02
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 471,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 471
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20230920a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.84,
+      "UP": 0.15
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 473,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 473
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20231101a.htm",
+    "probabilities": {
+      "DOWN": 0.09,
+      "FLAT": 0.85,
+      "UP": 0.06
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 479,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 479
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20231213a.htm",
+    "probabilities": {
+      "DOWN": 0.18,
+      "FLAT": 0.81,
+      "UP": 0.01
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 490,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 490
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20240131a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.94,
+      "UP": 0.06
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 459,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 459
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20240320a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.51,
+      "UP": 0.48
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 453,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 453
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20240501a.htm",
+    "probabilities": {
+      "DOWN": 0.72,
+      "FLAT": 0.23,
+      "UP": 0.05
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 546,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 546
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20240612a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.87,
+      "UP": 0.12
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 472,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 472
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20240731a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.77,
+      "UP": 0.22
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 478,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 478
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20240918a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.08,
+      "UP": 0.92
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 458,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 458
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20241107a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.25,
+      "UP": 0.75
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 447,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 447
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20241218a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.23,
+      "UP": 0.76
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 452,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 452
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250129a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.87,
+      "UP": 0.13
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 429,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 429
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250319a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.83,
+      "UP": 0.16
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 468,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 468
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250507a.htm",
+    "probabilities": {
+      "DOWN": 0.19,
+      "FLAT": 0.79,
+      "UP": 0.02
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 437,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 437
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250618a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.8,
+      "UP": 0.19
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 419,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 419
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250730a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.84,
+      "UP": 0.15
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 419,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 419
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250917a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.28,
+      "UP": 0.72
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 433,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 433
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20251029a.htm",
+    "probabilities": {
+      "DOWN": 0.01,
+      "FLAT": 0.2,
+      "UP": 0.79
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 446,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 446
+    }
+  },
+  {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20251210a.htm",
+    "probabilities": {
+      "DOWN": 0.0,
+      "FLAT": 0.16,
+      "UP": 0.84
+    },
+    "model": "gpt-6-luna",
+    "usage": {
+      "input_tokens": 469,
+      "input_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 469
+    }
+  }
+]
