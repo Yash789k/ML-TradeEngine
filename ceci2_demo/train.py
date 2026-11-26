@@ -42,7 +42,7 @@ def market_states(market, gate_year):
     )
 
 
-def fold(windows, panel, market, year, cache, horizon, artifact_dir):
+def fold(windows, panel, market, year, cache, horizon, artifact_dir, device="cpu"):
     years = panel.index.year
     train = (years < year - 2) & (panel.endpoint.dt.year < year - 2)
     eligible = np.zeros(len(years), dtype=bool)
@@ -58,7 +58,7 @@ def fold(windows, panel, market, year, cache, horizon, artifact_dir):
     m = windows[train, -1].mean(0)
     s = windows[train, -1].std(0).clip(1e-6)
     predictions = predict_experts(
-        ((windows - m) / s).clip(-10, 10), y, train, eligible, artifact_dir
+        ((windows - m) / s).clip(-10, 10), y, train, eligible, artifact_dir, device
     )
     rows = panel.loc[eligible].copy()
     predictions["Qwen statement"] = rows[["qdown", "qflat", "qup"]].values

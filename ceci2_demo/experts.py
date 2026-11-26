@@ -45,7 +45,7 @@ class SequenceExpert(nn.Module):
         return self.head(h)
 
 
-def predict_experts(x, y, train, later, artifacts):
+def predict_experts(x, y, train, later, artifacts, device="cpu"):
     artifacts.mkdir(parents=True, exist_ok=True)
     results = {}
     columns = len(NUMERIC)
@@ -74,12 +74,12 @@ def predict_experts(x, y, train, later, artifacts):
         model.fit(values[train], y[train])
         joblib.dump(model, artifacts / f"{name}.joblib")
         results[name] = model.predict_proba(values[later])
-    a = torch.from_numpy(x[train, :, :columns].copy())
-    b = torch.from_numpy(x[later, :, :columns].copy())
-    labels = torch.tensor(y[train], dtype=torch.long)
+    a = torch.from_numpy(x[train, :, :columns].copy()).to(device)
+    b = torch.from_numpy(x[later, :, :columns].copy()).to(device)
+    labels = torch.tensor(y[train], dtype=torch.long, device=device)
     for name in ("LSTM", "GRU", "TCN", "Patch Transformer"):
         torch.manual_seed(28)
-        model = SequenceExpert(name, columns)
+        model = SequenceExpert(name, columns).to(device)
         optimizer = torch.optim.AdamW(model.parameters(), lr=0.002)
         for _ in range(4):
             for batch in torch.randperm(len(a)).split(256):
@@ -87,10 +87,10 @@ def predict_experts(x, y, train, later, artifacts):
                 loss = nn.functional.cross_entropy(model(a[batch]), labels[batch])
                 loss.backward()
                 optimizer.step()
-        torch.save(model.state_dict(), artifacts / f"{name}.pt")
+        torch.save({key: value.cpu() for key, value in model.state_dict().items()}, artifacts / f"{name}.pt")
         model.eval()
         with torch.no_grad():
             results[name] = torch.cat(
                 [model(batch).softmax(-1) for batch in b.split(512)]
-            ).numpy()
+            ).cpu().numpy()
     return results

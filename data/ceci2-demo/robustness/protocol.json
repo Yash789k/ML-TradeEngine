@@ -1,0 +1,15 @@
+{
+  "id": "ceci2-controller-stress-v1",
+  "registered_hkt": "2026-11-27",
+  "source_base": "7812c39949dd5a737bb22895fe135ad227db3916",
+  "design": "Retrospective. 2023-25 primary results already inspected; 2022 is a deliberately selected known bear-market year newly scored by this study. No untouched prospective claim.",
+  "data": "Same 22-symbol CECI2 study, fixed adjustments, recorded language decisions, original 5-session labels, embargo and annual partitions. Reuse saved 2023-25 experts. Train the nine supervised experts once for the new 2022 fold. Reuse the four recorded language forecasts.",
+  "budget": "Four yearly folds; fixed settings; no hyperparameter search, selection or promotion. Standard historical input vintage, model pretraining and overlapping ETF limitations apply.",
+  "methods": ["Adaptive router", "HMM gate", "Uniform vote"],
+  "router": "Fit a static simplex mixture and three regime-specific simplex mixtures by minimizing mean mixture log loss plus 0.02 squared distance to uniform on the past gate year. Use soft regime probabilities to weight fitting rows and to interpolate regime mixtures. Blend equal parts global and context mixture. Apply an exponential tilt exp(-4 * mean recent expert log loss) from matured instrument-averaged daily losses in the same regime, shrunk with 10 pseudo-sessions of global loss over 63 feedback dates. Use a 10% uniform exploration floor. Missing experts receive zero weight and remaining weights renormalize. The gate-year mixture fits stop before the evaluation year. Intrayear feedback can update only after the recorded opening-price endpoint is strictly prior to the decision date.",
+  "scenarios": {"original":"Recorded probability streams.", "language_outage":"During every annual evaluation session in July, suppress the FinBERT and four language forecasts. All gates renormalize; suppressed forecasts cannot add feedback.", "reversed_tree":"During every annual evaluation session in July, exchange the DOWN and UP class probabilities of XGBoost and LightGBM. Every controller receives the same corrupted forecasts; feedback uses the altered predictions."},
+  "primary": "Difference in per-date average log loss, Adaptive router minus Uniform vote, on all original sessions.",
+  "secondary": "Paired cumulative return difference in each scenario; worst calendar-year net return and drawdown; conditional log loss and net return averaged over sessions in each state, and in the five observed sessions starting at a forward-filtered market state change. Regime metrics are conditional samples and not contiguous investable portfolios.",
+  "uncertainty": "1000 paired circular 20-session block resamples within each calendar year, seed 28. Individual 95% intervals for the primary contrast and descriptive secondary intervals. Only one primary test; no claims of confirmatory significance from scenario or subgroup comparisons.",
+  "execution": "Existing static long-only open-to-open shared-capital replay, 10000 starting capital, 5 bp per side. Fold liquidation as in primary study. Standard cash, SPY and daily equal-weight baselines on the same sessions."
+}

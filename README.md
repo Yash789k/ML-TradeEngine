@@ -11,6 +11,19 @@ promotion. See the [completed repair report](docs/REPAIR_REPORT_2026-09-28.md),
 [research protocol](docs/PROSPECTIVE_PAPER_PROTOCOL.md), and the
 [original audit](docs/REPOSITORY_AUDIT_2026-09-27.md).
 
+## Ensemble Lab
+
+[Open the private simulation website](https://ceci2-ensemble-lab.breezytoad67.chatgpt.site). Choose a date and instrument under Controller to see how each expert voted and how much weight it received. Architecture follows the decision through execution and research review. Stress tests compare the adaptive controller with an equal vote under changes in market conditions and expert availability.
+
+In the separate 2022–2025 study, the adaptive controller earned 26.95% after costs and the equal vote earned 14.35%. Their return difference had a 95% interval from −28.93 to +48.64 percentage points. [Read the stress study](data/ceci2-demo/robustness/README.md).
+
+To serve the website locally or inspect the recorded Amazon decision that produced a simulated purchase on February 3, 2023, run the corresponding command from the repository root.
+
+```sh
+python3 -m http.server 8765 --directory site
+python3 -m ceci2_demo.trace 2023-02-02 --symbol AMZN
+```
+
 ## Run the CECI2 study
 
 [Open the Colab demo](https://colab.research.google.com/github/Yash789k/ML-TradeEngine/blob/main/ceci2_demo/experiment.ipynb) or follow the [local training instructions and data guide](ceci2_demo/README.md). The demo includes trained model weights, forecasts, daily portfolio histories and the underlying simulated orders.

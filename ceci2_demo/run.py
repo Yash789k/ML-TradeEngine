@@ -121,7 +121,14 @@ def main():
         action="store_true",
         help="Use the latest vendor adjustment ratios for a new experiment",
     )
+    parser.add_argument("--device", choices=("cpu", "cuda", "auto"), default="cpu")
     args = parser.parse_args()
+    device = args.device
+    if device == "auto":
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+    if device == "cuda" and not torch.cuda.is_available():
+        parser.error("The selected runtime needs a CUDA GPU")
+    print(f"Sequence expert training device: {device}", flush=True)
     if args.hosted_review:
         os.environ["CECI2_HOSTED_REVIEW"] = "1"
         if not os.environ.get("OPENAI_API_KEY"):
@@ -153,6 +160,7 @@ def main():
             args.cache,
             args.horizon,
             args.output / f"models-{year}",
+            device,
         )
         blocks.append(forecasts)
         reviews.extend(receipts)

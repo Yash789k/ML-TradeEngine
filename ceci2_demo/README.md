@@ -81,3 +81,5 @@ To inspect simulated fills at a particular historical opening, run the following
 ```bash
 python -m ceci2_demo.paper 2025-04-08
 ```
+
+The training command accepts `--device cuda` on a CUDA runtime. Colab retraining selects an available GPU automatically. The archived study used CPU training. To regenerate the interactive website data after populating the market cache, run `python -m ceci2_demo.site_data` from the repository root.
