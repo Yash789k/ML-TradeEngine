@@ -64,6 +64,7 @@ async function simulation(ticket){
 async function controller(ticket){
  const sim=await load('simulation');if(ticket!==token)return;index=Math.min(index??sim.dates.length-1,sim.dates.length-1);
  root.innerHTML=head('Who gets a vote?','For one stock and date, each model predicts a rise, a fall or little change over five trading days. A larger weight gives its prediction more influence on the final forecast.')+
+ '<p class="note comparison-guide"><a class="link" href="assets/ensemble-study.pdf#page=5">See the Apple decision explained in the report</a></p>'+
  '<div class="controls">'+field('ticker','Instrument',select('ticker',sim.symbols,asset))+field('when','Decision date',select('when',sim.dates,sim.dates[index]))+'</div><div class="controllergrid"><section class="sheet"><h2>Expert weights</h2><div id="bars"></div></section><section class="sheet"><h2>Combined forecast</h2><div id="classification"></div><p class="note" id="targetDecision"></p><hr class="rule"><h3>Market state probabilities</h3><div id="states"></div><hr class="rule"><p class="note">Weights use filtered market conditions and earlier expert accuracy. Outcomes enter memory only after their forecast window closes.</p></section></div><section class="bottom"><div class="sectionhead"><h2>Forecast contributions</h2></div><div id="expertTable"></div></section>';
  const fixedTargets=simulate(sim).positions;
  let revision=0;
@@ -99,11 +100,16 @@ async function stress(ticket){
  '<div class="controls">'+field('scenario','Scenario',select('scenario',Object.values(scenarios),scenarios[scenario]))+
  field('period','Evaluation window',select('period',['All years','2022','2023','2024','2025'],stressPeriod==='all'?'All years':stressPeriod))+'</div>'+
  '<div class="sheet"><div class="metrics">'+metric('Adaptive router return','routerReturn')+metric('Uniform vote return','voteReturn')+metric('Router drawdown','routerDD')+'</div><canvas class="chart" id="stressChart" role="img" aria-label="Return paths under the selected market stress"></canvas>'+
- legend(series.map(s=>[s.name,s.color]))+'<p class="note">'+titles[scenario]+'</p></div><section class="bottom"><div class="sectionhead"><h2>Portfolio outcomes</h2></div>'+
+ legend(series.map(s=>[s.name,s.color]))+'<p class="note">'+titles[scenario]+'</p><p class="note" id="stressReading"></p><details class="protocol pipeline-universe"><summary>Why compare with the market-state gate?</summary><p class="note">It is the controller from the original proposal. Both controllers see the same forecasts and hidden Markov model estimates of market conditions. The original gate learned how to combine those inputs. The adaptive router updates voting shares using recent forecast errors in similar market conditions. Equal votes show how the same forecast set did with no learned voting rule. To test the market-state input itself, compare HMM gate with Gate without HMM in Compare results.</p></details><p class="note"><a class="link" href="assets/ensemble-study.pdf#page=9">Read the stress-test findings in the report</a></p></div><section class="bottom"><div class="sectionhead"><h2>Portfolio outcomes</h2></div>'+
  table(['Portfolio','Net return','Max drawdown','Sharpe','Log loss'],all.map(r=>[r.model,pct(r.net_return,2),pct(r.max_drawdown,2),num(r.sharpe),num(r.log_loss,4)]))+'</section><section class="bottom"><div class="sectionhead"><h2>Days around regime changes</h2></div>'+
  table(['Controller','Sessions','Mean daily return','5th percentile day','Log loss'],data.conditional.filter(x=>x.scenario===scenario&&x.group==='transition').map(r=>[r.model,r.sessions,pct(r.mean_net_daily_return,2),pct(r.daily_return_p05,2),num(r.log_loss,4)]))+
  '<p class="note">The transition table spans all four years and includes the five observed sessions beginning at each state change. 2022 was selected as a known bear market. Results describe historical resilience. The block-bootstrap intervals for the unaltered forecasts include zero.</p></section>';
  const a=all.find(x=>x.model==='Adaptive router'),v=all.find(x=>x.model==='Uniform vote');el('routerReturn').textContent=pct(a.net_return,2);el('voteReturn').textContent=pct(v.net_return,2);el('routerDD').textContent=pct(a.max_drawdown,2);paint=()=>drawChart(el('stressChart'),dates,series,dates.length-1,false);paint();
+ const gate=all.find(r=>r.model==='HMM gate');
+ const market=all.find(r=>r.model==='SPY buy and hold');
+ el('stressReading').textContent='After costs, adaptive votes earned '+pct(a.net_return,2)+
+   ', market-state votes earned '+pct(gate.net_return,2)+', and equal votes earned '+pct(v.net_return,2)+
+   '. Holding the market fund returned '+pct(market.net_return,2)+' on the same dates.';
  on('scenario','change',e=>{scenario=Object.keys(scenarios).find(k=>scenarios[k]===e.target.value);render()});on('period','change',e=>{stressPeriod=e.target.value==='All years'?'all':e.target.value;render()});
 }
 async function architecture(ticket){
