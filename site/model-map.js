@@ -5,6 +5,12 @@ export function modelMap(root, guide, head) {
     modelFlow+
     '<div class="model-branches"><figure><figcaption>Where market conditions enter</figcaption><p>S&amp;P 500 returns and volatility <span aria-hidden="true">→</span> Market-state model <span aria-hidden="true">→</span> Forecast controller</p></figure>'+
     '<figure><figcaption>Where reinforcement learning enters</figcaption><p><a class="link" href="#controller/router">Model router</a> picks the forecast <span aria-hidden="true">·</span> Portfolio allocator picks the investment in a separate test</p></figure></div>'+
+    '<details class="protocol bottom"><summary>Which mixtures use language or text?</summary><div class="scroll"><table class="data-table text-inputs-table"><thead><tr><th scope="col">Mixture</th><th scope="col">Where language or text enters</th></tr></thead><tbody>'+
+    '<tr><td>Mixture of experts with or without market states</td><td>Uses the 13 forecasts, including OpenAI, Qwen, Granite and FinBERT-based forecasts.</td></tr>'+
+    '<tr><td>Classic mixture of experts</td><td>Uses text sentiment as one of the training inputs. Its without-text variant removes those scores.</td></tr>'+
+    '<tr><td>Jointly trained mixture of experts</td><td>Uses text sentiment for one of its three forecasters.</td></tr>'+
+    '<tr><td>Weights learned from stock and market data</td><td>Uses text scores to choose weights. It also receives language forecasts when the 13-forecaster group is selected.</td></tr>'+
+    '</tbody></table></div><p class="note"><a class="link" href="#reviews">See what the separate language-model research agent changed by year</a></p></details>'+
     '<details class="protocol bottom"><summary>How the price models read the data</summary><div class="model-branches model-reading">'+
     '<figure><figcaption>Logistic regression</figcaption><p>Weighted inputs <span aria-hidden="true">→</span> Add them up <span aria-hidden="true">→</span> Three probabilities</p></figure>'+
     '<figure><figcaption>XGBoost and LightGBM</figcaption><p>Input values <span aria-hidden="true">→</span> Questions with thresholds <span aria-hidden="true">→</span> Combine tree outputs</p></figure>'+

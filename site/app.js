@@ -1,3 +1,4 @@
+import {reviewResults} from './review-results.js';
 import {methodLabels} from './method-labels.js';
 import {inspectVotes, votingMethods} from './vote-inspector.js';
 import {modelMap} from './model-map.js';
@@ -135,7 +136,7 @@ async function stress(ticket){
  '<div class="controls">'+field('scenario','Scenario',select('scenario',Object.values(scenarios),scenarios[scenario]))+
  field('period','Evaluation window',select('period',['All years','2022','2023','2024','2025'],stressPeriod==='all'?'All years':stressPeriod))+'</div>'+
  '<div class="sheet"><div class="metrics">'+metric('Adaptive router return','routerReturn')+metric('Uniform vote return','voteReturn')+metric('Router drawdown','routerDD')+'</div><canvas class="chart" id="stressChart" role="img" aria-label="Return paths under the selected market stress"></canvas>'+
- legend(series.map(s=>[s.name,s.color]))+'<p class="note">'+titles[scenario]+'</p><p class="note" id="stressReading"></p><details class="protocol pipeline-universe"><summary>Why compare with the market-state gate?</summary><p class="note">It is the controller from the original proposal. Both controllers see the same forecasts and hidden Markov model estimates of market conditions. The original gate learned how to combine those inputs. The adaptive router updates voting shares using recent forecast errors in similar market conditions. Equal votes show how the same forecast set did with no learned voting rule. To test the market-state input itself, compare HMM gate with Gate without HMM in Compare results.</p></details><p class="note"><a class="link" href="assets/ensemble-study.pdf#page=7">Read the stress-test findings in the report</a></p></div><section class="bottom"><div class="sectionhead"><h2>Portfolio outcomes</h2></div>'+
+ legend(series.map(s=>[s.name,s.color]))+'<p class="note">'+titles[scenario]+'</p><p class="note" id="stressReading"></p><details class="protocol pipeline-universe"><summary>Why compare with the market-state gate?</summary><p class="note">It is the controller from the original proposal. Both controllers see the same forecasts and hidden Markov model estimates of market conditions. The original gate learned how to combine those inputs. The adaptive router updates voting shares using recent forecast errors in similar market conditions. Equal votes show how the same forecast set did with no learned voting rule. To test the market-state input itself, compare HMM gate with Gate without HMM in Compare results.</p></details><p class="note"><a class="link" href="assets/ensemble-study.pdf#page=8">Read the stress-test findings in the report</a></p></div><section class="bottom"><div class="sectionhead"><h2>Portfolio outcomes</h2></div>'+
  table(['Portfolio','Net return','Max drawdown','Sharpe','Log loss'],all.map(r=>[r.model,pct(r.net_return,2),pct(r.max_drawdown,2),num(r.sharpe),num(r.log_loss,4)]))+'</section><section class="bottom"><div class="sectionhead"><h2>Days around regime changes</h2></div>'+
  table(['Controller','Sessions','Mean daily return','5th percentile day','Log loss'],data.conditional.filter(x=>x.scenario===scenario&&x.group==='transition').map(r=>[r.model,r.sessions,pct(r.mean_net_daily_return,2),pct(r.daily_return_p05,2),num(r.log_loss,4)]))+
  '<p class="note">The transition table spans all four years and includes the five observed sessions beginning at each state change. 2022 was selected as a known bear market. Results describe historical resilience. The block-bootstrap intervals for the unaltered forecasts include zero.</p></section>';
@@ -171,10 +172,20 @@ async function comparison(ticket, method, selection){
  const [data,paths,example]=await Promise.all([load("periods"),load("period-paths"),load("forecast-example")]);
  if(ticket===token){comparisonView(root,data,paths,{head,saveCSV,icon,load,example,proposal:selection==='pipeline'});paint=()=>root.oncomparisonresize?.();}
 }
+function training(){
+ root.innerHTML=head('Training and forecast accuracy','Saved measurements from the Colab experiments')+
+ '<div class="sourcesgrid source-charts"><figure><figcaption>Jointly trained mixture of experts</figcaption>'+
+ '<img class="sourceplot" src="assets/joint-mixture-training.png" alt="Training objective falls across twelve epochs for the 2024 and 2025 models">'+
+ '<p class="note">Training cutoff for the 2024 model was 29 December 2023. For the 2025 model it was 31 December 2024.</p></figure>'+
+ '<figure><figcaption>Forecast accuracy on held-out dates</figcaption>'+
+ '<img class="sourceplot" src="assets/forecast-comparison-held-out.png" alt="Held-out log loss for three voting methods across three groups of forecasters">'+
+ '<p class="note">Lower log loss means the model assigned more probability to what happened. The portfolios use the same trading rule across these comparisons.</p></figure></div>'+
+ '<p class="note"><a class="link" href="#comparison">See portfolio performance</a> · <a class="link" href="assets/ensemble-study.pdf#page=7">Training charts in the report</a></p>';
+}
 const areas={
  study:[['overview','Summary'],['pipeline','Pipeline'],['architecture','System diagram']],
  models:[['models','Model inputs and outputs'],['controller','Model votes']],
- results:[['comparison','Compare results'],['simulation','Portfolio replay'],['stress','Stress tests']],
+ results:[['comparison','Compare results'],['reviews','Research-agent review'],['training','Training charts'],['simulation','Portfolio replay'],['stress','Stress tests']],
  data:[['data','Data sources'],['glossary','Glossary']],
 };
 
@@ -195,7 +206,7 @@ async function render(){
  const ticket=++token;stop();paint=()=>{};onStep=()=>{};
  const [route,selection]=(location.hash.slice(1)||'overview').replace(/^datasets$/, 'data').split('/');
  const method=route==='controller'&&Object.hasOwn(votingMethods,selection)?selection:'original';
- const views={overview:async t=>{const data=await load('periods');if(t===token)overview(root,data);},pipeline:async t=>{const [guide,study,data]=await Promise.all([load('pipeline-guide'),load('study-5'),load('periods')]);if(t===token)pipelineView(root,guide,study.coverage,data,head);},models:async t=>{const guide=await load('model-map');if(t===token)modelMap(root,guide,head);},simulation,comparison,controller,stress,architecture,data:datasets,glossary:()=>glossaryView(root)};
+ const views={overview:async t=>{const data=await load('periods');if(t===token)overview(root,data);},pipeline:async t=>{const [guide,study,data]=await Promise.all([load('pipeline-guide'),load('study-5'),load('periods')]);if(t===token)pipelineView(root,guide,study.coverage,data,head);},models:async t=>{const guide=await load('model-map');if(t===token)modelMap(root,guide,head);},reviews:async t=>{const [periods,five,one]=await Promise.all([load('periods'),load('study-5'),load('study-1')]);if(t===token)reviewResults(root,periods,{five,one},{head,table,pct});},training,simulation,comparison,controller,stress,architecture,data:datasets,glossary:()=>glossaryView(root)};
  renderNavigation(route,method);
  try{await (Object.hasOwn(views,route)?views[route]:views.pipeline)(ticket,method,selection)}catch(e){if(ticket===token)root.innerHTML='<h1 class="bottom">Study unavailable</h1><p class="note">'+esc(e.message)+'</p><button class="bottom" id="retry">Retry</button>';on('retry','click',render);}
 }

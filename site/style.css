@@ -46,3 +46,4 @@ h1,h2,h3,p{margin:0}.head{margin:36px 0 24px;display:flex;justify-content:space-
 @media(max-width:700px){.adapter-flow{grid-template-columns:1fr}}
 .source-guide figcaption{font-weight:650;margin-bottom:12px}.source-guide .protocol{border-top:1px solid var(--line);padding-top:10px}
 .source-charts{margin-top:12px;align-items:start}.source-charts figure{margin:0}.source-charts figcaption{font-weight:650;margin-bottom:10px}.source-charts .source-guide figure{margin-bottom:18px}.model-reading{margin-top:13px}
+.text-inputs-table th,.text-inputs-table td{white-space:normal;text-align:left;vertical-align:top}
