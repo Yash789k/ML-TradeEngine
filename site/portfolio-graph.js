@@ -1,6 +1,18 @@
 const metrics = [
-  ['equity', 'Equity'], ['drawdown', 'Drawdown'], ['daily', 'Daily return'],
+  ['equity', 'Portfolio value'], ['drawdown', 'Fall from previous high'], ['daily', 'Daily return'],
 ];
+
+export const displayPortfolio = name => ({
+  'Adaptive router':'Weights updated using recent forecast errors',
+  'HMM gate':'Learned weights using market states',
+  'Uniform vote':'Equal votes for the same forecasts',
+  'SPY buy and hold':'Hold the S&P 500 fund',
+  'Classic MoE':'Classic jointly trained mixture',
+  'MoE without text':'Classic mixture trained without financial text',
+  'Joint neural mixture':'Three trained models with learned weights',
+  'Joint experts uniform':'Same three trained models with equal weights',
+  'Equal weight':'Equal investment across 22 instruments',
+}[name] ?? name);
 
 export function portfolioColors(names) {
   const hues = [158, 32, 202, 74, 12, 181, 51, 218];
@@ -70,7 +82,7 @@ export function plotPortfolios(host, group, period, approach, benchmark, state, 
   panel.append(summary,modelGrid);
   shortcuts.setAttribute('role','group');shortcuts.setAttribute('aria-label','Approach presets');
   const shortcutSelections = new Map();
-  const legend = document.createElement('div');legend.className='portfolioLegend';
+  const outcomeTable = document.createElement('table');outcomeTable.className='selected-results';
   const selections = new Map();
   function check(label, parent, value, update) {
     const node = document.createElement('label'), input = document.createElement('input');
@@ -81,7 +93,6 @@ export function plotPortfolios(host, group, period, approach, benchmark, state, 
   }
   function setModels(chosen) {
     state.models = new Set(chosen);
-    methods.open = chosen.size <= 8;
     for (const name of models) selections.get(name).checked = chosen.has(name);
     refresh();
   }
@@ -99,7 +110,7 @@ export function plotPortfolios(host, group, period, approach, benchmark, state, 
       const frame=document.createElement('fieldset'),label=document.createElement('legend');
       label.textContent=title;frame.append(label);modelGrid.append(frame);families.set(title,frame);
     }
-    const {input,node} = check(name,families.get(title),state.models.has(name),on => {
+    const {input,node} = check(displayPortfolio(name),families.get(title),state.models.has(name),on => {
       if (on) state.models.add(name); else state.models.delete(name);
       refresh();
     });
@@ -115,10 +126,10 @@ export function plotPortfolios(host, group, period, approach, benchmark, state, 
   const plots = document.createElement('div'), caption = document.createElement('p');
   caption.className='note portfolioCaption';
   const question=document.createElement('p');question.className='note';
-  const methods=document.createElement('details');methods.className='protocol';methods.open=true;
+  const methods=document.createElement('details');methods.className='protocol';methods.open=false;
   const methodsTitle=document.createElement('summary');methodsTitle.textContent='How the selected approaches work';
   const descriptions=document.createElement('div');methods.append(methodsTitle,descriptions);
-  host.replaceChildren(shortcuts,question,panel,methods,toggles,legend,plots,caption);
+  host.replaceChildren(shortcuts,question,panel,outcomeTable,toggles,plots,caption,methods);
 
   let charts=[], selected=[], focused=null, index=null;
   function highlight(name,position=null) {
@@ -128,7 +139,7 @@ export function plotPortfolios(host, group, period, approach, benchmark, state, 
       const i=index??indices.length;
       const values=charts.filter(c=>focused[c.key][i]!==null)
         .map(c=>c.label+' '+format(c.key,focused[c.key][i]));
-      caption.textContent=[dates[i],focused.model,...values].join(' · ');
+      caption.textContent=[dates[i],displayPortfolio(focused.model),...values].join(' · ');
     } else caption.textContent='';
     draw();
   }
@@ -181,19 +192,39 @@ export function plotPortfolios(host, group, period, approach, benchmark, state, 
       }
       button.setAttribute('aria-pressed',String(!button.disabled && names.size===selected.length && selected.every(t=>names.has(t.model))));
     }
-    if (preset==='Highlighted pair') question.textContent='How did '+approach+' compare with '+benchmark+' on the same dates? Equity shows how $10,000 grew after costs and drawdown shows how far it fell below its previous high.';
+    if (preset==='Highlighted pair') question.textContent='How did '+approach+' compare with '+benchmark+' on the same dates? The top chart shows what happened to $10,000 after costs. The second shows losses from earlier highs.';
     else if (presetQuestions[preset]) question.textContent=presetQuestions[preset];
-    else question.textContent=selected.length ? 'Each line starts with $10,000 on the same date. Equity shows the balance after trading costs, drawdown measures the fall from its previous high, and daily return shows the change each session.' : '';
+    else question.textContent=selected.length ? 'Each line starts with $10,000 on the same date. The charts show the balance after trading costs, the fall from its previous high and the change each session.' : '';
     descriptions.replaceChildren();methods.hidden=!selected.length;
     for (const trace of selected) {
       const line=document.createElement('p'),name=document.createElement('strong');
-      line.className='note';name.textContent=trace.model+'. ';line.append(name,describe(trace.model));
+      line.className='note';name.textContent=displayPortfolio(trace.model)+'. ';line.append(name,describe(trace.model));
       descriptions.append(line);
     }
-    legend.replaceChildren();
-    if (selected.length<=8) for (const trace of selected) {
-      const label=document.createElement('span'),swatch=document.createElement('i');swatch.className='portfolioKey';
-      swatch.style.background=trace.color;label.append(swatch,trace.model);legend.append(label);
+
+    outcomeTable.replaceChildren();
+    outcomeTable.hidden = !selected.length || selected.length>8;
+    if (!outcomeTable.hidden) {
+      const header=outcomeTable.createTHead().insertRow();
+      for (const label of ['Selected portfolio','Return','Largest fall','Sharpe ratio']) {
+        const cell=document.createElement('th');
+        cell.scope='col';
+        cell.textContent=label;
+        header.append(cell);
+      }
+      const body=outcomeTable.createTBody();
+      for (const trace of selected) {
+        const data=period.rows.find(row=>row.model===trace.model);
+        const row=body.insertRow();
+        const label=row.insertCell();
+        const swatch=document.createElement('i');
+        swatch.className='portfolioKey';
+        swatch.style.background=trace.color;
+        label.append(swatch,displayPortfolio(trace.model));
+        row.insertCell().textContent=format('percent',data.net_return);
+        row.insertCell().textContent=format('percent',data.max_drawdown);
+        row.insertCell().textContent=Number.isFinite(data.sharpe)?data.sharpe.toFixed(2):'—';
+      }
     }
     plots.replaceChildren();charts=[];focused=null;index=null;caption.textContent='';
     if(!selected.length || !state.metrics.size) return;

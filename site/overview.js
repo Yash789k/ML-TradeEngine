@@ -11,6 +11,12 @@ export function overview(root, data) {
   root.innerHTML = `<article class="overview">
     <h1>Does weighting forecasts by market conditions improve performance?</h1>
     <p class="intro">The proposal tests whether a learned gate that weights a fixed set of stock-direction classifiers using market conditions improves risk-adjusted performance over single classifiers and a static ensemble. A separate experiment evaluates periodic language-model-guided adaptation. <a class="link" href="#pipeline">See how the test works</a>.</p>
+    <ol class="study-flow" aria-label="How the study works">
+      <li><a href="#data">Input data</a><span>Prices, text and investment factors</span></li>
+      <li><a href="#models">Direction forecasts</a><span>Chance of a rise, little change or a fall</span></li>
+      <li><a href="#controller">Forecast weights</a><span>Combine the forecasts using market conditions</span></li>
+      <li><a href="#comparison">Simulated portfolios</a><span>Apply the trading rule and measure outcomes</span></li>
+    </ol>
     <div class="overview-study"><div class="overview-story"><h2>What happened to $10,000?</h2>
     <p>Both voting methods use the same 13 forecasters and trading rules. The chart shows cumulative returns in dollars. The broader results also compare drawdown, which measures the largest fall from a previous high, and Sharpe, which measures return relative to daily volatility. Buying the market provides an investment benchmark.</p>
     <p id="periodFinding"></p><a class="link" href="#comparison">Compare the trading approaches</a></div>
