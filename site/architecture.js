@@ -46,8 +46,8 @@ function diagram(id, compact) {
       node(8, 95, 110, 56, ["Rolling", "HMM"]),
       node(124, 95, 110, 56, ["Market", "experts"]),
       node(240, 95, 112, 56, ["Text", "classifiers"]),
-      node(83, 194, 193, 51, ["Mixture-of-experts", "controller"], true),
-      node(83, 280, 193, 51, ["Trading rule"]),
+      node(83, 194, 193, 51, ["Forecast controller", "Blend or pick one"], true),
+      node(83, 280, 193, 51, ["Portfolio decision", "Rule or allocator"]),
       node(83, 366, 193, 51, ["Risk limits and", "simulated fills"]),
       phase(8, 488, 90, 60, ["Research", "agent"]),
       phase(124, 488, 105, 60, ["Candidate", "validation"]),
@@ -70,8 +70,8 @@ function diagram(id, compact) {
       node(198, 17, 160, 52, ["Rolling HMM"]),
       node(198, 96, 160, 52, ["Market experts"]),
       node(198, 177, 160, 52, ["Text classifiers"]),
-      node(410, 87, 168, 70, ["Mixture-of-experts", "controller"], true),
-      node(618, 94, 148, 56, ["Trading rule"]),
+      node(410, 87, 168, 70, ["Forecast controller", "Blend or pick one"], true),
+      node(618, 94, 148, 56, ["Portfolio decision", "Rule or allocator"]),
       node(806, 94, 164, 56, ["Risk limits and", "simulated fills"]),
       phase(198, 272, 161, 56, ["Research agent"]),
       phase(411, 272, 166, 56, ["Candidate", "validation"]),
@@ -82,8 +82,7 @@ function diagram(id, compact) {
       xmlns="http://www.w3.org/2000/svg">
     <title id="${id}-title">Adaptive ensemble and simulated portfolio</title>
     <desc id="${id}-desc">Market data feeds the rolling hidden Markov model and market experts.
-      Text classifiers supply additional forecasts. The controller weights the experts. A fixed policy
-      determines positions, and the simulator applies risk limits and fills orders. A hosted agent
+      Text classifiers supply additional forecasts. The forecast controller either weights the forecasts or picks one. The next box represents the fixed trading rule or the portfolio allocation experiment. The simulator fills the resulting trades. A hosted agent
       proposes a new gate setting for a later fold, subject to a separate validation decision.</desc>
     <defs><marker id="${marker}" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6"
       orient="auto"><path d="M1 1 L7 4 L1 7" fill="none" stroke="${line}" stroke-width="1.4"/></marker></defs>
@@ -144,7 +143,9 @@ export function renderArchitecture(el, study, sim, dayIndex) {
   } else {
     row(body, "Market state", "No five-session state record for the selected date.");
   }
+  row(body, "Forecast controller", "Original proposal: combine the forecasts using learned votes. Model-router experiment: pick a single forecaster for each instrument, then send its forecast to the fixed trading rule.");
   row(body, "Trading rule (fixed policy)", "Subtract the chance of a fall from the chance of a rise. Keep up to five instruments with the highest scores above five percentage points. Give less volatile instruments larger targets, up to 15% of the account each. At the next opening price, buy or sell to reach the targets. Sell holdings that fall out of the selected group and keep spare money in cash.");
+  row(body, "Portfolio allocator experiment", "Use the classic mixture's forecasts to generate a stock basket. Replace the fixed allocation with a learned choice among that basket, cash and the S&P 500 fund. The model router was tested separately with the fixed rule.");
   row(body, "Risk-managed simulation", "A regime change raises the entry threshold to 0.15. A trailing price decline over 10% or daily volatility above 3.5% halves the position cap. The simulator limits designated exposure groups to 30%, uses a trailing stop of 2.5 average true ranges, and caps fills at 1% of the previous session’s dollar volume. A 10% portfolio drawdown triggers a five-session pause. Fills at the next open cost five basis points per side.");
   if (review) {
     const outcome = review.accepted
