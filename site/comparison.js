@@ -1,3 +1,4 @@
+import {comparisonSummary} from './comparison-summary.js';
 import {plotPortfolios, portfolioColors, initialGraphSelection} from './portfolio-graph.js';
 const explanations = {
   'Joint neural mixture': 'Trains three forecasters together. One reads recent prices, one reads signals from financial text, and one measures the broad market’s return, volatility and share of instruments rising. A fourth model learns how much of each vote to use for each stock.',
@@ -90,6 +91,7 @@ function metricTable(headings, rows) {
 export function comparisonView(root, data, paths, {head, saveCSV, icon, load, example}) {
   let studyId = 'five', chosenPeriod = 'all-2024-2025';
   let pairOpen = false;
+  const summaryState = {measure:'net_return', training:false, annual:false};
   let approach = 'Joint neural mixture', benchmark = 'Joint experts uniform';
   const namesAcrossStudies = data.groups.flatMap(group => group.models);
   const colorFor = portfolioColors(namesAcrossStudies);
@@ -103,7 +105,7 @@ export function comparisonView(root, data, paths, {head, saveCSV, icon, load, ex
     if (!names.includes(benchmark) || benchmark === approach) benchmark = names.find(n => n === 'SPY buy and hold' && n !== approach) || names.find(n => n !== approach);
     root.innerHTML = head('Performance comparison', 'Each line shows what happened to the same starting investment. A higher ending balance means more money. A deeper drawdown means a larger fall from a previous high.',
       '<button id="exportPeriods">'+icon('download')+'Export</button>')+
-      '<p class="note comparison-guide"><a class="link" href="#pipeline">Where the data and scores come from</a></p><details class="protocol"><summary>How the approaches differ, using one stock</summary><div id="design" class="experiment-example"></div></details><div class="controls" id="periodControls"></div><section class="sheet"><div id="allPortfolioGraph"></div><details class="protocol" id="pairDetail"><summary>Compare two portfolios by year</summary><div class="controls" id="pairControls"></div><div class="metrics"><div class="metric"><small>Approach return</small><strong id="cmpReturn"></strong></div><div class="metric"><small>Benchmark return</small><strong id="baseReturn"></strong></div><div class="metric"><small>Difference</small><strong id="cmpGap"></strong></div></div><div id="pairNotes"></div><div id="yearChart"></div></details></section><section class="bottom"><div class="sectionhead"><h2>All approaches</h2><span class="tagtext" id="sample"></span></div><div id="periodResults"></div><p class="note">Drawdown starts at the opening value of the selected period. Fees are scaled to $10,000 of starting capital. Each row covers the same decision dates. These periods had already been examined during development.</p><p class="note"><a class="link" href="https://colab.research.google.com/drive/1qjCtnMsCAxeps4P7_RBPiJtPpmHHSqQD?authuser=1">Open the GPU training notebook ↗</a></p></section>';
+      '<p class="note comparison-guide"><a class="link" href="#pipeline">Where the data and scores come from</a></p><details class="protocol"><summary>How the approaches differ, using one stock</summary><div id="design" class="experiment-example"></div></details><div class="controls" id="periodControls"></div><div id="comparisonSummary"></div><section class="sheet"><div id="allPortfolioGraph"></div><details class="protocol" id="pairDetail"><summary>Compare two portfolios by year</summary><div class="controls" id="pairControls"></div><div class="metrics"><div class="metric"><small>Approach return</small><strong id="cmpReturn"></strong></div><div class="metric"><small>Benchmark return</small><strong id="baseReturn"></strong></div><div class="metric"><small>Difference</small><strong id="cmpGap"></strong></div></div><div id="pairNotes"></div><div id="yearChart"></div></details></section><section class="bottom"><div class="sectionhead"><h2>All approaches</h2><span class="tagtext" id="sample"></span></div><div id="periodResults"></div><p class="note">Drawdown starts at the opening value of the selected period. Fees are scaled to $10,000 of starting capital. Each row covers the same decision dates. These periods had already been examined during development.</p><p class="note"><a class="link" href="https://colab.research.google.com/drive/1qjCtnMsCAxeps4P7_RBPiJtPpmHHSqQD?authuser=1">Open the GPU training notebook ↗</a></p></section>';
     const design=root.querySelector('#design');
     const exampleTitle = document.createElement('h2');
     exampleTitle.textContent = example.question;
@@ -131,6 +133,7 @@ export function comparisonView(root, data, paths, {head, saveCSV, icon, load, ex
     addExamples(other, example.experiments);
     design.append(other);
     const controls = root.querySelector('#periodControls');
+    comparisonSummary(root.querySelector('#comparisonSummary'),group,period,summaryState);
     const pairs = names.map(n => [n,n]);
     controls.append(picker('studyGroup','Study',data.groups.map(g => [g.id,g.label]),studyId),
       picker('evalWindow','Evaluation window',group.periods.map(p => [p.id,p.label]),period.id));
