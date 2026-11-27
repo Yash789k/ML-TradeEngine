@@ -132,12 +132,12 @@ evidence={**sources,"companies":companies,"apple":apple}
 (ROOT/"site/assets/source-evidence.json").write_text(json.dumps(evidence,ensure_ascii=False,indent=2)+"\n")
 
 
-f=page("Which stock forecasts should count?", "A historical test of combining forecasts and turning them into simulated trades")
+f=page("Market conditions and portfolio risk", "A historical test of combining forecasts and turning them into simulated trades")
 flow(f,.747,[("Observe","Prices and volume\nPublic text and factors"),("Forecast","Models give chances\nof up, flat and down"),("Choose votes","Blend forecasts\nor pick one model"),("Simulate","Turn the result into\nnext-open positions")])
-y=section(f,.622,"What the original proposal tests","Can a controller that changes its votes with market conditions improve on giving every forecast the same vote? The project also tests choosing one forecast at a time and learning where to put the portfolio’s money.")
+y=section(f,.622,"What the original proposal tests","Can a learned gate that weights a fixed set of stock-direction classifiers under changing market conditions deliver more robust risk-adjusted performance than single classifiers or a static ensemble? The proposal separately asks whether periodic language-model-guided adaptation improves on scheduled retraining or conventional search.")
 y=section(f,y,"How the tests line up","The fixed blend, context adapter and model router share 480 evaluation sessions in 2024–2025. The stress study covers 959 sessions in 2022–2025. Models can have different training inputs and histories. Within each test, we match dates and trading costs.")
 y=section(f,y,"Two ways to score the result","Forecast log loss penalizes putting little probability on the outcome that happened. Portfolio return measures gains after fees. Drawdown measures the worst fall from a previous high. Sharpe measures average daily return relative to how much it fluctuates, using a zero cash reference here.")
-section(f,y,"What we found","Changing the votes helped some combinations. The adapter performed best of the three voting methods for four price-history models. With all 13 forecasts, it lost money. See page 5 for the side-by-side comparison.")
+section(f,y,"What we found",f"On the four-year historical run, the original gate’s Sharpe ratio was {four.loc['HMM gate','sharpe']:.2f} versus {four.loc['Uniform vote','sharpe']:.2f} for equal votes and {four.loc['SPY buy and hold','sharpe']:.2f} for buying the market. The later adaptive router reached {four.loc['Adaptive router','sharpe']:.2f}. The five-session research agent retained the existing gate setting.")
 link(f,.077,"Explore the data-to-results pipeline","pipeline")
 
 f=page("The data behind the forecasts", "Yahoo Finance prices, public company text, Fed statements and academic factors")
@@ -221,6 +221,6 @@ y=para(f,.285,"Adaptive votes beat equal votes in all three simulations. The ori
 para(f,y,"The 95% interval for the adaptive router’s return advantage over equal votes on recorded forecasts includes zero. These periods had already been examined. A future comparison can test whether the advantage repeats.")
 link(f,.070,"Open all three scenario charts and the daily replay","stress")
 
-with PdfPages(OUT/"ensemble-study.pdf",metadata={"Title":"Which stock forecasts should count?"}) as pdf:
+with PdfPages(OUT/"ensemble-study.pdf",metadata={"Title":"Market conditions and portfolio risk"}) as pdf:
     for f in pages:pdf.savefig(f)
 shutil.copyfile(OUT/"ensemble-study.pdf",ROOT/"site/assets/ensemble-study.pdf")
