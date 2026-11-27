@@ -1,6 +1,6 @@
 const portfolios = [
   ['Adaptive router', 'Give more weight to recently accurate models', 'Thirteen models make forecasts. Those with a better recent record in similar markets get a larger vote.'],
-  ['Classic MoE', 'Train the models to work together', 'Three models learn alongside a fourth model that decides how much each forecast counts for each stock.'],
+  ['Uniform vote', 'Give the same forecasters equal votes', 'Uses the same 13 forecasts and trading rule. Each forecast has the same influence.'],
   ['SPY buy and hold', 'Buy and hold the market', 'Buy a fund that tracks the S&P 500 index of large US companies. Hold it through each annual test.'],
 ];
 
@@ -12,7 +12,7 @@ export function overview(root, data) {
     <h1>Can a model learn which stock forecasts to trust?</h1>
     <p class="intro">A model that reads prices can disagree with one that reads company news. This study asks whether learning how much to trust each forecast helps a simulated investor earn more or lose less when markets fall. <a class="link" href="#pipeline">Follow the data to the results</a>.</p>
     <div class="overview-study"><div class="overview-story"><h2>What happened to $10,000?</h2>
-    <p>Each portfolio started with the same amount. Two used forecasts to choose investments. A third simply bought the market. The portfolios traded at simulated prices and paid trading costs.</p>
+    <p>Both voting methods use the same 13 forecasters and trading rules. The question is whether changing their votes improved what happened to $10,000. Buying the market gives us a separate investment benchmark.</p>
     <p id="periodFinding"></p><a class="link" href="#comparison">Compare the trading approaches</a></div>
     <figure class="sheet outcome"><label class="field">Historical period<select id="overviewPeriod"><option value="all-2022-2025">2022–2025</option><option>2022</option><option>2023</option><option>2024</option><option>2025</option></select></label>
     <figcaption>Ending value after trading costs</figcaption><div id="outcomes"></div></figure></div>
@@ -39,9 +39,9 @@ export function overview(root, data) {
       chart.append(row);
     });
     const winner = values.indexOf(Math.max(...values));
-    const names = ['The model that rewarded recent accuracy', 'The jointly trained models', 'The market fund'];
+    const names = ['The model that rewarded recent accuracy', 'The equal-vote portfolio', 'The market fund'];
     root.querySelector('#periodFinding').textContent = select.value === 'all-2022-2025'
-      ? 'Buying the market finished ahead. The model that rewarded recent accuracy had the smallest fall from a previous high during these four years. It also kept more money in cash on average.'
+      ? 'Changing the votes finished ahead of equal votes with a smaller fall from a previous high. Buying the market earned the most over the full period.'
       : (rows[winner].value < 0 ? 'All three portfolios lost money in '+select.value+'. ' : 'In '+select.value+', the starting investment was $10,000. ')
         + names[winner]+' finished highest at '+money.format(values[winner])+'.';
   }
