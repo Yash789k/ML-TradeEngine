@@ -1,4 +1,3 @@
-import {modelFlow} from './model-flow.js';
 import {methodLabels} from './method-labels.js';
 import {inspectVotes, votingMethods} from './vote-inspector.js';
 import {modelMap} from './model-map.js';
@@ -84,7 +83,7 @@ async function controller(ticket, method){
  }
  const sim=await load('simulation');if(ticket!==token)return;index=Math.min(index??sim.dates.length-1,sim.dates.length-1);
  root.innerHTML=head(methodLabels.original,'This is the proposal’s original learned mixture. It combines 13 forecasts for one instrument and date, then sends its combined forecast to the fixed trading rule.')+
- '<p class="note comparison-guide"><a class="link" href="assets/ensemble-study.pdf#page=4">See the Apple decision explained in the report</a> · <a class="link" href="#models">What each model reads and returns</a></p>'+
+ '<p class="note comparison-guide"><a class="link" href="assets/ensemble-study.pdf#page=5">See the Apple decision explained in the report</a> · <a class="link" href="#models">What each model reads and returns</a></p>'+
  '<div class="controls vote-controls">'+votePicker('voteMethod','Voting method',voteOptions,'original')+field('ticker','Instrument',select('ticker',sim.symbols,asset))+
  field('when','Decision date',select('when',sim.dates,sim.dates[index]))+'</div>'+
  '<div class="controllergrid vote-grid"><section class="sheet"><h2>Combined forecast</h2><div id="classification"></div>'+
@@ -136,7 +135,7 @@ async function stress(ticket){
  '<div class="controls">'+field('scenario','Scenario',select('scenario',Object.values(scenarios),scenarios[scenario]))+
  field('period','Evaluation window',select('period',['All years','2022','2023','2024','2025'],stressPeriod==='all'?'All years':stressPeriod))+'</div>'+
  '<div class="sheet"><div class="metrics">'+metric('Adaptive router return','routerReturn')+metric('Uniform vote return','voteReturn')+metric('Router drawdown','routerDD')+'</div><canvas class="chart" id="stressChart" role="img" aria-label="Return paths under the selected market stress"></canvas>'+
- legend(series.map(s=>[s.name,s.color]))+'<p class="note">'+titles[scenario]+'</p><p class="note" id="stressReading"></p><details class="protocol pipeline-universe"><summary>Why compare with the market-state gate?</summary><p class="note">It is the controller from the original proposal. Both controllers see the same forecasts and hidden Markov model estimates of market conditions. The original gate learned how to combine those inputs. The adaptive router updates voting shares using recent forecast errors in similar market conditions. Equal votes show how the same forecast set did with no learned voting rule. To test the market-state input itself, compare HMM gate with Gate without HMM in Compare results.</p></details><p class="note"><a class="link" href="assets/ensemble-study.pdf#page=6">Read the stress-test findings in the report</a></p></div><section class="bottom"><div class="sectionhead"><h2>Portfolio outcomes</h2></div>'+
+ legend(series.map(s=>[s.name,s.color]))+'<p class="note">'+titles[scenario]+'</p><p class="note" id="stressReading"></p><details class="protocol pipeline-universe"><summary>Why compare with the market-state gate?</summary><p class="note">It is the controller from the original proposal. Both controllers see the same forecasts and hidden Markov model estimates of market conditions. The original gate learned how to combine those inputs. The adaptive router updates voting shares using recent forecast errors in similar market conditions. Equal votes show how the same forecast set did with no learned voting rule. To test the market-state input itself, compare HMM gate with Gate without HMM in Compare results.</p></details><p class="note"><a class="link" href="assets/ensemble-study.pdf#page=7">Read the stress-test findings in the report</a></p></div><section class="bottom"><div class="sectionhead"><h2>Portfolio outcomes</h2></div>'+
  table(['Portfolio','Net return','Max drawdown','Sharpe','Log loss'],all.map(r=>[r.model,pct(r.net_return,2),pct(r.max_drawdown,2),num(r.sharpe),num(r.log_loss,4)]))+'</section><section class="bottom"><div class="sectionhead"><h2>Days around regime changes</h2></div>'+
  table(['Controller','Sessions','Mean daily return','5th percentile day','Log loss'],data.conditional.filter(x=>x.scenario===scenario&&x.group==='transition').map(r=>[r.model,r.sessions,pct(r.mean_net_daily_return,2),pct(r.daily_return_p05,2),num(r.log_loss,4)]))+
  '<p class="note">The transition table spans all four years and includes the five observed sessions beginning at each state change. 2022 was selected as a known bear market. Results describe historical resilience. The block-bootstrap intervals for the unaltered forecasts include zero.</p></section>';
@@ -155,17 +154,22 @@ async function architecture(ticket){
 }
 async function datasets(ticket){
  const [study,evidence]=await Promise.all([load('study-5'),load('source-evidence')]);if(ticket!==token)return;const d=study.coverage;
- root.innerHTML=head('Data sources','Records from January 2017 to December 2025.')+modelFlow+
- '<div class="sheet"><div class="metrics">'+metric('Instrument-days','bars')+metric('Instruments','symbols')+metric('Factor themes','themes')+'</div></div><div class="sourcesgrid bottom"><img class="sourceplot" src="assets/datasets.png" alt="Adjusted prices of five benchmark exchange-traded funds and FinBERT sentiment for Federal Reserve statements"><img class="sourceplot" src="assets/sources.png" alt="Text counts and returns for thirteen US factor themes by year"></div><div id="sourceEvidence" class="bottom"></div><details class="bottom protocol"><summary>Full source coverage</summary>'+
- '<div id="coverageTable"></div>'+
- '<p class="note">The selected universe includes surviving companies and overlapping ETFs. The headline sample covers 2019 through 2023. Model pretraining can include events that occurred during this retrospective evaluation.</p></details><section class="bottom"><a class="link" href="https://github.com/Yash789k/ML-TradeEngine/blob/main/ceci2_demo/README.md">Data sources and training protocol</a></section>';
+ root.innerHTML=head('Data sources','January 2017 to December 2025')+
+ '<section><h2>Quantitative data</h2><div class="sourcesgrid source-charts">'+
+ '<figure><figcaption>Yahoo Finance adjusted closing prices</figcaption><img class="sourceplot" src="assets/yahoo-finance-prices.png" alt="Weekly adjusted closing prices for five funds, indexed to 100 at the start of 2017"><p class="note"><span id="bars"></span> daily records across <span id="symbols"></span> instruments. The chart shows five funds as examples.</p></figure>'+
+ '<figure><figcaption>Jensen, Kelly and Pedersen investment factors</figcaption><img class="sourceplot" src="assets/investment-factor-returns.png" alt="Annual returns by calendar year for 13 investment themes"><p class="note"><span id="themes"></span> market-wide themes. The models use trailing returns with a 21-session delay.</p></figure></div></section>'+
+ '<section class="bottom"><h2>Qualitative data</h2><div class="sourcesgrid source-charts">'+
+ '<figure><figcaption>Federal Reserve statement tone</figcaption><img class="sourceplot" src="assets/federal-reserve-text-sentiment.png" alt="Positive minus negative scores from FinBERT for Federal Reserve statements"></figure>'+
+ '<div id="sourceEvidence"></div></div></section>'+
+ '<details class="bottom protocol"><summary>Full source coverage</summary><div id="coverageTable"></div><p class="note">The selected universe includes surviving companies and overlapping funds. Model pretraining can include events from this historical evaluation.</p></details>'+
+ '<p class="note"><a class="link" href="assets/ensemble-study.pdf#page=2">Quantitative and qualitative charts in the report</a></p>';
  sourceGuide(el('sourceEvidence'),evidence);
  el('coverageTable').append(coverageTable(d));
  el('bars').textContent=d.bars.toLocaleString();el('symbols').textContent=d.symbols;el('themes').textContent=d.factorThemes.length;
 }
-async function comparison(ticket){
+async function comparison(ticket, method, selection){
  const [data,paths,example]=await Promise.all([load("periods"),load("period-paths"),load("forecast-example")]);
- if(ticket===token){comparisonView(root,data,paths,{head,saveCSV,icon,load,example});paint=()=>root.oncomparisonresize?.();}
+ if(ticket===token){comparisonView(root,data,paths,{head,saveCSV,icon,load,example,proposal:selection==='pipeline'});paint=()=>root.oncomparisonresize?.();}
 }
 const areas={
  study:[['overview','Summary'],['pipeline','Pipeline'],['architecture','System diagram']],
@@ -193,6 +197,6 @@ async function render(){
  const method=route==='controller'&&Object.hasOwn(votingMethods,selection)?selection:'original';
  const views={overview:async t=>{const data=await load('periods');if(t===token)overview(root,data);},pipeline:async t=>{const [guide,study,data]=await Promise.all([load('pipeline-guide'),load('study-5'),load('periods')]);if(t===token)pipelineView(root,guide,study.coverage,data,head);},models:async t=>{const guide=await load('model-map');if(t===token)modelMap(root,guide,head);},simulation,comparison,controller,stress,architecture,data:datasets,glossary:()=>glossaryView(root)};
  renderNavigation(route,method);
- try{await (Object.hasOwn(views,route)?views[route]:views.pipeline)(ticket,method)}catch(e){if(ticket===token)root.innerHTML='<h1 class="bottom">Study unavailable</h1><p class="note">'+esc(e.message)+'</p><button class="bottom" id="retry">Retry</button>';on('retry','click',render);}
+ try{await (Object.hasOwn(views,route)?views[route]:views.pipeline)(ticket,method,selection)}catch(e){if(ticket===token)root.innerHTML='<h1 class="bottom">Study unavailable</h1><p class="note">'+esc(e.message)+'</p><button class="bottom" id="retry">Retry</button>';on('retry','click',render);}
 }
 window.addEventListener('resize',()=>paint());window.addEventListener('hashchange',render);render();

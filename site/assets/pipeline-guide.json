@@ -54,7 +54,7 @@
       ]
     ],
     [
-      "Four price-history models",
+      "Four models that read price history",
       "sequence networks",
       [
         "LSTM",
