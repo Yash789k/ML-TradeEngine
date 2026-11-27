@@ -77,6 +77,56 @@ const format = (key, value) => key === 'equity'
   ? value.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0})
   : (100*value).toFixed(2)+'%';
 
+function architecture(name) {
+  const trading = 'Rank and size positions';
+  const all = '13 forecasts';
+  const classic = 'Three jointly trained experts';
+  const joint = 'Price, text and market experts';
+  const [method, pool] = name.split(' / ');
+  const inputs = {'all experts':all,'trees and linear':'Logistic regression and two tree models','sequence networks':'Four price-history models'}[pool];
+  if (inputs) {
+    const control = {'Context adapter':'Set weights for each stock and date','Fixed mixture':'Keep learned weights fixed for the year','RL model router':'Pick one expert per stock'}[method];
+    return [inputs, control, trading];
+  }
+  const cases = {
+    'HMM gate':[all,'Weight using market states',trading],
+    'HMM gate every five sessions':[all,'Weight using market states','Trade every five sessions'],
+    'HMM gate dynamic':[all,'Weight using market states','Trade with dynamic risk limits'],
+    'Gate without HMM':[all,'Weight using stock and text features',trading],
+    'Adaptive router':[all,'Adjust weights using recent errors',trading],
+    'Uniform vote':[all,'Average forecasts equally',trading],
+    'Market experts vote':['Seven price forecasts','Average forecasts equally',trading],
+    'Classic MoE':[classic,'Blend by learned weights',trading],
+    'Classic MoE every five sessions':[classic,'Blend by learned weights','Trade every five sessions'],
+    'MoE without text':['Three experts trained without text','Blend by learned weights',trading],
+    'MoE + offline RL':['Classic mixture’s selected basket','Learn when to use the basket, market fund or cash'],
+    'Joint neural mixture':[joint,'Learn experts and weights together',trading],
+    'Joint experts uniform':[joint,'Average the same three experts',trading],
+    'SPY buy and hold':['Buy the S&P 500 fund','Hold for the evaluation year'],
+    'Equal weight':['Split capital across 22 instruments','Rebalance daily'],
+    'Cash':['Keep the portfolio in cash'],
+    '21-session momentum':['Measure past 21-session returns','Rank and size positions'],
+    'LLM review':['Summarize past forecast errors','OpenAI proposes a gate setting','Validate before adoption'],
+    'Conventional review':['Test a preset gate setting','Validate before adoption'],
+    'Random review':['Draw a gate setting at random','Validate before adoption'],
+  };
+  if (cases[name]) return cases[name];
+  if (/exposure|matched SPY/i.test(name)) return ['Copy tested portfolio’s invested share','Hold that share in the S&P 500 fund'];
+  return ['Use one forecast',trading];
+}
+
+function architectureDiagram(name) {
+  const flow = document.createElement('ol');
+  flow.className = 'portfolio-flow';
+  flow.setAttribute('aria-label', 'Architecture');
+  for (const step of architecture(name)) {
+    const stage = document.createElement('li');
+    stage.textContent = step;
+    flow.append(stage);
+  }
+  return flow;
+}
+
 export function plotPortfolios(host, group, period, approach, benchmark, state, colorFor, describe) {
   const indices = group.dates.flatMap((date,i) => date >= period.start && date <= period.end ? [i] : []);
   const dates = ['Start', ...indices.map(i=>group.marks[i])];
@@ -242,7 +292,7 @@ export function plotPortfolios(host, group, period, approach, benchmark, state, 
         const swatch=document.createElement('i');
         swatch.className='portfolioKey';
         swatch.style.background=trace.color;
-        label.append(swatch,displayPortfolio(trace.model));
+        label.append(swatch,displayPortfolio(trace.model),architectureDiagram(trace.model));
         row.insertCell().textContent=format('percent',data.net_return);
         row.insertCell().textContent=format('percent',data.max_drawdown);
         row.insertCell().textContent=Number.isFinite(data.sharpe)?data.sharpe.toFixed(2):'—';

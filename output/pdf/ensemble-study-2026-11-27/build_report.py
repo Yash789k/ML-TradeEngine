@@ -300,12 +300,13 @@ para(f,.226,"The fixed rule selects up to five instruments above five points. It
 para(f,.143,"In separate tests, the model router picks one forecast and learns from forecast accuracy. The portfolio allocator chooses cash, the market fund or the selected basket and learns from return after costs.",gap=.008)
 link(f,.077,"See the recorded votes and trade target","controller")
 
-f=page("Which model combinations paid off?", "Each group uses the same 480 trading sessions in 2024–2025")
+f=page("Does the expert lineup matter?", "Three groups of already trained experts on the same 480 sessions in 2024–2025")
 flow(f,.794,[("Fixed learned weights","Same weights within\nan evaluation year"),("Weights learned from data","Weights depend on the\nstock and decision date"),("One forecaster","Reinforcement learning\ngives one model all the weight")],arrows=False)
 pools(f.add_axes([.13,.495,.77,.208]))
-y=para(f,.43,"All nine bars use the same trading rule. Rank rise minus fall, select up to five above five points, cap each at 15%, trade at the next open and charge 50 cents per 1,000 dollars.",gap=.009)
+y=para(f,.442,"The green method earned 24.2% with four price-history experts and lost 1.4% with all 13. Its result depended on which experts it could use.",gap=.006)
+y=para(f,y,"Same trading rule for every bar. Rank rise minus fall, take up to five above five points, size by inverse volatility up to 15% each and keep leftover cash. Trade at the next open.",gap=.006)
 y=para(f,y,f"With three separately designed forecasters trained together, equal votes earned {p(gpu.loc['Joint experts uniform','net_return'])} and learned votes earned {p(gpu.loc['Joint neural mixture','net_return'])}. The market fund earned {p(gpu.loc['SPY buy and hold','net_return'])} on those dates.",gap=.02)
-f.text(.08,y,"How the original strategies did across years",weight="bold",fontsize=11,color=green)
+f.text(.08,y,"Four-year comparison from the stress study",weight="bold",fontsize=11,color=green)
 body=[[label,*[ret("five",str(year),name) for year in range(2022,2026)],p(four.loc[name,"net_return"])]
       for name,label in [("Adaptive router","Weights updated using\nrecent forecast errors"),("HMM gate","Mixture of experts using\nmarket states"),("Uniform vote","Equal votes for the\nsame forecasts"),("SPY buy and hold","Hold the S&P 500 fund")]]
 table(f,[.08,y-.182,.84,.155],["Portfolio","2022","2023","2024","2025","Total"],body,[.30,.14,.14,.14,.14,.14],8.5)
@@ -348,21 +349,23 @@ held_out_scores(f.add_axes([.14,.132,.76,.171]))
 para(f,.091,"Lower log loss means the forecaster put more probability on what happened.",gap=.006)
 link(f,.059,"Open the training and forecast charts","training")
 
-f=page("How the voting rules held up", "The 2022–2025 stress tests change forecasts while keeping the trading rule fixed")
+f=page("How the voting rules held up", "Three voting rules share the same 13 forecasts and trading policy in the recorded run")
 stress=read(ROOT/"site/assets/stress.json")
 ax=f.add_axes([.13,.52,.77,.278])
 marks=pd.to_datetime(stress["mark"])
-for name,label,color in [("Adaptive router","Weights updated using\nrecent forecast errors",ochre),("HMM gate","Mixture of experts using\nmarket states",green),("Uniform vote","Equal votes for the\nsame forecasts",blue)]:
+for name,label,color in [("Adaptive router","Weights updated using\nrecent forecast errors",ochre),("HMM gate","Mixture of experts using\nmarket states",green),("Uniform vote","Equal votes for the\nsame forecasts",blue),("SPY buy and hold","S&P 500 buy and hold",brick)]:
     ax.plot(marks,stress["scenarios"]["original"][name],label=label,color=color,lw=1.35)
 ax.yaxis.set_major_formatter(FuncFormatter(lambda v,_:f"${v/1000:.0f}k"))
-ax.legend(loc="upper left",frameon=False,fontsize=8,ncol=3)
-ax.set_title("Portfolio value with the recorded forecasts",fontsize=10,loc="left")
+ax.legend(loc="upper left",frameon=False,fontsize=8,ncol=2)
+ax.set_title("Portfolio value with the recorded forecasts, 2022–2025",fontsize=10,loc="left")
 style_chart(ax)
-body=[[label,*[ret(group,"all-2022-2025",n) for n in ["Adaptive router","HMM gate","Uniform vote"]]]
-      for group,label in [("five","Recorded"),("language_outage","Language forecasts removed"),("reversed_tree","Two price forecasts reversed")]]
-table(f,[.08,.325,.84,.125],["Scenario","Weights updated using\nrecent forecast errors","Mixture of experts using\nmarket states","Equal votes for the\nsame forecasts"],body,[.34,.24,.23,.19],7.7)
-y=para(f,.285,"Adaptive votes beat equal votes in all three simulations. The original gate finished first among the three when language forecasts were removed. With recorded forecasts, the S&P 500 fund earned 55.9% and had a larger peak-to-trough loss than the adaptive router.")
-para(f,y,"The 95% interval for the adaptive router’s return advantage over equal votes on recorded forecasts includes zero. These periods had already been examined. A future comparison can test whether the advantage repeats.")
+market_return=ret("five","all-2022-2025","SPY buy and hold")
+body=[[label,*[ret(group,"all-2022-2025",n) for n in ["Adaptive router","HMM gate","Uniform vote"]],market_return]
+      for group,label in [("five","Recorded · 13 forecasts"),("language_outage","8 forecasts each July"),("reversed_tree","2 of 13 reversed each July")]]
+table(f,[.08,.325,.84,.125],["Scenario","Weights updated using\nrecent forecast errors","Mixture of experts\nusing market states","Equal votes for the\nsame forecasts","S&P 500\nbuy and hold"],body,[.26,.22,.20,.18,.14],7.6)
+y=para(f,.288,"The outage removes FinBERT logistic, OpenAI Decisions, OpenAI asset digest, Qwen statement and Granite statement. The reversal swaps the rise and fall probabilities from XGBoost and LightGBM.",gap=.009)
+y=para(f,y,"Buying and holding the S&P 500 fund uses prices alone. Its return is the same across scenarios. It earned more and fell further from its peak than the adaptive mixture on the recorded run.",gap=.009)
+para(f,y,"The 95% interval for the adaptive mixture’s return advantage over equal votes on recorded forecasts includes zero.",gap=.006)
 link(f,.070,"Open all three scenario charts and the daily replay","stress")
 
 f=page("Did the research agent change the model?", "Five-session forecasts, with one scheduled refit per year, 2023–2025")

@@ -129,22 +129,38 @@ const scenarios={original:'Recorded forecasts',language_outage:'Language experts
 async function stress(ticket){
  const data=await load('stress');if(ticket!==token)return;
  const all=data.summary.filter(x=>x.scenario===scenario&&x.period===stressPeriod);
+ const marketName='SPY buy and hold';
+ const market=data.summary.find(r=>r.scenario==='original'&&r.period===stressPeriod&&r.model===marketName);
+ if(!all.some(r=>r.model===marketName))all.push(market);
  const dates=data.mark.filter((_,i)=>stressPeriod==='all'||data.decision[i].startsWith(stressPeriod));
  const ids=data.decision.map((d,i)=>stressPeriod==='all'||d.startsWith(stressPeriod)?i:-1).filter(i=>i>=0);
- const methods=['Adaptive router','HMM gate','Uniform vote'];
- const series=methods.map((name,j)=>{const full=data.scenarios[scenario][name],base=ids[0]===0?10000:full[ids[0]-1];return {name,color:colors[j],values:ids.map(i=>full[i]/base*10000)}});
- const titles={original:'All 13 experts available.',language_outage:'Each July, the five text and language forecasts become unavailable. Remaining weights renormalize.',reversed_tree:'Each July, both boosted-tree experts exchange their UP and DOWN probabilities.'};
+ const methods=[
+  ['Adaptive router','Weights updated using recent forecast errors',colors[0]],
+  ['HMM gate','Mixture of experts using market states',colors[1]],
+  ['Uniform vote','Equal votes for the same forecasts',colors[2]],
+  [marketName,'S&P 500 buy and hold','#a05251']
+ ];
+ const labels=new Map(methods.map(([key,label])=>[key,label]));
+ const series=methods.map(([key,name,color])=>{
+  const full=data.scenarios[scenario][key]??data.scenarios.original[key];
+  const base=ids[0]===0?10000:full[ids[0]-1];
+  return {name,color,values:ids.map(i=>full[i]/base*10000)};
+ });
+ const titles={
+  original:'The three voting rules use the same 13 forecasts.',
+  language_outage:'Each July, eight forecasts remain. The test removes FinBERT logistic, OpenAI Decisions, OpenAI asset digest, Qwen statement and Granite statement, then rescales the remaining weights to 100%.',
+  reversed_tree:'All 13 forecasts remain. Each July, XGBoost and LightGBM swap their rise and fall probabilities. Their little-change probabilities stay the same.'
+ };
  root.innerHTML=head('What if a forecast goes wrong?','Across 959 trading days in 2022–2025, these simulations compare what happened when news forecasts disappeared or two price models reversed their predictions.')+
  '<div class="controls">'+field('scenario','Scenario',select('scenario',Object.values(scenarios),scenarios[scenario]))+
  field('period','Evaluation window',select('period',['All years','2022','2023','2024','2025'],stressPeriod==='all'?'All years':stressPeriod))+'</div>'+
  '<div class="sheet"><div class="metrics">'+metric('Adaptive router return','routerReturn')+metric('Uniform vote return','voteReturn')+metric('Router drawdown','routerDD')+'</div><canvas class="chart" id="stressChart" role="img" aria-label="Return paths under the selected market stress"></canvas>'+
  legend(series.map(s=>[s.name,s.color]))+'<p class="note">'+titles[scenario]+'</p><p class="note" id="stressReading"></p><details class="protocol pipeline-universe"><summary>Why compare with the market-state gate?</summary><p class="note">It is the controller from the original proposal. Both controllers see the same forecasts and hidden Markov model estimates of market conditions. The original gate learned how to combine those inputs. The adaptive router updates voting shares using recent forecast errors in similar market conditions. Equal votes show how the same forecast set did with no learned voting rule. To test the market-state input itself, compare HMM gate with Gate without HMM in Compare results.</p></details><p class="note"><a class="link" href="assets/ensemble-study.pdf#page=8">Read the stress-test findings in the report</a></p></div><section class="bottom"><div class="sectionhead"><h2>Portfolio outcomes</h2></div>'+
- table(['Portfolio','Net return','Max drawdown','Sharpe','Log loss'],all.map(r=>[r.model,pct(r.net_return,2),pct(r.max_drawdown,2),num(r.sharpe),num(r.log_loss,4)]))+'</section><section class="bottom"><div class="sectionhead"><h2>Days around regime changes</h2></div>'+
+ table(['Portfolio','Net return','Max drawdown','Sharpe','Log loss'],all.map(r=>[labels.get(r.model)??r.model,pct(r.net_return,2),pct(r.max_drawdown,2),num(r.sharpe),num(r.log_loss,4)]))+'</section><section class="bottom"><div class="sectionhead"><h2>Days around regime changes</h2></div>'+
  table(['Controller','Sessions','Mean daily return','5th percentile day','Log loss'],data.conditional.filter(x=>x.scenario===scenario&&x.group==='transition').map(r=>[r.model,r.sessions,pct(r.mean_net_daily_return,2),pct(r.daily_return_p05,2),num(r.log_loss,4)]))+
  '<p class="note">The transition table spans all four years and includes the five observed sessions beginning at each state change. 2022 was selected as a known bear market. Results describe historical resilience. The block-bootstrap intervals for the unaltered forecasts include zero.</p></section>';
  const a=all.find(x=>x.model==='Adaptive router'),v=all.find(x=>x.model==='Uniform vote');el('routerReturn').textContent=pct(a.net_return,2);el('voteReturn').textContent=pct(v.net_return,2);el('routerDD').textContent=pct(a.max_drawdown,2);paint=()=>drawChart(el('stressChart'),dates,series,dates.length-1,false);paint();
  const gate=all.find(r=>r.model==='HMM gate');
- const market=data.summary.find(r=>r.scenario==='original'&&r.period===stressPeriod&&r.model==='SPY buy and hold');
  el('stressReading').textContent='After costs, adaptive votes earned '+pct(a.net_return,2)+
    ', market-state votes earned '+pct(gate.net_return,2)+', and equal votes earned '+pct(v.net_return,2)+
    '. Holding the market fund returned '+pct(market.net_return,2)+' on the same dates.';
