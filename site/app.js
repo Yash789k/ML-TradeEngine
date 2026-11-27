@@ -1,3 +1,4 @@
+import {pipelineView} from './pipeline.js';
 import {overview} from './overview.js';
 import {coverageTable, glossaryView} from './terms.js';
 import {simulate,drawChart} from './simulator.js';
@@ -112,12 +113,12 @@ async function datasets(ticket){
  el('bars').textContent=d.bars.toLocaleString();el('symbols').textContent=d.symbols;el('themes').textContent=d.factorThemes.length;
 }
 async function comparison(ticket){
- const [data,paths]=await Promise.all([load("periods"),load("period-paths")]);
- if(ticket===token){comparisonView(root,data,paths,{head,saveCSV,icon,load});paint=()=>root.oncomparisonresize?.();}
+ const [data,paths,example]=await Promise.all([load("periods"),load("period-paths"),load("forecast-example")]);
+ if(ticket===token){comparisonView(root,data,paths,{head,saveCSV,icon,load,example});paint=()=>root.oncomparisonresize?.();}
 }
 async function render(){
  const ticket=++token;stop();paint=()=>{};onStep=()=>{};
- const route=(location.hash.slice(1)||'overview').replace(/^datasets$/, 'data'),views={overview:async t=>{const data=await load('periods');if(t===token)overview(root,data);},simulation,comparison,controller,stress,architecture,data:datasets,glossary:()=>glossaryView(root)};
+ const route=(location.hash.slice(1)||'overview').replace(/^datasets$/, 'data'),views={overview:async t=>{const data=await load('periods');if(t===token)overview(root,data);},pipeline:async t=>{const guide=await load('pipeline-guide');if(t===token)pipelineView(root,guide,head);},simulation,comparison,controller,stress,architecture,data:datasets,glossary:()=>glossaryView(root)};
  document.querySelectorAll('nav a').forEach(a=>{const yes=a.hash==='#'+route;a.classList.toggle('active',yes);if(yes)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
  try{await (views[route]||views.overview)(ticket)}catch(e){if(ticket===token)root.innerHTML='<h1 class="bottom">Study unavailable</h1><p class="note">'+esc(e.message)+'</p><button class="bottom" id="retry">Retry</button>';on('retry','click',render);}
 }
