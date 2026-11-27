@@ -1,3 +1,4 @@
+import {inspectVotes, votingMethods} from './vote-inspector.js';
 import {modelMap} from './model-map.js';
 import {sourceGuide} from './source-guide.js';
 import {pipelineView} from './pipeline.js';
@@ -63,11 +64,26 @@ async function simulation(ticket){
  for(const id of ['fee','cap','threshold','capital'])on(id,id==='capital'?'change':'input',e=>{let v=+e.target.value;if(id==='fee')fee=v;if(id==='cap')cap=v;if(id==='threshold')threshold=v;if(id==='capital'){capital=Math.max(100,Math.min(1e7,v||10000));e.target.value=capital;}if(el(id+'val'))el(id+'val').textContent=v+(id==='fee'?' bps':'%');recalc();update()});
  on('export','click',()=>saveCSV('portfolio-replay.csv',[['mark',strategylab,bench],...study.marks.slice(0,index+1).map((d,i)=>[d,curve[i],benchmark[i]])]));
 }
-async function controller(ticket){
+const voteSelection={date:null,symbol:null,pool:'sequence networks'};
+const voteOptions = Object.entries(votingMethods).map(([key,[name]])=>[key,name]);
+const votePicker = (id,label,pairs,value)=>field(id,label,'<select id="'+id+'">'+
+ pairs.map(([key,name])=>'<option value="'+esc(key)+'"'+(key===value?' selected':'')+'>'+esc(name)+'</option>').join('')+'</select>');
+function bindVoteMethod(){
+ on('voteMethod','change',event=>{
+   const selected=event.target.value;
+   location.hash=selected==='original'?'controller':'controller/'+selected;
+ });
+}
+async function controller(ticket, method){
+ if(method!=='original'){
+   await inspectVotes(root,method,{load,active:()=>ticket===token,head,picker:votePicker,pct,escape:esc,selection:voteSelection});
+   if(ticket===token)bindVoteMethod();
+   return;
+ }
  const sim=await load('simulation');if(ticket!==token)return;index=Math.min(index??sim.dates.length-1,sim.dates.length-1);
  root.innerHTML=head('How the market-state gate combines votes','This is the proposal’s original learned mixture. It combines 13 forecasts for one instrument and date, then sends its combined forecast to the fixed trading rule.')+
  '<p class="note comparison-guide"><a class="link" href="assets/ensemble-study.pdf#page=4">See the Apple decision explained in the report</a> · <a class="link" href="#models">What each model reads and returns</a></p>'+
- '<div class="controls vote-controls">'+field('ticker','Instrument',select('ticker',sim.symbols,asset))+
+ '<div class="controls vote-controls">'+votePicker('voteMethod','Voting method',voteOptions,'original')+field('ticker','Instrument',select('ticker',sim.symbols,asset))+
  field('when','Decision date',select('when',sim.dates,sim.dates[index]))+'</div>'+
  '<div class="controllergrid vote-grid"><section class="sheet"><h2>Combined forecast</h2><div id="classification"></div>'+
  '<hr class="rule"><h3>Next-open target</h3><p class="note" id="targetDecision"></p>'+
@@ -101,6 +117,7 @@ async function controller(ticket){
  el('states').innerHTML=table(['State','Probability'],sim.posterior[index].map((v,k)=>[['Lower mean return','Middle mean return','Higher mean return'][k],pct(v,2)]));
  el('expertTable').innerHTML=table(['Forecaster','Vote','Down','Little change','Up','Adds to up (points)'],ranks.map(x=>[x.name,pct(x.w,2),...p[x.k].map(v=>pct(v,2)),(100*x.w*p[x.k][2]).toFixed(2)]));
  }
+ bindVoteMethod();
  on('ticker','change',e=>{asset=e.target.value;show()});on('when','change',e=>{index=sim.dates.indexOf(e.target.value);show()});await show();
 }
 let stressPeriod='all';
@@ -148,10 +165,32 @@ async function comparison(ticket){
  const [data,paths,example]=await Promise.all([load("periods"),load("period-paths"),load("forecast-example")]);
  if(ticket===token){comparisonView(root,data,paths,{head,saveCSV,icon,load,example});paint=()=>root.oncomparisonresize?.();}
 }
+const areas={
+ study:[['overview','Summary'],['pipeline','Pipeline'],['architecture','System diagram']],
+ models:[['models','Model inputs and outputs'],['controller','Model votes']],
+ results:[['comparison','Compare results'],['simulation','Portfolio replay'],['stress','Stress tests']],
+ data:[['data','Data sources'],['glossary','Glossary']],
+};
+
+function renderNavigation(route, method) {
+ const area=Object.keys(areas).find(key=>areas[key].some(([id])=>id===route)) ?? 'study';
+ for(const link of document.querySelectorAll('.section-nav a')){
+   const current=link.dataset.area===area;
+   link.classList.toggle('active',current);
+   if(current) link.setAttribute('aria-current','true'); else link.removeAttribute('aria-current');
+ }
+ const pages=areas[area].map(([id,label])=>[id,label]);
+ if(area==='models') pages.push(['controller/adapter','Context adapter']);
+ const selected=method==='adapter'?'controller/adapter':route;
+ el('subnav').innerHTML=pages.map(([id,label])=>'<a href="#'+id+'"'+(id===selected?' class="active" aria-current="page"':'')+'>'+label+'</a>').join('');
+}
+
 async function render(){
  const ticket=++token;stop();paint=()=>{};onStep=()=>{};
- const route=(location.hash.slice(1)||'pipeline').replace(/^datasets$/, 'data'),views={overview:async t=>{const data=await load('periods');if(t===token)overview(root,data);},pipeline:async t=>{const [guide,study,data]=await Promise.all([load('pipeline-guide'),load('study-5'),load('periods')]);if(t===token)pipelineView(root,guide,study.coverage,data,head);},models:async t=>{const guide=await load('model-map');if(t===token)modelMap(root,guide,head);},simulation,comparison,controller,stress,architecture,data:datasets,glossary:()=>glossaryView(root)};
- document.querySelectorAll('nav a').forEach(a=>{const yes=a.hash==='#'+route;a.classList.toggle('active',yes);if(yes)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
- try{await (views[route]||views.pipeline)(ticket)}catch(e){if(ticket===token)root.innerHTML='<h1 class="bottom">Study unavailable</h1><p class="note">'+esc(e.message)+'</p><button class="bottom" id="retry">Retry</button>';on('retry','click',render);}
+ const [route,selection]=(location.hash.slice(1)||'overview').replace(/^datasets$/, 'data').split('/');
+ const method=route==='controller'&&Object.hasOwn(votingMethods,selection)?selection:'original';
+ const views={overview:async t=>{const data=await load('periods');if(t===token)overview(root,data);},pipeline:async t=>{const [guide,study,data]=await Promise.all([load('pipeline-guide'),load('study-5'),load('periods')]);if(t===token)pipelineView(root,guide,study.coverage,data,head);},models:async t=>{const guide=await load('model-map');if(t===token)modelMap(root,guide,head);},simulation,comparison,controller,stress,architecture,data:datasets,glossary:()=>glossaryView(root)};
+ renderNavigation(route,method);
+ try{await (Object.hasOwn(views,route)?views[route]:views.pipeline)(ticket,method)}catch(e){if(ticket===token)root.innerHTML='<h1 class="bottom">Study unavailable</h1><p class="note">'+esc(e.message)+'</p><button class="bottom" id="retry">Retry</button>';on('retry','click',render);}
 }
 window.addEventListener('resize',()=>paint());window.addEventListener('hashchange',render);render();

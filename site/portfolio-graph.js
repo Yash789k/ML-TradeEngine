@@ -11,7 +11,7 @@ export function portfolioColors(names) {
 }
 
 const presets = new Map([
-  ['Four-year controllers', ['Adaptive router','Classic MoE','HMM gate','Uniform vote']],
+  ['Same forecasts, different votes', ['Adaptive router','SPY buy and hold','HMM gate','Uniform vote']],
   ['Choosing a price model', ['RL model router / sequence networks','Context adapter / sequence networks','Fixed mixture / sequence networks']],
   ['With and without financial text', ['Classic MoE','MoE without text','HMM gate','FinBERT logistic']],
   ['Jointly trained experts', ['Joint neural mixture','Joint experts uniform','Classic MoE','SPY buy and hold']],
@@ -20,7 +20,7 @@ const presets = new Map([
 ]);
 
 const presetQuestions = {
-  'Four-year controllers': 'Does changing whose forecast counts improve the portfolio over equal votes? The adaptive router learns from recent outcomes, the HMM gate estimates market conditions, and the classic mixture trains its forecasters together.',
+  'Same forecasts, different votes': 'Three controllers start with the same 13 forecasts and use the same trading rule. Equal votes give each forecast the same say. The original market-state gate learns how to weight them. The adaptive router uses recent errors to update the votes. The S&P 500 fund is the investment benchmark.',
   'Choosing a price model': 'When four models read the same price history, does it pay to pick one for each stock? The reinforcement learner picks one, the context adapter blends their votes for each stock, and the fixed mixture keeps the same blend.',
   'With and without financial text': 'Did financial text help the classic mixture? Compare Classic MoE with its retrained version without text. FinBERT reads financial language, while the HMM gate puts text alongside other forecasts.',
   'Jointly trained experts': 'Does learning how much to trust the price, text and market models beat giving each one a third of the vote? The classic mixture uses a different set of experts, and SPY shows what holding the S&P 500 fund earned.',
@@ -37,7 +37,7 @@ function family(name) {
   return 'Market and factor models';
 }
 
-export function initialGraphSelection() { return new Set(presets.get('Jointly trained experts')); }
+export function initialGraphSelection() { return new Set(presets.get('Same forecasts, different votes')); }
 
 const format = (key, value) => key === 'equity'
   ? value.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0})

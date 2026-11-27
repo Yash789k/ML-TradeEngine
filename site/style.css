@@ -35,3 +35,6 @@ h1,h2,h3,p{margin:0}.head{margin:36px 0 24px;display:flex;justify-content:space-
 
 .vote-controls label{display:flex;flex-direction:column;gap:var(--gap);font-size:14px;color:var(--muted)}.vote-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.33fr);align-items:start}.vote-grid .weightrow{grid-template-columns:minmax(106px,1.4fr) minmax(46px,2fr) 46px}.vote-grid .note{margin-top:8px}.vote-details{margin-top:18px}
 @media(max-width:700px){.vote-grid{grid-template-columns:1fr}.vote-controls select{max-width:100%}}
+
+.subnav{gap:clamp(14px,2.5vw,32px)}.subnav a{padding:11px 0 8px;font-size:14px;border-bottom-width:2px}.section-nav a{padding-top:15px;padding-bottom:12px}.vote-controls{align-items:end}.vote-controls select{max-width:100%}
+@media(max-width:700px){.section-nav a,.subnav a{padding:9px 0 6px}.vote-controls label{min-width:0;max-width:100%}}

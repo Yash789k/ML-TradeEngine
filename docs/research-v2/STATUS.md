@@ -209,3 +209,5 @@ The [data provenance guide](../../site/assets/forecast-sources.json) explains th
 The [model input and output map](../../site/assets/model-map.json) connects the forecasters, controllers and trading components to their observed inputs. The website and report use this same map and label the matched evaluation windows separately from training histories.
 
 The current illustrated report is six pages. Its pipeline, data charts, model map, worked forecast and matched results appear in the main text. The site retains the full interactive breakdowns and links directly to the matching report pages.
+
+The website groups its pages under Study, Models, Results and Data. The opening comparison now holds the 13 forecasts and trading rules fixed. The Model votes picker includes fixed and adaptive mixtures, jointly trained forecasts and single-model routing. Regenerate the saved examples with `python -m ceci2_demo.periods_v1.export_adapter_examples`.

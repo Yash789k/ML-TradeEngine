@@ -89,10 +89,10 @@ function metricTable(headings, rows) {
 }
 
 export function comparisonView(root, data, paths, {head, saveCSV, icon, load, example}) {
-  let studyId = 'five', chosenPeriod = 'all-2024-2025';
+  let studyId = 'five', chosenPeriod = 'all-2022-2025';
   let pairOpen = false;
   const summaryState = {measure:'net_return', training:false, annual:false};
-  let approach = 'Joint neural mixture', benchmark = 'Joint experts uniform';
+  let approach = 'Adaptive router', benchmark = 'Uniform vote';
   const namesAcrossStudies = data.groups.flatMap(group => group.models);
   const colorFor = portfolioColors(namesAcrossStudies);
   const graphState = {models:initialGraphSelection(), universe:new Set(namesAcrossStudies), metrics:new Set(['equity','drawdown']), open:false};
