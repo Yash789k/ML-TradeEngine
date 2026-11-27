@@ -9,6 +9,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
+from matplotlib.figure import Figure
 from matplotlib.ticker import PercentFormatter, FuncFormatter
 
 OUT=Path(__file__).resolve().parent
@@ -68,7 +69,7 @@ standalone("joint","Giving the same three trained experts different votes",curve
 
 pages=[]
 def page(title,subtitle):
-    f=plt.figure(figsize=(8.5,11));pages.append(f)
+    f=Figure(figsize=(8.5,11));pages.append(f)
     f.text(.078,.941,title,size=23,weight="bold",va="top")
     f.text(.08,.885,subtitle,size=11,color=muted,va="top")
     f.add_artist(plt.Line2D([.08,.92],[.858,.858],color="#b8c9bf",lw=.8))
@@ -310,7 +311,7 @@ chart_index=[
     ("Summary","overview","4, 6","What happened to $10,000 across periods."),
     ("Compare results","comparison","6–8, 10–11, 16","Returns by period, the model combinations, and examples of value, drawdown and daily return."),
     ("Portfolio replay","simulation","16","Recorded value, daily returns and how far the account fell from a high."),
-    ("Model votes","controller","5, 13, 19","Apple’s forecast, the votes behind it and the OpenAI contribution."),
+    ("Model votes","controller","5, 13, 19–22","Apple’s forecast, the votes behind it and the OpenAI contribution."),
     ("Stress tests","stress","9, 17","Performance under the recorded forecasts and two simulated failures."),
     ("System diagram","architecture","1, 5","The decision stages and where the two reinforcement learners fit."),
     ("Data sources","data","2, 13–15","Headlines by year and company, benchmark prices, sentiment and investment factors."),
@@ -327,7 +328,22 @@ for title,explanation in guide["objectives"]:
     y=section(f,y,title,explanation)
 section(f,y,"What happened in the matched test",f"With four price-history models, picking one earned {p(gpu.loc['RL model router / sequence networks','net_return'])} after costs in 2024–2025. Fixed votes earned {p(gpu.loc['Fixed mixture / sequence networks','net_return'])} and changing the blend earned {p(gpu.loc['Context adapter / sequence networks','net_return'])}. Compare this result with the other model groups on page 7.")
 
+model_map=read(ROOT/"site/assets/model-map.json")
+for title,subtitle,group in [
+    ("What the forecasters read and return","The 13 forecasts that enter the original market-state gate",model_map["forecast"]),
+    ("What the vote counters read and return","These experiments combine or choose forecasts",model_map["controller"][:5]),
+    ("What the trading components return","Forecasts become targets, simulated trades and portfolio results",model_map["controller"][5:]),
+]:
+    f=page(title,subtitle)
+    y=.825
+    for name,reads,returns in group:
+        f.text(.08,y,name,size=11,weight="bold",va="top",color=green)
+        y=para(f,y-.025,"Reads  "+reads,width=97,gap=.004)
+        y=para(f,y,"Returns  "+returns,width=97,gap=.016)
+    if title.startswith("What the trading"):
+        section(f,y-.018,"Were the evaluation periods the same?","Yes within a selected comparison. The blend and model-router tests use the same 480 sessions in 2024–2025. The stress study uses 959 sessions in 2022–2025. Training histories and input features can differ by model. One-session forecasts have a different target from five-session forecasts.")
+
 with PdfPages(OUT/"ensemble-study.pdf",metadata={"Title":"Can a model pick the right forecaster?","Subject":"Historical evaluation of expert routing for trading forecasts"}) as pdf:
-    for f in pages:pdf.savefig(f);plt.close(f)
+    for f in pages:pdf.savefig(f)
 
 shutil.copyfile(OUT/"ensemble-study.pdf", ROOT/"site/assets/ensemble-study.pdf")

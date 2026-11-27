@@ -1,3 +1,4 @@
+import {modelMap} from './model-map.js';
 import {sourceGuide} from './source-guide.js';
 import {pipelineView} from './pipeline.js';
 import {overview} from './overview.js';
@@ -65,7 +66,7 @@ async function simulation(ticket){
 async function controller(ticket){
  const sim=await load('simulation');if(ticket!==token)return;index=Math.min(index??sim.dates.length-1,sim.dates.length-1);
  root.innerHTML=head('How the market-state gate combines votes','This is the proposal’s original learned mixture. It combines 13 forecasts for one instrument and date, then sends its combined forecast to the fixed trading rule.')+
- '<p class="note comparison-guide"><a class="link" href="assets/ensemble-study.pdf#page=5">See the Apple decision explained in the report</a> · <a class="link" href="assets/ensemble-study.pdf#page=19">How the weights and rewards work</a></p>'+
+ '<p class="note comparison-guide"><a class="link" href="assets/ensemble-study.pdf#page=5">See the Apple decision explained in the report</a> · <a class="link" href="#models">What each model reads and returns</a> · <a class="link" href="assets/ensemble-study.pdf#page=19">How the weights and rewards work</a></p>'+
  '<div class="controls">'+field('ticker','Instrument',select('ticker',sim.symbols,asset))+field('when','Decision date',select('when',sim.dates,sim.dates[index]))+'</div><div class="controllergrid"><section class="sheet"><h2>Expert weights</h2><div id="bars"></div></section><section class="sheet"><h2>Combined forecast</h2><div id="classification"></div><p class="note" id="voteCalculation"></p><p class="note" id="targetDecision"></p><hr class="rule"><h3>Market state probabilities</h3><div id="states"></div><hr class="rule"><p class="note">Weights use filtered market conditions and earlier expert accuracy. Outcomes enter memory only after their forecast window closes.</p></section></div><section class="bottom"><div class="sectionhead"><h2>Forecast contributions</h2></div><div id="expertTable"></div></section>';
  const fixedTargets=simulate(sim).positions;
  let revision=0;
@@ -142,7 +143,7 @@ async function comparison(ticket){
 }
 async function render(){
  const ticket=++token;stop();paint=()=>{};onStep=()=>{};
- const route=(location.hash.slice(1)||'pipeline').replace(/^datasets$/, 'data'),views={overview:async t=>{const data=await load('periods');if(t===token)overview(root,data);},pipeline:async t=>{const [guide,study,data]=await Promise.all([load('pipeline-guide'),load('study-5'),load('periods')]);if(t===token)pipelineView(root,guide,study.coverage,data,head);},simulation,comparison,controller,stress,architecture,data:datasets,glossary:()=>glossaryView(root)};
+ const route=(location.hash.slice(1)||'pipeline').replace(/^datasets$/, 'data'),views={overview:async t=>{const data=await load('periods');if(t===token)overview(root,data);},pipeline:async t=>{const [guide,study,data]=await Promise.all([load('pipeline-guide'),load('study-5'),load('periods')]);if(t===token)pipelineView(root,guide,study.coverage,data,head);},models:async t=>{const guide=await load('model-map');if(t===token)modelMap(root,guide,head);},simulation,comparison,controller,stress,architecture,data:datasets,glossary:()=>glossaryView(root)};
  document.querySelectorAll('nav a').forEach(a=>{const yes=a.hash==='#'+route;a.classList.toggle('active',yes);if(yes)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
  try{await (views[route]||views.pipeline)(ticket)}catch(e){if(ticket===token)root.innerHTML='<h1 class="bottom">Study unavailable</h1><p class="note">'+esc(e.message)+'</p><button class="bottom" id="retry">Retry</button>';on('retry','click',render);}
 }
