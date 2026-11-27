@@ -32,7 +32,7 @@ function barChart(host, rows, format) {
 }
 
 export function pipelineView(root, guide, coverage, data, head) {
-  root.innerHTML = head('From raw data to results', 'The original proposal asks whether changing whose forecast counts can improve returns after allowing for risk.') +
+  root.innerHTML = head('From raw data to results', 'The original proposal tests whether a market-state-aware gate improves risk-adjusted performance over single classifiers and a static ensemble.') +
     '<div class="pipeline-jumps"><button data-jump=".pipeline-stages">Data and decisions</button><button data-jump=".pipeline-metrics">How scores work</button><button data-jump=".tested-combinations">Models and results</button></div><div class="pipeline-layout"><ol class="pipeline-stages"></ol><aside class="pipeline-metrics"><h2>How to read the scores</h2><dl></dl><a class="link" href="#comparison">See the historical comparisons</a></aside></div>';
   const stages = root.querySelector('.pipeline-stages');
   for (const [title, explanation] of guide.stages) {
