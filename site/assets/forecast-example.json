@@ -1,0 +1,15 @@
+{
+  "question": "Two models disagree about one stock. Whose forecast counts?",
+  "example": "Imagine it is Monday after the market closes. A model that reads prices gives a stock a 70% chance of rising over the next five trading days. A model that reads company news gives it a 30% chance. These numbers are made up to show how a decision works.",
+  "methods": [
+    ["Give both models an equal vote", "Each forecast counts for half. Half of 70% plus half of 30% gives a 50% chance of a rise."],
+    ["Change how much each vote counts", "Suppose the system gives the price model three quarters of the vote today and the news model one quarter. The combined chance of a rise is 60%. The report calls the model that assigns those shares a gate. A context adapter learns to do this with models that have already been trained."],
+    ["Pick one forecast", "If the system picks the price model, it uses 70%. If it picks the news model, it uses 30%. The experiment called the reinforcement learning model router rewards accurate choices during training and penalizes switching models."]
+  ],
+  "trade": "A 60% forecast does not mean investing 60% of the account. The trading rule also considers the chance of a fall, competing stocks and limits on how much it can buy. A qualifying trade happens at the next simulated opening price.",
+  "experiments": [
+    ["Train the forecasters together", "In joint training, the price, news and broad-market models learn alongside the model that combines their votes. To test whether that last model helps, the study takes the same three forecasts and also gives them equal votes."],
+    ["Choose where the money goes", "Portfolio reinforcement learning makes a later decision. It can hold cash, buy a fund tracking the S&P 500 index of large US companies, or buy the stocks chosen by the forecasting system."],
+    ["Break an input on purpose", "The stress tests replay the same dates after removing news forecasts or reversing the rise and fall predictions of two price models. The change in the portfolio shows how it handled each failure."]
+  ]
+}

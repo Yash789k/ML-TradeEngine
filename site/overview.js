@@ -10,7 +10,7 @@ export function overview(root, data) {
   const periods = data.groups.find(group => group.id === 'five').periods;
   root.innerHTML = `<article class="overview">
     <h1>Can a model learn which stock forecasts to trust?</h1>
-    <p class="intro">A model that reads prices can disagree with one that reads company news. This study asks whether learning how much to trust each forecast helps a simulated investor earn more or lose less when markets fall.</p>
+    <p class="intro">A model that reads prices can disagree with one that reads company news. This study asks whether learning how much to trust each forecast helps a simulated investor earn more or lose less when markets fall. <a class="link" href="#pipeline">Follow the data to the results</a>.</p>
     <div class="overview-study"><div class="overview-story"><h2>What happened to $10,000?</h2>
     <p>Each portfolio started with the same amount. Two used forecasts to choose investments. A third simply bought the market. The portfolios traded at simulated prices and paid trading costs.</p>
     <p id="periodFinding"></p><a class="link" href="#comparison">Compare the trading approaches</a></div>

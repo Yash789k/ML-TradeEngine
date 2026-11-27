@@ -87,7 +87,7 @@ function metricTable(headings, rows) {
   return frame;
 }
 
-export function comparisonView(root, data, paths, {head, saveCSV, icon, load}) {
+export function comparisonView(root, data, paths, {head, saveCSV, icon, load, example}) {
   let studyId = 'five', chosenPeriod = 'all-2024-2025';
   let pairOpen = false;
   let approach = 'Joint neural mixture', benchmark = 'Joint experts uniform';
@@ -103,18 +103,33 @@ export function comparisonView(root, data, paths, {head, saveCSV, icon, load}) {
     if (!names.includes(benchmark) || benchmark === approach) benchmark = names.find(n => n === 'SPY buy and hold' && n !== approach) || names.find(n => n !== approach);
     root.innerHTML = head('Performance comparison', 'Each line shows what happened to the same starting investment. A higher ending balance means more money. A deeper drawdown means a larger fall from a previous high.',
       '<button id="exportPeriods">'+icon('download')+'Export</button>')+
-      '<details class="protocol"><summary>Experiment design</summary><div id="design"></div></details><div class="controls" id="periodControls"></div><section class="sheet"><div id="allPortfolioGraph"></div><details class="protocol" id="pairDetail"><summary>Compare two portfolios by year</summary><div class="controls" id="pairControls"></div><div class="metrics"><div class="metric"><small>Approach return</small><strong id="cmpReturn"></strong></div><div class="metric"><small>Benchmark return</small><strong id="baseReturn"></strong></div><div class="metric"><small>Difference</small><strong id="cmpGap"></strong></div></div><div id="pairNotes"></div><div id="yearChart"></div></details></section><section class="bottom"><div class="sectionhead"><h2>All approaches</h2><span class="tagtext" id="sample"></span></div><div id="periodResults"></div><p class="note">Drawdown starts at the opening value of the selected period. Fees are scaled to $10,000 of starting capital. Each row covers the same decision dates. These periods had already been examined during development.</p><p class="note"><a class="link" href="https://colab.research.google.com/drive/1qjCtnMsCAxeps4P7_RBPiJtPpmHHSqQD?authuser=1">Open the GPU training notebook ↗</a></p></section>';
+      '<p class="note comparison-guide"><a class="link" href="#pipeline">Where the data and scores come from</a></p><details class="protocol"><summary>How the approaches differ, using one stock</summary><div id="design" class="experiment-example"></div></details><div class="controls" id="periodControls"></div><section class="sheet"><div id="allPortfolioGraph"></div><details class="protocol" id="pairDetail"><summary>Compare two portfolios by year</summary><div class="controls" id="pairControls"></div><div class="metrics"><div class="metric"><small>Approach return</small><strong id="cmpReturn"></strong></div><div class="metric"><small>Benchmark return</small><strong id="baseReturn"></strong></div><div class="metric"><small>Difference</small><strong id="cmpGap"></strong></div></div><div id="pairNotes"></div><div id="yearChart"></div></details></section><section class="bottom"><div class="sectionhead"><h2>All approaches</h2><span class="tagtext" id="sample"></span></div><div id="periodResults"></div><p class="note">Drawdown starts at the opening value of the selected period. Fees are scaled to $10,000 of starting capital. Each row covers the same decision dates. These periods had already been examined during development.</p><p class="note"><a class="link" href="https://colab.research.google.com/drive/1qjCtnMsCAxeps4P7_RBPiJtPpmHHSqQD?authuser=1">Open the GPU training notebook ↗</a></p></section>';
     const design=root.querySelector('#design');
-    design.append(metricTable(['Experiment','What varies','Trading rule'],[
-      ['Joint training','Weights of three new experts and their gate','Shared score threshold and sizing'],
-      ['Context adapter','Weights assigned to previously trained models','Same trading rules as fixed mixture'],
-      ['RL model router','Expert identity for each stock at each close','Same trading rules as fixed mixture'],
-      ['Portfolio RL','Allocation to cash, SPY or the classic basket','Learned allocation rule'],
-      ['Controller stress tests','Expert availability or tree forecast direction','Same policy within each scenario'],
-    ]));
-    const note=document.createElement('p');note.className='note';
-    note.textContent='The custom controllers first train on 2023 outcomes and evaluate in 2024. The second fit includes matured 2024 outcomes and evaluates in 2025. Earlier studies also cover 2022 and 2023. Each annual portfolio begins in cash and pays 5 basis points per side.';
-    design.append(note);
+    const exampleTitle = document.createElement('h2');
+    exampleTitle.textContent = example.question;
+    const intro = document.createElement('p');
+    intro.textContent = example.example;
+    design.append(exampleTitle, intro);
+    function addExamples(parent, entries) {
+      const list = document.createElement('dl');
+      for (const [label, explanation] of entries) {
+        const term = document.createElement('dt');
+        const meaning = document.createElement('dd');
+        term.textContent = label;
+        meaning.textContent = explanation;
+        list.append(term, meaning);
+      }
+      parent.append(list);
+    }
+    addExamples(design, example.methods);
+    const other = document.createElement('details');
+    const summary = document.createElement('summary');
+    summary.textContent = 'How does a forecast turn into a trade? What else was tested?';
+    const trading = document.createElement('p');
+    trading.textContent = example.trade;
+    other.append(summary, trading);
+    addExamples(other, example.experiments);
+    design.append(other);
     const controls = root.querySelector('#periodControls');
     const pairs = names.map(n => [n,n]);
     controls.append(picker('studyGroup','Study',data.groups.map(g => [g.id,g.label]),studyId),
