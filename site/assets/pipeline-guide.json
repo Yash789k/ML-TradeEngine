@@ -82,5 +82,23 @@
         "Granite MoE statement"
       ]
     ]
+  ],
+  "objectives": [
+    [
+      "How forecast weights work",
+      "A weight is a share of the forecast vote. Multiply each model’s three probabilities by its weight, then add them class by class. For example, 75% of a model’s 70% chance of rising plus 25% of another model’s 30% gives 60% up. The trading rule then uses the combined up and down probabilities to make a position decision."
+    ],
+    [
+      "Controllers that blend forecasts",
+      "Equal voting gives all models the same weight. The fixed mixture learns weights from past forecasts and holds them constant during the test. The context adapter learns to change weights with conditions. Both fitted mixtures minimize log loss, which penalizes assigning low probability to what happened. The adaptive router in the stress charts also blends votes. It shifts weight toward models with lower recent forecast loss in similar markets."
+    ],
+    [
+      "Reinforcement learning that picks a forecaster",
+      "For each stock and date, pick one model and use its whole forecast. Its vote is 100% and the other votes are zero. The reward is the log of the probability the chosen model assigned to the outcome that happened, with 0.01 deducted when switching models. The switch penalty links today’s decision to yesterday’s choice. Forecasts from every model can be scored on historical outcomes, so testing against fixed weights and a context adapter shows whether the extra selection step helps."
+    ],
+    [
+      "Reinforcement learning that picks an investment",
+      "A separate experiment chooses cash, the S&P 500 fund, or the stock basket produced by the classic mixture. The reward is the log of the change in portfolio wealth after fees, measured as the new balance divided by the old balance. The previous holding matters because rebalancing costs money. This learner controls capital allocations. Sharpe is a reported evaluation metric."
+    ]
   ]
 }
