@@ -11,7 +11,7 @@ export const votingMethods = {
 };
 
 const pools = {
-  'sequence networks': 'Four price-history models',
+  'sequence networks': 'Four models that read price history',
   'trees and linear': 'Three price models',
   'all experts': 'All 13 forecasts',
 };

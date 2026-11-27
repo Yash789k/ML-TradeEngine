@@ -49,7 +49,7 @@ def pools(ax):
         vals=[gpu.loc[f"{m} / {s}","net_return"] for s in ["all experts","trees and linear","sequence networks"]]
         bars=ax.bar(np.arange(3)+(i-1)*.248,vals,width=.225,label=label,color=color,zorder=3)
         ax.bar_label(bars,labels=[p(v) for v in vals],padding=3,fontsize=8)
-    ax.set_xticks(range(3),["All 13 experts","Linear model and trees","Four sequence networks"])
+    ax.set_xticks(range(3),["All 13 forecasts","Linear model and trees","Four models that\nread price history"])
     ax.yaxis.set_major_formatter(PercentFormatter(1,0));ax.set_ylim(-.055,.32);ax.set_ylabel("Cumulative net return")
     ax.axhline(0,lw=.8,color=muted);ax.grid(axis="y",color="#e3e8e4");ax.legend(ncol=3,frameon=False,fontsize=8)
 def curves(ax):
@@ -134,43 +134,127 @@ evidence={**sources,"companies":companies,"apple":apple}
 
 f=page("Market conditions and portfolio risk", "A historical test of combining forecasts and turning them into simulated trades")
 flow(f,.747,[("Observe","Prices and volume\nPublic text and factors"),("Forecast","Models give chances\nof up, flat and down"),("Choose votes","Blend forecasts\nor pick one model"),("Simulate","Turn the result into\nnext-open positions")])
-para(f,.635,"The proposal asks whether market-state-aware weighting of a fixed set of classifiers improves risk-adjusted performance over individual classifiers and a static ensemble. It also tests periodic language-model-guided adaptation against scheduled retraining or search.")
-ax=f.add_axes([.29,.28,.60,.198])
-sharpe_names=["Uniform vote","HMM gate","Adaptive router","SPY buy and hold"]
-sharpe_values=[four.loc[name,"sharpe"] for name in sharpe_names]
-bars=ax.barh(range(4),sharpe_values,color=[blue,green,ochre,brick])
-ax.set_yticks(range(4),["Equal votes for the\nsame forecasts","Learned weights using\nmarket states","Weights updated using\nrecent forecast errors","Hold the S&P 500 fund"],fontsize=9)
-ax.invert_yaxis()
-ax.set_xlim(0,.86)
-ax.bar_label(bars,labels=[f"{v:.2f}" for v in sharpe_values],fontsize=9,padding=4)
-ax.set_title("Sharpe ratio on the same dates, 2022–2025",loc="left",fontsize=10,weight="bold")
-ax.tick_params(axis="x",labelsize=8)
-y=para(f,.227,"Sharpe compares average daily return with daily volatility. The original gate improved on equal votes in this historical test. The S&P 500 fund had the highest Sharpe among these four portfolios.",gap=.009)
-para(f,y,"The portfolio tests match dates and trading costs. The separate five-session research-agent experiment kept the original gate setting.",gap=.009)
-link(f,.077,"Explore the data-to-results pipeline","pipeline")
+para(f,.635,"The proposal tests whether using market states to weight a fixed set of classifiers improves risk-adjusted performance over individual models and a static ensemble. A separate experiment tests periodic language-model-guided adaptation.")
+proposal=rows("five","all-2023-2025")
+proposal_names=["HMM gate","Gate without HMM","Uniform vote","Logistic","SPY buy and hold"]
+proposal_labels=["Learned weights using\nmarket states","Learned weights without\nmarket states","Equal votes for the\nsame forecasts","Single logistic\nregression model","Hold the S&P 500 fund"]
+proposal_colors=[green,"#a1b6a8",blue,ochre,brick]
 
-f=page("The data behind the forecasts", "Yahoo Finance prices, public company text, Fed statements and academic factors")
-for n,(key,title,color) in enumerate([
-    ("news","Sampled company headlines",green),
-    ("filing","Annual filing excerpts from the SEC",ochre),
-    ("fed","Federal Reserve statements",blue),
-]):
-    ax=f.add_axes([.12,.712-.116*n,.78,.068])
-    years=[r["year"] for r in coverage["annualText"]]
-    counts=[r[key] for r in coverage["annualText"]]
-    ax.bar(years,counts,color=color,width=.62)
-    ax.set_title(f"{title}  ·  {sum(counts)} records",loc="left",fontsize=9)
-    ax.set_xticks(years,labels=years if n==2 else [""]*len(years))
-    ax.yaxis.set_major_locator(plt.MaxNLocator(2,integer=True))
+def comparison_bars(axes):
+    for col,(ax,field,title) in enumerate(zip(axes,["net_return","max_drawdown","sharpe"],["Return after costs","Largest fall","Sharpe ratio"])):
+        values=[proposal.loc[name,field] for name in proposal_names]
+        bars=ax.barh(range(len(values)),values,color=proposal_colors)
+        ax.set_yticks(range(len(values)),proposal_labels if col==0 else [""]*len(values),fontsize=8)
+        ax.invert_yaxis()
+        ax.set_xlim(0,max(values)*1.43)
+        ax.set_xticks([])
+        ax.tick_params(axis="y",length=0)
+        ax.bar_label(bars,labels=[f"{v:.2f}" if field=="sharpe" else p(v) for v in values],padding=3,fontsize=8)
+        ax.set_title(title,fontsize=9,loc="left",weight="bold")
+
+comparison_bars([f.add_axes([.325+.197*i,.295,.17,.217]) for i in range(3)])
+f.text(.08,.543,"Original pipeline and alternatives  ·  719 matched sessions, 2023–2025",fontsize=10,weight="bold",color=green)
+y=para(f,.23,"The market-state inputs reduced the largest loss compared with the same gate without those inputs. Equal votes had a slightly smaller largest loss, while the single logistic model and market fund had higher Sharpe ratios.",gap=.009)
+para(f,y,"Sharpe compares average daily return with volatility. The separate research-agent experiment kept the existing setting.",gap=.009)
+link(f,.077,"Open the matched balance and drawdown charts","comparison/pipeline")
+chart,axes=plt.subplots(1,3,figsize=(10.4,3.3),gridspec_kw={"wspace":.11})
+chart.subplots_adjust(left=.24,right=.97,bottom=.07,top=.75)
+chart.text(.037,.93,"The original pipeline and alternatives",weight="bold",fontsize=15)
+chart.text(.037,.84,"719 matched trading sessions, 2023–2025",fontsize=10,color=muted)
+comparison_bars(axes)
+chart.savefig(OUT/"pipeline-comparison.png",dpi=150)
+plt.close(chart)
+
+ASSETS=ROOT/"site/assets"
+fund_names={"SPY":"S&P 500","QQQ":"Nasdaq-100","IWM":"US small companies","GLD":"Gold","TLT":"Long-term US Treasuries"}
+raw=ROOT/"data/raw/ceci2-v1"
+price_file=ASSETS/"yahoo-fund-prices.json"
+if all((raw/f"{ticker}.json").is_file() for ticker in fund_names):
+    adjustments=pd.read_csv(receipts/"adjustments.csv.gz",index_col="date",parse_dates=True)
+    paths={}
+    for ticker in fund_names:
+        quote=read(raw/f"{ticker}.json")["chart"]["result"][0]
+        dates=pd.to_datetime(quote["timestamp"],unit="s",utc=True).tz_convert("America/New_York").tz_localize(None).normalize()
+        if not dates.equals(adjustments.index):
+            raise ValueError(f"Quote dates for {ticker} differ from the frozen study dates")
+        close=pd.Series(quote["indicators"]["quote"][0]["close"],index=dates)*adjustments[ticker]
+        indexed=close/close.iloc[0]*100
+        path=pd.concat([indexed.iloc[:1],indexed.groupby(indexed.index.to_period("W-FRI")).tail(1)])
+        paths[ticker]={d.strftime("%Y-%m-%d"):round(v,4) for d,v in path.items()}
+    price_file.write_text(json.dumps(paths,separators=(",",":"))+"\n")
+price_paths=read(price_file)
+
+def yahoo_prices(ax):
+    for (ticker,series),color in zip(price_paths.items(),[green,blue,ochre,"#76507c",brick]):
+        ax.plot(pd.to_datetime(list(series)),list(series.values()),label=f"{fund_names[ticker]} ({ticker})",color=color,lw=1.35)
+    ax.set_xlim(pd.Timestamp("2017-01-01"),pd.Timestamp("2025-12-31"))
+    ax.set_ylabel("First session = 100",fontsize=9)
+    ax.legend(frameon=False,fontsize=7.5,ncol=2,loc="upper left")
     style_chart(ax)
-ax=f.add_axes([.12,.259,.78,.117])
+
+def factor_chart(ax):
+    factors=pd.DataFrame(coverage["annualFactors"]).set_index("year")
+    colors=ax.imshow(factors.T,aspect="auto",cmap="RdBu",vmin=-.35,vmax=.35)
+    ax.set_yticks(range(len(factors.columns)),[name.replace("_"," ") for name in factors.columns],fontsize=7.5)
+    ax.set_xticks(range(len(factors)),factors.index,fontsize=8)
+    colorbar=ax.figure.colorbar(colors,ax=ax,pad=.02,ticks=[-.35,0,.35],format=PercentFormatter(1,0),extend="both")
+    colorbar.ax.tick_params(labelsize=8)
+
+fed=pd.read_csv(receipts/"finbert-scores.csv")
+def fed_chart(ax):
+    dates=pd.to_datetime(fed.date.astype(str))
+    tone=fed.positive-fed.negative
+    ax.bar(dates,tone,width=18,color=green)
+    ax.axhline(0,color=muted,lw=.65)
+    ax.set_xlim(pd.Timestamp("2017-01-01"),pd.Timestamp("2025-12-31"))
+    ax.set_ylabel("Positive minus negative",fontsize=8)
+    style_chart(ax)
+
+def save_source_plot(stem,draw,left=.10):
+    fig,ax=plt.subplots(figsize=(8.5,3.5))
+    fig.subplots_adjust(left=left,right=.96,top=.96,bottom=.13)
+    draw(ax)
+    fig.savefig(ASSETS/f"{stem}.png",dpi=140)
+    plt.close(fig)
+
+save_source_plot("yahoo-finance-prices",yahoo_prices)
+save_source_plot("investment-factor-returns",factor_chart,left=.20)
+save_source_plot("federal-reserve-text-sentiment",fed_chart)
+
+f=page("Quantitative data", "Yahoo Finance market records and Jensen, Kelly and Pedersen investment factors")
+f.text(.08,.808,"Yahoo Finance  ·  "+f"{coverage['bars']:,} daily records across {coverage['symbols']} instruments",size=12,weight="bold",color=green)
+yahoo_prices(f.add_axes([.15,.553,.75,.218]))
+para(f,.516,"Five funds from the 22-instrument universe. The lines show weekly snapshots of adjusted closing prices, scaled to 100 on the first day. The models also use daily opening, high and low prices and trading volume.",gap=.008)
+f.text(.08,.412,"Investment factors  ·  13 market-wide themes",size=12,weight="bold",color=green)
+factor_chart(f.add_axes([.212,.17,.69,.208]))
+para(f,.129,"Each square shows one theme’s compounded return in one calendar year. Forecast models use trailing 21-session theme returns with a further 21-session delay.",gap=.005)
+link(f,.061,"Open the charts and complete source coverage","data")
+
+f=page("Qualitative data", "Sampled company headlines, annual filing excerpts and Federal Reserve statements")
+years=[r["year"] for r in coverage["annualText"]]
+ax=f.add_axes([.12,.68,.34,.12])
+ax.bar(years,[r["news"] for r in coverage["annualText"]],color=green,width=.64)
+ax.set_title(f"Sampled company headlines  ·  {coverage['headlines']}",loc="left",fontsize=9)
+ax.set_xticks(years[::2])
+style_chart(ax)
+ax=f.add_axes([.55,.68,.34,.12])
+for offset,key,label,color in [(-.18,"filing",f"SEC filing excerpts ({coverage['filings']})",ochre),(.18,"fed",f"Fed statements ({coverage['statements']})",blue)]:
+    ax.bar(np.array(years)+offset,[r[key] for r in coverage["annualText"]],color=color,width=.34,label=label)
+ax.set_title("Filings and Fed statements",loc="left",fontsize=9)
+ax.legend(frameon=False,fontsize=7.5,bbox_to_anchor=(0,-.29),loc="upper left")
+ax.set_xticks(years[::2])
+style_chart(ax)
+ax=f.add_axes([.12,.425,.77,.126])
 company_bars=ax.bar([r["symbol"] for r in companies],[r["news"] for r in companies],color=green)
 ax.set_title("Sampled headlines by company",loc="left",fontsize=9)
 ax.bar_label(company_bars,fontsize=7,padding=2)
 ax.set_ylim(0,230)
 style_chart(ax)
-y=para(f,.222,"The Financial News and Stock Price Integration Dataset sample ends in 2023. Filings and Fed statements continue through 2025. Yahoo Finance supplies 49,764 daily records across 22 instruments. Jensen, Kelly and Pedersen supply 13 market-wide investment factors, used with a delay.",width=99,gap=.009)
-para(f,y,"FinBERT scores text sentiment. OpenAI turns Fed statements and monthly instrument summaries into forecasts. The run used OpenAI Decisions for the role originally proposed for Jev.",width=99,gap=.009)
+ax=f.add_axes([.12,.213,.77,.139])
+ax.set_title("Federal Reserve statement tone from FinBERT",loc="left",fontsize=9)
+fed_chart(ax)
+y=para(f,.161,"The company headline sample ends in 2023. Filings and Fed statements continue through 2025. Zero headlines means the sample has none for that company.",width=98,gap=.005)
+para(f,y,"FinBERT scores text tone. OpenAI builds forecasts from Fed statements or monthly instrument summaries. The run used OpenAI Decisions for the role proposed for Jev.",width=98,gap=.005)
 link(f,.061,"Open company coverage, fund prices and source charts","data")
 
 f=page("What goes into each model?", "All 13 forecasts enter the original vote counter in the same three-probability format")
@@ -185,7 +269,9 @@ table(f,[.08,.46,.84,.34],["Forecasters","Input","Output"],[
 f.text(.08,.411,"Where market conditions enter",weight="bold",color=green,fontsize=11)
 flow(f,.345,[("Market data","S&P 500 daily return\nand 21-session volatility"),("Market-state model","Chances of three\nmarket states"),("Forecast controller","Weights the direction\nforecasts")])
 para(f,.233,"In the jointly trained experiment, three models specialize in recent prices, text sentiment and market context. Each supplies a forecast to a vote counter trained alongside them.")
-link(f,.079,"Open the model-by-model input and output map","models")
+f.text(.08,.159,"How three kinds of price model read the data",size=11,weight="bold",color=green)
+para(f,.132,"Logistic regression adds weighted features. Tree models split on thresholds. Four price-history models read 20 sessions in order and predict the same three outcomes.",gap=.005)
+link(f,.069,"Open the model diagrams and full input map","models")
 
 f=page("One decision, from votes to a trade", "Apple after the market closed on 22 December 2025")
 ranked=sorted(range(len(weights)),key=lambda k:weights[k],reverse=True)

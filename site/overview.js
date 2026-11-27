@@ -21,7 +21,7 @@ export function overview(root, data) {
     </ol>
     <div class="overview-study"><div class="overview-story"><h2>What happened to $10,000?</h2>
     <p>Both voting methods use the same 13 forecasters and trading rules. The chart shows cumulative returns in dollars. The broader results also compare drawdown, which measures the largest fall from a previous high, and Sharpe, which measures return relative to daily volatility. Buying the market provides an investment benchmark.</p>
-    <p id="periodFinding"></p><a class="link" href="#comparison">Compare the trading approaches</a></div>
+    <p id="periodFinding"></p><a class="link" href="#comparison/pipeline">Compare the original pipeline with alternatives</a></div>
     <figure class="sheet outcome"><label class="field">Historical period<select id="overviewPeriod"><option value="all-2022-2025">2022–2025</option><option>2022</option><option>2023</option><option>2024</option><option>2025</option></select></label>
     <figcaption>Ending value after trading costs</figcaption><div id="outcomes"></div></figure></div>
     <p class="note">The researchers had already examined these years during development. The results describe those historical markets. Future performance is still an open question.</p>

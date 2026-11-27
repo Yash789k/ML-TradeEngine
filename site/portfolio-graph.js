@@ -11,12 +11,14 @@ export const displayPortfolio = name => ({
   'SPY buy and hold':methodLabels.market,
   'Classic MoE':methodLabels.classic,
   'MoE without text':'Classic mixture trained without financial text',
+  'Gate without HMM':'Learned weights without market states',
+  'Logistic':'Single logistic regression model',
   'Joint neural mixture':methodLabels.joint,
   'Joint experts uniform':methodLabels.jointEqual,
   'Equal weight':'Equal investment across 22 instruments',
 }[name] ?? name.replace(/^Context adapter(?= \/ )/,methodLabels.adapter)
   .replace(/^Fixed mixture(?= \/ )/,methodLabels.fixed)
-  .replace(/^RL model router(?= \/ )/,methodLabels.router));
+  .replace(/^RL model router(?= \/ )/,methodLabels.router).replace(/ \/ sequence networks$/, ' / four models that read price history'));
 
 export function portfolioColors(names) {
   const hues = [158, 32, 202, 74, 12, 181, 51, 218];
@@ -26,7 +28,9 @@ export function portfolioColors(names) {
   return name => colors.get(name);
 }
 
+export const proposalComparison = 'Original pipeline and alternatives';
 const presets = new Map([
+  [proposalComparison, ['HMM gate','Gate without HMM','Uniform vote','Logistic','SPY buy and hold']],
   ['Same forecasts, different votes', ['Adaptive router','SPY buy and hold','HMM gate','Uniform vote']],
   ['Choosing a price model', ['RL model router / sequence networks','Context adapter / sequence networks','Fixed mixture / sequence networks']],
   ['With and without financial text', ['Classic MoE','MoE without text','HMM gate','FinBERT logistic']],
@@ -36,6 +40,7 @@ const presets = new Map([
 ]);
 
 const presetQuestions = {
+  [proposalComparison]: 'The proposal pipeline uses learned weights and market-state data. Compare it with the same gate without market states, equal votes, one logistic model and the S&P 500 fund.',
   'Same forecasts, different votes': 'Three controllers start with the same 13 forecasts and use the same trading rule. Equal votes give each forecast the same say. The original market-state gate learns how to weight them. The adaptive router uses recent errors to update the votes. The S&P 500 fund is the investment benchmark.',
   'Choosing a price model': 'When four models read the same price history, does it pay to pick one for each stock? The reinforcement learner picks one, the context adapter blends their votes for each stock, and the fixed mixture keeps the same blend.',
   'With and without financial text': 'Did financial text help the classic mixture? Compare Classic MoE with its retrained version without text. FinBERT reads financial language, while the HMM gate puts text alongside other forecasts.',
@@ -53,7 +58,7 @@ function family(name) {
   return 'Market and factor models';
 }
 
-export function initialGraphSelection() { return new Set(presets.get('Same forecasts, different votes')); }
+export function initialGraphSelection(preset='Same forecasts, different votes') { return new Set(presets.get(preset)); }
 
 const format = (key, value) => key === 'equity'
   ? value.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0})

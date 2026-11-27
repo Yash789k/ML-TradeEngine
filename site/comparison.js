@@ -1,5 +1,5 @@
 import {comparisonSummary} from './comparison-summary.js';
-import {plotPortfolios, portfolioColors, initialGraphSelection, displayPortfolio} from './portfolio-graph.js';
+import {plotPortfolios, portfolioColors, initialGraphSelection, displayPortfolio, proposalComparison} from './portfolio-graph.js';
 const explanations = {
   'Joint neural mixture': 'Trains three forecasters together. One reads recent prices, one reads signals from financial text, and one measures the broad market’s return, volatility and share of instruments rising. A fourth model learns how much of each vote to use for each stock.',
   'Joint experts uniform': 'Averages the predictions of exactly the same three jointly trained experts with a one-third weight each.',
@@ -88,14 +88,14 @@ function metricTable(headings, rows) {
   return frame;
 }
 
-export function comparisonView(root, data, paths, {head, saveCSV, icon, load, example}) {
-  let studyId = 'five', chosenPeriod = 'all-2022-2025';
+export function comparisonView(root, data, paths, {head, saveCSV, icon, load, example, proposal}) {
+  let studyId = 'five', chosenPeriod = proposal ? 'all-2023-2025' : 'all-2022-2025';
   let pairOpen = false;
   const summaryState = {measure:'net_return', training:false, annual:false};
-  let approach = 'Adaptive router', benchmark = 'Uniform vote';
+  let approach = proposal ? 'HMM gate' : 'Adaptive router', benchmark = 'Uniform vote';
   const namesAcrossStudies = data.groups.flatMap(group => group.models);
   const colorFor = portfolioColors(namesAcrossStudies);
-  const graphState = {models:initialGraphSelection(), universe:new Set(namesAcrossStudies), metrics:new Set(['equity','drawdown']), open:false};
+  const graphState = {models:initialGraphSelection(proposal?proposalComparison:undefined), universe:new Set(namesAcrossStudies), metrics:new Set(['equity','drawdown']), open:false};
   function draw() {
     const group = data.groups.find(g => g.id === studyId);
     const period = group.periods.find(p => p.id === chosenPeriod) || group.periods[0];

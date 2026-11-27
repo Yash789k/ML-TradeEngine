@@ -213,3 +213,5 @@ The current illustrated report is six pages. Its pipeline, data charts, model ma
 The website groups its pages under Study, Models, Results and Data. The opening comparison now holds the 13 forecasts and trading rules fixed. The Model votes picker includes fixed and adaptive mixtures, jointly trained forecasts and single-model routing. Regenerate the saved examples with `python -m ceci2_demo.periods_v1.export_adapter_examples`.
 
 The pipeline, model map and data pages now lead with diagrams and charts. The six-page PDF uses the same method names and shows the Sharpe comparison and the recorded Apple decision visually.
+
+The report and data page separate quantitative and qualitative inputs. The Yahoo Finance figure uses weekly samples of cached closing prices and the archived adjustment ratios. The matched pipeline comparison uses the 719 shared sessions in 2023–2025.
