@@ -205,3 +205,5 @@ The [data-to-results guide](../../site/assets/pipeline-guide.json) connects the 
 The guide now plots the annual text records and compares matched returns, drawdowns and Sharpe ratios. Its model combination charts read the archived Colab portfolio results. The Model votes view derives its next-open target from the fixed replay simulator.
 
 The [data provenance guide](../../site/assets/forecast-sources.json) explains the data sources, the two hosted forecast inputs and the separate research-agent experiment. The report builder derives the company chart and the Apple example from the archived source receipts and the recorded decision.
+
+The [model input and output map](../../site/assets/model-map.json) connects the forecasters, controllers and trading components to their observed inputs. The website and report use this same map and label the matched evaluation windows separately from training histories.

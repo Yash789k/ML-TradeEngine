@@ -31,7 +31,7 @@ const candidates = [
 
 export function comparisonSummary(host, group, period, state) {
   host.innerHTML = `<section class="comparison-summary">
-    <details class="protocol" id="trainingSummary"><summary>Training inputs, outputs and goals</summary><dl class="training-steps"></dl></details>
+    <details class="protocol" id="trainingSummary"><summary>Training inputs, outputs and goals</summary><dl class="training-steps"></dl><p><a class="link" href="#models">See what each model reads and returns</a></p></details>
     <h2>Which approach led, and when?</h2>
     <label class="field" for="reviewMeasure">Measure<select id="reviewMeasure"></select></label>
     <p class="note" id="periodLeader"></p><p class="note" id="periodDifference"></p>

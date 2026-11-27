@@ -76,6 +76,8 @@ export function pipelineView(root, guide, coverage, data, head) {
     methods.append(label, detail);
   }
   stages.children[2].append(objectives);
+  stages.children[2].insertAdjacentHTML('beforeend',
+    '<p><a class="link" href="#models">What each model reads and returns</a></p>');
 
   stages.children[3].insertAdjacentHTML('beforeend',
     '<p><a class="link" href="#controller">See the recorded forecast and next-open target for one instrument</a></p>');
