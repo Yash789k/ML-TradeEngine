@@ -106,7 +106,7 @@ async function stress(ticket){
  '<p class="note">The transition table spans all four years and includes the five observed sessions beginning at each state change. 2022 was selected as a known bear market. Results describe historical resilience. The block-bootstrap intervals for the unaltered forecasts include zero.</p></section>';
  const a=all.find(x=>x.model==='Adaptive router'),v=all.find(x=>x.model==='Uniform vote');el('routerReturn').textContent=pct(a.net_return,2);el('voteReturn').textContent=pct(v.net_return,2);el('routerDD').textContent=pct(a.max_drawdown,2);paint=()=>drawChart(el('stressChart'),dates,series,dates.length-1,false);paint();
  const gate=all.find(r=>r.model==='HMM gate');
- const market=all.find(r=>r.model==='SPY buy and hold');
+ const market=data.summary.find(r=>r.scenario==='original'&&r.period===stressPeriod&&r.model==='SPY buy and hold');
  el('stressReading').textContent='After costs, adaptive votes earned '+pct(a.net_return,2)+
    ', market-state votes earned '+pct(gate.net_return,2)+', and equal votes earned '+pct(v.net_return,2)+
    '. Holding the market fund returned '+pct(market.net_return,2)+' on the same dates.';
