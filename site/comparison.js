@@ -88,6 +88,14 @@ function metricTable(headings, rows) {
   return frame;
 }
 
+const resultGroups = [
+  ['Ways to combine forecasts','Changes the mixture of experts or the weighting method.', name=>/^(Joint|Classic|MoE without|Adaptive|HMM gate$|Gate without|Market experts vote|Uniform vote|Context adapter|Fixed mixture|RL model router)/.test(name) && !name.endsWith('every five sessions')],
+  ['Trading rules','Changes how often the portfolio trades, how it limits risk, or where it puts the money.', name=>/every five sessions|^MoE \+|^HMM gate dynamic/.test(name)],
+  ['Investment benchmarks','Holds the market fund, holds cash, divides money equally or follows a simple rule. Matching the invested share copies the tested strategy’s stocks-versus-cash split using the market fund.', name=>/^(Cash|SPY|Equal weight|Exposure-matched|21-session)/.test(name)],
+  ['Research-agent reviews','Tests whether to adopt a change proposed by a language model, by a fixed rule, or at random.', name=>/review$/.test(name)],
+  ['Individual forecasts','Runs the shared trading rule with one forecasting model at a time.', ()=>true],
+];
+
 export function comparisonView(root, data, paths, {head, saveCSV, icon, load, example, proposal}) {
   let studyId = 'five', chosenPeriod = proposal ? 'all-2023-2025' : 'all-2022-2025';
   let pairOpen = false;
@@ -105,7 +113,7 @@ export function comparisonView(root, data, paths, {head, saveCSV, icon, load, ex
     if (!names.includes(benchmark) || benchmark === approach) benchmark = names.find(n => n === 'SPY buy and hold' && n !== approach) || names.find(n => n !== approach);
     root.innerHTML = head('Performance comparison', 'Each portfolio starts with the same amount. The plots show how its balance changed after trading costs.',
       '<button id="exportPeriods">'+icon('download')+'Export</button>')+
-      '<p class="note comparison-guide"><a class="link" href="#pipeline">Where the data and scores come from</a> · <a class="link" href="#reviews">See which research-agent proposals changed the gate</a> · <a class="link" href="#training">Training charts</a></p><details class="protocol"><summary>How the approaches differ, using one stock</summary><div id="design" class="experiment-example"></div></details><div class="controls" id="periodControls"></div><div id="comparisonSummary"></div><section class="sheet"><div id="allPortfolioGraph"></div><details class="protocol" id="pairDetail"><summary>Compare two portfolios by year</summary><div class="controls" id="pairControls"></div><div class="metrics"><div class="metric"><small>Approach return</small><strong id="cmpReturn"></strong></div><div class="metric"><small>Benchmark return</small><strong id="baseReturn"></strong></div><div class="metric"><small>Difference</small><strong id="cmpGap"></strong></div></div><div id="pairNotes"></div><div id="yearChart"></div></details></section><section class="bottom"><div class="sectionhead"><h2>All approaches</h2><span class="tagtext" id="sample"></span></div><div id="periodResults"></div><p class="note">Drawdown starts at the opening value of the selected period. Fees are scaled to $10,000 of starting capital. Each row covers the same decision dates. These periods had already been examined during development.</p><p class="note"><a class="link" href="https://colab.research.google.com/drive/1qjCtnMsCAxeps4P7_RBPiJtPpmHHSqQD?authuser=1">Open the GPU training notebook ↗</a></p></section>';
+      '<p class="note comparison-guide"><a class="link" href="#pipeline">Where the data and scores come from</a> · <a class="link" href="#reviews">See which research-agent proposals changed the gate</a> · <a class="link" href="#training">Training charts</a></p><details class="protocol"><summary>How the approaches differ, using one stock</summary><div id="design" class="experiment-example"></div></details><div class="controls" id="periodControls"></div><div id="comparisonSummary"></div><section class="sheet"><div id="allPortfolioGraph"></div><details class="protocol" id="pairDetail"><summary>Compare two portfolios by year</summary><div class="controls" id="pairControls"></div><div class="metrics"><div class="metric"><small>Approach return</small><strong id="cmpReturn"></strong></div><div class="metric"><small>Benchmark return</small><strong id="baseReturn"></strong></div><div class="metric"><small>Difference</small><strong id="cmpGap"></strong></div></div><div id="pairNotes"></div><div id="yearChart"></div></details></section><section class="bottom"><div class="sectionhead"><h2>All results for these dates</h2><span class="tagtext" id="sample"></span></div><div id="periodResults"></div><p class="note">Drawdown starts at the opening value of the selected period. Fees are scaled to $10,000 of starting capital. Each row covers the same decision dates. These periods had already been examined during development.</p><p class="note"><a class="link" href="https://colab.research.google.com/drive/1qjCtnMsCAxeps4P7_RBPiJtPpmHHSqQD?authuser=1">Open the GPU training notebook ↗</a></p></section>';
     const design=root.querySelector('#design');
     const exampleTitle = document.createElement('h2');
     exampleTitle.textContent = example.question;
@@ -178,15 +186,34 @@ export function comparisonView(root, data, paths, {head, saveCSV, icon, load, ex
     root.oncomparisonresize=graph.draw;
     const headings=['Approach','Return after costs','Largest fall from a high','Average invested','Sharpe ratio','Fees per $10k'];
     const rows = [...period.rows].sort((a,b)=>b.net_return-a.net_return);
-    root.querySelector('#periodResults').append(metricTable(headings,rows.map(r=>[displayPortfolio(r.model),percent(r.net_return),percent(r.max_drawdown),percent(r.mean_exposure),r.sharpe==null?'—':r.sharpe.toFixed(2),cash(r.fees)])));
-    for (const [i,tr] of Array.from(root.querySelectorAll('#periodResults tbody tr')).entries()){
-      const name=rows[i].model;
-      tr.tabIndex=0;
-      const swatch=document.createElement('i');
-      swatch.className='lineKey';swatch.style.background=graph.colorFor(name);
-      tr.cells[0].prepend(swatch);
-      tr.onpointerenter=tr.onfocus=()=>graph.highlight(name);
-      tr.onpointerleave=tr.onblur=()=>graph.highlight(null);
+    let remaining = rows;
+    for (const [title, explanation, belongs] of resultGroups) {
+      const groupRows = remaining.filter(row=>belongs(row.model));
+      remaining = remaining.filter(row=>!belongs(row.model));
+      if (!groupRows.length) continue;
+      const disclosure=document.createElement('details');
+      disclosure.className='protocol result-group';
+      const summary=document.createElement('summary');
+      summary.textContent=title+' ('+groupRows.length+')';
+      const intro=document.createElement('p');
+      intro.className='note';
+      intro.textContent=explanation;
+      const groupTable=metricTable(headings,groupRows.map(r=>[
+        displayPortfolio(r.model),percent(r.net_return),percent(r.max_drawdown),percent(r.mean_exposure),
+        r.sharpe==null?'—':r.sharpe.toFixed(2),cash(r.fees),
+      ]));
+      for (const [i,tr] of Array.from(groupTable.querySelectorAll('tbody tr')).entries()){
+        const name=groupRows[i].model;
+        const description=document.createElement('small');
+        description.className='result-description';
+        description.textContent=details(name);
+        if (description.textContent!==name) tr.cells[0].append(description);
+        tr.tabIndex=0;
+        tr.onpointerenter=tr.onfocus=()=>graph.highlight(name);
+        tr.onpointerleave=tr.onblur=()=>graph.highlight(null);
+      }
+      disclosure.append(summary,intro,groupTable);
+      root.querySelector('#periodResults').append(disclosure);
     }
     root.querySelector('#exportPeriods').onclick=()=>saveCSV('ensemble-'+studyId+'-'+period.id+'.csv',[['Study','Window','Sessions',...headings],...rows.map(r=>[group.label,period.label,r.sessions,r.model,r.net_return,r.max_drawdown,r.mean_exposure,r.sharpe,r.fees])]);
     if (approach.startsWith('Joint ') || approach.startsWith('RL model router')) {
