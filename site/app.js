@@ -64,9 +64,9 @@ async function simulation(ticket){
 }
 async function controller(ticket){
  const sim=await load('simulation');if(ticket!==token)return;index=Math.min(index??sim.dates.length-1,sim.dates.length-1);
- root.innerHTML=head('Who gets a vote?','For one stock and date, each model predicts a rise, a fall or little change over five trading days. A larger weight gives its prediction more influence on the final forecast.')+
+ root.innerHTML=head('How the market-state gate combines votes','This is the proposal’s original learned mixture. It combines 13 forecasts for one instrument and date, then sends its combined forecast to the fixed trading rule.')+
  '<p class="note comparison-guide"><a class="link" href="assets/ensemble-study.pdf#page=5">See the Apple decision explained in the report</a> · <a class="link" href="assets/ensemble-study.pdf#page=19">How the weights and rewards work</a></p>'+
- '<div class="controls">'+field('ticker','Instrument',select('ticker',sim.symbols,asset))+field('when','Decision date',select('when',sim.dates,sim.dates[index]))+'</div><div class="controllergrid"><section class="sheet"><h2>Expert weights</h2><div id="bars"></div></section><section class="sheet"><h2>Combined forecast</h2><div id="classification"></div><p class="note" id="targetDecision"></p><hr class="rule"><h3>Market state probabilities</h3><div id="states"></div><hr class="rule"><p class="note">Weights use filtered market conditions and earlier expert accuracy. Outcomes enter memory only after their forecast window closes.</p></section></div><section class="bottom"><div class="sectionhead"><h2>Forecast contributions</h2></div><div id="expertTable"></div></section>';
+ '<div class="controls">'+field('ticker','Instrument',select('ticker',sim.symbols,asset))+field('when','Decision date',select('when',sim.dates,sim.dates[index]))+'</div><div class="controllergrid"><section class="sheet"><h2>Expert weights</h2><div id="bars"></div></section><section class="sheet"><h2>Combined forecast</h2><div id="classification"></div><p class="note" id="voteCalculation"></p><p class="note" id="targetDecision"></p><hr class="rule"><h3>Market state probabilities</h3><div id="states"></div><hr class="rule"><p class="note">Weights use filtered market conditions and earlier expert accuracy. Outcomes enter memory only after their forecast window closes.</p></section></div><section class="bottom"><div class="sectionhead"><h2>Forecast contributions</h2></div><div id="expertTable"></div></section>';
  const fixedTargets=simulate(sim).positions;
  let revision=0;
  async function show(){const n=++revision;const date=sim.dates[index],detail=await load('detail-'+date.slice(0,4));if(n!==revision||ticket!==token)return;
@@ -75,15 +75,23 @@ async function controller(ticket){
  el('bars').innerHTML=ranks.map(x=>'<div class="weightrow"><span>'+esc(x.name)+'</span><span class="track"><i style="width:'+Math.min(100,100*x.w/Math.max(...w))+'%"></i></span><strong>'+pct(x.w,1)+'</strong></div>').join('');
  const q=[sim.down[index][j],sim.flat[index][j],sim.up[index][j]],labs=['DOWN','FLAT','UP'],cs=['#ac7744','#a3aba1','#197257'];
  el('classification').innerHTML='<div class="probs">'+q.map((s,k)=>'<i style="width:'+100*s+'%;background:'+cs[k]+'"></i>').join('')+'</div><div class="probkey">'+labs.map((l,k)=>'<span>'+l+' '+pct(q[k],1)+'</span>').join('')+'</div>';
+ const top = ranks[0];
+ const upContribution = (100*top.w*p[top.k][2]).toFixed(2);
+ el('voteCalculation').textContent=top.name+' had '+pct(top.w,2)+' of the vote and predicted '+pct(p[top.k][2],2)+
+   ' up. Multiplying them contributes '+upContribution+' percentage points to the combined '+pct(q[2],1)+' up forecast.';
  const target=fixedTargets[index].find(position=>position.symbol===asset);
  const score=q[2]-q[0];
  const points=(100*score).toFixed(1);
+ const higher=sim.up[index].filter((up,k)=>{
+   const other=up-sim.down[index][k];
+   return other>score || (other===score && k<j);
+ }).length;
  const decision=target ? 'The fixed rule targeted '+pct(target.weight,1)+' of the account at the next open.'
-  : score>.05 ? 'It cleared the minimum score. The fixed rule put its money into higher-scoring instruments.'
+  : score>.05 ? 'It cleared the minimum but ranked '+(higher+1)+' of '+sim.symbols.length+' by score. Only the five highest qualifying instruments received a target.'
   : 'The fixed rule set the next-open target to zero because the score did not exceed five percentage points.';
  el('targetDecision').textContent=asset+' scored '+points+' percentage points after subtracting its down probability from its up probability. '+decision;
  el('states').innerHTML=table(['State','Probability'],sim.posterior[index].map((v,k)=>[['Lower mean return','Middle mean return','Higher mean return'][k],pct(v,2)]));
- el('expertTable').innerHTML=table(['Expert','Weight','DOWN','FLAT','UP'],ranks.map(x=>[x.name,pct(x.w,2),...p[x.k].map(v=>pct(v,2))]));
+ el('expertTable').innerHTML=table(['Forecaster','Vote','Down','Little change','Up','Adds to up (points)'],ranks.map(x=>[x.name,pct(x.w,2),...p[x.k].map(v=>pct(v,2)),(100*x.w*p[x.k][2]).toFixed(2)]));
  }
  on('ticker','change',e=>{asset=e.target.value;show()});on('when','change',e=>{index=sim.dates.indexOf(e.target.value);show()});await show();
 }
