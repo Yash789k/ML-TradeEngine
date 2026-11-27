@@ -116,7 +116,7 @@ f=page("How to read the scores", "Forecast scores and investment results answer 
 y=para(f,.824,"The same stock forecast can be scored as a prediction and used to simulate a trade. Forecast scores use the direction that eventually happened. Portfolio scores use the account balance after the trading rule and costs.")
 for title,explanation in guide["metrics"]:
     y=section(f,y,title,explanation)
-section(f,y,"Where to look next","Pages 4–5 show headline balances and one forecast decision. Page 6 compares years. Pages 7–9 test different ways of combining forecasts and changing inputs. Pages 10–12 contain all results and definitions.")
+section(f,y,"Where to look next","Pages 4–5 show headline balances and one forecast decision. Page 6 compares years. Pages 7–9 test different ways of combining forecasts and changing inputs. Pages 10–12 contain the full results and definitions. Page 18 matches each website chart to its report page.")
 
 f=page("Can a model pick the right forecaster?", "A trading experiment with historical prices and news")
 y=para(f,.82,"Suppose one model reads stock prices and another reads the news. They can disagree about what happens next. We tested whether a computer could learn whose forecast to trust, then simulated buying and selling stocks using its decisions.")
@@ -249,6 +249,77 @@ ax.bar([r["symbol"] for r in companies],[r["news"] for r in companies],color=gre
 ax.set_title("Sampled headlines by company, 2019–2023",fontsize=10,loc="left")
 ax.tick_params(labelsize=8)
 para(f,.095,"Each of the ten companies also contributed nine annual filing excerpts. Zero headlines means zero records in the sample.",width=94,gap=0)
+
+f=page("Market and source charts", "The two overview figures from the website’s Data sources view")
+for image_file, box in [
+    ("datasets.png",[.076,.505,.848,.333]),
+    ("sources.png",[.076,.153,.848,.338]),
+]:
+    ax=f.add_axes(box)
+    ax.imshow(plt.imread(ROOT/"site/assets"/image_file))
+    ax.axis("off")
+para(f,.139,"The price panel compares five benchmark funds on the same starting scale. The factor panel shows calendar-year returns for academic factor themes. These are inputs and market context. Portfolio results start on page 4.")
+
+from matplotlib.dates import DateFormatter, YearLocator
+
+def chart_dates(ax):
+    ax.grid(axis="y",color="#e3e8e4")
+    ax.xaxis.set_major_locator(YearLocator())
+    ax.xaxis.set_major_formatter(DateFormatter("%Y"))
+    ax.tick_params(labelsize=8)
+
+f=page("Portfolio replay on three scales", "Recorded five-session forecasts with daily rebalancing, 2023–2025")
+replay=read(ROOT/"site/assets/study-5.json")
+marks=pd.to_datetime(replay["marks"])
+replay_names=[("HMM gate","Market-state gate",green),("Exposure-matched SPY","Market fund at the same invested share",ochre)]
+for i,(title,kind) in enumerate([("Portfolio value","value"),("Fall from the highest balance so far","drawdown"),("Return since the previous mark","daily")]):
+    ax=f.add_axes([.15,.681-.197*i,.745,.134])
+    for key,label,color in replay_names:
+        balances=np.array(replay["equity"][key])
+        running_peak=np.maximum.accumulate(np.r_[10000,balances])[1:]
+        previous=np.r_[10000,balances[:-1]]
+        values={"value":balances,"drawdown":balances/running_peak-1,"daily":balances/previous-1}[kind]
+        ax.plot(marks,values,color=color,label=label,lw=1.2 if kind=="daily" else 1.5)
+    ax.set_title(title,loc="left",fontsize=10,weight="bold")
+    chart_dates(ax)
+    ax.yaxis.set_major_formatter(FuncFormatter(lambda v,_: f"${v:,.0f}") if kind=="value" else PercentFormatter(1,0))
+    if i==0:
+        ax.legend(loc="lower right",frameon=False,fontsize=8)
+para(f,.211,"These panels use the same starting capital, dates and portfolios. Value compounds daily gains and losses. The second panel shows how far the account fell from its own high. The last panel shows individual gains and losses after costs.")
+f.text(.08,.116,"Open Portfolio replay to select a date or change the trading rule",fontsize=10,color=green,url="https://ceci2-ensemble-lab.breezytoad67.chatgpt.site/#simulation")
+
+f=page("What changed during the stress tests?", "The three panels use the same dates, axes and starting investment")
+stress_marks=pd.to_datetime(stress["mark"])
+stress_names=[("Adaptive router",green),("HMM gate",ochre),("Uniform vote",blue)]
+for i,(key,title) in enumerate([("original","Recorded forecasts"),("language_outage","Language forecasts removed each July"),("reversed_tree","Two price models reversed each July")]):
+    ax=f.add_axes([.15,.681-.197*i,.745,.134])
+    for name,color in stress_names:
+        ax.plot(stress_marks,stress["scenarios"][key][name],label=name,lw=1.25,color=color)
+    ax.set_title(title,loc="left",fontsize=10,weight="bold")
+    ax.set_ylim(7900,14300)
+    ax.yaxis.set_major_formatter(FuncFormatter(lambda v,_: f"${v/1000:.0f}k"))
+    chart_dates(ax)
+    if i==0:
+        ax.legend(loc="upper left",ncol=3,frameon=False,fontsize=8)
+para(f,.211,"Each portfolio starts with $10,000. The adaptive router beat equal votes in all three runs. The original market-state gate finished ahead when language forecasts were removed. Page 9 gives the ending returns and the uncertainty around the recorded-forecast comparison.")
+f.text(.08,.116,"Open Stress tests to choose a scenario and year",fontsize=10,color=green,url="https://ceci2-ensemble-lab.breezytoad67.chatgpt.site/#stress")
+
+f=page("Find a chart from the website", "The PDF shows selected periods and settings from the interactive views")
+chart_index=[
+    ("Data to results","pipeline","2–4, 13–14","Text counts, portfolio metrics and what each source supplies."),
+    ("Summary","overview","4, 6","What happened to $10,000 across periods."),
+    ("Compare results","comparison","6–8, 10–11, 16","Returns by period, the model combinations, and examples of value, drawdown and daily return."),
+    ("Portfolio replay","simulation","16","Recorded value, daily returns and how far the account fell from a high."),
+    ("Model votes","controller","5, 13","Apple’s forecast, the votes behind it and the OpenAI contribution."),
+    ("Stress tests","stress","9, 17","Performance under the recorded forecasts and two simulated failures."),
+    ("System diagram","architecture","1, 5","The decision stages and where the two reinforcement learners fit."),
+    ("Data sources","data","2, 13–15","Headlines by year and company, benchmark prices, sentiment and investment factors."),
+]
+y=.826
+for label,route,pages_in_report,description in chart_index:
+    f.text(.08,y,label,va="top",weight="bold",size=11,color=green,url="https://ceci2-ensemble-lab.breezytoad67.chatgpt.site/#"+route)
+    f.text(.91,y,"Pages "+pages_in_report,va="top",ha="right",size=10,color=muted)
+    y=para(f,y-.024,description,gap=.018)
 
 with PdfPages(OUT/"ensemble-study.pdf",metadata={"Title":"Can a model pick the right forecaster?","Subject":"Historical evaluation of expert routing for trading forecasts"}) as pdf:
     for f in pages:pdf.savefig(f);plt.close(f)
