@@ -1,0 +1,14 @@
+{
+  "sources": [
+    ["Yahoo Finance", "Daily open, high, low, close and reported volume for 22 instruments. Adjusted prices yield features such as recent returns, volatility and drawdown."],
+    ["Jensen, Kelly and Pedersen Global Factor Data", "13 market-wide US factor themes, including value, size and momentum. The factor model uses 21-session theme returns delayed by another 21 sessions. These are shared market series. For example, the value theme is not Apple’s valuation ratio."],
+    ["Company headlines and filings", "Financial News and Stock Price Integration Dataset headlines and US Securities and Exchange Commission EDGAR annual filing excerpts. FinBERT scores the tone. The model records both the tone and whether usable text exists. Headlines expire after 7 days and filings after 370 days."],
+    ["Federal Reserve", "Official policy statements. FinBERT scores their tone. OpenAI, Qwen and Granite separately convert the statement into direction probabilities."]
+  ],
+  "uses": [
+    ["OpenAI Decisions", "The archived model gpt-6-luna read each of 73 Federal Reserve statements on its own and returned probabilities of a rise, little change and a fall in the broad US stock market over five trading sessions. Each eligible statement forecast supplies a shared input across instruments."],
+    ["OpenAI asset digest", "The same hosted model read 107 monthly batches, each covering 22 anonymous instruments. Each instrument supplied its last 5- and 21-session returns, 21-session volatility, and headline and filing tone and availability. The batch also included the most recent earlier Fed statement. The service returned one forecast per instrument, kept until the next refresh."],
+    ["TypeSafe Jev", "The progress report proposed Jev for structured direction classification. This run used OpenAI Decisions for that role. The archived results contain no Jev forecast or Jev-versus-OpenAI comparison."],
+    ["OpenAI research agent", "A separate hosted model, gpt-6-sol, reviewed past results and proposed one setting that controls how strongly the vote counter’s coefficients are constrained. In the five-session experiment the incumbent setting stayed in use."]
+  ]
+}
