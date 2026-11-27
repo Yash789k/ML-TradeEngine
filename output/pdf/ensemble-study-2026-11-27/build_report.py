@@ -118,7 +118,6 @@ for title,explanation in guide["metrics"]:
     y=section(f,y,title,explanation)
 section(f,y,"Where to look next","Pages 4–5 show headline balances and one forecast decision. Page 6 compares years. Pages 7–9 test different ways of combining forecasts and changing inputs. Pages 10–12 contain all results and definitions.")
 
-example=read(ROOT/"site/assets/forecast-example.json")
 f=page("Can a model pick the right forecaster?", "A trading experiment with historical prices and news")
 y=para(f,.82,"Suppose one model reads stock prices and another reads the news. They can disagree about what happens next. We tested whether a computer could learn whose forecast to trust, then simulated buying and selling stocks using its decisions.")
 y=section(f,y,"What happened to $10,000?", "From 2022 through 2025, we compared two ways of combining forecasts with simply holding a fund that tracks large US companies. Each portfolio paid simulated trading costs.")
@@ -130,14 +129,38 @@ for row,name in zip(body,["Adaptive router","Classic MoE","SPY buy and hold"]):
     row.extend([p(four.loc[name,"max_drawdown"]),f"{four.loc[name,'sharpe']:.2f}"])
 table(f,[.08,y-.13,.84,.13],["What the portfolio did","Ending balance","Largest fall","Sharpe"],body,[.57,.17,.14,.12],8.8)
 y=section(f,y-.17,"Why consider the first method?",f"In 2022 all three lost money. The system that rewarded recent accuracy lost {p(abs(rows('five','2022').loc['Adaptive router','net_return']))}, while the jointly trained models lost {p(abs(rows('five','2022').loc['Classic MoE','net_return']))}. The first system also held more cash on average. Keeping money out of stocks can soften a loss and leave less money invested during a recovery.")
-section(f,y,"What can we conclude?","Holding the fund earned the most over these four years. The next page uses one imaginary stock to show exactly what changed between forecasting methods. The later pages give the historical comparisons and the full results. These years were already familiar to the researchers. A future test would be needed to see whether the pattern repeats.")
+section(f,y,"What can we conclude?","Holding the fund earned the most over these four years. The next page follows one recorded forecast for Apple from the model votes to the simulated position. The later pages give the historical comparisons and the full results. These years were already familiar to the researchers. A future test would be needed to see whether the pattern repeats.")
 
-f=page("One stock, two forecasts", "A worked example using invented probabilities")
-y=para(f,.82,example["example"])
-for title, explanation in example["methods"]:
-    y=section(f,y,title,explanation)
-y=section(f,y,"Would the system buy the stock?","If the model gives a rise 60% and a fall 25%, the trading score is 35 percentage points. The fixed rule keeps the five highest scores above five points. Less volatile holdings get larger allocations, up to 15% each. The rest stays in cash. Trades use the next opening price and cost $0.50 per $1,000 bought or sold.")
-section(f,y,"Two kinds of decisions", "Choosing one forecast means deciding whose prediction to use. Portfolio reinforcement learning chooses where to put the money: cash, the S&P 500 fund, or the basket picked by the classic mixture. It learns from portfolio gains and losses after trading costs.")
+f=page("One decision for Apple", "Recorded model votes after the market closed on 22 December 2025")
+sim=read(ROOT/"site/assets/simulation.json")
+detail=read(ROOT/"site/assets/detail-2025.json")
+date="2025-12-22"
+i=sim["dates"].index(date)
+t=detail["dates"].index(date)
+j=sim["symbols"].index("AAPL")
+weights=detail["weights"][t][j]
+votes=detail["probabilities"][t][j]
+ranked=sorted(range(len(weights)),key=lambda k:weights[k],reverse=True)
+top=[(detail["experts"][k],weights[k],votes[k][2]) for k in ranked[:4]]
+ax=f.add_axes([.33,.65,.55,.132])
+ax.barh(range(4),[w for _,w,_ in top],color=green)
+ax.set_yticks(range(4),[name for name,_,_ in top],fontsize=8)
+ax.invert_yaxis()
+ax.xaxis.set_major_formatter(PercentFormatter(1,0))
+ax.set_xlim(0,.50)
+ax.set_title("Share of the vote for the four most influential models",loc="left",fontsize=10)
+ax.bar_label(ax.containers[0],labels=[p(w) for _,w,_ in top],fontsize=8,padding=3)
+
+down,flat,up=[sim[k][i][j] for k in ("down","flat","up")]
+model,weight,vote=top[0]
+y=section(f,.59,"How the votes combine",f"The price-history model called {model} gave Apple a {p(vote)} chance of rising and held {p(weight)} of the vote. Multiplying these numbers gives {100*weight*vote:.1f} percentage points toward the final chance of a rise. Adding all 13 contributions gives {p(up)} up, {p(flat)} little change and {p(down)} down.")
+state=max(sim["posterior"][i])
+y=section(f,y,"What the market estimate tells us",f"The market-state model assigned {state:.2%} to the state with the highest average past return. The vote counter uses market conditions and past accuracy. The market estimate describes the state of the market. Apple’s own forecast still assigns only {p(up)} to a rise.")
+scores=np.array(sim["up"][i])-np.array(sim["down"][i])
+chosen=[k for k in np.argsort(-scores,kind="stable") if scores[k]>.05][:5]
+target=min(.15,(1/sim["vol"][i][j])/sum(1/sim["vol"][i][k] for k in chosen)) if j in chosen else 0
+y=section(f,y,"What the simulator did with the forecast",f"Up minus down gave {100*(up-down):.1f} percentage points. Apple ranked {chosen.index(j)+1} among the five selected instruments. The fixed rule gave less volatile holdings more room, capped each at 15% and targeted {p(target)} for Apple at the next opening price. The simulation charged 50 cents for each 1,000 dollars bought or sold.")
+f.text(.08,y,"Open this recorded decision in Model votes",fontsize=10,color=green,url="https://ceci2-ensemble-lab.breezytoad67.chatgpt.site/#controller")
 
 f=page("Performance across market periods","A negative return means the portfolio ended the year with less money than it started with")
 body=[]
@@ -166,10 +189,12 @@ section(f,y,"How the folds were separated","The 2024 evaluation used only traini
 
 f=page("Text, stress and interpretation","What changed, what coverage allowed, and how far the result travels")
 y=section(f,.82,"What did qualitative data add?",f"The 2023–2025 traditional mixture earned {p(z.loc['Classic MoE','net_return'])} with text and {p(z.loc['MoE without text','net_return'])} after retraining without it. Eligible recent company news appeared on {p(ablation['text_coverage']['news_available'])} of stock-dates; eligible annual filings appeared on {p(ablation['text_coverage']['filing_available'])}. The text model invested a larger share of capital on average. The return difference cannot identify a particular news source as its cause.")
-y=section(f,y,"What happens if an expert breaks?","The stress study suppresses the five language channels each July or exchanges the up and down probabilities of the two tree models. The table gives full-period returns, including subsequent decisions. The two interventions diagnose specific failures in a historical market path.")
+y=section(f,y,"What happens if an expert breaks?","The market-state gate is the proposal’s original vote counter. Both it and the newer router see the same forecasts and market-state estimates. The router updates votes from recent errors in similar conditions. Each July the stress tests remove five language forecasts or reverse two price models.")
 table(f,[.08,y-.15,.84,.15],["What changed","Adaptive weights","Regime gate","Equal vote"],[[label,*[ret(g,"all-2022-2025",n) for n in ["Adaptive router","HMM gate","Uniform vote"]]] for g,label in [("five","Recorded forecasts"),("language_outage","Language unavailable"),("reversed_tree","Reversed tree forecasts")]], [.36,.24,.20,.20])
 y=section(f,y-.19,"What remains uncertain?","The periods were already examined during research. The universe contains overlapping funds and surviving stocks. Current data vintages and language-model pretraining can include information unavailable historically. The simulations use adjusted opening prices, fixed fees and fractional positions. They do not establish real fill quality or prospective profitability.")
-section(f,y,"The strongest next test","Freeze the model pool, training budget, trading rule and benchmark before a new evaluation window. Archive the evidence available at each decision and compare both forecast loss and portfolio results against the same experts under fixed weights.")
+stress=read(ROOT/"site/assets/stress.json")
+interval=next(r for r in stress["uncertainty"] if r["scenario"]=="original" and r["endpoint"]=="net_return")
+section(f,y,"What did adaptive voting improve?",f"With the recorded forecasts, it beat equal votes by {100*interval['difference']:.1f} percentage points. The historical uncertainty interval ran from {100*interval['low']:.1f} to +{100*interval['high']:.1f} points. The market fund earned {p(four.loc['SPY buy and hold','net_return'])} over the same dates. Removing the language forecasts gave the market-state gate the highest return among the three controllers.")
 
 allrows=rows("five","all-2024-2025").sort_values("net_return",ascending=False)
 for idx,chunk in enumerate([allrows.iloc[:24],allrows.iloc[24:]]):

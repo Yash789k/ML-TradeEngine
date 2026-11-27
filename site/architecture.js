@@ -47,7 +47,7 @@ function diagram(id, compact) {
       node(124, 95, 110, 56, ["Market", "experts"]),
       node(240, 95, 112, 56, ["Text", "classifiers"]),
       node(83, 194, 193, 51, ["Mixture-of-experts", "controller"], true),
-      node(83, 280, 193, 51, ["Fixed portfolio policy"]),
+      node(83, 280, 193, 51, ["Trading rule"]),
       node(83, 366, 193, 51, ["Risk limits and", "simulated fills"]),
       phase(8, 488, 90, 60, ["Research", "agent"]),
       phase(124, 488, 105, 60, ["Candidate", "validation"]),
@@ -71,7 +71,7 @@ function diagram(id, compact) {
       node(198, 96, 160, 52, ["Market experts"]),
       node(198, 177, 160, 52, ["Text classifiers"]),
       node(410, 87, 168, 70, ["Mixture-of-experts", "controller"], true),
-      node(618, 94, 148, 56, ["Fixed portfolio", "policy"]),
+      node(618, 94, 148, 56, ["Trading rule"]),
       node(806, 94, 164, 56, ["Risk limits and", "simulated fills"]),
       phase(198, 272, 161, 56, ["Research agent"]),
       phase(411, 272, 166, 56, ["Candidate", "validation"]),
@@ -144,7 +144,7 @@ export function renderArchitecture(el, study, sim, dayIndex) {
   } else {
     row(body, "Market state", "No five-session state record for the selected date.");
   }
-  row(body, "Portfolio policy", "The fixed policy selects up to five instruments with an UP minus DOWN probability above 0.05. Inverse volatility sets their weights, capped at 15% each. Unallocated capital earns zero in cash.");
+  row(body, "Trading rule (fixed policy)", "Subtract the chance of a fall from the chance of a rise. Keep up to five instruments with the highest scores above five percentage points. Give less volatile instruments larger targets, up to 15% of the account each. At the next opening price, buy or sell to reach the targets. Sell holdings that fall out of the selected group and keep spare money in cash.");
   row(body, "Risk-managed simulation", "A regime change raises the entry threshold to 0.15. A trailing price decline over 10% or daily volatility above 3.5% halves the position cap. The simulator limits designated exposure groups to 30%, uses a trailing stop of 2.5 average true ranges, and caps fills at 1% of the previous session’s dollar volume. A 10% portfolio drawdown triggers a five-session pause. Fills at the next open cost five basis points per side.");
   if (review) {
     const outcome = review.accepted
