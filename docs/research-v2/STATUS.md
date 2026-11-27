@@ -215,3 +215,7 @@ The website groups its pages under Study, Models, Results and Data. The opening 
 The pipeline, model map and data pages now lead with diagrams and charts. The six-page PDF uses the same method names and shows the Sharpe comparison and the recorded Apple decision visually.
 
 The report and data page separate quantitative and qualitative inputs. The Yahoo Finance figure uses weekly samples of cached closing prices and the archived adjustment ratios. The matched pipeline comparison uses the 719 shared sessions in 2023–2025.
+
+The annual research-agent view reads recorded decisions and returns for both horizons. No OpenAI-proposed setting was adopted. The five-session random-review setting changed for 2025. The study refits the gate and does not retrain the hosted language forecasters.
+
+The training page plots the recorded Colab objective for the two jointly trained fits and the held-out log loss for the fixed, contextual and single-model voting methods. The report labels these as distinct measurements.

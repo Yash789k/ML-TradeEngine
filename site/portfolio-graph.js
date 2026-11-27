@@ -11,8 +11,11 @@ export const displayPortfolio = name => ({
   'SPY buy and hold':methodLabels.market,
   'Classic MoE':methodLabels.classic,
   'MoE without text':'Classic mixture trained without financial text',
-  'Gate without HMM':'Learned weights without market states',
+  'Gate without HMM':'Mixture of experts without market states',
   'Logistic':'Single logistic regression model',
+  'LLM review':'Language-model proposal (OpenAI)',
+  'Conventional review':'Fixed proposal',
+  'Random review':'Random proposal',
   'Joint neural mixture':methodLabels.joint,
   'Joint experts uniform':methodLabels.jointEqual,
   'Equal weight':'Equal investment across 22 instruments',
@@ -30,21 +33,23 @@ export function portfolioColors(names) {
 
 export const proposalComparison = 'Original pipeline and alternatives';
 const presets = new Map([
-  [proposalComparison, ['HMM gate','Gate without HMM','Uniform vote','Logistic','SPY buy and hold']],
+  [proposalComparison, ['HMM gate','Gate without HMM','Uniform vote','SPY buy and hold']],
   ['Same forecasts, different votes', ['Adaptive router','SPY buy and hold','HMM gate','Uniform vote']],
   ['Choosing a price model', ['RL model router / sequence networks','Context adapter / sequence networks','Fixed mixture / sequence networks']],
   ['With and without financial text', ['Classic MoE','MoE without text','HMM gate','FinBERT logistic']],
   ['Jointly trained experts', ['Joint neural mixture','Joint experts uniform','Classic MoE','SPY buy and hold']],
+  ['Single-model baseline', ['HMM gate','Logistic','SPY buy and hold']],
   ['Research agent', ['LLM review','Conventional review','Random review','HMM gate']],
   ['Trading benchmarks', ['Cash','SPY buy and hold','Equal weight']],
 ]);
 
 const presetQuestions = {
-  [proposalComparison]: 'The proposal pipeline uses learned weights and market-state data. Compare it with the same gate without market states, equal votes, one logistic model and the S&P 500 fund.',
+  [proposalComparison]: 'The proposal pipeline uses learned weights and market-state data. The first three lines use the same forecasters. They compare learned weights with and without market-state inputs, and equal weights. The S&P 500 fund is the benchmark.',
   'Same forecasts, different votes': 'Three controllers start with the same 13 forecasts and use the same trading rule. Equal votes give each forecast the same say. The original market-state gate learns how to weight them. The adaptive router uses recent errors to update the votes. The S&P 500 fund is the investment benchmark.',
   'Choosing a price model': 'When four models read the same price history, does it pay to pick one for each stock? The reinforcement learner picks one, the context adapter blends their votes for each stock, and the fixed mixture keeps the same blend.',
   'With and without financial text': 'Did financial text help the classic mixture? Compare Classic MoE with its retrained version without text. FinBERT reads financial language, while the HMM gate puts text alongside other forecasts.',
   'Jointly trained experts': 'Does learning how much to trust the price, text and market models beat giving each one a third of the vote? The classic mixture uses a different set of experts, and SPY shows what holding the S&P 500 fund earned.',
+  'Single-model baseline': 'Logistic regression is a single forecaster from the original pool. This check asks whether combining forecasts improves on that forecaster under the same trading rule.',
   'Research agent': 'Did letting a language model propose a change improve on a fixed suggestion, a random suggestion or the original HMM gate? Every proposed change faced the same historical checks before the following year.',
   'Trading benchmarks': 'How much did choosing investments matter during this period? Cash stayed in dollars, SPY held the S&P 500 fund, and equal weight split the money across all 22 instruments.',
 };

@@ -50,7 +50,7 @@ def pools(ax):
         bars=ax.bar(np.arange(3)+(i-1)*.248,vals,width=.225,label=label,color=color,zorder=3)
         ax.bar_label(bars,labels=[p(v) for v in vals],padding=3,fontsize=8)
     ax.set_xticks(range(3),["All 13 forecasts","Linear model and trees","Four models that\nread price history"])
-    ax.yaxis.set_major_formatter(PercentFormatter(1,0));ax.set_ylim(-.055,.32);ax.set_ylabel("Cumulative net return")
+    ax.yaxis.set_major_formatter(PercentFormatter(1,0));ax.set_ylim(-.055,.355);ax.set_ylabel("Cumulative net return")
     ax.axhline(0,lw=.8,color=muted);ax.grid(axis="y",color="#e3e8e4");ax.legend(ncol=3,frameon=False,fontsize=8)
 def curves(ax):
     paths=read(ROOT/"site/assets/period-paths.json")["gpu"]
@@ -95,13 +95,13 @@ SITE="https://ceci2-ensemble-lab.breezytoad67.chatgpt.site/#"
 def link(f,y,label,route):
     f.text(.08,y,label,fontsize=9,color=green,url=SITE+route)
 
-def flow(f,y,nodes):
+def flow(f,y,nodes,arrows=True):
     from matplotlib.patches import FancyArrowPatch
     centers=np.linspace(.173,.827,len(nodes))
     for x,(title,detail) in zip(centers,nodes):
         f.text(x,y+.012,title,ha="center",va="center",fontsize=10,weight="bold",color=green)
         f.text(x,y-.025,detail,ha="center",va="center",fontsize=8.5,color=muted,linespacing=1.4)
-    for a,b in zip(centers[:-1],centers[1:]):
+    for a,b in (zip(centers[:-1],centers[1:]) if arrows else []):
         f.add_artist(FancyArrowPatch((a+.083,y),(b-.083,y),transform=f.transFigure,
                                     arrowstyle="->",color=muted,mutation_scale=11))
 
@@ -136,9 +136,9 @@ f=page("Market conditions and portfolio risk", "A historical test of combining f
 flow(f,.747,[("Observe","Prices and volume\nPublic text and factors"),("Forecast","Models give chances\nof up, flat and down"),("Choose votes","Blend forecasts\nor pick one model"),("Simulate","Turn the result into\nnext-open positions")])
 para(f,.635,"The proposal tests whether using market states to weight a fixed set of classifiers improves risk-adjusted performance over individual models and a static ensemble. A separate experiment tests periodic language-model-guided adaptation.")
 proposal=rows("five","all-2023-2025")
-proposal_names=["HMM gate","Gate without HMM","Uniform vote","Logistic","SPY buy and hold"]
-proposal_labels=["Learned weights using\nmarket states","Learned weights without\nmarket states","Equal votes for the\nsame forecasts","Single logistic\nregression model","Hold the S&P 500 fund"]
-proposal_colors=[green,"#a1b6a8",blue,ochre,brick]
+proposal_names=["HMM gate","Gate without HMM","Uniform vote","SPY buy and hold"]
+proposal_labels=["Mixture of experts\nusing market states","Mixture of experts\nwithout market states","Equal votes for the\nsame forecasts","Hold the S&P 500 fund"]
+proposal_colors=[green,"#a1b6a8",blue,brick]
 
 def comparison_bars(axes):
     for col,(ax,field,title) in enumerate(zip(axes,["net_return","max_drawdown","sharpe"],["Return after costs","Largest fall","Sharpe ratio"])):
@@ -153,9 +153,9 @@ def comparison_bars(axes):
         ax.set_title(title,fontsize=9,loc="left",weight="bold")
 
 comparison_bars([f.add_axes([.325+.197*i,.295,.17,.217]) for i in range(3)])
-f.text(.08,.543,"Original pipeline and alternatives  ·  719 matched sessions, 2023–2025",fontsize=10,weight="bold",color=green)
-y=para(f,.23,"The market-state inputs reduced the largest loss compared with the same gate without those inputs. Equal votes had a slightly smaller largest loss, while the single logistic model and market fund had higher Sharpe ratios.",gap=.009)
-para(f,y,"Sharpe compares average daily return with volatility. The separate research-agent experiment kept the existing setting.",gap=.009)
+f.text(.08,.543,"Mixtures and the market benchmark  ·  719 matched sessions, 2023–2025",fontsize=10,weight="bold",color=green)
+y=para(f,.23,"Market-state inputs reduced the largest loss compared with the mixture without those inputs. Equal votes had a slightly smaller largest loss. The market fund had the highest return and Sharpe ratio.",gap=.009)
+para(f,y,"The original mixture refits every year on schedule. The language-model review experiment is on page 9.",gap=.009)
 link(f,.077,"Open the matched balance and drawdown charts","comparison/pipeline")
 chart,axes=plt.subplots(1,3,figsize=(10.4,3.3),gridspec_kw={"wspace":.11})
 chart.subplots_adjust(left=.24,right=.97,bottom=.07,top=.75)
@@ -301,20 +301,58 @@ para(f,.143,"In separate tests, the model router picks one forecast and learns f
 link(f,.077,"See the recorded votes and trade target","controller")
 
 f=page("Which model combinations paid off?", "Each group uses the same 480 trading sessions in 2024–2025")
-pools(f.add_axes([.13,.55,.77,.235]))
-y=para(f,.482,"Weights learned from stock and market data earned 24.2% with four price-history models and lost 1.4% with all 13 forecasts. The same trading rule and costs apply to the three methods within each group.",gap=.009)
+flow(f,.794,[("Fixed learned weights","Same weights within\nan evaluation year"),("Weights learned from data","Weights depend on the\nstock and decision date"),("One forecaster","Reinforcement learning\ngives one model all the weight")],arrows=False)
+pools(f.add_axes([.13,.495,.77,.208]))
+y=para(f,.43,"All nine bars use the same trading rule. Rank rise minus fall, select up to five above five points, cap each at 15%, trade at the next open and charge 50 cents per 1,000 dollars.",gap=.009)
 y=para(f,y,f"With three separately designed forecasters trained together, equal votes earned {p(gpu.loc['Joint experts uniform','net_return'])} and learned votes earned {p(gpu.loc['Joint neural mixture','net_return'])}. The market fund earned {p(gpu.loc['SPY buy and hold','net_return'])} on those dates.",gap=.02)
 f.text(.08,y,"How the original strategies did across years",weight="bold",fontsize=11,color=green)
 body=[[label,*[ret("five",str(year),name) for year in range(2022,2026)],p(four.loc[name,"net_return"])]
-      for name,label in [("Adaptive router","Weights updated using\nrecent forecast errors"),("HMM gate","Learned weights using\nmarket states"),("Uniform vote","Equal votes for the\nsame forecasts"),("SPY buy and hold","Hold the S&P 500 fund")]]
+      for name,label in [("Adaptive router","Weights updated using\nrecent forecast errors"),("HMM gate","Mixture of experts using\nmarket states"),("Uniform vote","Equal votes for the\nsame forecasts"),("SPY buy and hold","Hold the S&P 500 fund")]]
 table(f,[.08,y-.182,.84,.155],["Portfolio","2022","2023","2024","2025","Total"],body,[.30,.14,.14,.14,.14,.14],8.5)
 link(f,.076,"Explore all approaches by return, drawdown and Sharpe","comparison")
+
+def training_curves(ax):
+    for (year,fold),color in zip(joint["folds"].items(),[green,blue]):
+        loss=fold["epoch_train_loss"]
+        ax.plot(range(1,len(loss)+1),loss,marker="o",markersize=2.5,color=color,label=f"{year} evaluation model")
+    ax.set_xlabel("Training epoch")
+    ax.set_ylabel("Training objective")
+    ax.set_xticks([1,3,6,9,12])
+    ax.legend(frameon=False,fontsize=8)
+    style_chart(ax)
+
+held_out=pd.concat([pd.read_csv(gdir/"custom-gates/comparison.csv"),pd.read_csv(gdir/"expert-selector/comparison.csv")])
+held_out=held_out[held_out.period.eq("all")].set_index("model")
+def held_out_scores(ax):
+    groups=["all experts","trees and linear","sequence networks"]
+    labels=["Fixed learned weights","Weights learned from data","One forecaster"]
+    for i,(method,label,color) in enumerate(zip(["Fixed mixture","Context adapter","RL model router"],labels,[blue,green,ochre])):
+        values=[held_out.loc[f"{method} / {pool}","log_loss"] for pool in groups]
+        ax.plot(np.arange(3)+(i-1)*.10,values,marker="o",ls="none",color=color,label=label)
+    ax.set_xticks(range(3),["All 13 forecasts","Linear model and trees","Four price-history models"],fontsize=8)
+    ax.set_ylabel("Held-out log loss")
+    ax.legend(frameon=False,fontsize=7.5,loc="upper right")
+    style_chart(ax)
+
+save_source_plot("joint-mixture-training",training_curves)
+save_source_plot("forecast-comparison-held-out",held_out_scores)
+f=page("Training progress and forecast accuracy", "Two different questions, using the saved Colab measurements")
+f.text(.08,.815,"Training the jointly trained mixture of experts",size=11,weight="bold",color=green)
+training_curves(f.add_axes([.14,.585,.76,.196]))
+para(f,.526,"The objective uses the combined forecast’s log loss plus 0.2 times the individual forecasts’ log loss. Both curves use training data.",gap=.006)
+table(f,[.08,.386,.84,.083],["Test year","Latest training outcome","First test decision","Train / test cases"],
+      [[year,fold["last_training_endpoint"],fold["first_decision"],f"{fold['training_cases']:,} / {fold['test_cases']:,}"]
+       for year,fold in joint["folds"].items()],[.15,.31,.27,.27],8.5)
+f.text(.08,.34,"Forecast accuracy on held-out dates",size=11,weight="bold",color=green)
+held_out_scores(f.add_axes([.14,.132,.76,.171]))
+para(f,.091,"Lower log loss means the forecaster put more probability on what happened.",gap=.006)
+link(f,.059,"Open the training and forecast charts","training")
 
 f=page("How the voting rules held up", "The 2022–2025 stress tests change forecasts while keeping the trading rule fixed")
 stress=read(ROOT/"site/assets/stress.json")
 ax=f.add_axes([.13,.52,.77,.278])
 marks=pd.to_datetime(stress["mark"])
-for name,label,color in [("Adaptive router","Weights updated using\nrecent forecast errors",ochre),("HMM gate","Learned weights using\nmarket states",green),("Uniform vote","Equal votes for the\nsame forecasts",blue)]:
+for name,label,color in [("Adaptive router","Weights updated using\nrecent forecast errors",ochre),("HMM gate","Mixture of experts using\nmarket states",green),("Uniform vote","Equal votes for the\nsame forecasts",blue)]:
     ax.plot(marks,stress["scenarios"]["original"][name],label=label,color=color,lw=1.35)
 ax.yaxis.set_major_formatter(FuncFormatter(lambda v,_:f"${v/1000:.0f}k"))
 ax.legend(loc="upper left",frameon=False,fontsize=8,ncol=3)
@@ -322,10 +360,48 @@ ax.set_title("Portfolio value with the recorded forecasts",fontsize=10,loc="left
 style_chart(ax)
 body=[[label,*[ret(group,"all-2022-2025",n) for n in ["Adaptive router","HMM gate","Uniform vote"]]]
       for group,label in [("five","Recorded"),("language_outage","Language forecasts removed"),("reversed_tree","Two price forecasts reversed")]]
-table(f,[.08,.325,.84,.125],["Scenario","Weights updated using\nrecent forecast errors","Learned weights using\nmarket states","Equal votes for the\nsame forecasts"],body,[.34,.24,.23,.19],7.7)
+table(f,[.08,.325,.84,.125],["Scenario","Weights updated using\nrecent forecast errors","Mixture of experts using\nmarket states","Equal votes for the\nsame forecasts"],body,[.34,.24,.23,.19],7.7)
 y=para(f,.285,"Adaptive votes beat equal votes in all three simulations. The original gate finished first among the three when language forecasts were removed. With recorded forecasts, the S&P 500 fund earned 55.9% and had a larger peak-to-trough loss than the adaptive router.")
 para(f,y,"The 95% interval for the adaptive router’s return advantage over equal votes on recorded forecasts includes zero. These periods had already been examined. A future comparison can test whether the advantage repeats.")
 link(f,.070,"Open all three scenario charts and the daily replay","stress")
+
+f=page("Did the research agent change the model?", "Five-session forecasts, with one scheduled refit per year, 2023–2025")
+review=read(DATA/"five-session/adaptation.json")
+years=[2023,2024,2025]
+review_methods=["HMM gate","LLM review","Conventional review","Random review"]
+review_labels=["Scheduled refit","Language-model proposal","Fixed proposal","Random proposal"]
+review_colors=[green,blue,ochre,brick]
+review_body=[]
+for method,label in zip(review_methods,review_labels):
+    cells=[]
+    for year in years:
+        entry=next((r for r in review if r["year"]==year and r["method"]==method),None)
+        if entry is None:
+            cells.append("Existing setting")
+        elif entry["accepted"]:
+            cells.append(f"Adopted {entry['next_l2']:.1f}")
+        elif entry["proposed_l2"]==entry["next_l2"]:
+            cells.append(f"Kept {entry['next_l2']:.1f}")
+        else:
+            cells.append(f"Kept {entry['next_l2']:.1f} after testing {entry['proposed_l2']:.1f}")
+    review_body.append([label,*cells])
+f.text(.08,.815,"Gate setting used in each evaluation year",size=11,weight="bold",color=green)
+table(f,[.08,.614,.84,.169],["Review method",*years],review_body,[.31,.23,.23,.23],8)
+ax=f.add_axes([.135,.289,.77,.238])
+for i,(method,label,color) in enumerate(zip(review_methods,review_labels,review_colors)):
+    values=[rows("five",str(year)).loc[method,"net_return"] for year in years]
+    ax.bar(np.arange(len(years))+(i-1.5)*.19,values,width=.17,label=label,color=color)
+ax.set_xticks(range(len(years)),years)
+ax.yaxis.set_major_formatter(PercentFormatter(1,0))
+ax.set_ylim(0,.221)
+ax.legend(frameon=False,fontsize=7,ncol=2,loc="upper left")
+ax.set_title("Return after trading costs",fontsize=10,loc="left",weight="bold")
+style_chart(ax)
+agent=proposal.loc["LLM review","net_return"]
+random=proposal.loc["Random review","net_return"]
+y=para(f,.246,f"The scheduled gate and the OpenAI-reviewed gate both earned {p(agent)} over the three years. The random review earned {p(random)}. The OpenAI proposal left the gate setting unchanged in each year. In the separate one-session test, OpenAI proposed a change for 2024, which failed validation.",gap=.01)
+para(f,y,"The agent proposes a setting for the vote counter. Scheduled refitting still takes place. The language models themselves were not retrained.",gap=.005)
+link(f,.069,"See both forecast horizons and every annual decision","reviews")
 
 with PdfPages(OUT/"ensemble-study.pdf",metadata={"Title":"Market conditions and portfolio risk"}) as pdf:
     for f in pages:pdf.savefig(f)
