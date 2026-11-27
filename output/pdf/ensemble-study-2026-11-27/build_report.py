@@ -157,6 +157,7 @@ f.text(.08,.543,"Mixtures and the market benchmark  ·  719 matched sessions, 20
 y=para(f,.23,"Market-state inputs reduced the largest loss compared with the mixture without those inputs. Equal votes had a slightly smaller largest loss. The market fund had the highest return and Sharpe ratio.",gap=.009)
 para(f,y,"The original mixture refits every year on schedule. The language-model review experiment is on page 9.",gap=.009)
 link(f,.077,"Open the matched balance and drawdown charts","comparison/pipeline")
+f.text(.92,.077,"Full results for all 47 approaches on pages 10–12",fontsize=9,color=green,ha="right")
 chart,axes=plt.subplots(1,3,figsize=(10.4,3.3),gridspec_kw={"wspace":.11})
 chart.subplots_adjust(left=.24,right=.97,bottom=.07,top=.75)
 chart.text(.037,.93,"The original pipeline and alternatives",weight="bold",fontsize=15)
@@ -305,7 +306,7 @@ flow(f,.794,[("Fixed learned weights","Same weights within\nan evaluation year")
 pools(f.add_axes([.13,.495,.77,.208]))
 y=para(f,.442,"The green method earned 24.2% with four price-history experts and lost 1.4% with all 13. Its result depended on which experts it could use.",gap=.006)
 y=para(f,y,"Same trading rule for every bar. Rank rise minus fall, take up to five above five points, size by inverse volatility up to 15% each and keep leftover cash. Trade at the next open.",gap=.006)
-y=para(f,y,f"With three separately designed forecasters trained together, equal votes earned {p(gpu.loc['Joint experts uniform','net_return'])} and learned votes earned {p(gpu.loc['Joint neural mixture','net_return'])}. The market fund earned {p(gpu.loc['SPY buy and hold','net_return'])} on those dates.",gap=.02)
+y=para(f,y,f"In the Colab training run, equal votes across three jointly trained forecasters earned {p(gpu.loc['Joint experts uniform','net_return'])}. Learned votes earned {p(gpu.loc['Joint neural mixture','net_return'])}. The market fund earned {p(gpu.loc['SPY buy and hold','net_return'])}.",gap=.02)
 f.text(.08,y,"Four-year comparison from the stress study",weight="bold",fontsize=11,color=green)
 body=[[label,*[ret("five",str(year),name) for year in range(2022,2026)],p(four.loc[name,"net_return"])]
       for name,label in [("Adaptive router","Weights updated using\nrecent forecast errors"),("HMM gate","Mixture of experts using\nmarket states"),("Uniform vote","Equal votes for the\nsame forecasts"),("SPY buy and hold","Hold the S&P 500 fund")]]
@@ -405,6 +406,121 @@ random=proposal.loc["Random review","net_return"]
 y=para(f,.246,f"The scheduled gate and the OpenAI-reviewed gate both earned {p(agent)} over the three years. The random review earned {p(random)}. The OpenAI proposal left the gate setting unchanged in each year. In the separate one-session test, OpenAI proposed a change for 2024, which failed validation.",gap=.01)
 para(f,y,"The agent proposes a setting for the vote counter. Scheduled refitting still takes place. The language models themselves were not retrained.",gap=.005)
 link(f,.069,"See both forecast horizons and every annual decision","reviews")
+
+matched = period("five", "all-2024-2025")
+all_results = rows("five", matched["id"])
+forecast_models = {
+    "Logistic", "XGBoost", "LightGBM", "LSTM", "GRU", "TCN", "Patch Transformer",
+    "JKP factors", "FinBERT logistic", "OpenAI Decisions", "OpenAI asset digest",
+    "Qwen statement", "Granite MoE statement", "Training prior",
+}
+trading_rules = {
+    "Classic MoE every five sessions", "HMM gate every five sessions",
+    "HMM gate dynamic", "MoE + offline RL",
+}
+benchmark_models = {
+    "SPY buy and hold", "Cash", "Equal weight", "21-session momentum",
+    "Exposure-matched SPY", "SPY at RL exposure", "SPY at Classic MoE exposure",
+    "SPY at HMM gate exposure",
+}
+agent_models = {"LLM review", "Conventional review", "Random review"}
+mixture_models = set(all_results.index) - forecast_models - trading_rules - benchmark_models - agent_models
+result_labels = {
+    "Adaptive router":"Weights updated using recent forecast errors",
+    "Classic MoE":"Classic mixture of experts",
+    "HMM gate":"Mixture of experts using market states",
+    "Gate without HMM":"Mixture of experts without market states",
+    "Uniform vote":"Equal votes for the same forecasts",
+    "Joint neural mixture":"Jointly trained mixture of experts",
+    "Joint experts uniform":"Same three trained models with equal weights",
+    "MoE without text":"Classic mixture trained without financial text",
+    "Classic MoE every five sessions":"Classic mixture, trade every five sessions",
+    "HMM gate every five sessions":"Market-state mixture, trade every five sessions",
+    "HMM gate dynamic":"Market-state mixture with dynamic risk limits",
+    "MoE + offline RL":"Classic mixture with a learned portfolio allocator",
+    "SPY buy and hold":"Hold the S&P 500 fund",
+    "Equal weight":"Equal investment across 22 instruments",
+    "SPY at RL exposure":"S&P 500 fund at the learned allocator’s invested share",
+    "SPY at Classic MoE exposure":"S&P 500 fund at the classic mixture’s invested share",
+    "SPY at HMM gate exposure":"S&P 500 fund at the market-state mixture’s invested share",
+    "Exposure-matched SPY":"S&P 500 fund at the compared portfolio’s invested share",
+    "LLM review":"Language-model proposal (OpenAI)",
+    "Conventional review":"Fixed proposal",
+    "Random review":"Random proposal",
+    "Logistic":"Logistic regression",
+    "JKP factors":"Jensen, Kelly and Pedersen factors",
+    "Training prior":"Historical class frequencies",
+}
+pool_labels = {
+    "all experts":"all 13 forecasts",
+    "trees and linear":"logistic regression and trees",
+    "sequence networks":"four price-history models",
+}
+controller_labels = {
+    "Context adapter":"Weights learned from stock and market data",
+    "Fixed mixture":"Fixed learned weights",
+    "RL model router":"Pick one forecaster with reinforcement learning",
+}
+
+def chart_label(name):
+    method, separator, pool = name.partition(" / ")
+    if separator:
+        return f"{controller_labels[method]}\n{pool_labels[pool]}"
+    return "\n".join(textwrap.wrap(result_labels.get(name, name), width=47))
+
+def results_chart(fig, groups, bottom, height):
+    entries = []
+    for heading, names in groups:
+        if heading:
+            entries.append((heading, None))
+        ranked = all_results.loc[sorted(names)].sort_values("net_return", ascending=False)
+        entries.extend((chart_label(name), record) for name, record in ranked.iterrows())
+    label_ax = fig.add_axes([.08,bottom,.325,height])
+    label_ax.set_ylim(len(entries)-.5,-.5)
+    label_ax.axis("off")
+    for i,(label,record) in enumerate(entries):
+        label_ax.text(0,i,label,va="center",fontsize=7.3 if record is not None else 8,
+                      weight="normal" if record is not None else "bold",
+                      color=ink if record is not None else green)
+    columns = [
+        ("net_return","Return after costs",green,(-.10,.88),p),
+        ("max_drawdown","Largest fall",ochre,(0,.32),p),
+        ("sharpe","Sharpe ratio",blue,(-.18,2.19),lambda value:f"{round(value,2)+0.0:.2f}"),
+    ]
+    for j,(key,title,color,limits,format_value) in enumerate(columns):
+        ax = fig.add_axes([.43+.17*j,bottom,.151,height])
+        ax.set_ylim(len(entries)-.5,-.5)
+        ax.set_xlim(*limits)
+        ax.set_title(title,loc="left",fontsize=8.5,weight="bold",pad=6)
+        ax.axis("off")
+        ax.axvline(0,color="#cbd5cf",lw=.65)
+        for i,(_,record) in enumerate(entries):
+            if record is None:
+                continue
+            value = record[key]
+            if pd.notna(value):
+                ax.barh(i,value,height=.50,color=color)
+            ax.annotate(format_value(value) if pd.notna(value) else "—",
+                        (max(0,value) if pd.notna(value) else 0,i),
+                        xytext=(3,0),textcoords="offset points",va="center",fontsize=7.2)
+
+date_label = f"{matched['sessions']} matched decision dates from {matched['start']} to {matched['end']}"
+f=page("All results: forecast combinations", date_label)
+results_chart(f,[(None,mixture_models)],.238,.581)
+y=para(f,.204,"These approaches use the same policy. Subtract the chance of a fall from the chance of a rise and buy up to five instruments scoring above five points. Give quieter instruments more weight, up to 15% each. Keep the balance in cash. Trade at the next open for $0.50 per $1,000 traded.",gap=.006)
+para(f,y,"The two jointly trained rows here come from the main five-session study. Page 6 shows the separate Colab fits on the same dates.",gap=.006)
+link(f,.062,"Open the five-session comparison charts and choose a period","comparison")
+
+f=page("All results: individual forecasters", date_label)
+results_chart(f,[(None,forecast_models)],.354,.465)
+para(f,.314,"Each row runs the same portfolio policy using one source of direction probabilities. Historical class frequencies predict the same probabilities for every instrument. That row gives the individual forecasts a simple benchmark.",gap=.008)
+para(f,.225,"Return includes simulated trading costs over both years. Largest fall is the worst drop from a previous account high. Sharpe measures return relative to daily variability.",gap=.008)
+
+f=page("All results: policies and benchmarks", date_label)
+results_chart(f,[("Trading policies",trading_rules),("Investment benchmarks",benchmark_models),
+                 ("Research-agent reviews",agent_models)],.195,.624)
+para(f,.149,"The learned allocator chooses the classic mixture’s basket, the S&P 500 fund, or cash. The five-session policies trade less often. The dynamic policy adds risk limits. The research agent proposes changes to forecast weights before the standard trading policy runs.",gap=.008)
+link(f,.059,"Open the one-session, stress-test and other date comparisons","comparison")
 
 with PdfPages(OUT/"ensemble-study.pdf",metadata={"Title":"Market conditions and portfolio risk"}) as pdf:
     for f in pages:pdf.savefig(f)
