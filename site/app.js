@@ -66,15 +66,22 @@ async function simulation(ticket){
 async function controller(ticket){
  const sim=await load('simulation');if(ticket!==token)return;index=Math.min(index??sim.dates.length-1,sim.dates.length-1);
  root.innerHTML=head('How the market-state gate combines votes','This is the proposal’s original learned mixture. It combines 13 forecasts for one instrument and date, then sends its combined forecast to the fixed trading rule.')+
- '<p class="note comparison-guide"><a class="link" href="assets/ensemble-study.pdf#page=5">See the Apple decision explained in the report</a> · <a class="link" href="#models">What each model reads and returns</a> · <a class="link" href="assets/ensemble-study.pdf#page=19">How the weights and rewards work</a></p>'+
- '<div class="controls">'+field('ticker','Instrument',select('ticker',sim.symbols,asset))+field('when','Decision date',select('when',sim.dates,sim.dates[index]))+'</div><div class="controllergrid"><section class="sheet"><h2>Expert weights</h2><div id="bars"></div></section><section class="sheet"><h2>Combined forecast</h2><div id="classification"></div><p class="note" id="voteCalculation"></p><p class="note" id="targetDecision"></p><hr class="rule"><h3>Market state probabilities</h3><div id="states"></div><hr class="rule"><p class="note">Weights use filtered market conditions and earlier expert accuracy. Outcomes enter memory only after their forecast window closes.</p></section></div><section class="bottom"><div class="sectionhead"><h2>Forecast contributions</h2></div><div id="expertTable"></div></section>';
+ '<p class="note comparison-guide"><a class="link" href="assets/ensemble-study.pdf#page=4">See the Apple decision explained in the report</a> · <a class="link" href="#models">What each model reads and returns</a></p>'+
+ '<div class="controls vote-controls">'+field('ticker','Instrument',select('ticker',sim.symbols,asset))+
+ field('when','Decision date',select('when',sim.dates,sim.dates[index]))+'</div>'+
+ '<div class="controllergrid vote-grid"><section class="sheet"><h2>Combined forecast</h2><div id="classification"></div>'+
+ '<hr class="rule"><h3>Next-open target</h3><p class="note" id="targetDecision"></p>'+
+ '<details class="protocol vote-details"><summary>Market conditions the vote counter used</summary><div id="states"></div>'+
+ '<p class="note">The vote counter also uses earlier model accuracy. Forecast outcomes enter its history after the forecast window closes.</p></details></section>'+
+ '<section class="sheet"><h2>How much each forecast counts</h2><div id="bars"></div><p class="note" id="voteCalculation"></p></section></div>'+
+ '<details class="protocol bottom vote-details"><summary>All forecasts and what each added to the chance of a rise</summary><div id="expertTable"></div></details>';
  const fixedTargets=simulate(sim).positions;
  let revision=0;
  async function show(){const n=++revision;const date=sim.dates[index],detail=await load('detail-'+date.slice(0,4));if(n!==revision||ticket!==token)return;
  const t=detail.dates.indexOf(date),j=sim.symbols.indexOf(asset),w=detail.weights[t][j],p=detail.probabilities[t][j];
  const ranks=detail.experts.map((name,k)=>({name,k,w:w[k]})).sort((a,b)=>b.w-a.w);
- el('bars').innerHTML=ranks.map(x=>'<div class="weightrow"><span>'+esc(x.name)+'</span><span class="track"><i style="width:'+Math.min(100,100*x.w/Math.max(...w))+'%"></i></span><strong>'+pct(x.w,1)+'</strong></div>').join('');
- const q=[sim.down[index][j],sim.flat[index][j],sim.up[index][j]],labs=['DOWN','FLAT','UP'],cs=['#ac7744','#a3aba1','#197257'];
+ el('bars').innerHTML=ranks.map(x=>'<div class="weightrow"><span>'+esc(x.name)+'</span><span class="track"><i style="width:'+100*x.w+'%"></i></span><strong>'+pct(x.w,1)+'</strong></div>').join('');
+ const q=[sim.down[index][j],sim.flat[index][j],sim.up[index][j]],labs=['Fall','Little change','Rise'],cs=['#ac7744','#a3aba1','#197257'];
  el('classification').innerHTML='<div class="probs">'+q.map((s,k)=>'<i style="width:'+100*s+'%;background:'+cs[k]+'"></i>').join('')+'</div><div class="probkey">'+labs.map((l,k)=>'<span>'+l+' '+pct(q[k],1)+'</span>').join('')+'</div>';
  const top = ranks[0];
  const upContribution = (100*top.w*p[top.k][2]).toFixed(2);
@@ -88,7 +95,7 @@ async function controller(ticket){
    return other>score || (other===score && k<j);
  }).length;
  const decision=target ? 'The fixed rule targeted '+pct(target.weight,1)+' of the account at the next open.'
-  : score>.05 ? 'It cleared the minimum but ranked '+(higher+1)+' of '+sim.symbols.length+' by score. Only the five highest qualifying instruments received a target.'
+  : score>.05 ? 'The target was 0%. It cleared the minimum but ranked '+(higher+1)+' of '+sim.symbols.length+' by score. The rule selects only the five highest scores.'
   : 'The fixed rule set the next-open target to zero because the score did not exceed five percentage points.';
  el('targetDecision').textContent=asset+' scored '+points+' percentage points after subtracting its down probability from its up probability. '+decision;
  el('states').innerHTML=table(['State','Probability'],sim.posterior[index].map((v,k)=>[['Lower mean return','Middle mean return','Higher mean return'][k],pct(v,2)]));
@@ -110,7 +117,7 @@ async function stress(ticket){
  '<div class="controls">'+field('scenario','Scenario',select('scenario',Object.values(scenarios),scenarios[scenario]))+
  field('period','Evaluation window',select('period',['All years','2022','2023','2024','2025'],stressPeriod==='all'?'All years':stressPeriod))+'</div>'+
  '<div class="sheet"><div class="metrics">'+metric('Adaptive router return','routerReturn')+metric('Uniform vote return','voteReturn')+metric('Router drawdown','routerDD')+'</div><canvas class="chart" id="stressChart" role="img" aria-label="Return paths under the selected market stress"></canvas>'+
- legend(series.map(s=>[s.name,s.color]))+'<p class="note">'+titles[scenario]+'</p><p class="note" id="stressReading"></p><details class="protocol pipeline-universe"><summary>Why compare with the market-state gate?</summary><p class="note">It is the controller from the original proposal. Both controllers see the same forecasts and hidden Markov model estimates of market conditions. The original gate learned how to combine those inputs. The adaptive router updates voting shares using recent forecast errors in similar market conditions. Equal votes show how the same forecast set did with no learned voting rule. To test the market-state input itself, compare HMM gate with Gate without HMM in Compare results.</p></details><p class="note"><a class="link" href="assets/ensemble-study.pdf#page=9">Read the stress-test findings in the report</a></p></div><section class="bottom"><div class="sectionhead"><h2>Portfolio outcomes</h2></div>'+
+ legend(series.map(s=>[s.name,s.color]))+'<p class="note">'+titles[scenario]+'</p><p class="note" id="stressReading"></p><details class="protocol pipeline-universe"><summary>Why compare with the market-state gate?</summary><p class="note">It is the controller from the original proposal. Both controllers see the same forecasts and hidden Markov model estimates of market conditions. The original gate learned how to combine those inputs. The adaptive router updates voting shares using recent forecast errors in similar market conditions. Equal votes show how the same forecast set did with no learned voting rule. To test the market-state input itself, compare HMM gate with Gate without HMM in Compare results.</p></details><p class="note"><a class="link" href="assets/ensemble-study.pdf#page=6">Read the stress-test findings in the report</a></p></div><section class="bottom"><div class="sectionhead"><h2>Portfolio outcomes</h2></div>'+
  table(['Portfolio','Net return','Max drawdown','Sharpe','Log loss'],all.map(r=>[r.model,pct(r.net_return,2),pct(r.max_drawdown,2),num(r.sharpe),num(r.log_loss,4)]))+'</section><section class="bottom"><div class="sectionhead"><h2>Days around regime changes</h2></div>'+
  table(['Controller','Sessions','Mean daily return','5th percentile day','Log loss'],data.conditional.filter(x=>x.scenario===scenario&&x.group==='transition').map(r=>[r.model,r.sessions,pct(r.mean_net_daily_return,2),pct(r.daily_return_p05,2),num(r.log_loss,4)]))+
  '<p class="note">The transition table spans all four years and includes the five observed sessions beginning at each state change. 2022 was selected as a known bear market. Results describe historical resilience. The block-bootstrap intervals for the unaltered forecasts include zero.</p></section>';

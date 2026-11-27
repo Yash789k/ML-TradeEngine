@@ -32,3 +32,6 @@ h1,h2,h3,p{margin:0}.head{margin:36px 0 24px;display:flex;justify-content:space-
 
 .model-map{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,5vw,70px);margin-top:24px}.model-map dt{border-top:1px solid var(--line);padding-top:13px;font-weight:650}.model-map dd{margin:5px 0 13px}.model-map p{font-size:14px;line-height:1.5;color:var(--muted);margin:4px 0}.model-map strong{color:var(--ink)}
 @media(max-width:700px){.model-map{grid-template-columns:1fr}}
+
+.vote-controls label{display:flex;flex-direction:column;gap:var(--gap);font-size:14px;color:var(--muted)}.vote-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.33fr);align-items:start}.vote-grid .weightrow{grid-template-columns:minmax(106px,1.4fr) minmax(46px,2fr) 46px}.vote-grid .note{margin-top:8px}.vote-details{margin-top:18px}
+@media(max-width:700px){.vote-grid{grid-template-columns:1fr}.vote-controls select{max-width:100%}}

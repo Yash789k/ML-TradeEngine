@@ -207,3 +207,5 @@ The guide now plots the annual text records and compares matched returns, drawdo
 The [data provenance guide](../../site/assets/forecast-sources.json) explains the data sources, the two hosted forecast inputs and the separate research-agent experiment. The report builder derives the company chart and the Apple example from the archived source receipts and the recorded decision.
 
 The [model input and output map](../../site/assets/model-map.json) connects the forecasters, controllers and trading components to their observed inputs. The website and report use this same map and label the matched evaluation windows separately from training histories.
+
+The current illustrated report is six pages. Its pipeline, data charts, model map, worked forecast and matched results appear in the main text. The site retains the full interactive breakdowns and links directly to the matching report pages.
