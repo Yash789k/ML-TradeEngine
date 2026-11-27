@@ -65,7 +65,7 @@ async function simulation(ticket){
 async function controller(ticket){
  const sim=await load('simulation');if(ticket!==token)return;index=Math.min(index??sim.dates.length-1,sim.dates.length-1);
  root.innerHTML=head('Who gets a vote?','For one stock and date, each model predicts a rise, a fall or little change over five trading days. A larger weight gives its prediction more influence on the final forecast.')+
- '<p class="note comparison-guide"><a class="link" href="assets/ensemble-study.pdf#page=5">See the Apple decision explained in the report</a></p>'+
+ '<p class="note comparison-guide"><a class="link" href="assets/ensemble-study.pdf#page=5">See the Apple decision explained in the report</a> · <a class="link" href="assets/ensemble-study.pdf#page=19">How the weights and rewards work</a></p>'+
  '<div class="controls">'+field('ticker','Instrument',select('ticker',sim.symbols,asset))+field('when','Decision date',select('when',sim.dates,sim.dates[index]))+'</div><div class="controllergrid"><section class="sheet"><h2>Expert weights</h2><div id="bars"></div></section><section class="sheet"><h2>Combined forecast</h2><div id="classification"></div><p class="note" id="targetDecision"></p><hr class="rule"><h3>Market state probabilities</h3><div id="states"></div><hr class="rule"><p class="note">Weights use filtered market conditions and earlier expert accuracy. Outcomes enter memory only after their forecast window closes.</p></section></div><section class="bottom"><div class="sectionhead"><h2>Forecast contributions</h2></div><div id="expertTable"></div></section>';
  const fixedTargets=simulate(sim).positions;
  let revision=0;

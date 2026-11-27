@@ -116,7 +116,7 @@ f=page("How to read the scores", "Forecast scores and investment results answer 
 y=para(f,.824,"The same stock forecast can be scored as a prediction and used to simulate a trade. Forecast scores use the direction that eventually happened. Portfolio scores use the account balance after the trading rule and costs.")
 for title,explanation in guide["metrics"]:
     y=section(f,y,title,explanation)
-section(f,y,"Where to look next","Pages 4–5 show headline balances and one forecast decision. Page 6 compares years. Pages 7–9 test different ways of combining forecasts and changing inputs. Pages 10–12 contain the full results and definitions. Page 18 matches each website chart to its report page.")
+section(f,y,"Where to look next","Pages 4–5 show headline balances and one forecast decision. Page 6 compares years. Pages 7–9 test different ways of combining forecasts and changing inputs. Pages 10–12 contain the full results and definitions. Page 18 maps the charts. Page 19 explains votes and learning goals.")
 
 f=page("Can a model pick the right forecaster?", "A trading experiment with historical prices and news")
 y=para(f,.82,"Suppose one model reads stock prices and another reads the news. They can disagree about what happens next. We tested whether a computer could learn whose forecast to trust, then simulated buying and selling stocks using its decisions.")
@@ -310,7 +310,7 @@ chart_index=[
     ("Summary","overview","4, 6","What happened to $10,000 across periods."),
     ("Compare results","comparison","6–8, 10–11, 16","Returns by period, the model combinations, and examples of value, drawdown and daily return."),
     ("Portfolio replay","simulation","16","Recorded value, daily returns and how far the account fell from a high."),
-    ("Model votes","controller","5, 13","Apple’s forecast, the votes behind it and the OpenAI contribution."),
+    ("Model votes","controller","5, 13, 19","Apple’s forecast, the votes behind it and the OpenAI contribution."),
     ("Stress tests","stress","9, 17","Performance under the recorded forecasts and two simulated failures."),
     ("System diagram","architecture","1, 5","The decision stages and where the two reinforcement learners fit."),
     ("Data sources","data","2, 13–15","Headlines by year and company, benchmark prices, sentiment and investment factors."),
@@ -320,6 +320,12 @@ for label,route,pages_in_report,description in chart_index:
     f.text(.08,y,label,va="top",weight="bold",size=11,color=green,url="https://ceci2-ensemble-lab.breezytoad67.chatgpt.site/#"+route)
     f.text(.91,y,"Pages "+pages_in_report,va="top",ha="right",size=10,color=muted)
     y=para(f,y-.024,description,gap=.018)
+
+f=page("How the weights and rewards work", "The forecast controller acts first. The portfolio decision comes next.")
+y=.824
+for title,explanation in guide["objectives"]:
+    y=section(f,y,title,explanation)
+section(f,y,"What happened in the matched test",f"With four price-history models, picking one earned {p(gpu.loc['RL model router / sequence networks','net_return'])} after costs in 2024–2025. Fixed votes earned {p(gpu.loc['Fixed mixture / sequence networks','net_return'])} and changing the blend earned {p(gpu.loc['Context adapter / sequence networks','net_return'])}. Compare this result with the other model groups on page 7.")
 
 with PdfPages(OUT/"ensemble-study.pdf",metadata={"Title":"Can a model pick the right forecaster?","Subject":"Historical evaluation of expert routing for trading forecasts"}) as pdf:
     for f in pages:pdf.savefig(f);plt.close(f)

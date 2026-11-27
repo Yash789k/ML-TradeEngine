@@ -64,6 +64,19 @@ export function pipelineView(root, guide, coverage, data, head) {
   source.onchange = updateCoverage;
   updateCoverage();
 
+  const objectives = document.createElement('details');
+  objectives.className = 'protocol pipeline-universe';
+  objectives.innerHTML = '<summary>How are weights and reinforcement learning used?</summary><dl></dl>';
+  const methods = objectives.querySelector('dl');
+  for (const [title, explanation] of guide.objectives) {
+    const label = document.createElement('dt');
+    const detail = document.createElement('dd');
+    label.textContent = title;
+    detail.textContent = explanation;
+    methods.append(label, detail);
+  }
+  stages.children[2].append(objectives);
+
   stages.children[3].insertAdjacentHTML('beforeend',
     '<p><a class="link" href="#controller">See the recorded forecast and next-open target for one instrument</a></p>');
 
