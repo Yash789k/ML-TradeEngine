@@ -83,10 +83,12 @@ async function controller(ticket, method){
    return;
  }
  const sim=await load('simulation');if(ticket!==token)return;index=Math.min(index??sim.dates.length-1,sim.dates.length-1);
- root.innerHTML=head(methodLabels.original,'This is the proposal’s original learned mixture. It combines 13 forecasts for one instrument and date, then sends its combined forecast to the fixed trading rule.')+
- '<p class="note comparison-guide"><a class="link" href="assets/ensemble-study.pdf#page=5">See the Apple decision explained in the report</a> · <a class="link" href="#models">What each model reads and returns</a></p>'+
+ root.innerHTML=head(methodLabels.original,'This is one recorded decision from the original mixture of experts with its scheduled annual refit.')+
+ '<p class="note comparison-guide"><a class="link" href="assets/ensemble-study.pdf#page=5">Apple example in the report</a> · <a class="link" href="#comparison/pipeline">See this mixture in the results chart</a></p>'+
  '<div class="controls vote-controls">'+votePicker('voteMethod','Voting method',voteOptions,'original')+field('ticker','Instrument',select('ticker',sim.symbols,asset))+
  field('when','Decision date',select('when',sim.dates,sim.dates[index]))+'</div>'+
+ '<ol class="model-flow adapter-flow" aria-label="This decision in the original pipeline"><li><strong>13 forecasts</strong><ul><li>Each predicts the stock’s direction</li></ul></li><li><strong>Mixture of experts</strong><ul><li>Combine them by vote share</li></ul></li><li><strong>Trading rule</strong><ul><li>Set the next-open share of the account</li></ul></li></ol>'+
+
  '<div class="controllergrid vote-grid"><section class="sheet"><h2>Combined forecast</h2><div id="classification"></div>'+
  '<hr class="rule"><h3>Next-open target</h3><p class="note" id="targetDecision"></p>'+
  '<details class="protocol vote-details"><summary>Market conditions the vote counter used</summary><div id="states"></div>'+
