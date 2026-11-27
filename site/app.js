@@ -1,3 +1,4 @@
+import {overview} from './overview.js';
 import {coverageTable, glossaryView} from './terms.js';
 import {simulate,drawChart} from './simulator.js';
 import {comparisonView} from './comparison.js';
@@ -33,18 +34,18 @@ function bindTimeline(dates){
 function bindChart(dates){const c=el('mainChart');on('mainChart','click',e=>{stop();const r=c.getBoundingClientRect(),pad=r.width<500?42:55;index=Math.round(Math.max(0,Math.min(1,(e.clientX-r.left-pad)/(r.width-pad-10)))*(dates.length-1));el('dateRange').value=index;el('asof').textContent=displayDate(dates[index]);onStep();});}
 function dd(values,start){let peak=start,worst=0;for(const v of values){peak=Math.max(peak,v);worst=Math.max(worst,1-v/peak)}return worst;}
 function modeButtons(){return '<div class="pilltab"><button id="recorded" class="'+(mode==='Recorded'?'on':'')+'">Recorded</button><button id="custom" class="'+(mode==='Custom'?'on':'')+'">What if</button></div>';}
-function plotTabs(){return '<div class="pilltab"><button id="equity" class="'+(chartMode==='Equity'?'on':'')+'">Equity</button><button id="drawdown" class="'+(chartMode==='Equity'?'':'on')+'">Drawdown</button></div>';}
+function plotTabs(){return '<div class="pilltab"><button id="equity" class="'+(chartMode==='Equity'?'on':'')+'">Portfolio value</button><button id="drawdown" class="'+(chartMode==='Equity'?'':'on')+'">Fall from peak</button></div>';}
 function tabsChart(){for(const [id,name] of [['equity','Equity'],['drawdown','Drawdown']])on(id,'click',()=>{chartMode=name;el('equity').classList.toggle('on',chartMode==='Equity');el('drawdown').classList.toggle('on',chartMode==='Drawdown');paint()});}
 async function simulation(ticket){
  const [study,sim]=await Promise.all([load('study-'+horizon),load('simulation')]);if(ticket!==token)return;
  const custom=mode==='Custom';if(index==null)index=study.dates.length-1;index=Math.min(index,study.dates.length-1);
  const customFields=[['fee','Cost per side',fee,0,30,1,' bps'],['cap','Position cap',cap,1,25,1,'%'],['threshold','Signal threshold',threshold,0,35,1,'%']].map(([id,title,v,l,h,s,u])=>'<label><span class="rangeval">'+title+'<output id="'+id+'val">'+v+u+'</output></span><input id="'+id+'" type="range" min="'+l+'" max="'+h+'" step="'+s+'" value="'+v+'"></label>').join('');
- root.innerHTML=head('Portfolio replay','2023–2025 · US equities and ETFs · Simulated next-open fills','<button id="export">'+icon('download')+'Export</button>')+
- '<div class="grid"><section class="plotarea"><div class="metrics">'+metric('Portfolio value','value')+metric('Total return','return')+metric('Max drawdown','dd')+'</div><div class="tabrow">'+plotTabs()+'<span class="tagtext">USD</span></div><canvas class="chart" id="mainChart" role="img" aria-label="Portfolio and benchmark values over the selected sessions"></canvas><div id="legend"></div>'+timeline(study.dates.length)+'</section><aside class="settings"><h2>Simulation settings</h2>'+modeButtons()+
+ root.innerHTML=head('Portfolio replay','Follow a simulated portfolio through 2023–2025. It uses forecasts made after the market closes and trades at the next opening price.','<button id="export">'+icon('download')+'Export</button>')+
+ '<div class="grid"><section class="plotarea"><div class="metrics">'+metric('Portfolio value','value')+metric('Total return','return')+metric('Largest fall from a peak','dd')+'</div><div class="tabrow">'+plotTabs()+'<span class="tagtext">USD</span></div><canvas class="chart" id="mainChart" role="img" aria-label="Portfolio and benchmark values over the selected sessions"></canvas><div id="legend"></div>'+timeline(study.dates.length)+'</section><aside class="settings"><h2>Simulation settings</h2>'+modeButtons()+
  (custom?field('capital','Starting capital','<input id="capital" type="number" step="1000" min="100" max="10000000" value="'+capital+'">')+customFields:
  field('strategy','Portfolio',select('strategy',study.models,model))+field('horizon','Forecast horizon',select('horizon',['5 sessions','1 session'],horizon+' session'+(horizon===5?'s':''))))+
  field('benchmark','Compare with',select('benchmark',[...(custom?[]:['Exposure-matched SPY']),'SPY buy and hold','Equal weight','Uniform vote','Cash','21-session momentum'],bench))+
- '<p class="note">'+(custom?'Five-session gate forecasts. Changes recalculate holdings, costs and cash at each opening.':'Annual folds start and finish in cash. All portfolios pay 5 bps per side.')+'</p></aside></div>'+
+ '<p class="note">'+(custom?'Five-session gate forecasts. Changes recalculate holdings, costs and cash at each opening.':'Each annual test starts and ends in cash. Buying or selling $1,000 costs 50 cents.')+'</p></aside></div>'+
  '<section class="bottom"><div class="sectionhead"><h2>'+(custom?'Positions at the next open':'Benchmark comparison')+'</h2><span class="tagtext" id="subdate"></span></div><div id="records"></div></section>';
  let calculated;let curve,benchmark,strategylab;
  function recalc(){calculated=custom?simulate(sim,{capital,fee,cap,threshold}):null;curve=custom?calculated.curve:study.equity[model];benchmark=study.equity[bench].map(v=>v*(custom?capital:10000)/10000);strategylab=custom?'Custom gate policy':model;el('legend').innerHTML=legend([[strategylab,colors[0]],[bench,colors[1]]]);}
@@ -61,7 +62,7 @@ async function simulation(ticket){
 }
 async function controller(ticket){
  const sim=await load('simulation');if(ticket!==token)return;index=Math.min(index??sim.dates.length-1,sim.dates.length-1);
- root.innerHTML=head('Expert controller','Five-session forecasts · Learned mixture weights for each instrument')+
+ root.innerHTML=head('Who gets a vote?','For one stock and date, each model predicts a rise, a fall or little change over five trading days. A larger weight gives its prediction more influence on the final forecast.')+
  '<div class="controls">'+field('ticker','Instrument',select('ticker',sim.symbols,asset))+field('when','Decision date',select('when',sim.dates,sim.dates[index]))+'</div><div class="controllergrid"><section class="sheet"><h2>Expert weights</h2><div id="bars"></div></section><section class="sheet"><h2>Combined forecast</h2><div id="classification"></div><hr class="rule"><h3>Market state probabilities</h3><div id="states"></div><hr class="rule"><p class="note">Weights use filtered market conditions and earlier expert accuracy. Outcomes enter memory only after their forecast window closes.</p></section></div><section class="bottom"><div class="sectionhead"><h2>Forecast contributions</h2></div><div id="expertTable"></div></section>';
  let revision=0;
  async function show(){const n=++revision;const date=sim.dates[index],detail=await load('detail-'+date.slice(0,4));if(n!==revision||ticket!==token)return;
@@ -85,7 +86,7 @@ async function stress(ticket){
  const methods=['Adaptive router','HMM gate','Uniform vote'];
  const series=methods.map((name,j)=>{const full=data.scenarios[scenario][name],base=ids[0]===0?10000:full[ids[0]-1];return {name,color:colors[j],values:ids.map(i=>full[i]/base*10000)}});
  const titles={original:'All 13 experts available.',language_outage:'Each July, the five text and language forecasts become unavailable. Remaining weights renormalize.',reversed_tree:'Each July, both boosted-tree experts exchange their UP and DOWN probabilities.'};
- root.innerHTML=head('Controller stress tests','2022–2025 · Four chronological folds · 959 matched sessions')+
+ root.innerHTML=head('What if a forecast goes wrong?','Across 959 trading days in 2022–2025, these simulations compare what happened when news forecasts disappeared or two price models reversed their predictions.')+
  '<div class="controls">'+field('scenario','Scenario',select('scenario',Object.values(scenarios),scenarios[scenario]))+
  field('period','Evaluation window',select('period',['All years','2022','2023','2024','2025'],stressPeriod==='all'?'All years':stressPeriod))+'</div>'+
  '<div class="sheet"><div class="metrics">'+metric('Adaptive router return','routerReturn')+metric('Uniform vote return','voteReturn')+metric('Router drawdown','routerDD')+'</div><canvas class="chart" id="stressChart" role="img" aria-label="Return paths under the selected market stress"></canvas>'+
@@ -98,12 +99,12 @@ async function stress(ticket){
 }
 async function architecture(ticket){
  const [sim,study]=await Promise.all([load('simulation'),load('study-5')]);if(ticket!==token)return;index=Math.min(index??sim.dates.length-1,sim.dates.length-1);
- root.innerHTML=head('System architecture','From published market evidence to the next simulated opening')+'<div class="controls">'+field('architectureDate','Decision date',select('architectureDate',sim.dates,sim.dates[index]))+'</div><div id="flow"></div>';
+ root.innerHTML=head('System architecture','Follow one decision from published prices and news to a forecast, then to a simulated trade at the next market opening.')+'<div class="controls">'+field('architectureDate','Decision date',select('architectureDate',sim.dates,sim.dates[index]))+'</div><div id="flow"></div>';
  const refresh=()=>renderArchitecture(el('flow'),study,sim,index);on('architectureDate','change',e=>{index=sim.dates.indexOf(e.target.value);refresh()});refresh();
 }
 async function datasets(ticket){
  const study=await load('study-5');if(ticket!==token)return;const d=study.coverage;
- root.innerHTML=head('Research datasets','January 2017 – December 2025 · Market and publication histories')+
+ root.innerHTML=head('Research datasets','The models learned from prices and trading volume, published investment signals, company reports and financial news. The records span January 2017 to December 2025.')+
  '<div class="sheet"><div class="metrics">'+metric('Instrument-days','bars')+metric('Instruments','symbols')+metric('Factor themes','themes')+'</div></div><div class="sourcesgrid bottom"><img class="sourceplot" src="assets/datasets.png" alt="Adjusted prices of five benchmark exchange-traded funds and FinBERT sentiment for Federal Reserve statements"><img class="sourceplot" src="assets/sources.png" alt="Text counts and returns for thirteen US factor themes by year"></div><section class="bottom"><div class="sectionhead"><h2>Coverage</h2></div>'+
  '<div id="coverageTable"></div>'+
  '<p class="note">The selected universe includes surviving companies and overlapping ETFs. The headline sample covers 2019 through 2023. Model pretraining can include events that occurred during this retrospective evaluation.</p></section><section class="bottom"><a class="link" href="https://github.com/Yash789k/ML-TradeEngine/blob/main/ceci2_demo/README.md">Data sources and training protocol</a></section>';
@@ -116,8 +117,8 @@ async function comparison(ticket){
 }
 async function render(){
  const ticket=++token;stop();paint=()=>{};onStep=()=>{};
- const route=location.hash.slice(1)||'simulation',views={simulation,comparison,controller,stress,architecture,data:datasets,glossary:()=>glossaryView(root)};
+ const route=(location.hash.slice(1)||'overview').replace(/^datasets$/, 'data'),views={overview:async t=>{const data=await load('periods');if(t===token)overview(root,data);},simulation,comparison,controller,stress,architecture,data:datasets,glossary:()=>glossaryView(root)};
  document.querySelectorAll('nav a').forEach(a=>{const yes=a.hash==='#'+route;a.classList.toggle('active',yes);if(yes)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
- try{await (views[route]||simulation)(ticket)}catch(e){if(ticket===token)root.innerHTML='<h1 class="bottom">Study unavailable</h1><p class="note">'+esc(e.message)+'</p><button class="bottom" id="retry">Retry</button>';on('retry','click',render);}
+ try{await (views[route]||views.overview)(ticket)}catch(e){if(ticket===token)root.innerHTML='<h1 class="bottom">Study unavailable</h1><p class="note">'+esc(e.message)+'</p><button class="bottom" id="retry">Retry</button>';on('retry','click',render);}
 }
 window.addEventListener('resize',()=>paint());window.addEventListener('hashchange',render);render();
