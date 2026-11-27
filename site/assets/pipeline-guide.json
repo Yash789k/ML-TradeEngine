@@ -1,16 +1,86 @@
 {
   "stages": [
-    ["Collect the inputs", "Prices and trading volume describe what the market did. Company filings, news and Federal Reserve statements add evidence once published. Historical investment signals are delayed before use. Each stock gets a dated record of what was available when the decision was made."],
-    ["Predict the direction", "After today's close, each forecasting model gives three probabilities for one stock: rise, little change, or fall. The five-day forecast is judged from the next opening price to the opening price five trading sessions later. The band for little change widens for more volatile stocks."],
-    ["Decide whose forecast counts", "A hidden Markov model estimates the chances of different market conditions from recent market data. The controller can use those chances and earlier forecast results to adjust how much each forecast counts. The proposal compares this with fixed votes and with using one forecasting model."],
-    ["Turn the forecast into a simulated trade", "The trading rule subtracts the chance of falling from the chance of rising. For example, 60% up minus 25% down gives a score of 35 percentage points. The rule ranks stocks by their signals, limits position sizes and can leave money in cash. The simulation uses the next opening price and charges trading costs."],
-    ["Score the forecast and the portfolio", "Once the forecast window ends, the later opening price gives the answer. That answer scores the prediction. The simulator separately records what the portfolio actually held, paid and earned. A five-day forecast can inform a new trade each day."],
-    ["Review changes between evaluations", "The separate research agent reviews earlier results and can propose changing the controller. A candidate must pass separate checks before use. This is a slower review, separate from the forecasts and trades made each day."]
+    [
+      "Collect the inputs",
+      "Prices and trading volume describe what the market did. Company filings, news and Federal Reserve statements add evidence once published. Historical investment signals are delayed before use. Each stock gets a dated record of what was available when the decision was made."
+    ],
+    [
+      "Predict the direction",
+      "After today's close, each forecasting model gives three probabilities for one stock: rise, little change, or fall. The five-day forecast is judged from the next opening price to the opening price five trading sessions later. The band for little change widens for more volatile stocks."
+    ],
+    [
+      "Decide whose forecast counts",
+      "A hidden Markov model estimates the chances of different market conditions from recent market data. The controller can use those chances and earlier forecast results to adjust how much each forecast counts. The proposal compares this with fixed votes and with using one forecasting model."
+    ],
+    [
+      "Turn the forecast into a simulated trade",
+      "The trading rule subtracts the chance of falling from the chance of rising. For example, 60% up minus 25% down gives a score of 35 percentage points. The rule ranks stocks by their signals, limits position sizes and can leave money in cash. The simulation uses the next opening price and charges trading costs."
+    ],
+    [
+      "Score the forecast and the portfolio",
+      "Once the forecast window ends, the later opening price gives the answer. That answer scores the prediction. The simulator separately records what the portfolio actually held, paid and earned. A five-day forecast can inform a new trade each day."
+    ],
+    [
+      "Review changes between evaluations",
+      "The separate research agent reviews earlier results and can propose changing the controller. A candidate must pass separate checks before use. This is a slower review, separate from the forecasts and trades made each day."
+    ]
   ],
   "metrics": [
-    ["Log loss", "Measures how much probability the model assigned to the outcome that happened. If the stock rose, a model that gave a rise 60% gets a loss of 0.51, while one that gave it 20% gets 1.61. Lower is better. This measures forecasts even on days the simulator makes no trade."],
-    ["Return after costs", "Measures how much the whole account gained or lost after trading costs. Turning $10,000 into $11,000 is a 10% return. Use the same dates and compare with buying and holding the market fund."],
-    ["Maximum drawdown", "Measures the largest percentage fall from an earlier account high. A fall from $12,000 to $9,000 is 25%, even if the portfolio later recovers. Check how much the strategy held in cash when comparing losses."],
-    ["Sharpe ratio", "Measures average daily return relative to how much daily returns fluctuate. The proposal names Sharpe as its main portfolio metric. The website uses net daily returns, a zero cash reference and a 252-day annual scale. Higher means more return per unit of daily fluctuation under the same calculation."]
+    [
+      "Log loss",
+      "Measures how much probability the model assigned to the outcome that happened. If the stock rose, a model that gave a rise 60% gets a loss of 0.51, while one that gave it 20% gets 1.61. Lower is better. This measures forecasts even on days the simulator makes no trade."
+    ],
+    [
+      "Return after costs",
+      "Measures how much the whole account gained or lost after trading costs. Turning $10,000 into $11,000 is a 10% return. Use the same dates and compare with buying and holding the market fund."
+    ],
+    [
+      "Maximum drawdown",
+      "Measures the largest percentage fall from an earlier account high. A fall from $12,000 to $9,000 is 25%, even if the portfolio later recovers. Check how much the strategy held in cash when comparing losses."
+    ],
+    [
+      "Sharpe ratio",
+      "Measures average daily return relative to how much daily returns fluctuate. The proposal names Sharpe as its main portfolio metric. The website uses net daily returns, a zero cash reference and a 252-day annual scale. Higher means more return per unit of daily fluctuation under the same calculation."
+    ]
+  ],
+  "pools": [
+    [
+      "Three price models",
+      "trees and linear",
+      [
+        "Logistic",
+        "XGBoost",
+        "LightGBM"
+      ]
+    ],
+    [
+      "Four price-history models",
+      "sequence networks",
+      [
+        "LSTM",
+        "GRU",
+        "TCN",
+        "Patch Transformer"
+      ]
+    ],
+    [
+      "All 13 forecasts",
+      "all experts",
+      [
+        "Logistic",
+        "XGBoost",
+        "LightGBM",
+        "JKP factors",
+        "FinBERT logistic",
+        "LSTM",
+        "GRU",
+        "TCN",
+        "Patch Transformer",
+        "Qwen statement",
+        "OpenAI asset digest",
+        "OpenAI Decisions",
+        "Granite MoE statement"
+      ]
+    ]
   ]
 }
