@@ -201,3 +201,5 @@ The [2022 extension](../../data/ceci2-demo/periods-v1/README.md) reuses the orig
 The [illustrated comparison](../../site/assets/ensemble-study.pdf) explains the archived experiments and their limitations. Rebuild its figures and report with `python output/pdf/ensemble-study-2026-11-27/build_report.py` after exporting the period records.
 
 The [data-to-results guide](../../site/assets/pipeline-guide.json) connects the original proposal to the historical implementation and powers the website guide and the opening pages of the illustrated report. It distinguishes the forecast horizon from trading frequency and describes the zero-reference Sharpe calculation used in the website tables.
+
+The guide now plots the annual text records and compares matched returns, drawdowns and Sharpe ratios. Its model combination charts read the archived Colab portfolio results. The Model votes view derives its next-open target from the fixed replay simulator.

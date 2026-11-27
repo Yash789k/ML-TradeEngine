@@ -96,11 +96,27 @@ for number,(title,explanation) in enumerate(guide["stages"],1):
     f.text(.08,y,f"{number}. {title}",size=12,weight="bold",va="top",color=green)
     y=para(f,y-.028,explanation,width=98,gap=.012)
 
+f=page("What data went into the forecasts?", "Count each type of document by the year it was published")
+for i,(key,title,color) in enumerate([
+    ("news","Company headlines",green),("filing","Annual filing excerpts",ochre),("fed","Federal Reserve statements",blue),
+]):
+    ax=f.add_axes([.13,.68-i*.175,.77,.106])
+    years=[r["year"] for r in coverage["annualText"]]
+    values=[r[key] for r in coverage["annualText"]]
+    ax.bar(years,values,color=color,width=.64)
+    ax.set_title(title,loc="left",fontsize=10,weight="bold")
+    ax.set_xticks(years,labels=years if i==2 else [""]*len(years),fontsize=8)
+    ax.yaxis.set_major_locator(plt.MaxNLocator(3,integer=True))
+    ax.tick_params(axis="y",labelsize=8)
+y=para(f,.285,"The charts use separate scales. This headline sample ends in 2023. Filings and Federal Reserve statements continue through 2025. A document can inform more than one decision.")
+y=section(f,y,"What could the simulator buy?",f"The price file covers {coverage['symbols']} instruments and contains {coverage['bars']:,} instrument-days, one record for each instrument on each trading day.")
+para(f,y,"Company stocks: AAPL, AMZN, BAC, GOOGL, GS, JPM, META, MSFT, NVDA and TSLA. Stock funds: DIA, IWM, QQQ, SPY, XLE, XLF, XLI, XLK, XLP and XLV. Gold and Treasury funds: GLD and TLT.")
+
 f=page("How to read the scores", "Forecast scores and investment results answer different questions")
 y=para(f,.824,"The same stock forecast can be scored as a prediction and used to simulate a trade. Forecast scores use the direction that eventually happened. Portfolio scores use the account balance after the trading rule and costs.")
 for title,explanation in guide["metrics"]:
     y=section(f,y,title,explanation)
-section(f,y,"Where to look next","Pages 3–4 show one forecast decision and the headline balances. Page 5 compares years. Pages 6–8 show what changes when the system changes its votes, its training, or its inputs. Pages 9–11 contain the full comparison table and definitions.")
+section(f,y,"Where to look next","Pages 4–5 show headline balances and one forecast decision. Page 6 compares years. Pages 7–9 test different ways of combining forecasts and changing inputs. Pages 10–12 contain all results and definitions.")
 
 example=read(ROOT/"site/assets/forecast-example.json")
 f=page("Can a model pick the right forecaster?", "A trading experiment with historical prices and news")
@@ -110,7 +126,9 @@ body=[[label, f"${10000*(1+four.loc[name,'net_return']):,.0f}"] for name,label i
     ("Adaptive router","Give recently accurate models a larger vote"),
     ("Classic MoE","Train the forecasters and their vote counter together"),
     ("SPY buy and hold","Buy and hold the S&P 500 fund")]]
-table(f,[.08,y-.13,.84,.13],["What the portfolio did","Ending balance"],body,[.74,.26],10)
+for row,name in zip(body,["Adaptive router","Classic MoE","SPY buy and hold"]):
+    row.extend([p(four.loc[name,"max_drawdown"]),f"{four.loc[name,'sharpe']:.2f}"])
+table(f,[.08,y-.13,.84,.13],["What the portfolio did","Ending balance","Largest fall","Sharpe"],body,[.57,.17,.14,.12],8.8)
 y=section(f,y-.17,"Why consider the first method?",f"In 2022 all three lost money. The system that rewarded recent accuracy lost {p(abs(rows('five','2022').loc['Adaptive router','net_return']))}, while the jointly trained models lost {p(abs(rows('five','2022').loc['Classic MoE','net_return']))}. The first system also held more cash on average. Keeping money out of stocks can soften a loss and leave less money invested during a recovery.")
 section(f,y,"What can we conclude?","Holding the fund earned the most over these four years. The next page uses one imaginary stock to show exactly what changed between forecasting methods. The later pages give the historical comparisons and the full results. These years were already familiar to the researchers. A future test would be needed to see whether the pattern repeats.")
 
@@ -118,8 +136,8 @@ f=page("One stock, two forecasts", "A worked example using invented probabilitie
 y=para(f,.82,example["example"])
 for title, explanation in example["methods"]:
     y=section(f,y,title,explanation)
-y=section(f,y,"Would the system buy the stock?",example["trade"])
-section(f,y,"Two kinds of decisions", "Choosing one forecast means deciding whose prediction to use. A separate experiment called portfolio reinforcement learning lets a model decide where to put the money. Its choices are cash, a fund holding large US companies, or stocks selected by the traditional mixture of forecasters.")
+y=section(f,y,"Would the system buy the stock?","If the model gives a rise 60% and a fall 25%, the trading score is 35 percentage points. The fixed rule keeps the five highest scores above five points. Less volatile holdings get larger allocations, up to 15% each. The rest stays in cash. Trades use the next opening price and cost $0.50 per $1,000 bought or sold.")
+section(f,y,"Two kinds of decisions", "Choosing one forecast means deciding whose prediction to use. Portfolio reinforcement learning chooses where to put the money: cash, the S&P 500 fund, or the basket picked by the classic mixture. It learns from portfolio gains and losses after trading costs.")
 
 f=page("Performance across market periods","A negative return means the portfolio ended the year with less money than it started with")
 body=[]
@@ -134,9 +152,10 @@ section(f,y,"How the benchmark is constructed","SPY is the ticker for the exchan
 
 f=page("Which models worked well together?","Three ways of counting votes across the same 480 trading days")
 pools(f.add_axes([.13,.52,.77,.27]))
-y=section(f,.45,"Read the comparison within each group","The blue portfolio learns one weight per expert for the year. The green portfolio changes weights with volatility, price range, drawdown, market return and published sentiment. The brown portfolio uses reinforcement learning to pick one model per instrument and date. All three send forecasts to the same trading rule.")
-y=section(f,y,"Forecast quality and portfolio return","Log loss penalizes confident wrong predictions. A lower value is better. Returns also depend on whether a forecast crosses the trading threshold, which stocks qualify, and the cost of changing holdings. A model can earn more while assigning worse probabilities.")
-section(f,y,"What the uncertainty interval says",f"In the full pool, the contextual gate increased average log loss by {soft['context_minus_fixed_log_loss']:.4f} relative to fixed weights. The paired 95% interval was {soft['paired_95_interval'][0]:.4f} to {soft['paired_95_interval'][1]:.4f}. For the expert-selecting reinforcement learner the increase was {hard['primary_loss_change']:.4f}. Resampling consecutive 21-session blocks preserves some dependence between nearby dates. The sequence-pool returns are descriptive.")
+y=section(f,.45,"Which models were in each group?","The three price models were Logistic, XGBoost and LightGBM. The four price-history models were LSTM, GRU, TCN and Patch Transformer. The group of 13 added FinBERT, published investment factors and four language-model forecasts to those seven price models.")
+y=para(f,y,"Blue keeps voting shares fixed. Green adjusts the shares to reduce forecast errors. Brown picks one model using past errors and a penalty for switching. All use the same trading rule.",gap=.012)
+y=section(f,y,"Forecast quality and portfolio return","Log loss penalizes confident wrong forecasts. Portfolio returns also depend on which stocks cross the trading threshold and the cost of changing holdings.")
+section(f,y,"What the uncertainty interval says",f"In the full pool, the contextual gate increased average log loss by {soft['context_minus_fixed_log_loss']:.4f} relative to fixed weights. The paired 95% interval was {soft['paired_95_interval'][0]:.4f} to {soft['paired_95_interval'][1]:.4f}. Picking one model increased loss by {hard['primary_loss_change']:.4f}. The interval groups nearby days into blocks.")
 
 f=page("New experts trained together","Does a fourth model combine three forecasts better than a simple average?")
 curves(f.add_axes([.14,.53,.77,.255]))
@@ -157,7 +176,7 @@ for idx,chunk in enumerate([allrows.iloc[:24],allrows.iloc[24:]]):
     f=page("All approaches on shared dates",f"Local research ledger   /   2024–2025   /   Rows {1 if idx==0 else 25}–{24 if idx==0 else len(allrows)} of {len(allrows)}")
     body=[[n,p(r.net_return),p(r.max_drawdown),p(r.mean_exposure),"—" if pd.isna(r.sharpe) else f"{r.sharpe:.2f}",f"${r.fees:,.0f}"] for n,r in chunk.iterrows()]
     table(f,[.08,.16,.84,.66],["Archived portfolio name","Return","Drawdown","Invested","Sharpe","Fees"],body,[.36,.13,.15,.13,.105,.125],8.25)
-    para(f,.13,"Sharpe divides mean daily excess return by daily volatility and annualizes the ratio using 252 sessions. Fees assume $10,000 at the start. The Colab rerun is reported separately on pages 6 and 7.",width=96)
+    para(f,.13,"Sharpe divides mean daily excess return by daily volatility and annualizes the ratio using 252 sessions. Fees assume $10,000 at the start. The Colab rerun is reported separately on pages 7 and 8.",width=96)
 
 f=page("Model names and source records","A reading key for the charts, portfolio names and downloadable evidence")
 y=section(f,.82,"Forecasting networks","LSTM means long short-term memory. GRU means gated recurrent unit. Both read an ordered sequence and remember earlier observations. TCN means temporal convolutional network; it searches a sequence for local patterns. A patch transformer divides the sequence into short blocks and learns which blocks relate to one another.")

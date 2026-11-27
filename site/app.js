@@ -64,7 +64,8 @@ async function simulation(ticket){
 async function controller(ticket){
  const sim=await load('simulation');if(ticket!==token)return;index=Math.min(index??sim.dates.length-1,sim.dates.length-1);
  root.innerHTML=head('Who gets a vote?','For one stock and date, each model predicts a rise, a fall or little change over five trading days. A larger weight gives its prediction more influence on the final forecast.')+
- '<div class="controls">'+field('ticker','Instrument',select('ticker',sim.symbols,asset))+field('when','Decision date',select('when',sim.dates,sim.dates[index]))+'</div><div class="controllergrid"><section class="sheet"><h2>Expert weights</h2><div id="bars"></div></section><section class="sheet"><h2>Combined forecast</h2><div id="classification"></div><hr class="rule"><h3>Market state probabilities</h3><div id="states"></div><hr class="rule"><p class="note">Weights use filtered market conditions and earlier expert accuracy. Outcomes enter memory only after their forecast window closes.</p></section></div><section class="bottom"><div class="sectionhead"><h2>Forecast contributions</h2></div><div id="expertTable"></div></section>';
+ '<div class="controls">'+field('ticker','Instrument',select('ticker',sim.symbols,asset))+field('when','Decision date',select('when',sim.dates,sim.dates[index]))+'</div><div class="controllergrid"><section class="sheet"><h2>Expert weights</h2><div id="bars"></div></section><section class="sheet"><h2>Combined forecast</h2><div id="classification"></div><p class="note" id="targetDecision"></p><hr class="rule"><h3>Market state probabilities</h3><div id="states"></div><hr class="rule"><p class="note">Weights use filtered market conditions and earlier expert accuracy. Outcomes enter memory only after their forecast window closes.</p></section></div><section class="bottom"><div class="sectionhead"><h2>Forecast contributions</h2></div><div id="expertTable"></div></section>';
+ const fixedTargets=simulate(sim).positions;
  let revision=0;
  async function show(){const n=++revision;const date=sim.dates[index],detail=await load('detail-'+date.slice(0,4));if(n!==revision||ticket!==token)return;
  const t=detail.dates.indexOf(date),j=sim.symbols.indexOf(asset),w=detail.weights[t][j],p=detail.probabilities[t][j];
@@ -72,6 +73,13 @@ async function controller(ticket){
  el('bars').innerHTML=ranks.map(x=>'<div class="weightrow"><span>'+esc(x.name)+'</span><span class="track"><i style="width:'+Math.min(100,100*x.w/Math.max(...w))+'%"></i></span><strong>'+pct(x.w,1)+'</strong></div>').join('');
  const q=[sim.down[index][j],sim.flat[index][j],sim.up[index][j]],labs=['DOWN','FLAT','UP'],cs=['#ac7744','#a3aba1','#197257'];
  el('classification').innerHTML='<div class="probs">'+q.map((s,k)=>'<i style="width:'+100*s+'%;background:'+cs[k]+'"></i>').join('')+'</div><div class="probkey">'+labs.map((l,k)=>'<span>'+l+' '+pct(q[k],1)+'</span>').join('')+'</div>';
+ const target=fixedTargets[index].find(position=>position.symbol===asset);
+ const score=q[2]-q[0];
+ const points=(100*score).toFixed(1);
+ const decision=target ? 'The fixed rule targeted '+pct(target.weight,1)+' of the account at the next open.'
+  : score>.05 ? 'It cleared the minimum score. The fixed rule put its money into higher-scoring instruments.'
+  : 'The fixed rule set the next-open target to zero because the score did not exceed five percentage points.';
+ el('targetDecision').textContent=asset+' scored '+points+' percentage points after subtracting its down probability from its up probability. '+decision;
  el('states').innerHTML=table(['State','Probability'],sim.posterior[index].map((v,k)=>[['Lower mean return','Middle mean return','Higher mean return'][k],pct(v,2)]));
  el('expertTable').innerHTML=table(['Expert','Weight','DOWN','FLAT','UP'],ranks.map(x=>[x.name,pct(x.w,2),...p[x.k].map(v=>pct(v,2))]));
  }
@@ -118,8 +126,8 @@ async function comparison(ticket){
 }
 async function render(){
  const ticket=++token;stop();paint=()=>{};onStep=()=>{};
- const route=(location.hash.slice(1)||'overview').replace(/^datasets$/, 'data'),views={overview:async t=>{const data=await load('periods');if(t===token)overview(root,data);},pipeline:async t=>{const guide=await load('pipeline-guide');if(t===token)pipelineView(root,guide,head);},simulation,comparison,controller,stress,architecture,data:datasets,glossary:()=>glossaryView(root)};
+ const route=(location.hash.slice(1)||'pipeline').replace(/^datasets$/, 'data'),views={overview:async t=>{const data=await load('periods');if(t===token)overview(root,data);},pipeline:async t=>{const [guide,study,data]=await Promise.all([load('pipeline-guide'),load('study-5'),load('periods')]);if(t===token)pipelineView(root,guide,study.coverage,data,head);},simulation,comparison,controller,stress,architecture,data:datasets,glossary:()=>glossaryView(root)};
  document.querySelectorAll('nav a').forEach(a=>{const yes=a.hash==='#'+route;a.classList.toggle('active',yes);if(yes)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
- try{await (views[route]||views.overview)(ticket)}catch(e){if(ticket===token)root.innerHTML='<h1 class="bottom">Study unavailable</h1><p class="note">'+esc(e.message)+'</p><button class="bottom" id="retry">Retry</button>';on('retry','click',render);}
+ try{await (views[route]||views.pipeline)(ticket)}catch(e){if(ticket===token)root.innerHTML='<h1 class="bottom">Study unavailable</h1><p class="note">'+esc(e.message)+'</p><button class="bottom" id="retry">Retry</button>';on('retry','click',render);}
 }
 window.addEventListener('resize',()=>paint());window.addEventListener('hashchange',render);render();
