@@ -1,11 +1,13 @@
+import {methodLabels as labelsByMethod} from './method-labels.js';
+
 export const votingMethods = {
-  original: ['Original market-state gate','The proposal’s learned gate gives each of 13 existing forecasts a share of the vote.'],
-  adapter: ['Context adapter','Learns how to change the blend for each instrument and date. It takes the forecasts as given and learns weights that reduce forecast error.'],
-  fixed: ['Fixed mixture','Learns a set of voting shares for each annual test. The shares stay the same for each instrument and day within that year.'],
-  joint: ['Joint neural mixture','The price, text and market forecasters train together with their vote counter.'],
-  equal: ['Joint forecasters, equal votes','Uses the same three jointly trained forecasters and gives each one a third of the vote.'],
-  router: ['Reinforcement-learning model router','Picks one forecaster for this instrument and date. That forecaster gets the whole vote.'],
-  classic: ['Classic mixture','Three forecasters and their vote counter train together on the same price, factor and text inputs.'],
+  original: [labelsByMethod.original,'The proposal’s learned gate gives each of 13 existing forecasts a share of the vote.'],
+  adapter: [labelsByMethod.adapter,'The experiment saved as “Context adapter” learns voting weights for already-trained forecasts. It uses stock, market and text inputs available at the close.'],
+  fixed: [labelsByMethod.fixed,'Learns a set of voting shares for each annual test. The shares stay the same for each instrument and day within that year.'],
+  joint: [labelsByMethod.joint,'The price, text and market forecasters train together with their vote counter.'],
+  equal: [labelsByMethod.jointEqual,'Uses the same three jointly trained forecasters and gives each one a third of the vote.'],
+  router: [labelsByMethod.router,'Picks one forecaster for this instrument and date. That forecaster gets the whole vote.'],
+  classic: [labelsByMethod.classic,'Three forecasters and their vote counter train together on the same price, factor and text inputs.'],
 };
 
 const pools = {
@@ -30,6 +32,7 @@ export async function inspectVotes(root, method, {load, active, head, picker, pc
     picker('inspectDate','Decision date',dates.map(date=>[date,date]),dates.includes(selection.date)?selection.date:dates.at(-1))+
     picker('inspectSymbol','Instrument',symbols.map(symbol=>[symbol,symbol]),symbols.includes(selection.symbol)?selection.symbol:symbols[0])+
     (usesPool ? picker('inspectPool','Forecasters',Object.entries(pools),selection.pool) : '')+'</div>'+
+    (method==='adapter' ? '<ol class="model-flow adapter-flow" aria-label="How the weighting model works"><li><strong>Already-trained forecasts</strong><ul><li>Plus today’s stock, market and text inputs</li></ul></li><li><strong>Learned weighting model</strong><ul><li>Assign one voting share per forecaster</li></ul></li><li><strong>Combined forecast</strong><ul><li>Rise, little change or fall</li></ul></li></ol>' : '')+
     '<div class="controllergrid vote-grid"><section class="sheet"><h2>Combined forecast</h2><div id="inspectorForecast"></div><p class="note" id="inspectorContext"></p></section>'+
     '<section class="sheet"><h2>How much each forecast counts</h2><div id="inspectorWeights"></div></section></div>'+
     '<p class="note"><a class="link" href="#models">See what each model reads</a> · <a class="link" href="#comparison">Compare portfolio results</a></p>';
@@ -79,7 +82,7 @@ export async function inspectVotes(root, method, {load, active, head, picker, pc
       const comparison = document.createElement('a');
       comparison.className = 'link';
       comparison.href = method==='adapter' ? '#controller/fixed' : '#controller/adapter';
-      comparison.textContent = method==='adapter' ? 'See the fixed mixture' : 'See the context adapter';
+      comparison.textContent = method==='adapter' ? labelsByMethod.fixed : labelsByMethod.adapter;
       context.append(' ', comparison);
     }
     const summary = root.querySelector('#inspectorForecast');

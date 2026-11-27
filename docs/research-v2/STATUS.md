@@ -211,3 +211,5 @@ The [model input and output map](../../site/assets/model-map.json) connects the 
 The current illustrated report is six pages. Its pipeline, data charts, model map, worked forecast and matched results appear in the main text. The site retains the full interactive breakdowns and links directly to the matching report pages.
 
 The website groups its pages under Study, Models, Results and Data. The opening comparison now holds the 13 forecasts and trading rules fixed. The Model votes picker includes fixed and adaptive mixtures, jointly trained forecasts and single-model routing. Regenerate the saved examples with `python -m ceci2_demo.periods_v1.export_adapter_examples`.
+
+The pipeline, model map and data pages now lead with diagrams and charts. The six-page PDF uses the same method names and shows the Sharpe comparison and the recorded Apple decision visually.

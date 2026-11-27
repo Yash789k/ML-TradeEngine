@@ -1,3 +1,5 @@
+import {methodLabels} from './method-labels.js';
+
 const stages = [
   ['Forecast the stock', 'Price history, trading volume, financial text or investment factors, depending on the model.', 'Probabilities of a rise, little change and a fall.', 'Assign more probability to the direction that happens.'],
   ['Train a mixture together', 'The classic mixture gives all three forecasters the same stock features. The later joint experiment gives its three networks separate price, text and market inputs.', 'One forecast formed by combining three votes.', 'Train the forecasts and their vote counter together to reduce forecast error.'],
@@ -15,10 +17,10 @@ const measures = [
 const nonLearning = new Set(['Cash', 'SPY buy and hold', 'Equal weight', 'Uniform vote', '21-session momentum', 'Training prior', 'Market experts vote']);
 
 const candidates = [
-  ['Adaptive router', 'Adaptive router'],
+  ['Adaptive router', methodLabels.recent],
   ['Classic MoE', 'Classic mixture'],
-  ['HMM gate', 'Market-state gate'],
-  ['Uniform vote', 'Equal forecast votes'],
+  ['HMM gate', methodLabels.original],
+  ['Uniform vote', methodLabels.equal],
   ['MoE + offline RL', 'Portfolio allocator'],
   ['Context adapter / sequence networks', 'Adaptive votes among four price-history models'],
   ['Fixed mixture / sequence networks', 'Fixed votes among four price-history models'],
@@ -86,7 +88,7 @@ export function comparisonSummary(host, group, period, state) {
     const adaptive = period.rows.find(row => row.model==='Adaptive router');
     const equal = period.rows.find(row => row.model==='Uniform vote');
     difference.textContent = adaptive && equal
-      ? 'Adaptive router '+format(adaptive[metric])+' · equal votes on the same forecasts '+format(equal[metric])+'.'
+      ? methodLabels.recent+' '+format(adaptive[metric])+' · '+methodLabels.equal+' '+format(equal[metric])+'.'
       : '';
     difference.hidden = !difference.textContent;
     matrix.replaceChildren();

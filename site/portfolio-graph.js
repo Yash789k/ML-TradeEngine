@@ -1,18 +1,22 @@
+import {methodLabels} from './method-labels.js';
+
 const metrics = [
   ['equity', 'Portfolio value'], ['drawdown', 'Fall from previous high'], ['daily', 'Daily return'],
 ];
 
 export const displayPortfolio = name => ({
-  'Adaptive router':'Weights updated using recent forecast errors',
-  'HMM gate':'Learned weights using market states',
-  'Uniform vote':'Equal votes for the same forecasts',
-  'SPY buy and hold':'Hold the S&P 500 fund',
-  'Classic MoE':'Classic jointly trained mixture',
+  'Adaptive router':methodLabels.recent,
+  'HMM gate':methodLabels.original,
+  'Uniform vote':methodLabels.equal,
+  'SPY buy and hold':methodLabels.market,
+  'Classic MoE':methodLabels.classic,
   'MoE without text':'Classic mixture trained without financial text',
-  'Joint neural mixture':'Three trained models with learned weights',
-  'Joint experts uniform':'Same three trained models with equal weights',
+  'Joint neural mixture':methodLabels.joint,
+  'Joint experts uniform':methodLabels.jointEqual,
   'Equal weight':'Equal investment across 22 instruments',
-}[name] ?? name);
+}[name] ?? name.replace(/^Context adapter(?= \/ )/,methodLabels.adapter)
+  .replace(/^Fixed mixture(?= \/ )/,methodLabels.fixed)
+  .replace(/^RL model router(?= \/ )/,methodLabels.router));
 
 export function portfolioColors(names) {
   const hues = [158, 32, 202, 74, 12, 181, 51, 218];

@@ -3,7 +3,7 @@ const percent = value => (value * 100).toFixed(1) + '%';
 export function sourceGuide(host, evidence) {
   const section = document.createElement('section');
   section.className = 'bottom source-guide';
-  section.innerHTML = '<h2>Where the inputs come from</h2><dl></dl>';
+  section.innerHTML = '<details class="protocol"><summary>Where the inputs come from</summary><dl></dl></details>';
   const populate = (list, entries) => {
     for (const [title, explanation] of entries) {
       const key = document.createElement('dt');
@@ -14,21 +14,22 @@ export function sourceGuide(host, evidence) {
     }
   };
   populate(section.querySelector('dl'), evidence.sources);
-  section.insertAdjacentHTML('beforeend', '<h2>What OpenAI and Jev do</h2><dl></dl>');
-  populate(section.lastElementChild, evidence.uses);
+  section.insertAdjacentHTML('beforeend', '<details class="protocol"><summary>What OpenAI and Jev do</summary><dl></dl></details>');
+  const hosted = section.lastElementChild;
+  populate(hosted.querySelector('dl'), evidence.uses);
   const note = document.createElement('p');
   note.className = 'note';
   const apple = evidence.apple;
   note.textContent = 'Example from the recorded Apple decision on '+apple.decision+'. The '+apple.packet+
     ' asset digest gave Apple a '+percent(apple.rawUp)+' chance of rising. After calibration its forecast was '+percent(apple.calibratedUp)+
     ' up and it received '+percent(apple.weight)+' of the vote. The combined forecast used all 13 votes.';
-  section.append(note);
+  hosted.append(note);
   const link = document.createElement('a');
   link.className='link';
   link.href='#controller';
   link.textContent='See the combined Apple forecast';
-  section.append(link);
-  section.insertAdjacentHTML('beforeend', '<h2>Company text coverage</h2><p class="note">The chart counts sampled records for the ten companies with filings. The remaining 12 instruments are funds. They receive market inputs, including the Fed statement forecasts.</p><figure><label class="field" for="companySource">Count<select id="companySource"><option value="news">Headlines</option><option value="filing">Annual filings</option></select></label><div class="company-bars"></div></figure>');
+  hosted.append(link);
+  section.insertAdjacentHTML('afterbegin', '<figure><figcaption>Company text coverage</figcaption><label class="field" for="companySource">Count<select id="companySource"><option value="news">Headlines</option><option value="filing">Annual filings</option></select></label><div class="company-bars"></div></figure>');
   const chooser = section.querySelector('#companySource');
   const chart = section.querySelector('.company-bars');
   function update() {
