@@ -1,7 +1,9 @@
+import {methodLabels} from './method-labels.js';
+
 const portfolios = [
-  ['Adaptive router', 'Give more weight to recently accurate models', 'Thirteen models make forecasts. Those with a better recent record in similar markets get a larger vote.'],
-  ['Uniform vote', 'Give the same forecasters equal votes', 'Uses the same 13 forecasts and trading rule. Each forecast has the same influence.'],
-  ['SPY buy and hold', 'Buy and hold the market', 'Buy a fund that tracks the S&P 500 index of large US companies. Hold it through each annual test.'],
+  ['Adaptive router', methodLabels.recent, 'Thirteen models make forecasts. Those with a better recent record in similar markets get a larger vote.'],
+  ['Uniform vote', methodLabels.equal, 'Uses the same 13 forecasts and trading rule. Each forecast has the same influence.'],
+  ['SPY buy and hold', methodLabels.market, 'Buy a fund that tracks the S&P 500 index of large US companies. Hold it through each annual test.'],
 ];
 
 const money = new Intl.NumberFormat('en-US', {style:'currency', currency:'USD', maximumFractionDigits:0});

@@ -1,10 +1,13 @@
+import {methodLabels} from './method-labels.js';
+import {modelFlow} from './model-flow.js';
+
 const sources = [
   ['news', 'Company headlines'],
   ['filing', 'Annual filing excerpts'],
   ['fed', 'Federal Reserve statements'],
 ];
 const chartPortfolios = [
-  ['Adaptive router', 'Adjust the votes'],
+  ['Adaptive router', methodLabels.recent],
   ['Classic MoE', 'Train the models together'],
   ['SPY buy and hold', 'Hold the market fund'],
 ];
@@ -32,8 +35,9 @@ function barChart(host, rows, format) {
 }
 
 export function pipelineView(root, guide, coverage, data, head) {
-  root.innerHTML = head('From raw data to results', 'The original proposal tests whether a market-state-aware gate improves risk-adjusted performance over single classifiers and a static ensemble.') +
-    '<div class="pipeline-jumps"><button data-jump=".pipeline-stages">Data and decisions</button><button data-jump=".pipeline-metrics">How scores work</button><button data-jump=".tested-combinations">Models and results</button></div><div class="pipeline-layout"><ol class="pipeline-stages"></ol><aside class="pipeline-metrics"><h2>How to read the scores</h2><dl></dl><a class="link" href="#comparison">See the historical comparisons</a></aside></div>';
+  root.innerHTML = head('From raw data to results', 'The proposal tests market-state-aware weighting against individual classifiers and a static ensemble.')+
+    modelFlow+'<div class="pipeline-visuals"></div>'+
+    '<details class="protocol pipeline-methods"><summary>How the pipeline and its scores work</summary><div class="pipeline-layout"><ol class="pipeline-stages"></ol><aside class="pipeline-metrics"><h2>How to read the scores</h2><dl></dl><a class="link" href="#comparison">See the historical comparisons</a></aside></div></details>';
   const stages = root.querySelector('.pipeline-stages');
   for (const [title, explanation] of guide.stages) {
     const row = document.createElement('li');
@@ -77,7 +81,7 @@ export function pipelineView(root, guide, coverage, data, head) {
   }
   stages.children[2].append(objectives);
   stages.children[2].insertAdjacentHTML('beforeend',
-    '<p><a class="link" href="#models">What each model reads and returns</a> · <a class="link" href="#controller/adapter">See the context adapter’s votes</a></p>');
+    '<p><a class="link" href="#models">What each model reads and returns</a> · <a class="link" href="#controller/adapter">See weights learned from stock and market data</a></p>');
 
   stages.children[3].insertAdjacentHTML('beforeend',
     '<p><a class="link" href="#controller">See the recorded forecast and next-open target for one instrument</a></p>');
@@ -97,14 +101,9 @@ export function pipelineView(root, guide, coverage, data, head) {
   measures.onchange = updateScores;
   updateScores();
   testedCombinations(root, guide, data);
-  for (const button of root.querySelectorAll('[data-jump]')) {
-    button.onclick = () => {
-      const heading = root.querySelector(button.dataset.jump).querySelector('h2');
-      heading.tabIndex = -1;
-      heading.focus({preventScroll:true});
-      heading.scrollIntoView({block:'start'});
-    };
-  }
+  root.querySelector('.pipeline-visuals').append(
+    stages.children[0].querySelector('figure'), stages.children[4].querySelector('figure'));
+
 }
 
 function testedCombinations(root, guide, data) {
@@ -124,9 +123,9 @@ function testedCombinations(root, guide, data) {
     const chart = document.createElement('div');
     group.append(caption, members, chart);
     barChart(chart, [
-      ['Keep the same voting shares', returns.get('Fixed mixture / ' + key)],
-      ['Adjust the votes for each stock', returns.get('Context adapter / ' + key)],
-      ['Pick one model per stock', returns.get('RL model router / ' + key)],
+      [methodLabels.fixed, returns.get('Fixed mixture / ' + key)],
+      [methodLabels.adapter, returns.get('Context adapter / ' + key)],
+      [methodLabels.router, returns.get('RL model router / ' + key)],
     ], format);
     section.append(group);
   }

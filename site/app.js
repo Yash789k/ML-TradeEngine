@@ -1,3 +1,5 @@
+import {modelFlow} from './model-flow.js';
+import {methodLabels} from './method-labels.js';
 import {inspectVotes, votingMethods} from './vote-inspector.js';
 import {modelMap} from './model-map.js';
 import {sourceGuide} from './source-guide.js';
@@ -81,7 +83,7 @@ async function controller(ticket, method){
    return;
  }
  const sim=await load('simulation');if(ticket!==token)return;index=Math.min(index??sim.dates.length-1,sim.dates.length-1);
- root.innerHTML=head('How the market-state gate combines votes','This is the proposal’s original learned mixture. It combines 13 forecasts for one instrument and date, then sends its combined forecast to the fixed trading rule.')+
+ root.innerHTML=head(methodLabels.original,'This is the proposal’s original learned mixture. It combines 13 forecasts for one instrument and date, then sends its combined forecast to the fixed trading rule.')+
  '<p class="note comparison-guide"><a class="link" href="assets/ensemble-study.pdf#page=4">See the Apple decision explained in the report</a> · <a class="link" href="#models">What each model reads and returns</a></p>'+
  '<div class="controls vote-controls">'+votePicker('voteMethod','Voting method',voteOptions,'original')+field('ticker','Instrument',select('ticker',sim.symbols,asset))+
  field('when','Decision date',select('when',sim.dates,sim.dates[index]))+'</div>'+
@@ -153,10 +155,10 @@ async function architecture(ticket){
 }
 async function datasets(ticket){
  const [study,evidence]=await Promise.all([load('study-5'),load('source-evidence')]);if(ticket!==token)return;const d=study.coverage;
- root.innerHTML=head('Research datasets','The models learned from prices and trading volume, published investment signals, company reports and financial news. The records span January 2017 to December 2025.')+
- '<div id="sourceEvidence"></div><div class="sheet"><div class="metrics">'+metric('Instrument-days','bars')+metric('Instruments','symbols')+metric('Factor themes','themes')+'</div></div><div class="sourcesgrid bottom"><img class="sourceplot" src="assets/datasets.png" alt="Adjusted prices of five benchmark exchange-traded funds and FinBERT sentiment for Federal Reserve statements"><img class="sourceplot" src="assets/sources.png" alt="Text counts and returns for thirteen US factor themes by year"></div><section class="bottom"><div class="sectionhead"><h2>Coverage</h2></div>'+
+ root.innerHTML=head('Data sources','Records from January 2017 to December 2025.')+modelFlow+
+ '<div class="sheet"><div class="metrics">'+metric('Instrument-days','bars')+metric('Instruments','symbols')+metric('Factor themes','themes')+'</div></div><div class="sourcesgrid bottom"><img class="sourceplot" src="assets/datasets.png" alt="Adjusted prices of five benchmark exchange-traded funds and FinBERT sentiment for Federal Reserve statements"><img class="sourceplot" src="assets/sources.png" alt="Text counts and returns for thirteen US factor themes by year"></div><div id="sourceEvidence" class="bottom"></div><details class="bottom protocol"><summary>Full source coverage</summary>'+
  '<div id="coverageTable"></div>'+
- '<p class="note">The selected universe includes surviving companies and overlapping ETFs. The headline sample covers 2019 through 2023. Model pretraining can include events that occurred during this retrospective evaluation.</p></section><section class="bottom"><a class="link" href="https://github.com/Yash789k/ML-TradeEngine/blob/main/ceci2_demo/README.md">Data sources and training protocol</a></section>';
+ '<p class="note">The selected universe includes surviving companies and overlapping ETFs. The headline sample covers 2019 through 2023. Model pretraining can include events that occurred during this retrospective evaluation.</p></details><section class="bottom"><a class="link" href="https://github.com/Yash789k/ML-TradeEngine/blob/main/ceci2_demo/README.md">Data sources and training protocol</a></section>';
  sourceGuide(el('sourceEvidence'),evidence);
  el('coverageTable').append(coverageTable(d));
  el('bars').textContent=d.bars.toLocaleString();el('symbols').textContent=d.symbols;el('themes').textContent=d.factorThemes.length;
@@ -180,7 +182,7 @@ function renderNavigation(route, method) {
    if(current) link.setAttribute('aria-current','true'); else link.removeAttribute('aria-current');
  }
  const pages=areas[area].map(([id,label])=>[id,label]);
- if(area==='models') pages.push(['controller/adapter','Context adapter']);
+ if(area==='models') pages.push(['controller/adapter',methodLabels.adapter]);
  const selected=method==='adapter'?'controller/adapter':route;
  el('subnav').innerHTML=pages.map(([id,label])=>'<a href="#'+id+'"'+(id===selected?' class="active" aria-current="page"':'')+'>'+label+'</a>').join('');
 }

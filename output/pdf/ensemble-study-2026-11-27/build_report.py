@@ -45,7 +45,7 @@ def annual(ax):
     ax.legend(ncol=2,frameon=False,loc="upper right",fontsize=9);ax.set_ylabel("Annual net return")
 def pools(ax):
     prefix=["Fixed mixture","Context adapter","RL model router"]
-    for i,(m,label,color) in enumerate(zip(prefix,["Fixed learned weights","Context-dependent weights","Select one model"],[blue,green,ochre])):
+    for i,(m,label,color) in enumerate(zip(prefix,["Fixed learned weights","Weights learned from\nstock and market data","Pick one forecaster with\nreinforcement learning"],[blue,green,ochre])):
         vals=[gpu.loc[f"{m} / {s}","net_return"] for s in ["all experts","trees and linear","sequence networks"]]
         bars=ax.bar(np.arange(3)+(i-1)*.248,vals,width=.225,label=label,color=color,zorder=3)
         ax.bar_label(bars,labels=[p(v) for v in vals],padding=3,fontsize=8)
@@ -134,10 +134,19 @@ evidence={**sources,"companies":companies,"apple":apple}
 
 f=page("Market conditions and portfolio risk", "A historical test of combining forecasts and turning them into simulated trades")
 flow(f,.747,[("Observe","Prices and volume\nPublic text and factors"),("Forecast","Models give chances\nof up, flat and down"),("Choose votes","Blend forecasts\nor pick one model"),("Simulate","Turn the result into\nnext-open positions")])
-y=section(f,.622,"What the original proposal tests","Can a learned gate that weights a fixed set of stock-direction classifiers under changing market conditions deliver more robust risk-adjusted performance than single classifiers or a static ensemble? The proposal separately asks whether periodic language-model-guided adaptation improves on scheduled retraining or conventional search.")
-y=section(f,y,"How the tests line up","The fixed blend, context adapter and model router share 480 evaluation sessions in 2024–2025. The stress study covers 959 sessions in 2022–2025. Models can have different training inputs and histories. Within each test, we match dates and trading costs.")
-y=section(f,y,"Two ways to score the result","Forecast log loss penalizes putting little probability on the outcome that happened. Portfolio return measures gains after fees. Drawdown measures the worst fall from a previous high. Sharpe measures average daily return relative to how much it fluctuates, using a zero cash reference here.")
-section(f,y,"What we found",f"On the four-year historical run, the original gate’s Sharpe ratio was {four.loc['HMM gate','sharpe']:.2f} versus {four.loc['Uniform vote','sharpe']:.2f} for equal votes and {four.loc['SPY buy and hold','sharpe']:.2f} for buying the market. The later adaptive router reached {four.loc['Adaptive router','sharpe']:.2f}. The five-session research agent retained the existing gate setting.")
+para(f,.635,"The proposal asks whether market-state-aware weighting of a fixed set of classifiers improves risk-adjusted performance over individual classifiers and a static ensemble. It also tests periodic language-model-guided adaptation against scheduled retraining or search.")
+ax=f.add_axes([.29,.28,.60,.198])
+sharpe_names=["Uniform vote","HMM gate","Adaptive router","SPY buy and hold"]
+sharpe_values=[four.loc[name,"sharpe"] for name in sharpe_names]
+bars=ax.barh(range(4),sharpe_values,color=[blue,green,ochre,brick])
+ax.set_yticks(range(4),["Equal votes for the\nsame forecasts","Learned weights using\nmarket states","Weights updated using\nrecent forecast errors","Hold the S&P 500 fund"],fontsize=9)
+ax.invert_yaxis()
+ax.set_xlim(0,.86)
+ax.bar_label(bars,labels=[f"{v:.2f}" for v in sharpe_values],fontsize=9,padding=4)
+ax.set_title("Sharpe ratio on the same dates, 2022–2025",loc="left",fontsize=10,weight="bold")
+ax.tick_params(axis="x",labelsize=8)
+y=para(f,.227,"Sharpe compares average daily return with daily volatility. The original gate improved on equal votes in this historical test. The S&P 500 fund had the highest Sharpe among these four portfolios.",gap=.009)
+para(f,y,"The portfolio tests match dates and trading costs. The separate five-session research-agent experiment kept the original gate setting.",gap=.009)
 link(f,.077,"Explore the data-to-results pipeline","pipeline")
 
 f=page("The data behind the forecasts", "Yahoo Finance prices, public company text, Fed statements and academic factors")
@@ -173,8 +182,9 @@ table(f,[.08,.46,.84,.34],["Forecasters","Input","Output"],[
     ["OpenAI Decisions, Qwen, Granite","Latest eligible Fed statement","Market forecast"],
     ["OpenAI asset digest","Recent returns, volatility, text scores and Fed statement","Instrument forecast"],
 ],[.33,.49,.18],8)
-y=section(f,.421,"Where the market-state model fits","It reads daily returns and 21-session volatility of the S&P 500 fund. It reports the chance of lower-, middle- and higher-return market states. The original gate uses those probabilities, earlier forecast accuracy and stock context to estimate each model’s voting share.")
-y=section(f,y,"Two ways of training models together","The classic mixture trains three forecasters on shared price, text and factor inputs. The joint experiment gives three models separate inputs: an eight-session price series, text sentiment, and broad-market returns, volatility and breadth. Both learn how to combine the forecasts.")
+f.text(.08,.411,"Where market conditions enter",weight="bold",color=green,fontsize=11)
+flow(f,.345,[("Market data","S&P 500 daily return\nand 21-session volatility"),("Market-state model","Chances of three\nmarket states"),("Forecast controller","Weights the direction\nforecasts")])
+para(f,.233,"In the jointly trained experiment, three models specialize in recent prices, text sentiment and market context. Each supplies a forecast to a vote counter trained alongside them.")
 link(f,.079,"Open the model-by-model input and output map","models")
 
 f=page("One decision, from votes to a trade", "Apple after the market closed on 22 December 2025")
@@ -189,18 +199,28 @@ ax.xaxis.set_major_formatter(PercentFormatter(1,0))
 ax.bar_label(bars,labels=[p(weights[k]) for k in top],fontsize=8,padding=3)
 ax.set_title("Share of the vote",loc="left",fontsize=10)
 k=top[0]
-y=section(f,.589,"Multiply each forecast by its vote",f"The long short-term memory model (LSTM) had {p(weights[k])} of the vote and predicted {p(votes[k][2])} up. Its contribution was {100*weights[k]*votes[k][2]:.1f} percentage points. Adding all 13 votes gave {p(up)} up, {p(flat)} flat and {p(down)} down. The monthly OpenAI forecast held {p(apple['weight'])} of the vote.")
-y=section(f,y,"The fixed rule turns 19.5 points into a position",f"Up minus down gave {100*(up-down):.1f} points. Apple placed second. The rule selected up to five instruments over five points, sized by volatility with a 15% cap, and targeted 15% for Apple at the next open. Buying or selling 1,000 dollars cost 50 cents.")
-y=section(f,y,"Where reinforcement learning fits","The model router replaces blending with one 100% vote. It rewards a high probability for the outcome that occurred and charges 0.01 for switching models. The separate portfolio allocator picks cash, the S&P 500 fund or the classic mixture’s basket. Its reward is account growth after trading costs.")
+y=para(f,.581,f"{p(weights[k])} vote share × {p(votes[k][2])} chance of a rise = {100*weights[k]*votes[k][2]:.1f} percentage points from LSTM. Add the weighted forecasts from all 13 models.",gap=.008)
+ax=f.add_axes([.09,.426,.82,.045])
+left=0.
+for name,value,color in [("Fall",down,ochre),("Flat",flat,blue),("Rise",up,green)]:
+    ax.barh([0],[value],left=left,color=color,height=.78)
+    ax.text(left+value/2,0,f"{name}  {p(value)}",va="center",ha="center",color="white",fontsize=9,weight="bold")
+    left+=value
+ax.set_xlim(0,1)
+ax.set_title("Combined forecast",loc="left",fontsize=10,weight="bold")
+ax.axis("off")
+flow(f,.334,[("Trading score",f"{p(up)} up minus {p(down)} down\n= {100*(up-down):.1f} points"),("Rank","Apple ranked second\namong the five selected"),("Set the position","15% target for Apple\nat the next open")])
+para(f,.226,"The fixed rule selects up to five instruments above five points. It sizes positions by volatility, caps each at 15% and charges 50 cents per 1,000 dollars traded.")
+para(f,.143,"In separate tests, the model router picks one forecast and learns from forecast accuracy. The portfolio allocator chooses cash, the market fund or the selected basket and learns from return after costs.",gap=.008)
 link(f,.077,"See the recorded votes and trade target","controller")
 
 f=page("Which model combinations paid off?", "Each group uses the same 480 trading sessions in 2024–2025")
 pools(f.add_axes([.13,.55,.77,.235]))
-y=para(f,.482,"The adapter adjusts voting shares for each stock. It earned 24.2% with four price-history models and lost 1.4% with all 13 forecasts. The same trading rule and costs apply to the three methods within each group.",gap=.009)
+y=para(f,.482,"Weights learned from stock and market data earned 24.2% with four price-history models and lost 1.4% with all 13 forecasts. The same trading rule and costs apply to the three methods within each group.",gap=.009)
 y=para(f,y,f"With three separately designed forecasters trained together, equal votes earned {p(gpu.loc['Joint experts uniform','net_return'])} and learned votes earned {p(gpu.loc['Joint neural mixture','net_return'])}. The market fund earned {p(gpu.loc['SPY buy and hold','net_return'])} on those dates.",gap=.02)
 f.text(.08,y,"How the original strategies did across years",weight="bold",fontsize=11,color=green)
 body=[[label,*[ret("five",str(year),name) for year in range(2022,2026)],p(four.loc[name,"net_return"])]
-      for name,label in [("Adaptive router","Adaptive votes"),("HMM gate","Market-state gate"),("Uniform vote","Equal forecast votes"),("SPY buy and hold","S&P 500 fund")]]
+      for name,label in [("Adaptive router","Weights updated using\nrecent forecast errors"),("HMM gate","Learned weights using\nmarket states"),("Uniform vote","Equal votes for the\nsame forecasts"),("SPY buy and hold","Hold the S&P 500 fund")]]
 table(f,[.08,y-.182,.84,.155],["Portfolio","2022","2023","2024","2025","Total"],body,[.30,.14,.14,.14,.14,.14],8.5)
 link(f,.076,"Explore all approaches by return, drawdown and Sharpe","comparison")
 
@@ -208,15 +228,15 @@ f=page("How the voting rules held up", "The 2022–2025 stress tests change fore
 stress=read(ROOT/"site/assets/stress.json")
 ax=f.add_axes([.13,.52,.77,.278])
 marks=pd.to_datetime(stress["mark"])
-for name,color in [("Adaptive router",green),("HMM gate",ochre),("Uniform vote",blue)]:
-    ax.plot(marks,stress["scenarios"]["original"][name],label=name,color=color,lw=1.35)
+for name,label,color in [("Adaptive router","Weights updated using\nrecent forecast errors",ochre),("HMM gate","Learned weights using\nmarket states",green),("Uniform vote","Equal votes for the\nsame forecasts",blue)]:
+    ax.plot(marks,stress["scenarios"]["original"][name],label=label,color=color,lw=1.35)
 ax.yaxis.set_major_formatter(FuncFormatter(lambda v,_:f"${v/1000:.0f}k"))
 ax.legend(loc="upper left",frameon=False,fontsize=8,ncol=3)
 ax.set_title("Portfolio value with the recorded forecasts",fontsize=10,loc="left")
 style_chart(ax)
 body=[[label,*[ret(group,"all-2022-2025",n) for n in ["Adaptive router","HMM gate","Uniform vote"]]]
       for group,label in [("five","Recorded"),("language_outage","Language forecasts removed"),("reversed_tree","Two price forecasts reversed")]]
-table(f,[.08,.325,.84,.125],["Scenario","Adaptive","Market-state gate","Equal votes"],body,[.43,.17,.23,.17],8.5)
+table(f,[.08,.325,.84,.125],["Scenario","Weights updated using\nrecent forecast errors","Learned weights using\nmarket states","Equal votes for the\nsame forecasts"],body,[.34,.24,.23,.19],7.7)
 y=para(f,.285,"Adaptive votes beat equal votes in all three simulations. The original gate finished first among the three when language forecasts were removed. With recorded forecasts, the S&P 500 fund earned 55.9% and had a larger peak-to-trough loss than the adaptive router.")
 para(f,y,"The 95% interval for the adaptive router’s return advantage over equal votes on recorded forecasts includes zero. These periods had already been examined. A future comparison can test whether the advantage repeats.")
 link(f,.070,"Open all three scenario charts and the daily replay","stress")
