@@ -1,5 +1,5 @@
 import {comparisonSummary} from './comparison-summary.js';
-import {plotPortfolios, portfolioColors, initialGraphSelection} from './portfolio-graph.js';
+import {plotPortfolios, portfolioColors, initialGraphSelection, displayPortfolio} from './portfolio-graph.js';
 const explanations = {
   'Joint neural mixture': 'Trains three forecasters together. One reads recent prices, one reads signals from financial text, and one measures the broad market’s return, volatility and share of instruments rising. A fourth model learns how much of each vote to use for each stock.',
   'Joint experts uniform': 'Averages the predictions of exactly the same three jointly trained experts with a one-third weight each.',
@@ -176,9 +176,9 @@ export function comparisonView(root, data, paths, {head, saveCSV, icon, load, ex
     const key=document.createElement('p');key.className='note';key.textContent='Annual columns, left to right: '+approach+' and '+benchmark+'.';chart.prepend(key);chart.prepend(title);
     const graph=plotPortfolios(root.querySelector('#allPortfolioGraph'),paths[studyId],period,approach,benchmark,graphState,colorFor,details);
     root.oncomparisonresize=graph.draw;
-    const headings=['Approach','Net return','Max drawdown','Average invested','Sharpe','Fees per $10k'];
+    const headings=['Approach','Return after costs','Largest fall from a high','Average invested','Sharpe ratio','Fees per $10k'];
     const rows = [...period.rows].sort((a,b)=>b.net_return-a.net_return);
-    root.querySelector('#periodResults').append(metricTable(headings,rows.map(r=>[r.model,percent(r.net_return),percent(r.max_drawdown),percent(r.mean_exposure),r.sharpe==null?'—':r.sharpe.toFixed(2),cash(r.fees)])));
+    root.querySelector('#periodResults').append(metricTable(headings,rows.map(r=>[displayPortfolio(r.model),percent(r.net_return),percent(r.max_drawdown),percent(r.mean_exposure),r.sharpe==null?'—':r.sharpe.toFixed(2),cash(r.fees)])));
     for (const [i,tr] of Array.from(root.querySelectorAll('#periodResults tbody tr')).entries()){
       const name=rows[i].model;
       tr.tabIndex=0;
