@@ -1,3 +1,4 @@
+import {sourceGuide} from './source-guide.js';
 import {pipelineView} from './pipeline.js';
 import {overview} from './overview.js';
 import {coverageTable, glossaryView} from './terms.js';
@@ -118,11 +119,12 @@ async function architecture(ticket){
  const refresh=()=>renderArchitecture(el('flow'),study,sim,index);on('architectureDate','change',e=>{index=sim.dates.indexOf(e.target.value);refresh()});refresh();
 }
 async function datasets(ticket){
- const study=await load('study-5');if(ticket!==token)return;const d=study.coverage;
+ const [study,evidence]=await Promise.all([load('study-5'),load('source-evidence')]);if(ticket!==token)return;const d=study.coverage;
  root.innerHTML=head('Research datasets','The models learned from prices and trading volume, published investment signals, company reports and financial news. The records span January 2017 to December 2025.')+
- '<div class="sheet"><div class="metrics">'+metric('Instrument-days','bars')+metric('Instruments','symbols')+metric('Factor themes','themes')+'</div></div><div class="sourcesgrid bottom"><img class="sourceplot" src="assets/datasets.png" alt="Adjusted prices of five benchmark exchange-traded funds and FinBERT sentiment for Federal Reserve statements"><img class="sourceplot" src="assets/sources.png" alt="Text counts and returns for thirteen US factor themes by year"></div><section class="bottom"><div class="sectionhead"><h2>Coverage</h2></div>'+
+ '<div id="sourceEvidence"></div><div class="sheet"><div class="metrics">'+metric('Instrument-days','bars')+metric('Instruments','symbols')+metric('Factor themes','themes')+'</div></div><div class="sourcesgrid bottom"><img class="sourceplot" src="assets/datasets.png" alt="Adjusted prices of five benchmark exchange-traded funds and FinBERT sentiment for Federal Reserve statements"><img class="sourceplot" src="assets/sources.png" alt="Text counts and returns for thirteen US factor themes by year"></div><section class="bottom"><div class="sectionhead"><h2>Coverage</h2></div>'+
  '<div id="coverageTable"></div>'+
  '<p class="note">The selected universe includes surviving companies and overlapping ETFs. The headline sample covers 2019 through 2023. Model pretraining can include events that occurred during this retrospective evaluation.</p></section><section class="bottom"><a class="link" href="https://github.com/Yash789k/ML-TradeEngine/blob/main/ceci2_demo/README.md">Data sources and training protocol</a></section>';
+ sourceGuide(el('sourceEvidence'),evidence);
  el('coverageTable').append(coverageTable(d));
  el('bars').textContent=d.bars.toLocaleString();el('symbols').textContent=d.symbols;el('themes').textContent=d.factorThemes.length;
 }

@@ -96,7 +96,7 @@ for number,(title,explanation) in enumerate(guide["stages"],1):
     f.text(.08,y,f"{number}. {title}",size=12,weight="bold",va="top",color=green)
     y=para(f,y-.028,explanation,width=98,gap=.012)
 
-f=page("What data went into the forecasts?", "Count each type of document by the year it was published")
+f=page("What data went into the forecasts?", "Counts by publication year. Pages 13–14 trace these inputs into the forecasts.")
 for i,(key,title,color) in enumerate([
     ("news","Company headlines",green),("filing","Annual filing excerpts",ochre),("fed","Federal Reserve statements",blue),
 ]):
@@ -222,6 +222,34 @@ for label,url in [
 ("Versioned data, protocols and fitted models","https://github.com/Yash789k/ML-TradeEngine/tree/378734f695143dcd7a41087b8dd88cc431b9f075/data/ceci2-demo"),
 ("Study methods and research literature","https://github.com/Yash789k/ML-TradeEngine/blob/378734f695143dcd7a41087b8dd88cc431b9f075/ceci2_demo/moe_v2/README.md")]:
     f.text(.08,y,label,fontsize=10,color=green,url=url);y-=.032
+sources=read(ROOT/"site/assets/forecast-sources.json")
+receipts=ROOT/"ceci2_demo/receipts"
+records=pd.read_csv(receipts/"company-scores.csv")
+companies=(records.groupby(["symbol","kind"]).size().unstack(fill_value=0)
+           .reset_index().to_dict("records"))
+packet=next(r for r in reversed(read(receipts/"monthly-decisions.json")) if r["date"]<=date)
+digest=detail["experts"].index("OpenAI asset digest")
+apple=dict(decision=date,packet=packet["date"],rawUp=packet["forecasts"]["AAPL"]["UP"],
+           calibratedUp=votes[digest][2],weight=weights[digest])
+evidence={**sources,"companies":companies,"apple":apple}
+(ROOT/"site/assets/source-evidence.json").write_text(json.dumps(evidence,ensure_ascii=False,indent=2)+"\n")
+
+f=page("What did OpenAI and Jev do?", "The language models supply forecasts or suggest changes to the vote counter")
+y=.824
+for title,explanation in sources["uses"]:
+    y=section(f,y,title,explanation)
+section(f,y,"Where it enters the Apple decision",f"The December packet gave Apple a {p(apple['rawUp'])} chance of rising. After calibration using earlier data, the asset digest gave it {p(apple['calibratedUp'])} on 22 December and received {p(apple['weight'])} of the vote. The combined forecast was {p(up)} up. Page 5 follows that combined forecast into the trade simulator.")
+
+f=page("The exact sources and stock features", "What the stock models and language models can read")
+y=.824
+for title,explanation in sources["sources"]:
+    y=section(f,y,title,explanation)
+ax=f.add_axes([.14,.14,.76,.18])
+ax.bar([r["symbol"] for r in companies],[r["news"] for r in companies],color=green)
+ax.set_title("Sampled headlines by company, 2019–2023",fontsize=10,loc="left")
+ax.tick_params(labelsize=8)
+para(f,.095,"Each of the ten companies also contributed nine annual filing excerpts. Zero headlines means zero records in the sample.",width=94,gap=0)
+
 with PdfPages(OUT/"ensemble-study.pdf",metadata={"Title":"Can a model pick the right forecaster?","Subject":"Historical evaluation of expert routing for trading forecasts"}) as pdf:
     for f in pages:pdf.savefig(f);plt.close(f)
 
