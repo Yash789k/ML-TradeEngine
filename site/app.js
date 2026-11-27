@@ -114,7 +114,7 @@ async function stress(ticket){
 }
 async function architecture(ticket){
  const [sim,study]=await Promise.all([load('simulation'),load('study-5')]);if(ticket!==token)return;index=Math.min(index??sim.dates.length-1,sim.dates.length-1);
- root.innerHTML=head('System architecture','Follow one decision from published prices and news to a forecast, then to a simulated trade at the next market opening.')+'<div class="controls">'+field('architectureDate','Decision date',select('architectureDate',sim.dates,sim.dates[index]))+'</div><div id="flow"></div>';
+ root.innerHTML=head('System architecture','The forecast controller decides whose prediction to use. The portfolio decision turns the result into something the simulator can buy, sell or hold.')+'<div class="controls">'+field('architectureDate','Decision date',select('architectureDate',sim.dates,sim.dates[index]))+'</div><div id="flow"></div>';
  const refresh=()=>renderArchitecture(el('flow'),study,sim,index);on('architectureDate','change',e=>{index=sim.dates.indexOf(e.target.value);refresh()});refresh();
 }
 async function datasets(ticket){

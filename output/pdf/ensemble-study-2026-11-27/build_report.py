@@ -162,6 +162,14 @@ target=min(.15,(1/sim["vol"][i][j])/sum(1/sim["vol"][i][k] for k in chosen)) if 
 y=section(f,y,"What the simulator did with the forecast",f"Up minus down gave {100*(up-down):.1f} percentage points. Apple ranked {chosen.index(j)+1} among the five selected instruments. The fixed rule gave less volatile holdings more room, capped each at 15% and targeted {p(target)} for Apple at the next opening price. The simulation charged 50 cents for each 1,000 dollars bought or sold.")
 f.text(.08,y,"Open this recorded decision in Model votes",fontsize=10,color=green,url="https://ceci2-ensemble-lab.breezytoad67.chatgpt.site/#controller")
 
+f.text(.08,.178,"Where the two reinforcement learners fit",size=12,weight="bold",color=green)
+for x,label in [(.19,"Forecasts"),(.46,"Choose whose forecast\nModel router"),(.77,"Choose what to hold\nPortfolio allocator")]:
+    f.text(x,.13,label,ha="center",va="center",size=9,bbox=dict(boxstyle="round,pad=.45",facecolor="#e7f0e9",edgecolor="none"))
+for left,right in [(.255,.365),(.568,.669)]:
+    arrow=plt.matplotlib.patches.FancyArrowPatch((left,.13),(right,.13),transform=f.transFigure,arrowstyle="->",color=muted,mutation_scale=10)
+    f.add_artist(arrow)
+para(f,.089,"The study tested replacements at these two stages in separate experiments.",gap=0)
+
 f=page("Performance across market periods","A negative return means the portfolio ended the year with less money than it started with")
 body=[]
 for name,label in zip(models,names):
